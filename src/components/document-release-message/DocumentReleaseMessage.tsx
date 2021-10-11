@@ -6,12 +6,12 @@ import { SMessageIcon } from "../message/styles/SMessageIcon";
 import { SMessageLink } from "../message/styles/SMessageLink";
 import { SMessageTitle } from "../message/styles/SMessageTitle";
 import { SDocumentReleaseMessage } from "./styles/SDocumentReleaseMessage";
-import Link from "next/link";
 export type IDocumentReleaseMessageType = "UNPUBLISH" | "PUBLISH" | "UNSUBSCRIBED";
 interface IDocumentReleaseMessage {
   type: IDocumentReleaseMessageType;
   message: string;
   description: any;
+  LinkComponent: any;
   link?: { title: string; url: string };
 }
 
@@ -42,7 +42,7 @@ const DocumentReleaseMessageIcon: React.FC<{ type: IDocumentReleaseMessageType }
   }
 };
 
-export const DocumentReleaseMessage: React.FC<IDocumentReleaseMessage> = ({ ...props }) => {
+export const DocumentReleaseMessage: React.FC<IDocumentReleaseMessage> = ({ LinkComponent, ...props  }) => {
   return (
     <SDocumentReleaseMessage>
       <DocumentReleaseMessageIcon type={props.type} />
@@ -50,9 +50,9 @@ export const DocumentReleaseMessage: React.FC<IDocumentReleaseMessage> = ({ ...p
         <SMessageTitle>{props.message}</SMessageTitle>
         <SMessageBody>{props.description}</SMessageBody>
         {props?.link?.url && (
-          <Link href={props.link.url}>
+          <LinkComponent href={props.link.url}>
             <SMessageLink>{props.link.title}</SMessageLink>
-          </Link>
+          </LinkComponent>
         )}
       </SMessageContent>
       {props.children}

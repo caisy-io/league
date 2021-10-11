@@ -4,3 +4,6 @@ dist
 .rpt2_cache
 .next
 **/.next/
+dist-ssr
+*.local
+out

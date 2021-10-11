@@ -32,6 +32,7 @@ interface IDatePicker {
   placeholder?: any;
   children?: any;
   popoverZIndex?: number;
+  locale?: string;
 }
 
 export interface IDatePickerConfig {
@@ -52,7 +53,7 @@ export interface IDatePickerI18n {
   nextWeek?: string;
 }
 
-const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, ...props }) => {
+const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale="en", ...props }) => {
   const {
     setShowMinutes,
     setShowHours,
@@ -85,7 +86,6 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, ...props }) => 
   }, [props.initialDate]);
 
   const dayjs = useDayjs();
-  const { locale } = useRouter();
   React.useEffect(() => {
     dayjs.locale(locale);
   }, [locale]);

@@ -1,5 +1,5 @@
 import React from "react";
-import { documentRenderer, ElementType } from "./renderer-element";
+import { documentRenderer, ElementType } from "./renderer";
 
 export const RichTextRenderer: React.FC<{
   node: any;
