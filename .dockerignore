@@ -1,0 +1,61 @@
+lib/
+node_modules/
+coverage/
+reports/
+npm-debug.log
+lerna-debug.log
+yarn-error.log
+.idea
+.cache
+out/
+packages/*/*.tgz
+packages/caisy-ui/build
+packages/*/junit.xml
+localEnvGitlab.sh
+report.*
+.DS_Store
+
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+dist
+dist/
+# Build directories
+.webpack
+.build
+coverage
+npm-debug.log*
+yarn-error.log
+server.js*
+.DS_Store
+dist
+env.yml
+
+# Editor settings
+.idea
+
+# Ignore compiled js files only
+*.js.map
+!next.config.js
+!jest.config.js
+!webpack.config.js
+!source-map-install.js
+!source-map-install.js
+# package directories
+node_modules/
+jspm_packages
+
+# Webpack directories
+.webpack
+
+build/ 
+cdk.out/
+/dbdata
+.next/
+react-doka/dokaPretty.js
+!/public/instana-web.js
+!/public/instana-min.js
+!/public/eum.min.js.map
