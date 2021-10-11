@@ -15,7 +15,7 @@
     "lint:fix": "eslint ./src/**/*.ts ./src/**/*.tsx --fix",
     "dev": "start-storybook -p 6006",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o ./out"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
