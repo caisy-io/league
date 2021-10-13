@@ -40,10 +40,16 @@ module.exports = function (plop) {
   plop.setActionType("Usage:", function (answers, config, plop) {
     const { name, suffix } = answers;
     if (name && suffix) {
-      return `Usage: <S${pascalCase(name)}${pascalCase(suffix)} />`;
+      return `Usage: 
+      <S${pascalCase(name)}${pascalCase(suffix)}/>
+      <S${pascalCase(name)}${pascalCase(suffix)}> </S${pascalCase(name)}${pascalCase(suffix)}>
+      `;
     }
     if (name) {
-      return `Usage: <${pascalCase(name)} />`;
+      return `Usage: 
+      <S${pascalCase(name)}/>
+      <S${pascalCase(name)}> </S${pascalCase(name)}>
+      `;
     }
     return ``;
   });

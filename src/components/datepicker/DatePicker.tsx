@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { Button, Popover } from "../..";
 import DatePickerButtonContainer from "./datepicker-button-container/DatePickerButtonContainer";
