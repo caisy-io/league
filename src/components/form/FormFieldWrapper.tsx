@@ -1,6 +1,19 @@
 import React from "react";
 import get from "lodash/get";
 
+interface IClonedProps {
+  props:
+    | {
+        [valuePropType: string]: any;
+        onChange: (e: any) => void;
+        value: any;
+      }
+    | {
+        value: any;
+        onChange: (e: any) => void;
+      };
+}
+
 export interface IError {
   name: string;
   message: string;
@@ -32,9 +45,24 @@ interface IFormFieldWrapper {
   rules?: IRule[];
   valuePropName?: string;
   onChange?: (e: any) => void;
+  children:
+    | React.ReactNode
+    | ((
+        props:
+          | {
+              [valuePropType: string]: any;
+              onChange: (e: any) => void;
+              value: any;
+            }
+          | {
+              value: any;
+              onChange: (e: any) => void;
+            },
+      ) => React.ReactNode);
 }
 
 export const FormFieldWrapper: React.FC<IFormFieldWrapper> = ({ ...props }) => {
+  console.log(typeof props.children);
   const onChange = (e: any) => {
     props.onChange && props.onChange(e);
     props.control.onFieldChange(props.name, props.reference ? get(e, props.reference) : e);
@@ -68,5 +96,20 @@ export const FormFieldWrapper: React.FC<IFormFieldWrapper> = ({ ...props }) => {
     return child;
   });
 
-  return <>{childrenWithProps}</>;
+  return typeof props.children === "function" ? (
+    props.children?.(
+      clonedProps as
+        | {
+            [valuePropType: string]: any;
+            onChange: (e: any) => void;
+            value: any;
+          }
+        | {
+            value: any;
+            onChange: (e: any) => void;
+          },
+    )
+  ) : (
+    <>{childrenWithProps}</>
+  );
 };

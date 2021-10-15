@@ -36,6 +36,20 @@ export interface IFormField {
   valuePropName?: string;
   style?: React.CSSProperties;
   onChange?: (e: any) => void;
+  children:
+    | React.ReactNode
+    | ((
+        props:
+          | {
+              [x: string]: any;
+              onChange: (e: any) => void;
+              value: any;
+            }
+          | {
+              value: any;
+              onChange: (e: any) => void;
+            },
+      ) => React.ReactNode);
 }
 
 export const FormField: React.FC<IFormField> = ({ ...props }) => {
