@@ -2,6 +2,7 @@ import React from "react";
 import { IControl, IError, IField } from "./FormField";
 import { IRule } from "./FormFieldWrapper";
 import set from "lodash/set";
+import produce from "immer";
 
 export interface IUseForm {
   control: IControl;
@@ -10,7 +11,7 @@ export interface IUseForm {
   addErrorOnField: (fieldName: string, errorName: string, errorMessage: string) => void;
   removeErrorFromField: (fieldName: string, errorName: string) => void;
   isFieldDirty: (fieldName: string) => boolean;
-  validate: () => boolean;
+  validate: () => Promise<boolean>;
   setFieldValue: (fieldName: string, value: any) => void;
   requiredRule: (condition: (value: any) => boolean) => IRule;
   removeFieldsFromState: (fields: string[]) => void;
@@ -50,12 +51,17 @@ export const useForm: (initialFormState?: IInitialFormState) => IUseForm = (init
   });
 
   const onFieldChange = (fieldName: string, value: any) => {
-    setFormState((prevState) => ({ ...prevState, [fieldName]: { ...prevState[fieldName], value } }));
+    // setFormState(produce((prevState) => ({ ...prevState, [fieldName]: { ...prevState[fieldName], value } })));
+    setFormState(
+      produce((draft) => {
+        draft[fieldName].value = value;
+      }),
+    );
     markFieldAsDirty(fieldName);
   };
 
   const registerField = (fieldName: string, field: IField) => {
-    setFormState((prevState) => ({ ...prevState, [fieldName]: { ...prevState[fieldName], ...field } }));
+    setFormState(produce((prevState) => ({ ...prevState, [fieldName]: { ...prevState[fieldName], ...field } })));
   };
 
   const handleSubmit = (onSubmit: (formData: any) => void) => {
@@ -65,16 +71,18 @@ export const useForm: (initialFormState?: IInitialFormState) => IUseForm = (init
       for (const property in formState) {
         set(formData, property, formState[property].value);
       }
-
+      console.log(formData);
       return onSubmit(formData);
     };
   };
 
   const markFieldAsDirty = (fieldName: string) => {
     if (!dirtyFields.includes(fieldName)) {
-      const newDirtyFields = dirtyFields.slice();
-      newDirtyFields.push(fieldName);
-      setDirtyFields(newDirtyFields);
+      setDirtyFields(
+        produce((draft) => {
+          draft.push(fieldName);
+        }),
+      );
     }
   };
 
@@ -83,67 +91,81 @@ export const useForm: (initialFormState?: IInitialFormState) => IUseForm = (init
   };
 
   const addErrorOnField = (fieldName: string, errorName: string, errorMessage: string) => {
-    const errorList = formState[fieldName].errors.slice();
+    const errorList = formState[fieldName].errors;
     if (!errorList.some((error: IError) => error.name === errorName)) {
-      errorList.push({ name: errorName, message: errorMessage });
-      setFormState((prevState) => ({ ...prevState, [fieldName]: { ...prevState[fieldName], errors: errorList } }));
+      setFormState(
+        produce((draft) => {
+          draft[fieldName].errors.push({ name: errorName, message: errorMessage });
+        }),
+      );
     }
   };
 
   const removeErrorFromField = (fieldName: string, errorName: string) => {
-    const errorList = formState[fieldName].errors.filter((error: IError) => error.name !== errorName);
-    setFormState((prevState) => ({ ...prevState, [fieldName]: { ...prevState[fieldName], errors: errorList } }));
+    setFormState(
+      produce((draft) => {
+        const field = draft[fieldName];
+        field.errors = field.errors.filter((error: IError) => error.name !== errorName);
+      }),
+    );
   };
 
   const getFormState = () => {
     return formState;
   };
 
-  const validate = () => {
-    let isValid = true;
-
-    const newFormState = { ...formState };
-
-    for (const property in newFormState) {
-      if (newFormState[property].rules) {
-        newFormState[property].rules.forEach((rule: IRule) => {
-          if (!rule.condition(newFormState[property].value)) {
-            if (!newFormState[property].errors.some((error: IError) => error.name === rule.name)) {
-              newFormState[property].errors.push({ name: rule.name, message: rule.message });
+  const checkForErrors = () => {
+    return new Promise((resolve) => {
+      setFormState(
+        produce((draft: IFormState) => {
+          for (const property in draft) {
+            if (draft[property].rules) {
+              formState[property].rules.forEach((rule: IRule) => {
+                if (!rule.condition(draft[property].value)) {
+                  if (!draft[property].errors.some((error) => error.name === rule.name)) {
+                    draft[property].errors.push({ name: rule.name, message: rule.message });
+                  }
+                } else if (draft[property].errors.some((error) => error.name === rule.name)) {
+                  draft[property].errors = draft[property].errors.filter((error) => error.name !== rule.name);
+                }
+              });
             }
-          } else if (newFormState[property].errors.some((error: IError) => error.name === rule.name)) {
-            newFormState[property].errors = newFormState[property].errors.filter(
-              (error: IError) => error.name !== rule.name,
-            );
           }
-        });
-      }
-    }
+          resolve(JSON.parse(JSON.stringify(draft)));
+        }),
+      );
+    });
+  };
 
-    for (const property in newFormState) {
-      if (newFormState[property].errors && newFormState[property].errors.length > 0) {
+  const validate = async () => {
+    let isValid = true;
+    const draft: any = await checkForErrors();
+
+    for (const property in draft) {
+      if (draft[property].errors && draft[property].errors.length > 0) {
         isValid = false;
       }
     }
-
-    setFormState(newFormState);
 
     return isValid;
   };
 
   const setFieldValue = (fieldName: string, value: any) => {
-    setFormState((prevState) => ({ ...prevState, [fieldName]: { ...prevState[fieldName], value } }));
+    setFormState(
+      produce((draft) => {
+        draft[fieldName].value = value;
+      }),
+    );
   };
 
   const removeFieldsFromState = (fields: string[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const newFormState = {};
-    for (const property in formState) {
-      if (!fields.includes(property)) {
-        newFormState[property] = formState[property];
-      }
-    }
-    setFormState(() => newFormState);
+    setFormState(
+      produce((draft) => {
+        fields.forEach((field) => {
+          delete draft[field];
+        });
+      }),
+    );
   };
 
   const getFieldErrors = (fieldName: string) => {
