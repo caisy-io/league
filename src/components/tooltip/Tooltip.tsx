@@ -3,7 +3,7 @@ import { STooltip } from "./styles/STooltip";
 import { STooltipWrapper } from "./styles/STooltipWrapper";
 import { TPlacement, Popover } from "../..";
 
-interface ITooltip {
+export interface ITooltip {
   content: ReactNode | (() => ReactNode);
   supressArrow?: boolean | undefined;
   placement?: TPlacement | undefined;

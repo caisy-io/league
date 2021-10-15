@@ -1,8 +1,7 @@
 import React from "react";
 import { Img } from "../../base-components/img/Img";
 import { SAvatar } from "./styles/SAvatar";
-
-interface IAvatar {
+export interface IAvatar {
   imageUrl?: string;
   size?: number;
 }
