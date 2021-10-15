@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { TextArea, TranslationMenu } from "../..";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 function TranslationMenuDemo() {
     const [state, setState] = useState({
@@ -14,7 +16,7 @@ function TranslationMenuDemo() {
       });
     
       return (
-        <div
+        <DndProvider backend={HTML5Backend}
           style={{
             width: 300,
             margin: 80,
@@ -41,7 +43,7 @@ function TranslationMenuDemo() {
             ></TextArea>
             <pre>{JSON.stringify(state, null, 4)}</pre>
           </div>
-        </div>
+        </DndProvider>
       );
 }
 
