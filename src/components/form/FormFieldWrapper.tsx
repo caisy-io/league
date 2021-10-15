@@ -39,9 +39,10 @@ export const FormFieldWrapper: React.FC<IFormFieldWrapper> = ({ ...props }) => {
     props.onChange && props.onChange(e);
     const getValue = () => {
       if (props.reference) return get(e, props.reference);
-      else if (e?.target?.value) return e.target.value;
-      else if (e?.target?.checked) return e.target.checked;
-      else return e;
+      else if (e.target) {
+        if (e.target.type === "checkbox") return e.target.checked;
+        else return e.target.value;
+      } else return e;
     };
 
     const value = getValue();
