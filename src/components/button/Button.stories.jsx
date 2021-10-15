@@ -1,20 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid } from "../../base-components/grid/Grid";
-import { GridItem } from "../../base-components/grid-item/GridItem";
-import { GridPadding } from "../../base-components/grid-padding/GridPadding";
-import { Spacer } from "../../base-components/spacer/Spacer";
 import { Button } from "./Button";
-import { IconUnlink } from "../../icons/IconUnlink";
-import { IconAngleCollapse } from "../../icons/IconAngleCollapse";
-import { IconAngleExpand } from "../../icons/IconAngleExpand";
-import { IconCheckmark } from "../../icons/IconCheckmark";
-import { IconDragable } from "../../icons/IconDragable";
-import { IconEdit } from "../../icons/IconEdit";
-import { IconLink } from "../../icons/IconLink";
-import { IconPlus } from "../../icons/IconPlus";
-import { IconTranslate } from "../../icons/IconTranslate";
-import { IconTrashDelete } from "../../icons/IconTrashDelete";
+import { 
+    Grid, 
+    GridItem, 
+    GridPadding, 
+    Spacer, 
+    IconUnlink, 
+    IconAngleCollapse, 
+    IconAngleExpand, 
+    IconCheckmark, 
+    IconDragable, 
+    IconEdit, 
+    IconLink, 
+    IconPlus, 
+    IconTranslate, 
+    IconTrashDelete 
+} from "../..";
 
 const SFlexRow = styled.div`
   display: flex;
