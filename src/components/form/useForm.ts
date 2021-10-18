@@ -3,6 +3,11 @@ import { IControl, IError, IField } from "./FormField";
 import { IRule } from "./FormFieldWrapper";
 import set from "lodash/set";
 
+interface IRegister {
+  onChange: any;
+  value: any;
+}
+
 export interface IUseForm {
   control: IControl;
   getFormState: () => any;
@@ -15,10 +20,7 @@ export interface IUseForm {
   requiredRule: (condition: (value: any) => boolean) => IRule;
   removeFieldsFromState: (fields: string[]) => void;
   getFieldErrors: (fieldName: string) => IError[];
-}
-
-interface IFormState {
-  [property: string]: IField;
+  register: () => IRegister;
 }
 
 interface IInitialFormState {
@@ -56,6 +58,12 @@ export const useForm: (initialFormState?: IInitialFormState) => IUseForm = (init
 
   const registerField = (fieldName: string, field: IField) => {
     setFormState((prevState) => ({ ...prevState, [fieldName]: { ...prevState[fieldName], ...field } }));
+  };
+
+  const register = () => {
+    const onChange = () => {};
+    const value = null;
+    return { onChange, value };
   };
 
   const handleSubmit = (onSubmit: (formData: any) => void) => {
@@ -136,7 +144,6 @@ export const useForm: (initialFormState?: IInitialFormState) => IUseForm = (init
   };
 
   const removeFieldsFromState = (fields: string[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const newFormState = {};
     for (const property in formState) {
       if (!fields.includes(property)) {
@@ -157,6 +164,7 @@ export const useForm: (initialFormState?: IInitialFormState) => IUseForm = (init
       formState: getFormState(),
       registerField,
     },
+    register,
     getFormState,
     handleSubmit,
     addErrorOnField,

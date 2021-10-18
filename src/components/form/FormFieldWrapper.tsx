@@ -36,7 +36,6 @@ interface IFormFieldWrapper {
 
 export const FormFieldWrapper: React.FC<IFormFieldWrapper> = ({ ...props }) => {
   const onChange = (e: any) => {
-    props.onChange && props.onChange(e);
     props.control.onFieldChange(props.name, props.reference ? get(e, props.reference) : e);
   };
 
