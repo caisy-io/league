@@ -5,8 +5,8 @@ import { SListItemDescription } from "./styles/SListItemDescription";
 import { SListItemAvatar } from "./styles/SListItemAvatar";
 import { SListItemContentWrapper } from "./styles/SListItemContentWrapper";
 import { SSelectableListItemCheckbox } from "./styles/SSelectableListItemCheckbox";
-import { Divider } from "../..";
 import { IconCheckmark } from "../../icons/IconCheckmark";
+import { Divider } from "../../components/divider/Divider";
 
 interface ISelectableListItem {
   title: React.ReactNode;

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { Button, Popover } from "../..";
+import { Button } from "../button/Button";
+import { Popover } from "../popover/Popover";
 import DatePickerButtonContainer from "./datepicker-button-container/DatePickerButtonContainer";
 import DatePickerCard from "./datepicker-card/DatePickerCard";
 import DatePickerInput from "./datepicker-input/DatePickerInput";

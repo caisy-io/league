@@ -5,9 +5,7 @@ import { SSpinnerBottomLeft } from "./styles/SSpinnerBottomLeft";
 import { SSpinnerTopRight } from "./styles/SSpinnerTopRight";
 import { SSpinnerBottomRight } from "./styles/SSpinnerBottomRight";
 
-interface ISpinner {}
-
-export const Spinner: React.FC<ISpinner> = ({ ...props }) => {
+export const Spinner: React.FC = () => {
   return (
     <SSpinner>
       <SSpinnerTopLeft />

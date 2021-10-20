@@ -5,7 +5,7 @@ import { SListItemDescription } from "./styles/SListItemDescription";
 import { SListItemAvatar } from "./styles/SListItemAvatar";
 import { SListItemContentWrapper } from "./styles/SListItemContentWrapper";
 import { SListItemChildren } from "./styles/SListItemChildren";
-import { Divider } from "../..";
+import { Divider } from "../../components/divider/Divider";
 
 interface IListItem {
   title?: React.ReactNode;

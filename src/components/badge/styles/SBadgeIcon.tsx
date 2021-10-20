@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
-import { BadgePosition } from "../Badge";
+import { BadgePosition } from "../BadgePosition";
 
 interface ISBadgeIcon {
   position: BadgePosition;

@@ -1,11 +1,14 @@
 import React from "react";
-import { IconPublish, IconUnpublish, IconWarning } from "../..";
+import { IconPublish } from "../../icons/IconPublish";
+import { IconUnpublish } from "../../icons/IconUnpublish";
+import { IconWarning } from "../../icons/IconWarning";
 import { SMessageBody } from "../message/styles/SMessageBody";
 import { SMessageContent } from "../message/styles/SMessageContent";
 import { SMessageIcon } from "../message/styles/SMessageIcon";
 import { SMessageLink } from "../message/styles/SMessageLink";
 import { SMessageTitle } from "../message/styles/SMessageTitle";
 import { SDocumentReleaseMessage } from "./styles/SDocumentReleaseMessage";
+
 export type IDocumentReleaseMessageType = "UNPUBLISH" | "PUBLISH" | "UNSUBSCRIBED";
 interface IDocumentReleaseMessage {
   type: IDocumentReleaseMessageType;

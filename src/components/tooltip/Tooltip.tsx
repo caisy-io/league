@@ -1,8 +1,7 @@
 import React, { ReactNode } from "react";
 import { STooltip } from "./styles/STooltip";
 import { STooltipWrapper } from "./styles/STooltipWrapper";
-import { TPlacement, Popover } from "../..";
-
+import { Popover, TPlacement } from "../popover/Popover";
 export interface ITooltip {
   content: ReactNode | (() => ReactNode);
   supressArrow?: boolean | undefined;

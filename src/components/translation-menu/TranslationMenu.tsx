@@ -1,5 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Button, Card, SCardBody, SCardHeader, SCardHeaderTitle, MenuDnd } from "../..";
+import { Button } from "../button/Button";
+import { Card } from "../card/Card";
+import { MenuDnd } from "../menu-dnd/MenuDnd";
+import { SCardBody } from "../card/styles/SCardBody";
+import { SCardHeader } from "../card/styles/SCardHeader";
+import { SCardHeaderTitle } from "../card/styles/SCardHeaderTitle";
 import { IconDragable } from "../../icons/IconDragable";
 import { IconEyeHidden } from "../../icons/IconEyeHidden";
 import { IconEye } from "../../icons/IconEye";

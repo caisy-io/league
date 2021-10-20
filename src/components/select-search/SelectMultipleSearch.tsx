@@ -17,9 +17,9 @@ interface IDropdownSearch {
   defaultValue?: string[];
   style?: any;
 }
-
+// @Nicolas why we have a forwardRef here if we do not use it?
 export const SelectMultipleSearch: React.FC<IDropdownSearch> = React.forwardRef(
-  ({ ...props }: IDropdownSearch, ref) => {
+  ({ ...props }: IDropdownSearch, _) => {
     const [inputValue, setInputValue] = React.useState<string>("");
     const [multipleValue, setMultipleValue] = React.useState<string[]>(
       props.value || props.defaultValue ? ((props.value || props.defaultValue) as string[]) : [],

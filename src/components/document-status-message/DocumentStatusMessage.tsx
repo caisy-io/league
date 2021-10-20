@@ -1,5 +1,6 @@
 import React from "react";
-import { IconEdit, IconInfo } from "../..";
+import { IconInfo } from "../../icons/IconInfo";
+import { IconEdit } from "../../icons/IconEdit";
 import { IconCheckmark } from "../../icons/IconCheckmark";
 import { SMessageBody } from "../message/styles/SMessageBody";
 import { SMessageContent } from "../message/styles/SMessageContent";

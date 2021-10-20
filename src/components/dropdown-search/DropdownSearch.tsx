@@ -1,6 +1,7 @@
 import React from "react";
 import { Dropdown } from "../dropdown/Dropdown";
-import { Input, Popover } from "../..";
+import { Input } from "../../components/input/Input";
+import { Popover } from "../../components/popover/Popover";
 import { SDropdownSearch } from "./styles/SDropdownSearch";
 import { SDropdownSearchList } from "./styles/SDropdownSearchList";
 import fuzzysearch from "fuzzysearch";
