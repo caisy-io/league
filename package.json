@@ -8,6 +8,7 @@
   "scripts": {
     "prepare": "install-peers",
     "prepublishOnly": "yarn build",
+    "style-dictionary": "style-dictionary build --config ./configs/sd.config.js",
     "postbuild": "dts-bundle-generator --no-check --external-types=react --external-imports=moment -o dist/types.d.ts src/index.ts",
     "build:cp": "rimraf dist && yarn build && rimraf ../caisy-next/node_modules/@caisy/league/dist && ncp ./dist ../caisy-next/node_modules/@caisy/league/dist",
     "lint": "eslint ./src/**/*.ts ./src/**/*.tsx",
@@ -44,6 +45,7 @@
     "rollup-plugin-ts-paths-resolve": "^1.7.1",
     "rollup-plugin-typescript2": "^0.29.0",
     "storybook-builder-vite": "^0.1.0",
+    "style-dictionary": "^3.0.3",
     "typescript": "^4.3.2",
     "vite": "^2.6.4"
   },
