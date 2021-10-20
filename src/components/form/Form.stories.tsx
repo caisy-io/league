@@ -14,7 +14,7 @@ function FormShowcase() {
       onSubmit={handleSubmit(onSubmit)}
       style={{ display: "flex", flexDirection: "column", gap: 32, alignItems: "stretch", width: 400 }}
     >
-      <FormField name="input.test" control={control} reference="target.value">
+      <FormField name="input.test" control={control}>
         <Input {...register()} placeholder="Input" />
       </FormField>
       <Button htmlType="button" style={{ alignSelf: "flex-start" }}>
