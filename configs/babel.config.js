@@ -18,7 +18,7 @@ module.exports = {
                 corejs: '3',
                 loose: true,
                 modules: 'auto',
-                targets: ['last 2 versions', 'ie >= 11'],
+                targets: ['last 2 versions',"> 2%", "not IE 11"],
                 useBuiltIns: 'usage',
             },
         ],

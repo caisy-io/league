@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@caisy/league": "^0.1.4",
+    "@caisy/league": "0.1.6",
+    "@next/bundle-analyzer": "^11.1.2",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
+  "sideEffects": false,
   "devDependencies": {
     "@types/react": "17.0.30",
     "eslint": "8.0.1",

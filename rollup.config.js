@@ -8,12 +8,16 @@ import copy from 'rollup-plugin-copy';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import tsPathsResolve from 'rollup-plugin-ts-paths-resolve';
 import cleaner from 'rollup-plugin-cleaner';
-// import typescript from 'rollup-plugin-typescript2'
 
 const CONFIGS = require('./configs');
 const ROOT_PATH = path.resolve(__dirname, '..', '..');
 const DIST_PATH = path.resolve(__dirname, 'dist');
 export const extensions = ['.js', '.jsx', '.ts', '.tsx'];
+
+
+
+console.log(` glob.sync('src/components/*/index.ts')`, glob.sync('src/components/*/index.ts'));
+console.log(` glob.sync('src/components/*')`, glob.sync('src/components/*'));
 
 /**
  * Compile index & compile separately every elements exported by it.

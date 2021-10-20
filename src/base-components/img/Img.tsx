@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import LazyLoad from "react-lazyload";
 import { SImg } from "./styles/SImg";
 
-interface IResponsiveImageResolution {
+export interface IResponsiveImageResolution {
   bronze: number;
   silver?: number;
   gold?: number;
