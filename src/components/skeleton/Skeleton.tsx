@@ -1,9 +1,7 @@
 import React from "react";
 import { SSkeleton } from "./styles/SSkeleton";
 
-interface ISkeleton {}
-
-export const Skeleton: React.FC<ISkeleton> = ({ ...props }) => {
+export const Skeleton: React.FC = () => {
   return (
     <SSkeleton>
       <div />

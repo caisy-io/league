@@ -18,7 +18,8 @@ interface IDropdownSearch {
   renderItem?: (option: any) => React.ReactNode;
 }
 
-export const SelectSingleSearch: React.FC<IDropdownSearch> = React.forwardRef(({ ...props }: IDropdownSearch, ref) => {
+// @Nicolas why we have a forwardRef here if we do not use it?
+export const SelectSingleSearch: React.FC<IDropdownSearch> = React.forwardRef(({ ...props }: IDropdownSearch, _) => {
   const [inputValue, setInputValue] = React.useState<string>(
     props.dataSource
       .map((item) => item.items)
@@ -49,7 +50,7 @@ export const SelectSingleSearch: React.FC<IDropdownSearch> = React.forwardRef(({
 
   return (
     <ClickOutside onClickOutside={() => setActive(false)}>
-      <div style={props.style}>
+      <div style={props.style} >
         <SSelectSearch ref={innerRef}>
           <Input
             // onClose={props.onClose}

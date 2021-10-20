@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./dist",
     "outDir": "dist",
     "module": "commonjs",
     "target": "es5",
@@ -22,9 +24,18 @@
     "allowUmdGlobalAccess": true,
     "experimentalDecorators": true,
     "allowJs": false,
-    "declaration": true,
     "types": ["react"]
   },
   "include": ["src/**/*"],
-  "exclude": ["src/pages/**/*", "src/showcase-components/**/*", "src/**/*.test.tsx", "src/**/*.stories.*"]
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "example",
+    "rollup.config.js",
+    "src/pages/**/*",
+    "src/showcase-components/**/*",
+    "src/**/*.test.tsx",
+    "src/**/*.stories.*"
+  ]
 }

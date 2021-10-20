@@ -4,7 +4,8 @@ import { SPopconfirmWrapper } from "./styles/SPopconfirmWrapper";
 import { SPopconfirmTitle } from "./styles/SPopconfirmTitle";
 import { SPopconfirmButtons } from "./styles/SPopconfirmButtons";
 import { SPopconfirmIcon } from "./styles/SPopconfirmIcon";
-import { Button, TPlacement, Popover } from "../../";
+import { Button } from "../button/Button";
+import { Popover, TPlacement } from "../popover/Popover";
 
 interface IPopconfirm {
   title: string | JSX.Element;

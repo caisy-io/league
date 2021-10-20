@@ -1,8 +1,8 @@
 import React from "react";
-import { Status } from "../..";
 import { SEmpty } from "./styles/SEmpty";
 import { SEmptyContent } from "./styles/SEmptyContent";
 import { SEmptyDescription } from "./styles/SEmptyDescription";
+import { Status } from "../../components/status/Status";
 
 interface IEmpty {
   description: React.ReactNode;

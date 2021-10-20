@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { SInput, SSearchWrapper, SSearchIcon, SIndicatorsIcons, SFilterIcon } from "./styles/SSearchWithFilter";
 
 import DropdownSearch from "./DropdownSearch";
-import DropdownFilter from "./DropdownFilter";
 import FilterOptions from "./FilterOptions";
 
 import { ISearchInputValues, ISearchLevels, SearchContext, useRenderOptions, useSearchLevel } from "./SearchProvider";
@@ -11,7 +10,7 @@ import { SButtonFadeIn } from "./styles/SButtonFadeIn";
 import { IconCross } from "../../icons/IconCross";
 import { IconFilter } from "../../icons/IconFilter";
 import { IconSearch } from "../../icons/IconSearch";
-import { Button } from "../..";
+import { Button } from "../../components/button/Button";
 
 export const Search: React.FC = ({ children }) => {
   const [isInputFocus, setIsInputFocus] = useState<boolean>(false);

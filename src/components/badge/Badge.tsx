@@ -2,12 +2,8 @@ import React from "react";
 import { SBadge } from "./styles/SBadge";
 import { SBadgeIconContent } from "./styles/SBadgeIconContent";
 import { SBadgeIcon } from "./styles/SBadgeIcon";
-
-export enum BadgePosition {
-  TopLeft,
-  TopRight,
-}
-
+import { BadgePosition } from "./BadgePosition";
+export { BadgePosition } from "./BadgePosition";
 interface IBadge {
   value: string;
   position: BadgePosition;

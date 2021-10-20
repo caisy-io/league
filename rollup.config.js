@@ -9,13 +9,15 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import tsPathsResolve from 'rollup-plugin-ts-paths-resolve';
 import cleaner from 'rollup-plugin-cleaner';
 
-import pkg from './package.json';
-const CONFIGS = require('../../configs');
-
+const CONFIGS = require('./configs');
 const ROOT_PATH = path.resolve(__dirname, '..', '..');
-const DIST_PATH = path.resolve(__dirname, pkg.publishConfig.directory);
+const DIST_PATH = path.resolve(__dirname, 'dist');
 export const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
+
+
+console.log(` glob.sync('src/components/*/index.ts')`, glob.sync('src/components/*/index.ts'));
+console.log(` glob.sync('src/components/*')`, glob.sync('src/components/*'));
 
 /**
  * Compile index & compile separately every elements exported by it.
@@ -25,6 +27,25 @@ const input = Object.fromEntries([
     ['components', 'src/components/index.ts'],
     ...glob.sync('src/components/*/index.ts').map((componentPath) => {
         const [, componentName] = componentPath.match(/.*components\/(.*?)\/.*/) || [];
+        console.log(` componentName`, componentName);
+        console.log(` componentPath`, componentPath);
+        return [componentName, componentPath];
+    }),
+    ['base-components', 'src/base-components/index.ts'],
+    ...glob.sync('src/base-components/*/index.ts').map((componentPath) => {
+        const [, componentName] = componentPath.match(/.*base-components\/(.*?)\/.*/) || [];
+        console.log(` base-componentstName`, componentName);
+        console.log(` base-componentsPath`, componentPath);
+        return [componentName, componentPath];
+    }),
+    ['icons', 'src/icons/index.ts'],
+    ...glob.sync('src/icons/*/index.ts').map((componentPath) => {
+        const [, componentName] = componentPath.match(/.*icons\/(.*?)\/.*/) || [];
+        return [componentName, componentPath];
+    }),
+    ['provider', 'src/provider/index.ts'],
+    ...glob.sync('src/provider/*/index.ts').map((componentPath) => {
+        const [, componentName] = componentPath.match(/.*provider\/(.*?)\/.*/) || [];
         return [componentName, componentPath];
     })
 ]);
@@ -58,6 +79,10 @@ export default {
         analyze(),
         /** Resolve tsconfig paths. */
         tsPathsResolve(),
+        // typescript({
+        //     rollupCommonJSResolveHack: false,
+        //     clean: true,
+        //   }),
         /** Resolve source files. */
         resolve({ browser: true, extensions }),
         /** Resolve commonjs dependencies. */
@@ -67,11 +92,7 @@ export default {
             extensions,
             exclude: /node_modules/,
             plugins: CONFIGS.babel.plugins,
-            presets: [
-                ['@babel/preset-env', { targets: 'defaults' }],
-                '@babel/preset-react',
-                '@babel/preset-typescript'
-            ],
+            presets: CONFIGS.babel.presets,
         }),
         /** Copy additional files to dist. */
         copy({

@@ -3,7 +3,7 @@ import { SDropdown } from "./styles/SDropdown";
 import { SDropdownOptionHeader } from "./styles/SDropdownOptionHeader";
 import { SDropdownOption } from "./styles/SDropdownOption";
 import { IDropdownCategory } from "./types";
-import { Popover } from "../..";
+import { Popover } from "../../components/popover/Popover";
 
 interface IDropdownProps {
   active: boolean;

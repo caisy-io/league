@@ -12,7 +12,7 @@ import { Card } from "../card/Card";
 import { SDocumentItemBodyLabel } from "./styles/SDocumentItemBodyLabel";
 import { IconFile } from "../../icons/IconFile";
 import { SDocumentItemIconWrapper } from "./styles/SDocumentItemIconWrapper";
-import { Img } from "../..";
+import { Img } from "../../base-components/img/Img";
 
 interface IDocumentItem {
   key?: string;

@@ -1,7 +1,6 @@
 {
   "env": {
     "development": {
-      "presets": ["next/babel"],
       "plugins": [
         [
           "styled-components",
@@ -14,7 +13,6 @@
       ]
     },
     "production": {
-      "presets": ["next/babel"],
       "plugins": [
         [
           "styled-components",
