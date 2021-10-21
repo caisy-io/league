@@ -11,6 +11,7 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   icon?: () => ReactElement;
   hasCloseButton?: boolean;
   onClose?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
   wrapperStyle?: React.CSSProperties;
 }
 
