@@ -5,9 +5,9 @@ import { SInputCloseButton } from "./styles/SInputCloseButton";
 import { IconClose } from "../../icons";
 
 interface IInput extends InputHTMLAttributes<HTMLInputElement> {
-  // onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
-  // type?: "number" | "password" | "email" | "text";
+  type?: "number" | "password" | "email" | "text";
   icon?: () => ReactElement;
   hasCloseButton?: boolean;
   onClose?: () => void;
