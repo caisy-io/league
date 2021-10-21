@@ -1,0 +1,31 @@
+/**
+ * Do not edit directly
+ * Generated on Thu, 21 Oct 2021 00:40:42 GMT
+ */
+
+:root {
+  --fontFamilies-inter: Inter;
+  --fontFamilies-ibm-plex-mono: IBM Plex Mono;
+  --lineHeights-0: 24;
+  --lineHeights-1: 20;
+  --lineHeights-2: 16;
+  --lineHeights-3: 14;
+  --lineHeights-4: 12;
+  --fontWeights-inter-0: Bold;
+  --fontWeights-inter-1: Semi Bold;
+  --fontWeights-inter-2: Medium;
+  --fontWeights-inter-3: Regular;
+  --fontWeights-ibm-plex-mono-4: Text;
+  --fontSize-0: 8;
+  --fontSize-1: 9;
+  --fontSize-2: 11;
+  --fontSize-3: 12;
+  --fontSize-4: 14;
+  --fontSize-5: 16;
+  --fontSize-6: 18;
+  --letterSpacing-0: 0%;
+  --letterSpacing-1: -1%;
+  --letterSpacing-2: 6%;
+  --letterSpacing-3: 8%;
+  --paragraphSpacing-0: 0;
+}
