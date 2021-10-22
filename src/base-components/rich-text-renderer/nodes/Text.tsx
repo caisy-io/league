@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-type Marks = "bold" | "italic" | "strike" | "link";
+type Marks = "bold" | "italic" | "strike" | "link" | "code";
 
 const Mark: FC<{ mark: Marks; attrs: any }> = ({ mark, attrs, children }) => {
   switch (mark) {
@@ -10,6 +10,8 @@ const Mark: FC<{ mark: Marks; attrs: any }> = ({ mark, attrs, children }) => {
       return <em>{children}</em>;
     case "strike":
       return <s>{children}</s>;
+    case "code":
+      return <code>{children}</code>;
     case "link":
       return (
         <a href={attrs.href} target={attrs.target}>
