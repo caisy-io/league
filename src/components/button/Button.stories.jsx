@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "./Button";
+import { IconLink } from "../..";
 
+// Default Button Demo
 export default {
   title: 'Components/Button',
   component: ButtonDemo,
@@ -79,6 +81,24 @@ export const Default = Template.bind({});
 Default.args = {
   type: "primary",
   content: "primary",
+  size: "default",
+  state: "default",
+  dashed: false,
+  round: false,
+  disabled: false,
+};
+
+// With Icon
+export const WithIcon = ({content, ...args}) => (
+    <Button {...args}>
+      <IconLink />
+      {content}
+    </Button>
+);
+
+WithIcon.args = {
+  type: "link",
+  content: "Link existing Document",
   size: "default",
   state: "default",
   dashed: false,
