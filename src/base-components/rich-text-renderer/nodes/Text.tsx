@@ -16,6 +16,9 @@ const Mark: FC<{ mark: Marks; attrs: any }> = ({ mark, attrs, children }) => {
           {children}
         </a>
       );
+    default:
+      console.warn(`Unrecognized mark: ${mark}`);
+      return <>{children}</>;
   }
 };
 
