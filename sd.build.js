@@ -1,4 +1,8 @@
 const StyleDictionary = require("style-dictionary");
+const set = require("lodash/set");
+const get = require("lodash/get");
+const kebabCase = require("lodash/kebabCase");
+const camelCase = require("lodash/camelCase");
 
 console.log("Build started...");
 console.log("\n==============================================");
@@ -31,7 +35,6 @@ StyleDictionary.registerTransform({
   name: "css/name/fonts",
   type: "name",
   transformer: function (token) {
-    console.log(token);
     const name = token.path.toString().replace(",", "-");
     return `${name}`;
   },
@@ -56,18 +59,9 @@ StyleDictionary.registerTransform({
   name: "js/colors/name",
   type: "name",
   transformer: function (token) {
-    const name = token.name.replace("$", "");
-    const splitName = name.split("-");
-    let capitalizedName = "";
-    splitName.forEach((string, index) => {
-      if (index !== 0) {
-        capitalizedName += string.slice(0, 1).toUpperCase() + string.slice(1, string.length);
-      } else {
-        capitalizedName += string;
-      }
-    });
+    const camelCasedName = camelCase(token.name);
 
-    return `${capitalizedName}`;
+    return `${camelCasedName}`;
   },
 });
 
@@ -83,16 +77,7 @@ StyleDictionary.registerTransform({
   type: "name",
   transformer: function (token) {
     const pathName = token.path.toString();
-    const name = pathName.replace("$", "");
-    const splitName = name.split(/-|,|@/);
-    let camelCasedName = "";
-    splitName.forEach((string, index) => {
-      if (index !== 0) {
-        camelCasedName += string.slice(0, 1).toUpperCase() + string.slice(1, string.length);
-      } else {
-        camelCasedName += string;
-      }
-    });
+    const camelCasedName = camelCase(pathName);
 
     return `${camelCasedName}`;
   },
@@ -105,9 +90,28 @@ StyleDictionary.registerTransformGroup({
 
 // Register fontFaces
 
-StyleDictionary.registerTransformGroup({
-  name: "fontFaces",
-  transforms: ["js/fonts/name"],
+StyleDictionary.registerFormat({
+  name: "styledComponents",
+  formatter: function ({ dictionary }) {
+    let fonts = 'import { css } from "styled-components" \n\n';
+    for (extVariable in dictionary.properties) {
+      for (variable in dictionary.properties[extVariable]) {
+        const name = extVariable + variable;
+        let camelCasedName = camelCase(name);
+
+        fonts = fonts + "export const " + camelCasedName + " = css`\n";
+        for (property in dictionary.properties[extVariable][variable]) {
+          fonts =
+            fonts +
+            `  ${kebabCase(property)}: var(${dictionary.properties[extVariable][variable][property].value
+              .replace("$", "--")
+              .replace(".", "-")});\n`;
+        }
+        fonts = fonts + "`;\n\n";
+      }
+    }
+    return fonts;
+  },
 });
 
 const StyleDictionaryExtended = StyleDictionary.extend(__dirname + "/configs/sd.config.js");

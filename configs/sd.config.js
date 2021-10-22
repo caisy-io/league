@@ -88,18 +88,17 @@ module.exports = {
         },
       ],
     },
-    // fontFaces: {
-    //   transformGroup: "fontFaces",
-    //   buildPath: "./src/constants/styles/design-tokens/fontFaces/",
-    //   files: [
-    //     {
-    //       destination: "fontFaces.js",
-    //       format: "javascript/es6",
-    //       filter: {
-    //         filePath: "./src/constants/styles/design-tokens/input/fontFaces.json",
-    //       },
-    //     },
-    //   ],
-    // },
+    fontFaces: {
+      buildPath: "./src/constants/styles/design-tokens/fontFaces/",
+      files: [
+        {
+          destination: "fontFaces.tsx",
+          format: "styledComponents",
+          filter: {
+            filePath: "./src/constants/styles/design-tokens/input/fontFaces.json",
+          },
+        },
+      ],
+    },
   },
 };
