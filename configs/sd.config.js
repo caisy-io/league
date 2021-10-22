@@ -2,13 +2,9 @@ module.exports = {
   source: [
     "./src/constants/styles/design-tokens/input/colors.json",
     "./src/constants/styles/design-tokens/input/fonts.json",
-    "./src/constants/styles/design-tokens/input/fontFaces.json",
+    "./src/constants/styles/design-tokens/input/styledFonts.json",
   ],
-  // If you don't want to call the registerTransform method a bunch of times
-  // you can override the whole transform object directly. This works because
-  // the .extend method copies everything in the config
-  // to itself, allowing you to override things. It's also doing a deep merge
-  // to protect from accidentally overriding nested attributes.
+
   platforms: {
     cssColors: {
       transformGroup: "css",
@@ -89,13 +85,13 @@ module.exports = {
       ],
     },
     fontFaces: {
-      buildPath: "./src/constants/styles/design-tokens/fontFaces/",
+      buildPath: "./src/constants/styles/design-tokens/fonts/",
       files: [
         {
-          destination: "fontFaces.tsx",
+          destination: "fonts.tsx",
           format: "styledComponents",
           filter: {
-            filePath: "./src/constants/styles/design-tokens/input/fontFaces.json",
+            filePath: "./src/constants/styles/design-tokens/input/styledFonts.json",
           },
         },
       ],

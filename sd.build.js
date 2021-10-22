@@ -1,8 +1,8 @@
 const StyleDictionary = require("style-dictionary");
-const set = require("lodash/set");
-const get = require("lodash/get");
 const kebabCase = require("lodash/kebabCase");
 const camelCase = require("lodash/camelCase");
+
+const defaultValues = ["var(--fontFamilies-inter)", "var(--letterSpacing-0)", "var(--paragraphSpacing-0)"];
 
 console.log("Build started...");
 console.log("\n==============================================");
@@ -101,11 +101,11 @@ StyleDictionary.registerFormat({
 
         fonts = fonts + "export const " + camelCasedName + " = css`\n";
         for (property in dictionary.properties[extVariable][variable]) {
-          fonts =
-            fonts +
-            `  ${kebabCase(property)}: var(${dictionary.properties[extVariable][variable][property].value
-              .replace("$", "--")
-              .replace(".", "-")});\n`;
+          const value = `var(${dictionary.properties[extVariable][variable][property].value
+            .replace("$", "--")
+            .replace(".", "-")})`;
+          console.log(value);
+          if (!defaultValues.includes(value)) fonts = fonts + `  ${kebabCase(property)}: ${value};\n`;
         }
         fonts = fonts + "`;\n\n";
       }
