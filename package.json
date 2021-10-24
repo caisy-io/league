@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "install-peers",
+    "build:tokens": "style-dictionary build",
     "prepublishOnly": "yarn build",
     "style-dictionary": "style-dictionary build --config ./configs/sd.config.js",
     "postbuild": "dts-bundle-generator --no-check --external-types=react --external-imports=moment -o dist/types.d.ts src/index.ts",
