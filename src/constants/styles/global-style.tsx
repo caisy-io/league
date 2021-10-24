@@ -14,10 +14,6 @@ export const GSBase = createGlobalStyle`
     /* THE FOLLOWN BLOCK IN DEPRICATED AND WILL BE REMOVED SOON: */
     :root {
     --black: #212529;
-    --secondary-600: #20bb94;
-    --secondary-900: #086468;
-    --secondary-800: #0e7e78;
-    --secondary-700: #169c88;
     --secondary-500: #2cda9d;
     --secondary-400: #5de8aa;
     --secondary-100: #d4fddf;
@@ -84,7 +80,6 @@ export const GSBase = createGlobalStyle`
     --neutral-700: #495057;
     --neutral-600: #868e96;
     --neutral-500: #adb5bd;
-    --neutral-400: #ced4da;
     --neutral-300: #dee2e6;
     --neutral-200: #e9ecef;
     --neutral-100: #f1f3f5;
