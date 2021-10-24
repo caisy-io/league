@@ -1,36 +1,38 @@
+import {GSBase} from '../src/constants/styles/global-style';
+
 const customViewports = {
-  small: {
-    name: 'Small',
+  Bronze: {
+    name: 'Bronze',
     styles: {
       width: '640px',
       height: '100%'
     }
   },
-  medium: {
-    name: 'Medium',
+  Silver: {
+    name: 'Silver',
     styles: {
       width: '768px',
       height: '100%'
     },
   },
-  large: {
-    name: 'Large',
-    styles: {
-      width: '1024px',
-      height: '100%'
-    },
-  },
-  xl: {
-    name: 'Extra Large',
+  Gold: {
+    name: 'Gold',
     styles: {
       width: '1280px',
       height: '100%'
     },
   },
-  '2xl': {
-    name: '2 XL',
+  Platinum: {
+    name: 'Platinum',
     styles: {
-      width: '1536px',
+      width: '1440px',
+      height: '100%'
+    },
+  },
+  'Diamond': {
+    name: 'Diamond',
+    styles: {
+      width: '1920px',
       height: '100%'
     },
   },
@@ -48,18 +50,11 @@ const customViewports = {
       height: '1024px'
     }
   },
-  ipadPro: {
-    name: 'iPad Pro',
+  ipadMini: {
+    name: 'iPad landscape',
     styles: {
       width: '1024px',
-      height: '1366px'
-    }
-  },
-  ipadMini: {
-    name: 'iPad Mini',
-    styles: {
-      width: '768px',
-      height: '1024px'
+      height: '768px'
     }
   },
   pixel: {
@@ -67,20 +62,6 @@ const customViewports = {
     styles: {
       width: '412px',
       height: '732px'
-    }
-  },
-  galaxyS5: {
-    name: 'Galaxy S7 (and below)',
-    styles: {
-      width: '360px',
-      height: '640px'
-    }
-  },
-  galaxyS8: {
-    name: 'Galaxy S8 (and up)',
-    styles: {
-      width: '360px',
-      height: '740px'
     }
   }
 }
@@ -96,3 +77,14 @@ export const parameters = {
     },
   },
 }
+
+// import { ThemeProvider } from 'styled-components';
+
+export const decorators = [
+  (Story) => (
+    <>
+    <GSBase/>
+    <Story />
+    </>
+  ),
+];
