@@ -7,9 +7,8 @@
   "license": "MIT",
   "scripts": {
     "prepare": "install-peers",
-    "build:tokens": "style-dictionary build",
+    "build:tokens": "node scripts/sd.build.js",
     "prepublishOnly": "yarn build",
-    "style-dictionary": "style-dictionary build --config ./configs/sd.config.js",
     "postbuild": "dts-bundle-generator --no-check --external-types=react --external-imports=moment -o dist/types.d.ts src/index.ts",
     "build:cp": "rimraf dist && yarn build && rimraf ../caisy-next/node_modules/@caisy/league/dist && ncp ./dist ../caisy-next/node_modules/@caisy/league/dist",
     "lint": "eslint ./src/**/*.ts ./src/**/*.tsx",

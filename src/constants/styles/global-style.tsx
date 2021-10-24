@@ -1,5 +1,6 @@
 import { createGlobalStyle, css } from "styled-components";
 import { CSSReset } from "./css-reset";
+import { CSSColors } from "./design-tokens/colors/CSSColors";
 
 const Bronze = css`
   html {
@@ -10,6 +11,7 @@ const Bronze = css`
 export const GSBase = createGlobalStyle`
     ${CSSReset}
     ${Bronze}
+    /* THE FOLLOWN BLOCK IN DEPRICATED AND WILL BE REMOVED SOON: */
     :root {
     --black: #212529;
     --secondary-600: #20bb94;
@@ -112,10 +114,16 @@ export const GSBase = createGlobalStyle`
     --text-priority-neutral-2: #495057;
     --text-priority-neutral-1: #212529;
 }
+/* THE ABOVE BLOCK IN DEPRICATED AND WILL BE REMOVED SOON */
 
+${CSSColors}
 body{ 
     background-color: var(--white-2);
     color: var(--neutral-700);
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+:root{
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px; 
+  font-weight: 400;
 }
 `;

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 22 Oct 2021 18:03:09 GMT
+ * Generated on Sun, 24 Oct 2021 13:09:30 GMT
  */
 
 export const fontFamiliesInter = "Inter";
