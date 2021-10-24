@@ -89,6 +89,7 @@ export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   viewport: { viewports: customViewports, defaultViewport: 'xl' },
   controls: {
+    expanded: true,
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
