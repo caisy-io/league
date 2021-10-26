@@ -4,7 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 interface ISPopconfirm {}
 
 const Bronze = css<ISPopconfirm>`
-  background-color: var(--white-1);
+  background-color: var(--ui-01);
   padding: 16px;
   border-radius: 6px;
   width: max-content;

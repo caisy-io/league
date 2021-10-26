@@ -11,7 +11,7 @@ const Bronze = css`
   padding: 20px;
   border-radius: 6px;
   border: solid 1px var(--neutral-200);
-  background-color: var(--white-1);
+  background-color: var(--ui-01);
 `;
 
 const Silver = css``;

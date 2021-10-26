@@ -3,10 +3,10 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const focus = css<{ validateStatus?: string }>`
   &:focus-within {
-    --form-item-info-color: var(--action-primary-default);
-    --form-item-title-color: var(--action-primary-default);
+    --form-item-info-color: var(--interactional-primary-01);
+    --form-item-title-color: var(--interactional-primary-01);
     --form-item-text-color: var(--text-priority-neutral-1);
-    --form-item-outline-color: var(--action-primary-default);
+    --form-item-outline-color: var(--interactional-primary-01);
   }
 `;
 

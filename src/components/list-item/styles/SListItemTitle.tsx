@@ -13,8 +13,8 @@ const Bronze = css<ISListItemTitle>`
   line-height: 1.45;
   text-align: left;
   color: var(--text-priority-neutral-2);
-  ${(props) => props.hovering && "color: var(--action-primary-default);"}
-  ${(props) => props.selected && "color: var(--white-1);"}
+  ${(props) => props.hovering && "color: var(--interactional-primary-01);"}
+  ${(props) => props.selected && "color: var(--ui-01);"}
 `;
 
 const Silver = css<ISListItemTitle>``;

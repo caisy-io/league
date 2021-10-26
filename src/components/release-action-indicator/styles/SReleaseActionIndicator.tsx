@@ -5,7 +5,7 @@ import { IReleaseAction } from "../ReleaseActionIndicator";
 const CSSUnPublish = css`
   border: solid 1px var(--states-info-bg);
   background-color: var(--states-info-bg);
-  color: var(--states-info);
+  color: var(--text-suppportive-02);
 `;
 
 const CSSPublish = css`

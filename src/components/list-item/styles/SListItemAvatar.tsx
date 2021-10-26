@@ -11,8 +11,8 @@ const Bronze = css<ISListItemAvatar>`
   height: 32px;
   border-radius: 6px;
   border: solid 1px var(--text-priority-neutral-5);
-  ${(props) => props.hovering && "border: solid 1px var(--action-primary-default);"}
-  ${(props) => props.selected && "border: solid 1px var(--white-1);"}
+  ${(props) => props.hovering && "border: solid 1px var(--interactional-primary-01);"}
+  ${(props) => props.selected && "border: solid 1px var(--ui-01);"}
 `;
 
 const Silver = css<ISListItemAvatar>``;

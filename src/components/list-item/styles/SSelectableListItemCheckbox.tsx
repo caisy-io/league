@@ -17,16 +17,16 @@ const Bronze = css<ISSelectableListItemCheckbox>`
 
   ${(props) =>
     props.hovering &&
-    "border: solid 1px var(--action-primary-default); background-color: var(--action-primary-disabled);"}
+    "border: solid 1px var(--interactional-primary-01); background-color: var(--disabled-interactional-01);"}
 
-  ${(props) => props.selected && "border: solid 1px var(--white-1); background-color: var(--primary-500);"}
+  ${(props) => props.selected && "border: solid 1px var(--ui-01); background-color: var(--interactional-primary-01);"}
 
     svg {
     height: 14px;
     width: 14px;
     path {
-      // fill: var(--white-1);
-      stroke: var(--white-1);
+      // fill: var(--ui-01);
+      stroke: var(--ui-01);
     }
   }
 `;

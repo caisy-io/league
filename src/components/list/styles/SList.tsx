@@ -4,7 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 interface ISList {}
 
 const Bronze = css<ISList>`
-  background-color: var(--white-1);
+  background-color: var(--ui-01);
 
   div {
     overflow-x: hidden;

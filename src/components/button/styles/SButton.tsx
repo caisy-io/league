@@ -58,9 +58,9 @@ const getSize = (size?: IButtonSize) => {
 
 const CSSPrimary = css`
   border: none;
-  color: var(--white-1);
+  color: var(--ui-01);
   &:after {
-    background-color: var(--primary-500);
+    background-color: var(--interactional-primary-01);
   }
   &:hover {
     &:after {
@@ -75,7 +75,7 @@ const CSSPrimary = css`
 `;
 
 const CSSSecondary = css`
-  color: var(--white-1);
+  color: var(--ui-01);
   border: none;
   &:after {
     background-color: var(--secondary-500);
@@ -131,8 +131,8 @@ const CSSNeutral = css`
 `;
 
 const CSSLight = css`
-  color: var(--action-primary-default);
-  border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--action-primary-default);
+  color: var(--interactional-primary-01);
+  border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--interactional-primary-01);
   &:after {
     background-color: var(--primary-500-opacity-8);
   }
@@ -192,7 +192,7 @@ const getTypeStyling = (type?: IButtonType) => {
 };
 
 const Bronze = css<IButtonProps>`
-  color: var(--white-1);
+  color: var(--ui-01);
   ${(props) => getSize(props.size)};
   flex-grow: 0;
   display: flex;
