@@ -31,12 +31,12 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
 
     &.today {
       border: solid 1.5px var(--primary-500-opacity-8);
-      color: var(--action-primary-default);
+      color: var(--interactional-primary-01);
 
       &.prevMonthDay,
       &.nextMonthDay {
         border: solid 1.5px var(--primary-500-opacity-8);
-        color: var(--action-primary-default);
+        color: var(--interactional-primary-01);
       }
 
       &:hover {
@@ -233,8 +233,8 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
         transform: translate(50%, -50%);
         width: 20px;
         height: 20px;
-        background: var(--states-info);
-        border: 1px solid var(--white-1);
+        background: var(--ui-supportive-03);
+        border: 1px solid var(--ui-01);
         box-sizing: border-box;
         border-radius: 100px;
 
@@ -244,7 +244,7 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
 
         ${CSSParagraphXSmallRegular};
         text-align: center;
-        color: var(--white-1);
+        color: var(--ui-01);
       }
     }
   }

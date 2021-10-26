@@ -65,7 +65,7 @@ const Message: React.FC<IMessage> = (msgConfig: IMessage) => {
         );
       case EMessageType.Info:
         return (
-          <SMessageIcon backgroundColor={"var(--states-info-bg)"} color="var(--states-info)">
+          <SMessageIcon backgroundColor={"var(--states-info-bg)"} color="var(--text-suppportive-02)">
             {<IconInfo />}
           </SMessageIcon>
         );

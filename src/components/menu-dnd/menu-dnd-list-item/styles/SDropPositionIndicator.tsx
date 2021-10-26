@@ -8,7 +8,7 @@ interface ISDropPositionIndicator {
 
 const SDropPositionIndicator = styled.div<ISDropPositionIndicator>`
   width: 100%;
-  background-color: var(--action-primary-default);
+  background-color: var(--interactional-primary-01);
   height: 2px;
   box-shadow: 0 35px 90px 0 rgba(89, 106, 122, 0.15);
   border-radius: 6px;

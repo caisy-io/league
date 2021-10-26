@@ -13,26 +13,23 @@ export const GSBase = createGlobalStyle`
     ${Bronze}
     /* THE FOLLOWN BLOCK IN DEPRICATED AND WILL BE REMOVED SOON: */
     :root {
+    /* these don't have corresponding new variables */
     --black: #212529;
-
+    
     --secondary-500: #2cda9d;
     --secondary-500-opacity-32: rgba(44, 218, 157, 0.32);
-
     --primary-400: #3fb3ff;
     --primary-300: #66caff;
+
     --primary-200: #99e1ff;
     --primary-100: #ccf3ff;
     --primary-500-opacity-8: rgba(0, 140, 255, 0.08);
     --primary-500-opacity-16: rgba(0, 140, 255, 0.16);
     --primary-500-opacity-32: rgba(0, 140, 255, 0.32);
-
-
+    
     --white-2: #f5f6fa;
-    --white-1: #ffffff;
-
 
     --black-opacity-32: rgba(33, 37, 41, 0.32);
-
 
     --neutral-800: #343a40;
     --neutral-700: #495057;
@@ -42,8 +39,6 @@ export const GSBase = createGlobalStyle`
     --neutral-200: #e9ecef;
     --neutral-100: #f1f3f5;
 
-
-    --action-primary-default: #008cff;
     --action-primary-hover: #3fb3ff;
     --action-primary-active: #006cdb;
 
@@ -54,14 +49,13 @@ export const GSBase = createGlobalStyle`
     --states-warning-bg: rgba(255, 191, 67, 0.1);
     --states-info-bg: rgba(0, 140, 255, 0.1);
     --states-error-bg: #fbece9;
-    --states-info: #008cff;
 
-    
     --text-priority-neutral-5: #ced4da;
     --text-priority-neutral-4: #adb5bd;
     --text-priority-neutral-3: #868e96;
     --text-priority-neutral-2: #495057;
     --text-priority-neutral-1: #212529;
+
 }
 /* THE ABOVE BLOCK IN DEPRICATED AND WILL BE REMOVED SOON */
 

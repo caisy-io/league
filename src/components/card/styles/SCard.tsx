@@ -5,7 +5,7 @@ const Bronze = css`
   overflow: hidden;
   border-radius: 6px;
   box-shadow: 0 10px 30px 0 rgba(89, 106, 122, 0.11);
-  background-color: var(--white-1);
+  background-color: var(--ui-01);
 `;
 
 const Silver = css``;

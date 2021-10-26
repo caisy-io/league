@@ -30,7 +30,7 @@ const Bronze = css`
     border-radius: 50px;
     width: 14px;
     height: 14px;
-    background-color: var(--white-1);
+    background-color: var(--ui-01);
   }
 `;
 

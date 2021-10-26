@@ -30,11 +30,11 @@ const Bronze = css<ISTreeItem>`
   :hover {
     color: var(--interactional-primary-01);
     background-color: var(--primary-500-opacity-8);
-    ${(props) => props.selected && "color: var(--white-1)"};
+    ${(props) => props.selected && "color: var(--ui-01)"};
     ${(props) => props.selected && "background-color: var(--interactional-primary-01)"};
   }
 
-  ${(props) => props.selected && "color: var(--white-1)"};
+  ${(props) => props.selected && "color: var(--ui-01)"};
   ${(props) => props.selected && "background-color: var(--interactional-primary-01)"};
   ${(props) => props.isDroppingInsideNode && "background-color: var(--primary-500-opacity-8)"};
 

@@ -13,7 +13,7 @@ const Bronze = css`
   max-width: min(10vw + 300px, 450px);
   min-width: min(7vw + 200px, 350px);
   padding: 40px;
-  background-color: var(--white-1);
+  background-color: var(--ui-01);
   border-radius: 6px;
 `;
 

@@ -9,7 +9,7 @@ interface ISSelect {
 const Bronze = css<ISSelect>`
   padding: ${(props) => (props.multiple ? "3px" : "12px 8px")};
   border: 1px solid #dedede;
-  background-color: var(--white-1);
+  background-color: var(--ui-01);
   transition: box-shadow ease 0.5s, border ease 0.5s;
   cursor: pointer;
   border-radius: 6px;

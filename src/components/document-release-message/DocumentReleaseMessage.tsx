@@ -22,13 +22,13 @@ const DocumentReleaseMessageIcon: React.FC<{ type: IDocumentReleaseMessageType }
   switch (type) {
     case "PUBLISH":
       return (
-        <SMessageIcon backgroundColor={"var(--states-info-bg)"} color="var(--states-info)">
+        <SMessageIcon backgroundColor={"var(--states-info-bg)"} color="var(--text-suppportive-02)">
           {<IconPublish />}
         </SMessageIcon>
       );
     case "UNPUBLISH":
       return (
-        <SMessageIcon backgroundColor={"var(--states-info-bg)"} color="var(--states-info)">
+        <SMessageIcon backgroundColor={"var(--states-info-bg)"} color="var(--text-suppportive-02)">
           {<IconUnpublish />}
         </SMessageIcon>
       );
@@ -45,7 +45,7 @@ const DocumentReleaseMessageIcon: React.FC<{ type: IDocumentReleaseMessageType }
   }
 };
 
-export const DocumentReleaseMessage: React.FC<IDocumentReleaseMessage> = ({ LinkComponent, ...props  }) => {
+export const DocumentReleaseMessage: React.FC<IDocumentReleaseMessage> = ({ LinkComponent, ...props }) => {
   return (
     <SDocumentReleaseMessage>
       <DocumentReleaseMessageIcon type={props.type} />

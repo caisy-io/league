@@ -17,7 +17,7 @@ const Bronze = css<ITooltip>`
   font-weight: 600;
   border-radius: 6px;
   background-color: ${(props) => (props.color ? props.color : "var(--neutral-600)")};
-  color: var(--white-1);
+  color: var(--ui-01);
   animation: ${(props) => (props.closing ? "close" : "open")} 100ms ease-in-out;
 
   @keyframes open {

@@ -9,7 +9,7 @@ const Bronze = css`
   position: relative;
   z-index: 10;
   align-items: center;
-  color: var(--white-1);
+  color: var(--ui-01);
 `;
 
 const Silver = css``;
