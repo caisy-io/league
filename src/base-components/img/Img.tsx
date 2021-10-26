@@ -27,7 +27,7 @@ export interface IImg {
   onError?: () => void /** trigger when image is loaded ==> default: null */;
 }
 
-const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad,onError, ...props }) => {
+const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad, onError, ...props }) => {
   const imgRef = useRef<any>();
   const [loaded, setLoaded] = useState(false);
 
