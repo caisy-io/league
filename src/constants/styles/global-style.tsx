@@ -1,6 +1,7 @@
 import { createGlobalStyle, css } from "styled-components";
 import { CSSReset } from "./css-reset";
 import { CSSColors } from "./design-tokens/colors/CSSColors";
+import { CSSFonts } from "./design-tokens/fonts/CSSFonts";
 
 const Bronze = css`
   html {
@@ -112,6 +113,7 @@ export const GSBase = createGlobalStyle`
 /* THE ABOVE BLOCK IN DEPRICATED AND WILL BE REMOVED SOON */
 
 ${CSSColors}
+${CSSFonts}
 body{ 
     background-color: var(--white-2);
     color: var(--neutral-700);

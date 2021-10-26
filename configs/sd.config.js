@@ -18,13 +18,12 @@ module.exports = {
         },
       ],
     },
-    cssFonts: {
-      transformGroup: "css/fonts",
+    styledFonts: {
       buildPath: "./src/constants/styles/design-tokens/fonts/",
       files: [
         {
-          format: "css/variables",
-          destination: "fonts.css",
+          format: "styledFonts",
+          destination: "CSSFonts.tsx",
           filter: {
             filePath: "./src/constants/styles/design-tokens/input/fonts.json",
           },

@@ -7,87 +7,6 @@ const defaultValues = ["var(--fontFamilies-inter)", "var(--letterSpacing-0)", "v
 console.log("Build started...");
 console.log("\n==============================================");
 
-// Register css
-
-StyleDictionary.registerTransform({
-  name: "css/value",
-  type: "value",
-  transformer: function (token) {
-    return `${token.value}`;
-  },
-});
-
-StyleDictionary.registerTransform({
-  name: "css/name",
-  type: "name",
-  transformer: function (token) {
-    const name = token.name.replace("$", "");
-    return `${name}`;
-  },
-});
-
-StyleDictionary.registerTransformGroup({
-  name: "css",
-  transforms: ["css/value", "css/name"],
-});
-
-StyleDictionary.registerTransform({
-  name: "css/name/fonts",
-  type: "name",
-  transformer: function (token) {
-    const name = token.path.toString().replace(",", "-");
-    return `${name}`;
-  },
-});
-
-StyleDictionary.registerTransformGroup({
-  name: "css/fonts",
-  transforms: ["css/value", "css/name/fonts"],
-});
-
-// Register js colors
-
-StyleDictionary.registerTransform({
-  name: "js/value",
-  type: "value",
-  transformer: function (token) {
-    return `${token.value}`;
-  },
-});
-
-StyleDictionary.registerTransform({
-  name: "js/colors/name",
-  type: "name",
-  transformer: function (token) {
-    const camelCasedName = camelCase(token.name);
-
-    return `${camelCasedName}`;
-  },
-});
-
-StyleDictionary.registerTransformGroup({
-  name: "js/colors",
-  transforms: ["js/value", "js/colors/name"],
-});
-
-// Register js fonts
-
-StyleDictionary.registerTransform({
-  name: "js/fonts/name",
-  type: "name",
-  transformer: function (token) {
-    const pathName = token.path.toString();
-    const camelCasedName = camelCase(pathName);
-
-    return `${camelCasedName}`;
-  },
-});
-
-StyleDictionary.registerTransformGroup({
-  name: "js/fonts",
-  transforms: ["js/value", "js/fonts/name"],
-});
-
 // Register fontFaces
 
 StyleDictionary.registerFormat({
@@ -104,7 +23,6 @@ StyleDictionary.registerFormat({
           const value = `var(${dictionary.properties[extVariable][variable][property].value
             .replace("$", "--")
             .replace(".", "-")})`;
-          console.log(value);
           if (!defaultValues.includes(value)) fonts = fonts + `  ${kebabCase(property)}: ${value};\n`;
         }
         fonts = fonts + "`;\n\n";
@@ -113,35 +31,57 @@ StyleDictionary.registerFormat({
     return fonts;
   },
 });
+
+StyleDictionary.registerFormat({
+  name: "styledFonts",
+  formatter: function ({ dictionary }) {
+    let fonts = 'import { css } from "styled-components" \n\n';
+    fonts += "export const CSSFonts = css `\n";
+    fonts += "  :root {\n";
+    console.log(dictionary.allTokens);
+    dictionary.allTokens.forEach((token) => {
+      let value = token.value;
+      if ((token.type === "fontSizes" || token.type === "lineHeights") && parseInt(token.value) !== 0) {
+        value = `${parseInt(value) / 16}rem`;
+      }
+      const name = kebabCase(token.type);
+      fonts += `    --${name}: ${value};\n`;
+    });
+    fonts = fonts + "  }\n";
+    fonts = fonts + "`;\n";
+    return fonts;
+  },
+});
+
 StyleDictionary.registerFormat({
   name: "styledComponentsFlat",
   formatter: function ({ dictionary, ...rest }) {
     let output = 'import { css } from "styled-components" \n\n';
-    output = output + "export const "+ `${rest?.platform?.name || "CSSVars"}`+" = css`\n:root {\n";
+    output = output + "export const " + `${rest?.platform?.name || "CSSVars"}` + " = css`\n:root {\n";
     const set = new Set();
 
     const addToSet = (obj) => {
-      if (typeof obj?.name === "string" && obj.name?.includes('$') && obj?.value) {
-        set.add({name: obj?.name.replace(/\$/, '--'), value: obj.value})
+      if (typeof obj?.name === "string" && obj.name?.includes("$") && obj?.value) {
+        set.add({ name: obj?.name.replace(/\$/, "--"), value: obj.value });
       }
-    }
+    };
 
     for (layer1 in dictionary.properties) {
-      addToSet(dictionary.properties[layer1])
+      addToSet(dictionary.properties[layer1]);
       for (layer2 in dictionary.properties[layer1]) {
-        addToSet(dictionary.properties[layer1][layer2])
+        addToSet(dictionary.properties[layer1][layer2]);
         for (layer3 in dictionary.properties[layer1][layer2]) {
-          addToSet(dictionary.properties[layer1][layer2][layer3])
+          addToSet(dictionary.properties[layer1][layer2][layer3]);
           for (layer4 in dictionary.properties[layer1][layer2][layer3]) {
-            addToSet(dictionary.properties[layer1][layer2][layer3][layer4])
+            addToSet(dictionary.properties[layer1][layer2][layer3][layer4]);
           }
         }
       }
     }
 
-    set.forEach(item => {
-      output = output + `${item.name}: ${item.value};\n`
-    })
+    set.forEach((item) => {
+      output = output + `${item.name}: ${item.value};\n`;
+    });
 
     output = output + "}`;";
     return output;
