@@ -60,7 +60,7 @@ const CSSPrimary = css`
   border: none;
   color: var(--white-1);
   &:after {
-    background-color: var(--primary-500);
+    background-color: var(--interactional-primary-01);
   }
   &:hover {
     &:after {

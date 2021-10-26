@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  color: var(--primary-500);
+  color: var(--interactional-primary-01);
 `;
 
 const Silver = css``;

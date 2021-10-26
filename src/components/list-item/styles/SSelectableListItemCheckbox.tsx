@@ -17,9 +17,9 @@ const Bronze = css<ISSelectableListItemCheckbox>`
 
   ${(props) =>
     props.hovering &&
-    "border: solid 1px var(--action-primary-default); background-color: var(--action-primary-disabled);"}
+    "border: solid 1px var(--action-primary-default); background-color: var(--disabled-interactional-01);"}
 
-  ${(props) => props.selected && "border: solid 1px var(--white-1); background-color: var(--primary-500);"}
+  ${(props) => props.selected && "border: solid 1px var(--white-1); background-color: var(--interactional-primary-01);"}
 
     svg {
     height: 14px;

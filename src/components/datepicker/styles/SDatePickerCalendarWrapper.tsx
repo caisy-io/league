@@ -46,7 +46,7 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
 
     &:hover {
       background-color: var(--primary-500-opacity-8);
-      color: var(--primary-500);
+      color: var(--interactional-primary-01);
     }
 
     &.selected,
@@ -115,10 +115,10 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     }
 
     &:hover {
-      border: solid 1px var(--primary-500);
+      border: solid 1px var(--interactional-primary-01);
 
       path {
-        stroke: var(--primary-500);
+        stroke: var(--interactional-primary-01);
       }
     }
   }
