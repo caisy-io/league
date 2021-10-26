@@ -4,74 +4,74 @@ import { IconLink } from "../..";
 
 // Default Button Demo
 export default {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: ButtonDemo,
   argTypes: {
     type: {
-      description: 'Changes the overall design of the button',
-      options: ['primary', 'secondary', 'danger', 'neutral', 'light', 'link'],
-      control: { type: 'select' },
+      description: "Changes the overall design of the button",
+      options: ["primary", "secondary", "danger", "neutral", "light", "link"],
+      control: { type: "select" },
       table: {
         defaultValue: {
-          summary: 'primary',
+          summary: "primary",
         },
-      }
+      },
     },
     content: {
-      description: 'Content of the button',
-      control: { type: 'text'}
+      description: "Content of the button",
+      control: { type: "text" },
     },
     size: {
-      description: 'Changes the size of the button',
-      options: ['default', 'small', 'large'],
-      control: { type: 'select' },
+      description: "Changes the size of the button",
+      options: ["default", "small", "medium"],
+      control: { type: "select" },
       table: {
         defaultValue: {
-          summary: 'default',
+          summary: "default",
         },
-      }
+      },
     },
     state: {
-      description: 'Changes the state of the button',
-      options: ['default', 'hover', 'focus', 'disabled'],
-      control: { type: 'select' },
+      description: "Changes the state of the button",
+      options: ["default", "hover", "focus", "disabled"],
+      control: { type: "select" },
       table: {
         defaultValue: {
-          summary: 'default',
+          summary: "default",
         },
-      }
+      },
     },
     dashed: {
-      description: 'Changes the border of the button',
-      control: {type: 'boolean'},
+      description: "Changes the border of the button",
+      control: { type: "boolean" },
       table: {
         defaultValue: {
           summary: false,
         },
-      }
+      },
     },
     round: {
-      description: 'Changes the corners of the button',
-      control: {type: 'boolean'},
+      description: "Changes the corners of the button",
+      control: { type: "boolean" },
       table: {
         defaultValue: {
           summary: false,
         },
-      }
+      },
     },
     disabled: {
-      description: 'Disables or enables the button',
-      control: {type: 'boolean'},
+      description: "Disables or enables the button",
+      control: { type: "boolean" },
       table: {
         defaultValue: {
           summary: false,
         },
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
-function ButtonDemo({content, ...args}) {
+function ButtonDemo({ content, ...args }) {
   return <Button {...args}>{content}</Button>;
 }
 
@@ -89,11 +89,11 @@ Default.args = {
 };
 
 // With Icon
-export const WithIcon = ({content, ...args}) => (
-    <Button {...args}>
-      <IconLink />
-      {content}
-    </Button>
+export const WithIcon = ({ content, ...args }) => (
+  <Button {...args}>
+    <IconLink />
+    {content}
+  </Button>
 );
 
 WithIcon.args = {

@@ -4,37 +4,18 @@ import { IButtonProps, IButtonSize, IButtonType } from "../Button";
 
 const getSize = (size?: IButtonSize) => {
   switch (size) {
-    case "large":
+    case "medium":
       return css`
-        padding: 0 14px;
-        font-size: 14px;
-        gap: 14px;
-        height: 52px;
-        > span {
-          padding: 0 10px;
-          &:not(:first-child) {
-            padding-left: 0;
-          }
-        }
-        > .icon {
-          padding: 0 1px;
-        }
+        height: 36px;
       `;
     case "small":
       return css`
-        padding: 0 2px;
-        font-size: 10px;
-        gap: 8px;
-        height: 30px;
+        height: 32px;
         svg {
           height: 20px;
           width: 20px;
         }
-        > .icon {
-          padding: 0 3px;
-        }
         > span {
-          padding: 0 10px;
           &:not(:first-child) {
             padding-left: 0;
           }
@@ -42,34 +23,24 @@ const getSize = (size?: IButtonSize) => {
       `;
     default:
       return css`
-        padding: 0 10px;
-        font-size: 12px;
         height: 40px;
-        gap: 8px;
-        > span {
-          padding: 0 6px;
-          &:not(:first-child) {
-            padding-left: 0px;
-          }
-        }
       `;
   }
 };
 
 const CSSPrimary = css`
   border: none;
-  color: var(--ui-01);
   &:after {
     background-color: var(--interactional-primary-01);
   }
   &:hover {
     &:after {
-      filter: drop-shadow(5px 5px 10px var(--primary-500-opacity-32));
+      background-color: var(--hover-interactional-primary-01);
     }
   }
   &:active {
     &:after {
-      filter: drop-shadow(5px 5px 10px var(--primary-500-opacity-32)) brightness(80%);
+      background-color: var(--active-interactional-primary-01);
     }
   }
 `;
@@ -78,16 +49,16 @@ const CSSSecondary = css`
   color: var(--ui-01);
   border: none;
   &:after {
-    background-color: var(--secondary-500);
+    background-color: var(--interactional-secondary-01);
   }
   &:hover {
     &:after {
-      filter: drop-shadow(5px 5px 10px var(--secondary-500-opacity-32));
+      background-color: var(--hover-interactional-secondary-01);
     }
   }
   &:active {
     &:after {
-      filter: drop-shadow(5px 5px 10px var(--secondary-500-opacity-32)) brightness(80%);
+      background-color: var(--active-interactional-secondary-01);
     }
   }
 `;
@@ -169,8 +140,10 @@ const CSSRound = css`
 
 const CSSDisabled = css`
   &:disabled {
-    opacity: 0.6;
     cursor: not-allowed;
+    &::after {
+      background-color: var(--disabled-interactional-01);
+    }
   }
 `;
 
@@ -192,20 +165,24 @@ const getTypeStyling = (type?: IButtonType) => {
 };
 
 const Bronze = css<IButtonProps>`
-  color: var(--ui-01);
+  color: var(--text-02);
   ${(props) => getSize(props.size)};
   flex-grow: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 6px;
+  border-radius: 8px;
   position: relative;
   z-index: 0;
   transition: all 0.3s ease;
   background-color: transparent;
+  gap: 9px;
+  font-size: 11px;
+  padding: 0 12px;
   ${(props) => getTypeStyling(props.type)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
   ${(props) => (props.round ? CSSRound : "")};
+
   /* this after is there to split the background animation from the button content */
   /* after is the background */
   &:after {
@@ -240,6 +217,8 @@ const Bronze = css<IButtonProps>`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 10px;
+    width: 10px;
   }
 `;
 
