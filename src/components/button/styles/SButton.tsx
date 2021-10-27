@@ -45,8 +45,7 @@ const CSSPrimary = css`
   }
 `;
 
-const CSSSecondary = css`
-  color: var(--ui-01);
+const CSSNeutral = css`
   border: none;
   &:after {
     background-color: var(--interactional-secondary-01);
@@ -63,60 +62,62 @@ const CSSSecondary = css`
   }
 `;
 
+const CSSSecondary = css`
+  color: var(--text-01);
+  border: none;
+  &:after {
+    background-color: var(--interactional-secondary-03);
+  }
+  &:hover {
+    &:after {
+      background-color: var(--hover-interactional-secondary-03);
+    }
+  }
+  &:active {
+    &:after {
+      color: var(--active-text-01);
+      background-color: var(--active-interactional-secondary-03);
+    }
+  }
+`;
+
 const CSSDanger = css`
   border: none;
-  color: var(--states-error);
   &:after {
-    background-color: var(--states-error-bg);
+    background-color: var(--interactional-secondary-02);
   }
   &:hover {
     &:after {
-      filter: drop-shadow(5px 5px 10px rgba(244, 64, 52, 0.32));
+      background-color: var(--hover-interactional-secondary-02);
     }
   }
   &:active {
     &:after {
-      filter: drop-shadow(5px 5px 10px rgba(244, 64, 52, 0.52));
-      background-color: #faada8;
+      background-color: var(--active-interactional-secondary-02);
     }
   }
 `;
 
-const CSSNeutral = css`
-  color: var(--text-priority-neutral-2);
-  border: none;
-
-  &:after {
-    background-color: rgba(33, 37, 41, 0.08);
-  }
+const CSSTertiary = css`
+  color: var(--text-04);
+  border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--interactional-tertiary-01);
   &:hover {
+    color: var(--hover-text-04);
     &:after {
-      filter: drop-shadow(5px 5px 10px var(--black-opacity-32));
+      border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--hover-interactional-tertiary-01);
     }
   }
   &:active {
+    color: var(--text-02);
     &:after {
-      filter: drop-shadow(5px 5px 10px var(--black-opacity-32)) brightness(5%);
+      background-color: var(--active-interactional-tertiary-01);
     }
   }
-`;
-
-const CSSLight = css`
-  color: var(--interactional-primary-01);
-  border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--interactional-primary-01);
-  &:after {
-    background-color: var(--primary-500-opacity-8);
-  }
-  &:hover {
+  &:disabled {
+    border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--disabled-interactional-01);
+    color: var(--disabled-interactional-01);
     &:after {
-      background-color: var(--primary-100);
-      color: var(--action-primary-hover);
-    }
-  }
-  &:active {
-    &:after {
-      color: var(--action-primary-active);
-      background-color: var(--primary-200);
+      background-color: transparent !important;
     }
   }
 `;
@@ -141,7 +142,7 @@ const CSSRound = css`
 const CSSDisabled = css`
   &:disabled {
     cursor: not-allowed;
-    &::after {
+    &:after {
       background-color: var(--disabled-interactional-01);
     }
   }
@@ -153,10 +154,10 @@ const getTypeStyling = (type?: IButtonType) => {
       return CSSPrimary;
     case "secondary":
       return CSSSecondary;
+    case "tertiary":
+      return CSSTertiary;
     case "danger":
       return CSSDanger;
-    case "light":
-      return CSSLight;
     case "link":
       return CSSLink;
     default:
