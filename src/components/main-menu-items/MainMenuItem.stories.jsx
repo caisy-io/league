@@ -15,14 +15,6 @@ export default {
       description: "Shows the item is active",
       control: { type: "boolean" },
     },
-    withBadge: {
-      description: "Disables or enables a badge on the item",
-      control: { type: "boolean" },
-    },
-    badgeContent: {
-      description: "Changes de content of the badge",
-      control: { type: "text" },
-    },
   },
 };
 
@@ -39,7 +31,5 @@ const Template = (args) => <MainMenuItemDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   label: "Label",
-  withBadge: false,
-  badgeContent: "1",
   active: false,
 };
