@@ -9,8 +9,6 @@ interface IMainMenuItem {
   onClick: () => void;
   active?: boolean;
   label?: string;
-  withBadge?: boolean;
-  badgeContent?: string;
 }
 
 export const MainMenuItem: React.FC<IMainMenuItem> = ({ ...props }) => {
@@ -21,9 +19,6 @@ export const MainMenuItem: React.FC<IMainMenuItem> = ({ ...props }) => {
   return (
     <>
       <SMainMenuItemWrapper>
-        {props.withBadge && props.badgeContent && (
-          <Badge value={props.badgeContent} position={BadgePosition.TopRight} />
-        )}
         <SMainMenuItem active={props.active} onClick={handleClick}>
           <SMainMenuItemIcon>{props.children}</SMainMenuItemIcon>
         </SMainMenuItem>
