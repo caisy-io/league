@@ -45,6 +45,12 @@ const CSSPrimary = css`
   }
 `;
 
+const CSSPrimaryActivated = css`
+  &:after {
+    background-color: var(--active-interactional-primary-01);
+  }
+`;
+
 const CSSNeutral = css`
   border: none;
   &:after {
@@ -59,6 +65,12 @@ const CSSNeutral = css`
     &:after {
       background-color: var(--active-interactional-secondary-01);
     }
+  }
+`;
+
+const CSSNeutralActivated = css`
+  &:after {
+    background-color: var(--active-interactional-secondary-01);
   }
 `;
 
@@ -81,20 +93,11 @@ const CSSSecondary = css`
   }
 `;
 
-const CSSDanger = css`
+const CSSSecondaryActivated = css`
+  color: var(--active-icon-01);
   border: none;
   &:after {
-    background-color: var(--interactional-secondary-02);
-  }
-  &:hover {
-    &:after {
-      background-color: var(--hover-interactional-secondary-02);
-    }
-  }
-  &:active {
-    &:after {
-      background-color: var(--active-interactional-secondary-02);
-    }
+    background-color: var(--interactional-secondary-03);
   }
 `;
 
@@ -119,6 +122,37 @@ const CSSTertiary = css`
     &:after {
       background-color: transparent !important;
     }
+  }
+`;
+
+const CSSTertiaryActivated = css`
+  color: var(--text-02);
+  &:after {
+    background-color: var(--active-interactional-tertiary-01);
+  }
+`;
+
+const CSSDanger = css`
+  border: none;
+  &:after {
+    background-color: var(--interactional-secondary-02);
+  }
+  &:hover {
+    &:after {
+      background-color: var(--hover-interactional-secondary-02);
+    }
+  }
+  &:active {
+    &:after {
+      background-color: var(--active-interactional-secondary-02);
+    }
+  }
+`;
+
+const CSSDangerActivated = css`
+  color: var(--icon-06);
+  &:after {
+    background-color: var(--active-interactional-secondary-06);
   }
 `;
 
@@ -148,20 +182,20 @@ const CSSDisabled = css`
   }
 `;
 
-const getTypeStyling = (type?: IButtonType) => {
+const getTypeStyling = (type: IButtonType, isActivated) => {
   switch (type) {
     case "primary":
-      return CSSPrimary;
+      return isActivated ? CSSPrimaryActivated : CSSPrimary;
     case "secondary":
-      return CSSSecondary;
+      return isActivated ? CSSSecondaryActivated : CSSSecondary;
     case "tertiary":
-      return CSSTertiary;
+      return isActivated ? CSSTertiaryActivated : CSSTertiary;
     case "danger":
-      return CSSDanger;
+      return isActivated ? CSSDangerActivated : CSSDanger;
     case "link":
       return CSSLink;
     default:
-      return CSSNeutral;
+      return isActivated ? CSSNeutralActivated : CSSNeutral;
   }
 };
 
@@ -180,7 +214,8 @@ const Bronze = css<IButtonProps>`
   gap: 9px;
   font-size: 11px;
   padding: 0 12px;
-  ${(props) => getTypeStyling(props.type)};
+  border: none;
+  ${(props) => getTypeStyling(props.type, props.activated)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
   ${(props) => (props.round ? CSSRound : "")};
 

@@ -3,6 +3,7 @@ import { SButton } from "./styles/SButton";
 export type IButtonType = "primary" | "secondary" | "tertiary" | "danger" | "neutral" | "light" | "link";
 export type IButtonSize = "default" | "medium" | "small";
 export type IButtonState = "default" | "hover" | "focus" | "disabled";
+
 export interface IButtonProps {
   type?: IButtonType;
   size?: IButtonSize;
@@ -15,6 +16,7 @@ export interface IButtonProps {
   as?: string;
   children?: any;
   htmlType?: string;
+  activated?: boolean;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(({ children, onClick, ...props }, ref) => (

@@ -31,18 +31,17 @@ export default {
         },
       },
     },
-    state: {
-      description: "Changes the state of the button",
-      options: ["default", "hover", "focus", "disabled"],
-      control: { type: "select" },
+    dashed: {
+      description: "Changes the border of the button",
+      control: { type: "boolean" },
       table: {
         defaultValue: {
-          summary: "default",
+          summary: false,
         },
       },
     },
-    dashed: {
-      description: "Changes the border of the button",
+    activated: {
+      description: "Changes the state of the button to Activated",
       control: { type: "boolean" },
       table: {
         defaultValue: {
@@ -82,9 +81,9 @@ Default.args = {
   type: "primary",
   content: "primary",
   size: "default",
-  state: "default",
   dashed: false,
   round: false,
+  activated: false,
   disabled: false,
 };
 
@@ -104,4 +103,5 @@ WithIcon.args = {
   dashed: false,
   round: false,
   disabled: false,
+  activated: false,
 };
