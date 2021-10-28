@@ -7,7 +7,7 @@ function Icon() {
         fill="transparent"
         stroke="#000"
         strokeWidth="1.5"
-        d="M.75 8.75c0-4.347 3.653-8 8-8h14.5c4.347 0 8 3.653 8 8v14.5c0 4.347-3.653 8-8 8H8.75c-4.347 0-8-3.653-8-8V8.75z"
+        d="M1 7c0-3.26 2.74-6 6-6h18c3.26 0 6 2.74 6 6v18c0 3.26-2.74 6-6 6H7c-3.26 0-6-2.74-6-6V7z"
         opacity="undefined"
         pathLength="1"
       ></path>

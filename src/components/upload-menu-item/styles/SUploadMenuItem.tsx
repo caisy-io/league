@@ -68,7 +68,6 @@ const Bronze = css<ISUploadMenuItem>`
   border-radius: 8px;
   cursor: pointer;
   transition: color 200ms, background-color 200ms;
-  overflow: hidden;
   ${(props) => getStateStyles(props.state)};
 `;
 
