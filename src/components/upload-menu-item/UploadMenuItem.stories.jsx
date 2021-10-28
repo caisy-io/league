@@ -1,6 +1,5 @@
 import React from "react";
 import { UploadMenuItem } from "./UploadMenuItem";
-import { IconLink } from "../..";
 
 // Default MainMenuItem Demo
 export default {

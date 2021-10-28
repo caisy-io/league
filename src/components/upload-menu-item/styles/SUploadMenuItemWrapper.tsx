@@ -2,7 +2,8 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 interface ISUploadMenuItemWrapper {
-  isDefault: boolean;
+  hovering: boolean;
+  active: boolean;
 }
 
 const Bronze = css<ISUploadMenuItemWrapper>`
@@ -17,16 +18,9 @@ const Bronze = css<ISUploadMenuItemWrapper>`
   font-weight: bold;
   text-transform: uppercase;
 
-  &:hover {
-    h6 {
-      ${(props) => props.isDefault && "color: var(--hover-text-04);"}
-    }
-  }
-
-  &:active {
-    h6 {
-      ${(props) => props.isDefault && "color: var(--text-01);"}
-    }
+  h6 {
+    ${(props) => props.hovering && "color: var(--hover-text-04);"}
+    ${(props) => props.active && "color: var(--text-01);"}
   }
 `;
 

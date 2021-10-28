@@ -16,12 +16,14 @@ const CSSDefault = css`
     background-color: var(--hover-ui-01);
     color: var(--hover-icon-04);
     --icon-background-color: var(--hover-ui-01);
+    --text-color: var(--hover-text-04);
   }
 
   &:active {
     background-color: var(--active-ui-01);
     color: var(--ui-01);
     --icon-background-color: var(--active-ui-01);
+    --text-color: var(--text-01);
   }
 `;
 
