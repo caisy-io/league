@@ -39,13 +39,20 @@ const CSSSuccess = css`
   border: 1.5px solid var(--tag-05);
 `;
 
+const CSSLoading = css`
+  background-color: var(--ui-01);
+  color: var(--icon-07);
+  border: none;
+`;
+
 const getStateStyles = (state: TUploadMenuItemStatus) => {
   switch (state) {
     case "dragging":
       return CSSDrag;
     case "success":
-    case "loading":
       return CSSSuccess;
+    case "loading":
+      return CSSLoading;
     default:
       return CSSDefault;
   }
@@ -61,6 +68,7 @@ const Bronze = css<ISUploadMenuItem>`
   border-radius: 8px;
   cursor: pointer;
   transition: color 200ms, background-color 200ms;
+  overflow: hidden;
   ${(props) => getStateStyles(props.state)};
 `;
 

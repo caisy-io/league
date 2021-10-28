@@ -19,6 +19,8 @@ const Bronze = css<ISUploadMenuItemWrapper>`
   font-weight: bold;
   text-transform: uppercase;
 
+  position: relative;
+
   h6 {
     ${(props) => props.hovering && props.isDefault && "color: var(--hover-text-04);"}
     ${(props) => props.active && props.isDefault && "color: var(--text-01);"}

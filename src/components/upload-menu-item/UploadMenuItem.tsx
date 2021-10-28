@@ -5,6 +5,9 @@ import LoadingIcon from "./icons/LoadingIcon";
 import SuccessIcon from "./icons/SuccessIcon";
 import { SUploadMenuItemLabel } from "./styles/SUploadMenuItemLabel";
 import { SUploadMenuItemWrapper } from "./styles/SUploadMenuItemWrapper";
+import LoadingBorderIcon from "./icons/LoadingBorderIcon";
+import { SLoadingIconWrapper } from "./styles/SLoadingIconWrapper";
+import { SLoadingBorderWrapper } from "./styles/SLoadingBorderWrapper";
 
 type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success";
 
@@ -18,6 +21,8 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
   const [hovering, setHovering] = React.useState(false);
   const [active, setActive] = React.useState(false);
 
+  const percentageLoaded = props.percentageLoaded ? (props.percentageLoaded < 100 ? props.percentageLoaded : 100) : 0;
+
   const handleClick = (e) => {
     e.preventDefault();
     props.onClick();
@@ -26,8 +31,16 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
   const renderIcon = () => {
     switch (props.state) {
       case "dragging":
-      case "loading":
         return <LoadingIcon />;
+      case "loading":
+        return (
+          <SLoadingIconWrapper>
+            <SLoadingBorderWrapper percentageLoaded={percentageLoaded}>
+              <LoadingBorderIcon />
+            </SLoadingBorderWrapper>
+            <LoadingIcon />
+          </SLoadingIconWrapper>
+        );
       case "success":
         return <SuccessIcon />;
       default:
@@ -38,7 +51,7 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
   const renderLabelText = () => {
     switch (props.state) {
       case "loading":
-        return props.percentageLoaded ? `${props.percentageLoaded}%` : "Loading...";
+        return percentageLoaded ? `${percentageLoaded}%` : "Loading...";
       case "success":
         return "Done";
       default:
