@@ -4,6 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 interface ISUploadMenuItemWrapper {
   hovering: boolean;
   active: boolean;
+  isDefault: boolean;
 }
 
 const Bronze = css<ISUploadMenuItemWrapper>`
@@ -19,8 +20,8 @@ const Bronze = css<ISUploadMenuItemWrapper>`
   text-transform: uppercase;
 
   h6 {
-    ${(props) => props.hovering && "color: var(--hover-text-04);"}
-    ${(props) => props.active && "color: var(--text-01);"}
+    ${(props) => props.hovering && props.isDefault && "color: var(--hover-text-04);"}
+    ${(props) => props.active && props.isDefault && "color: var(--text-01);"}
   }
 `;
 
