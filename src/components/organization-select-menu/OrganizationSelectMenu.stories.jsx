@@ -3,12 +3,12 @@ import { OrganizationSelectMenu } from "./OrganizationSelectMenu";
 import sampleGroup from "./sampleGroup.png";
 
 const defaultGroup = {
-  name: "TGroup",
+  name: "Leicht",
   logoAssetUrl: sampleGroup,
 };
 
 const defaultOrganization = {
-  name: "TOrganization",
+  name: "Caisy",
   logoAssetUrl:
     "https://assets.caisy.io/asset/9aff2246-1dd1-44a7-ad8d-47feaaa1cce9/bbf6fabc3fd88c4c854aa6877fd9366f/CAISY_ICON.svg?w=800",
 };
