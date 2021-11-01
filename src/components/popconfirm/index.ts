@@ -1,1 +1,0 @@
-export { Popconfirm } from "./Popconfirm";
