@@ -16,8 +16,8 @@ export const resize = resizable => createOperation({
         shared.initial = {left, top, width, height};
     },
     onResize: ({delta}, shared)=> {
-        console.log("shared", shared)
         const {left, top, width, height} = shared.initial;
+
         shared.next = {
             width: Math.max(width + delta.width, 0),
             height: Math.max(height + delta.height, 0),
@@ -163,7 +163,11 @@ export const update = onUpdate => createOperation({
     onEndResize: _update(onUpdate),
 });
 const _update = onUpdate => (e, shared) => {
+   // console.log("shared.prev", shared.prev);
+    // console.log("shared.next", shared.next);
+
     if (!isEqual(shared.prev, shared.next)) {
+        // console.log(" -> update");
         onUpdate(shared.next);
         shared.prev = shared.next;
     }

@@ -1,7 +1,7 @@
 
 import React, { memo } from 'react';
 import { SResizable } from './styles/SResizable';
-import { defaultProps } from './Resizable.props';
+import { propTypes, defaultProps } from './Resizable.props';
 
 export const Resizable = ({onBeginResize, onResize, onEndResize, children}) => (
     <SResizable>
@@ -16,6 +16,7 @@ export const Resizable = ({onBeginResize, onResize, onEndResize, children}) => (
 );
 
 Resizable.displayName = 'Resizable';
+Resizable.propTypes = propTypes; 
 Resizable.defaultProps = defaultProps;
 
 export default memo(Resizable);
