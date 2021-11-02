@@ -19,11 +19,15 @@
  import {mouseTracker, touchTracker, moveTracker} from './Movable.utils';
 import { SMovable } from './styles/SMovable';
 
+//TODO replace any
 interface IMovable {
-    onBeginMove: () => null,
-    onMove: () => null,
-    onEndMove: () => null,
-    className: string;
+    onBeginMove?: (e: any) => void,
+    onMove?: (e: any) => void,
+    onEndMove?: (e: any) => void,
+    className?: string,
+    children?: any,
+    style?: {},
+    ref?: any,
 }
  
  export const Movable = forwardRef(({onBeginMove, onMove, onEndMove, ...props}: IMovable, ref) => {

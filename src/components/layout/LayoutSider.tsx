@@ -49,8 +49,8 @@ export const LayoutSider: React.FC<ILayoutSider> = ({ left = false, right = fals
         <SLayoutSiderContent>
           {sider.current && 
             <Resizable {...rProps}>
-              {left && <Left/>}
-              {right && <Right/>}
+              {left && !right && <Left/>}
+              {!left && right && <Right/>}
             </Resizable>
           }
           {props.children}

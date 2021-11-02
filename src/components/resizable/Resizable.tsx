@@ -18,11 +18,12 @@
 import React, { memo } from 'react';
 import { SResizable } from './styles/SResizable';
 
+//TODO replace any
 interface IResizable {
-    onBeginResize: () => null,
-    onResize: () => null,
-    onEndResize: () => null,
-    children: null,
+    onBeginResize?: any,
+    onResize?: any,
+    onEndResize?: any,
+    children?: any
 }
 
 export const Resizable = ({onBeginResize, onResize, onEndResize, children}: IResizable) => (

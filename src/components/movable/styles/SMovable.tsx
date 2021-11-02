@@ -2,10 +2,10 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-    .movable {
-        touch-action: none; // Needed when calling preventDefault() on touch events, see https://stackoverflow.com/a/42288386/1096470
-        user-select: none; // For preventing user selection when moving
-    }
+    position: absolute;
+    touch-action: none; // Needed when calling preventDefault() on touch events, see https://stackoverflow.com/a/42288386/1096470
+    user-select: none; // For preventing user selection when moving
+    cursor: move; 
     
 `;
 
