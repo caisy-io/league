@@ -17,9 +17,15 @@
 
 import React, { memo } from 'react';
 import { SResizable } from './styles/SResizable';
-import { defaultProps } from './Resizable.props';
 
-export const Resizable = ({onBeginResize, onResize, onEndResize, children}) => (
+interface IResizable {
+    onBeginResize: () => null,
+    onResize: () => null,
+    onEndResize: () => null,
+    children: null,
+}
+
+export const Resizable = ({onBeginResize, onResize, onEndResize, children}: IResizable) => (
     <SResizable>
         {
             React.Children.toArray(children).map(child => {
@@ -32,6 +38,5 @@ export const Resizable = ({onBeginResize, onResize, onEndResize, children}) => (
 );
 
 Resizable.displayName = 'Resizable';
-Resizable.defaultProps = defaultProps;
 
 export default memo(Resizable);

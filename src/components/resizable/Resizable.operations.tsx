@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-import { clamp } from './utils/number';
-import { isEqual } from './utils/object';
+import { clamp } from '../../utils/number';
+import { isEqual } from '../../utils/object';
 
 export const createOperation = handlers => ({
     onBeginResize: () => null,

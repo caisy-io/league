@@ -15,11 +15,18 @@
  */
 
 import React, {useCallback, memo} from 'react';
-import { Movable } from 'webrix/components';
+import { Movable } from '../movable';
 
 const INITIAL = {top: 0, left: 0, width: 0, height: 0};
 
-const Resizer = ({direction, onBeginResize, onResize, onEndResize}: {direction?: string, onBeginResize?: any, onResize?: any, onEndResize?: any}) => (
+interface IResizer {
+    direction?: string, 
+    onBeginResize?: any, 
+    onResize?: any, 
+    onEndResize?: any
+}
+
+const Resizer = ({direction, onBeginResize, onResize, onEndResize}: IResizer) => (
     <Movable
         className={`resizable ${direction}-resizer`}
         onBeginMove={onBeginResize}

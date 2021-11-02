@@ -14,9 +14,22 @@
  * limitations under the License.
  */
 
-export const defaultProps = {
-    onBeginResize: () => null,
-    onResize: () => null,
-    onEndResize: () => null,
-    children: null,
-};
+ import {useRef, useCallback} from 'react';
+
+ export const useMove = ops => {
+     const shared = useRef({});
+ 
+     const onBeginMove = useCallback(e => {
+         ops.forEach(({onBeginMove}) => onBeginMove(e, shared.current));
+     }, [ops]);
+ 
+     const onMove = useCallback(e => {
+         ops.forEach(({onMove}) => onMove(e, shared.current));
+     }, [ops]);
+ 
+     const onEndMove = useCallback(e => {
+         ops.forEach(({onEndMove}) => onEndMove(e, shared.current))
+     }, [ops]);
+ 
+     return {onBeginMove, onMove, onEndMove};
+ };
