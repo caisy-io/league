@@ -1,14 +1,12 @@
 import React, { useRef } from "react";
 import { Layout} from "./Layout";
-import { LayoutHeader} from "./LayoutHeader";
-import { LayoutContent} from "./LayoutContent";
 import { LayoutSider} from "./LayoutSider";
 
 function LayoutDemo(args) {
     return (
         <Layout style={{backgroundColor: "lightgray"}} {...args}>
             <LayoutSider right>
-                <p>Sider left</p>
+                <p>Sider left, resizable right</p>
             </LayoutSider>
         </Layout>
     );

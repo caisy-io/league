@@ -7,12 +7,11 @@ import { Left, Right } from '../resizable/Resizable.resizers';
 import { SLayoutSiderContent } from './styles/SLayoutSiderContent';
 
 interface ILayoutSider {
-  left?: boolean;
   right?: boolean;
   children?: React.ReactElement;
 }
 
-export const LayoutSider: React.FC<ILayoutSider> = ({ left = false, right = false, ...props }) => {
+export const LayoutSider: React.FC<ILayoutSider> = ({ right = true, ...props }) => {
   // TODO Optimize values
   const minWidth = 1920 * 0.07 + 100;
   const maxWidth = 1920 * 0.5 + 200;
@@ -40,7 +39,7 @@ export const LayoutSider: React.FC<ILayoutSider> = ({ left = false, right = fals
 
   useEffect(() => {
     if(sider.current) setSize(initialSize);
-  }, [sider.current]);
+  }, [sider.current, right]);
 
   console.log(size);
 
@@ -49,8 +48,9 @@ export const LayoutSider: React.FC<ILayoutSider> = ({ left = false, right = fals
         <SLayoutSiderContent>
           {sider.current && 
             <Resizable {...rProps}>
-              {left && !right && <Left/>}
-              {!left && right && <Right/>}
+              {!right && <Left/> // TODO fix render of left and right
+              }
+              {right && <Right/>}
             </Resizable>
           }
           {props.children}
