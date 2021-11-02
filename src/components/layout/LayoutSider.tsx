@@ -5,10 +5,13 @@ import { contain, lock, max, min, resize, update } from '../resizable/Resizable.
 import { SLayoutSider } from "./styles/SLayoutSider";
 import { Left, Right } from '../resizable/Resizable.resizers';
 
-// TODO
-// interface ILayoutSider {}
+interface ILayoutSider {
+  left?: boolean;
+  right?: boolean;
+  children?: React.ReactElement;
+}
 
-export const LayoutSider = ({ ...props }) => {// TODO : React.FC<ILayoutSider>
+export const LayoutSider: React.FC<ILayoutSider> = ({ left = false, right = false, ...props }) => {
   // TODO Optimize values
   const minWidth = 1920 * 0.07 + 100;
   const maxWidth = 1920 * 0.5 + 200;
@@ -24,8 +27,7 @@ export const LayoutSider = ({ ...props }) => {// TODO : React.FC<ILayoutSider>
   };
 
   const sider = useRef<any>();
-  const [siderLoaded, setSiderLoaded] = useState(false);
-  const [size, setSize] = useState(initialSize);
+  const [size, setSize] = useState({ width: 0, height: 0, left: 0, top: 0 });
 
   const rProps = useResize(useMemo(() => [
     resize(sider),
@@ -36,7 +38,7 @@ export const LayoutSider = ({ ...props }) => {// TODO : React.FC<ILayoutSider>
 ], [sider]));
 
   useEffect(() => {
-    if(sider.current) setSiderLoaded(true);
+    if(sider.current) setSize(initialSize);
   }, [sider.current]);
 
   console.log(size);
@@ -46,8 +48,8 @@ export const LayoutSider = ({ ...props }) => {// TODO : React.FC<ILayoutSider>
         <div style={{ width: '100%', height: '100%' }}> {/* TODO Refactor: Create and use SLayoutSiderContent */}
           {sider.current && 
             <Resizable {...rProps}>
-              {props.left && <Left/>}
-              {props.right && <Right/>}
+              {left && <Left/>}
+              {right && <Right/>}
             </Resizable>
           }
           {props.children}
