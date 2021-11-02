@@ -36,17 +36,37 @@ function ResizableDemo(args) {
 
     return ( // TODO dont to left/right with booleans
         <div style={{backgroundColor:'white'}}>
-            <SLayoutSider style={{ width: size.width, height: size.height, backgroundColor:'lightblue'}} ref={resizable}>
-                <SLayoutSiderContent style={{color: 'white'}}>
+            <div
+                ref={resizable}
+                style={{ 
+                    position: 'relative',
+                    overflow: 'auto',
+                    borderRadius: '6px',
+                    width: size.width, 
+                    height: size.height, 
+                    backgroundColor:'lightblue'
+                }} 
+            >
+                <div 
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        color: 'white', 
+                        width: '100%', 
+                        height: '100%'
+                    }}
+                >
                     {resizable.current &&
                         <Resizable {...props}> 
-                            {args.left && !args.right && <Left/>}
-                            {!args.left && args.right && <Right/>}
+                            {!args.right && <Left/>}
+                            { args.right && <Right/>}
                         </Resizable>
                     }
                     {args.content}
-                </SLayoutSiderContent>
-            </SLayoutSider>
+                </div>
+            </div>
         </div>
     );
 }
