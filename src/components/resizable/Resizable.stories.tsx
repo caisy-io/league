@@ -29,13 +29,18 @@ function ResizableDemo(args) {
         lock(),
         update(setSize),
     ], [resizable]));
-    
+
     useEffect(() => {
         if(resizable.current) setSize(initialSize);
-    },[resizable.current])
+    },[resizable.current, args.left])
 
-    return ( // TODO dont to left/right with booleans
-        <div style={{backgroundColor:'white'}}>
+    return (
+        <div 
+            style={{
+                backgroundColor:'white', 
+                display: 'flex',
+                flexDirection: args.left ? 'row' : 'row-reverse'
+            }}>
             <div
                 ref={resizable}
                 style={{ 
@@ -60,8 +65,8 @@ function ResizableDemo(args) {
                 >
                     {resizable.current &&
                         <Resizable {...props}> 
-                            {!args.right && <Left/>}
-                            { args.right && <Right/>}
+                            {!args.left && <Left/>}
+                            {args.left && <Right/>}
                         </Resizable>
                     }
                     {args.content}
@@ -79,7 +84,7 @@ export default {
       description: 'Content of the button',
       control: { type: 'text'}
     },
-    right: {
+    left: {
         description: 'Resizable on the right side',
         control: {type: 'boolean'},
         table: {
@@ -94,6 +99,6 @@ const Template = (args) => <ResizableDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    right: true,
+    left: true,
     content: "Resize Me!",
 };
