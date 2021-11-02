@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Resizable } from '../resizable';
 import { useResize } from '../resizable/Resizable.hooks';
-import { contain, lock, max, min, resize, update } from '../resizable/Resizable.operations';
+import { lock, max, min, resize, update } from '../resizable/Resizable.operations';
 import { SLayoutSider } from "./styles/SLayoutSider";
 import { Left, Right } from '../resizable/Resizable.resizers';
+import { SLayoutSiderContent } from './styles/SLayoutSiderContent';
 
 interface ILayoutSider {
   left?: boolean;
@@ -45,7 +46,7 @@ export const LayoutSider: React.FC<ILayoutSider> = ({ left = false, right = fals
 
   return (
       <SLayoutSider ref={sider} style={{ width: size.width, height: size.height}}> 
-        <div style={{ width: '100%', height: '100%' }}> {/* TODO Refactor: Create and use SLayoutSiderContent */}
+        <SLayoutSiderContent>
           {sider.current && 
             <Resizable {...rProps}>
               {left && <Left/>}
@@ -53,7 +54,7 @@ export const LayoutSider: React.FC<ILayoutSider> = ({ left = false, right = fals
             </Resizable>
           }
           {props.children}
-        </div>
+        </SLayoutSiderContent>
       </SLayoutSider>
     );
 };

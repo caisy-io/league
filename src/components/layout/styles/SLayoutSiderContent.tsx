@@ -3,7 +3,9 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const Bronze = css`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 `;
 
 const Silver = css``;
@@ -14,7 +16,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLayoutContentSiderWrapper = styled.div`
+export const SLayoutSiderContent = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
