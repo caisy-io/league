@@ -1,8 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Left, Resizable, Right, useResize } from ".";
-import { Layout } from "../layout/Layout";
-import { SLayoutSider } from "../layout/styles/SLayoutSider";
-import { SLayoutSiderContent } from "../layout/styles/SLayoutSiderContent";
 import { lock, max, min, resize, update } from "./Resizable.operations";
 
     // TODO Optimize values
