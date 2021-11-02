@@ -1,1 +1,0 @@
-export { MenuItemNestableAsFunction } from './MenuItemNestableAsFunction';
