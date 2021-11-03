@@ -25,11 +25,21 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ label, state, required, ..
   };
 
   const resizeInput = () => {
-    spanRef.current.innerText = inputRef.current.value;
-    const width = spanRef.current.scrollWidth;
-    console.log(width);
+    if (!inputRef.current.value && props.placeholder) {
+      spanRef.current.innerText = props.placeholder;
+    } else {
+      spanRef.current.innerText = inputRef.current.value;
+    }
+    let width = spanRef.current.scrollWidth;
+    if (inputRef.current.value[inputRef.current.value.toString().length - 1] === " ") {
+      width += 3;
+    }
     setInputLength(width + 1);
   };
+
+  React.useEffect(() => {
+    resizeInput();
+  }, []);
 
   return (
     <SSimpleInputWrapper
@@ -40,26 +50,47 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ label, state, required, ..
       onClick={onClick}
     >
       <span ref={spanRef} style={{ width: "fit-content", visibility: "hidden", position: "absolute", fontSize: 14 }} />
-      <div style={{ position: "relative", width: "fit-content" }}>
-        {required && <SSimpleInputRequiredIndicator />}
-        {label && (
+      {label ? (
+        <>
+          <div style={{ position: "relative", width: "fit-content" }}>
+            {required && <SSimpleInputRequiredIndicator />}
+            <SSimpleInputLabel state={state} active={active} hovering={hovering}>
+              {label}
+            </SSimpleInputLabel>
+          </div>
+          <SSimpleInput
+            onChange={(e) => {
+              resizeInput();
+              props.onChange?.(e);
+            }}
+            width={inputLength}
+            required={required}
+            ref={inputRef}
+            onFocus={() => setActive(true)}
+            onBlur={() => setActive(false)}
+            {...props}
+          />
+        </>
+      ) : (
+        <div style={{ position: "relative", width: "fit-content" }}>
+          {required && <SSimpleInputRequiredIndicator />}
           <SSimpleInputLabel state={state} active={active} hovering={hovering}>
             {label}
           </SSimpleInputLabel>
-        )}
-        <SSimpleInput
-          onChange={(e) => {
-            resizeInput();
-            props.onChange?.(e);
-          }}
-          width={inputLength}
-          required={required}
-          ref={inputRef}
-          onFocus={() => setActive(true)}
-          onBlur={() => setActive(false)}
-          {...props}
-        />
-      </div>
+          <SSimpleInput
+            onChange={(e) => {
+              resizeInput();
+              props.onChange?.(e);
+            }}
+            width={inputLength}
+            required={required}
+            ref={inputRef}
+            onFocus={() => setActive(true)}
+            onBlur={() => setActive(false)}
+            {...props}
+          />
+        </div>
+      )}
     </SSimpleInputWrapper>
   );
 };
