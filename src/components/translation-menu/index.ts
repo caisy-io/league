@@ -1,2 +1,2 @@
 export { TranslationMenu } from "./TranslationMenu";
-export { ITranslationMenuLocale, ITranslationMenuState, ITranslationMenu } from "./types";
+export type { ITranslationMenuLocale, ITranslationMenuState, ITranslationMenu } from "./types";

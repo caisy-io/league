@@ -1,2 +1,2 @@
 export { Dropdown } from "./Dropdown";
-export { IDropdownCategory } from "./types";
+export type { IDropdownCategory } from "./types";
