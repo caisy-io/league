@@ -102,12 +102,16 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
             onClick={() => (!!props.onRowClick ? props.onRowClick(row) : () => {})}
             key={index}
             {...row.getRowProps({
-              style: { ...style, width: withScrollbar ? "calc(100% - 48px)" : "calc(100% - 32px)", ...props.rowStyle },
+              style: { ...style, width: withScrollbar ? "calc(100% - 32px)" : "calc(100% - 32px)", ...props.rowStyle },
             })}
           >
             {row.cells.map((cell, cellIndex) => {
               return (
-                <STd key={cellIndex} {...cell.getCellProps()}>
+                <STd
+                  key={cellIndex}
+                  style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block" }}
+                  {...cell.getCellProps()}
+                >
                   {cell.render("Cell")}
                 </STd>
               );
