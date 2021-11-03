@@ -24,32 +24,36 @@ export interface IImg {
     | IResponsiveImageResolution /** set the quality/resolution of the image in px/width ==> default: 50 */;
   lazyload?: boolean /** should the image be lazyloaded on scroll? ==> default: true */;
   onLoad?: () => void /** trigger when image is loaded ==> default: null */;
+  onError?: () => void /** trigger when image is loaded ==> default: null */;
 }
 
-const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad, ...props }) => {
-  const imgRef = useRef();
+const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad, onError, ...props }) => {
+  const imgRef = useRef<any>();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     if (imgRef.current) {
-      //@ts-ignore
       if (imgRef.current.complete) {
         setLoaded(true);
         onLoad && onLoad();
       } else {
-        //@ts-ignore
         imgRef.current.onload = () => {
           setLoaded(true);
           onLoad && onLoad();
+        };
+        imgRef.current.onerror = () => {
+          setLoaded(false);
+          onError && onError();
         };
       }
     }
 
     return () => {
-      //@ts-ignore
       if (imgRef.current && imgRef.current.onload) {
-        //@ts-ignore
         imgRef.current.onload = null;
+      }
+      if (imgRef.current && imgRef.current.onerror) {
+        imgRef.current.onerror = null;
       }
     };
   }, [src]);

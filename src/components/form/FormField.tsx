@@ -4,18 +4,18 @@ import { FormErrors } from "./FormErrors";
 import { FormFieldWrapper, IRule } from "./FormFieldWrapper";
 import { SFormField } from "./styles/SFormField";
 
-interface IError {
+export interface IError {
   name: string;
   message: string;
 }
 
-interface IField {
+export interface IField {
   value: any;
   errors: IError[];
   rules: any;
 }
 
-interface IControl {
+export interface IControl {
   onFieldChange: (fieldName: string, value: any) => void;
   formState: any;
   registerField: (fieldName: string, field: IField) => void;

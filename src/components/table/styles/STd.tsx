@@ -11,10 +11,6 @@ const Bronze = css<ISTd>`
   flex: 1;
 
   span {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-
     max-width: calc((100vw - 360px) / 6 - 20px);
   }
 `;
