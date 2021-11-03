@@ -1,6 +1,6 @@
 export { Search } from "./Search";
 export { SearchProvider } from "./SearchProvider";
-export { 
+export type { 
     ISearchState,
     IEvaluationFunction, 
     ISearchCategory, 
