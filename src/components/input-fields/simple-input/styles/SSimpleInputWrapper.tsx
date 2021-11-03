@@ -10,7 +10,7 @@ const CSSError = css`
 `;
 
 const Bronze = css`
-  height: 40px;
+  max-height: 40px;
   width: 320px;
   padding: 10px 12px;
   background-color: var(--ui-01);

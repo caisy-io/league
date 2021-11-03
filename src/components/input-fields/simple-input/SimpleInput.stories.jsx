@@ -20,7 +20,6 @@ const Template = (args) => <SimpleInputDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  label: "This is a label",
   placeholder: "This is a placeholder",
   state: "default",
   required: true,
