@@ -4,15 +4,11 @@ on:
     branches-ignore:
       - staging
       - prod
-    branches:
-      - "**"
   pull_request:
     branches-ignore:
       - staging
       - prod
-    branches:
-      - "**"
-      
+
 jobs:
   build:
     name: Verify Build
