@@ -4,37 +4,18 @@ import { IButtonProps, IButtonSize, IButtonType } from "../Button";
 
 const getSize = (size?: IButtonSize) => {
   switch (size) {
-    case "large":
+    case "medium":
       return css`
-        padding: 0 14px;
-        font-size: 14px;
-        gap: 14px;
-        height: 52px;
-        > span {
-          padding: 0 10px;
-          &:not(:first-child) {
-            padding-left: 0;
-          }
-        }
-        > .icon {
-          padding: 0 1px;
-        }
+        height: 36px;
       `;
     case "small":
       return css`
-        padding: 0 2px;
-        font-size: 10px;
-        gap: 8px;
-        height: 30px;
+        height: 32px;
         svg {
           height: 20px;
           width: 20px;
         }
-        > .icon {
-          padding: 0 3px;
-        }
         > span {
-          padding: 0 10px;
           &:not(:first-child) {
             padding-left: 0;
           }
@@ -42,111 +23,136 @@ const getSize = (size?: IButtonSize) => {
       `;
     default:
       return css`
-        padding: 0 10px;
-        font-size: 12px;
         height: 40px;
-        gap: 8px;
-        > span {
-          padding: 0 6px;
-          &:not(:first-child) {
-            padding-left: 0px;
-          }
-        }
       `;
   }
 };
 
 const CSSPrimary = css`
   border: none;
-  color: var(--white-1);
   &:after {
-    background-color: var(--primary-500);
+    background-color: var(--interactional-primary-01);
   }
   &:hover {
     &:after {
-      filter: drop-shadow(5px 5px 10px var(--primary-500-opacity-32));
+      background-color: var(--hover-interactional-primary-01);
     }
   }
   &:active {
     &:after {
-      filter: drop-shadow(5px 5px 10px var(--primary-500-opacity-32)) brightness(80%);
+      background-color: var(--active-interactional-primary-01);
     }
   }
 `;
 
-const CSSSecondary = css`
-  color: var(--white-1);
+const CSSPrimaryActivated = css`
+  &:after {
+    background-color: var(--active-interactional-primary-01);
+  }
+`;
+
+const CSSNeutral = css`
   border: none;
   &:after {
-    background-color: var(--secondary-500);
+    background-color: var(--interactional-secondary-01);
   }
   &:hover {
     &:after {
-      filter: drop-shadow(5px 5px 10px var(--secondary-500-opacity-32));
+      background-color: var(--hover-interactional-secondary-01);
     }
   }
   &:active {
     &:after {
-      filter: drop-shadow(5px 5px 10px var(--secondary-500-opacity-32)) brightness(80%);
+      background-color: var(--active-interactional-secondary-01);
     }
+  }
+`;
+
+const CSSNeutralActivated = css`
+  &:after {
+    background-color: var(--active-interactional-secondary-01);
+  }
+`;
+
+const CSSSecondary = css`
+  color: var(--text-01);
+  border: none;
+  &:after {
+    background-color: var(--interactional-secondary-03);
+  }
+  &:hover {
+    &:after {
+      background-color: var(--hover-interactional-secondary-03);
+    }
+  }
+  &:active {
+    &:after {
+      color: var(--active-text-01);
+      background-color: var(--active-interactional-secondary-03);
+    }
+  }
+`;
+
+const CSSSecondaryActivated = css`
+  color: var(--active-icon-01);
+  border: none;
+  &:after {
+    background-color: var(--interactional-secondary-03);
+  }
+`;
+
+const CSSTertiary = css`
+  color: var(--text-04);
+  border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--interactional-tertiary-01);
+  &:hover {
+    color: var(--hover-text-04);
+    &:after {
+      border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--hover-interactional-tertiary-01);
+    }
+  }
+  &:active {
+    color: var(--text-02);
+    &:after {
+      background-color: var(--active-interactional-tertiary-01);
+    }
+  }
+  &:disabled {
+    border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--disabled-interactional-01);
+    color: var(--disabled-interactional-01);
+    &:after {
+      background-color: transparent !important;
+    }
+  }
+`;
+
+const CSSTertiaryActivated = css`
+  color: var(--text-02);
+  &:after {
+    background-color: var(--active-interactional-tertiary-01);
   }
 `;
 
 const CSSDanger = css`
   border: none;
-  color: var(--states-error);
   &:after {
-    background-color: var(--states-error-bg);
+    background-color: var(--interactional-secondary-02);
   }
   &:hover {
     &:after {
-      filter: drop-shadow(5px 5px 10px rgba(244, 64, 52, 0.32));
+      background-color: var(--hover-interactional-secondary-02);
     }
   }
   &:active {
     &:after {
-      filter: drop-shadow(5px 5px 10px rgba(244, 64, 52, 0.52));
-      background-color: #faada8;
+      background-color: var(--active-interactional-secondary-02);
     }
   }
 `;
 
-const CSSNeutral = css`
-  color: var(--text-priority-neutral-2);
-  border: none;
-
+const CSSDangerActivated = css`
+  color: var(--icon-06);
   &:after {
-    background-color: rgba(33, 37, 41, 0.08);
-  }
-  &:hover {
-    &:after {
-      filter: drop-shadow(5px 5px 10px var(--black-opacity-32));
-    }
-  }
-  &:active {
-    &:after {
-      filter: drop-shadow(5px 5px 10px var(--black-opacity-32)) brightness(5%);
-    }
-  }
-`;
-
-const CSSLight = css`
-  color: var(--action-primary-default);
-  border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--action-primary-default);
-  &:after {
-    background-color: var(--primary-500-opacity-8);
-  }
-  &:hover {
-    &:after {
-      background-color: var(--primary-100);
-      color: var(--action-primary-hover);
-    }
-  }
-  &:active {
-    &:after {
-      color: var(--action-primary-active);
-      background-color: var(--primary-200);
-    }
+    background-color: var(--active-interactional-secondary-06);
   }
 `;
 
@@ -169,43 +175,50 @@ const CSSRound = css`
 
 const CSSDisabled = css`
   &:disabled {
-    opacity: 0.6;
     cursor: not-allowed;
+    &:after {
+      background-color: var(--disabled-interactional-01);
+    }
   }
 `;
 
-const getTypeStyling = (type?: IButtonType) => {
+const getTypeStyling = (type: IButtonType, isActivated) => {
   switch (type) {
     case "primary":
-      return CSSPrimary;
+      return isActivated ? CSSPrimaryActivated : CSSPrimary;
     case "secondary":
-      return CSSSecondary;
+      return isActivated ? CSSSecondaryActivated : CSSSecondary;
+    case "tertiary":
+      return isActivated ? CSSTertiaryActivated : CSSTertiary;
     case "danger":
-      return CSSDanger;
-    case "light":
-      return CSSLight;
+      return isActivated ? CSSDangerActivated : CSSDanger;
     case "link":
       return CSSLink;
     default:
-      return CSSNeutral;
+      return isActivated ? CSSNeutralActivated : CSSNeutral;
   }
 };
 
 const Bronze = css<IButtonProps>`
-  color: var(--white-1);
+  color: var(--text-02);
   ${(props) => getSize(props.size)};
   flex-grow: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 6px;
+  border-radius: 8px;
   position: relative;
   z-index: 0;
   transition: all 0.3s ease;
   background-color: transparent;
-  ${(props) => getTypeStyling(props.type)};
+  gap: 9px;
+  font-size: 11px;
+  padding: 0 12px;
+  border: none;
+  ${(props) => getTypeStyling(props.type, props.activated)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
   ${(props) => (props.round ? CSSRound : "")};
+
   /* this after is there to split the background animation from the button content */
   /* after is the background */
   &:after {
@@ -240,6 +253,8 @@ const Bronze = css<IButtonProps>`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 10px;
+    width: 10px;
   }
 `;
 

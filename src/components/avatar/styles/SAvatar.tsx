@@ -11,7 +11,7 @@ const Bronze = css<ISAvatar>`
 
   border-radius: 50%;
   line-height: 32px;
-  border: solid 1px var(--white-1);
+  border: solid 1px var(--ui-01);
   background-color: #0b1f44;
   overflow: hidden;
   font-size: 12px;

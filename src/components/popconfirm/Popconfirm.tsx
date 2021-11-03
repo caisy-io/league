@@ -44,7 +44,7 @@ export const Popconfirm: React.FC<IPopconfirm> = ({ ...props }) => {
       {open && !props.disabled && (
         <Popover
           onClickOutside={() => setOpen(false)}
-          trianglecolor="var(--white-1)"
+          trianglecolor="var(--ui-01)"
           placement={props.placement || "top"}
           reference={ref}
           container={props.container}

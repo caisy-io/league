@@ -5,7 +5,7 @@ interface ISSelectDropdown {}
 
 const Bronze = css<ISSelectDropdown>`
   border: 1px solid #dedede;
-  background-color: var(--white-1);
+  background-color: var(--ui-01);
   border-radius: 6px;
   font-size: 14px;
   overflow: hidden;

@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {  Button } from "../..";
-import { Tabs, TabPanel} from './Tabs';
+import React, { useState } from "react";
+import { Button } from "../..";
+import { Tabs, TabPanel } from "./Tabs";
 
 function TabsShowcase() {
   const [currentTab, setCurrentTab] = useState(0);
@@ -11,7 +11,7 @@ function TabsShowcase() {
         display: "flex",
         padding: "32px 60px",
         flexWrap: "wrap",
-        backgroundColor: "var(--white-1)",
+        backgroundColor: "var(--ui-01)",
         boxShadow: "0 10px 30px 0 rgba(89, 106, 122, 0.11)",
         borderRadius: "5px",
       }}
@@ -44,7 +44,7 @@ function TabsShowcase() {
 }
 
 export default {
-  title: 'Components/Tabs',
+  title: "Components/Tabs",
   component: TabsShowcase,
 };
 

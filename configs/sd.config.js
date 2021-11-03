@@ -1,36 +1,46 @@
 module.exports = {
-    "source": ["./src/constants/styles/design-tokens/input.json"],
-    // If you don't want to call the registerTransform method a bunch of times
-    // you can override the whole transform object directly. This works because
-    // the .extend method copies everything in the config
-    // to itself, allowing you to override things. It's also doing a deep merge
-    // to protect from accidentally overriding nested attributes.
-    "platforms": {
-        "css": {
-            "transformGroup": "css",
-            "buildPath": "./src/constants/styles/design-tokens/",
-            "files": [
-                {
-                    "format": "css/variables",
-                    "destination": "variables.css"
-                }
-            ]
+  source: [
+    "./src/constants/styles/design-tokens/input/colors.json",
+    "./src/constants/styles/design-tokens/input/fonts.json",
+    "./src/constants/styles/design-tokens/input/styledFonts.json",
+  ],
+  platforms: {
+    styledColors: {
+      name: "CSSColors",
+      buildPath: "./src/constants/styles/design-tokens/colors/",
+      files: [
+        {
+          destination: "CSSColors.tsx",
+          format: "styledComponentsFlat",
+          filter: {
+            type: "color",
+          },
         },
-        "js": {
-            "transformGroup": "js",
-            "buildPath": "./src/constants/styles/design-tokens/",
-            "files": [{
-                "destination": "variables.js",
-                "format": "javascript/es6"
-            }]
+      ],
+    },
+    styledFonts: {
+      buildPath: "./src/constants/styles/design-tokens/fonts/",
+      files: [
+        {
+          format: "styledFonts",
+          destination: "CSSFonts.tsx",
+          filter: {
+            filePath: "./src/constants/styles/design-tokens/input/fonts.json",
+          },
         },
-        "javascript-flat": {
-            "transformGroup": "js",
-            "buildPath": "./src/constants/styles/design-tokens/",
-            "files": [{
-                "destination": "variables-flat.js",
-                "format": "javascript/module-flat"
-            }]
-        }
-    }
-}
+      ],
+    },
+    fontFaces: {
+      buildPath: "./src/constants/styles/design-tokens/fonts/",
+      files: [
+        {
+          destination: "fonts.tsx",
+          format: "styledComponents",
+          filter: {
+            filePath: "./src/constants/styles/design-tokens/input/styledFonts.json",
+          },
+        },
+      ],
+    },
+  },
+};

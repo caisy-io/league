@@ -7,15 +7,15 @@ import { SSelectDropdown } from "./styles/SSelectDropdown";
 import { SSelectMultiple } from "./styles/SSelectMultiple";
 import { SSelectOption } from "./styles/SSelectOption";
 
-export interface IDataSourceItem {
+export interface ISelectMultipleDataSourceItem {
   label: string;
   key: string;
   data?: any;
 }
 
 interface ISelectMultiple {
-  dataSource: IDataSourceItem[];
-  renderItem?: (option: IDataSourceItem) => React.ReactNode;
+  dataSource: ISelectMultipleDataSourceItem[];
+  renderItem?: (option: ISelectMultipleDataSourceItem) => React.ReactNode;
   onChange?: (e: string[]) => void;
   value?: string[];
   defaultValue?: string[];

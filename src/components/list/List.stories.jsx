@@ -7,7 +7,7 @@ const ListFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--white-1);
+  background-color: var(--ui-01);
 `;
 
 const ListFooterSelectedCounter = styled.div`
@@ -21,7 +21,7 @@ const ListFooterSelectedCounter = styled.div`
   font-size: 11px;
   font-weight: 600;
   line-height: 1.45;
-  color: var(--action-primary-default);
+  color: var(--interactional-primary-01);
 `;
 
 const ListFooterButtonsContainer = styled.div`
@@ -36,7 +36,7 @@ const initialDate = new Array(10).fill(true).map((__, idx) => ({
   id: idx,
 }));
 function ListDemo() {
-    const header = "List Header";
+  const header = "List Header";
   const [selectedItems, setSelectedItems] = React.useState([]);
 
   const onSelect = (id) => {
@@ -139,15 +139,13 @@ function ListDemo() {
       </div>
     </div>
   );
-
 }
 
 export default {
-  title: 'Components/List',
+  title: "Components/List",
   component: ListDemo,
 };
 const Template = (args) => <ListDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
-

@@ -23,14 +23,14 @@ export const SMenuItemDnd = styled.div<ISMenuItemDnd>`
   animation: open 500ms;
 
   :hover {
-    color: var(--primary-500);
+    color: var(--interactional-primary-01);
     background-color: var(--primary-500-opacity-8);
-    ${(props) => props.active && "color: var(--white-1)"};
-    ${(props) => props.active && "background-color: var(--primary-500)"};
+    ${(props) => props.active && "color: var(--ui-01)"};
+    ${(props) => props.active && "background-color: var(--interactional-primary-01)"};
   }
 
-  ${(props) => props.active && "color: var(--white-1)"};
-  ${(props) => props.active && "background-color: var(--primary-500)"};
+  ${(props) => props.active && "color: var(--ui-01)"};
+  ${(props) => props.active && "background-color: var(--interactional-primary-01)"};
 
   @keyframes open {
     0% {

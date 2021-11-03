@@ -12,7 +12,7 @@ const Bronze = css`
   font-weight: 500;
 
   &:hover {
-    color: var(--primary-500);
+    color: var(--interactional-primary-01);
   }
 `;
 
