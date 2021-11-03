@@ -1,5 +1,5 @@
 import React from "react";
-import { IControl } from "./FormField";
+import type { IControl } from "./FormField";
 import { SFormErrorList } from "./styles/SFormErrorList";
 import { SFormError } from "./styles/SFormError";
 
