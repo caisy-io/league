@@ -1,9 +1,5 @@
 name: Verify Build
 on:
-  push:
-    branches-ignore:
-      - staging
-      - prod
   pull_request:
     branches-ignore:
       - staging
