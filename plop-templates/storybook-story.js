@@ -24,7 +24,7 @@ function {{properCase name}}Demo({ content, ...args }) {
     </{{properCase name}}>
 }
 
-const Template = (args) => < {{ properCase name }} {...args } />;
+const Template = (args) => < {{ properCase name }}Demo {...args } />;
 
 export const Default = Template.bind({});
 Default.args = {
