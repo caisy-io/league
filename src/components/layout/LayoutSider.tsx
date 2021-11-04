@@ -43,7 +43,6 @@ export const LayoutSider: React.FC<ILayoutSider> = ({ left = true, ...props }) =
     if(sider.current) setSize(initialSize);
   }, [sider.current, left]);
 
-  console.log(size);
 
   return (
       <SResizableWrapper ref={sider} width={size.width + 'px'} height={'90vh'} left={left}> 

@@ -10,8 +10,6 @@ interface ISResizableWrapper {
 const Bronze = css<ISResizableWrapper>`
     position: relative;
     overflow: auto;
-    width: ${props => props.width};
-    height: ${props => props.height};
     order: ${(props) => props.left ? 3 : 1};
 `;
 
@@ -27,7 +25,11 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SResizableWrapper = styled.div`
+export const SResizableWrapper = styled.div.attrs(({ width, height }) => ({
+  style: {
+    width, height
+  }
+}))`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
