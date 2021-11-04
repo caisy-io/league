@@ -1,11 +1,13 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-interface ISLayoutTopNav {}
+interface ISLayoutTopNav {
+  height?: string;
+}
 
 const Bronze = css<ISLayoutTopNav>`
   background: lightblue;
-  height: 10vh;
+  height: ${props => props.height ? props.height : '10vh'};
 `;
 
 const Silver = css``;

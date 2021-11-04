@@ -7,6 +7,7 @@ import { Left, Right } from '../resizable/Resizable.resizers';
 import { SLayoutSiderContent } from './styles/SLayoutSiderContent';
 import { SResizable } from '../resizable/styles/SResizable';
 import { SResizableWrapper } from '../resizable/styles/SResizableWrapper';
+import { Spinner } from '..';
 
 interface ILayoutSider {
   left?: boolean;
@@ -42,20 +43,20 @@ export const LayoutSider: React.FC<ILayoutSider> = ({ left = true, ...props }) =
   useEffect(() => {
     if(sider.current) setSize(initialSize);
   }, [sider.current, left]);
-
+  
+  console.log(size)
 
   return (
-      <SResizableWrapper ref={sider} width={size.width + 'px'} height={'90vh'} left={left}> 
-          {sider.current && 
-            <Resizable {...rProps}>
-              {left && <Left/> // TODO fix render of left and right
-              }
-              {!left && <Right/>}
-            </Resizable>
-          }
-          <SLayoutSiderContent>
-            {props.children}
-          </SLayoutSiderContent>
-      </SResizableWrapper>
-    );
+    <SResizableWrapper ref={sider} width={size.width + 'px'} height={'90vh'} left={left}> 
+      {sider.current &&
+        <Resizable {...rProps}>
+          {left && <Left/>}
+          {!left && <Right/>}
+        </Resizable>
+      }
+      <SLayoutSiderContent>
+        {props.children}
+      </SLayoutSiderContent>
+  </SResizableWrapper>
+);
 };

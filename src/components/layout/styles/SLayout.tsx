@@ -13,7 +13,7 @@ const Bronze = css`
   display: flex;
   /* TODO remove later */
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 3;
 `;
 
