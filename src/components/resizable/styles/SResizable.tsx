@@ -9,14 +9,14 @@ const Bronze = css`
         user-select: none;
 
         &.right-resizer {
-            right: 10px;
+            right: 0;
             top: 0;
             height: 100%;
             cursor: ew-resize;
         }
 
         &.left-resizer {
-            left: 10px;
+            left: 0;
             top: 0;
             height: 100%;
             cursor: ew-resize;

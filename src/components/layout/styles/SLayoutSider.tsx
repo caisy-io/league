@@ -1,7 +1,11 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-const Bronze = css`
+interface ISLayoutSider {
+  left?: boolean;
+}
+
+const Bronze = css<ISLayoutSider>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,6 +14,9 @@ const Bronze = css`
   overflow: auto;
   background-color: var(--white-1);
   border-radius: 6px;
+
+  flex: 1;
+  order: ${(props) => props.left ? 3 : 1};
 `;
 
 const Silver = css``;
