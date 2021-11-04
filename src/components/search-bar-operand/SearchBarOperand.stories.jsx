@@ -1,21 +1,28 @@
 import React from "react";
 import { SearchBarOperand } from './SearchBarOperand';
+import { SearchBarOperandEntity } from './SearchBarOperandEntity';
+import { CloseButton} from '../..';
 
 export default {
     title: `Components/SearchBarOperand`,
     component: SearchBarOperandDemo,
     argTypes: {
-        activated: {
-            description: "Changes the state of the Search Bar Operand to Activated",
-            control: { type: "boolean" },
+        type: {
+            description: "Changes the overall design of the search bar operand",
+            options: ["default", "hover", "activated"],
+            control: { type: "select" },
             table: {
                 defaultValue: {
-                    summary: false,
+                    summary: "default",
                 },
             },
         },
-        hover: {
-            description: "Changes the state of the Search Bar Operand to Hover",
+        content: {
+            description: "Content of the search bar operand",
+            control: { type: "text" },
+        },
+        entity: {
+            description: "Displays search bar operand with or without entity",
             control: { type: "boolean" },
             table: {
                 defaultValue: {
@@ -27,14 +34,22 @@ export default {
 };
 
 function SearchBarOperandDemo({ content, ...args }) {
-    <SearchBarOperand>
-        {content}
-    </SearchBarOperand>
+    console.log("running demo");
+    return <CloseButton hover>
+         <SearchBarOperand {...args}>
+            <SearchBarOperandEntity {...args}>
+            {content}
+            </SearchBarOperandEntity>
+            {content}
+        </SearchBarOperand>
+    </CloseButton>
 }
 
-const Template = (args) => <SearchBarOperand {...args} />;
+const Template = (args) => <SearchBarOperandDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-
+    type: "default",
+    content: "Default",
+    entity: false
 };

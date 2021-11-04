@@ -3,27 +3,21 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 import { ISearchBarOperandType, ISearchBarOperandProps } from '../SearchBarOperand';
 
 const CSSNeutral = css`
-  background-color: transparent;
-  border: 2px solid var(--hover-interactional-secondary-03);
-`;
-
-const CSSHover = css`
-  background-color: var(--hover-ui-01); 
-  border: 2px solid var(--neutral-300);
+  background-color: var(--active-ui-01);
 `;
 
 const CSSActivated = css`
-  background-color: var(--hover-ui-01); 
-  border: 2px solid var(--interactional-primary-01);
-  color: var(--active-text-04);
+  background-color: var(--interactional-primary-01); 
+  color: var(--text-02);
 `;
 
 const getTypeStyling = (type: ISearchBarOperandType) => {
+  console.log("entity type " + type)
   switch (type) {
     case "default":
       return CSSNeutral;
     case "hover":
-      return CSSHover;
+      return CSSNeutral;
     case "activated":
       return CSSActivated;
     default:
@@ -32,21 +26,22 @@ const getTypeStyling = (type: ISearchBarOperandType) => {
 };
 
 const Bronze = css<ISearchBarOperandProps>`
-  max-width: min-content;
-  color: var(--active-ui-01);
+  height: 100%;
+  color: var(--text-02);
   flex-grow: 0;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   border-radius: 8px;
   position: relative;
   z-index: 0;
-  transition: all 0.3s ease;
-  gap: 9px;
-  font-size: 16px;
+  text-transform: uppercase;
   font-weight: 700;
-  padding: 4px;
-  box-sizing: border-box;
+  letter-spacing: 2px;
+  background-color: var(--active-ui-01);
+  gap: 9px;
+  font-size: 11px;
+  padding: 8px;
   ${(props) => getTypeStyling(props.type)};
   > * {
     z-index: 10;
@@ -57,8 +52,7 @@ const Bronze = css<ISearchBarOperandProps>`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-`;
+  }`;
 
 const Silver = css``;
 
@@ -68,7 +62,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSearchBarOperand = styled.div`
+export const SSearchBarOperandEntity = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

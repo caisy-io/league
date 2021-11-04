@@ -8,8 +8,8 @@ export default {
   component: ButtonDemo,
   parameters: {
     design: {
-       type: 'figma',
-       url: 'https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=5%3A335'
+      type: 'figma',
+      url: 'https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=5%3A335'
     }
   },
   argTypes: {

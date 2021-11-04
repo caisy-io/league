@@ -1,14 +1,16 @@
 import React from 'react';
-import {SSearchBarOperand} from './styles/SSearchBarOperand';
+import { SSearchBarOperand } from './styles/SSearchBarOperand';
+import { SSearchBarOperandEntity } from './styles/SSearchBarOperandEntity';
+export type ISearchBarOperandType = "default" | "hover" | "activated";
 
-interface ISearchBarOperand{
-
+export interface ISearchBarOperandProps {
+  type?: ISearchBarOperandType;
 }
 
-export const SearchBarOperand: React.FC<ISearchBarOperand> = ({...props}) => {
+export const SearchBarOperand: React.FC<ISearchBarOperandProps> = ({ ...props }) => {
   console.log(`SearchBarOperand props: `, props);
   return (
-    <SSearchBarOperand>
+    <SSearchBarOperand {...props}>
       {props.children}
     </SSearchBarOperand>
   )

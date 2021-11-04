@@ -3,6 +3,7 @@ export * from "./badge";
 export * from "./body-layout";
 export * from "./button";
 export * from "./card";
+export * from "./close-button";
 export * from "./collapsible";
 export * from "./datepicker";
 export * from "./divider";

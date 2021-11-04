@@ -11,7 +11,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSearchBarOperandLabel = styled.div`
+export const SCloseButton = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

@@ -36,6 +36,7 @@
     "dts-bundle-generator": "^5.9.0",
     "eslint": "^8.0.0",
     "install-peers-cli": "^2.2.0",
+    "plop": "^2.7.6",
     "rollup": "^2.33.1",
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-babel": "^4.4.0",
