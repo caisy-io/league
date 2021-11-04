@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Left, Resizable, Right, useResize } from ".";
 import { lock, max, min, resize, update } from "./Resizable.operations";
+import { SResizableWrapper } from "./styles/SResizableWrapper";
 
     // TODO Optimize values
 const MIN_WIDTH = 1920 * 0.07 + 100;
@@ -38,17 +39,21 @@ function ResizableDemo(args) {
                 display: 'flex',
                 flexDirection: args.left ? 'row' : 'row-reverse'
             }}>
-            <div
+            <SResizableWrapper
                 ref={resizable}
+                width={size.width + 'px'}
+                height={size.height + 'px'}
                 style={{ 
-                    position: 'relative',
-                    overflow: 'auto',
                     borderRadius: '6px',
-                    width: size.width, 
-                    height: size.height, 
                     backgroundColor:'lightblue'
                 }} 
             >
+                {resizable.current &&
+                    <Resizable {...props}> 
+                        {!args.left && <Left/>}
+                        {args.left && <Right/>}
+                    </Resizable>
+                }
                 <div 
                     style={{
                         display: 'flex',
@@ -60,15 +65,9 @@ function ResizableDemo(args) {
                         height: '100%'
                     }}
                 >
-                    {resizable.current &&
-                        <Resizable {...props}> 
-                            {!args.left && <Left/>}
-                            {args.left && <Right/>}
-                        </Resizable>
-                    }
                     {args.content}
                 </div>
-            </div>
+            </SResizableWrapper>
         </div>
     );
 }

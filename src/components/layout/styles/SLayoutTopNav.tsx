@@ -4,7 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 interface ISLayoutTopNav {}
 
 const Bronze = css<ISLayoutTopNav>`
-  background: orangered;
+  background: lightblue;
   height: 10vh;
 `;
 

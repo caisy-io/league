@@ -2,10 +2,10 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  background: deeppink;
+  background: violet;
   display: flex;
-  flex-wrap: wrap;
-  height: 100vh;
+  /* justify-content: space-between; */
+  max-width: 90vw;
 `;
 
 const Silver = css``;

@@ -8,9 +8,10 @@ export interface ISLayoutMainNav {
 const Bronze = css` 
     display: flex;
     flex-direction: column;
-    width: ${(props: ISLayoutMainNav) => props.width > 100 ? props.width : "100px"};
+    width: ${(props: ISLayoutMainNav) => props.width > 100 ? props.width : "70px"};
+    min-width: ${(props: ISLayoutMainNav) => props.width > 100 ? props.width : "70px"};
     height: 100vh;
-    background-color: blue;
+    background-color: #ffae03;
 `;
 
 const Silver = css``;

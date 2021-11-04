@@ -5,6 +5,8 @@ import { lock, max, min, resize, update } from '../resizable/Resizable.operation
 import { SLayoutSider } from "./styles/SLayoutSider";
 import { Left, Right } from '../resizable/Resizable.resizers';
 import { SLayoutSiderContent } from './styles/SLayoutSiderContent';
+import { SResizable } from '../resizable/styles/SResizable';
+import { SResizableWrapper } from '../resizable/styles/SResizableWrapper';
 
 interface ILayoutSider {
   left?: boolean;
@@ -44,8 +46,7 @@ export const LayoutSider: React.FC<ILayoutSider> = ({ left = true, ...props }) =
   console.log(size);
 
   return (
-      <SLayoutSider ref={sider} style={{ width: size.width, height: '90vh'}} left={left}> 
-        <SLayoutSiderContent>
+      <SResizableWrapper ref={sider} width={size.width + 'px'} height={'90vh'} left={left}> 
           {sider.current && 
             <Resizable {...rProps}>
               {left && <Left/> // TODO fix render of left and right
@@ -53,8 +54,9 @@ export const LayoutSider: React.FC<ILayoutSider> = ({ left = true, ...props }) =
               {!left && <Right/>}
             </Resizable>
           }
-          {props.children}
-        </SLayoutSiderContent>
-      </SLayoutSider>
+          <SLayoutSiderContent>
+            {props.children}
+          </SLayoutSiderContent>
+      </SResizableWrapper>
     );
 };

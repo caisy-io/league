@@ -6,6 +6,7 @@ interface ISLayoutWrapper {}
 const Bronze = css<ISLayoutWrapper>`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const Silver = css``;

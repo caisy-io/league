@@ -3,9 +3,9 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const Bronze = css`
   background: darkslateblue;
-  flex: 2;
   order: 2;
   min-height: 80vh;
+  width: 100%;
 `;
 
 const Silver = css``;

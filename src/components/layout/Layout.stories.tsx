@@ -18,10 +18,13 @@ function LayoutDemo(args) {
                     Nav bar
                 </LayoutTopNav>
                 <SLayoutContentWrapper className="content">
-                    <LayoutContent>{args.children}</LayoutContent>
                     <LayoutSider left={false}>
                         <p>Resizable on right side</p>
                     </LayoutSider>
+                    <LayoutContent>
+                        <p>Content</p>
+                        {args.children}
+                    </LayoutContent>
                     <LayoutSider left>
                         <p>Resizable on left side</p>
                     </LayoutSider>
@@ -42,3 +45,54 @@ const Template = (args) =>
 export const Default = Template.bind({});
 Default.args = {};
 
+
+// With LeftSider
+export const LeftSider = ({content, ...args}) => (
+    <Layout style={{backgroundColor: "lightgray"}} {...args}>
+        <LayoutMainNav>
+            <p>nav</p>
+        </LayoutMainNav>
+        <SLayoutWrapper className="container">
+            <LayoutTopNav>
+                Nav bar
+            </LayoutTopNav>
+            <SLayoutContentWrapper className="content">
+                <LayoutSider left={false}>
+                    <p>Resizable on right side</p>
+                </LayoutSider>
+                <LayoutContent>
+                    <p>Content</p>
+                    {args.children}
+                </LayoutContent>
+            </SLayoutContentWrapper>
+        </SLayoutWrapper>
+
+    </Layout>
+);
+
+LeftSider.args = {};
+
+// With RightSider
+export const RightSider = ({content, ...args}) => (
+    <Layout style={{backgroundColor: "lightgray"}} {...args}>
+        <LayoutMainNav>
+            <p>nav</p>
+        </LayoutMainNav>
+        <SLayoutWrapper className="container">
+            <LayoutTopNav>
+                Nav bar
+            </LayoutTopNav>
+            <SLayoutContentWrapper className="content">
+                <LayoutContent>
+                    <p>Content</p>
+                    {args.children}
+                </LayoutContent>
+                <LayoutSider left>
+                    <p>Resizable on left side</p>
+                </LayoutSider>
+            </SLayoutContentWrapper>
+        </SLayoutWrapper>
+    </Layout>
+);
+
+LeftSider.args = {};
