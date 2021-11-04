@@ -24,7 +24,7 @@ const getTypeStyling = (type: ISearchBarOperandType) => {
       return CSSNeutral;
     case "hover":
       return CSSHover;
-    case "activated":
+    case "active":
       return CSSActivated;
     default:
       return CSSNeutral;

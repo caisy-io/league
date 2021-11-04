@@ -9,7 +9,7 @@ export default {
     argTypes: {
         type: {
             description: "Changes the overall design of the search bar operand",
-            options: ["default", "hover", "activated"],
+            options: ["default", "hover", "active"],
             control: { type: "select" },
             table: {
                 defaultValue: {
