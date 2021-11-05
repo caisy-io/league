@@ -1,7 +1,7 @@
 import React from "react";
 import { SearchBarOperand } from './SearchBarOperand';
 import { SearchBarOperandEntity } from './SearchBarOperandEntity';
-import { CloseButton } from '../..';
+import { CloseButton } from '../close-button';
 
 export default {
     title: `Components/SearchBarOperand`,
@@ -26,8 +26,8 @@ export default {
 
 function SearchBarOperandDemo({ content, ...args }) {
     console.log("running demo" + args);
-    return <CloseButton>
-        <SearchBarOperand {...args}>
+    return <CloseButton defaultVisible={(args.type == "hover" || args.type == "active") || false}>
+        <SearchBarOperand active={args.type == "active" } hover={args.type == "hover" }>
             {content}
         </SearchBarOperand>
     </CloseButton>
@@ -43,8 +43,8 @@ Default.args = {
 
 // With entity
 export const WithEntity = ({ content, ...args }) => (
-    <CloseButton hover=>
-        <SearchBarOperand {...args}>
+    <CloseButton defaultVisible={(args.type == "hover" || args.type == "active") || false}>
+        <SearchBarOperand active={args.type == "active" } hover={args.type == "hover" }>
             <SearchBarOperandEntity {...args}>
                 {content}
             </SearchBarOperandEntity>

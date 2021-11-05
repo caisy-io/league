@@ -4,7 +4,8 @@ import { SSearchBarOperandEntity } from './styles/SSearchBarOperandEntity';
 export type ISearchBarOperandType = "default" | "hover" | "active";
 
 export interface ISearchBarOperandProps {
-  type?: ISearchBarOperandType;
+  hover?: boolean;
+  active?: boolean;
 }
 
 export const SearchBarOperand: React.FC<ISearchBarOperandProps> = ({ ...props }) => {

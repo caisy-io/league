@@ -1,45 +1,26 @@
 import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
-import { ICloseButtonType, ICloseButtonProps } from '../CloseButton';
-
-const CSSNeutral = css`
-  background-color: var(--interactional-secondary-02);
-`;
-
-const CSSHover = css`
-  background-color: var(--hover-interactional-secondary-02);
-`;
-
-const CSSActivated = css`
-  background-color: var(--hover-interactional-secondary-02);
-`;
+import {  ICloseButtonProps } from '../CloseButton';
 
 const CSSCloseButtonInvisible = css`
   opacity: 0; 
 `;
 
-const getTypeStyling = (type: ICloseButtonType) => {
-  switch (type) {
-    case "default":
-      return CSSNeutral;
-    case "hover":
-      return CSSHover;
-    case "active":
-      return CSSActivated;
-    default:
-      return CSSNeutral;
-  }
-};
-
 const Bronze = css<ICloseButtonProps>`
+  opacity: 1; 
+  transition: opacity ease 1s;
+  cursor: pointer;
   width: 12px;
   height: 12px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
   border-radius: 100px;
-  border: 2px solid #FFFF;
+  outline: 2px solid #FFFF;
   position: absolute;
   top: -6px;
   right: -6px;
-  ${(props) => getTypeStyling(props.type)};
+  background-color: var(--interactional-secondary-02);
   ${(props) => !props.defaultVisible && CSSCloseButtonInvisible}
   > * {
     z-index: 10;

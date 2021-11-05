@@ -1,5 +1,4 @@
 import React from "react";
-import { Badge, BadgePosition } from "..";
 import { SMainMenuItem } from "./styles/SMainMenuItem";
 import { SMainMenuItemIcon } from "./styles/SMainMenuItemIcon";
 import { SMainMenuItemLabel } from "./styles/SMainMenuItemLabel";

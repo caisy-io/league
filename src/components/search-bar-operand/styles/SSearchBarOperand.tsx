@@ -1,35 +1,17 @@
 import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
-import { ISearchBarOperandType, ISearchBarOperandProps } from '../SearchBarOperand';
-
-const CSSNeutral = css`
-  background-color: transparent;
-  border: 2px solid var(--hover-interactional-secondary-03);
-`;
+import { ISearchBarOperandProps } from '../SearchBarOperand';
 
 const CSSHover = css`
   background-color: var(--hover-ui-01); 
   border: 2px solid var(--neutral-300);
 `;
 
-const CSSActivated = css`
+const CSSActive = css`
   background-color: var(--hover-ui-01); 
   border: 2px solid var(--interactional-primary-01);
   color: var(--active-text-04);
 `;
-
-const getTypeStyling = (type: ISearchBarOperandType) => {
-  switch (type) {
-    case "default":
-      return CSSNeutral;
-    case "hover":
-      return CSSHover;
-    case "active":
-      return CSSActivated;
-    default:
-      return CSSNeutral;
-  }
-};
 
 const Bronze = css<ISearchBarOperandProps>`
   max-width: min-content;
@@ -47,7 +29,15 @@ const Bronze = css<ISearchBarOperandProps>`
   font-weight: 700;
   padding: 4px;
   box-sizing: border-box;
-  ${(props) => getTypeStyling(props.type)};
+  background-color: transparent;
+  border: 2px solid var(--hover-interactional-secondary-03);
+
+  ${(props) => props.hover ? CSSHover : ''};
+  :hover{
+    ${CSSHover}
+  }
+  ${(props) => props.active ? CSSActive : ''};
+
   > * {
     z-index: 10;
     position: relative;
