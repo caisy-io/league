@@ -11,7 +11,7 @@ interface ISimpleInput extends InputHTMLAttributes<HTMLInputElement> {
   required?: boolean;
 }
 
-export const SimpleInput: React.FC<ISimpleInput> = ({ label, state, required, ...props }) => {
+export const SimpleInput: React.FC<ISimpleInput> = ({ label, state, required, children, ...props }) => {
   const [active, setActive] = React.useState(false);
   const [inputLength, setInputLength] = React.useState(props.value?.toString().length);
 
@@ -52,6 +52,7 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ label, state, required, ..
   return (
     <SSimpleInputWrapper active={active} state={state} onClick={onClick}>
       <span ref={spanRef} style={{ width: "fit-content", visibility: "hidden", position: "absolute", fontSize: 14 }} />
+      {children}
 
       <div style={{ position: "relative", width: "fit-content" }}>
         {required && <SSimpleInputRequiredIndicator />}
