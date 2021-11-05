@@ -5,6 +5,8 @@ import { IconFolder } from "../../icons/IconFolder";
 import { IconAngleRight } from "../../icons";
 import STreeItemIconsContainer from "./styles/STreeItemIconsContainer";
 import { STreeItemArrow } from "./styles/STreeItemArrow";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 export interface ITreeItem {
   id: string | number;
@@ -85,61 +87,63 @@ export const Tree: React.FC<ITree> = ({ ...props }) => {
   };
 
   return (
-    <STree>
-      {props.treeData.map(
-        (item, index) =>
-          item.parent === props.rootId && (
-            <React.Fragment key={item.id}>
-              <TreeItem
-                onDrop={(index, newIndex, oldParent, newParent) => onDrop(index, newIndex, oldParent, newParent)}
-                parent={item.parent}
-                index={index}
-                id={item.id}
-                isLeaf={item.isLeaf}
-                onSelect={() => {
-                  !item.isLeaf && onNodeClick(item.id);
-                  props.onSelect(item.id, item);
-                }}
-                selected={() => props.selected(item.id, item)}
-              >
-                {!item.isLeaf ? (
-                  <STreeItemIconsContainer style={{ display: "flex" }}>
-                    <STreeItemArrow open={openedNodes.includes(item.id)}>
-                      <IconAngleRight />
-                    </STreeItemArrow>
-                    <IconFolder />
-                  </STreeItemIconsContainer>
-                ) : null}
-                {item.text}
-              </TreeItem>
+    <DndProvider backend={HTML5Backend}>
+      <STree>
+        {props.treeData.map(
+          (item, index) =>
+            item.parent === props.rootId && (
+              <React.Fragment key={item.id}>
+                <TreeItem
+                  onDrop={(index, newIndex, oldParent, newParent) => onDrop(index, newIndex, oldParent, newParent)}
+                  parent={item.parent}
+                  index={index}
+                  id={item.id}
+                  isLeaf={item.isLeaf}
+                  onSelect={() => {
+                    !item.isLeaf && onNodeClick(item.id);
+                    props.onSelect(item.id, item);
+                  }}
+                  selected={() => props.selected(item.id, item)}
+                >
+                  {!item.isLeaf ? (
+                    <STreeItemIconsContainer style={{ display: "flex" }}>
+                      <STreeItemArrow open={openedNodes.includes(item.id)}>
+                        <IconAngleRight />
+                      </STreeItemArrow>
+                      <IconFolder />
+                    </STreeItemIconsContainer>
+                  ) : null}
+                  {item.text}
+                </TreeItem>
 
-              {openedNodes.includes(item.id) &&
-                props.treeData.map(
-                  (internalItem, internalIndex) =>
-                    internalItem.parent === item.id && (
-                      <TreeItem
-                        onSelect={() => {
-                          !item.isLeaf && onNodeClick(internalItem.id);
-                          props.onSelect(internalItem.id, internalItem);
-                        }}
-                        selected={() => props.selected(internalItem.id, internalItem)}
-                        style={{ marginLeft: 20 }}
-                        key={internalItem.id}
-                        onDrop={(index, newIndex, oldParent, newParent) =>
-                          onDrop(index, newIndex, oldParent, newParent)
-                        }
-                        parent={internalItem.parent}
-                        index={internalIndex}
-                        isLeaf={internalItem.isLeaf}
-                        id={internalItem.id}
-                      >
-                        {internalItem.text}
-                      </TreeItem>
-                    ),
-                )}
-            </React.Fragment>
-          ),
-      )}
-    </STree>
+                {openedNodes.includes(item.id) &&
+                  props.treeData.map(
+                    (internalItem, internalIndex) =>
+                      internalItem.parent === item.id && (
+                        <TreeItem
+                          onSelect={() => {
+                            !item.isLeaf && onNodeClick(internalItem.id);
+                            props.onSelect(internalItem.id, internalItem);
+                          }}
+                          selected={() => props.selected(internalItem.id, internalItem)}
+                          style={{ marginLeft: 20 }}
+                          key={internalItem.id}
+                          onDrop={(index, newIndex, oldParent, newParent) =>
+                            onDrop(index, newIndex, oldParent, newParent)
+                          }
+                          parent={internalItem.parent}
+                          index={internalIndex}
+                          isLeaf={internalItem.isLeaf}
+                          id={internalItem.id}
+                        >
+                          {internalItem.text}
+                        </TreeItem>
+                      ),
+                  )}
+              </React.Fragment>
+            ),
+        )}
+      </STree>
+    </DndProvider>
   );
 };

@@ -60,6 +60,6 @@ interface ITabPanel {
   style?: React.CSSProperties;
 }
 
-export const TabPanel = (props: ITabPanel) => {
+export const TabPanel: React.FC<ITabPanel> = ({ ...props }) => {
   return <STabPanel {...props}>{props.children}</STabPanel>;
 };
