@@ -5,9 +5,18 @@ export default {
   title: `Components/CloseButton`,
   component: CloseButtonDemo,
   argTypes: {
-    // example argument type
-    activated: {
-      description: "Changes the state of the component to Activated",
+    type: {
+      description: "Changes the overall design of the search bar operand",
+      options: ["default", "hover", "active"],
+      control: { type: "select" },
+      table: {
+        defaultValue: {
+          summary: "default",
+        },
+      },
+    },
+    invisible: {
+      description: "Toggles visibility of close button",
       control: { type: "boolean" },
       table: {
         defaultValue: {
@@ -19,14 +28,15 @@ export default {
 };
 
 function CloseButtonDemo({ content, ...args }) {
-  <CloseButton>
-      {content}
-</CloseButton>
+  return <CloseButton {...args}>
+    {content}
+  </CloseButton>
 }
 
-const Template = (args) => < CloseButtonDemo {...args } />;
+const Template = (args) => < CloseButtonDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-
+  type: "default",
+  invisible: "false"
 };
