@@ -1,20 +1,21 @@
 import styled, { css } from 'styled-components';
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
+import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISearchBarOperandProps } from '../SearchBarOperand';
 
 const CSSHover = css`
   background-color: var(--hover-ui-01); 
-  border: 2px solid var(--neutral-300);
+  border: 1px solid var(--neutral-300);
 `;
 
 const CSSActive = css`
   background-color: var(--hover-ui-01); 
-  border: 2px solid var(--interactional-primary-01);
+  border: 1px solid var(--interactional-primary-01);
   color: var(--active-text-04);
 `;
 
 const Bronze = css<ISearchBarOperandProps>`
   max-width: min-content;
+  height: 28px;
   color: var(--active-ui-01);
   flex-grow: 0;
   display: flex;
@@ -30,23 +31,13 @@ const Bronze = css<ISearchBarOperandProps>`
   padding: 4px;
   box-sizing: border-box;
   background-color: transparent;
-  border: 2px solid var(--hover-interactional-secondary-03);
-
+  border: 1px solid var(--hover-interactional-secondary-03);
   ${(props) => props.hover ? CSSHover : ''};
   :hover{
     ${CSSHover}
   }
-  ${(props) => props.active ? CSSActive : ''};
-
-  > * {
-    z-index: 10;
-    position: relative;
-  }
-  span {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  &, &:hover{
+    ${(props) => props.active ? CSSActive : ''};
   }
 `;
 
