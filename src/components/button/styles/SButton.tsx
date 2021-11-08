@@ -81,7 +81,7 @@ const CSSPrimarySticked = css`
   }
 `;
 
-const CSSNeutral = css`
+const CSSSecondary = css`
   border: none;
   &:after {
     background-color: var(--interactional-secondary-01);
@@ -98,13 +98,13 @@ const CSSNeutral = css`
   }
 `;
 
-const CSSNeutralActivated = css`
+const CSSSecondaryActivated = css`
   &:after {
     background-color: var(--active-interactional-secondary-01);
   }
 `;
 
-const CSSSecondary = css`
+const CSSNeutral = css`
   color: var(--text-01);
   border: none;
   &:after {
@@ -123,7 +123,7 @@ const CSSSecondary = css`
   }
 `;
 
-const CSSSecondaryActivated = css`
+const CSSNeutralActivated = css`
   color: var(--active-icon-01);
   border: none;
   &:after {
@@ -216,23 +216,6 @@ const CSSDangerSticked = css`
   }
 `;
 
-const CSSLink = css`
-  border: ${(props: any) => (props.dashed ? `var(--text-priority-neutral-4) 1px dashed` : "none")};
-  background: rgba(0, 0, 0, 0);
-  :hover {
-    background: rgba(0, 0, 0, 0.05);
-  }
-  &:active {
-    filter: brightness(80%) contrast(150%);
-    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.05);
-  }
-  color: var(--text-priority-neutral-3);
-`;
-
-const CSSRound = css`
-  border-radius: 50px;
-`;
-
 const CSSDisabled = css`
   &:disabled {
     cursor: not-allowed;
@@ -252,8 +235,6 @@ const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
       return isActivated ? CSSTertiaryActivated : CSSTertiary;
     case "danger":
       return isSticked ? CSSDangerSticked : isActivated ? CSSDangerActivated : CSSDanger;
-    case "link":
-      return CSSLink;
     default:
       return isActivated ? CSSNeutralActivated : CSSNeutral;
   }
@@ -288,12 +269,10 @@ const Bronze = css<IButtonProps>`
     height: 100%;
     width: 100%;
     border-radius: 6px;
-    ${(props) => (props.round ? CSSRound : "")};
   }
 
   ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
-  ${(props) => (props.round ? CSSRound : "")};
 
   &:active {
     &:after {
