@@ -8,7 +8,6 @@ export interface IButtonProps {
   type?: IButtonType;
   size?: IButtonSize;
   dashed?: boolean;
-  round?: boolean;
   disabled?: boolean;
   onClick?: (e: Event) => void;
   style?: any;
@@ -17,6 +16,7 @@ export interface IButtonProps {
   children?: any;
   htmlType?: string;
   activated?: boolean;
+  sticked?: boolean;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(({ children, onClick, ...props }, ref) => (

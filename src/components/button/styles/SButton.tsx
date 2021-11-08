@@ -51,6 +51,36 @@ const CSSPrimaryActivated = css`
   }
 `;
 
+const CSSPrimarySticked = css`
+  border: none;
+  border-radius: 0;
+  font-weight: 700;
+  color: var(--text-01);
+
+  &:after {
+    border-radius: 0;
+    background-color: transparent;
+  }
+  &:hover {
+    color: var(--hover-text-01);
+    &:after {
+      background-color: var(--hover-interactional-secondary-03);
+    }
+  }
+  &:active {
+    color: var(--active-text-01);
+    &:after {
+      background-color: var(--active-interactional-secondary-03);
+    }
+  }
+  &:disabled {
+    color: var(--disabled-text);
+    &:after {
+      background-color: var(--disabled-interactional-03);
+    }
+  }
+`;
+
 const CSSNeutral = css`
   border: none;
   &:after {
@@ -156,6 +186,36 @@ const CSSDangerActivated = css`
   }
 `;
 
+const CSSDangerSticked = css`
+  border: none;
+  border-radius: 0;
+  font-weight: 700;
+  color: var(--text-06);
+
+  &:after {
+    border-radius: 0;
+    background-color: transparent;
+  }
+  &:hover {
+    color: var(--hover-text-06);
+    &:after {
+      background-color: var(--hover-interactional-secondary-06);
+    }
+  }
+  &:active {
+    color: var(--active-text-06);
+    &:after {
+      background-color: var(--active-interactional-secondary-06);
+    }
+  }
+  &:disabled {
+    color: var(--disabled-text);
+    &:after {
+      background-color: var(--disabled-interactional-02);
+    }
+  }
+`;
+
 const CSSLink = css`
   border: ${(props: any) => (props.dashed ? `var(--text-priority-neutral-4) 1px dashed` : "none")};
   background: rgba(0, 0, 0, 0);
@@ -169,10 +229,6 @@ const CSSLink = css`
   color: var(--text-priority-neutral-3);
 `;
 
-const CSSRound = css`
-  border-radius: 50px;
-`;
-
 const CSSDisabled = css`
   &:disabled {
     cursor: not-allowed;
@@ -182,16 +238,16 @@ const CSSDisabled = css`
   }
 `;
 
-const getTypeStyling = (type: IButtonType, isActivated) => {
+const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
   switch (type) {
     case "primary":
-      return isActivated ? CSSPrimaryActivated : CSSPrimary;
+      return isSticked ? CSSPrimarySticked : isActivated ? CSSPrimaryActivated : CSSPrimary;
     case "secondary":
       return isActivated ? CSSSecondaryActivated : CSSSecondary;
     case "tertiary":
       return isActivated ? CSSTertiaryActivated : CSSTertiary;
     case "danger":
-      return isActivated ? CSSDangerActivated : CSSDanger;
+      return isSticked ? CSSDangerSticked : isActivated ? CSSDangerActivated : CSSDanger;
     case "link":
       return CSSLink;
     default:
@@ -215,9 +271,6 @@ const Bronze = css<IButtonProps>`
   font-size: 11px;
   padding: 0 12px;
   border: none;
-  ${(props) => getTypeStyling(props.type, props.activated)};
-  ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
-  ${(props) => (props.round ? CSSRound : "")};
 
   /* this after is there to split the background animation from the button content */
   /* after is the background */
@@ -231,8 +284,11 @@ const Bronze = css<IButtonProps>`
     height: 100%;
     width: 100%;
     border-radius: 6px;
-    ${(props) => (props.round ? CSSRound : "")};
   }
+
+  ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
+  ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
+
   &:active {
     &:after {
       transform-origin: center;
