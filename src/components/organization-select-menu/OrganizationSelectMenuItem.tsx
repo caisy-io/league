@@ -13,8 +13,8 @@ export const OrganizationSelectMenuItem: React.FC<{ menuItem: IOrganizationSelec
       <SOrganizationSelectMenuItem>
         <Img resolution={1440} src={props.menuItem.logoAssetUrl} />
       </SOrganizationSelectMenuItem>
-    ) : (
+    ) : typeof props.menuItem.name === "string" ? (
       <SOrganizationSelectMenuItem>{props.menuItem.name.slice(0, 2).toUpperCase()}</SOrganizationSelectMenuItem>
-    )
+    ) : null
   ) : null;
 };
