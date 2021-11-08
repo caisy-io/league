@@ -21,7 +21,7 @@ interface IOrganizationSelectMenu {
 
 export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({ ...props }) => {
   const EnviromentIcon = () => {
-    return props.enviroment ? (
+    return (props.enviroment && typeof props.enviroment.name === "string" ) ? (
       <SOrganizationSelectMenuEnviroment>
         {props.enviroment.name.slice(0, 2).toUpperCase()}
       </SOrganizationSelectMenuEnviroment>
