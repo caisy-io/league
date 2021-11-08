@@ -9,7 +9,7 @@ export default {
     state: {
       description: "Changes the state of the Item",
       control: { type: "select" },
-      options: ["default", "dragging", "loading", "success"],
+      options: ["default", "dragging", "loading", "success", "hover", "active"],
     },
     percentageLoaded: {
       description: "Shows percentage",

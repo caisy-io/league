@@ -9,7 +9,7 @@ import LoadingBorderIcon from "./icons/LoadingBorderIcon";
 import { SLoadingIconWrapper } from "./styles/SLoadingIconWrapper";
 import { SLoadingBorderWrapper } from "./styles/SLoadingBorderWrapper";
 
-type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success";
+type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "active";
 
 interface IUploadMenuItem {
   onClick: () => void;
@@ -27,6 +27,11 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
     e.preventDefault();
     props.onClick();
   };
+
+  React.useEffect(() => {
+    setHovering(props.state === "hover");
+    setActive(props.state === "active");
+  }, [props.state]);
 
   const renderIcon = () => {
     switch (props.state) {
