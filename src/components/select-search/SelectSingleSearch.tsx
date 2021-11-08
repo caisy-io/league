@@ -6,7 +6,7 @@ import { SSelectSearch } from "./styles/SSelectSearch";
 import { ClickOutside, useDimensions } from "webrix/hooks";
 import { getSearchedItems } from "./getSearchedItems";
 
-interface IDropdownSearch {
+interface ISelectSingleSearch {
   dataSource: any[];
   setDataSource: (items: any) => void;
   dropdownPosition?: "left" | "right" | "center";
@@ -19,68 +19,70 @@ interface IDropdownSearch {
 }
 
 // @Nicolas why we have a forwardRef here if we do not use it?
-export const SelectSingleSearch: React.FC<IDropdownSearch> = React.forwardRef(({ ...props }: IDropdownSearch, _) => {
-  const [inputValue, setInputValue] = React.useState<string>(
-    props.dataSource
-      .map((item) => item.items)
-      .flat()
-      .find((item) => item.key === ((props.value || props.defaultValue) as string))?.label || "",
-  );
-
-  const [active, setActive] = React.useState(false);
-  const innerRef = React.useRef<HTMLDivElement>(null);
-
-  const onSelect = (e: any) => {
-    setInputValue(
+export const SelectSingleSearch: React.FC<ISelectSingleSearch> = React.forwardRef(
+  ({ ...props }: ISelectSingleSearch, _) => {
+    const [inputValue, setInputValue] = React.useState<string>(
       props.dataSource
         .map((item) => item.items)
         .flat()
-        .find((item) => item.key === e)?.label,
+        .find((item) => item.key === ((props.value || props.defaultValue) as string))?.label || "",
     );
-    props.onChange?.(e as any);
-    setActive(false);
-  };
 
-  const onChange = (e) => {
-    props.setDataSource(getSearchedItems(e, props.dataSource));
-    setInputValue(e.target.value);
-  };
+    const [active, setActive] = React.useState(false);
+    const innerRef = React.useRef<HTMLDivElement>(null);
 
-  const { width } = useDimensions(innerRef);
+    const onSelect = (e: any) => {
+      setInputValue(
+        props.dataSource
+          .map((item) => item.items)
+          .flat()
+          .find((item) => item.key === e)?.label,
+      );
+      props.onChange?.(e as any);
+      setActive(false);
+    };
 
-  return (
-    <ClickOutside onClickOutside={() => setActive(false)}>
-      <div style={props.style} >
-        <SSelectSearch ref={innerRef}>
-          <Input
-            // onClose={props.onClose}
-            // hasCloseButton={active}
-            value={inputValue}
-            onFocus={() => setActive(true)}
-            // onBlur={() => setActive(false)}
-            // onClick={() => setActive(true)}
-            onChange={onChange}
-            placeholder={props.placeholder}
-            wrapperStyle={{ flexGrow: 1, maxWidth: "85%" }}
-          />
-          <IconAngleDown
-            style={{
-              transform: `rotate(${active ? "-180deg" : "0deg"})`,
-              transition: "transform 400ms",
-              width: "calc(15% - 6px)",
-            }}
-          />
-        </SSelectSearch>
-        {active && (
-          <Dropdown
-            renderItem={props.renderItem}
-            dropdownWidth={width}
-            categories={props.dataSource}
-            active
-            onSelect={onSelect}
-          />
-        )}
-      </div>
-    </ClickOutside>
-  );
-});
+    const onChange = (e) => {
+      props.setDataSource(getSearchedItems(e, props.dataSource));
+      setInputValue(e.target.value);
+    };
+
+    const { width } = useDimensions(innerRef);
+
+    return (
+      <ClickOutside onClickOutside={() => setActive(false)}>
+        <div style={props.style}>
+          <SSelectSearch ref={innerRef}>
+            <Input
+              // onClose={props.onClose}
+              // hasCloseButton={active}
+              value={inputValue}
+              onFocus={() => setActive(true)}
+              // onBlur={() => setActive(false)}
+              // onClick={() => setActive(true)}
+              onChange={onChange}
+              placeholder={props.placeholder}
+              wrapperStyle={{ flexGrow: 1, maxWidth: "85%" }}
+            />
+            <IconAngleDown
+              style={{
+                transform: `rotate(${active ? "-180deg" : "0deg"})`,
+                transition: "transform 400ms",
+                width: "calc(15% - 6px)",
+              }}
+            />
+          </SSelectSearch>
+          {active && (
+            <Dropdown
+              renderItem={props.renderItem}
+              dropdownWidth={width}
+              categories={props.dataSource}
+              active
+              onSelect={onSelect}
+            />
+          )}
+        </div>
+      </ClickOutside>
+    );
+  },
+);

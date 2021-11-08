@@ -4,15 +4,15 @@ import { SInputIcon } from "./styles/SInputIcon";
 import { SInputCloseButton } from "./styles/SInputCloseButton";
 import { IconClose } from "../../icons";
 
-interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+interface IInput extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
-  type?: "number" | "password" | "email" | "text";
   icon?: () => ReactElement;
   hasCloseButton?: boolean;
   onClose?: () => void;
   onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
   wrapperStyle?: React.CSSProperties;
+  onKeyUp?: any;
 }
 
 export const Input: React.FC<IInput> = ({ hasCloseButton, onClose, icon, type = "text", wrapperStyle, ...props }) => {
