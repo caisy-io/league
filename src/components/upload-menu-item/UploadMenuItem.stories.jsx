@@ -5,6 +5,12 @@ import { UploadMenuItem } from "./UploadMenuItem";
 export default {
   title: "Components/UploadMenuItem",
   component: UploadMenuItemDemo,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=5%3A335",
+    },
+  },
   argTypes: {
     state: {
       description: "Changes the state of the Item",
