@@ -7,7 +7,6 @@ export interface ICloseButtonProps {
 }
 
 export const CloseButton: React.FC<ICloseButtonProps> = ({ defaultVisible=true,...props }) => {
-  console.log(`CloseButton props: `, props);
   return (
     <SCloseButtonWrapper {...props} defaultVisible={defaultVisible}>
       {props.children}

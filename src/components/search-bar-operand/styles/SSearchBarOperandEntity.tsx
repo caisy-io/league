@@ -35,7 +35,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSearchBarOperandEntity = styled.div`
+export const SSearchBarOperandEntity = styled.div<ISearchBarOperandProps>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { ProgressiveCaption01Semibold } from '../../../constants/styles/fonts';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISearchBarOperandProps } from '../SearchBarOperand';
 
@@ -14,6 +15,7 @@ const CSSActive = css`
 `;
 
 const Bronze = css<ISearchBarOperandProps>`
+  ${ProgressiveCaption01Semibold};
   max-width: min-content;
   height: 28px;
   color: var(--active-ui-01);
@@ -26,8 +28,6 @@ const Bronze = css<ISearchBarOperandProps>`
   z-index: 0;
   transition: all 0.3s ease;
   gap: 9px;
-  font-size: 16px;
-  font-weight: 700;
   padding: 4px;
   box-sizing: border-box;
   background-color: transparent;
@@ -49,7 +49,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSearchBarOperand = styled.div`
+export const SSearchBarOperand = styled.div<ISearchBarOperandProps>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

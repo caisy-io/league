@@ -7,7 +7,6 @@ interface ISearchBarOperand{
 }
 
 export const SearchBarOperandEntity: React.FC<ISearchBarOperand> = ({...props}) => {
-  console.log(`SearchBarOperand props: `, props);
   return (
     <SSearchBarOperandEntity {...props}>
       {props.children}

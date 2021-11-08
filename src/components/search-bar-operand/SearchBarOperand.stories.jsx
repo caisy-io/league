@@ -25,7 +25,6 @@ export default {
 };
 
 function SearchBarOperandDemo({ content, ...args }) {
-    console.log("running demo" + args);
     return <CloseButton defaultVisible={(args.state == "hover" || args.state == "active") || false}>
         <SearchBarOperand active={args.state == "active" } hover={args.state == "hover" }>
             {content}

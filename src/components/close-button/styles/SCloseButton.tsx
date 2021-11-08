@@ -8,7 +8,7 @@ const CSSCloseButtonInvisible = css`
 
 const Bronze = css<ICloseButtonProps>`
   opacity: 1; 
-  transition: opacity ease 1s;
+  transition: opacity ease 0.3s;
   cursor: pointer;
   width: 12px;
   height: 12px;
