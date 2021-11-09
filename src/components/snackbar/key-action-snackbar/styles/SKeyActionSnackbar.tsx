@@ -13,6 +13,7 @@ const Bronze = css<ISKeyActionSnackbar>`
   background-color: transparent;
   color: var(--text-02);
   padding: 6px 8px;
+  font-size: 12px;
 
   &:after {
     content: "";
@@ -22,6 +23,10 @@ const Bronze = css<ISKeyActionSnackbar>`
     width: 100%;
     background-color: var(--ui-overlay-01);
     border-radius: 4px;
+
+    opacity: 0.72;
+
+    box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.14);
   }
 `;
 

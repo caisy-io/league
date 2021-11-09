@@ -14,7 +14,7 @@ export const KeyActionSnackbar: React.FC<IKeyActionSnackbar> = ({ ...props }) =>
       {props.keys.map((key, index) => (
         <>
           <SKeyActionSnackbarKey key={index}>{key}</SKeyActionSnackbarKey>
-          {props.keys.length > index + 1 && "+"}
+          {props.keys.length > index + 1 && <>&nbsp;+&nbsp;</>}
         </>
       ))}
       &nbsp;to {props.action}
