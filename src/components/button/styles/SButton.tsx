@@ -242,7 +242,7 @@ const CSSDisabled = css`
   }
 `;
 
-const CSSLeftOpen = css`
+const CSSSidebarTag = css`
   position: static;
   width: 17px;
   height: 40px;
@@ -251,35 +251,24 @@ const CSSLeftOpen = css`
 
   border-radius: 0px 8px 8px 0px;
   border: 1px solid #E8EFF3;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.04);
 
   flex: none;
   order: 0;
   flex-grow: 0;
   margin: 0px 10px;
-
   padding: 0;
   background: #FFFFFF;
 `;
 
+const CSSLeftOpen = css`
+  ${props => props.type === "sidebarTag" ? CSSSidebarTag : ""}
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.04);
+`;
+
 const CSSRightOpen = css`
-  position: static;
-  width: 17px;
-  height: 40px;
-  left: 0px;
-  top: 692px;
-
+  ${props => props.type === "sidebarTag" ? CSSSidebarTag : ""}
   border-radius: 8px 0px 0px 8px;
-  border: 1px solid #E8EFF3;
   box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.04);
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 10px;
-
-  padding: 0;
-  background: #FFFFFF;
 
   > svg {
     transform: rotate(180deg);
@@ -287,23 +276,9 @@ const CSSRightOpen = css`
 `;
 
 const CSSLeftClosed = css`
-  position: static;
-  width: 17px;
-  height: 40px;
-  left: 0px;
-  top: 692px;
-
+  ${props => props.type === "sidebarTag" ? CSSSidebarTag : ""}
   border-radius: 0px 8px 8px 0px;
-  border: 1px solid #E8EFF3;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.04);
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 10px;
-
-  padding: 0;
-  background: #FFFFFF;
 
   > svg {
     transform: rotate(180deg);
@@ -311,22 +286,9 @@ const CSSLeftClosed = css`
 `;
 
 const CSSRightClosed = css`
-  position: static;
-  width: 17px;
-  height: 40px;
-  left: 0px;
-  top: 692px;
-
+  ${props => props.type === "sidebarTag" ? CSSSidebarTag : ""}
   border-radius: 8px 0px 0px 8px;
-  border: 1px solid #E8EFF3;
   box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.04);
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 10px;
-  padding: 0;
-  background: #FFFFFF;
 `;
 
 const getTypeStyling = (type: IButtonType, isActivated, isSticked, isOpen, isLeft) => {
