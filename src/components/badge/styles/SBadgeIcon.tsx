@@ -4,43 +4,33 @@ import { BadgePosition } from "../BadgePosition";
 
 interface ISBadgeIcon {
   position: BadgePosition;
-  color?: string;
-  backgroundColor?: string;
   disabled?: boolean;
+  height: number;
 }
 
 const Bronze = css<ISBadgeIcon>`
   position: absolute;
-  z-index: 10;
-  top: 0;
-  left: ${(props) => (props.position == BadgePosition.TopLeft ? "0" : "")};
-  right: ${(props) => (props.position == BadgePosition.TopRight ? "0" : "")};
-  transform: translateX(${(props) => (props.position == BadgePosition.TopLeft ? "-35%" : "35%")}) translateY(-35%);
 
-  color: ${(props) => (props.color ? props.color : "white")};
-  font-size: 12px;
+  z-index: 10;
+  top: ${(props) => `-${props.height / 2}px`};
+  ${(props) => (props.position == BadgePosition.TopLeft ? `left: -${props.height / 2}px` : "")};
+  ${(props) => (props.position == BadgePosition.TopRight ? `right: -${props.height / 2}px` : "")};
+
+  color: var(--ui-01);
+  font-size: 9px;
+  font-weight: 700;
   text-align: center;
-  padding: 0.45em;
+  padding: 4.5px;
 
   /* Center the text contents */
   display: ${({ disabled }) => (disabled ? "none" : "inline-flex")};
   align-items: center;
   justify-content: center;
-
-  &:before {
-    z-index: -1;
-    content: "";
-    /* Ensure the element is a square */
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "#008cff")};
-    height: 0;
-    width: 100%;
-    padding-bottom: 100%;
-  }
+  background-color: var(--ui-supportive-01);
+  border-radius: 50%;
+  height: ${(props) => props.height}px;
+  width: fit-content;
+  aspect-ratio: 1;
 `;
 
 const Silver = css``;
