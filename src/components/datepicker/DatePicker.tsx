@@ -53,7 +53,7 @@ export interface IDatePickerI18n {
   nextWeek?: string;
 }
 
-const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale="en", ...props }) => {
+const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale = "en", ...props }) => {
   const {
     setShowMinutes,
     setShowHours,
@@ -165,13 +165,13 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale="en", ..
           <DatePickerCard>
             {withQuickSelectionButtons && (
               <DatePickerButtonContainer>
-                <Button onClick={() => increaseDate(0)} size="small" type="neutral">
+                <Button onClick={() => increaseDate(0)} size="small">
                   {props.i18n?.today ?? "Today"}
                 </Button>
-                <Button onClick={() => increaseDate(1)} size="small" type="neutral">
+                <Button onClick={() => increaseDate(1)} size="small">
                   {props.i18n?.tomorrow ?? "Tomorrow"}
                 </Button>
-                <Button onClick={() => increaseDate(7)} size="small" type="neutral">
+                <Button onClick={() => increaseDate(7)} size="small">
                   {props.i18n?.nextWeek ?? "Next Week"}
                 </Button>
               </DatePickerButtonContainer>
@@ -203,9 +203,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale="en", ..
                 {withBottomButtons && (
                   <DatePickerButtonContainer>
                     {withCloseButton && (
-                      <Button onClick={closePicker} type="neutral">
-                        {props.i18n?.cancelButtonText ?? "Cancel"}
-                      </Button>
+                      <Button onClick={closePicker}>{props.i18n?.cancelButtonText ?? "Cancel"}</Button>
                     )}
                     {withSaveButton && (
                       <Button

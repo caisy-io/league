@@ -55,7 +55,7 @@ export const TranslationMenu: React.FC<ITranslationMenu> = ({ initialState, onCh
           <SCardHeaderTitle style={{ display: "flex" }}>
             <IconTranslate /> Translations
           </SCardHeaderTitle>
-          <Button onClick={onExpandToggle} type={"neutral"} size={"small"}>
+          <Button onClick={onExpandToggle} size={"small"}>
             {expanded ? <IconAngleCollapse /> : <IconAngleExpand />}
           </Button>
         </SCardHeader>
@@ -74,7 +74,7 @@ export const TranslationMenu: React.FC<ITranslationMenu> = ({ initialState, onCh
                         <Button
                           disabled={locale.default}
                           onClick={() => !locale.default && onLocaleToggle(locale.id)}
-                          type={"light"}
+                          type={"tertiary"}
                           size={"small"}
                         >
                           {locale.active ? <IconEye /> : <IconEyeHidden />}
