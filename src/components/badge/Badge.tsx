@@ -4,6 +4,7 @@ import { SBadgeIconContent } from "./styles/SBadgeIconContent";
 import { SBadgeIcon } from "./styles/SBadgeIcon";
 import { BadgePosition } from "./BadgePosition";
 export { BadgePosition } from "./BadgePosition";
+
 interface IBadge {
   value: string;
   position: BadgePosition;
