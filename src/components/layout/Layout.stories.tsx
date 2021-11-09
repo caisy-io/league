@@ -9,24 +9,32 @@ import { SLayoutContentWrapper } from "./styles/SLayoutContentWrapper";
 
 function LayoutDemo(args) {
     return (
-        <Layout style={{backgroundColor: "lightgray"}} {...args}>
-            <LayoutMainNav>
+        <Layout 
+            style={{
+                backgroundColor: "lightgray", 
+                color: "white",
+                fontSize: "20px",
+                lineHeight: 3
+            }} 
+            {...args}
+        >
+            <LayoutMainNav style={{backgroundColor: "#ffae03"}}>
                 <p>nav</p>
             </LayoutMainNav>
-            <SLayoutWrapper className="container">
+            <SLayoutWrapper>
                 <LayoutTopNav>
                     Nav bar
                 </LayoutTopNav>
-                <SLayoutContentWrapper className="content">
+                <SLayoutContentWrapper>
                     <LayoutSider left={false}>
-                        <p>Resizable on right side</p>
+                        <p>Sider left, resizable side on right side</p>
                     </LayoutSider>
-                    <LayoutContent>
+                    <LayoutContent style={{background: "darkslateblue"}}>
                         <p>Content</p>
                         {args.children}
                     </LayoutContent>
                     <LayoutSider left>
-                        <p>Resizable on left side</p>
+                        <p>Sider right, resizable side on left side</p>
                     </LayoutSider>
                 </SLayoutContentWrapper>
             </SLayoutWrapper>
@@ -48,19 +56,27 @@ Default.args = {};
 
 // With LeftSider
 export const LeftSider = ({content, ...args}) => (
-    <Layout style={{backgroundColor: "lightgray"}} {...args}>
-        <LayoutMainNav>
+    <Layout 
+        style={{
+            backgroundColor: "lightgray", 
+            color: "white",
+            fontSize: "20px",
+            lineHeight: 3
+        }} 
+        {...args}
+    >
+        <LayoutMainNav style={{backgroundColor: "#ffae03"}}>
             <p>nav</p>
         </LayoutMainNav>
-        <SLayoutWrapper className="container">
+        <SLayoutWrapper>
             <LayoutTopNav>
                 Nav bar
             </LayoutTopNav>
-            <SLayoutContentWrapper className="content">
+            <SLayoutContentWrapper>
                 <LayoutSider left={false}>
                     <p>Resizable on right side</p>
                 </LayoutSider>
-                <LayoutContent>
+                <LayoutContent style={{background: "darkslateblue"}}>
                     <p>Content</p>
                     {args.children}
                 </LayoutContent>
@@ -74,16 +90,24 @@ LeftSider.args = {};
 
 // With RightSider
 export const RightSider = ({content, ...args}) => (
-    <Layout style={{backgroundColor: "lightgray"}} {...args}>
-        <LayoutMainNav>
+    <Layout 
+        style={{
+            backgroundColor: "lightgray", 
+            color: "white",
+            fontSize: "20px",
+            lineHeight: 3,
+        }} 
+        {...args}
+    >
+        <LayoutMainNav style={{backgroundColor: "#ffae03"}}>
             <p>nav</p>
         </LayoutMainNav>
-        <SLayoutWrapper className="container">
+        <SLayoutWrapper>
             <LayoutTopNav>
                 Nav bar
             </LayoutTopNav>
-            <SLayoutContentWrapper className="content">
-                <LayoutContent>
+            <SLayoutContentWrapper>
+                <LayoutContent style={{background: "darkslateblue"}}>
                     <p>Content</p>
                     {args.children}
                 </LayoutContent>

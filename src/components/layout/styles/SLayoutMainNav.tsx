@@ -11,7 +11,6 @@ const Bronze = css`
     width: ${(props: ISLayoutMainNav) => props.width > 100 ? props.width : "70px"};
     min-width: ${(props: ISLayoutMainNav) => props.width > 100 ? props.width : "70px"};
     height: 100vh;
-    background-color: #ffae03;
 `;
 
 const Silver = css``;

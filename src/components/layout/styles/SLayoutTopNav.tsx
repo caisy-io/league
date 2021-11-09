@@ -8,6 +8,7 @@ interface ISLayoutTopNav {
 const Bronze = css<ISLayoutTopNav>`
   background: lightblue;
   height: ${props => props.height ? props.height : '10vh'};
+  line-height: ${props => props.height ? props.height : '10vh'};
 `;
 
 const Silver = css``;

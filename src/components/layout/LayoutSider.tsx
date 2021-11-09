@@ -2,12 +2,9 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Resizable } from '../resizable';
 import { useResize } from '../resizable/Resizable.hooks';
 import { lock, max, min, resize, update } from '../resizable/Resizable.operations';
-import { SLayoutSider } from "./styles/SLayoutSider";
 import { Left, Right } from '../resizable/Resizable.resizers';
 import { SLayoutSiderContent } from './styles/SLayoutSiderContent';
-import { SResizable } from '../resizable/styles/SResizable';
 import { SResizableWrapper } from '../resizable/styles/SResizableWrapper';
-import { Spinner } from '..';
 
 interface ILayoutSider {
   left?: boolean;
@@ -16,8 +13,8 @@ interface ILayoutSider {
 
 export const LayoutSider: React.FC<ILayoutSider> = ({ left = true, ...props }) => {
   // TODO Optimize values
-  const minWidth = 1920 * 0.07 + 100;
-  const maxWidth = 1920 * 0.5 + 200;
+  const minWidth = 100;
+  const maxWidth = 1920 * 0.3;
   const minHeight = 450;
   const maxHeight = 800;
 
@@ -47,7 +44,12 @@ export const LayoutSider: React.FC<ILayoutSider> = ({ left = true, ...props }) =
   console.log(size)
 
   return (
-    <SResizableWrapper ref={sider} width={size.width + 'px'} height={'90vh'} left={left}> 
+    <SResizableWrapper 
+      style={{ backgroundColor:'violet' }}  
+      ref={sider} 
+      width={size.width + 'px'} 
+      height={'90vh'} left={left}
+    > 
       {sider.current &&
         <Resizable {...rProps}>
           {left && <Left/>}

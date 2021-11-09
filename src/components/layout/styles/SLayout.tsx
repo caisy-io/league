@@ -2,19 +2,13 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  height: 100vh;
-  background: #f3f5f8;
+  width: 100%;
+  height: 100%;
   
-  box-sizing: border-box;
+  display: flex;
   padding: 0;
   margin: 0;
   text-align: center;
-
-  display: flex;
-  /* TODO remove later */
-  color: white;
-  font-size: 20px;
-  line-height: 3;
 `;
 
 const Silver = css``;
