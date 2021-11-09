@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 import { Button } from "./Button";
 import { IconLink } from "../..";
 
@@ -15,7 +15,7 @@ export default {
   argTypes: {
     type: {
       description: "Changes the overall design of the button",
-      options: ["primary", "secondary", "tertiary", "danger", "neutral", "light", "link"],
+      options: ["primary", "secondary", "tertiary", "danger", "neutral", "light", "link", "sidebarTag"],
       control: { type: "select" },
       table: {
         defaultValue: {
@@ -64,11 +64,46 @@ export default {
         },
       },
     },
+    left: {
+      description: "Position of the siderbar tag",
+      control: { type: "boolean" },
+      table: {
+        defaultValue: {
+          summary: true,
+        },
+      },
+    },
+    open: {
+      description: "Defines whether siderbar is open",
+      control: { type: "boolean" },
+      table: {
+        defaultValue: {
+          summary: true,
+        },
+      },
+    },
   },
 };
 
 function ButtonDemo({ content, ...args }) {
-  return <Button {...args}>{content}</Button>;
+  console.log(args)
+  return <Button {...args}>
+    {args.type === "sidebarTag" &&
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="6"
+      height="8"
+      fill="none"
+      viewBox="0 0 6 8"
+    >
+      <path
+        fill="#567A98"
+        d="M1.248 4.832a1 1 0 010-1.664l3.197-2.132A1 1 0 016 1.87V6.13a1 1 0 01-1.555.833L1.248 4.832z"
+      ></path>
+    </svg>
+    }
+    { args.type !== "sidebarTag" && content}
+  </Button>;
 }
 
 const Template = (args) => <ButtonDemo {...args} />;
@@ -82,6 +117,8 @@ Default.args = {
   activated: false,
   disabled: false,
   sticked: false,
+  left: true,
+  open: true
 };
 
 // With Icon

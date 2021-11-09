@@ -242,7 +242,94 @@ const CSSDisabled = css`
   }
 `;
 
-const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
+const CSSLeftOpen = css`
+  position: static;
+  width: 17px;
+  height: 40px;
+  left: 0px;
+  top: 692px;
+
+  border-radius: 0px 8px 8px 0px;
+  border: 1px solid #E8EFF3;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.04);
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+
+  padding: 0;
+  background: #FFFFFF;
+`;
+
+const CSSRightOpen = css`
+  position: static;
+  width: 17px;
+  height: 40px;
+  left: 0px;
+  top: 692px;
+
+  border-radius: 8px 0px 0px 8px;
+  border: 1px solid #E8EFF3;
+  box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.04);
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+
+  padding: 0;
+  background: #FFFFFF;
+
+  > svg {
+    transform: rotate(180deg);
+  }
+`;
+
+const CSSLeftClosed = css`
+  position: static;
+  width: 17px;
+  height: 40px;
+  left: 0px;
+  top: 692px;
+
+  border-radius: 0px 8px 8px 0px;
+  border: 1px solid #E8EFF3;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.04);
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+
+  padding: 0;
+  background: #FFFFFF;
+
+  > svg {
+    transform: rotate(180deg);
+  }
+`;
+
+const CSSRightClosed = css`
+  position: static;
+  width: 17px;
+  height: 40px;
+  left: 0px;
+  top: 692px;
+
+  border-radius: 8px 0px 0px 8px;
+  border: 1px solid #E8EFF3;
+  box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.04);
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+  padding: 0;
+  background: #FFFFFF;
+`;
+
+const getTypeStyling = (type: IButtonType, isActivated, isSticked, isOpen, isLeft) => {
   switch (type) {
     case "primary":
       return isSticked ? CSSPrimarySticked : isActivated ? CSSPrimaryActivated : CSSPrimary;
@@ -254,6 +341,8 @@ const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
       return isSticked ? CSSDangerSticked : isActivated ? CSSDangerActivated : CSSDanger;
     case "link":
       return CSSLink;
+    case "sidebarTag":
+      return isLeft ? (isOpen? CSSLeftOpen : CSSLeftClosed) : (isOpen? CSSRightOpen : CSSRightClosed);
     default:
       return isActivated ? CSSNeutralActivated : CSSNeutral;
   }
@@ -291,7 +380,7 @@ const Bronze = css<IButtonProps>`
     ${(props) => (props.round ? CSSRound : "")};
   }
 
-  ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
+  ${(props) => getTypeStyling(props.type, props.activated, props.sticked, props.open, props.left)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
   ${(props) => (props.round ? CSSRound : "")};
 
