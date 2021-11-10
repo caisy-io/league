@@ -10,7 +10,8 @@ const CSSError = css`
 `;
 
 const Bronze = css`
-  max-height: 40px;
+  position: relative;
+  overflow: hidden;
   width: 320px;
   padding: 10px 12px;
   background-color: var(--ui-01);
@@ -18,7 +19,7 @@ const Bronze = css`
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   transition: border 200ms;
 
   ${(props) => props.active && CSSActive};

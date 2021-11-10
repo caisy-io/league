@@ -1,4 +1,5 @@
 import React from "react";
+import { WithAddon } from "../with-addon/WithAddon";
 import { SLabel } from "./styles/SLabel";
 
 interface ILabel {
@@ -7,15 +8,12 @@ interface ILabel {
 }
 
 export const WithLabel: React.FC<ILabel> = ({ ...props }) => {
-  const ChildrenWithProps = React.Children.map(props.children, (child) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, {
-        children: [<SLabel>{props.content}</SLabel>, child.props.children],
-      });
-    } else {
-      return child;
-    }
-  });
-
-  return <>{ChildrenWithProps}</>;
+  return (
+    <WithAddon
+      name="label"
+      component={<SLabel>{props.content}</SLabel>}
+      content={props.content}
+      active={props.active}
+    />
+  );
 };

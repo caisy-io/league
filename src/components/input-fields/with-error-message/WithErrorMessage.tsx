@@ -1,21 +1,25 @@
 import React from "react";
+import { WithAddon } from "../with-addon/WithAddon";
 import { SErrorMessage } from "./styles/SErrorMessage";
 
 interface IErrorMessage {
-  content: string;
+  content: string[];
   active?: boolean;
 }
 
 export const WithErrorMessage: React.FC<IErrorMessage> = ({ ...props }) => {
-  const ChildrenWithProps = React.Children.map(props.children, (child) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, {
-        children: [<SErrorMessage>{props.content}</SErrorMessage>].concat(child.props.children),
-      });
-    } else {
-      return child;
-    }
-  });
-
-  return <>{ChildrenWithProps}</>;
+  return (
+    <WithAddon
+      name="errorMessage"
+      component={
+        <>
+          {props.content.map((message, index) => (
+            <SErrorMessage key={index}>{message}</SErrorMessage>
+          ))}
+        </>
+      }
+      active={props.active}
+      content={props.content}
+    />
+  );
 };

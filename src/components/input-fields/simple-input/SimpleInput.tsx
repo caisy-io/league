@@ -1,4 +1,5 @@
 import React, { InputHTMLAttributes } from "react";
+import useFieldContext from "../field-context/FieldContextContext";
 import { SSimpleInput } from "./styles/SSimpleInput";
 import { SSimpleInputRequiredIndicator } from "./styles/SSimpleInputRequiredIndicator";
 import { SSimpleInputWrapper } from "./styles/SSimpleInputWrapper";
@@ -9,11 +10,23 @@ interface ISimpleInput extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   state?: TSimpleInputState;
   required?: boolean;
+  onChange: any;
+  value: any;
 }
 
-export const SimpleInput: React.FC<ISimpleInput> = ({ label, state, required, children, ...props }) => {
+export const SimpleInput: React.FC<ISimpleInput> = ({
+  label,
+  state,
+  required,
+  children,
+  value,
+  onChange,
+  ...props
+}) => {
   const [active, setActive] = React.useState(false);
-  const [inputLength, setInputLength] = React.useState(props.value?.toString().length);
+  const [inputLength, setInputLength] = React.useState(value?.toString().length);
+
+  const { addonsList } = useFieldContext();
 
   const inputRef = React.useRef<any>();
   const spanRef = React.useRef<any>();
@@ -52,20 +65,21 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ label, state, required, ch
   return (
     <SSimpleInputWrapper active={active} state={state} onClick={onClick}>
       <span ref={spanRef} style={{ width: "fit-content", visibility: "hidden", position: "absolute", fontSize: 14 }} />
-      {children}
+      {addonsList.map((addon) => addon.active && addon.component)}
 
       <div style={{ position: "relative", width: "fit-content" }}>
         {required && <SSimpleInputRequiredIndicator />}
         <SSimpleInput
           onChange={(e) => {
             resizeInput();
-            props.onChange?.(e);
+            onChange(e);
           }}
           width={inputLength}
           required={required}
           ref={inputRef}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          value={value || ""}
           {...props}
         />
       </div>
