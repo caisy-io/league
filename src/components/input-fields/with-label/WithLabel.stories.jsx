@@ -16,6 +16,10 @@ function WithLabelDemo() {
     }
   };
 
+  const getErrorList = (fieldName) => {
+    return getFieldErrors(fieldName)?.map(({ message }) => message) || [];
+  };
+
   return (
     <Form style={{ display: "flex", flexDirection: "column", gap: 8 }} onSubmit={handleSubmit(onSubmit)}>
       <div style={{ display: "flex", gap: 8 }}>
@@ -26,20 +30,20 @@ function WithLabelDemo() {
         >
           <FieldContext>
             <WithLabel active={true} content="Name*" />
-            <WithErrorMessage
-              active={true}
-              content={getFieldErrors("options.name")?.map(({ message }) => message) || []}
-            />
-            <SimpleInput state={getFieldErrors("options.name")?.length > 0 ? "error" : "success"} />
+            <WithErrorMessage active={true} content={getErrorList("options.name")} />
+            <SimpleInput state={getErrorList("options.name").length > 0 ? "error" : "success"} />
           </FieldContext>
         </FormFieldWrapper>
+
         <FormFieldWrapper control={control} name={`options.value`}>
           <FieldContext>
+            <WithTranslationBadge active={true} content={{ flag: GermanFlagIcon, country: "DE" }} />
             <SimpleInput />
             <WithLabel active={true} content="Value" />
           </FieldContext>
         </FormFieldWrapper>
       </div>
+
       <div style={{ display: "flex", gap: 8 }}>
         <FormFieldWrapper
           rules={[{ name: "required", condition: (value) => value && value !== "", message: "This field is required" }]}
@@ -48,13 +52,11 @@ function WithLabelDemo() {
         >
           <FieldContext>
             <WithLabel active={true} content="Name*" />
-            <WithErrorMessage
-              active={true}
-              content={getFieldErrors("options.name1")?.map(({ message }) => message) || []}
-            />
-            <SimpleInput state={getFieldErrors("options.name1")?.length > 0 ? "error" : "success"} />
+            <WithErrorMessage active={true} content={getErrorList("options.name1")} />
+            <SimpleInput state={getErrorList("options.name1").length > 0 ? "error" : "success"} />
           </FieldContext>
         </FormFieldWrapper>
+
         <FormFieldWrapper control={control} name={`options.value1`}>
           <FieldContext>
             <SimpleInput />
