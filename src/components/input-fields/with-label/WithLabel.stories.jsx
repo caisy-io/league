@@ -17,7 +17,7 @@ function WithLabelDemo() {
   };
 
   return (
-    <Form style={{ display: "flex", flexDirection: "column", flex: 8 }} onSubmit={handleSubmit(onSubmit)}>
+    <Form style={{ display: "flex", flexDirection: "column", gap: 8 }} onSubmit={handleSubmit(onSubmit)}>
       <div style={{ display: "flex", gap: 8 }}>
         <FormFieldWrapper
           rules={[{ name: "required", condition: (value) => value && value !== "", message: "This field is required" }]}
@@ -30,17 +30,13 @@ function WithLabelDemo() {
               active={true}
               content={getFieldErrors("options.name")?.map(({ message }) => message) || []}
             />
-            <SimpleInput />
+            <SimpleInput state={getFieldErrors("options.name")?.length > 0 ? "error" : "success"} />
           </FieldContext>
         </FormFieldWrapper>
         <FormFieldWrapper control={control} name={`options.value`}>
           <FieldContext>
             <SimpleInput />
             <WithLabel active={true} content="Value" />
-            <WithErrorMessage
-              active={true}
-              content={getFieldErrors("options.value")?.map(({ message }) => message) || []}
-            />
           </FieldContext>
         </FormFieldWrapper>
       </div>
@@ -56,7 +52,7 @@ function WithLabelDemo() {
               active={true}
               content={getFieldErrors("options.name1")?.map(({ message }) => message) || []}
             />
-            <SimpleInput />
+            <SimpleInput state={getFieldErrors("options.name1")?.length > 0 ? "error" : "success"} />
           </FieldContext>
         </FormFieldWrapper>
         <FormFieldWrapper control={control} name={`options.value1`}>
@@ -64,10 +60,6 @@ function WithLabelDemo() {
             <SimpleInput />
             <WithTranslationBadge active={true} content={{ flag: GermanFlagIcon, country: "DE" }} />
             <WithLabel active={true} content="Value" />
-            <WithErrorMessage
-              active={true}
-              content={getFieldErrors("options.value1")?.map(({ message }) => message) || []}
-            />
           </FieldContext>
         </FormFieldWrapper>
       </div>
