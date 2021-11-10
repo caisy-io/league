@@ -242,53 +242,59 @@ const CSSDisabled = css`
   }
 `;
 
-const CSSSidebarTag = css`
-  position: static;
-  width: 17px;
-  height: 40px;
-  left: 0px;
-  top: 692px;
-
-  border-radius: 0px 8px 8px 0px;
-  border: 1px solid #E8EFF3;
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 10px;
-  padding: 0;
-  background: #FFFFFF;
-`;
-
-const CSSLeftOpen = css`
-  ${props => props.type === "sidebarTag" ? CSSSidebarTag : ""}
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.04);
-`;
-
-const CSSRightOpen = css`
-  ${props => props.type === "sidebarTag" ? CSSSidebarTag : ""}
-  border-radius: 8px 0px 0px 8px;
-  box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.04);
+const CSSSidebarTagBase = css`
+  width: 16px;  // also change in SVG
+  height: 40px; // also change in SVG
+  position: relative;
 
   > svg {
+    position: absolute;
+  }
+`;
+
+const CSSSidebarTagLeftBase = css`
+  > svg {
+    -webkit-filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
+    filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
+  }
+`;
+
+const CSSSidebarTagRightBase = css`
+  > svg {
+    -webkit-filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
+    filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
     transform: rotate(180deg);
   }
 `;
 
-const CSSLeftClosed = css`
-  ${props => props.type === "sidebarTag" ? CSSSidebarTag : ""}
-  border-radius: 0px 8px 8px 0px;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.04);
-
-  > svg {
+const CSSSidebarTagClosedBase = css`
+  > svg .sidebarTag__icon__arrow {
     transform: rotate(180deg);
+    transform-origin: center;
   }
 `;
 
-const CSSRightClosed = css`
-  ${props => props.type === "sidebarTag" ? CSSSidebarTag : ""}
-  border-radius: 8px 0px 0px 8px;
-  box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.04);
+
+const CSSSidebarTagLeftOpen = css`
+  ${CSSSidebarTagBase}
+  ${CSSSidebarTagLeftBase}
+`;
+
+const CSSSidebarTagRightOpen = css`
+  ${CSSSidebarTagBase}
+  ${CSSSidebarTagRightBase}
+`;
+
+const CSSSidebarTagLeftClosed = css`
+  ${CSSSidebarTagBase}
+  ${CSSSidebarTagLeftBase}
+  ${CSSSidebarTagClosedBase}
+`;
+
+const CSSSidebarTagRightClosed = css`
+  ${CSSSidebarTagBase}
+  ${CSSSidebarTagRightBase}
+  ${CSSSidebarTagClosedBase}
 `;
 
 const getTypeStyling = (type: IButtonType, isActivated, isSticked, isOpen, isLeft) => {
@@ -304,7 +310,7 @@ const getTypeStyling = (type: IButtonType, isActivated, isSticked, isOpen, isLef
     case "link":
       return CSSLink;
     case "sidebarTag":
-      return isLeft ? (isOpen? CSSLeftOpen : CSSLeftClosed) : (isOpen? CSSRightOpen : CSSRightClosed);
+      return isLeft ? (isOpen? CSSSidebarTagLeftOpen : CSSSidebarTagLeftClosed) : (isOpen? CSSSidebarTagRightOpen : CSSSidebarTagRightClosed);
     default:
       return isActivated ? CSSNeutralActivated : CSSNeutral;
   }
