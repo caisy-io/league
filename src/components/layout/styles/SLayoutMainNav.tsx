@@ -4,13 +4,13 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 export interface ISLayoutMainNav {
     width: number;
 }
-  
+
 const Bronze = css` 
     display: flex;
     flex-direction: column;
-    width: ${(props: ISLayoutMainNav) => props.width > 100 ? props.width : "70px"};
-    min-width: ${(props: ISLayoutMainNav) => props.width > 100 ? props.width : "70px"};
-    height: 100vh;
+    width: ${(props: ISLayoutMainNav) => props.width ? (props.width + "px") : "70px"};
+    min-width: ${(props: ISLayoutMainNav) => props.width ? (props.width + "px") : "70px"};
+    height: 100%;
 `;
 
 const Silver = css``;
