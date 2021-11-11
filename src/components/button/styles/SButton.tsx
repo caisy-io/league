@@ -28,6 +28,12 @@ const getSize = (size?: IButtonSize) => {
   }
 };
 
+const CSSSticked = css`
+  border: none;
+  border-radius: 0;
+  font-weight: 700;
+`;
+
 const CSSPrimary = css`
   border: none;
   &:after {
@@ -51,10 +57,17 @@ const CSSPrimaryActivated = css`
   }
 `;
 
+const CSSPrimaryStickedActivated = css`
+  ${CSSSticked}
+  color: var(--active-text-01);
+  &:after {
+    border-radius: 0;
+    background-color: var(--active-interactional-secondary-03);
+  }
+`;
+
 const CSSPrimarySticked = css`
-  border: none;
-  border-radius: 0;
-  font-weight: 700;
+  ${CSSSticked}
   color: var(--text-01);
 
   &:after {
@@ -68,10 +81,7 @@ const CSSPrimarySticked = css`
     }
   }
   &:active {
-    color: var(--active-text-01);
-    &:after {
-      background-color: var(--active-interactional-secondary-03);
-    }
+    ${CSSPrimaryStickedActivated}
   }
   &:disabled {
     color: var(--disabled-text);
@@ -187,9 +197,7 @@ const CSSDangerActivated = css`
 `;
 
 const CSSDangerSticked = css`
-  border: none;
-  border-radius: 0;
-  font-weight: 700;
+  ${CSSSticked}
   color: var(--text-06);
 
   &:after {
@@ -213,6 +221,15 @@ const CSSDangerSticked = css`
     &:after {
       background-color: var(--disabled-interactional-02);
     }
+  }
+`;
+
+const CSSDangerStickedActivated = css`
+  ${CSSSticked}
+  color: var(--active-text-06);
+  &:after {
+    border-radius: 0;
+    background-color: var(--active-interactional-secondary-06);
   }
 `;
 
@@ -245,13 +262,26 @@ const CSSDisabled = css`
 const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
   switch (type) {
     case "primary":
-      return isSticked ? CSSPrimarySticked : isActivated ? CSSPrimaryActivated : CSSPrimary;
+      console.log(isSticked, isActivated);
+      return isSticked && isActivated
+        ? CSSPrimaryStickedActivated
+        : isSticked
+        ? CSSPrimarySticked
+        : isActivated
+        ? CSSPrimaryActivated
+        : CSSPrimary;
     case "secondary":
       return isActivated ? CSSSecondaryActivated : CSSSecondary;
     case "tertiary":
       return isActivated ? CSSTertiaryActivated : CSSTertiary;
     case "danger":
-      return isSticked ? CSSDangerSticked : isActivated ? CSSDangerActivated : CSSDanger;
+      return isSticked && isActivated
+        ? CSSDangerStickedActivated
+        : isSticked
+        ? CSSDangerSticked
+        : isActivated
+        ? CSSDangerActivated
+        : CSSDanger;
     case "link":
       return CSSLink;
     default:
