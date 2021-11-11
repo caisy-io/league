@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
-import { Stackable } from './Stackable';
-
-export default Stackable;
+ export const getAncestors = element => {
+    const stackable = element.closest('.stackable');
+    return stackable ? stackable.getAttribute('data-ancestors') : '';
+};
