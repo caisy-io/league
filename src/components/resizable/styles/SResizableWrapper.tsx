@@ -8,7 +8,8 @@ interface ISResizableWrapper {
 }
 
 const Bronze = css<ISResizableWrapper>`
-    overflow: auto;
+  position: relative;
+  overflow: auto;
 `;
 
 
