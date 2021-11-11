@@ -1,4 +1,4 @@
-export enum BadgePosition {
-    TopLeft,
-    TopRight,
-  }
+export enum EBadgePosition {
+  TopLeft,
+  TopRight,
+}
