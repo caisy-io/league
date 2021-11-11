@@ -15,7 +15,7 @@ export default {
     state: {
       description: "Changes the state of the Item",
       control: { type: "select" },
-      options: ["default", "dragging", "loading", "success", "hover", "active"],
+      options: ["default", "dragging", "loading", "success", "hover", "activated"],
     },
     percentageLoaded: {
       description: "Shows percentage",
@@ -24,7 +24,7 @@ export default {
   },
 };
 
-function UploadMenuItemDemo({ content, ...args }) {
+function UploadMenuItemDemo({ ...args }) {
   return <UploadMenuItem {...args} />;
 }
 

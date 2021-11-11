@@ -9,7 +9,7 @@ import LoadingBorderIcon from "./icons/LoadingBorderIcon";
 import { SLoadingIconWrapper } from "./styles/SLoadingIconWrapper";
 import { SLoadingBorderWrapper } from "./styles/SLoadingBorderWrapper";
 
-type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "active";
+type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "activated";
 
 interface IUploadMenuItem {
   onClick: () => void;
@@ -19,7 +19,7 @@ interface IUploadMenuItem {
 
 export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
   const [hovering, setHovering] = React.useState(false);
-  const [active, setActive] = React.useState(false);
+  const [activated, setActivated] = React.useState(false);
 
   const percentageLoaded = props.percentageLoaded ? (props.percentageLoaded < 100 ? props.percentageLoaded : 100) : 0;
 
@@ -30,7 +30,7 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
 
   React.useEffect(() => {
     setHovering(props.state === "hover");
-    setActive(props.state === "active");
+    setActivated(props.state === "activated");
   }, [props.state]);
 
   const renderIcon = () => {
@@ -65,15 +65,19 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
   };
 
   return (
-    <SUploadMenuItemWrapper hovering={hovering} active={active} isDefault={!props.state || props.state === "default"}>
+    <SUploadMenuItemWrapper
+      hovering={hovering}
+      activated={activated}
+      isDefault={!props.state || props.state === "default"}
+    >
       <SUploadMenuItem
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => {
           setHovering(false);
-          setActive(false);
+          setActivated(false);
         }}
-        onMouseDown={() => setActive(true)}
-        onMouseUp={() => setActive(false)}
+        onMouseDown={() => setActivated(true)}
+        onMouseUp={() => setActivated(false)}
         state={props.state}
         onClick={handleClick}
       >

@@ -11,8 +11,8 @@ export default {
       description: "Changes the label, if left empty, wont show anything",
       control: { type: "text" },
     },
-    active: {
-      description: "Shows the item is active",
+    activated: {
+      description: "Shows the item is activated",
       control: { type: "boolean" },
     },
   },
@@ -31,5 +31,5 @@ const Template = (args) => <MainMenuItemDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   label: "Label",
-  active: false,
+  activated: false,
 };

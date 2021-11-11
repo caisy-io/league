@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "active";
+type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "activated";
 
 interface ISUploadMenuItem {
   state: TUploadMenuItemStatus;
@@ -63,7 +63,7 @@ const getStateStyles = (state: TUploadMenuItemStatus) => {
       return CSSLoading;
     case "hover":
       return CSSHover;
-    case "active":
+    case "activated":
       return CSSActive;
     default:
       return CSSDefault;
