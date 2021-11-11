@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  background: var(--white-1);
+  background: var(--ui-01);
   padding: 16px;
   border-radius: 6px;
   height: calc(100% - 32px);

@@ -5,7 +5,7 @@ const SDatePickerTimePickerOption = styled.h3`
   align-items: center;
 
   &:hover {
-    color: var(--primary-500);
+    color: var(--interactional-primary-01);
     transform: scale(1.1);
   }
 

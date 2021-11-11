@@ -15,7 +15,7 @@ const Bronze = css`
     background-color: var(--text-priority-neutral-5);
   }
   input:checked + span {
-    background-color: var(--primary-500);
+    background-color: var(--interactional-primary-01);
   }
 
   input:checked + span {

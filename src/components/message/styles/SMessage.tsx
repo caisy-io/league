@@ -18,7 +18,7 @@ const Bronze = css<IMessage>`
   border-radius: 6px;
 
   box-shadow: 0 10px 35px 0 rgba(89, 106, 122, 0.12);
-  background-color: var(--white-1);
+  background-color: var(--ui-01);
 
   z-index: 2;
 

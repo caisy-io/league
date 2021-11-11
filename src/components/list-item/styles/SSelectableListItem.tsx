@@ -20,10 +20,10 @@ const Bronze = css<ISSelectableListItem>`
 
   &:hover {
     background-color: var(--primary-500-opacity-8);
-    ${(props) => props.selected && "background-color: var(--primary-500);"}
+    ${(props) => props.selected && "background-color: var(--interactional-primary-01);"}
   }
 
-  ${(props) => props.selected && "background-color: var(--primary-500);"}
+  ${(props) => props.selected && "background-color: var(--interactional-primary-01);"}
 `;
 
 const Silver = css<ISSelectableListItem>``;

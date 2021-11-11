@@ -8,7 +8,7 @@ const Bronze = css`
   transition: all 0.5s;
   cursor: pointer;
   font-weight: 500;
-  color: var(--primary-500);
+  color: var(--interactional-primary-01);
 `;
 
 const Silver = css``;

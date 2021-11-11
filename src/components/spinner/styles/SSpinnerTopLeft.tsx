@@ -15,7 +15,7 @@ const Bronze = css`
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    background-color: var(--primary-500);
+    background-color: var(--interactional-primary-01);
   }
 `;
 

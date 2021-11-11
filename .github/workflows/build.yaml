@@ -1,0 +1,28 @@
+name: Verify Build
+on:
+  pull_request:
+    branches-ignore:
+      - staging
+      - prod
+
+jobs:
+  build:
+    name: Verify Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: lint # will run `yarn lint` command
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: lint:types # will run `yarn lint:types` command
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build # will run `yarn build` command
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build-storybook # will run `yarn build-storybook` command

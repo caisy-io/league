@@ -4,7 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 const Bronze = css`
   height: 2px;
   margin-top: 10px;
-  background-color: var(--primary-500);
+  background-color: var(--interactional-primary-01);
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   transition: background-color 0.5s; // TODO Do we want this animation?

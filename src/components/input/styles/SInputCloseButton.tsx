@@ -19,7 +19,7 @@ const Bronze = css`
     width: 20px;
 
     path {
-      stroke: var(--action-primary-default);
+      stroke: var(--interactional-primary-01);
     }
   }
 `;

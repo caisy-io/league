@@ -4,7 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const Bronze = css`
   ${CSSParagraphMediumHeavy};
-  color: var(--primary-500);
+  color: var(--interactional-primary-01);
   cursor: pointer;
 `;
 

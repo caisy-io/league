@@ -11,7 +11,7 @@ const Bronze = css`
   padding: 8px;
   border-radius: 6px;
   border: solid 1px var(--form-item-outline-color);
-  background-color: var(--white-1);
+  background-color: var(--ui-01);
   transition: box-shadow ease 0.5s, border ease 0.5s;
   &:hover {
     box-shadow: 0 2px 7px 0 rgba(89, 106, 122, 0.14);
