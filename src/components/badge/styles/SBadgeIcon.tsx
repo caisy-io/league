@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
-import { BadgePosition } from "../BadgePosition";
+import { EBadgePosition } from "../BadgePosition";
 
 interface ISBadgeIcon {
-  position: BadgePosition;
+  position: EBadgePosition;
   disabled?: boolean;
   height: number;
 }
@@ -13,8 +13,8 @@ const Bronze = css<ISBadgeIcon>`
 
   z-index: 10;
   top: ${(props) => `-${props.height / 2}px`};
-  ${(props) => (props.position == BadgePosition.TopLeft ? `left: -${props.height / 2}px` : "")};
-  ${(props) => (props.position == BadgePosition.TopRight ? `right: -${props.height / 2}px` : "")};
+  ${(props) => (props.position == EBadgePosition.TopLeft ? `left: -${props.height / 2}px` : "")};
+  ${(props) => (props.position == EBadgePosition.TopRight ? `right: -${props.height / 2}px` : "")};
 
   color: var(--ui-01);
   font-size: 9px;

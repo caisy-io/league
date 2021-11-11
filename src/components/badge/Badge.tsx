@@ -2,12 +2,12 @@ import React from "react";
 import { SBadge } from "./styles/SBadge";
 import { SBadgeIconContent } from "./styles/SBadgeIconContent";
 import { SBadgeIcon } from "./styles/SBadgeIcon";
-import { BadgePosition } from "./BadgePosition";
-export { BadgePosition } from "./BadgePosition";
+import { EBadgePosition } from "./BadgePosition";
+export { EBadgePosition } from "./BadgePosition";
 
 interface IBadge {
   value: string;
-  position: BadgePosition;
+  position: EBadgePosition;
   disabled?: boolean;
 }
 
