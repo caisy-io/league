@@ -87,7 +87,7 @@ export default {
 
 function ButtonDemo({ content, ...args }) {
   console.log(args)
-  return <Button {...args}>
+  return <Button {...args} style={args.type === "sidebarTag" ? {top: "40px", left: "20px"} : {}}>
     {args.type === "sidebarTag" &&
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -5,7 +5,7 @@ const Bronze = css`
   position: relative;
   order: 2;
   flex-grow: 1;
-  overflow: hidden;
+  overflow: auto;
 `;
 
 const Silver = css``;

@@ -1,10 +1,14 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-const Bronze = css`
-  display: flex;
-  height: 100%;
-  overflow: hidden;
+interface ISLayoutSiderWrapper {
+    left: boolean;
+}
+
+const Bronze = css<ISLayoutSiderWrapper>`
+    position: relative;
+    display: flex;
+    order: ${(props) => props.left ? 1 : 3};
 `;
 
 const Silver = css``;
@@ -15,7 +19,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLayoutContentWrapper = styled.div`
+export const SLayoutSiderWrapper = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

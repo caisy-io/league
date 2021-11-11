@@ -8,9 +8,7 @@ interface ISResizableWrapper {
 }
 
 const Bronze = css<ISResizableWrapper>`
-    position: relative;
     overflow: auto;
-    order: ${(props) => props.left ? 3 : 1};
 `;
 
 

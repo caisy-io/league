@@ -255,7 +255,8 @@ const CSSSidebarTagBase = css`
 `;
 
 const CSSSidebarTagLeftBase = css`
-  left: 0;
+  right: -16px; // also change in SVG
+  z-index: 15;
 
   > svg {
     -webkit-filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
@@ -264,7 +265,8 @@ const CSSSidebarTagLeftBase = css`
 `;
 
 const CSSSidebarTagRightBase = css`
-  right: 0;
+  left: -16px; // also change in SVG
+  z-index: 15;
   
   > svg {
     -webkit-filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
