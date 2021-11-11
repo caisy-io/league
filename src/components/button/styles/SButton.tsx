@@ -245,7 +245,9 @@ const CSSDisabled = css`
 const CSSSidebarTagBase = css`
   width: 16px;  // also change in SVG
   height: 40px; // also change in SVG
-  position: relative;
+  position: absolute;
+  bottom: 40px;
+  padding: 0;
 
   > svg {
     position: absolute;
@@ -253,6 +255,9 @@ const CSSSidebarTagBase = css`
 `;
 
 const CSSSidebarTagLeftBase = css`
+  right: -16px; // also change in SVG
+  z-index: 15;
+
   > svg {
     -webkit-filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
     filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
@@ -260,6 +265,9 @@ const CSSSidebarTagLeftBase = css`
 `;
 
 const CSSSidebarTagRightBase = css`
+  left: -16px; // also change in SVG
+  z-index: 15;
+  
   > svg {
     -webkit-filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
     filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
@@ -268,7 +276,7 @@ const CSSSidebarTagRightBase = css`
 `;
 
 const CSSSidebarTagClosedBase = css`
-  > svg .sidebarTag__icon__arrow {
+  > svg .sidebarTag__content__arrow {
     transform: rotate(180deg);
     transform-origin: center;
   }
