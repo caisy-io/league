@@ -78,8 +78,6 @@ Default.parameters = {
     layout: 'fullscreen',
 };
 
-// TODO Also adjust demos with only left/ right slider
-
 
 // With LeftSider
 export const LeftSider = ({content, ...args}) => {
