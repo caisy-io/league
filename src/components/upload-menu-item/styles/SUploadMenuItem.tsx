@@ -61,6 +61,8 @@ const getStateStyles = (state: TUploadMenuItemStatus) => {
       return CSSSuccess;
     case "loading":
       return CSSLoading;
+    case "hover":
+      return CSSHover;
     case "activated":
       return CSSActivated;
     default:

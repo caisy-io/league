@@ -9,7 +9,7 @@ import LoadingBorderIcon from "./icons/LoadingBorderIcon";
 import { SLoadingIconWrapper } from "./styles/SLoadingIconWrapper";
 import { SLoadingBorderWrapper } from "./styles/SLoadingBorderWrapper";
 
-type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "activated";
+type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "activated";
 
 interface IUploadMenuItem {
   onClick: () => void;
