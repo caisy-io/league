@@ -4,14 +4,14 @@ import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../consta
 import { ISearchBarOperandProps } from '../SearchBarOperand';
 
 const CSSHover = css`
+  border: 1px solid var(--neutral-300);  
   background-color: var(--hover-ui-01); 
-  border: 1px solid var(--neutral-300);
 `;
 
 const CSSActive = css`
-  background-color: var(--hover-ui-01); 
-  border: 1px solid var(--interactional-primary-01);
   color: var(--active-text-04);
+  border: 1px solid var(--interactional-primary-01);
+  background-color: var(--hover-ui-01); 
 `;
 
 const Bronze = css<ISearchBarOperandProps>`
@@ -26,7 +26,7 @@ const Bronze = css<ISearchBarOperandProps>`
   border-radius: 8px;
   position: relative;
   z-index: 0;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
   gap: 9px;
   padding: 4px;
   box-sizing: border-box;

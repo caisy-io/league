@@ -1,14 +1,18 @@
 import styled, { css } from 'styled-components';
+import { ProgressivehighLightMicro } from '../../../constants/styles/fonts';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISearchBarOperandProps } from '../SearchBarOperand';
 
 const CSSActive = css`
-  background-color: var(--interactional-primary-01); 
   color: var(--text-02);
+  background-color: var(--interactional-primary-01); 
 `;
 
 const Bronze = css<ISearchBarOperandProps>`
+  ${ProgressivehighLightMicro};  
+  text-transform: uppercase;
   color: var(--text-02);
+  background-color: var(--active-ui-01);
   height: 100%;
   flex-grow: 0;
   display: flex;
@@ -17,13 +21,8 @@ const Bronze = css<ISearchBarOperandProps>`
   border-radius: 4px;
   position: relative;
   z-index: 0;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  background-color: var(--active-ui-01);
   padding: 0 4px;
   gap: 9px;
-  font-size: 8px;
   ${(props) => props.active ? CSSActive : ''};
 `;
 
