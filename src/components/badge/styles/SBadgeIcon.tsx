@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveBadgesSmall } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 import { EBadgePosition } from "../EBadgePosition";
 
@@ -10,15 +11,13 @@ interface ISBadgeIcon {
 
 const Bronze = css<ISBadgeIcon>`
   position: absolute;
-
+  ${CSSProgressiveBadgesSmall}
   z-index: 10;
   top: ${(props) => `-${props.height / 2}px`};
   ${(props) => (props.position == EBadgePosition.TopLeft ? `left: -${props.height / 2}px` : "")};
   ${(props) => (props.position == EBadgePosition.TopRight ? `right: -${props.height / 2}px` : "")};
 
   color: var(--ui-01);
-  font-size: 9px;
-  font-weight: 700;
   text-align: center;
   padding: 4.5px;
 

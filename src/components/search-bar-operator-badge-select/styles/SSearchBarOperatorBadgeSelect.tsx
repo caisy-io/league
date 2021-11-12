@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
+import { CSSProgressiveHighLight } from '../../../constants/styles/fonts';
 import { ISearchBarOperatorBadgeSelectProps } from '../SearchBarOperatorBadgeSelect';
-import { ProgressiveHighLight } from '../../../constants/styles/fonts';
 
 const CSSHover = css`
   background-color: var(--hover-ui-03); 
@@ -15,7 +15,7 @@ const CSSActivated = css`
 `;
 
 const Bronze = css<ISearchBarOperatorBadgeSelectProps>`
-  ${ProgressiveHighLight};
+  ${CSSProgressiveHighLight};
   color: var(--text-04);
   text-transform: uppercase;
   max-width: min-content;
