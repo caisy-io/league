@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
-import { CSSProgressiveHighLight } from '../../../constants/styles/fonts';
-import { ISearchBarOperatorBadgeSelectProps } from '../SearchBarOperatorBadgeSelect';
+import { ProgressivehighLightMicro } from '../../../constants/styles/fonts';
+import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
+import { ISearchBarOperatorProps } from '../SearchBarOperator';
 
 const CSSHover = css`
   background-color: var(--hover-ui-03); 
@@ -9,35 +9,40 @@ const CSSHover = css`
   cursor: pointer;
 `;
 
-const CSSActivated = css`
-  background-color: var(--ui-supportive-03); 
-  color: #FFFF;
+const CSSActive = css`
+  background-color: white; 
+  color: var(--ui-supportive-03);
+  outline: 1px solid var(--ui-supportive-03);
+  outline-offset: -1px;
 `;
 
-const Bronze = css<ISearchBarOperatorBadgeSelectProps>`
-  ${CSSProgressiveHighLight};
+const Bronze = css<ISearchBarOperatorProps>`
+  ${ProgressivehighLightMicro};
   color: var(--text-04);
   text-transform: uppercase;
   max-width: min-content;
-  height: 24px;
+  height: 1.3 rem;
   box-sizing: border-box;
   background-color: var(--ui-03);
   border-radius: 68px;
   padding: 4px 8px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  z-index: 1;
   ${(props) => props.hover ? CSSHover : ''};
   :hover{
     ${CSSHover}
   }
   &, &:hover{
-    ${(props) => props.activated ? CSSActivated : ''};
+    ${(props) => props.activated ? CSSActive : ''};
   }
   :active{
-    ${CSSActivated}
+    ${CSSActive}
   }
+}
 `;
 
 const Silver = css``;
@@ -48,7 +53,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSearchBarOperatorBadgeSelect = styled.div`
+export const SSearchBarOperator = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

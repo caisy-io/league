@@ -47,25 +47,25 @@ export const CSSProgressiveBody02Semibold = css`
   line-height: 1.5;
 `;
 
-export const ProgressiveBody02Medium = css`
+export const CSSProgressiveBody02Medium = css`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: -0.16px;
 `;
 
-export const ProgressiveBody02 = css`
+export const CSSProgressiveBody02 = css`
   font-size: 16px;
   line-height: 1.5;
 `;
 
-export const ProgressiveBody03Semibold = css`
+export const CSSProgressiveBody03Semibold = css`
   font-size: 14px;
   font-weight: 600;
   line-height: 1.43;
 `;
 
-export const ProgressiveBody03Medium = css`
+export const CSSProgressiveBody03Medium = css`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -77,67 +77,67 @@ export const ProgressiveBody03 = css`
   line-height: 1.43;
 `;
 
-export const ProgressiveCaption01Semibold = css`
+export const CSSProgressiveCaption01Semibold = css`
   font-size: 12px;
   font-weight: 600;
   line-height: 1.33;
 `;
 
-export const ProgressiveCaption01Medium = css`
+export const CSSProgressiveCaption01Medium = css`
   font-size: 12px;
   font-weight: 500;
   line-height: 1.33;
 `;
 
-export const ProgressiveMonospaceCaption = css`
+export const CSSProgressiveMonospaceCaption = css`
   font-family: IBMPlexMono-Text;
   font-size: 12px;
   line-height: 1.67;
 `;
 
-export const ProgressiveCaption01 = css`
+export const CSSProgressiveCaption01 = css`
   font-size: 12px;
   line-height: 1.33;
 `;
 
-export const ProgressivePrimaryButtons = css`
+export const CSSProgressivePrimaryButtons = css`
   font-size: 11px;
   font-weight: bold;
   line-height: 1.45;
   letter-spacing: 0.66px;
 `;
 
-export const ProgressiveHighLight = css`
+export const CSSProgressiveHighLight = css`
   font-size: 11px;
   font-weight: bold;
   line-height: 1.45;
   letter-spacing: 0.66px;
 `;
 
-export const ProgressiveCaption02Semibold = css`
+export const CSSProgressiveCaption02Semibold = css`
   font-size: 11px;
   font-weight: 600;
   line-height: 1.27;
 `;
 
-export const ProgressiveCaption02Medium = css`
+export const CSSProgressiveCaption02Medium = css`
   font-size: 11px;
   font-weight: 500;
   line-height: 1.27;
 `;
 
-export const ProgressiveCaption02 = css`
+export const CSSProgressiveCaption02 = css`
   font-size: 11px;
   line-height: 1.27;
 `;
 
-export const ProgressiveBadgesSmall = css`
+export const CSSProgressiveBadgesSmall = css`
   font-size: 9px;
   font-weight: bold;
   line-height: 1.78;
 `;
 
-export const ProgressivehighLightMicro = css`
+export const CSSProgressivehighLightMicro = css`
   font-size: 8px;
   font-weight: bold;
   line-height: 1.5;
