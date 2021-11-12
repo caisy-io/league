@@ -20,7 +20,7 @@ StyleDictionary.registerFormat({
 
         fonts = fonts + "export const " + camelCasedName + " = css`\n";
         for (property in dictionary.properties[extVariable][variable]) {
-          const value = `var(${dictionary.properties[extVariable][variable][property].value
+          const value = `var(${kebabCase(dictionary.properties[extVariable][variable][property].value)
             .replace("$", "--")
             .replace(".", "-")})`;
           if (!defaultValues.includes(value)) fonts = fonts + `  ${kebabCase(property)}: ${value};\n`;
@@ -38,13 +38,13 @@ StyleDictionary.registerFormat({
     let fonts = 'import { css } from "styled-components" \n\n';
     fonts += "export const CSSFonts = css `\n";
     fonts += "  :root {\n";
-    console.log(dictionary.allTokens);
     dictionary.allTokens.forEach((token) => {
       let value = token.value;
       if ((token.type === "fontSizes" || token.type === "lineHeights") && parseInt(token.value) !== 0) {
         value = `${parseInt(value) / 16}rem`;
       }
-      const name = kebabCase(token.type);
+      console.log(token);
+      const name = kebabCase(`${token.path[0]}-${token.name}`);
       fonts += `    --${name}: ${value};\n`;
     });
     fonts = fonts + "  }\n";
