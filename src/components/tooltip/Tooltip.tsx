@@ -2,11 +2,14 @@ import React, { ReactNode } from "react";
 import { STooltip } from "./styles/STooltip";
 import { STooltipWrapper } from "./styles/STooltipWrapper";
 import { Popover, TPlacement } from "../popover/Popover";
+
+type TTooltipColor = "white" | "black";
+
 export interface ITooltip {
   content: ReactNode | (() => ReactNode);
   supressArrow?: boolean | undefined;
   placement?: TPlacement | undefined;
-  color?: string | undefined;
+  color?: TTooltipColor;
 }
 
 export const Tooltip: React.FC<ITooltip> = ({ ...props }) => {
@@ -42,16 +45,32 @@ export const Tooltip: React.FC<ITooltip> = ({ ...props }) => {
 
   const ref = React.useRef(null);
 
+  const getBackgroundColor = () => {
+    switch (props.color) {
+      case "black":
+        return "var(--ui-overlay-02)";
+      case "white":
+      default:
+        return "var(--ui-02)";
+    }
+  };
+
+  const getColor = () => {
+    switch (props.color) {
+      case "black":
+        return "var(--text-02)";
+      case "white":
+      default:
+        return "var(--text-01)";
+    }
+  };
+
   return (
     <STooltipWrapper ref={ref} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       {props.children}
       {open && (
-        <Popover
-          trianglecolor={props.color || "var(--neutral-600)"}
-          placement={props.placement || "top"}
-          reference={ref}
-        >
-          <STooltip closing={closing} color={props.color}>
+        <Popover trianglecolor={getBackgroundColor()} placement={props.placement || "top"} reference={ref}>
+          <STooltip closing={closing} color={getColor()} backgroundColor={getBackgroundColor()}>
             {props.content}
           </STooltip>
         </Popover>
