@@ -9,7 +9,7 @@ export default {
     argTypes: {
         state: {
             description: "Changes the overall design of the search bar operand",
-            options: ["default", "hover", "active"],
+            options: ["default", "hover", "activated"],
             control: { type: "select" },
             table: {
                 defaultValue: {
@@ -25,8 +25,8 @@ export default {
 };
 
 function SearchBarOperandDemo({ content, ...args }) {
-    return <CloseButton defaultVisible={(args.state == "hover" || args.state == "active") || false}>
-        <SearchBarOperand active={args.state == "active" } hover={args.state == "hover" }>
+    return <CloseButton defaultVisible={(args.state == "hover" || args.state == "activated") || false}>
+        <SearchBarOperand activated={args.state == "activated" } hover={args.state == "hover" }>
             {content}
         </SearchBarOperand>
     </CloseButton>
@@ -42,9 +42,9 @@ Default.args = {
 
 // With entity
 export const WithEntity = ({ content, ...args }) => (
-    <CloseButton defaultVisible={(args.state == "hover" || args.state == "active") || false}>
-        <SearchBarOperand active={args.state == "active" } hover={args.state == "hover" }>
-            <SearchBarOperandEntity active={args.state == "active" } hover={args.state == "hover" }>
+    <CloseButton defaultVisible={(args.state == "hover" || args.state == "activated") || false}>
+        <SearchBarOperand activated={args.state == "activated" } hover={args.state == "hover" }>
+            <SearchBarOperandEntity activated={args.state == "activated" }>
                 {content}
             </SearchBarOperandEntity>
             {content}

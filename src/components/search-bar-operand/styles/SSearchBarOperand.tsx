@@ -8,7 +8,7 @@ const CSSHover = css`
   background-color: var(--hover-ui-01); 
 `;
 
-const CSSActive = css`
+const CSSActivated = css`
   color: var(--active-text-04);
   border: 1px solid var(--interactional-primary-01);
   background-color: var(--hover-ui-01); 
@@ -37,7 +37,7 @@ const Bronze = css<ISearchBarOperandProps>`
     ${CSSHover}
   }
   &, &:hover{
-    ${(props) => props.active ? CSSActive : ''};
+    ${(props) => props.activated ? CSSActivated : ''};
   }
 `;
 

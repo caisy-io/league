@@ -3,7 +3,7 @@ import { ProgressivehighLightMicro } from '../../../constants/styles/fonts';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISearchBarOperandProps } from '../SearchBarOperand';
 
-const CSSActive = css`
+const CSSActivated = css`
   color: var(--text-02);
   background-color: var(--interactional-primary-01); 
 `;
@@ -23,7 +23,7 @@ const Bronze = css<ISearchBarOperandProps>`
   z-index: 0;
   padding: 0 4px;
   gap: 9px;
-  ${(props) => props.active ? CSSActive : ''};
+  ${(props) => props.activated ? CSSActivated : ''};
 `;
 
 const Silver = css``;
