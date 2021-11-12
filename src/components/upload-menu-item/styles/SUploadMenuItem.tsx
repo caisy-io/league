@@ -32,7 +32,7 @@ const CSSHover = css`
   --text-color: var(--hover-text-04);
 `;
 
-const CSSActive = css`
+const CSSActivated = css`
   background-color: var(--active-ui-01);
   color: var(--ui-01);
   --icon-background-color: var(--active-ui-01);
@@ -49,7 +49,7 @@ const CSSDefault = css`
   }
 
   &:active {
-    ${CSSActive}
+    ${CSSActivated}
   }
 `;
 
@@ -61,10 +61,8 @@ const getStateStyles = (state: TUploadMenuItemStatus) => {
       return CSSSuccess;
     case "loading":
       return CSSLoading;
-    case "hover":
-      return CSSHover;
     case "activated":
-      return CSSActive;
+      return CSSActivated;
     default:
       return CSSDefault;
   }

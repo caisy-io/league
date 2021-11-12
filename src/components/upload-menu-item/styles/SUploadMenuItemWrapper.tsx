@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 interface ISUploadMenuItemWrapper {
-  hovering: boolean;
   activated: boolean;
   isDefault: boolean;
 }
@@ -22,7 +21,6 @@ const Bronze = css<ISUploadMenuItemWrapper>`
   position: relative;
 
   h6 {
-    ${(props) => props.hovering && props.isDefault && "color: var(--hover-text-04);"}
     ${(props) => props.activated && props.isDefault && "color: var(--text-01);"}
   }
 `;

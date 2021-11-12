@@ -15,7 +15,7 @@ export default {
     state: {
       description: "Changes the state of the Item",
       control: { type: "select" },
-      options: ["default", "dragging", "loading", "success", "hover", "activated"],
+      options: ["default", "dragging", "loading", "success", "activated"],
     },
     percentageLoaded: {
       description: "Shows percentage",

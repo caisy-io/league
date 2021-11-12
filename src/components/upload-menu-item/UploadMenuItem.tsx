@@ -9,7 +9,7 @@ import LoadingBorderIcon from "./icons/LoadingBorderIcon";
 import { SLoadingIconWrapper } from "./styles/SLoadingIconWrapper";
 import { SLoadingBorderWrapper } from "./styles/SLoadingBorderWrapper";
 
-type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "activated";
+type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "activated";
 
 interface IUploadMenuItem {
   onClick: () => void;
@@ -18,20 +18,12 @@ interface IUploadMenuItem {
 }
 
 export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
-  const [hovering, setHovering] = React.useState(false);
-  const [activated, setActivated] = React.useState(false);
-
   const percentageLoaded = props.percentageLoaded ? (props.percentageLoaded < 100 ? props.percentageLoaded : 100) : 0;
 
   const handleClick = (e) => {
     e.preventDefault();
     props.onClick();
   };
-
-  React.useEffect(() => {
-    setHovering(props.state === "hover");
-    setActivated(props.state === "activated");
-  }, [props.state]);
 
   const renderIcon = () => {
     switch (props.state) {
@@ -66,21 +58,10 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
 
   return (
     <SUploadMenuItemWrapper
-      hovering={hovering}
-      activated={activated}
+      activated={props.state === "activated"}
       isDefault={!props.state || props.state === "default"}
     >
-      <SUploadMenuItem
-        onMouseEnter={() => setHovering(true)}
-        onMouseLeave={() => {
-          setHovering(false);
-          setActivated(false);
-        }}
-        onMouseDown={() => setActivated(true)}
-        onMouseUp={() => setActivated(false)}
-        state={props.state}
-        onClick={handleClick}
-      >
+      <SUploadMenuItem state={props.state} onClick={handleClick}>
         {renderIcon()}
       </SUploadMenuItem>
       <SUploadMenuItemLabel state={props.state}>{renderLabelText()}</SUploadMenuItemLabel>
