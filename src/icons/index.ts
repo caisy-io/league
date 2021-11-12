@@ -116,3 +116,4 @@ export { IconStarOutlined } from "./IconStarOutlined";
 export { IconLoading } from "./IconLoading";
 export { IconExchange } from "./IconExchange";
 export { IconUserSquare } from "./IconUserSquare";
+export { IconGearSettings } from "./IconGearSettings";
