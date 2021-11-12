@@ -51,7 +51,7 @@ const CSSPrimary = css`
   }
 `;
 
-const CSSPrimaryActivated = css`
+const CSSPrimaryPressed = css`
   &:after {
     background-color: var(--active-interactional-primary-01);
   }
@@ -108,7 +108,7 @@ const CSSSecondary = css`
   }
 `;
 
-const CSSSecondaryActivated = css`
+const CSSSecondaryPressed = css`
   &:after {
     background-color: var(--active-interactional-secondary-01);
   }
@@ -133,7 +133,7 @@ const CSSNeutral = css`
   }
 `;
 
-const CSSNeutralActivated = css`
+const CSSNeutralPressed = css`
   color: var(--active-icon-01);
   border: none;
   &:after {
@@ -165,7 +165,7 @@ const CSSTertiary = css`
   }
 `;
 
-const CSSTertiaryActivated = css`
+const CSSTertiaryPressed = css`
   color: var(--text-02);
   &:after {
     background-color: var(--active-interactional-tertiary-01);
@@ -189,7 +189,7 @@ const CSSDanger = css`
   }
 `;
 
-const CSSDangerActivated = css`
+const CSSDangerPressed = css`
   color: var(--icon-06);
   &:after {
     background-color: var(--active-interactional-secondary-06);
@@ -263,22 +263,22 @@ const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
         : isSticked
         ? CSSPrimarySticked
         : isActivated
-        ? CSSPrimaryActivated
+        ? CSSPrimaryPressed
         : CSSPrimary;
     case "secondary":
-      return isActivated ? CSSSecondaryActivated : CSSSecondary;
+      return isActivated ? CSSSecondaryPressed : CSSSecondary;
     case "tertiary":
-      return isActivated ? CSSTertiaryActivated : CSSTertiary;
+      return isActivated ? CSSTertiaryPressed : CSSTertiary;
     case "danger":
       return isSticked && isActivated
         ? CSSDangerStickedActivated
         : isSticked
         ? CSSDangerSticked
         : isActivated
-        ? CSSDangerActivated
+        ? CSSDangerPressed
         : CSSDanger;
     default:
-      return isActivated ? CSSNeutralActivated : CSSNeutral;
+      return isActivated ? CSSNeutralPressed : CSSNeutral;
   }
 };
 
