@@ -43,3 +43,5 @@ export * from "./theme";
 export * from "./tooltip";
 export * from "./translation-menu";
 export * from "./tree";
+export * from "./search-bar-operand";
+export * from "./close-button";
