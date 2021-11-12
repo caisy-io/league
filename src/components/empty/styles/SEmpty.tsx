@@ -1,15 +1,23 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-interface ISEmpty {}
+interface ISEmpty {
+  type: "grid" | "schema";
+}
 
 const Bronze = css<ISEmpty>`
-  margin: 32px 0;
+  position: relative;
   height: 100%;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: ${(props) => (props.type === "schema" ? "column" : "row")};
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  background-color: ${(props) => (props.type === "schema" ? "#FDFDFD" : "var(--ui-03)")};
+
+  padding: 20px;
+  gap: 20px;
 `;
 
 const Silver = css<ISEmpty>``;

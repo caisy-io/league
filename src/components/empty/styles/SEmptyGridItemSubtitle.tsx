@@ -1,19 +1,23 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-interface ISEmptyDescription {}
+const Bronze = css`
+  height: 12px;
+  width: 85%;
+  border-radius: 4px;
 
-const Bronze = css<ISEmptyDescription>``;
+  background-color: var(--ui-03);
+`;
 
-const Silver = css<ISEmptyDescription>``;
+const Silver = css``;
 
-const Gold = css<ISEmptyDescription>``;
+const Gold = css``;
 
-const Platinum = css<ISEmptyDescription>``;
+const Platinum = css``;
 
-const Diamond = css<ISEmptyDescription>``;
+const Diamond = css``;
 
-export const SEmptyDescription = styled.div`
+export const SEmptyGridItemSubtitle = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
