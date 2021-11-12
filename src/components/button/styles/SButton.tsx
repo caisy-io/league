@@ -229,10 +229,6 @@ const CSSLink = css`
   color: var(--text-priority-neutral-3);
 `;
 
-const CSSRound = css`
-  border-radius: 50px;
-`;
-
 const CSSDisabled = css`
   &:disabled {
     cursor: not-allowed;
@@ -288,12 +284,10 @@ const Bronze = css<IButtonProps>`
     height: 100%;
     width: 100%;
     border-radius: 6px;
-    ${(props) => (props.round ? CSSRound : "")};
   }
 
   ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
-  ${(props) => (props.round ? CSSRound : "")};
 
   &:active {
     &:after {

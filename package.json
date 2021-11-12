@@ -41,6 +41,7 @@
     "eslint": "^8.0.0",
     "eslint-plugin-react": "^7.26.1",
     "install-peers-cli": "^2.2.0",
+    "plop": "^2.7.6",
     "rollup": "^2.33.1",
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-babel": "^4.4.0",

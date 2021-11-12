@@ -23,7 +23,7 @@ const Bronze = css<ISUploadMenuItemWrapper>`
 
   h6 {
     ${(props) => props.hovering && props.isDefault && "color: var(--hover-text-04);"}
-    ${(props) => props.active && props.isDefault && "color: var(--text-01);"}
+    ${(props) => props.activated && props.isDefault && "color: var(--text-01);"}
   }
 `;
 
