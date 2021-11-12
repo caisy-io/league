@@ -16,7 +16,7 @@ export default {
   argTypes: {
     type: {
       description: "Changes the overall design of the button",
-      options: ["primary", "secondary", "tertiary", "danger", "neutral", "light", "link"],
+      options: ["primary", "secondary", "tertiary", "danger"],
       control: { type: "select" },
       table: {
         defaultValue: {
@@ -70,7 +70,6 @@ Default.args = {
   type: "primary",
   content: "primary",
   size: "default",
-  round: false,
   activated: false,
   disabled: false,
   sticked: false,

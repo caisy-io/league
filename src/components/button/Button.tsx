@@ -1,6 +1,6 @@
 import React from "react";
 import { SButton } from "./styles/SButton";
-export type IButtonType = "primary" | "secondary" | "tertiary" | "danger" | "neutral" | "light" | "link";
+export type IButtonType = "primary" | "secondary" | "tertiary" | "danger";
 export type IButtonSize = "default" | "medium" | "small";
 export type IButtonState = "default" | "hover" | "focus" | "disabled";
 
