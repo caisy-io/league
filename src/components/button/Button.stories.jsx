@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "./Button";
 import { IconLink } from "../..";
+import { Badge, BadgePosition } from "..";
 
 // Default Button Demo
 export default {
@@ -91,4 +92,23 @@ WithIcon.args = {
   disabled: false,
   activated: false,
   sticked: false,
+};
+
+// With Badge
+export const WithBadge = ({ content, ...args }) => (
+  <Badge position={BadgePosition.TopRight} value={args.badgeContent}>
+    <Button {...args}>{content}</Button>
+  </Badge>
+);
+
+WithBadge.args = {
+  type: "primary",
+  content: "With Badge",
+  size: "default",
+  state: "default",
+  round: false,
+  disabled: false,
+  activated: false,
+  sticked: false,
+  badgeContent: 1,
 };

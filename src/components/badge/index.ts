@@ -1,2 +1,2 @@
-export { Badge } from "./Badge";
-export { BadgePosition } from "./BadgePosition";
+export { Badge, IBadge } from "./Badge";
+export { EBadgePosition } from "./EBadgePosition";
