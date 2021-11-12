@@ -4,7 +4,7 @@ import { SSidebarCardSubtitle } from './styles/SSidebarCardSubtitle';
 import { SSidebarCardTitle } from './styles/SSidebarCardTitle';
 import { SSidebarCard } from './styles/SSidebarCard';
 
-interface ISidebarCardProps {
+export interface ISidebarCardProps {
   hover?: boolean,
   drag?: boolean,
   headline: string | undefined,
@@ -15,7 +15,7 @@ interface ISidebarCardProps {
 export const SidebarCard: React.FC<ISidebarCardProps> = ({ ...props }) => {
   console.log(`SidebarCard props: `, props);
   return (
-    <SSidebarCard>
+    <SSidebarCard {...props}>
       <IconStarOutlined></IconStarOutlined>
       <div>
         <SSidebarCardTitle>Default {props.headline}</SSidebarCardTitle>

@@ -21,12 +21,14 @@ export default {
 };
 
 function SidebarCardDemo({ content, ...args }) {
-  return <Card>
+  return <Card style={{ boxShadow: "none"}}>
     <SidebarCard drag={args.state == "drag"} hover={args.state == "hover"}>
       {content}
     </SidebarCard>
   </Card>
 }
+
+// TO DO: Where do my icons go? + toggle icon visibility + width
 
 const Template = (args) => < SidebarCardDemo {...args} />;
 
@@ -37,7 +39,7 @@ FieldCard.args = {
 
 // With entity
 export const TemplateCard = ({ content, ...args }) => (
-  <Card>
+  <Card style>
     <SidebarCard drag={args.state == "drag"} hover={args.state == "hover"}>
       {content}
       <IconGearSettings></IconGearSettings>
