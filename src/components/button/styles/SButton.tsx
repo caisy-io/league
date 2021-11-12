@@ -262,7 +262,6 @@ const CSSDisabled = css`
 const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
   switch (type) {
     case "primary":
-      console.log(isSticked, isActivated);
       return isSticked && isActivated
         ? CSSPrimaryStickedActivated
         : isSticked
