@@ -3,7 +3,7 @@ import { SSearchBarOperatorBadgeSelect } from './styles/SSearchBarOperatorBadgeS
 
 export interface ISearchBarOperatorBadgeSelectProps {
   hover?: boolean;
-  active?: boolean;
+  activated?: boolean;
 }
 
 export const SearchBarOperatorBadgeSelect: React.FC<ISearchBarOperatorBadgeSelectProps> = ({ ...props }) => {

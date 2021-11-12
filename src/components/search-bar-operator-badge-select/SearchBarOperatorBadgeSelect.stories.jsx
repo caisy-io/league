@@ -7,7 +7,7 @@ export default {
   argTypes: {
     state: {
       description: "Changes the overall design of the search bar operator badge",
-      options: ["default", "hover", "active"],
+      options: ["default", "hover", "activated"],
       control: { type: "select" },
       table: {
         defaultValue: {
@@ -23,7 +23,7 @@ export default {
 };
 
 function SearchBarOperatorBadgeSelectDemo({ content, ...args }) {
-  return <SearchBarOperatorBadgeSelect active={args.state == "active"} hover={args.state == "hover"}>
+  return <SearchBarOperatorBadgeSelect activated={args.state == "activated"} hover={args.state == "hover"}>
     {content}
   </SearchBarOperatorBadgeSelect>
 }

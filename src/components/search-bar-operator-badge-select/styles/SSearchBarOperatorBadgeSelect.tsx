@@ -9,7 +9,7 @@ const CSSHover = css`
   cursor: pointer;
 `;
 
-const CSSActive = css`
+const CSSActivated = css`
   background-color: var(--ui-supportive-03); 
   color: #FFFF;
 `;
@@ -33,10 +33,10 @@ const Bronze = css<ISearchBarOperatorBadgeSelectProps>`
     ${CSSHover}
   }
   &, &:hover{
-    ${(props) => props.active ? CSSActive : ''};
+    ${(props) => props.activated ? CSSActivated : ''};
   }
   :active{
-    ${CSSActive}
+    ${CSSActivated}
   }
 `;
 
