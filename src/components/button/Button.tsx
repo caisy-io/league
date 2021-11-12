@@ -17,6 +17,7 @@ export interface IButtonProps {
   children?: any;
   htmlType?: string;
   activated?: boolean;
+  sticked?: boolean;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(({ children, onClick, ...props }, ref) => (
