@@ -46,15 +46,6 @@ export default {
         },
       },
     },
-    round: {
-      description: "Changes the corners of the button",
-      control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
-    },
     disabled: {
       description: "Disables or enables the button",
       control: { type: "boolean" },
@@ -97,7 +88,6 @@ WithIcon.args = {
   content: "Link existing Document",
   size: "default",
   state: "default",
-  round: false,
   disabled: false,
   activated: false,
   sticked: false,
