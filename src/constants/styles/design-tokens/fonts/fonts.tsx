@@ -1,6 +1,6 @@
-import { css } from "styled-components";
+import { css } from "styled-components" 
 
-export const progressiveHeading01 = css`
+export const CSSProgressiveHeading01 = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-0);
   line-height: var(line-heights-0);
@@ -9,7 +9,7 @@ export const progressiveHeading01 = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveBody01Semibold = css`
+export const CSSProgressiveBody01Semibold = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-1);
   line-height: var(line-heights-0);
@@ -18,7 +18,7 @@ export const progressiveBody01Semibold = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveBody01Medium = css`
+export const CSSProgressiveBody01Medium = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-2);
   line-height: var(line-heights-0);
@@ -27,7 +27,7 @@ export const progressiveBody01Medium = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveBody01 = css`
+export const CSSProgressiveBody01 = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-3);
   line-height: var(line-heights-0);
@@ -36,7 +36,7 @@ export const progressiveBody01 = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveBody02Semibold = css`
+export const CSSProgressiveBody02Semibold = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-1);
   line-height: var(line-heights-0);
@@ -45,7 +45,7 @@ export const progressiveBody02Semibold = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveBody02Medium = css`
+export const CSSProgressiveBody02Medium = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-2);
   line-height: var(line-heights-0);
@@ -54,7 +54,7 @@ export const progressiveBody02Medium = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveBody02 = css`
+export const CSSProgressiveBody02 = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-3);
   line-height: var(line-heights-0);
@@ -63,7 +63,7 @@ export const progressiveBody02 = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveBody03Semibold = css`
+export const CSSProgressiveBody03Semibold = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-1);
   line-height: var(line-heights-1);
@@ -72,7 +72,7 @@ export const progressiveBody03Semibold = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveBody03Medium = css`
+export const CSSProgressiveBody03Medium = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-2);
   line-height: var(line-heights-1);
@@ -81,7 +81,7 @@ export const progressiveBody03Medium = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveBody03 = css`
+export const CSSProgressiveBody03 = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-3);
   line-height: var(line-heights-1);
@@ -90,7 +90,7 @@ export const progressiveBody03 = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveCaption01Semibold = css`
+export const CSSProgressiveCaption01Semibold = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-1);
   line-height: var(line-heights-2);
@@ -99,7 +99,7 @@ export const progressiveCaption01Semibold = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveCaption01Medium = css`
+export const CSSProgressiveCaption01Medium = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-2);
   line-height: var(line-heights-2);
@@ -108,7 +108,7 @@ export const progressiveCaption01Medium = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveCaption01 = css`
+export const CSSProgressiveCaption01 = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-3);
   line-height: var(line-heights-2);
@@ -117,7 +117,7 @@ export const progressiveCaption01 = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveCaption02Semibold = css`
+export const CSSProgressiveCaption02Semibold = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-1);
   line-height: var(line-heights-3);
@@ -126,7 +126,7 @@ export const progressiveCaption02Semibold = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveCaption02Medium = css`
+export const CSSProgressiveCaption02Medium = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-2);
   line-height: var(line-heights-3);
@@ -135,7 +135,7 @@ export const progressiveCaption02Medium = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveCaption02 = css`
+export const CSSProgressiveCaption02 = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-3);
   line-height: var(line-heights-3);
@@ -144,7 +144,7 @@ export const progressiveCaption02 = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveHighlight = css`
+export const CSSProgressiveHighlight = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-0);
   line-height: var(line-heights-2);
@@ -153,7 +153,7 @@ export const progressiveHighlight = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveHighlightMicro = css`
+export const CSSProgressiveHighlightMicro = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-0);
   line-height: var(line-heights-4);
@@ -162,7 +162,7 @@ export const progressiveHighlightMicro = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressivePrimaryButtons = css`
+export const CSSProgressivePrimaryButtons = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-0);
   line-height: var(line-heights-2);
@@ -171,7 +171,7 @@ export const progressivePrimaryButtons = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveBadgesSmall = css`
+export const CSSProgressiveBadgesSmall = css`
   font-family: var(font-families-inter);
   font-weight: var(font-weights-inter-0);
   line-height: var(line-heights-2);
@@ -180,7 +180,7 @@ export const progressiveBadgesSmall = css`
   paragraph-spacing: var(paragraph-spacing-0);
 `;
 
-export const progressiveMonospaceCaption = css`
+export const CSSProgressiveMonospaceCaption = css`
   font-family: var(font-families-ibm-plex-mono);
   font-weight: var(font-weights-ibm-plex-mono-4);
   line-height: var(line-heights-1);
@@ -188,3 +188,4 @@ export const progressiveMonospaceCaption = css`
   letter-spacing: var(letter-spacing-0);
   paragraph-spacing: var(paragraph-spacing-0);
 `;
+

@@ -1,6 +1,6 @@
-import { css } from "styled-components";
+import { css } from "styled-components" 
 
-export const CSSFonts = css`
+export const CSSFonts = css `
   :root {
     --font-families-inter: Inter;
     --font-families-ibm-plex-mono: IBM Plex Mono;
