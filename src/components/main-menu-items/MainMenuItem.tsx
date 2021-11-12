@@ -6,7 +6,7 @@ import { SMainMenuItemWrapper } from "./styles/SMainMenuItemWrapper";
 
 interface IMainMenuItem {
   onClick: () => void;
-  active?: boolean;
+  activated?: boolean;
   label?: string;
 }
 
@@ -18,7 +18,7 @@ export const MainMenuItem: React.FC<IMainMenuItem> = ({ ...props }) => {
   return (
     <>
       <SMainMenuItemWrapper>
-        <SMainMenuItem active={props.active} onClick={handleClick}>
+        <SMainMenuItem activated={props.activated} onClick={handleClick}>
           <SMainMenuItemIcon>{props.children}</SMainMenuItemIcon>
         </SMainMenuItem>
         {props.label && <SMainMenuItemLabel>{props.label}</SMainMenuItemLabel>}
