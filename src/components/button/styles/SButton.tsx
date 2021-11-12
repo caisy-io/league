@@ -5,6 +5,13 @@ import { IButtonProps, IButtonSize, IButtonType } from "../Button";
 
 const getSize = (size?: IButtonSize) => {
   switch (size) {
+    case "micro":
+      return css`
+        height: 16px;
+        padding: 0 5px;
+        font-size: 11px;
+        gap: 5px;
+      `;
     case "medium":
       return css`
         height: 36px;
@@ -273,7 +280,6 @@ const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
 const Bronze = css<IButtonProps>`
   ${CSSProgressivePrimaryButtons}
   color: var(--text-02);
-  ${(props) => getSize(props.size)};
   flex-grow: 0;
   display: flex;
   justify-content: center;
@@ -286,6 +292,7 @@ const Bronze = css<IButtonProps>`
   gap: 9px;
   padding: 0 12px;
   border: none;
+  ${(props) => getSize(props.size)};
 
   /* this after is there to split the background animation from the button content */
   /* after is the background */
