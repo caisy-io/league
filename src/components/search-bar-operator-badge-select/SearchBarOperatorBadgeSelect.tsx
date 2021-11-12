@@ -7,7 +7,6 @@ export interface ISearchBarOperatorBadgeSelectProps {
 }
 
 export const SearchBarOperatorBadgeSelect: React.FC<ISearchBarOperatorBadgeSelectProps> = ({ ...props }) => {
-  console.log(`SearchBarOperatorBadgeSelect props: `, props);
   return (
     <SSearchBarOperatorBadgeSelect {...props}>
       {props.children}

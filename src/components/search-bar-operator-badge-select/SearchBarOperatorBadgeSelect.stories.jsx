@@ -33,5 +33,5 @@ const Template = (args) => < SearchBarOperatorBadgeSelectDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   state: "default",
-  content: "AND"
+  content: "and"
 };

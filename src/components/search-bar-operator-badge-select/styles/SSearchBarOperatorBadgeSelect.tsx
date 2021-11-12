@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 import { ISearchBarOperatorBadgeSelectProps } from '../SearchBarOperatorBadgeSelect';
+import { ProgressiveHighLight } from '../../../constants/styles/fonts';
 
 const CSSHover = css`
   background-color: var(--hover-ui-03); 
-  color: var(--hover-text-04)
+  color: var(--hover-text-04);
+  cursor: pointer;
 `;
 
 const CSSActive = css`
@@ -13,25 +15,28 @@ const CSSActive = css`
 `;
 
 const Bronze = css<ISearchBarOperatorBadgeSelectProps>`
+  ${ProgressiveHighLight};
+  color: var(--text-04);
+  text-transform: uppercase;
   max-width: min-content;
   height: 24px;
   box-sizing: border-box;
   background-color: var(--ui-03);
   border-radius: 68px;
-  color: var(--text-04);
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.06em;
   padding: 4px 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
   ${(props) => props.hover ? CSSHover : ''};
   :hover{
     ${CSSHover}
   }
-  &, &:active{
+  &, &:hover{
     ${(props) => props.active ? CSSActive : ''};
+  }
+  :active{
+    ${CSSActive}
   }
 `;
 
