@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { CSSProgressivePrimaryButtons } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 import { IButtonProps, IButtonSize, IButtonType } from "../Button";
 
@@ -143,11 +144,11 @@ const CSSNeutralPressed = css`
 
 const CSSTertiary = css`
   color: var(--text-04);
-  border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--interactional-tertiary-01);
+  border: solid 1px var(--interactional-tertiary-01);
   &:hover {
     color: var(--hover-text-04);
     &:after {
-      border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--hover-interactional-tertiary-01);
+      border: solid 1px var(--hover-interactional-tertiary-01);
     }
   }
   &:active {
@@ -157,7 +158,7 @@ const CSSTertiary = css`
     }
   }
   &:disabled {
-    border: ${(props: any) => (props.dashed ? "dashed" : "solid")} 1px var(--disabled-interactional-01);
+    border: solid 1px var(--disabled-interactional-01);
     color: var(--disabled-interactional-01);
     &:after {
       background-color: transparent !important;
@@ -233,19 +234,6 @@ const CSSDangerStickedActivated = css`
   }
 `;
 
-const CSSLink = css`
-  border: ${(props: any) => (props.dashed ? `var(--text-priority-neutral-4) 1px dashed` : "none")};
-  background: rgba(0, 0, 0, 0);
-  :hover {
-    background: rgba(0, 0, 0, 0.05);
-  }
-  &:active {
-    filter: brightness(80%) contrast(150%);
-    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.05);
-  }
-  color: var(--text-priority-neutral-3);
-`;
-
 const CSSDisabled = css`
   &:disabled {
     cursor: not-allowed;
@@ -283,6 +271,7 @@ const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
 };
 
 const Bronze = css<IButtonProps>`
+  ${CSSProgressivePrimaryButtons}
   color: var(--text-02);
   ${(props) => getSize(props.size)};
   flex-grow: 0;
@@ -295,7 +284,6 @@ const Bronze = css<IButtonProps>`
   transition: all 0.3s ease;
   background-color: transparent;
   gap: 9px;
-  font-size: 11px;
   padding: 0 12px;
   border: none;
 
