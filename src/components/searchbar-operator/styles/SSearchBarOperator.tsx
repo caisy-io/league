@@ -1,23 +1,23 @@
-import styled, { css } from 'styled-components';
-import { ProgressivehighLightMicro } from '../../../constants/styles/fonts';
-import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
-import { ISearchBarOperatorProps } from '../SearchBarOperator';
+import styled, { css } from "styled-components";
+import { CSSProgressivehighLightMicro } from "../../../constants/styles/fonts";
+import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
+import { ISearchBarOperatorProps } from "../SearchBarOperator";
 
 const CSSHover = css`
-  background-color: var(--hover-ui-03); 
+  background-color: var(--hover-ui-03);
   color: var(--hover-text-04);
   cursor: pointer;
 `;
 
 const CSSActive = css`
-  background-color: white; 
+  background-color: white;
   color: var(--ui-supportive-03);
   outline: 1px solid var(--ui-supportive-03);
   outline-offset: -1px;
 `;
 
 const Bronze = css<ISearchBarOperatorProps>`
-  ${ProgressivehighLightMicro};
+  ${CSSProgressivehighLightMicro};
   color: var(--text-04);
   text-transform: uppercase;
   max-width: min-content;
@@ -32,17 +32,17 @@ const Bronze = css<ISearchBarOperatorProps>`
   align-items: center;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   z-index: 1;
-  ${(props) => props.hover ? CSSHover : ''};
-  :hover{
+  ${(props) => (props.hover ? CSSHover : "")};
+  :hover {
     ${CSSHover}
   }
-  &, &:hover{
-    ${(props) => props.activated ? CSSActive : ''};
+  &,
+  &:hover {
+    ${(props) => (props.activated ? CSSActive : "")};
   }
-  :active{
+  :active {
     ${CSSActive}
   }
-}
 `;
 
 const Silver = css``;
@@ -56,8 +56,7 @@ const Diamond = css``;
 export const SSearchBarOperator = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
-  ${MIN_GOLD`${Gold}`}; 
+  ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
 `;
-
