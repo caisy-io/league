@@ -18,6 +18,12 @@ const Template = (args) => <KeyActionSnackbarDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  keys: ["A"],
+  action: "action",
+};
+
+export const WithTwoKeys = Template.bind({});
+WithTwoKeys.args = {
   keys: ["Ctrl", "C"],
   action: "copy",
 };
