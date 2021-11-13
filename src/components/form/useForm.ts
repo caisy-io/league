@@ -71,7 +71,6 @@ export const useForm: (initialFormState?: IInitialFormState) => IUseForm = (init
       for (const property in formState) {
         set(formData, property, formState[property].value);
       }
-      console.log(formData);
       return onSubmit(formData);
     };
   };

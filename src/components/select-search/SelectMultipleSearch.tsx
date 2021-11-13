@@ -7,7 +7,7 @@ import { ClickOutside, useDimensions } from "webrix/hooks";
 import { SSelectSearchMultipleValue } from "./styles/SSelectSearchMultipleValue";
 import { getSearchedItems } from "./getSearchedItems";
 
-interface IDropdownSearch {
+interface ISelectMultipleSearch {
   dataSource: any[];
   setDataSource: (items: any) => void;
   dropdownPosition?: "left" | "right" | "center";
@@ -18,8 +18,8 @@ interface IDropdownSearch {
   style?: any;
 }
 // @Nicolas why we have a forwardRef here if we do not use it?
-export const SelectMultipleSearch: React.FC<IDropdownSearch> = React.forwardRef(
-  ({ ...props }: IDropdownSearch, _) => {
+export const SelectMultipleSearch: React.FC<ISelectMultipleSearch> = React.forwardRef(
+  ({ ...props }: ISelectMultipleSearch, _) => {
     const [inputValue, setInputValue] = React.useState<string>("");
     const [multipleValue, setMultipleValue] = React.useState<string[]>(
       props.value || props.defaultValue ? ((props.value || props.defaultValue) as string[]) : [],

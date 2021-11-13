@@ -68,7 +68,6 @@ function ListDemo() {
   const [data, setData] = React.useState(initialDate);
 
   const loadNextPage = (...args) => {
-    console.log(args);
     setIsNextPageLoading(true);
     return new Promise((resolve) =>
       setTimeout(() => {
