@@ -1,1 +1,1 @@
-export * from "./key-action-snackbar/KeyActionSnackbar";
+export {KeyActionSnackbar, IKeyActionSnackbar} from "./key-action-snackbar/KeyActionSnackbar";

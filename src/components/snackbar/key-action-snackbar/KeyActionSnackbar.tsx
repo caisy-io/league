@@ -2,7 +2,7 @@ import React from "react";
 import { SKeyActionSnackbar } from "./styles/SKeyActionSnackbar";
 import { SKeyActionSnackbarKey } from "./styles/SKeyActionSnackbarKey";
 
-interface IKeyActionSnackbar {
+export interface IKeyActionSnackbar {
   keys: string[];
   action: string;
 }
