@@ -14,15 +14,7 @@ interface ISimpleInput extends InputHTMLAttributes<HTMLInputElement> {
   value: any;
 }
 
-export const SimpleInput: React.FC<ISimpleInput> = ({
-  label,
-  state,
-  required,
-  children,
-  value,
-  onChange,
-  ...props
-}) => {
+export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children, value, onChange, ...props }) => {
   const [active, setActive] = React.useState(false);
   const [inputLength, setInputLength] = React.useState(value?.toString().length);
 
@@ -50,7 +42,7 @@ export const SimpleInput: React.FC<ISimpleInput> = ({
 
   React.useEffect(() => {
     resizeInput();
-  }, []);
+  }, [value]);
 
   const handleFocus = (e) => {
     setActive(true);
@@ -65,7 +57,7 @@ export const SimpleInput: React.FC<ISimpleInput> = ({
   return (
     <SSimpleInputWrapper active={active} state={state} onClick={onClick}>
       <span ref={spanRef} style={{ width: "fit-content", visibility: "hidden", position: "absolute", fontSize: 14 }} />
-      {addonsList.map((addon) => addon.active && addon.component)}
+      {addonsList?.map((addon) => addon.active && addon.component)}
 
       <div style={{ position: "relative", width: "fit-content" }}>
         {required && <SSimpleInputRequiredIndicator />}

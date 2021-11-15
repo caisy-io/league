@@ -1,32 +1,31 @@
 import React from "react";
 import { SimpleInput } from "../simple-input/SimpleInput";
-import { WithLabel } from "../with-label/WithLabel";
 import { WithErrorMessage } from "./WithErrorMessage";
+import FieldContext from "../field-context/FieldContextState";
 
-function WithErrorMessageDemo({ content, ...args }) {
+function WithErrorMessageDemo({ ...args }) {
+  const [value, setValue] = React.useState("");
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
+
   return (
-    <WithLabel content="Label">
-      <WithErrorMessage content={content}>
-        <SimpleInput state="error" {...args} />
-      </WithErrorMessage>
-    </WithLabel>
+    <FieldContext>
+      <WithErrorMessage active={true} content={args.content} />
+      <SimpleInput placeholder="This input has some errors" onChange={onChange} value={value} state="error" />
+    </FieldContext>
   );
 }
 
 export default {
   title: "Components/InputFields/WithErrorMessage",
   component: WithErrorMessageDemo,
-  argTypes: {
-    content: {
-      description: "Label",
-      control: { type: "text" },
-    },
-  },
+  argTypes: {},
 };
 
-const Template = ({ label, ...args }) => <WithErrorMessageDemo {...args} />;
+const Template = ({ ...args }) => <WithErrorMessageDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  content: "This is an error message",
+  content: ["This is an error message", "This is another error message"],
 };
