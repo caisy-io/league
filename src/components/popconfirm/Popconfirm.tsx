@@ -55,7 +55,7 @@ export const Popconfirm: React.FC<IPopconfirm> = ({ ...props }) => {
               {props.title}
             </SPopconfirmTitle>
             <SPopconfirmButtons>
-              <Button type="link" onClick={(e) => handleClickCancel(e)}>
+              <Button type="tertiary" onClick={(e) => handleClickCancel(e)}>
                 {props.cancelText || "Cancel"}
               </Button>
               <Button onClick={(e) => handleClickOk(e)}>{props.okText || "OK"}</Button>

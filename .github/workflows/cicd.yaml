@@ -2,26 +2,25 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - prod
-      - staging
-      - dev
+      - "!dev"
+      - "!staging"
+      - "!prod"
   pull_request:
     branches:
-      - prod
-      - staging
-      - dev
-
+      - "!dev"
+      - "!staging"
+      - "!prod"
 env:
   VERCEL_NAME: ${{ github.event.repository.name }}
   VERCEL_TOKEN: ${{ secrets.CAISY_VERCEL_TOKEN }}
-
+  INTERNAL_AUTOMATION_AUTH_TOKEN: ${{ secrets.INTERNAL_AUTOMATION_AUTH_TOKEN }}
 
 jobs:
   check-build-publish-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-    - run: bash dep.sh
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - run: bash dep.sh
