@@ -8,7 +8,6 @@ export interface IButtonProps {
   type?: IButtonType;
   size?: IButtonSize;
   dashed?: boolean;
-  round?: boolean;
   disabled?: boolean;
   onClick?: (e: Event) => void;
   style?: any;
