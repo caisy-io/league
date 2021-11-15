@@ -1,2 +1,2 @@
-export { AvatarSquareGroup } from "./AvatarGroup";
-export { AvatarSquare } from "./Avatar";
+export { AvatarGroup } from "./AvatarGroup";
+export { Avatar } from "./Avatar";
