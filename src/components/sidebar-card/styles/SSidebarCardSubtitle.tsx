@@ -5,6 +5,10 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 const Bronze = css`
   ${CSSProgressiveCaption02Medium};
   color: var(--text-04);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 170px;
 `;
 
 const Silver = css``;

@@ -1,28 +1,33 @@
-import React, { ReactNode } from 'react';
-import { IconDragable, IconStarOutlined } from '../..';
+import React from 'react';
+import { IconDragable } from '../..';
+import { SFlex } from '../../base-components/flex/styles/SFlex';
+import { SSidebarCard } from './styles/SSidebarCard';
+import { SSidebarcardIconWrapper } from './styles/SSidebarCardIconWrapper';
 import { SSidebarCardSubtitle } from './styles/SSidebarCardSubtitle';
 import { SSidebarCardTitle } from './styles/SSidebarCardTitle';
-import { SSidebarCard } from './styles/SSidebarCard';
 
 export interface ISidebarCardProps {
   hover?: boolean,
   drag?: boolean,
-  headline: string | undefined,
-  description: string | undefined,
+  title?: string | undefined,
+  description?: string | undefined,
   icon: React.ReactNode,
 }
 
 export const SidebarCard: React.FC<ISidebarCardProps> = ({ ...props }) => {
-  console.log(`SidebarCard props: `, props);
   return (
     <SSidebarCard {...props}>
-      <IconStarOutlined></IconStarOutlined>
-      <div>
-        <SSidebarCardTitle>Default {props.headline}</SSidebarCardTitle>
-        <SSidebarCardSubtitle>Lorem ipsum {props.description}</SSidebarCardSubtitle>
-      </div>
-      {props.children}
-      <IconDragable></IconDragable>
+      <SFlex>
+        {props.icon}
+        <div>
+          <SSidebarCardTitle> {props.title}</SSidebarCardTitle>
+          <SSidebarCardSubtitle>  {props.description}</SSidebarCardSubtitle>
+        </div>
+      </SFlex>
+      <SSidebarcardIconWrapper {...props}>
+        {props.children}
+        <IconDragable></IconDragable>
+      </SSidebarcardIconWrapper>
     </SSidebarCard>
   )
 }

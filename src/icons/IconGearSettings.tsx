@@ -11,7 +11,7 @@ export function IconGearSettings() {
     >
       <path
         fillRule="evenodd"
-        stroke="#172C55"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -22,7 +22,7 @@ export function IconGearSettings() {
         cx="12.004"
         cy="12"
         r="2.751"
-        stroke="#172C55"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

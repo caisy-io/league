@@ -3,7 +3,11 @@ import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/fonts
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  ${CSSProgressiveCaption01Semibold}
+  ${CSSProgressiveCaption01Semibold};
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 170px;
 `;
 
 const Silver = css``;

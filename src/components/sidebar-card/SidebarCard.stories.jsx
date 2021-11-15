@@ -1,5 +1,5 @@
 import React from "react";
-import { IconGearSettings } from "../..";
+import { IconGearSettings, IconStarOutlined } from "../..";
 import { Card } from '../card';
 import { SidebarCard } from '../sidebar-card';
 
@@ -17,36 +17,47 @@ export default {
         },
       },
     },
+    title: {
+      description: "Title text of the sidebar card",
+      control: { type: "text" },
+    },
+    description: {
+      description: "Description text of the sidebar card",
+      control: { type: "text" },
+    },
   },
 };
 
+// Field card
 function SidebarCardDemo({ content, ...args }) {
-  return <Card style={{ boxShadow: "none"}}>
-    <SidebarCard drag={args.state == "drag"} hover={args.state == "hover"}>
+  return <div style={{ width: "261px" }}>
+    <SidebarCard drag={args.state == "drag"} icon={<IconStarOutlined></IconStarOutlined>} hover={args.state == "hover"} title={args.title} description={args.description}>
       {content}
-    </SidebarCard>
-  </Card>
-}
+    </SidebarCard> </div>
 
-// TO DO: Where do my icons go? + toggle icon visibility + width
+}
 
 const Template = (args) => < SidebarCardDemo {...args} />;
 
 export const FieldCard = Template.bind({});
 FieldCard.args = {
   state: "default",
+  title: "Default",
+  description: "Lorem ipsum"
 };
 
-// With entity
+// Template card
 export const TemplateCard = ({ content, ...args }) => (
-  <Card style>
-    <SidebarCard drag={args.state == "drag"} hover={args.state == "hover"}>
+  <div style={{ width: "261px" }}>
+    <SidebarCard drag={args.state == "drag"} hover={args.state == "hover"} title={args.title} description={args.description}>
       {content}
       <IconGearSettings></IconGearSettings>
     </SidebarCard>
-  </Card>
+  </div>
 );
 
 TemplateCard.args = {
   state: "default",
+  title: "Default",
+  description: "Lorem ipsum"
 };
