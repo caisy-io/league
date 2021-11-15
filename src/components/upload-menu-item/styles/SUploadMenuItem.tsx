@@ -1,31 +1,11 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success";
+type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "activated";
 
 interface ISUploadMenuItem {
   state: TUploadMenuItemStatus;
 }
-
-const CSSDefault = css`
-  background-color: var(--ui-01);
-  color: var(--icon-04);
-  --icon-background-color: var(--ui-01);
-
-  &:hover {
-    background-color: var(--hover-ui-01);
-    color: var(--hover-icon-04);
-    --icon-background-color: var(--hover-ui-01);
-    --text-color: var(--hover-text-04);
-  }
-
-  &:active {
-    background-color: var(--active-ui-01);
-    color: var(--ui-01);
-    --icon-background-color: var(--active-ui-01);
-    --text-color: var(--text-01);
-  }
-`;
 
 const CSSDrag = css`
   background-color: var(--hover-ui-01);
@@ -45,6 +25,34 @@ const CSSLoading = css`
   border: none;
 `;
 
+const CSSHover = css`
+  background-color: var(--hover-ui-01);
+  color: var(--hover-icon-04);
+  --icon-background-color: var(--hover-ui-01);
+  --text-color: var(--hover-text-04);
+`;
+
+const CSSActivated = css`
+  background-color: var(--active-ui-01);
+  color: var(--ui-01);
+  --icon-background-color: var(--active-ui-01);
+  --text-color: var(--text-01);
+`;
+
+const CSSDefault = css`
+  background-color: var(--ui-01);
+  color: var(--icon-04);
+  --icon-background-color: var(--ui-01);
+
+  &:hover {
+    ${CSSHover}
+  }
+
+  &:active {
+    ${CSSActivated}
+  }
+`;
+
 const getStateStyles = (state: TUploadMenuItemStatus) => {
   switch (state) {
     case "dragging":
@@ -53,6 +61,10 @@ const getStateStyles = (state: TUploadMenuItemStatus) => {
       return CSSSuccess;
     case "loading":
       return CSSLoading;
+    case "hover":
+      return CSSHover;
+    case "activated":
+      return CSSActivated;
     default:
       return CSSDefault;
   }

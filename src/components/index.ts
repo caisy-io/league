@@ -32,6 +32,7 @@ export * from "./search";
 export * from "./select";
 export * from "./select-search";
 export * from "./skeleton";
+export * from "./snackbar";
 export * from "./spinner";
 export * from "./stackable";
 export * from "./status";

@@ -6,6 +6,12 @@ import { IconStarOutlined } from "../..";
 export default {
   title: "Components/FlatActionButton",
   component: FlatActionButtonDemo,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=1112%3A16949",
+      },
+  },
   argTypes: {
     type: {
       description: "Changes the overall design of the button",
