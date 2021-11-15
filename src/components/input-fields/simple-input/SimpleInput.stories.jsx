@@ -27,51 +27,51 @@ function SimpleInputDemo() {
     <>
       <Form style={{ display: "flex", flexDirection: "column", gap: 8 }} onSubmit={handleSubmit(onSubmit)}>
         <div style={{ display: "flex", gap: 8 }}>
-          <FormFieldWrapper
-            rules={[
-              { name: "required", condition: (value) => value && value !== "", message: "This field is required" },
-            ]}
-            control={control}
-            name={`formData.name`}
-          >
-            <FieldContext>
-              <WithLabel active={true} content="Name*" />
-              <WithErrorMessage active={true} content={getErrorList("formData.name")} />
+          <FieldContext>
+            <WithLabel active={true} content="Name*" />
+            <WithErrorMessage active={true} content={getErrorList("formData.name")} />
+            <FormFieldWrapper
+              rules={[
+                { name: "required", condition: (value) => value && value !== "", message: "This field is required" },
+              ]}
+              control={control}
+              name={`formData.name`}
+            >
               <SimpleInput state={getErrorList("formData.name").length > 0 ? "error" : "success"} />
-            </FieldContext>
-          </FormFieldWrapper>
+            </FormFieldWrapper>
+          </FieldContext>
 
-          <FormFieldWrapper control={control} name={`formData.value`}>
-            <FieldContext>
-              <WithTranslationBadge active={true} content={{ flag: GermanFlagIcon, country: "DE" }} />
+          <FieldContext>
+            <WithTranslationBadge active={true} content={{ flag: GermanFlagIcon, country: "DE" }} />
+            <FormFieldWrapper control={control} name={`formData.value`}>
               <SimpleInput />
-              <WithLabel active={true} content="Value" />
-            </FieldContext>
-          </FormFieldWrapper>
+            </FormFieldWrapper>
+            <WithLabel active={true} content="Value" />
+          </FieldContext>
         </div>
 
         <div style={{ display: "flex", gap: 8 }}>
-          <FormFieldWrapper
-            rules={[
-              { name: "required", condition: (value) => value && value !== "", message: "This field is required" },
-            ]}
-            control={control}
-            name={`formData.name1`}
-          >
-            <FieldContext>
-              <WithLabel active={true} content="Name*" />
-              <WithErrorMessage active={true} content={getErrorList("formData.name1")} />
+          <FieldContext>
+            <WithLabel active={true} content="Name*" />
+            <WithErrorMessage active={true} content={getErrorList("formData.name1")} />
+            <FormFieldWrapper
+              rules={[
+                { name: "required", condition: (value) => value && value !== "", message: "This field is required" },
+              ]}
+              control={control}
+              name={`formData.name1`}
+            >
               <SimpleInput state={getErrorList("formData.name1").length > 0 ? "error" : "success"} />
-            </FieldContext>
-          </FormFieldWrapper>
+            </FormFieldWrapper>
+          </FieldContext>
 
-          <FormFieldWrapper control={control} name={`formData.value1`}>
-            <FieldContext>
+          <FieldContext>
+            <FormFieldWrapper control={control} name={`formData.value1`}>
               <SimpleInput />
-              <WithTranslationBadge active={true} content={{ flag: GermanFlagIcon, country: "DE" }} />
-              <WithLabel active={true} content="Value" />
-            </FieldContext>
-          </FormFieldWrapper>
+            </FormFieldWrapper>
+            <WithTranslationBadge active={true} content={{ flag: GermanFlagIcon, country: "DE" }} />
+            <WithLabel active={true} content="Value" />
+          </FieldContext>
         </div>
         <button style={{ width: "fit-content" }}>Submit</button>
       </Form>

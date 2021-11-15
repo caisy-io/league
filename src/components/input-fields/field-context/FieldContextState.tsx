@@ -29,9 +29,7 @@ const FieldContextState: React.FC<IFieldContextProvider> = ({ ...props }) => {
 
   return (
     <FieldProvider.Provider value={{ addons: state.addons, registerAddon, addonsList: getAddonsList() }}>
-      {React.Children.map(props.children, (child) => {
-        return React.isValidElement(child) ? React.cloneElement(child, props) : child;
-      })}
+      {props.children}
     </FieldProvider.Provider>
   );
 };
