@@ -6,6 +6,12 @@ import { SidebarCard } from '../sidebar-card';
 export default {
   title: `Components/SidebarCard`,
   component: SidebarCardDemo,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=5%3A16",
+    },
+  },
   argTypes: {
     state: {
       description: "Changes the overall design of the sidebar card",
