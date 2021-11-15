@@ -45,3 +45,4 @@ export * from "./translation-menu";
 export * from "./tree";
 export * from "./search-bar-operand";
 export * from "./close-button";
+export * from "./line-tabs";
