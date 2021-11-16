@@ -245,70 +245,7 @@ const CSSDisabled = css`
   }
 `;
 
-const CSSSidebarTagBase = css`
-  width: 16px;  // also change in SVG
-  height: 40px; // also change in SVG
-  position: absolute;
-  bottom: 40px;
-  padding: 0;
-
-  > svg {
-    position: absolute;
-  }
-`;
-
-const CSSSidebarTagLeftBase = css`
-  right: -16px; // also change in SVG
-  z-index: 15;
-
-  > svg {
-    -webkit-filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
-    filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
-  }
-`;
-
-const CSSSidebarTagRightBase = css`
-  left: -16px; // also change in SVG
-  z-index: 15;
-  
-  > svg {
-    -webkit-filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
-    filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
-    transform: rotate(180deg);
-  }
-`;
-
-const CSSSidebarTagClosedBase = css`
-  > svg .sidebarTag__content__arrow {
-    transform: rotate(180deg);
-    transform-origin: center;
-  }
-`;
-
-
-const CSSSidebarTagLeftOpen = css`
-  ${CSSSidebarTagBase}
-  ${CSSSidebarTagLeftBase}
-`;
-
-const CSSSidebarTagRightOpen = css`
-  ${CSSSidebarTagBase}
-  ${CSSSidebarTagRightBase}
-`;
-
-const CSSSidebarTagLeftClosed = css`
-  ${CSSSidebarTagBase}
-  ${CSSSidebarTagLeftBase}
-  ${CSSSidebarTagClosedBase}
-`;
-
-const CSSSidebarTagRightClosed = css`
-  ${CSSSidebarTagBase}
-  ${CSSSidebarTagRightBase}
-  ${CSSSidebarTagClosedBase}
-`;
-
-const getTypeStyling = (type: IButtonType, isActivated, isSticked, isOpen, isLeft) => {
+const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
   switch (type) {
     case "primary":
       return isSticked && isActivated
@@ -330,8 +267,6 @@ const getTypeStyling = (type: IButtonType, isActivated, isSticked, isOpen, isLef
         : isActivated
         ? CSSDangerPressed
         : CSSDanger;
-    case "sidebarTag":
-      return isLeft ? (isOpen? CSSSidebarTagLeftOpen : CSSSidebarTagLeftClosed) : (isOpen? CSSSidebarTagRightOpen : CSSSidebarTagRightClosed);
     default:
       return isActivated ? CSSNeutralPressed : CSSNeutral;
   }
@@ -368,7 +303,7 @@ const Bronze = css<IButtonProps>`
     border-radius: 6px;
   }
 
-  ${(props) => getTypeStyling(props.type, props.activated, props.sticked, props.open, props.left)};
+  ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
 
   &:active {
