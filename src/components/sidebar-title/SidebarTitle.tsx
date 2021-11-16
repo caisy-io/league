@@ -1,21 +1,21 @@
 import React from 'react';
-import { SFlex } from '../../base-components/flex/styles/SFlex';
-import { Switch } from '../../components/switch';
 import { SSidebarTitle } from './styles/SSidebarTitle';
 import { SSidebarTitleLabel } from './styles/SSidebarTitleLabel';
+import { SSidebarTitleWrapper } from './styles/SSidebarTitleWrapper';
 
-interface ISidebarTitle {
+export interface ISidebarTitleProps {
   toggleComponent?: React.ReactNode;
   icon?: React.ReactNode;
 }
 
-export const SidebarTitle: React.FC<ISidebarTitle> = ({ ...props }) => {
+export const SidebarTitle: React.FC<ISidebarTitleProps> = ({ ...props }) => {
   return (
     <SSidebarTitle>
-      <SFlex>
+      <SSidebarTitleWrapper {...props}>
         {props.icon}
-        <SSidebarTitleLabel>{props.children}</SSidebarTitleLabel>
-      </SFlex>
+        <SSidebarTitleLabel >{props.children}</SSidebarTitleLabel>
+      </SSidebarTitleWrapper>
+      {props.toggleComponent}
     </SSidebarTitle >
   )
 }

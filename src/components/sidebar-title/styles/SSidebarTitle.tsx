@@ -10,14 +10,7 @@ const Bronze = css`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  svg{
-    width: 16px;
-    height: 16px;
-    margin-right: 0.5rem;
-  }
-  svg path {
-    stroke-width: 1.2px;
-  }
+ 
 `;
 
 const Silver = css``;

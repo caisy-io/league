@@ -1,6 +1,7 @@
 import React from "react";
 import { SidebarTitle } from './SidebarTitle';
 import { IconStarOutlined } from '../../icons/IconStarOutlined'
+import { Switch } from '../switch';
 
 export default {
   title: `Components/SidebarTitle`,
