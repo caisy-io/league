@@ -15,4 +15,10 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
-      - run: bash dep.sh
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v5
+      - name: Print branch name
+        run: echo "Branch name:${{ steps.branch-name.outputs.current_branch }}"
+      - name: Run deployment to vercel
+        run: export BRANCH_NAME=${{ steps.branch-name.outputs.current_branch }} && bash dep.sh
