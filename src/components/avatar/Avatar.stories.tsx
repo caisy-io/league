@@ -13,7 +13,6 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 export const DefaultWB = Template.bind({});
 DefaultWB.args = {
   children: "WB",
-  size: 16
 };
 export const WB_16 = Template.bind({});
 WB_16.args = {
