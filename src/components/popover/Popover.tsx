@@ -27,7 +27,6 @@ const getPlacement = (placement: TPlacement | undefined): number => {
       return 1;
   }
 };
-
 interface IPopover {
   placement: TPlacement;
   reference: React.MutableRefObject<null>;
@@ -48,6 +47,11 @@ export const Popover: React.FC<IPopover> = ({
   container,
   zIndex,
 }) => {
+  console.log('reference', reference)
+  if(!reference || !reference.current) {
+    console.log("returns null")
+    return null;
+  }
   const placements = React.useCallback((rbr, tbr) => {
     const GAP = disableTriangle ? 8 : 18;
     return [

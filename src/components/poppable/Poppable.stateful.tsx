@@ -18,7 +18,7 @@
  import Poppable from './Poppable';
 
 
- export const StatefulPoppable: React.FC<any> = forwardRef((props, ref) => { // TODO fix any, placement works with FC any
+export const StatefulPoppable: React.FC<any> = forwardRef((props, ref) => { // TODO fix any, placement works with FC any
      const [placement, setPlacement] = useState();
  
      return (
@@ -27,5 +27,5 @@
  });
  
  StatefulPoppable.displayName = 'Poppable';
- 
- export default memo(StatefulPoppable);
+
+export default memo(StatefulPoppable);

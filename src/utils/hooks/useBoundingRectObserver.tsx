@@ -22,7 +22,8 @@
  
  export const getBoundingRects = refs => (
      refs.map(ref => {
-         if (ref.current) {
+         console.log('boundig ref', ref)
+        if (ref.current) {
              return ref.current.getBoundingClientRect();
          }
          if (ref instanceof Element) {
@@ -33,7 +34,6 @@
              return ref;
          }
          if (getType(ref) === 'window') {
-             //@ts-ignore
              return new DOMRect(0, 0, window.innerWidth, window.innerHeight)
          }
      })

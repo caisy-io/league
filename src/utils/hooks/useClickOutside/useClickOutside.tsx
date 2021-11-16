@@ -74,9 +74,5 @@ import OverrideContext from '.';
         {children}
     </OverrideContext.Provider>
  );
-
-//  <OverrideContext.Provider value={condition}>
-//          {children}
-//      </OverrideContext.Provider>
  
  ClickOutsideOverride.contextType = OverrideContext;

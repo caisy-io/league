@@ -41,6 +41,7 @@ interface IStackableContent {
  
      useEffect(() => {
          let ancestors = '';
+         console.log('parent2', parent)
          if (parent.current) {
             console.log("parent", parent.current)
              let {parentNode} = parent.current;
