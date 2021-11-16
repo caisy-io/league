@@ -22,12 +22,12 @@ function PoppableDemo() {
         backgroundColor: "#D7BE82",
         cursor: "pointer"
       };
-      
+
     const targetStyle = {
         width: "50px",
         height: "50px",
         backgroundColor: "white",
-      };
+    };
 
       const [visible, setVisible] = useState(false);
       const handleOnMouseDownCapture = useClickOutside(() => setVisible(false));
