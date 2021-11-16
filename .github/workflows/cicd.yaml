@@ -1,15 +1,8 @@
 name: Build and Deploy
 on:
   push:
-    branches:
-      - "!dev"
-      - "!staging"
-      - "!prod"
   pull_request:
-    branches:
-      - "!dev"
-      - "!staging"
-      - "!prod"
+
 env:
   VERCEL_NAME: ${{ github.event.repository.name }}
   VERCEL_TOKEN: ${{ secrets.CAISY_VERCEL_TOKEN }}
