@@ -6,18 +6,11 @@ const Bronze = css`
   ${CSSProgressiveHighLight};
   color: var(--text-04);
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  svg{
-    width: 16px;
-    height: 16px;
-    margin-right: 0.5rem;
-  }
-  svg path {
-    stroke-width: 1.2px;
-  }
+  overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 207px;
 `;
 
 const Silver = css``;
@@ -28,7 +21,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSidebarTitle = styled.div`
+export const SSidebarTitleLabel = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

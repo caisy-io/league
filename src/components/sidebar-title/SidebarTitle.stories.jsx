@@ -13,11 +13,13 @@ export default {
   },
 };
 
+// Default
 function SidebarTitleDemo({ content, ...args }) {
-  return <SidebarTitle {...args}>
-    {content}
-    
-  </SidebarTitle>
+  return <div style={{ width: "293px" }}>
+    <SidebarTitle {...args}>
+      {content}
+    </SidebarTitle>
+  </div>
 }
 
 const Template = (args) => < SidebarTitleDemo {...args} />;
@@ -27,22 +29,26 @@ Default.args = {
   content: "Default",
 };
 
-// With entity
+// With left icon
 export const LeftIcon = ({ content, ...args }) => (
-  <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>}>
-    {content}
-  </SidebarTitle>
+  <div style={{ width: "293px" }}>
+    <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>}>
+      {content}
+    </SidebarTitle>
+  </div>
 );
 
 LeftIcon.args = {
   content: "Default",
 };
 
-// With entity
+// With left icon and toggle
 export const IconAndToggle = ({ content, ...args }) => (
-  <SidebarTitle {...args}>
-    {content}
-  </SidebarTitle>
+  <div style={{ width: "293px" }}>
+    <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>} toggleComponent={<Switch></Switch>}>
+      {content}
+    </SidebarTitle>
+  </div>
 );
 
 IconAndToggle.args = {
