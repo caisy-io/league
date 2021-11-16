@@ -3,7 +3,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 interface ISUploadMenuItemWrapper {
   hovering: boolean;
-  active: boolean;
+  activated: boolean;
   isDefault: boolean;
 }
 
