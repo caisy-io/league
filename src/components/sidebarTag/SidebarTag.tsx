@@ -1,22 +1,28 @@
-import React, { useState } from "react";
-import { Button } from "../..";
+import React, { useEffect, useState } from "react";
+import { SSidebarTag } from "./styles/SSidebarTag";
 
-interface ILayoutSidebarTag {
+export interface ISidebarTag {
     left?: boolean;
     open?: boolean;
     onOpenChanged?: (boolean) => void;
+    onClick?: () => void;
+    style?: object;
 }
 
-export const LayoutSidebarTag: React.FC<ILayoutSidebarTag> = ({ left = true, open = true, onOpenChanged }) => {
+export const SidebarTag: React.FC<ISidebarTag> = ({ left = true, open = true, onOpenChanged, ...props }) => {
     const [isOpen, setIsOpen] = useState(open);
 
+    useEffect(() => {
+        setIsOpen(open);
+    }, [open]);
+    
     const handleClick = () => {
         const newIsOpen = !isOpen;
         setIsOpen(newIsOpen);
         onOpenChanged && onOpenChanged(newIsOpen);
     };
 
-    return <Button type="sidebarTag" left={left} open={isOpen} onClick={handleClick}>
+    return <SSidebarTag left={left} open={isOpen} onClick={handleClick} style={props.style}>
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -42,5 +48,5 @@ export const LayoutSidebarTag: React.FC<ILayoutSidebarTag> = ({ left = true, ope
             </clipPath>
             </defs>
         </svg>
-    </Button>;
+    </SSidebarTag>;
 }
