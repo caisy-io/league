@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+// @ts-nocheck
+// TODO fix issues
  import {node, func, shape, number, instanceOf, oneOfType} from 'prop-types';
- import {noop} from 'utility/memory';
- import {DOMRect, Element, _window, _document} from 'utility/mocks';
+ import {DOMRect, Element, _window, _document} from '../../utils/mocks';
  import strategy from './strategies';
  import {HIDDEN_PLACEMENT} from './Poppable.constants';
  
@@ -47,7 +47,7 @@
      placements: () => [{top: 0, left: 0}],
      placement: HIDDEN_PLACEMENT,
      overflow: strategy,
-     onPlacement: noop,
+     onPlacement: () => null,
      default: 0,
      children: null,
  };

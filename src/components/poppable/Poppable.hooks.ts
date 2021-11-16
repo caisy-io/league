@@ -14,20 +14,16 @@
  * limitations under the License.
  */
 
- import React, {useState, memo, forwardRef} from 'react';
- import Poppable from './Poppable';
- import {propTypes, defaultProps} from './Poppable.props';
+import { useBoundingRectObserver } from "../../utils/hooks";
+import { _window } from "../../utils/mocks";
+
  
- export const StatefulPoppable = forwardRef((props, ref) => {
-     const [placement, setPlacement] = useState();
- 
-     return (
-         <Poppable {...props} placement={placement} onPlacement={setPlacement} ref={ref}/>
-     );
- });
- 
- StatefulPoppable.displayName = 'Poppable';
- StatefulPoppable.propTypes = propTypes;
- StatefulPoppable.defaultProps = defaultProps;
- 
- export default memo(StatefulPoppable);
+ export const usePosition = ({target, container, reference, placements, default: _default, onPlacement, strategy}) => {
+     const {start} = useBoundingRectObserver((rbr, tbr, cbr, wbr) => {
+         const {top, left, name} = strategy({tbr, cbr, rbr, wbr}, {default: _default, placements});
+         if (!tbr || top !== tbr.top || left !== tbr.left) {
+             onPlacement({top, left, name});
+         }
+     }, reference, target, container, _window);
+     start();
+ };

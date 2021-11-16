@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
+// @ts-nocheck
  import cls from 'classnames';
- import {DOMRect} from 'utility/mocks';
- import {getRelativePosition} from 'utility/rect';
- import {getBoundingRects as _getBoundingRects} from 'hooks/useBoundingRectObserver/useBoundingRectObserver';
+ import {DOMRect} from '../../utils/mocks';
+ import {getRelativePosition} from '../../utils/rect';
+ import {getBoundingRects as _getBoundingRects} from '../../utils/hooks/useBoundingRectObserver';
  
  /**
   * Get the bounding rects of the given elements.

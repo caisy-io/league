@@ -23,9 +23,9 @@ const before = (rbr, tbr, {start, size}, offset = 0) => ({[start]: rbr[start] - 
 const center = (rbr, tbr, {start, size}, offset = 0) => ({[start]: rbr[start] + (rbr[size] - tbr[size]) / 2 + offset});
 const after = (rbr, tbr, {start, end}, offset = 0) => ({[start]: rbr[end] + offset});
 
-export const vbefore = (rbr, tbr, offset) => before(rbr, tbr, Orientations.VERTICAL, offset);
-export const vcenter = (rbr, tbr, offset) => center(rbr, tbr, Orientations.VERTICAL, offset);
-export const vafter = (rbr, tbr, offset) => after(rbr, tbr, Orientations.VERTICAL, offset);
-export const hbefore = (rbr, tbr, offset) => before(rbr, tbr, Orientations.HORIZONTAL, offset);
-export const hcenter = (rbr, tbr, offset) => center(rbr, tbr, Orientations.HORIZONTAL, offset);
-export const hafter = (rbr, tbr, offset) => after(rbr, tbr, Orientations.HORIZONTAL, offset);
+export const vbefore = (rbr, tbr, offset = 0) => before(rbr, tbr, Orientations.VERTICAL, offset);
+export const vcenter = (rbr, tbr, offset = 0) => center(rbr, tbr, Orientations.VERTICAL, offset);
+export const vafter = (rbr, tbr, offset = 0) => after(rbr, tbr, Orientations.VERTICAL, offset);
+export const hbefore = (rbr, tbr, offset = 0) => before(rbr, tbr, Orientations.HORIZONTAL, offset);
+export const hcenter = (rbr, tbr, offset = 0) => center(rbr, tbr, Orientations.HORIZONTAL, offset);
+export const hafter = (rbr, tbr, offset = 0) => after(rbr, tbr, Orientations.HORIZONTAL, offset);

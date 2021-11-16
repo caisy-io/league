@@ -1,8 +1,8 @@
 import React from "react";
 import { SPopover } from "./styles/SPopover";
-import { Poppable } from "webrix/components";
-import { ClickOutside } from "webrix/hooks";
-import { Stackable } from "../stackable/Stackable";
+import Stackable from "../stackable";
+import { ClickOutside } from "../../utils/hooks/useClickOutside";
+import { vbefore, vcenter, vafter, hbefore, hcenter, hafter } from "../poppable/Poppable.placements";
 
 enum EPlacements {
   Top = "top",
@@ -50,7 +50,6 @@ export const Popover: React.FC<IPopover> = ({
 }) => {
   const placements = React.useCallback((rbr, tbr) => {
     const GAP = disableTriangle ? 8 : 18;
-    const { vbefore, vcenter, vafter, hbefore, hcenter, hafter } = Poppable.Placements;
     return [
       { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top
       { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom

@@ -14,15 +14,6 @@
  * limitations under the License.
  */
 
- import {useBoundingRectObserver} from 'hooks';
- import {_window} from 'utility/mocks';
- 
- export const usePosition = ({target, container, reference, placements, default: _default, onPlacement, strategy}) => {
-     const {start} = useBoundingRectObserver((rbr, tbr, cbr, wbr) => {
-         const {top, left, name} = strategy({tbr, cbr, rbr, wbr}, {default: _default, placements});
-         if (!tbr || top !== tbr.top || left !== tbr.left) {
-             onPlacement({top, left, name});
-         }
-     }, reference, target, container, _window);
-     start();
- };
+ export {useClickOutside, ClickOutside, ClickOutsideOverride } from './useClickOutside';
+ import OverrideContext from './useClickOutside.context';
+ export default OverrideContext;

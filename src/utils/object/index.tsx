@@ -1,1 +1,1 @@
-export { isEqual } from './object';
+export { isEqual, get, set, omit } from './object';

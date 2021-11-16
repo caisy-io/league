@@ -29,6 +29,8 @@ interface IStackableContent {
     children?: any;
     style?: object;
     className?: string;
+    ref?: any;
+    onContextMenu?: (e: any) => any;
 }
 
  const StackableContent = forwardRef(({zIndex: zIndexProp, target, parent, children, style, className, ...props} : IStackableContent, ref) => {

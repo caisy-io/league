@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+
+ import { isObject, isArray, isString, isUndefined } from '../types';
+
 /**
  * Check whether the two given objects are equal, optionally invoking
  * a comparison function to apply on each element in the object.
@@ -47,3 +50,126 @@
 
     return false;
 };
+
+ /**
+  * Check whether the given keys are defined within an object, and return their values.
+  * You can define nested keys, and multiple paths.
+  *
+  * @example
+  * var obj = {a: 'a', b: [1, 2, 3]};
+  *
+  * get(obj, 'a'); // 'a'
+  * get(obj, 'b[0]'); // 1
+  * get(obj, 'b[5]'); // undefined
+  * get(obj, 'b[5]', 'hello'); // 'hello' (If the value is unable to be found, return the third param)
+  * 
+  *
+  * @param {Object|Array} object The initial object
+  * @param {string} path The path leading to the property we want to grab values from within the object
+  * @param {*} defaultValue The value to return if the given path is undefined in the object
+  * @return {*}
+  */
+ export const get = (object, path, defaultValue = undefined) => {
+     if (!object || typeof path !== 'string') {
+         return defaultValue;
+     }
+     let value = object;
+     path.split(/[.[\]]/).filter(key => key !== '').every(key => {
+         // NULL & undefined are the only primitive data types that don't support hasOwnProperty
+         if (value !== null && undefined !== value && Object.prototype.hasOwnProperty.call(value, key)) {
+             value = value[key];
+             return true;
+         }
+         value = defaultValue;
+         return false;
+     });
+     if (typeof value === 'undefined') {
+         return defaultValue;
+     }
+     return value;
+ };
+ 
+ /**
+  * Set a property on the given object/array at a given path, creating that path if necessary.
+  * **Note**: This function mutates the original object
+  *
+  * @example
+  * const a = {};
+  * set(a, 'a.b', 'c'); // a = {a: {b: 'c'}};
+  * set(a, 'a.b[0]', 'c'); // a = {a: {b: ['c']}};
+  * set(a, 'a.b[0].hello', 'c'); // a = {a: {b: [{hello:'c'}]}};
+  *
+  * // If fourth param (forceDelete) = true, and the third param = undefined, remove the value located at the end of the given path.
+  * // a = {a: {b: 'c'}};
+  * set(a, 'a.b', undefined, true); // a = {a: {} };
+  *
+  * @param {object|array} object The initial object
+  * @param {string} path The path leading to the property to set. If anything in the path is undefined, it will be created.
+  * @param {*} value The value to set.
+  * @param {boolean} forceDelete Flag to determine if property should be deleted when set to undefined
+  * @return {object|array} Returns the original object.
+  */
+ export const set = (object, path, value = undefined, forceDelete= false) => {
+     const keys = path.replace(/]/g,'').split(/[.[]/).filter(e => e !== '');
+     const types = path.replace(/]/g,'').split(/[^.[]+/).filter(e => e !== '');
+ 
+     // If the path starts with a square bracket, remove it since we don't care about
+     // the type of the given object
+     if (path.startsWith('[')) {
+         types.shift();
+     }
+ 
+     let current = object;
+     keys.forEach((key, i) => {
+         if (i < keys.length - 1) {
+             if (!Object.prototype.hasOwnProperty.call(current, key)) {
+                 current[key] = types[i] === '.' ? {} : [];
+             }
+             current = current[key];
+         } else {
+             if (isUndefined(value) && forceDelete) {
+                 delete current[key];
+             } else {
+                 current[key] = value;
+             }
+         }
+     });
+     return object;
+ };
+ 
+ /**
+  * Deep clone an object (or an array)
+  *
+  * @example
+  * let obj1 = {foo: {bar: 'foobar'}};
+  * clone(obj1) // Creates an object with the structure: {foo: {bar: 'foobar'}}
+  *
+  * @param {object} obj The object to be cloned.
+  * @returns {object} A deep clone of the given object.
+  */
+ export const clone = obj => (
+     Object.keys(obj).reduce((acc, key) => {
+         acc[key] = isObject(obj[key]) || isArray(obj[key]) ? clone(obj[key]) : obj[key];
+         return acc;
+     }, isArray(obj) ? [] : {})
+ );
+ 
+ /**
+  * Delete a property from the given object/array at the given path.
+  *
+  * @example
+  * const a = {a: {b: ['c']}};
+  * omit(a, 'a.b'); // a = {a: {}};
+  * omit(a, 'a.b[0]'); // a = {a: {b: []}};
+  *
+  *
+  * @param {object} obj The object to set the property for. The object can contain arrays or any other type, but the outer-most section of the element must be an object.
+  * @param {...string} keys The paths to omit from object
+  * @return {object|array} Returns a new version of the object, now altered.
+  */
+ export const omit = (obj, ...keys) => (
+     keys.length ? keys
+         .filter(key => isString(key))
+         .reduce((newObj, path) => set(newObj, path, undefined, true), clone(obj))
+         : obj
+ );
