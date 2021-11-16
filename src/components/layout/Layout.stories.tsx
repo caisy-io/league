@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Layout } from "./Layout";
 import { initialSize, LayoutSider } from "./LayoutSider";
-import { LayoutSidebarTag } from "./LayoutSidebarTag";
 import { LayoutMainNav } from "./LayoutMainNav";
 import { LayoutContent } from "./LayoutContent";
 import { LayoutTopNav } from "./LayoutTopNav";
@@ -9,6 +8,7 @@ import { SLayoutWrapper } from "./styles/SLayoutWrapper";
 import { SLayoutContentWrapper } from "./styles/SLayoutContentWrapper";
 import { SLayoutSiderWrapper } from "./styles/SLayoutSiderWrapper";
 import useWindowDimensions from "../../utils/hooks/WindowDimensionsHook";
+import { SidebarTag } from "../sidebarTag";
 
 function LayoutDemo(args) {
     const [leftSiderOpened, setLeftSiderOpened] = useState(true);
@@ -44,14 +44,14 @@ function LayoutDemo(args) {
                                 <p>Sider left, resizable side on right side</p>
                             </LayoutSider>
                         }
-                        <LayoutSidebarTag left onOpenChanged={setLeftSiderOpened}/>
+                        <SidebarTag left onOpenChanged={setLeftSiderOpened}/>
                     </SLayoutSiderWrapper>
                     <LayoutContent style={{background: "darkslateblue"}} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
                         <p style={{wordBreak: 'break-word'}}>Content ContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContent</p>
                         {args.children}
                     </LayoutContent>
                     <SLayoutSiderWrapper left={false}>
-                        <LayoutSidebarTag left={false} onOpenChanged={setRightSiderOpened}/>
+                        <SidebarTag left={false} onOpenChanged={setRightSiderOpened}/>
                         {rightSiderOpened && 
                             <LayoutSider left={false} onSizeChanged={setRightSiderSize}>
                                 <p>Sider right, resizable side on left side</p>
@@ -113,7 +113,7 @@ export const LeftSider = ({content, ...args}) => {
                                 <p>Sider left, resizable side on right side</p>
                             </LayoutSider>
                         }
-                        <LayoutSidebarTag left onOpenChanged={setLeftSiderOpened}/>
+                        <SidebarTag left onOpenChanged={setLeftSiderOpened}/>
                     </SLayoutSiderWrapper>
                     <LayoutContent style={{background: "darkslateblue"}} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
                         <p style={{wordBreak: 'break-word'}}>Content ContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContent</p>
@@ -165,7 +165,7 @@ export const RightSider = ({content, ...args}) => {
                         {args.children}
                     </LayoutContent>
                     <SLayoutSiderWrapper left={false}>
-                        <LayoutSidebarTag left={false} onOpenChanged={setRightSiderOpened}/>
+                        <SidebarTag left={false} onOpenChanged={setRightSiderOpened}/>
                         {rightSiderOpened && 
                             <LayoutSider left={false} onSizeChanged={setRightSiderSize}>
                                 <p>Sider right, resizable side on left side</p>
