@@ -10,6 +10,7 @@ const Bronze = css`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 0.75rem;
 `;
 
 const Silver = css``;
