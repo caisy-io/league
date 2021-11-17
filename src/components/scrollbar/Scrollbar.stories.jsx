@@ -4,16 +4,10 @@ import { Scrollbar } from './Scrollbar';
 export default {
   title: `Components/Scrollbar`,
   component: ScrollbarDemo,
-  argTypes: {
-    // example argument type
-    activated: {
-      description: "Changes the state of the component to Activated",
-      control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=5%3A11",
     },
   },
 };
@@ -27,6 +21,4 @@ function ScrollbarDemo({ content, ...args }) {
 const Template = (args) => < ScrollbarDemo {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
 
-};

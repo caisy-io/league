@@ -6,19 +6,20 @@ width: 300px;
 height: 300px;
 background-color: #FFFFFF;
 overflow-y: scroll;
+padding: 1rem;
 ::-webkit-scrollbar {
   background-color: #FFFF;
   border-right: 1px solid #E8EFF3;
   border-left: 1px solid #E8EFF3;
-  width: 10px;
+  width: 0.75rem;
   box-sizing: border-box;
-  -webkit-box-shadow: outset 0 0 6px rgba(0,0,0,0.3); 
 }
 ::-webkit-scrollbar-thumb  {
   background: var(--interactional-secondary-08);
-  border-radius: 49px;
-  border: 2px solid #FFFF;
-  box-sizing: border-box;
+  border: 3px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  -webkit-border-radius: 49px;
+  background-color: rgba(0, 0, 0, 0.15);
  }
 `;
 
