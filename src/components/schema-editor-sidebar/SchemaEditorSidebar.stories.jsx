@@ -4,22 +4,16 @@ import { SchemaEditorSidebar } from './SchemaEditorSidebar';
 export default {
   title: `Components/SchemaEditorSidebar`,
   component: SchemaEditorSidebarDemo,
-  argTypes: {
-    // example argument type
-    activated: {
-      description: "Changes the state of the component to Activated",
-      control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=13%3A1192",
     },
   },
 };
 
 function SchemaEditorSidebarDemo({ content, ...args }) {
-  return <div style={{width: "320px"}}>
+  return <div style={{ width: "320px" }}>
     <SchemaEditorSidebar>
       {content}
     </SchemaEditorSidebar>
