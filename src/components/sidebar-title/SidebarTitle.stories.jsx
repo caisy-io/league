@@ -8,7 +8,7 @@ export default {
   component: SidebarTitleDemo,
   argTypes: {
     content: {
-      description: "Content of the search bar operand",
+      description: "Content of the sidebar title",
       control: { type: "text" },
     },
   },

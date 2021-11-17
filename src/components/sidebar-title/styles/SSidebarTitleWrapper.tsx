@@ -6,11 +6,16 @@ const CSSWidth80 = css`
   max-width: 80%; 
 `;
 
+const CSSWidth95 = css`
+  max-width: 95%; 
+`;
+
 const Bronze = css<ISidebarTitleProps>`
   display: flex;
   width: 100%;
   max-width: 90%;
   ${(props) => props.toggleComponent ? CSSWidth80 : ''};
+  ${(props) => props.icon ? CSSWidth95 : ''};
   svg{
     width: 16px;
     height: 16px;
