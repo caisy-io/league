@@ -22,6 +22,7 @@ const Bronze = css<ISidebarCardProps>`
   align-items: center;
   justify-content: space-between;
   padding: 12px 0 12px 16px;
+  margin-bottom: 0.5rem;
   ${(props) => props.hover ? CSSHover : ''};
   :hover{
     ${CSSHover}
