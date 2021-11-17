@@ -1,4 +1,5 @@
 export * from "./avatar";
+export * from "./avatar-legacy";
 export * from "./badge";
 export * from "./body-layout";
 export * from "./button";
@@ -46,3 +47,4 @@ export * from "./tree";
 export * from "./search-bar-operand";
 export * from "./close-button";
 export * from "./sidebar-card";
+export * from "./line-tabs";

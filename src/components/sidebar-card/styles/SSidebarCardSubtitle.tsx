@@ -6,6 +6,7 @@ const Bronze = css`
   ${CSSProgressiveCaption02Medium};
   color: var(--text-04);
   margin-right: 0.25rem;
+  word-break: break-all;
 `;
 
 const Silver = css``;
