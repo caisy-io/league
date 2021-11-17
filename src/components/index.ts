@@ -47,3 +47,4 @@ export * from "./tree";
 export * from "./search-bar-operand";
 export * from "./close-button";
 export * from "./line-tabs";
+export * from "./sidebar-card";
