@@ -6,7 +6,7 @@ import { TabPanel } from '../tabs/Tabs';
 import { SSchemaEditorSidebar } from './styles/SSchemaEditorSidebar';
 import { SSidebarCategoryWrapper } from './styles/SSidebarCategoryWrapper';
 
-export const SchemaEditorSidebar: React.FC = ({ ...props }) => {
+export const SchemaEditorSidebar: React.FC = () => {
   return (
     <SSchemaEditorSidebar>
       <Tabs initialValue={0}>
