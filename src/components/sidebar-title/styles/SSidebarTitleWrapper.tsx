@@ -12,10 +12,11 @@ const CSSWidth95 = css`
 
 const Bronze = css<ISidebarTitleProps>`
   display: flex;
+  align-items: center;
   width: 100%;
   max-width: 90%;
-  ${(props) => props.toggleComponent ? CSSWidth80 : ''};
   ${(props) => props.icon ? CSSWidth95 : ''};
+  ${(props) => props.toggleComponent ? CSSWidth80 : ''};
   svg{
     width: 16px;
     height: 16px;

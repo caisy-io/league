@@ -13,7 +13,7 @@ export const SidebarTitle: React.FC<ISidebarTitleProps> = ({ ...props }) => {
     <SSidebarTitle>
       <SSidebarTitleWrapper {...props}>
         {props.icon}
-        <SSidebarTitleLabel >{props.children}</SSidebarTitleLabel>
+        <SSidebarTitleLabel {...props}>{props.children}</SSidebarTitleLabel>
       </SSidebarTitleWrapper>
       {props.toggleComponent}
     </SSidebarTitle >
