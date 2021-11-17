@@ -1,13 +1,12 @@
-import React, { ReactComponentElement, ReactNode, useEffect, useState } from "react";
-import { STabs } from "./styles/STabs";
-import { STabsItemBorder } from "./styles/STabsItemBorder";
-import { STabsItem } from "./styles/STabsItem";
+import React, { ReactNode, useEffect, useState } from "react";
+import { LineTabs } from "../line-tabs";
 import { STabPanel } from "./styles/STabPanel";
+import { STabs } from "./styles/STabs";
 
 interface ITabs {
   initialValue: number;
   onChange?: (newValue: number) => void;
-  children?: any;
+  children?: ReactNode;
   loading?: boolean;
   loadingComponent?: ReactNode;
   reference?: any;
@@ -27,8 +26,8 @@ export const Tabs: React.FC<ITabs> = (props) => {
       <ul>
         {React.Children.map(props.children, (child: any, index: number) => {
           return (
-            <STabsItem
-              selected={index === selected}
+            <LineTabs
+              activated={index === selected}
               key={index}
               onClick={() => {
                 setSelected(index);
@@ -36,8 +35,8 @@ export const Tabs: React.FC<ITabs> = (props) => {
               }}
             >
               {child && child.props.title ? child.props.title : null}
-              {index === selected && <STabsItemBorder />}
-            </STabsItem>
+              {child.props.icon}
+            </LineTabs>
           );
         })}
       </ul>
@@ -58,6 +57,7 @@ interface ITabPanel {
   title?: any;
   children?: any;
   style?: React.CSSProperties;
+  icon?: ReactNode;
 }
 
 export const TabPanel = (props: ITabPanel) => {
