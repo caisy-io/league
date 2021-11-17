@@ -6,14 +6,9 @@ import { TabPanel } from '../tabs/Tabs';
 import { SSchemaEditorSidebar } from './styles/SSchemaEditorSidebar';
 import { SSidebarCategoryWrapper } from './styles/SSidebarCategoryWrapper';
 
-interface ISchemaEditorSidebar {
-
-}
-
-export const SchemaEditorSidebar: React.FC<ISchemaEditorSidebar> = ({ ...props }) => {
-  console.log(`SchemaEditorSidebar props: `, props);
+export const SchemaEditorSidebar: React.FC = ({ ...props }) => {
   return (
-    <SSchemaEditorSidebar style={{ paddingTop: "1.25rem" }}>
+    <SSchemaEditorSidebar>
       <Tabs initialValue={0}>
         <TabPanel title="All Fields" style={{ padding: "1.25rem 1rem" }}>
           <SSidebarCategoryWrapper>
@@ -29,7 +24,6 @@ export const SchemaEditorSidebar: React.FC<ISchemaEditorSidebar> = ({ ...props }
         <TabPanel title="Templates">This is the second panel</TabPanel>
         <TabPanel title="Details">This is the third panel</TabPanel>
       </Tabs>
-      {props.children}
     </SSchemaEditorSidebar>
   )
 }

@@ -7,7 +7,7 @@ const Bronze = css`
   overflow-y: scroll;
   border-left: 1px solid #E8F0F3;
   background-color: #FFFF;
-  
+  padding-top: 1.25rem;
 `;
 
 const Silver = css``;
