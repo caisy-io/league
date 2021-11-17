@@ -6,7 +6,6 @@ width: 300px;
 height: 300px;
 background-color: #FFFFFF;
 overflow-y: scroll;
-scrollbar-width: 4px;
 ::-webkit-scrollbar {
   background-color: #FFFF;
   border-right: 1px solid #E8EFF3;
