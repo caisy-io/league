@@ -23,6 +23,4 @@ function SchemaEditorSidebarDemo({ content, ...args }) {
 const Template = (args) => < SchemaEditorSidebarDemo {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
 
-};
