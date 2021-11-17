@@ -1,12 +1,12 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import { LineTabs } from "..";
+import { LineTabs } from "../line-tabs";
 import { STabPanel } from "./styles/STabPanel";
 import { STabs } from "./styles/STabs";
 
 interface ITabs {
   initialValue: number;
   onChange?: (newValue: number) => void;
-  children?: any;
+  children?: ReactNode;
   loading?: boolean;
   loadingComponent?: ReactNode;
   reference?: any;
