@@ -2,15 +2,18 @@ import React from 'react';
 import { IconCross } from '../../icons/IconCross';
 import { SCloseButton } from './styles/SCloseButton';
 import { SCloseButtonWrapper } from './styles/SCloseButtonWrapper';
+
 export interface ICloseButtonProps {
-  defaultVisible?: boolean
+  defaultVisible?: boolean,
+  hover?: boolean,
+  pressed?: boolean
 }
 
-export const CloseButton: React.FC<ICloseButtonProps> = ({ defaultVisible=true,...props }) => {
+export const CloseButton: React.FC<ICloseButtonProps> = ({ defaultVisible = true, ...props }) => {
   return (
     <SCloseButtonWrapper {...props} defaultVisible={defaultVisible}>
       {props.children}
-      <SCloseButton defaultVisible={defaultVisible}>
+      <SCloseButton {...props} defaultVisible={defaultVisible}>
         <IconCross variant="close" />
       </SCloseButton>
     </SCloseButtonWrapper>

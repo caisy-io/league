@@ -1,4 +1,5 @@
 export * from "./avatar";
+export * from "./avatar-legacy";
 export * from "./badge";
 export * from "./body-layout";
 export * from "./button";

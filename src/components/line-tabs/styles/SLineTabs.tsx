@@ -6,6 +6,7 @@ import { ILineTabsProps } from '../LineTabs';
 const CSSHover = css`
   color: var(--hover-text-04);
   border-bottom: 1px solid var(--hover-text-04);
+  cursor: pointer;
 `;
 
 const CSSActivated = css`
