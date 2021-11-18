@@ -2,11 +2,7 @@ import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-width: 300px;
-height: 300px;
-background-color: #FFFFFF;
 overflow-y: scroll;
-padding: 1rem;
 ::-webkit-scrollbar {
   background-color: #FFFF;
   border-right: 1px solid #E8EFF3;
