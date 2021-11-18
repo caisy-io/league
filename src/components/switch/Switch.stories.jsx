@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch } from "./Switch";
 
 export default {
@@ -7,26 +7,15 @@ export default {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=1094%3A18210",
-    },
-  },
-  argTypes: {
-    toggle: {
-      description: "Toggles the toggle button",
-      control: { type: "boolean" },
-      options: ["true", "false"],
-      table: {
-        defaultValue: {
-          summary: "true",
-        },
-      },
+      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=277%3A5138",
     },
   },
 };
 
 function SwitchDemo({ ...args }) {
+  const [value, onChange] = useState(true);
   return (
-    <Switch value={args.toggle}>
+    <Switch value={value} onChange={() => onChange(!value)}>
     </Switch>
   );
 }
@@ -35,5 +24,4 @@ const Template = (args) => <SwitchDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  toggle: true,
 };

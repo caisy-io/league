@@ -7,8 +7,8 @@ const Bronze = css`
   position: absolute;
   cursor: pointer;
   width: 38px;
-  height: 20px;
-  border-radius: 19px;
+  height: 1.25rem;
+  border-radius: 1.25rem;
   background-color: var(--text-priority-neutral-5);
   top: 0;
   left: 0;
