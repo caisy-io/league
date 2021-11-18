@@ -31,8 +31,10 @@ export default {
 
 function SolidLabelDemo({ content, ...args }) {
   return (
-    <div style={{backgroundColor: "lightgray", height: "100px", width: "100px"}}>
-        <SolidLabel {...args}>{content}</SolidLabel>
+    <div style={{backgroundColor: "white", height: "100px", width: "100px", padding: "20px"}}>
+        <SolidLabel {...args}>
+          <span>{content}</span>
+        </SolidLabel>
     </div>
   );
 }
@@ -42,5 +44,5 @@ const Template = (args) => <SolidLabelDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   type: "default",
-  content: "Text",
+  content: "Default",
 };

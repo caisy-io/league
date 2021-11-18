@@ -3,8 +3,10 @@ import { SSolidLabel } from "./styles/SSolidLabel";
 
 export type ISolidLabelType = "default" | "important" | "green" | "red" | "yellow" | "grey" | "greyOutline";
 
-export interface IButtonProps {
+export interface ISolidLabelProps {
   type?: ISolidLabelType;
+  style?: object;
+  onClick?: () => void;
 }
 
 export const SolidLabel: React.FC = (props) => {
