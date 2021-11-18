@@ -32,13 +32,6 @@ function PoppableDemo() {
 
       const [visible, setVisible] = useState(false);
       const handleOnMouseDownCapture = useClickOutside(() => setVisible(false));
-
-      const containerRef = useRef();
-      const [containerReference, setContainerReference] = useState(containerRef);
-      useEffect(() => {
-        setContainerReference(containerRef);
-      }, [containerRef]);
-
       const [reference, setReference] = useState(new DOMRect(0, 0, 0, 0));
       const getPlacements = useCallback((rbr, tbr) => {
           const {vbefore, vafter, hcenter} = Poppable.Placements;
@@ -47,16 +40,16 @@ function PoppableDemo() {
               {...vafter(rbr, tbr, TRIANGLE_SIZE), ...hcenter(rbr, tbr)}, // Bottom center
           ];
       }, []);
+
       const handleOnClick = useCallback(e => {
           setVisible(true);
           setReference(new DOMRect(e.clientX, e.clientY, 0, 0));
       }, [setReference, visible]);
 
       console.log(` visible`, visible);
-      console.log(` reference`, reference);
 
       return (
-        <div style={showcaseStyles} container={containerReference}>
+        <div style={showcaseStyles}>
            <div style={showcaseInnerStyles}
                 onClick={handleOnClick}
                 onMouseDownCapture={handleOnMouseDownCapture}

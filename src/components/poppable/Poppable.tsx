@@ -42,15 +42,10 @@ interface IPoppable {
 
 const Poppable = forwardRef(({children, container, reference, placements, default: _default, onPlacement, placement, overflow, className, style, ...props}: IPoppable, ref) => {
     const target = (typeof window !== "undefined" && document.body) || useRef();
-
-    console.log("poppable ref", reference, "target", target)
     const handleOnContextMenu = useCallback(e => e.stopPropagation(), []); // prevent onContextMenu event bubbling from the react portal to the react tree
-    console.log(target, reference, container || getAncestors(target), placement)
     const rects = getBoundingRects(target, reference, container, placement);
-    console.log("rects", rects)
     usePosition({target, container, reference, placements, default: _default, onPlacement, strategy: overflow});
 
-    console.log('target', target)
     return (
         <SPoppable>
             <Stackable 

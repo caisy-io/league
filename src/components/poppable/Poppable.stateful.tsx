@@ -16,14 +16,14 @@
 
 import React, {useState, memo, forwardRef} from 'react';
 import Poppable from './Poppable';
+import { hide } from './strategies';
 
 
 const StatefulPoppable: React.FC<any> = forwardRef((props, ref) => { // TODO fix any, placement works with FC any
      const [placement, setPlacement] = useState({});
-     console.log("placement", placement);
  
      return (
-         <Poppable {...props} placement={placement} onPlacement={setPlacement} ref={ref}/>
+         <Poppable {...props} overflow={props.overflow || hide } placement={placement} onPlacement={setPlacement} ref={ref}/>
      );
  });
  

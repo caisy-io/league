@@ -30,7 +30,9 @@
   * @returns {{cbr: *, rbr: *, tbr: *, wbr: *}}
   */
  export const getBoundingRects = (target, reference, container, placement) => {
-     const [rbr, tbr, cbr] = _getBoundingRects([reference, target, container]);
+     // TODO why is there container added
+     const containerTemp = container || getAncestors(target);
+     const [rbr, tbr, cbr] = _getBoundingRects([reference, target, containerTemp]);
      return {
          rbr: rbr || new DOMRect(), // Could be undefined initially, before the reference exists
          cbr: cbr || new DOMRect(),
@@ -72,6 +74,6 @@
  );
 
  export const getAncestors = element => {
-    const poppable = element.closest('.poppable');
+    const poppable = element.closest('poppable-target');
     return poppable ? poppable.getAttribute('data-ancestors') : '';
 };
