@@ -20,14 +20,14 @@
  import {Element, DOMRect} from '../mocks';
  import { useAnimationFrame } from './useAnimationFrame';
  
- export const getBoundingRects = refs => (
-     refs.map(ref => {
+ export const getBoundingRects = refs => {
+     console.log("refs", refs)
+     return refs.map(ref => {
          console.log('boundig ref', ref)
         if (ref.current) {
              return ref.current.getBoundingClientRect();
          }
          if (ref instanceof Element) {
-             //@ts-ignore
              return ref.getBoundingClientRect();
          }
          if (ref instanceof DOMRect) {
@@ -37,7 +37,7 @@
              return new DOMRect(0, 0, window.innerWidth, window.innerHeight)
          }
      })
- );
+};
  
  export const useBoundingRectObserver = (callback, ...refs) => {
      const prev = useRef([]);

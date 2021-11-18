@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
- import React, {useState, memo, forwardRef} from 'react';
- import Poppable from './Poppable';
+import React, {useState, memo, forwardRef} from 'react';
+import Poppable from './Poppable';
 
 
-export const StatefulPoppable: React.FC<any> = forwardRef((props, ref) => { // TODO fix any, placement works with FC any
-     const [placement, setPlacement] = useState();
+const StatefulPoppable: React.FC<any> = forwardRef((props, ref) => { // TODO fix any, placement works with FC any
+     const [placement, setPlacement] = useState({});
+     console.log("placement", placement);
  
      return (
          <Poppable {...props} placement={placement} onPlacement={setPlacement} ref={ref}/>

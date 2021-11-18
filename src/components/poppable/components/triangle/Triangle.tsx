@@ -14,29 +14,18 @@
  * limitations under the License.
  */
 
- import React, {useContext} from 'react';
- import {number} from 'prop-types';
- import PoppableContext from '../../Poppable.context';
- import {ready, getLeft, getTop} from './Triangle.utils';
- import './Triangle.scss';
- 
- const Arrow = ({size}) => {
-     const {tbr, rbr} = useContext(PoppableContext);
-     return !ready(tbr, rbr) ? null : (
-         <div className='poppable-triangle' style={{
-             top: getTop(tbr, rbr, size),
-             left: getLeft(tbr, rbr, size),
-             borderWidth: size,
-         }}/>
-     );
- };
- 
- Arrow.propTypes = {
-     size: number,
- };
- 
- Arrow.defaultProps = {
-     size: 0,
- }
- 
- export default Arrow;
+import React, {useContext} from 'react';
+import PoppableContext from '../../Poppable.context';
+import { STriangle } from './styles/STriangle';
+import {ready, getLeft, getTop} from './Triangle.utils';
+
+export const Triangle = ({size}) => {
+    const {tbr, rbr} = useContext(PoppableContext);
+    return !ready(tbr, rbr) ? null : (
+        <STriangle className='poppable-triangle' style={{
+            top: getTop(tbr, rbr, size),
+            left: getLeft(tbr, rbr, size),
+            borderWidth: size,
+        }}/>
+    );
+};

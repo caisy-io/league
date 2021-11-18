@@ -70,3 +70,8 @@
          hafter: rbr.right < tbr.left,
      })
  );
+
+ export const getAncestors = element => {
+    const poppable = element.closest('.poppable');
+    return poppable ? poppable.getAttribute('data-ancestors') : '';
+};

@@ -1,8 +1,9 @@
-import React, {useCallback, useState} from 'react';
-import {Poppable} from 'webrix/components';
-// import Poppable from ".";
+import React, {useCallback, useState, useRef, useEffect} from 'react';
+// import {Poppable} from 'webrix/components';
+import Poppable from ".";
 // import {useVisibilityState, useClickOutside} from 'webrix/hooks';
 import {useClickOutside} from "../../utils/hooks";
+import { Triangle } from "./components/triangle/Triangle"
 
 const TRIANGLE_SIZE = 10;
 
@@ -31,6 +32,13 @@ function PoppableDemo() {
 
       const [visible, setVisible] = useState(false);
       const handleOnMouseDownCapture = useClickOutside(() => setVisible(false));
+
+      const containerRef = useRef();
+      const [containerReference, setContainerReference] = useState(containerRef);
+      useEffect(() => {
+        setContainerReference(containerRef);
+      }, [containerRef]);
+
       const [reference, setReference] = useState(new DOMRect(0, 0, 0, 0));
       const getPlacements = useCallback((rbr, tbr) => {
           const {vbefore, vafter, hcenter} = Poppable.Placements;
@@ -45,9 +53,10 @@ function PoppableDemo() {
       }, [setReference, visible]);
 
       console.log(` visible`, visible);
+      console.log(` reference`, reference);
 
       return (
-        <div style={showcaseStyles}>
+        <div style={showcaseStyles} container={containerReference}>
            <div style={showcaseInnerStyles}
                 onClick={handleOnClick}
                 onMouseDownCapture={handleOnMouseDownCapture}
@@ -55,10 +64,10 @@ function PoppableDemo() {
                 title='Clickable Area' />
             {visible && (
                 <Poppable reference={reference} placements={getPlacements} className='poppable-target'>
-                    <Poppable.Triangle size={TRIANGLE_SIZE}/>
-                    <div style={targetStyle}>
-                    Target
-                    </div>
+                    <Triangle size={TRIANGLE_SIZE}/>
+                      <div style={targetStyle}>
+                        Target
+                      </div>
                 </Poppable>
             )}
         </div>
