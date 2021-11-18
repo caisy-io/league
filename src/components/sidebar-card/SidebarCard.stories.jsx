@@ -1,6 +1,5 @@
 import React from "react";
-import { IconGearSettings, IconStarOutlined } from "../..";
-import { Card } from '../card';
+import { IconGearSettings, IconStarOutlined } from "../../icons";
 import { SidebarCard } from '../sidebar-card';
 
 export default {
@@ -40,7 +39,6 @@ function SidebarCardDemo({ content, ...args }) {
     <SidebarCard drag={args.state == "drag"} icon={<IconStarOutlined></IconStarOutlined>} hover={args.state == "hover"} title={args.title} description={args.description}>
       {content}
     </SidebarCard> </div>
-
 }
 
 const Template = (args) => < SidebarCardDemo {...args} />;

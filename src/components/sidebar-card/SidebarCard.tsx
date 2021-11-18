@@ -4,6 +4,7 @@ import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { SSidebarCard } from './styles/SSidebarCard';
 import { SSidebarcardIconWrapper } from './styles/SSidebarCardIconWrapper';
 import { SSidebarCardSubtitle } from './styles/SSidebarCardSubtitle';
+import { SSidebarcardTextWrapper } from './styles/SSidebarCardTextWrapper';
 import { SSidebarCardTitle } from './styles/SSidebarCardTitle';
 
 export interface ISidebarCardProps {
@@ -19,10 +20,10 @@ export const SidebarCard: React.FC<ISidebarCardProps> = ({ ...props }) => {
     <SSidebarCard {...props}>
       <SFlex>
         {props.icon}
-        <div>
+        <SSidebarcardTextWrapper {...props}>
           <SSidebarCardTitle> {props.title}</SSidebarCardTitle>
           <SSidebarCardSubtitle>  {props.description}</SSidebarCardSubtitle>
-        </div>
+        </SSidebarcardTextWrapper>
       </SFlex>
       <SSidebarcardIconWrapper {...props}>
         {props.children}

@@ -7,15 +7,14 @@ const Bronze = css`
   position: absolute;
   cursor: pointer;
   width: 38px;
-  height: 20px;
-  border-radius: 19px;
-  border: solid 1px var(--text-priority-neutral-4);
+  height: 1.25rem;
+  border-radius: 1.25rem;
   background-color: var(--text-priority-neutral-5);
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  transition: 0.4s ease;
+  transition: background-color 0.4s ease;
   &:before {
     border-radius: 50%;
     position: absolute;
@@ -32,6 +31,12 @@ const Bronze = css`
     height: 14px;
     background-color: var(--ui-01);
   }
+  &:hover{
+    background-color: var(--active-interactional-tertiary-02);
+  }
+  &:active{
+    background-color: var(--active-interactional-tertiary-02);
+  }
 `;
 
 const Silver = css``;
@@ -42,7 +47,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSwitchSlider = styled.span`
+export const SToggleSlider = styled.span`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
