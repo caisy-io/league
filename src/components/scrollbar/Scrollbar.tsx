@@ -1,14 +1,10 @@
 import React from 'react';
-import {SScrollbar } from './styles/SScrollbar';
+import { SScrollbar } from './styles/SScrollbar';
 
-interface IScrollbar{
-
-}
-
-export const Scrollbar: React.FC<IScrollbar> = ({...props}) => {
-
+export const Scrollbar: React.FC = ({ ...props }) => {
+  const scrollbarRef = React.createRef();
   return (
-    <SScrollbar>
+    <SScrollbar ref={scrollbarRef}>
       {props.children}
     </SScrollbar>
   )
