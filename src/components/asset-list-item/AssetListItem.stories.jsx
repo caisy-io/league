@@ -19,9 +19,10 @@ export default {
 };
 
 function AssetListItemDemo({ content, ...args }) {
-  return <AssetListItem>
-    {content}
-  </AssetListItem>
+  return <div style={{ width: "320px" }}>
+    <AssetListItem title="Default" description="Description">
+    </AssetListItem>
+  </div>
 }
 
 const Template = (args) => < AssetListItemDemo {...args} />;

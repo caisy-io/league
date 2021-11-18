@@ -2,12 +2,11 @@ import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  width: 100%;
-  background-color: #FFFF;
-  border-bottom: 1px solid var(--ui-03);
-  display: flex;
-  align-items: center;
-  padding: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: var(--ui-02);
+    border: 1px solid #E8EFF3;
 `;
 
 const Silver = css``;
@@ -18,7 +17,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SAssetListItem = styled.div`
+export const SImagePlaceholder = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

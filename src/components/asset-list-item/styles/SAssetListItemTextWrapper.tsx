@@ -1,13 +1,8 @@
 import styled, { css } from 'styled-components';
+import { CSSProgressiveBody02Semibold } from '../../../constants/styles/fonts';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  width: 100%;
-  background-color: #FFFF;
-  border-bottom: 1px solid var(--ui-03);
-  display: flex;
-  align-items: center;
-  padding: 1rem;
 `;
 
 const Silver = css``;
@@ -18,7 +13,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SAssetListItem = styled.div`
+export const SAssetListItemTextWrapper = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
