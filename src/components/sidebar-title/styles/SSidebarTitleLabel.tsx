@@ -15,6 +15,9 @@ const Bronze = css<ISidebarTitleProps>`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  text-align: center;
+  display: flex;
+  align-items: center;
   ${(props) => props.icon || props.toggleComponent ? CSSWidth90 : ''};
 `;
 
@@ -26,7 +29,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSidebarTitleLabel = styled.div`
+export const SSidebarTitleLabel = styled.p`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

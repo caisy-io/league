@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import { SidebarTitle } from './SidebarTitle';
 import { IconStarOutlined } from '../../icons/IconStarOutlined'
-import { Switch } from '../switch';
+import { Toggle } from '../toggle';
 
 export default {
   title: `Components/SidebarTitle`,
@@ -43,10 +43,11 @@ LeftIcon.args = {
   content: "Default",
 };
 
+
 // With left icon and toggle
 export const IconAndToggle = ({ content, ...args }) => (
   <div style={{ width: "293px" }}>
-    <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>} toggleComponent={<Switch></Switch>}>
+    <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>} toggleComponent={<Toggle></Toggle>}>
       {content}
     </SidebarTitle>
   </div>
