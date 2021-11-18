@@ -47,7 +47,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSwitchSlider = styled.span`
+export const SToggleSlider = styled.span`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

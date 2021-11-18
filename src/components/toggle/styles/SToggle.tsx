@@ -26,7 +26,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSwitch = styled.label`
+export const SToggle = styled.label`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

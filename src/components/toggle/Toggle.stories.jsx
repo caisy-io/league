@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Switch } from "./Switch";
+import { Toggle } from "./Toggle";
 
 export default {
-  title: `Components/Switch`,
-  component: SwitchDemo,
+  title: `Components/Toggle`,
+  component: ToggleDemo,
   parameters: {
     design: {
       type: "figma",
@@ -12,15 +12,15 @@ export default {
   },
 };
 
-function SwitchDemo({ ...args }) {
+function ToggleDemo({ ...args }) {
   const [value, onChange] = useState(true);
   return (
-    <Switch value={value} onChange={() => onChange(!value)}>
-    </Switch>
+    <Toggle value={value} onChange={() => onChange(!value)}>
+    </Toggle>
   );
 }
 
-const Template = (args) => <SwitchDemo {...args} />;
+const Template = (args) => <ToggleDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

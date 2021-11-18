@@ -16,7 +16,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSwitchInput = styled.input`
+export const SToggleInput = styled.input`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
