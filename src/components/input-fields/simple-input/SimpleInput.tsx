@@ -9,6 +9,7 @@ type TSimpleInputState = "success" | "error";
 interface ISimpleInput extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   state?: TSimpleInputState;
+  addons?: any[];
   required?: boolean;
   onChange: any;
   value: any;
@@ -58,6 +59,7 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
     <SSimpleInputWrapper active={active} state={state} onClick={onClick}>
       <span ref={spanRef} style={{ width: "fit-content", visibility: "hidden", position: "absolute", fontSize: 14 }} />
       {addonsList?.map((addon) => addon.active && addon.component)}
+      {props.addons?.map((addon) => addon)}
 
       <div style={{ position: "relative", width: "fit-content" }}>
         {required && <SSimpleInputRequiredIndicator />}
