@@ -14,6 +14,7 @@ interface IStackable {
 export const Stackable: React.FC<IStackable> = ({ zIndex, ...props }) => {
   const target = props.target || (typeof window !== "undefined" && document.body);
   const parent = props.parent || getAncestors(target);
+  console.log("target", target, "parent", parent)
 
   return (
     <StackableContent zIndex={zIndex || 1100} {...props} target={target} parent={parent} style={props.style}>

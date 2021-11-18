@@ -14,66 +14,58 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
- import cls from 'classnames';
- import {DOMRect} from '../../utils/mocks';
- import {getRelativePosition} from '../../utils/rect';
- import {getBoundingRects as _getBoundingRects} from '../../utils/hooks/useBoundingRectObserver';
- 
- /**
-  * Get the bounding rects of the given elements.
-  *
-  * @param target
-  * @param reference
-  * @param container
-  * @param placement
-  * @returns {{cbr: *, rbr: *, tbr: *, wbr: *}}
-  */
- export const getBoundingRects = (target, reference, container, placement) => {
-     // TODO why is there container added
-     const containerTemp = container || getAncestors(target);
-     const [rbr, tbr, cbr] = _getBoundingRects([reference, target, containerTemp]);
-     return {
-         rbr: rbr || new DOMRect(), // Could be undefined initially, before the reference exists
-         cbr: cbr || new DOMRect(),
-         tbr: new DOMRect(placement.left, placement.top, tbr?.width, tbr?.height),
-     };
- };
- 
- /**
-  * Get the cardinal directions of the target in relation to the reference.
-  * The directions are calculated by comparing the center points of the two rects.
-  * For example, if the center point of the reference is directly above the center
-  * point of the target, the target will receive a 'south' class, since it is south
-  * of the reference.
-  *
-  * @param {Object} tbr Target Bounding Rect
-  * @param {Object} rbr Reference Bounding Rect
-  * @returns string with locations
-  */
- export const getCardinalPosition = (tbr, rbr) => getRelativePosition(tbr, rbr).reduce((acc, cur, i) => (
-     acc + (acc.length ? ' ' : '') + [
-         ['west', '', 'east'],
-         ['north', '', 'south'],
-     ][i][cur + 1]
- ), '');
- 
- /**
-  *
-  * @param tbr
-  * @param rbr
-  * @returns {string}
-  */
- export const getClassNames = (tbr, rbr) => (
-     cls(getCardinalPosition(tbr, rbr), {
-         vbefore: tbr.bottom < rbr.top,
-         vafter: rbr.bottom < tbr.top,
-         hbefore: tbr.right < rbr.left,
-         hafter: rbr.right < tbr.left,
-     })
- );
+import cls from 'classnames';
+import {DOMRect} from '../../utils/mocks';
+import {getRelativePosition} from '../../utils/rect';
+import {getBoundingRects as _getBoundingRects} from '../../utils/hooks/useBoundingRectObserver';
 
- export const getAncestors = element => {
-    const poppable = element.closest('poppable-target');
-    return poppable ? poppable.getAttribute('data-ancestors') : '';
+/**
+ * Get the bounding rects of the given elements.
+ *
+ * @param target
+ * @param reference
+ * @param container
+ * @param placement
+ * @returns {{cbr: *, rbr: *, tbr: *, wbr: *}}
+ */
+export const getBoundingRects = (target, reference, container, placement) => {
+    const [rbr, tbr, cbr] = _getBoundingRects([reference, target, container]);
+    return {
+        rbr: rbr || new DOMRect(), // Could be undefined initially, before the reference exists
+        cbr: cbr || new DOMRect(),
+        tbr: new DOMRect(placement.left, placement.top, tbr?.width, tbr?.height),
+    };
 };
+
+/**
+ * Get the cardinal directions of the target in relation to the reference.
+ * The directions are calculated by comparing the center points of the two rects.
+ * For example, if the center point of the reference is directly above the center
+ * point of the target, the target will receive a 'south' class, since it is south
+ * of the reference.
+ *
+ * @param {Object} tbr Target Bounding Rect
+ * @param {Object} rbr Reference Bounding Rect
+ * @returns string with locations
+ */
+export const getCardinalPosition = (tbr, rbr) => getRelativePosition(tbr, rbr).reduce((acc, cur, i) => (
+    acc + (acc.length ? ' ' : '') + [
+        ['west', '', 'east'],
+        ['north', '', 'south'],
+    ][i][cur + 1]
+), '');
+
+/**
+ *
+ * @param tbr
+ * @param rbr
+ * @returns {string}
+ */
+export const getClassNames = (tbr, rbr) => (
+    cls(getCardinalPosition(tbr, rbr), {
+        vbefore: tbr.bottom < rbr.top,
+        vafter: rbr.bottom < tbr.top,
+        hbefore: tbr.right < rbr.left,
+        hafter: rbr.right < tbr.left,
+    })
+);

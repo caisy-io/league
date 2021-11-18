@@ -17,8 +17,8 @@
 import React, {useRef, forwardRef, memo, useCallback} from 'react';
 import classNames from 'classnames';
 import Stackable from '../stackable';
-import {usePosition} from './Poppable.hooks';
-import {getClassNames, getBoundingRects, getAncestors} from './Poppable.utils';
+import { usePosition } from './Poppable.hooks';
+import { getClassNames, getBoundingRects } from './Poppable.utils';
 import PoppableContext from './Poppable.context';
 import { copyComponentRef } from '../../utils/react';
 import { SPoppable } from './styles/SPoppable';
@@ -41,7 +41,9 @@ interface IPoppable {
 }
 
 const Poppable = forwardRef(({children, container, reference, placements, default: _default, onPlacement, placement, overflow, className, style, ...props}: IPoppable, ref) => {
-    const target = (typeof window !== "undefined" && document.body) || useRef();
+    const target = (typeof window !== "undefined" && document.getElementsByClassName("container")) || useRef();
+    // TODO i think target is not set correctly
+    console.log(target, reference);
     const handleOnContextMenu = useCallback(e => e.stopPropagation(), []); // prevent onContextMenu event bubbling from the react portal to the react tree
     const rects = getBoundingRects(target, reference, container, placement);
     usePosition({target, container, reference, placements, default: _default, onPlacement, strategy: overflow});
