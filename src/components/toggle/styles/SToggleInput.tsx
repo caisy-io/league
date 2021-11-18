@@ -5,6 +5,7 @@ const Bronze = css`
   opacity: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
 `;
 
 const Silver = css``;
@@ -15,7 +16,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSwitchInput = styled.input`
+export const SToggleInput = styled.input`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
