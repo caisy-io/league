@@ -99,7 +99,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSolidLabel: ISolidLabelProps = styled.button<any>`
+export const SSolidLabel = styled.button<any>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
