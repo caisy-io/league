@@ -1,14 +1,10 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveCaption01Semibold } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 import { ISolidLabelProps, ISolidLabelType } from "../SolidLabel";
 
 const CSSSolidLabelBase = css`
-  // Source: https://developer.mozilla.org/en-US/docs/Web/CSS/width
-  //width: intrinsic;           /* Safari/WebKit uses a non-standard name */
-  //width: -moz-max-content;    /* Firefox/Gecko */
-  //width: -webkit-max-content; /* Chrome */
   width: fit-content;
-  // TODO max-width needed? 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,8 +13,8 @@ const CSSSolidLabelBase = css`
   border: none;
   
   p, span {
-    font-size: 12px;
-    font-weight: 600;
+    ${CSSProgressiveCaption01Semibold}
+    line-height: normal;
     text-align: center;
   }
 `;
@@ -62,7 +58,7 @@ const CSSGrey = css`
 const CSSGreyOutline = css`
   ${CSSSolidLabelBase}
   box-sizing: border-box;
-  background: transparent;
+  background: var(--ui-01);
   border: 1px solid var(--ui-03);
   color: var(--text-03);
 `;
@@ -86,7 +82,7 @@ const getTypeStyling = (type: ISolidLabelType) => {
   }
 };
 
-const Bronze = css<ISolidLabelProps>` // TODO use label props
+const Bronze = css<ISolidLabelProps>`
   ${(props) => getTypeStyling(props.type)}
   cursor: pointer;
 `;

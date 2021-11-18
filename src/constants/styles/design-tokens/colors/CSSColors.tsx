@@ -10,10 +10,14 @@ export const CSSColors = css`
 --ui-overlay-02: #000000bf;
 --ui-overlay-03: #00000073;
 --ui-supportive-01: #ed3e3e;
---ui-supportive-02: #e4f5ef;
---ui-supportive-03: #008cff;
---ui-supportive-04: #0077d9;
---ui-supportive-05: #172c55;
+--ui-supportive-02: #fff3f0;
+--ui-supportive-03: #fdf3e4;
+--ui-supportive-04: #edfaf5;
+--ui-supportive-05: #008cff;
+--ui-supportive-06: #0077d9;
+--ui-supportive-07: #172c55;
+--ui-supportive-08: #fafafa;
+--ui-supportive-09: #eff4f7;
 --ui-01: #ffffff;
 --hover-ui-01: #e8eff3;
 --active-ui-01: #172c55;
@@ -74,6 +78,7 @@ export const CSSColors = css`
 --disabled-text: #c7cad1;
 --text-02: #ffffff;
 --text-05: #f7f9fa;
+--text-08: #f7a300;
 --text-supprotive-01: #ffffffa3;
 --text-suppportive-02: #008cff;
 --text-01: #172c55;

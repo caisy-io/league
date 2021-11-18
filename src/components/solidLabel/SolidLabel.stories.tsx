@@ -31,11 +31,9 @@ export default {
 
 function SolidLabelDemo({ content, ...args }) {
   return (
-    <div style={{backgroundColor: "white", height: "100px", width: "100px", padding: "20px"}}>
-        <SolidLabel {...args}>
-          <span>{content}</span>
-        </SolidLabel>
-    </div>
+    <SolidLabel {...args}>
+      <span>{content}</span>
+    </SolidLabel>
   );
 }
 
