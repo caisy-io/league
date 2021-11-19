@@ -2,13 +2,20 @@ import React, { FC, ReactNode } from "react";
 import { SPreview } from "./styles/SPreview"
 
 interface IPreview {
-  children: ReactNode;
+  flag?: ReactNode;
+  icon?: ReactNode;
+  image?: ReactNode;
+  text?: ReactNode;
+  size?: 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48;
 }
 
-const Preview: FC<IPreview> = props => {
+const Preview: FC<IPreview> = ({ flag, icon, image, text, size }) => {
   return (
-    <SPreview>
-      {props.children}
+    <SPreview size={size}>
+      {flag}
+      {icon}
+      {image}
+      {text}
     </SPreview>
   )
 }
