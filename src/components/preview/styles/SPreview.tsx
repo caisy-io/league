@@ -61,6 +61,9 @@ const Bronze = css<ISPreview>`
     width: ${({ size }) => iconSize(size)}px;
     height: ${({ size }) => iconSize(size)}px;
   }
+  img {
+    border-radius: 4px;
+  }
 `;
 
 const Silver = css``;

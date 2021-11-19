@@ -3,6 +3,7 @@ import React from "react";
 import Preview from "./Preview";
 import { Avatar } from "../avatar";
 import { IconStarOutlined }from "../../icons";
+import { Img } from "../../base-components/img/Img";
 
 export default {
   title: "Components/Preview",
@@ -89,9 +90,10 @@ Preview_image_40.args = {
 
 export const Preview_image_48 = Template.bind({});
 Preview_image_48.args = {
-  image: <Avatar size={40} imageUrl="https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="/>,
+  image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48}/>,
   size: 48
 };
+
 export const Preview_icon_48 = Template.bind({});
 Preview_icon_48.args = {
   icon: <IconStarOutlined/>,
