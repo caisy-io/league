@@ -3,6 +3,7 @@ module.exports = {
     "./src/constants/styles/design-tokens/input/colors.json",
     "./src/constants/styles/design-tokens/input/fonts.json",
     "./src/constants/styles/design-tokens/input/styledFonts.json",
+    "./src/constants/styles/design-tokens/input/box-shadows.json",
   ],
   platforms: {
     styledColors: {
@@ -34,10 +35,22 @@ module.exports = {
       buildPath: "./src/constants/styles/design-tokens/fonts/",
       files: [
         {
-          destination: "fonts.tsx",
+          destination: "CSSTypographies.tsx",
           format: "styledComponents",
           filter: {
             filePath: "./src/constants/styles/design-tokens/input/styledFonts.json",
+          },
+        },
+      ],
+    },
+    boxShadows: {
+      buildPath: "./src/constants/styles/design-tokens/box-shadows/",
+      files: [
+        {
+          destination: "CSSBoxShadows.tsx",
+          format: "styledBoxShadows",
+          filter: {
+            filePath: "./src/constants/styles/design-tokens/input/box-shadows.json",
           },
         },
       ],
