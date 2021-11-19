@@ -2,7 +2,9 @@ import React from "react";
 import { SimpleInput } from "../simple-input/SimpleInput";
 import { WithErrorMessage } from "./WithErrorMessage";
 import FieldContext from "../field-context/FieldContextState";
-import { InputWithErrors } from "..";
+import { withErrorMessage } from "..";
+
+const InputWithErrors = withErrorMessage(SimpleInput);
 
 function WithErrorMessageDemo({ ...args }) {
   const [value, setValue] = React.useState("");
@@ -11,19 +13,13 @@ function WithErrorMessageDemo({ ...args }) {
   };
 
   return (
-    <div style={{ display: "flex", gap: 6 }}>
-      <FieldContext>
-        <WithErrorMessage active={true} content={args.content} />
-        <SimpleInput placeholder="This input has some errors" onChange={onChange} value={value} state="error" />
-      </FieldContext>
-      <InputWithErrors
-        placeholder="This input has some errors"
-        onChange={onChange}
-        value={value}
-        state="error"
-        errors={args.content}
-      />
-    </div>
+    <InputWithErrors
+      placeholder="This input has some errors"
+      onChange={onChange}
+      value={value}
+      state="error"
+      errors={args.content}
+    />
   );
 }
 

@@ -27,3 +27,38 @@ export const WithTranslationBadge: React.FC<ILabel> = ({ ...props }) => {
     />
   );
 };
+
+interface IWithTranslationBadgeProps {
+  badge: IWithTranslationBadgeContent;
+  addons?: any[];
+}
+
+interface IAddonHOC {
+  addons?: any[];
+}
+
+export function withTranslationBadge<T extends IAddonHOC>(WrappedComponent: React.ComponentType<T>) {
+  const displayName = WrappedComponent.displayName || WrappedComponent.name || "Component";
+
+  const WithTranslationBadge: React.ComponentType<T & IWithTranslationBadgeProps & IAddonHOC> = (props) => {
+    const newAddon = (
+      <SWithTranslationBadge>
+        <>{props.badge.flag && props.badge.flag()}</>
+        {props.badge.country}
+      </SWithTranslationBadge>
+    );
+
+    const addons = props?.addons?.slice() || [];
+    addons.push(newAddon);
+
+    return (
+      <WrappedComponent {...(props as T)} addons={addons}>
+        {props.children}
+      </WrappedComponent>
+    );
+  };
+
+  WithTranslationBadge.displayName = `withTranslationBadge(${displayName})`;
+
+  return WithTranslationBadge;
+}

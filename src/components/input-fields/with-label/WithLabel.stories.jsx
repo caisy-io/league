@@ -1,11 +1,8 @@
 import React from "react";
 import { SimpleInput } from "../simple-input/SimpleInput";
-import { WithLabel } from "./WithLabel";
-import { WithErrorMessage } from "../with-error-message/WithErrorMessage";
-import { WithTranslationBadge } from "../with-translation-badge/WithTranslationBadge";
-import FieldContext from "../field-context/FieldContextState";
-import { useForm, FormFieldWrapper, Form } from "../../form/index";
-import GermanFlagIcon from "../simple-input/GermanFlagIcon";
+import { withLabel } from "..";
+
+const WithLabel = withLabel(SimpleInput);
 
 function WithLabelDemo({ ...args }) {
   const [value, setValue] = React.useState("");
@@ -13,12 +10,7 @@ function WithLabelDemo({ ...args }) {
     setValue(e.target.value);
   };
 
-  return (
-    <FieldContext>
-      <WithLabel active={true} content={args.content} />
-      <SimpleInput placeholder="This input has a label" value={value} onChange={onChange} />
-    </FieldContext>
-  );
+  return <WithLabel placeholder="This input has a label" onChange={onChange} value={value} label={args.content} />;
 }
 
 export default {

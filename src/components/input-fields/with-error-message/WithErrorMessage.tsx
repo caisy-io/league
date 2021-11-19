@@ -1,5 +1,4 @@
-import React, { ComponentType } from "react";
-import { SimpleInput } from "..";
+import React from "react";
 import { WithAddon } from "../with-addon/WithAddon";
 import { SErrorMessage } from "./styles/SErrorMessage";
 
@@ -25,14 +24,19 @@ export const WithErrorMessage: React.FC<IErrorMessage> = ({ ...props }) => {
   );
 };
 
-interface IWithErrorProps {
-  errors: [];
+interface IWithErrorMessageProps {
+  errors: any[];
+  addons?: any[];
 }
 
-export function withError<T extends IWithErrorProps = IWithErrorProps>(WrappedComponent: ComponentType<T>) {
+interface IAddonHOC {
+  addons?: any[];
+}
+
+export function withErrorMessage<T extends IAddonHOC>(WrappedComponent: React.ComponentType<T>) {
   const displayName = WrappedComponent.displayName || WrappedComponent.name || "Component";
 
-  const ComponentWithError = (props: Omit<T, keyof IWithErrorProps>) => {
+  const WithErrorMessage: React.ComponentType<T & IWithErrorMessageProps & IAddonHOC> = (props) => {
     const newAddon = (
       <>
         {props.errors?.map((message, index) => (
@@ -53,9 +57,7 @@ export function withError<T extends IWithErrorProps = IWithErrorProps>(WrappedCo
     );
   };
 
-  ComponentWithError.displayName = `withError(${displayName})`;
+  WithErrorMessage.displayName = `withError(${displayName})`;
 
-  return ComponentWithError;
+  return WithErrorMessage;
 }
-
-export const InputWithErrors = withError(SimpleInput);
