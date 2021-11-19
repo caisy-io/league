@@ -1,5 +1,5 @@
 import React from "react";
-import { IconAssetsImage } from "../..";
+import { IconAssetsImage, IconTypeface } from "../..";
 import { IconLink } from "../../icons/IconLink";
 import { SidebarCard } from "../sidebar-card";
 import { Tabs } from '../tabs';
@@ -27,9 +27,9 @@ function SchemaEditorSidebarDemo({ content, ...args }) {
             <SidebarCard title="Asset" description="Image, video and other assets" icon={<IconAssetsImage></IconAssetsImage>}></SidebarCard>
             <SidebarCard title="Reference" description="Link and resolve documents & components" icon={<IconLink></IconLink>}></SidebarCard>
           </SidebarCategory>
-          <SidebarCategory title="Strings" icon={<IconLink></IconLink>}>
-            <SidebarCard title="Strings" description="BlaBla" icon={<IconLink></IconLink>}></SidebarCard>
-            <SidebarCard title="Strings" description="BlaBla" icon={<IconLink></IconLink>}></SidebarCard>
+          <SidebarCategory title="Strings" icon={<IconTypeface></IconTypeface>}>
+            <SidebarCard title="Single line string" description="Text field with no formatting" icon={<IconTypeface></IconTypeface>}></SidebarCard>
+            <SidebarCard title="Multi line string" description="Text field with no formatting" icon={<IconTypeface></IconTypeface>}></SidebarCard>
           </SidebarCategory>
         </TabPanel>
       </Tabs>
