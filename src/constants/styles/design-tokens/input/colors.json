@@ -21,7 +21,7 @@
       "type": "color"
     },
     "$ui-overlay-02": {
-      "value": "#000000bf",
+      "value": "#000000bd",
       "type": "color"
     },
     "$ui-overlay-03": {
@@ -33,19 +33,19 @@
       "type": "color"
     },
     "$ui-supportive-02": {
-      "value": "#e4f5ef",
+      "value": "#fff3f0",
       "type": "color"
     },
     "$ui-supportive-03": {
-      "value": "#008cff",
+      "value": "#fdf3e4",
       "type": "color"
     },
     "$ui-supportive-04": {
-      "value": "#0077d9",
+      "value": "#edfaf5",
       "type": "color"
     },
     "$ui-supportive-05": {
-      "value": "#172c55",
+      "value": "#008cff",
       "type": "color"
     },
     "$ui-01": {
@@ -65,6 +65,14 @@
       "$active-ui-01": {
         "1": {
           "value": "#f3f7f9",
+          "type": "color"
+        },
+        "2": {
+          "value": "#f3f8fb",
+          "type": "color"
+        },
+        "3": {
+          "value": "#008cff",
           "type": "color"
         },
         "value": "#172c55",
@@ -99,11 +107,31 @@
           "value": "#c3d1d9",
           "type": "color"
         },
+        "2": {
+          "value": "#008cff",
+          "type": "color"
+        },
         "value": "#ffffff",
         "type": "color"
       }
     },
-    "$tag-01": {
+    "$ui-supportive-06": {
+      "value": "#0077d9",
+      "type": "color"
+    },
+    "$ui-supportive-07": {
+      "value": "#172c55",
+      "type": "color"
+    },
+    "$ui-supportive-08": {
+      "value": "#fafafa",
+      "type": "color"
+    },
+    "$ui-supportive-09": {
+      "value": "#eff4f7",
+      "type": "color"
+    },
+    "$tag": {
       "$tag-01": {
         "value": "#ff008a",
         "type": "color"
@@ -336,6 +364,28 @@
         "value": "#e8eff3",
         "type": "color"
       }
+    },
+    "$disabled-interactional-03": {
+      "value": "#f7f9fa",
+      "type": "color"
+    },
+    "$interactional-tertiary-04": {
+      "$interactional-tertiary-04": {
+        "value": "#ffffff00",
+        "type": "color"
+      },
+      "$hover-interactional-tertiary-04": {
+        "value": "#e8eff3",
+        "type": "color"
+      },
+      "$active-interactional-tertiary-04": {
+        "1": {
+          "value": "#008cff",
+          "type": "color"
+        },
+        "value": "#f3f7f9",
+        "type": "color"
+      }
     }
   },
   "Text": {
@@ -406,6 +456,10 @@
         "type": "color"
       },
       "$active-text-04": {
+        "1": {
+          "value": "#ffffff",
+          "type": "color"
+        },
         "value": "#008cff",
         "type": "color"
       }
@@ -435,6 +489,70 @@
       },
       "$active-text-07": {
         "value": "#196541",
+        "type": "color"
+      }
+    },
+    "$text-08": {
+      "$text-08": {
+        "value": "#f7a300",
+        "type": "color"
+      }
+    },
+    "$text-09": {
+      "$text-09": {
+        "value": "#008cff",
+        "type": "color"
+      },
+      "$hover-text-09": {
+        "value": "#007ee6",
+        "type": "color"
+      },
+      "$active-text-09": {
+        "value": "#0077d9",
+        "type": "color"
+      }
+    },
+    "$text-code": {
+      "$text-code-01": {
+        "value": "#172c55",
+        "type": "color"
+      },
+      "$text-code-02": {
+        "value": "#96afc4",
+        "type": "color"
+      },
+      "$text-code-03": {
+        "value": "#007cc1",
+        "type": "color"
+      },
+      "$text-code-04": {
+        "value": "#008cff",
+        "type": "color"
+      },
+      "$text-code-05": {
+        "value": "#b80084",
+        "type": "color"
+      },
+      "$text-code-06": {
+        "value": "#e910ac",
+        "type": "color"
+      },
+      "$text-code-07": {
+        "value": "#f7a300",
+        "type": "color"
+      }
+    },
+    "$text-10": {
+      "$text-10": {
+        "value": "#ffffffa3",
+        "type": "color"
+      },
+      "$hover-text-10": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "$active-text-10": {
+        "value": "#ffffff",
         "type": "color"
       }
     }

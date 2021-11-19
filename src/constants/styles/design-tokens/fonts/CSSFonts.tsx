@@ -1,6 +1,6 @@
 import { css } from "styled-components" 
 
-export const CSSFonts = css `
+export const CSSFonts = css`
   :root {
     --font-families-inter: Inter;
     --font-families-ibm-plex-mono: IBM Plex Mono;
@@ -9,11 +9,13 @@ export const CSSFonts = css `
     --line-heights-2: 1rem;
     --line-heights-3: 0.875rem;
     --line-heights-4: 0.75rem;
+    --line-heights-5: 1.125rem;
     --font-weights-inter-0: Bold;
     --font-weights-inter-1: Semi Bold;
     --font-weights-inter-2: Medium;
     --font-weights-inter-3: Regular;
     --font-weights-ibm-plex-mono-4: Text;
+    --font-weights-ibm-plex-mono-5: Medium;
     --font-size-0: 0.5rem;
     --font-size-1: 0.5625rem;
     --font-size-2: 0.6875rem;
@@ -25,6 +27,10 @@ export const CSSFonts = css `
     --letter-spacing-1: -1%;
     --letter-spacing-2: 6%;
     --letter-spacing-3: 8%;
+    --letter-spacing-4: 5%;
     --paragraph-spacing-0: 0;
+    --text-case-none: none;
+    --text-case-uppercase: uppercase;
+    --text-decoration-none: none;
   }
 `;
