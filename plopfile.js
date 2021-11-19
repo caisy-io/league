@@ -9,6 +9,7 @@ module.exports = function (plop) {
   var files = {
     mainComponent: "plop-templates/main-component.js",
     styledComponent: "plop-templates/styled-component.js",
+    storybookStory: "plop-templates/storybook-story.js",
     cssSnippet: "plop-templates/css.js",
   };
 
@@ -35,6 +36,12 @@ module.exports = function (plop) {
     type: "add",
     path: "src/components/{{kebabCase name}}/styles/CSS{{pascalCase name}}{{pascalCase suffix}}.tsx",
     templateFile: files.cssSnippet,
+  };
+
+  var createStory = {
+    type: "add",
+    path: "src/components/{{kebabCase name}}/{{pascalCase name}}.stories.jsx",
+    templateFile: files.storybookStory,
   };
 
   plop.setActionType("Usage:", function (answers, config, plop) {
@@ -86,6 +93,7 @@ module.exports = function (plop) {
     actions: [
       createFunctionComponent,
       createStyle,
+      createStory,
       {
         type: "Usage:",
       },

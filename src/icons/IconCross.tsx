@@ -12,7 +12,7 @@ export const IconCross = ({ variant }: ICrossProps) => {
   const rotationDegree = rotationDegrees[variant];
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+    <svg xmlns="http://www.w3.org/2000/svg"  fill="none" width="24px" height="24px" viewBox="0 0 20 20">
       <path
         stroke="currentColor"
         strokeLinecap="round"

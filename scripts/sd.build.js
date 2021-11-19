@@ -1,6 +1,7 @@
 const StyleDictionary = require("style-dictionary");
 const kebabCase = require("lodash/kebabCase");
 const camelCase = require("lodash/camelCase");
+const startCase = require("lodash/startCase");
 
 const defaultValues = ["var(--fontFamilies-inter)", "var(--letterSpacing-0)", "var(--paragraphSpacing-0)"];
 
@@ -16,11 +17,11 @@ StyleDictionary.registerFormat({
     for (extVariable in dictionary.properties) {
       for (variable in dictionary.properties[extVariable]) {
         const name = extVariable + variable;
-        let camelCasedName = camelCase(name);
+        let pascalCasedName = startCase(camelCase(name)).replace(/ /g, "");
 
-        fonts = fonts + "export const " + camelCasedName + " = css`\n";
+        fonts = fonts + "export const CSS" + pascalCasedName + " = css`\n";
         for (property in dictionary.properties[extVariable][variable]) {
-          const value = `var(${dictionary.properties[extVariable][variable][property].value
+          const value = `var(--${kebabCase(dictionary.properties[extVariable][variable][property].value)
             .replace("$", "--")
             .replace(".", "-")})`;
           if (!defaultValues.includes(value)) fonts = fonts + `  ${kebabCase(property)}: ${value};\n`;
@@ -36,15 +37,14 @@ StyleDictionary.registerFormat({
   name: "styledFonts",
   formatter: function ({ dictionary }) {
     let fonts = 'import { css } from "styled-components" \n\n';
-    fonts += "export const CSSFonts = css `\n";
+    fonts += "export const CSSFonts = css`\n";
     fonts += "  :root {\n";
-    console.log(dictionary.allTokens);
     dictionary.allTokens.forEach((token) => {
       let value = token.value;
       if ((token.type === "fontSizes" || token.type === "lineHeights") && parseInt(token.value) !== 0) {
         value = `${parseInt(value) / 16}rem`;
       }
-      const name = kebabCase(token.type);
+      const name = kebabCase(`${token.path[0]}-${token.name}`);
       fonts += `    --${name}: ${value};\n`;
     });
     fonts = fonts + "  }\n";
@@ -85,6 +85,24 @@ StyleDictionary.registerFormat({
 
     output = output + "}`;";
     return output;
+  },
+});
+
+StyleDictionary.registerFormat({
+  name: "styledBoxShadows",
+  formatter: function ({ dictionary }) {
+    let boxShadows = 'import { css } from "styled-components" \n\n';
+    boxShadows += "export const CSSBoxShadows = css`\n";
+    boxShadows += "  :root {\n";
+    dictionary.allTokens.forEach((token) => {
+      const value = `${token.value["x"]} ${token.value["y"]} ${token.value["blur"]} ${token.value["spread"]} ${token.value["color"]}`;
+
+      const name = kebabCase(`${token.name}`);
+      boxShadows += `    --box-shadow-${name}: ${value}\n`;
+    });
+    boxShadows = boxShadows + "  }\n";
+    boxShadows = boxShadows + "`;\n";
+    return boxShadows;
   },
 });
 

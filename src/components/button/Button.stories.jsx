@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "./Button";
 import { IconLink } from "../..";
+import { Badge, EBadgePosition } from "..";
 
 // Default Button Demo
 export default {
@@ -8,14 +9,14 @@ export default {
   component: ButtonDemo,
   parameters: {
     design: {
-       type: 'figma',
-       url: 'https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=5%3A335'
-    }
+      type: "figma",
+      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=5%3A335",
+    },
   },
   argTypes: {
     type: {
       description: "Changes the overall design of the button",
-      options: ["primary", "secondary", "tertiary", "danger", "neutral", "light", "link"],
+      options: ["primary", "secondary", "tertiary", "danger"],
       control: { type: "select" },
       table: {
         defaultValue: {
@@ -37,26 +38,8 @@ export default {
         },
       },
     },
-    dashed: {
-      description: "Changes the border of the button",
-      control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
-    },
     activated: {
       description: "Changes the state of the button to Activated",
-      control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
-    },
-    round: {
-      description: "Changes the corners of the button",
       control: { type: "boolean" },
       table: {
         defaultValue: {
@@ -87,10 +70,9 @@ Default.args = {
   type: "primary",
   content: "primary",
   size: "default",
-  dashed: false,
-  round: false,
   activated: false,
   disabled: false,
+  sticked: false,
 };
 
 // With Icon
@@ -102,12 +84,30 @@ export const WithIcon = ({ content, ...args }) => (
 );
 
 WithIcon.args = {
-  type: "link",
+  type: "primary",
   content: "Link existing Document",
   size: "default",
   state: "default",
-  dashed: false,
+  disabled: false,
+  activated: false,
+  sticked: false,
+};
+
+// With Badge
+export const WithBadge = ({ content, ...args }) => (
+  <Badge position={EBadgePosition.TopRight} value={args.badgeContent}>
+    <Button {...args}>{content}</Button>
+  </Badge>
+);
+
+WithBadge.args = {
+  type: "primary",
+  content: "With Badge",
+  size: "default",
+  state: "default",
   round: false,
   disabled: false,
   activated: false,
+  sticked: false,
+  badgeContent: 1,
 };
