@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { SScrollbar } from './styles/SScrollbar';
 
-export const Scrollbar: React.FC = ({ ...props }) => {
-  const scrollbarRef = React.createRef();
+export const Scrollbar = React.forwardRef((props, ref) => {
   return (
-    <SScrollbar ref={scrollbarRef}>
+    <SScrollbar ref={ref}>
       {props.children}
     </SScrollbar>
   )
-}
+});
