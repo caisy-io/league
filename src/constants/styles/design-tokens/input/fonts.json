@@ -29,6 +29,10 @@
     "4": {
       "value": "12",
       "type": "lineHeights"
+    },
+    "5": {
+      "value": "18",
+      "type": "lineHeights"
     }
   },
   "fontWeights": {
@@ -50,6 +54,10 @@
     },
     "ibm-plex-mono-4": {
       "value": "Text",
+      "type": "fontWeights"
+    },
+    "ibm-plex-mono-5": {
+      "value": "Medium",
       "type": "fontWeights"
     }
   },
@@ -99,12 +107,32 @@
     "3": {
       "value": "8%",
       "type": "letterSpacing"
+    },
+    "4": {
+      "value": "5%",
+      "type": "letterSpacing"
     }
   },
   "paragraphSpacing": {
     "0": {
       "value": "0",
       "type": "paragraphSpacing"
+    }
+  },
+  "textCase": {
+    "none": {
+      "value": "none",
+      "type": "textCase"
+    },
+    "uppercase": {
+      "value": "uppercase",
+      "type": "textCase"
+    }
+  },
+  "textDecoration": {
+    "none": {
+      "value": "none",
+      "type": "textDecoration"
     }
   }
 }
