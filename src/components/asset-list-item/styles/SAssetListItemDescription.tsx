@@ -1,9 +1,21 @@
 import styled, { css } from 'styled-components';
 import { CSSProgressiveCaption01 } from '../../../constants/styles/fonts';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
+import { CSSDisplayNone } from './SAssetListItemIconWrapper';
+
+const CSSError = css`
+    color: var(--text-06);
+`;
+
+const CSSInvisible = css`
+    opacity: 0;
+`;
 
 const Bronze = css`
     ${CSSProgressiveCaption01};
+    color: var(--text-03);
+    ${(props) => props.error ? CSSError : ''};
+    ${(props) => props.uploading ? CSSInvisible : ''};
 `;
 
 const Silver = css``;

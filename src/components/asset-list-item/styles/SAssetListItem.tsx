@@ -1,5 +1,13 @@
 import styled, { css } from 'styled-components';
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
+import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
+
+const CSSError = css`
+  background-color: white;
+`;
+
+const CSSRecent = css`
+  background-color: var(--ui-02);
+`;
 
 const Bronze = css`
   width: 100%;
@@ -7,7 +15,22 @@ const Bronze = css`
   border-bottom: 1px solid var(--ui-03);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 1rem;
+  >svg{
+    color: #B4C9D7;
+    height: 16px;
+    width: 16px;
+  }
+  ${(props) => props.recent ? CSSRecent : ''};
+  &: hover {
+    background-color: var(--hover-ui-01);
+    ${(props) => props.error ? CSSError : ''};
+  }
+  &: active {
+    background-color: #F3F7F9;
+    ${(props) => props.error ? CSSError : ''};
+  }
 `;
 
 const Silver = css``;

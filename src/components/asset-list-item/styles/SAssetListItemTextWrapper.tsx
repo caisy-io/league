@@ -3,6 +3,8 @@ import { CSSProgressiveBody02Semibold } from '../../../constants/styles/fonts';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
+  position: relative;
+  width: 100%;
 `;
 
 const Silver = css``;

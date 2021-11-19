@@ -117,3 +117,5 @@ export { IconLoading } from "./IconLoading";
 export { IconExchange } from "./IconExchange";
 export { IconUserSquare } from "./IconUserSquare";
 export { IconGearSettings } from "./IconGearSettings";
+export { IconCheckmarkOutlined } from "./IconCheckmarkOutlined";
+export { IconDocuments } from "./IconDocuments";
