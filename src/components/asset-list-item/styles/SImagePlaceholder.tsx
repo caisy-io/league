@@ -2,8 +2,26 @@ import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { SAssetListItem } from './SAssetListItem';
 
-const CSSHover = css`
+const CSSIcon = css`
   background-color: var(--ui-03);
+`;
+
+const CSSHover = css`
+  background-color: var(--ui-02);
+  border: 1px solid #E8EFF3;
+`;
+
+const CSSHoverIcon = css`
+  background-color: var(--hover-ui-03);
+`;
+
+const CSSActive = css`
+  background-color: var(--ui-02);
+  border: 1px solid var(--ui-03);
+`;
+
+const CSSActiveIcon = css`
+ background-color: var(--ui-03);
 `;
 
 const CSSError = css`
@@ -26,14 +44,18 @@ const Bronze = css`
     svg {
       color: #172C55;
     }
-    ${(props) => props.icon ? CSSHover : ''};
+    ${(props) => props.icon ? CSSIcon : ''};
     ${(props) => props.error ? CSSError : ''};
+
     ${SAssetListItem}:hover & {
-      background-color: var(--hover-ui-03);
+      ${CSSHover};
+      ${(props) => props.icon ? CSSHoverIcon : ''};
       ${(props) => props.error ? CSSError : ''};
     }
+
     ${SAssetListItem}:active & {
-      background-color: var(--ui-03);
+      ${CSSActive};
+      ${(props) => props.icon ? CSSActiveIcon : ''};
       ${(props) => props.error ? CSSError : ''};
     }
 `;

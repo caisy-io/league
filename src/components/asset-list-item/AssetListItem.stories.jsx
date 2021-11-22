@@ -7,8 +7,17 @@ export default {
   component: AssetListItemDemo,
   argTypes: {
     // example argument type
-    activated: {
-      description: "Changes the state of the component to Activated",
+    error: {
+      description: "Changes the state of the component to error",
+      control: { type: "boolean" },
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
+    recent: {
+      description: "Changes the state of the component to recent",
       control: { type: "boolean" },
       table: {
         defaultValue: {
@@ -22,7 +31,7 @@ export default {
 function AssetListItemDemo({ content, ...args }) {
 
   return <div style={{ width: "320px" }}>
-    <AssetListItem title="Default" description="Description" uploading progressValue={30}>
+    <AssetListItem title="Default" description="Description" recent={args.recent} error={args.error}>
     </AssetListItem>
   </div>
 }
@@ -31,19 +40,19 @@ const Template = (args) => < AssetListItemDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-
+  recent: false,
+  error: false,
 };
 
 // With icon
-export const WithIcon = ({ content, ...args }) => (
- 
+export const WithIcon = ({ ...args }) => (
   <div style={{ width: "320px" }}>
-    <AssetListItem title="Default" description="Description" icon={<IconDocuments></IconDocuments>}>
+    <AssetListItem title="Default" description="Description" icon={<IconDocuments></IconDocuments>} recent={args.recent} error={args.error}>
     </AssetListItem>
   </div>
 );
 
 WithIcon.args = {
-  state: "default",
-  content: "Default",
+  recent: false,
+  error: false,
 };

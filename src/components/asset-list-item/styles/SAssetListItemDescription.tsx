@@ -11,7 +11,7 @@ const Bronze = css`
     ${CSSProgressiveCaption01};
     color: var(--text-03);
     ${(props) => props.error ? CSSError : ''};
-    ${(props) => props.progressValue !== null || props.progressValue !== undefined ? CSSDisplayNone : ''};
+    ${(props) => props.progressValue !== null && props.progressValue !== undefined ? CSSDisplayNone : ''};
 `;
 
 const Silver = css``;
