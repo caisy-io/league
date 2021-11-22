@@ -23,6 +23,7 @@ const Bronze = css`
     width: 16px;
   }
   ${(props) => props.recent ? CSSRecent : ''};
+  ${(props) => props.error ? CSSError : ''};
   &: hover {
     background-color: var(--hover-ui-01);
     ${(props) => props.error ? CSSError : ''};

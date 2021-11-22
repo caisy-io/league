@@ -15,14 +15,14 @@ const CSSError = css`
 const Bronze = css`
     width: 40px;
     height: 40px;
-    box-sizing: border-box;
+    box-sizing: border-box;         
     border-radius: 4px;
     background-color: var(--ui-02);
     border: 1px solid var(--ui-03);
-    margin-right: 0.75rem;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
     svg {
       color: #172C55;
     }

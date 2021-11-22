@@ -2,10 +2,14 @@ import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-    height: 0.25rem;
-    width: 100%;
-    position: relative;
-    display: flex;
+  background: var(--ui-03);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 100px;
+  transition: width 10s ease-in-out;
 `;
 
 const Silver = css``;
@@ -16,7 +20,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SProgressBar = styled.div`
+export const SProgressBackground = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

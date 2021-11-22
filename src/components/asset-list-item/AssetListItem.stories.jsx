@@ -22,7 +22,7 @@ export default {
 function AssetListItemDemo({ content, ...args }) {
 
   return <div style={{ width: "320px" }}>
-    <AssetListItem title="Default" description="Description" recent uploading>
+    <AssetListItem title="Default" description="Description" uploading progressValue="30">
     </AssetListItem>
   </div>
 }

@@ -1,10 +1,13 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveBody02Semibold } from '../../../constants/styles/fonts';
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
+import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
+  height: 100%;
+  border-radius: 100px;
   position: relative;
-  width: 80%;
+  background: var(--ui-supportive-03);
+  width: ${({ progressValue }) => progressValue}%;
+  transition: width 10s ease-in-out;
 `;
 
 const Silver = css``;
@@ -15,7 +18,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SAssetListItemTextWrapper = styled.div`
+export const SProgress = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
