@@ -1,10 +1,5 @@
 module.exports = {
-  source: [
-    "./src/constants/styles/design-tokens/input/colors.json",
-    "./src/constants/styles/design-tokens/input/fonts.json",
-    "./src/constants/styles/design-tokens/input/styledFonts.json",
-    "./src/constants/styles/design-tokens/input/box-shadows.json",
-  ],
+  source: ["./src/constants/styles/design-tokens/new-tokens.json"],
   platforms: {
     styledColors: {
       name: "CSSColors",
@@ -25,8 +20,19 @@ module.exports = {
         {
           format: "styledFonts",
           destination: "CSSFonts.tsx",
-          filter: {
-            filePath: "./src/constants/styles/design-tokens/input/fonts.json",
+          filter: (token) => {
+            const FONT_TYPES = [
+              "textCase",
+              "textDecoration",
+              "paragraphSpacing",
+              "letterSpacing",
+              "fontSizes",
+              "fontWeights",
+              "lineHeights",
+              "fontFamilies",
+            ];
+
+            return FONT_TYPES.includes(token.type);
           },
         },
       ],
@@ -37,9 +43,7 @@ module.exports = {
         {
           destination: "CSSTypographies.tsx",
           format: "styledComponents",
-          filter: {
-            filePath: "./src/constants/styles/design-tokens/input/styledFonts.json",
-          },
+          filter: (token) => token.path[0] === "Progressive",
         },
       ],
     },
@@ -50,7 +54,7 @@ module.exports = {
           destination: "CSSBoxShadows.tsx",
           format: "styledBoxShadows",
           filter: {
-            filePath: "./src/constants/styles/design-tokens/input/box-shadows.json",
+            type: "boxShadow",
           },
         },
       ],
