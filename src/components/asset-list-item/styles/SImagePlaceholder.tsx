@@ -28,6 +28,9 @@ const CSSError = css`
   background-color: var(--ui-background);
   color: #C7CAD1;
   border: none;
+  svg{
+    color: #C7CAD1;
+  }
 `;
 
 const Bronze = css`
