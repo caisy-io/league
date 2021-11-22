@@ -18,6 +18,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$body-01@semibold": {
@@ -38,6 +44,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$body-01@medium": {
@@ -58,6 +70,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$body-01": {
@@ -78,6 +96,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$body-02@semibold": {
@@ -98,6 +122,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$body-02@medium": {
@@ -118,6 +148,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$body-02": {
@@ -138,6 +174,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$body-03@semibold": {
@@ -158,6 +200,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$body-03@medium": {
@@ -178,6 +226,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$body-03": {
@@ -198,6 +252,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$caption-01@semibold": {
@@ -218,6 +278,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$caption-01@medium": {
@@ -238,6 +304,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$caption-01": {
@@ -258,6 +330,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$caption-02@semibold": {
@@ -278,6 +356,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$caption-02@medium": {
@@ -298,6 +382,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$caption-02": {
@@ -318,6 +408,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$highlight": {
@@ -338,6 +434,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.uppercase"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$highlight-micro": {
@@ -358,6 +460,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.uppercase"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$primary-buttons": {
@@ -378,6 +486,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.uppercase"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$badges-small": {
@@ -398,6 +512,12 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     },
     "$monospace-caption": {
@@ -408,7 +528,7 @@
         "value": "$fontWeights.ibm-plex-mono-4"
       },
       "lineHeight": {
-        "value": "$lineHeights.1"
+        "value": "$lineHeights.5"
       },
       "fontSize": {
         "value": "$fontSize.3"
@@ -418,6 +538,64 @@
       },
       "paragraphSpacing": {
         "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
+      }
+    },
+    "$monospace-code": {
+      "fontFamily": {
+        "value": "$fontFamilies.ibm-plex-mono"
+      },
+      "fontWeight": {
+        "value": "$fontWeights.ibm-plex-mono-4"
+      },
+      "lineHeight": {
+        "value": "$lineHeights.5"
+      },
+      "fontSize": {
+        "value": "$fontSize.3"
+      },
+      "letterSpacing": {
+        "value": "$letterSpacing.0"
+      },
+      "paragraphSpacing": {
+        "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
+      }
+    },
+    "$monospace-count": {
+      "fontFamily": {
+        "value": "$fontFamilies.ibm-plex-mono"
+      },
+      "fontWeight": {
+        "value": "$fontWeights.ibm-plex-mono-5"
+      },
+      "lineHeight": {
+        "value": "$lineHeights.5"
+      },
+      "fontSize": {
+        "value": "$fontSize.0"
+      },
+      "letterSpacing": {
+        "value": "$letterSpacing.4"
+      },
+      "paragraphSpacing": {
+        "value": "$paragraphSpacing.0"
+      },
+      "textCase": {
+        "value": "$textCase.none"
+      },
+      "textDecoration": {
+        "value": "$textDecoration.none"
       }
     }
   }
