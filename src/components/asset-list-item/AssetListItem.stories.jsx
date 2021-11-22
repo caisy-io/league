@@ -22,7 +22,7 @@ export default {
 function AssetListItemDemo({ content, ...args }) {
 
   return <div style={{ width: "320px" }}>
-    <AssetListItem title="Default" description="Description" uploading progressValue="30">
+    <AssetListItem title="Default" description="Description" uploading progressValue={30}>
     </AssetListItem>
   </div>
 }
@@ -36,6 +36,7 @@ Default.args = {
 
 // With icon
 export const WithIcon = ({ content, ...args }) => (
+ 
   <div style={{ width: "320px" }}>
     <AssetListItem title="Default" description="Description" icon={<IconDocuments></IconDocuments>}>
     </AssetListItem>

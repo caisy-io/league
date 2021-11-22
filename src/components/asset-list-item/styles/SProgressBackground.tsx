@@ -9,7 +9,7 @@ const Bronze = css`
   left: 0;
   top: 0;
   border-radius: 100px;
-  transition: width 10s ease-in-out;
+  transition: width 0.3s ease-in-out;
 `;
 
 const Silver = css``;

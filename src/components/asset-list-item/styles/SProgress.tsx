@@ -5,9 +5,9 @@ const Bronze = css`
   height: 100%;
   border-radius: 100px;
   position: relative;
-  background: var(--ui-supportive-03);
+  background: var(--ui-supportive-05);
   width: ${({ progressValue }) => progressValue}%;
-  transition: width 10s ease-in-out;
+  transition: width 0.3s ease-in-out;
 `;
 
 const Silver = css``;

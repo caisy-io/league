@@ -25,6 +25,7 @@ export interface IAssetListItemProps {
 }
 
 export const AssetListItem: React.FC<IAssetListItemProps> = ({ ...props }) => {
+  console.log(props);
   return (
     <SAssetListItem {...props}>
       <SFlex style={{ width: "100%" }}>
@@ -34,7 +35,7 @@ export const AssetListItem: React.FC<IAssetListItemProps> = ({ ...props }) => {
         <SAssetListItemTextWrapper>
           <SAssetListItemTitle {...props}>{props.title}</SAssetListItemTitle>
           <SAssetListItemDescription {...props}>{props.description}</SAssetListItemDescription>
-          <SProgressBarContainer>
+          <SProgressBarContainer {...props}>
             <span>{props.progressValue}%</span>
             <SProgressBar>
               <SProgressBackground />
