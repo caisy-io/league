@@ -124,9 +124,9 @@ export const LeftSider = ({content, ...args}) => {
                         <SidebarTag left onOpenChanged={setLeftSiderOpened}/>
                     </SLayoutSiderWrapper>
                     <LayoutContent style={{background: "darkslateblue"}} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
-                    <p style={{wordBreak: 'break-word'}}>{args.content}</p>
-                    {args.children}
-  </LayoutContent>
+                        <p style={{wordBreak: 'break-word'}}>{content}</p>
+                            {args.children}
+                    </LayoutContent>
                 </SLayoutContentWrapper>
             </SLayoutWrapper>
 
@@ -134,7 +134,9 @@ export const LeftSider = ({content, ...args}) => {
     );
 }
 
-LeftSider.args = {};
+LeftSider.args = {
+    content: "Lorem ipsum dolor sit amet",
+};
 
 LeftSider.parameters = {
     layout: 'fullscreen',
@@ -169,7 +171,7 @@ export const RightSider = ({content, ...args}) => {
                 </LayoutTopNav>
                 <SLayoutContentWrapper>
                     <LayoutContent style={{background: "darkslateblue"}} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
-                    <p style={{wordBreak: 'break-word'}}>{args.content}</p>
+                    <p style={{wordBreak: 'break-word'}}>{content}</p>
                         {args.children}
                     </LayoutContent>
                     <SLayoutSiderWrapper left={false}>
@@ -187,7 +189,9 @@ export const RightSider = ({content, ...args}) => {
     );
 }
 
-RightSider.args = {};
+RightSider.args = {
+    content: "Lorem ipsum dolor sit amet",
+};
 
 RightSider.parameters = {
     layout: 'fullscreen',
