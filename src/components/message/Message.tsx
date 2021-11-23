@@ -77,7 +77,7 @@ const Message: React.FC<IMessage> = (msgConfig: IMessage) => {
 
   return msgContainer
     ? ReactDOM.createPortal(
-      <NotificationSnackbar ></NotificationSnackbar>
+      <NotificationSnackbar exit={exit} content={msgConfig.content} success={msgConfig.type == "success"} error={msgConfig.type == "error"}></NotificationSnackbar>
       /* <SMessage exit={exit}>
         {msgIcon()}
         <SMessageContent>

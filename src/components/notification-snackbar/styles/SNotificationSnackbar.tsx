@@ -20,6 +20,29 @@ const Bronze = css`
     margin-right: 10px;
   }
   ${(props) => props.icon ? CSSError : ''};
+  animation: ${(props) => (props.exit ? "SlideRight 1000ms forwards" : "SlideTop 350ms forwards")};
+ 
+  @keyframes SlideTop {
+    0% {
+      transform: translateY(-110%);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+   @keyframes SlideRight {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(30%);
+      opacity: 0;
+    } 
+  }
 `;
 
 const Silver = css``;

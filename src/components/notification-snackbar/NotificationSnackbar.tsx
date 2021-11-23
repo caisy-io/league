@@ -10,9 +10,10 @@ import { SNotificationSnackbarAction } from './styles/SNotificationSnackbarActio
 import { SNotificationSnackbarLabel } from './styles/SNotificationSnackbarLabel';
 
 export interface INotificationSnackbarProps {
+  exit: boolean;
   icon?: React.ReactNode;
   action?: String | undefined;
-  content?: String | undefined;
+  content: String;
   success?: boolean;
   error?: boolean;
 }
