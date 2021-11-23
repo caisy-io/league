@@ -15,5 +15,4 @@
  */
 
  import Poppable from './Poppable.stateful';
- 
  export default Poppable;

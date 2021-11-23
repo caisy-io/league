@@ -20,8 +20,11 @@ import { _window } from "../../utils/mocks";
  
  export const usePosition = ({target, container, reference, placements, default: _default, onPlacement, strategy}) => {
      const {start} = useBoundingRectObserver((rbr, tbr, cbr, wbr) => {
+         console.log('useBoundingRectObserver callback', 'rbr:', rbr, 'tbr:', tbr, 'cbr:', cbr, 'wbr:', wbr)
          const {top, left, name} = strategy({tbr, cbr, rbr, wbr}, {default: _default, placements});
+         console.log('usePosition', {top, left, name})
          if (!tbr || top !== tbr.top || left !== tbr.left) {
+             console.log('OnPlacement', {top, left, name})
              onPlacement({top, left, name});
          }
      }, reference, target, container, _window);

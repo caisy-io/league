@@ -25,25 +25,6 @@ const Bronze = css<ISPoppableWrapper>`
             left: 0;
         }
     }
-
-    .poppable-target {
-        background-color: blue;
-        color: white;
-        text-transform: uppercase;
-        font-size: 0.9em;
-        width: 100px;
-        height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        user-select: none;
-        overflow: hidden;
-
-        .poppable-triangle {
-            background-color: red;
-        }
-    }
 `;
 
 const Silver = css<ISPoppableWrapper>``;

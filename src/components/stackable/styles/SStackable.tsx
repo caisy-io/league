@@ -7,6 +7,22 @@ const Bronze = css<ISStackable>`
   .stackable {
     position: absolute;
   }
+
+  &.vafter .poppable-triangle {
+      border-bottom-color: black;
+  }
+
+  &.vbefore .poppable-triangle {
+      border-top-color: black;
+  }
+
+  &.hbefore .poppable-triangle {
+      border-left-color: black;
+  }
+
+  &.hafter .poppable-triangle {
+      border-right-color: black;
+  }
 `;
 
 const Silver = css<ISStackable>``;

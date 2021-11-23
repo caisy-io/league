@@ -5,12 +5,17 @@ interface ISPoppable {
 }
 
 const Bronze = css<ISPoppable>`
-  .poppable {
+  .poppable-triangle {
+      position: fixed;
+      border-style: solid;
+      border-color: transparent;
+      pointer-events: none;
+  }
+
   &.placement-hidden {
     opacity: 0;
     pointer-events: none;
   }
-}
 `;
 
 const Silver = css<ISPoppable>``;

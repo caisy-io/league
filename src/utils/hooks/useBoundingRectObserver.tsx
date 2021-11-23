@@ -21,20 +21,20 @@
  import { useAnimationFrame } from './useAnimationFrame';
  
  export const getBoundingRects = refs => {
-     return refs.filter(i => i !== undefined).map(ref => {
+    return refs.map(ref => {
         if (ref.current) {
-             return ref.current.getBoundingClientRect();
-         }
-         if (ref instanceof Element) {
-             return ref.getBoundingClientRect();
-         }
-         if (ref instanceof DOMRect) {
-             return ref;
-         }
-         if (getType(ref) === 'window') {
-             return new DOMRect(0, 0, window.innerWidth, window.innerHeight)
-         }
-     })
+            return ref.current.getBoundingClientRect();
+        }
+        if (ref instanceof Element) {
+            return ref.getBoundingClientRect();
+        }
+        if (ref instanceof DOMRect) {
+            return ref;
+        }
+        if (getType(ref) === 'window') {
+            return new DOMRect(0, 0, window.innerWidth, window.innerHeight)
+        }
+    })
 };
  
  export const useBoundingRectObserver = (callback, ...refs) => {

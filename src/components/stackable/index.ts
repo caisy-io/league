@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-import { Stackable } from './Stackable';
+import Stackable from './Stackable';
 
 export default Stackable;

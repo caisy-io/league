@@ -5,6 +5,7 @@ import Poppable from ".";
 import {useClickOutside, useVisibilityState} from "../../utils/hooks";
 import { Triangle } from "./components/triangle/Triangle";
 import { SPoppableWrapper } from "./styles/SPoppableWrapper"
+import { vbefore, vafter, hcenter } from "./Poppable.placements";
 
 const TRIANGLE_SIZE = 10;
 
@@ -34,7 +35,6 @@ function PoppableDemo() {
       const handleOnMouseDownCapture = useClickOutside(hide);
       const [reference, setReference] = useState(new DOMRect(0, 0, 0, 0));
       const getPlacements = useCallback((rbr, tbr) => {
-          const {vbefore, vafter, hcenter} = Poppable.Placements;
           return [
               {...vbefore(rbr, tbr, -TRIANGLE_SIZE), ...hcenter(rbr, tbr)}, // Top center
               {...vafter(rbr, tbr, TRIANGLE_SIZE), ...hcenter(rbr, tbr)}, // Bottom center
@@ -56,9 +56,9 @@ function PoppableDemo() {
                 {visible && (
                     <Poppable reference={reference} placements={getPlacements} className='poppable-target'>
                         <Triangle size={TRIANGLE_SIZE}/>
-                          <div style={targetStyle}>
-                            Target
-                          </div>
+                        <div style={targetStyle}>
+                          Target
+                        </div>
                     </Poppable>
                 )}
           </SPoppableWrapper>

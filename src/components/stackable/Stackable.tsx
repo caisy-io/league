@@ -1,24 +1,72 @@
-import React from "react";
-import { getAncestors } from "./Stackable.utils";
-import StackableContent from "./StackableContent";
+/**
+ * Copyright (c) 2020, Amdocs Corp.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+ import React, {useContext, forwardRef, useEffect, useState} from 'react';
+ import ReactDOM from 'react-dom';
+ import classNames from 'classnames';
+ import StackableContext from './Stackable.context';
+import { SStackable } from './styles/SStackable';
+import { _document } from '../../utils/mocks';
+ 
+const DEFAULT_Z_INDEX = 1100;
 
 interface IStackable {
-  zIndex?: number;
-  target?: Element;
-  parent?: React.MutableRefObject<null>;
-  className?: string;
-  style?: object;
-  ref?: any;
-  onContextMenu?: (e: any) => any;
+    zIndex?: number;
+    target?: any;
+    parent?: any;
+    className?: string;
+    style?: object;
+    ref?: any;
+    children?: any
+    onContextMenu?: (e: any) => any;
 }
-export const Stackable: React.FC<IStackable> = ({ zIndex, ...props }) => {
-  const target = props.target || (typeof window !== "undefined" && document.body);
-  const parent = props.parent || getAncestors(target);
-  console.log("target", target, "parent", parent)
 
-  return (
-    <StackableContent zIndex={zIndex || 1100} {...props} target={target} parent={parent} style={props.style}>
-      {props.children}
-    </StackableContent>
-  );
-};
+const Stackable = forwardRef(({
+    zIndex = DEFAULT_Z_INDEX,
+    target = _document instanceof Document ? _document.body : _document,
+    parent = {},
+    children = null,
+    className = '',
+   ... props} 
+: IStackable, ref) => {
+     const {depth, ancestors: _ancestors, zIndex: zIndexContext} = useContext(StackableContext);
+     const usedZIndex = zIndexContext ?? zIndex;
+     const [ancestors, setAncestors] = useState('');
+     const cls = classNames(`stackable depth-${depth}`, className);
+ 
+     useEffect(() => {
+         let ancestors = '';
+         if (parent.current) {
+             let {parentNode} = parent.current;
+             while (parentNode && parentNode.className && parentNode.tagName !== 'BODY') {
+                 ancestors = `.${parentNode.className.split(' ').join('.')}${ancestors ? ' ' + ancestors : ''}`;
+                 parentNode = parentNode.parentNode;
+             }
+         }
+         setAncestors(_ancestors + ancestors);
+     }, [setAncestors, _ancestors, parent]);
+ 
+     return ReactDOM.createPortal(
+         <StackableContext.Provider value={{zIndex: usedZIndex + 1, depth: depth + 1, ancestors: `${ancestors} .${cls.split(' ').join('.')}`}}>
+             <SStackable {...props} data-ancestors={ancestors} className={classNames(`stackable depth-${depth}`, className)} style={{...props.style, zIndex: usedZIndex}} ref={ref}>
+                 {children}
+             </SStackable>
+         </StackableContext.Provider>,
+         target
+     );
+ });
+ 
+ export default Stackable;

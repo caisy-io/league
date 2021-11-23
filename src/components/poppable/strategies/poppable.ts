@@ -14,19 +14,21 @@
  * limitations under the License.
  */
 
- import React from 'react';
-
- export default React.createContext({
-     /**
-      * Specifies the Stackable's depth.
-      * Each nested Stackable receive a depth higher than its parent by 1
-      */
-     depth: 0,
+ import { intersect } from '../../../utils/rect';
+import {HIDDEN_PLACEMENT} from '../Poppable.constants';
  
-     /**
-      * Specifies the list of ancestor classNames of the wrapping Stackables. This is used for passing ancestors
-      * across Stackables so that nested Stackables have to complete list of ancestors.
-      */
-     ancestors: '',
-     zIndex: 1100,
- });
+ /**
+  * This overflow recovery strategy hides the target as soon as the
+  * reference is completely outside the container.
+  *
+  * @param tbr {DOMRect} Target Bounding Rect
+  * @param cbr {DOMRect} Container Bounding Rect
+  * @param rbr {DOMRect} Reference Bounding Rect
+  * @returns {{top: *, left: *}|{top: number, left: number}}
+  */
+ export default ({tbr, cbr, rbr}) => {
+     if (!intersect(rbr, cbr)) {
+         return HIDDEN_PLACEMENT;
+     }
+     return rbr;
+ };

@@ -22,17 +22,19 @@ import { getClassNames, getBoundingRects } from './Poppable.utils';
 import PoppableContext from './Poppable.context';
 import { copyComponentRef } from '../../utils/react';
 import { SPoppable } from './styles/SPoppable';
+import strategy from './strategies';
+import { HIDDEN_PLACEMENT } from './Poppable.constants';
 
 interface IPoppable {
     container: any;
-    reference: React.MutableRefObject<null>;
+    reference: React.MutableRefObject<null> | HTMLElement;
     placements: () => void;
     placement: {
         name: string,
         top: number,
         left: number,
     };
-    overflow: () => void;
+    overflow: (rects: any, props: any) => { top: number; left: number; name: string; } | DOMRect;
     onPlacement: () => void;
     default: number;
     children: any;
@@ -40,28 +42,40 @@ interface IPoppable {
     style: any;
 }
 
-const Poppable = forwardRef(({children, container, reference, placements, default: _default, onPlacement, placement, overflow, className, style, ...props}: IPoppable, ref) => {
-    const target = (typeof window !== "undefined" && document.getElementsByClassName("container")) || useRef();
-    // TODO i think target is not set correctly
-    console.log(target, reference);
+const Poppable = forwardRef(({
+    children, 
+    container = window, 
+    reference = document.body, 
+    placements = () => [{top: 0, left: 0}], 
+    default: _default, 
+    onPlacement = () => null, 
+    placement = HIDDEN_PLACEMENT, 
+    overflow = strategy, 
+    className, 
+    style, 
+    ...props
+}: IPoppable, ref) => {
+
+    const target = useRef();
     const handleOnContextMenu = useCallback(e => e.stopPropagation(), []); // prevent onContextMenu event bubbling from the react portal to the react tree
     const rects = getBoundingRects(target, reference, container, placement);
     usePosition({target, container, reference, placements, default: _default, onPlacement, strategy: overflow});
 
     return (
-        <SPoppable>
-            <Stackable 
-                {...props} 
-                className={classNames('poppable', {[`placement-${placement.name}`]: placement.name}, className, getClassNames(rects.tbr, rects.rbr))} 
-                style={{...style, ...placement}}
-                ref={copyComponentRef(ref, target)}
-                parent={reference} 
-                onContextMenu={handleOnContextMenu}>
-                <PoppableContext.Provider value={rects}>
+        <Stackable
+            {...props} 
+            className={classNames('poppable', {[`placement-${placement.name}`]: placement.name}, className, getClassNames(rects.tbr, rects.rbr))} 
+            // TODO Dont put these styles as inline styles
+            style={{...style, ...placement, "backgroundColor":"blue","color":"white","textTransform":"uppercase","fontSize":"0.9em","width":"100px","height":"100px","display":"flex","alignItems":"center","justifyContent":"center","position":"absolute","userSelect":"none","overflow":"hidden"}}
+            ref={copyComponentRef(ref, target)}
+            parent={reference} 
+            onContextMenu={handleOnContextMenu}>
+            <PoppableContext.Provider value={rects}>
+                <SPoppable>
                     {children}
-                </PoppableContext.Provider>
-            </Stackable>
-        </SPoppable>
+                </SPoppable>
+            </PoppableContext.Provider>
+        </Stackable>
     );
 });
 

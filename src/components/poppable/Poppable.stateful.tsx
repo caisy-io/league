@@ -16,17 +16,15 @@
 
 import React, {useState, memo, forwardRef} from 'react';
 import Poppable from './Poppable';
-import { hide } from './strategies';
 
+const StatefulPoppable: React.FC<any> = forwardRef((props, ref) => {
+    const [placement, setPlacement] = useState();
 
-const StatefulPoppable: React.FC<any> = forwardRef((props, ref) => { // TODO fix any, placement works with FC any
-     const [placement, setPlacement] = useState({});
+    return (
+        <Poppable {...props} placement={placement} onPlacement={setPlacement} ref={ref}/>
+    );
+});
  
-     return (
-         <Poppable {...props} overflow={props.overflow || hide } placement={placement} onPlacement={setPlacement} ref={ref}/>
-     );
- });
- 
- StatefulPoppable.displayName = 'Poppable';
+StatefulPoppable.displayName = 'Poppable';
 
 export default memo(StatefulPoppable);
