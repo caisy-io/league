@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { IconWarning } from '../..';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { IconCheckmarkOutlined } from '../../icons/IconCheckmarkOutlined';
@@ -20,15 +21,17 @@ export interface IAssetListItemProps {
   icon?: React.ReactNode,
   recent?: boolean,
   error?: boolean,
-  uploading?: boolean,
-  progressValue: number,
+  progressValue: number | undefined,
 }
 
+const SFlexListItem = styled(SFlex)`
+  width: 100%;
+`;
+
 export const AssetListItem: React.FC<IAssetListItemProps> = ({ ...props }) => {
-  console.log(props);
   return (
     <SAssetListItem {...props}>
-      <SFlex style={{ width: "100%" }}>
+      <SFlexListItem>
         <SImagePlaceholder {...props}>
           {props.icon}
         </SImagePlaceholder>
@@ -43,13 +46,12 @@ export const AssetListItem: React.FC<IAssetListItemProps> = ({ ...props }) => {
             </SProgressBar>
           </SProgressBarContainer>
         </SAssetListItemTextWrapper>
-      </SFlex>
+      </SFlexListItem>
       <SAssetListItemIconWrapper {...props}>
         <IconCheckmarkOutlined></IconCheckmarkOutlined>
         <IconWarning></IconWarning>
         <IconCross variant={'close'}></IconCross>
       </SAssetListItemIconWrapper>
-
     </SAssetListItem>
   )
 }
