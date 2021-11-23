@@ -1,27 +1,24 @@
 name: Build and Deploy
 on:
-  push:
-    branches:
-      - prod
-      - staging
-      - dev
   pull_request:
-    branches:
-      - prod
-      - staging
-      - dev
 
 env:
   VERCEL_NAME: ${{ github.event.repository.name }}
   VERCEL_TOKEN: ${{ secrets.CAISY_VERCEL_TOKEN }}
-
+  INTERNAL_AUTOMATION_AUTH_TOKEN: ${{ secrets.INTERNAL_AUTOMATION_AUTH_TOKEN }}
 
 jobs:
   check-build-publish-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-    - run: bash dep.sh
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v5
+      - name: Print branch name
+        run: echo "Branch name:${{ steps.branch-name.outputs.current_branch }}"
+      - name: Run deployment to vercel
+        run: export BRANCH_NAME=${{ steps.branch-name.outputs.current_branch }} && bash dep.sh

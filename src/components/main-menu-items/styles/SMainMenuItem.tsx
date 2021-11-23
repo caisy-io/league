@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 interface ISMainMenuItem {
-  active?: boolean;
+  activated?: boolean;
 }
 
 const CSSActive = css`
@@ -33,7 +33,7 @@ const Bronze = css<ISMainMenuItem>`
     ${CSSActive}
   }
 
-  ${(props) => props.active && CSSActive}
+  ${(props) => props.activated && CSSActive}
 `;
 
 const Silver = css``;
