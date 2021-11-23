@@ -11,20 +11,11 @@ const Bronze = css`
   }
   input + span {
     transition: all 0.5s ease;
-    border: solid 1px var(--text-priority-neutral-4);
-    background-color: var(--text-priority-neutral-5);
+    background-color: var(--interactional-secondary-01);
   }
   input:checked + span {
-    background-color: var(--interactional-primary-01);
-  }
-
-  input:checked + span {
-    border: solid 1px var(--primary-500-opacity-8);
-  }
-  input:focus + span,
-  &:hover + span {
-    box-shadow: 0 6.3px 20px 0 rgba(89, 106, 122, 0.13);
-  }
+    background-color: var(--active-interactional-tertiary-02);
+  } 
 `;
 
 const Silver = css``;
@@ -35,7 +26,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSwitch = styled.label`
+export const SToggle = styled.label`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
