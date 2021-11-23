@@ -14,50 +14,64 @@
  * limitations under the License.
  */
 
- import React, {useContext, forwardRef, useEffect, useState} from 'react';
- import ReactDOM from 'react-dom';
- import classNames from 'classnames';
- import StackableContext from './Stackable.context';
-import { SStackable } from './styles/SStackable';
- 
+import React, { useContext, forwardRef, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import StackableContext from "./Stackable.context";
+import { SStackable } from "./styles/SStackable";
+
 const DEFAULT_Z_INDEX = 1100;
 
 interface IStackableContent {
-    zIndex?: number;
-    target?: any;
-    parent?: any;
-    children?: any;
-    style?: object;
-    className?: string;
+  zIndex?: number;
+  target?: any;
+  parent?: any;
+  children?: any;
+  style?: object;
+  className?: string;
 }
 
- const StackableContent = forwardRef(({zIndex: zIndexProp, target, parent, children, style, className, ...props} : IStackableContent, ref) => {
-     const {depth, ancestors: _ancestors, zIndex: zIndexContext} = useContext(StackableContext);
-     const zIndex = zIndexProp ?? zIndexContext ?? DEFAULT_Z_INDEX;
-     const [ancestors, setAncestors] = useState('');
-     const cls = classNames(`stackable depth-${depth}`, className);
- 
-     useEffect(() => {
-         let ancestors = '';
-         if (parent.current) {
-            console.log("parent", parent.current)
-             let {parentNode} = parent.current;
-             while (parentNode && parentNode.className && parentNode.tagName !== 'BODY') {
-                 ancestors = `.${parentNode.className.split(' ').join('.')}${ancestors ? ' ' + ancestors : ''}`;
-                 parentNode = parentNode.parentNode;
-             }
-         }
-         setAncestors(_ancestors + ancestors);
-     }, [setAncestors, _ancestors, parent]);
- 
-     return ReactDOM.createPortal(
-         <StackableContext.Provider value={{zIndex: zIndex + 1, depth: depth + 1, ancestors: `${ancestors} .${cls.split(' ').join('.')}`}}>
-             <SStackable {...props} data-ancestors={ancestors} className={classNames(`stackable depth-${depth}`, className)} style={{...style, zIndex}} ref={ref}>
-                 {children}
-             </SStackable>
-         </StackableContext.Provider>,
-         target
-     );
- });
- 
- export default StackableContent;
+const StackableContent = forwardRef(
+  ({ zIndex: zIndexProp, target, parent, children, style, className, ...props }: IStackableContent, ref) => {
+    const { depth, ancestors: _ancestors, zIndex: zIndexContext } = useContext(StackableContext);
+    const zIndex = zIndexProp ?? zIndexContext ?? DEFAULT_Z_INDEX;
+    const [ancestors, setAncestors] = useState("");
+
+    useEffect(() => {
+      let ancestors = "";
+      if (parent.current) {
+        console.log("parent", parent.current);
+        let { parentNode } = parent.current;
+        while (parentNode && parentNode.className && parentNode.tagName !== "BODY") {
+          ancestors = `.${parentNode.className.split(" ").join(".")}${ancestors ? " " + ancestors : ""}`;
+          parentNode = parentNode.parentNode;
+        }
+      }
+      setAncestors(_ancestors + ancestors);
+    }, [setAncestors, _ancestors, parent]);
+
+    return ReactDOM.createPortal(
+      <StackableContext.Provider
+        value={{
+          zIndex: zIndex + 1,
+          depth: depth + 1,
+          ancestors: `${ancestors} .${`stackable depth-${depth}${className ? ` ${className}` : ""}`
+            .split(" ")
+            .join(".")}`,
+        }}
+      >
+        <SStackable
+          {...props}
+          data-ancestors={ancestors}
+          className={`stackable depth-${depth}${className ? ` ${className}` : ""}`}
+          style={{ ...style, zIndex }}
+          ref={ref}
+        >
+          {children}
+        </SStackable>
+      </StackableContext.Provider>,
+      target,
+    );
+  },
+);
+
+export default StackableContent;

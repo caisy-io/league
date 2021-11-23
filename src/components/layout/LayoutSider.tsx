@@ -56,7 +56,6 @@ export const LayoutSider: React.FC<ILayoutSider> = ({ left = true, ...props }) =
     if(sider.current) setSize(initialSize);
   }, [sider.current, left]);
 
-  // Important note: Webrix always looks at position of resizer with regard to left. Thus: our left in props is exactly the opposite of Webrix left
   return (
     <SResizableWrapper 
       style={{ backgroundColor:'violet' }}  
