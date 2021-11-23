@@ -8,6 +8,7 @@ interface ISFlags {
 const Bronze = css<ISFlags>`
   width: ${(props) => (props.size !== undefined ? props.size : 40)}px;
   height: ${(props) => (props.size !== undefined ? props.size : 40)}px;
+  min-width: 15px;
   overflow: hidden;
   position: relative;
   display: flex;
