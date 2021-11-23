@@ -1,0 +1,26 @@
+import React from "react";
+import { SelectSearchOperatorPopup } from "./SelectSearchOperatorPopup";
+
+export default {
+  title: `Components/SelectSearchOperatorPopup`,
+  component: SelectSearchOperatorPopupDemo,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=1489%3A17768",
+    },
+  },
+  argTypes: {},
+};
+
+// Field card
+function SelectSearchOperatorPopupDemo({ ...args }) {
+  return <SelectSearchOperatorPopup {...args} />;
+}
+
+// Template card
+export const Default = ({ ...args }) => <SelectSearchOperatorPopupDemo {...args} />;
+
+Default.args = {
+  operators: ["And", "Or", "Equals"],
+};
