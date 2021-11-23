@@ -179,13 +179,11 @@ const CSSDanger = css`
     background-color: var(--interactional-secondary-02);
   }
   &:hover {
-    color: var(--hover-text-06);
     &:after {
       background-color: var(--hover-interactional-secondary-02);
     }
   }
   &:active {
-    color: var(--active-text-06);
     &:after {
       background-color: var(--active-interactional-secondary-02);
     }
