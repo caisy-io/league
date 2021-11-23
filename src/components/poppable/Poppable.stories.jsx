@@ -1,7 +1,5 @@
 import React, { useCallback, useState } from 'react';
-// import {Poppable} from 'webrix/components';
 import Poppable from ".";
-// import {useVisibilityState, useClickOutside} from 'webrix/hooks';
 import {useClickOutside, useVisibilityState} from "../../utils/hooks";
 import { Triangle } from "./components/triangle/Triangle";
 import { SPoppableWrapper } from "./styles/SPoppableWrapper"
