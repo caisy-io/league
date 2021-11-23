@@ -27,6 +27,7 @@ export * from "./message";
 export * from "./modal";
 export * from "./popconfirm";
 export * from "./popover";
+export * from "./poppable";
 export * from "./release-action-indicator";
 export * from "./search";
 export * from "./select";

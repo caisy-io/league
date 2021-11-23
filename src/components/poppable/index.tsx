@@ -14,5 +14,8 @@
  * limitations under the License.
  */
 
- import Poppable from './Poppable.stateful';
- export default Poppable;
+
+export { Triangle } from './components/triangle/Triangle';
+
+import Poppable from './Poppable.stateful';
+export default Poppable;

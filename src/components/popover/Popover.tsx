@@ -3,6 +3,7 @@ import { SPopover } from "./styles/SPopover";
 import Stackable from "../stackable";
 import { ClickOutside } from "../../utils/hooks/useClickOutside";
 import { vbefore, vcenter, vafter, hbefore, hcenter, hafter } from "../poppable/Poppable.placements";
+import { Triangle } from "../poppable";
 
 enum EPlacements {
   Top = "top",
@@ -72,7 +73,7 @@ export const Popover: React.FC<IPopover> = ({
             container={container}
           >
             <>
-              {!disableTriangle ? <SPopover.Triangle size={10} /> : null}
+              {!disableTriangle ? <Triangle size={10} /> : null}
               {children}
             </>
           </SPopover>

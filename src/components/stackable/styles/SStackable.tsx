@@ -4,9 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 interface ISStackable {}
 
 const Bronze = css<ISStackable>`
-  .stackable {
-    position: absolute;
-  }
+  position: absolute;
 
   &.vafter .poppable-triangle {
       border-bottom-color: black;

@@ -39,7 +39,7 @@ interface IPoppable {
     default: number;
     children: any;
     className: string;
-    style: any;
+    style: object;
 }
 
 const Poppable = forwardRef(({
@@ -50,8 +50,8 @@ const Poppable = forwardRef(({
     onPlacement = () => null, 
     placement = HIDDEN_PLACEMENT, 
     overflow = strategy, 
-    className, 
-    style, 
+    className = '', 
+    style = {}, 
     ...props
 }: IPoppable, ref) => {
 
@@ -64,8 +64,7 @@ const Poppable = forwardRef(({
         <Stackable
             {...props} 
             className={classNames('poppable', {[`placement-${placement.name}`]: placement.name}, className, getClassNames(rects.tbr, rects.rbr))} 
-            // TODO Dont put these styles as inline styles
-            style={{...style, ...placement, "backgroundColor":"blue","color":"white","textTransform":"uppercase","fontSize":"0.9em","width":"100px","height":"100px","display":"flex","alignItems":"center","justifyContent":"center","position":"absolute","userSelect":"none","overflow":"hidden"}}
+            style={{...style, ...placement}}
             ref={copyComponentRef(ref, target)}
             parent={reference} 
             onContextMenu={handleOnContextMenu}>
