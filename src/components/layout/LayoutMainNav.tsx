@@ -6,6 +6,6 @@ interface ILayoutMainNav {
   width?: number;
 }
 
-export const LayoutMainNav: React.FC<ILayoutMainNav> = ({ ...props }) => {
-  return <SLayoutMainNav style={props.style} width={props.width}>{props.children}</SLayoutMainNav>;
+export const LayoutMainNav: React.FC<ILayoutMainNav> = ({ children, ...props }) => {
+  return <SLayoutMainNav {...props}>{children}</SLayoutMainNav>;
 };
