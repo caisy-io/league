@@ -21,6 +21,7 @@ const Bronze = css`
   flex-direction: column;
   justify-content: flex-start;
   transition: border 200ms;
+  gap: 2px;
 
   ${(props) => props.active && CSSActive};
   ${(props) => props.state && props.state === "error" && CSSError}

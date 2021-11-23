@@ -1,15 +1,19 @@
 import React, { InputHTMLAttributes } from "react";
-import useFieldContext from "../field-context/FieldContextContext";
+import { SErrorMessage } from "../styles/SErrorMessage";
+import { SLabel } from "../styles/SLabel";
 import { SSimpleInput } from "./styles/SSimpleInput";
 import { SSimpleInputRequiredIndicator } from "./styles/SSimpleInputRequiredIndicator";
+import { SSimpleInputRequiredIndicatorContainer } from "./styles/SSimpleInputRequiredIndicatorContainer";
+import { SSimpleInputTextWidth } from "./styles/SSimpleInputTextWidth";
 import { SSimpleInputWrapper } from "./styles/SSimpleInputWrapper";
 
 type TSimpleInputState = "success" | "error";
 
 interface ISimpleInput extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
+  errors?: string[];
   state?: TSimpleInputState;
-  addons?: any[];
+  translationBadge?: JSX.Element;
   required?: boolean;
   onChange: any;
   value: any;
@@ -18,8 +22,6 @@ interface ISimpleInput extends InputHTMLAttributes<HTMLInputElement> {
 export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children, value, onChange, ...props }) => {
   const [active, setActive] = React.useState(false);
   const [inputLength, setInputLength] = React.useState(value?.toString().length);
-
-  const { addonsList } = useFieldContext();
 
   const inputRef = React.useRef<any>();
   const spanRef = React.useRef<any>();
@@ -55,14 +57,24 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
     props.onBlur?.(e);
   };
 
+  const TranslationBadge = () => (props.translationBadge ? props.translationBadge : null);
+
   return (
     <SSimpleInputWrapper active={active} state={state} onClick={onClick}>
-      <span ref={spanRef} style={{ width: "fit-content", visibility: "hidden", position: "absolute", fontSize: 14 }} />
-      {addonsList?.map((addon) => addon.active && addon.component)}
-      {props.addons?.map((addon) => addon)}
+      <SSimpleInputTextWidth ref={spanRef} />
+      {props.label && (
+        <SSimpleInputRequiredIndicatorContainer>
+          {required && <SSimpleInputRequiredIndicator />}
+          <SLabel>{props.label}</SLabel>
+        </SSimpleInputRequiredIndicatorContainer>
+      )}
 
-      <div style={{ position: "relative", width: "fit-content" }}>
-        {required && <SSimpleInputRequiredIndicator />}
+      {props.errors && props.errors.map((error) => <SErrorMessage>{error}</SErrorMessage>)}
+
+      <TranslationBadge />
+
+      <SSimpleInputRequiredIndicatorContainer>
+        {required && !props.label && <SSimpleInputRequiredIndicator />}
         <SSimpleInput
           onChange={(e) => {
             resizeInput();
@@ -76,7 +88,7 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
           value={value || ""}
           {...props}
         />
-      </div>
+      </SSimpleInputRequiredIndicatorContainer>
     </SSimpleInputWrapper>
   );
 };
