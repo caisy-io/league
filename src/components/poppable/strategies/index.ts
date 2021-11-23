@@ -31,6 +31,7 @@
   * 3. Trap the target within the wbr if it overflows it
   */
  export default (rects, props) => {
+     console.log("rects", rects, "props", props)
      if (HIDDEN_PLACEMENT !== hide(rects) && HIDDEN_PLACEMENT !== hide({...rects, cbr: rects.wbr})) {
          return trap({...rects, cbr: rects.wbr, tbr: reposition(rects, props)});
      }

@@ -27,9 +27,10 @@ import { area, intersect, union } from "../../../utils/rect";
   * @param b
   * @return {number}
   */
- export const distance = (a, b) => (
-     Math.abs(a.left - b.left) + Math.abs(a.top - b.top)
- );
+ export const distance = (a, b) => {
+     console.log('distance a,b ', a, b)
+    return Math.abs(a.left - b.left) + Math.abs(a.top - b.top)
+ };
  
  /**
   * Sort the placements based on their overflowing area (from least overflowing to most overflowing)
@@ -41,12 +42,14 @@ import { area, intersect, union } from "../../../utils/rect";
   * @param cbr {DOMRect}
   * @returns {*}
   */
- export const sortPlacements = (placements, desired, tbr, cbr) => (
-     placements.sort((a, b) => {
+ export const sortPlacements = (placements, desired, tbr, cbr) => {
+     console.log('sortPlacements', placements)
+     return placements.sort((a, b) => {
+         console.log(a,b)
          return area(union(new DOMRect(b.left, b.top, tbr.width, tbr.height), cbr)) - area(union(new DOMRect(a.left, a.top, tbr.width, tbr.height), cbr))
          || distance(a, desired) - distance(b, desired);
      })
- );
+};
  
  /**
   * Remove any invalid placement (i.e. a placement that will result in the target element overflowing the container)
@@ -80,6 +83,8 @@ import { area, intersect, union } from "../../../utils/rect";
  export default ({tbr, cbr, rbr}, {placements, default: _default}) => {
      const _placements = placements(rbr, tbr);
      const desired = _placements[_default];
+     // TODO default is undefined, where should this come from?
+     console.log({tbr, cbr, rbr}, {placements, default: _default}, _placements, desired)
      const {top, left} = sortPlacements(filterPlacements(_placements, tbr, cbr), desired, tbr, cbr)[0] || desired;
      return new DOMRect(left, top, tbr.width, tbr.height);
  };

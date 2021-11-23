@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+// @ts-nocheck
 import cls from 'classnames';
 import {DOMRect} from '../../utils/mocks';
 import {getRelativePosition} from '../../utils/rect';
