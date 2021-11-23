@@ -24,13 +24,9 @@ import { clamp } from "../../../utils/number";
   * @param wbr {DOMRect} Window Bounding Rect
   * @returns {{top: number, left: number}}
   */
- export default ({tbr, cbr}) => {
-    console.log('trap', 'tbr:', tbr, 'cbr:', cbr)
-
-    return new DOMRect(
-        Math.round(clamp(tbr.left, cbr.left, cbr.right - tbr.width)),
-        Math.round(clamp(tbr.top, cbr.top, cbr.bottom - tbr.height)),
-        tbr.width,
-        tbr.height,
-    );
-};
+ export default ({tbr, cbr}) => new DOMRect(
+    Math.round(clamp(tbr.left, cbr.left, cbr.right - tbr.width)),
+    Math.round(clamp(tbr.top, cbr.top, cbr.bottom - tbr.height)),
+    tbr.width,
+    tbr.height,
+);

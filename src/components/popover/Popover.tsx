@@ -47,9 +47,7 @@ export const Popover: React.FC<IPopover> = ({
   container,
   zIndex,
 }) => {
-  console.log('reference', reference)
   if(!reference || !reference.current) {
-    console.log("returns null")
     return null;
   }
   const placements = React.useCallback((rbr, tbr) => {

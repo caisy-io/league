@@ -29,7 +29,6 @@ import {getBoundingRects as _getBoundingRects} from '../../utils/hooks/useBoundi
  * @returns {{cbr: *, rbr: *, tbr: *, wbr: *}}
  */
 export const getBoundingRects = (target, reference, container, placement) => {
-    console.log('target', target, 'reference', reference, 'container', container)
     const [rbr, tbr, cbr] = _getBoundingRects([reference, target, container]);
     return {
         rbr: rbr || new DOMRect(), // Could be undefined initially, before the reference exists

@@ -14,26 +14,25 @@
  * limitations under the License.
  */
 
- import {HIDDEN_PLACEMENT} from '../Poppable.constants';
- import hide from './hide';
- import reposition from './reposition';
- import trap from './trap';
- 
- export {default as hide} from './hide';
- export {default as reposition} from './reposition';
- export {default as trap} from './trap';
- 
- /**
-  * This default overflow recovery strategy
-  *
-  * 1. Hide the target if the reference is outside the cbr or the wbr, otherwise:
-  * 2. Reposition the target if it is overflowing the cbr/wbr
-  * 3. Trap the target within the wbr if it overflows it
-  */
- export default (rects, props) => {
-     console.log("rects", rects, "props", props)
-     if (HIDDEN_PLACEMENT !== hide(rects) && HIDDEN_PLACEMENT !== hide({...rects, cbr: rects.wbr})) {
-         return trap({...rects, cbr: rects.wbr, tbr: reposition(rects, props)});
-     }
-     return HIDDEN_PLACEMENT;
- };
+import {HIDDEN_PLACEMENT} from '../Poppable.constants';
+import hide from './hide';
+import reposition from './reposition';
+import trap from './trap';
+
+export {default as hide} from './hide';
+export {default as reposition} from './reposition';
+export {default as trap} from './trap';
+
+/**
+ * This default overflow recovery strategy
+ *
+ * 1. Hide the target if the reference is outside the cbr or the wbr, otherwise:
+ * 2. Reposition the target if it is overflowing the cbr/wbr
+ * 3. Trap the target within the wbr if it overflows it
+ */
+export default (rects, props) => {
+    if (HIDDEN_PLACEMENT !== hide(rects) && HIDDEN_PLACEMENT !== hide({...rects, cbr: rects.wbr})) {
+        return trap({...rects, cbr: rects.wbr, tbr: reposition(rects, props)});
+    }
+    return HIDDEN_PLACEMENT;
+};
