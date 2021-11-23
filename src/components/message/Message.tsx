@@ -11,6 +11,7 @@ import { IconError } from "../../icons/IconError";
 import { IconCheckmark } from "../../icons/IconCheckmark";
 import { IconInfo } from "../../icons/IconInfo";
 import { IconClose } from "../../icons/IconClose";
+import { NotificationSnackbar } from "../notification-snackbar/NotificationSnackbar";
 
 export enum EMessageType {
   Success = "success",
@@ -23,7 +24,7 @@ export enum EMessageType {
 // and we don't want to accidentally import "Message" instead of "message" on our app
 
 export interface IMessage {
-  title?: string;
+  /* title?: string; */
   type: string;
   content: string;
   id: number;
@@ -76,18 +77,18 @@ const Message: React.FC<IMessage> = (msgConfig: IMessage) => {
 
   return msgContainer
     ? ReactDOM.createPortal(
-        <SMessage exit={exit}>
-          {msgIcon()}
-          <SMessageContent>
-            <SMessageTitle>{msgConfig.title}</SMessageTitle>
-            <SMessageBody>{msgConfig.content}</SMessageBody>
-          </SMessageContent>
-          <SIconClose onClick={handleCloseMessage}>
-            <IconClose></IconClose>
-          </SIconClose>
-        </SMessage>,
-        msgContainer,
-      )
+      <NotificationSnackbar ></NotificationSnackbar>
+      /* <SMessage exit={exit}>
+        {msgIcon()}
+        <SMessageContent>
+          <SMessageBody>{msgConfig.content}</SMessageBody>
+        </SMessageContent>
+        <SIconClose onClick={handleCloseMessage}>
+          <IconClose></IconClose>
+        </SIconClose>
+      </SMessage> */,
+      msgContainer,
+    )
     : null;
 };
 
@@ -98,10 +99,11 @@ interface IMessageDispatcher {
 }
 
 // COMPONENT TO IMPORT IN OUR APP
-export function message(): React.FC<IMessageDispatcher> | void {}
+export function message(): React.FC<IMessageDispatcher> | void { }
 
 const renderMessage = (children, config, type) => {
-  const defaultTitle = () => {
+
+  /* const defaultTitle = () => {
     switch (type) {
       case EMessageType.Success:
         return "Success!";
@@ -110,21 +112,21 @@ const renderMessage = (children, config, type) => {
       case EMessageType.Info:
         return "Did you know?";
     }
-  };
+  }; */
 
-  const title = config?.title ? config.title : defaultTitle();
+  /* const title = config?.title ? config.title : defaultTitle(); */
   const duration = config?.duration ? config.duration : 3000;
 
   const msgConfig = {
     type,
-    title,
+    /* title, */
     content: children,
     duration,
     id: Date.now(),
   };
 
-  const nextDiv = document.getElementById("__next");
-
+  const nextDiv = document.getElementById("root") || document.getElementById("__next");
+  
   let msgWrapper = document.querySelector(".caisy-message-wrapper");
   if (!msgWrapper) {
     msgWrapper = document.createElement("div");
@@ -132,6 +134,7 @@ const renderMessage = (children, config, type) => {
     ReactDOM.render(<MessageWrapper {...msgConfig} />, msgWrapper);
   }
 
+  // REPLACE ME
   const msgContainer = document.createElement("div");
   const msgContainerId = `caisy-message-container-${msgConfig.id}`;
   msgContainer.id = msgContainerId;

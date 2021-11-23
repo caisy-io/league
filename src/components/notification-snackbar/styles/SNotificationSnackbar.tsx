@@ -1,7 +1,26 @@
 import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
-const Bronze = css``;
+const CSSError = css`
+  background-color: var(--ui-supportive-01);  
+`;
+
+const Bronze = css`
+  background-color: var(--ui-overlay-02);  
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 454px;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  svg{
+    color: #FFFF;
+    margin-right: 10px;
+  }
+  ${(props) => props.icon ? CSSError : ''};
+`;
 
 const Silver = css``;
 
