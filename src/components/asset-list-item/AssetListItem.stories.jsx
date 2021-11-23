@@ -6,7 +6,6 @@ export default {
   title: `Components/AssetListItem`,
   component: AssetListItemDemo,
   argTypes: {
-    // example argument type
     error: {
       description: "Changes the state of the component to error",
       control: { type: "boolean" },
