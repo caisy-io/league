@@ -7,19 +7,19 @@ const Bronze = css<ISStackable>`
   position: absolute;
 
   &.vafter .poppable-triangle {
-      border-bottom-color: black;
+      border-bottom-color: var(--triangle-color, black);
   }
 
   &.vbefore .poppable-triangle {
-      border-top-color: black;
+      border-top-color: var(--triangle-color, black);
   }
 
   &.hbefore .poppable-triangle {
-      border-left-color: black;
+      border-left-color: var(--triangle-color, black);
   }
 
   &.hafter .poppable-triangle {
-      border-right-color: black;
+      border-right-color: var(--triangle-color, black);
   }
 `;
 

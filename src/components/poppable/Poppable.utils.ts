@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
+
 import cls from 'classnames';
 import {DOMRect} from '../../utils/mocks';
 import {getRelativePosition} from '../../utils/rect';
@@ -31,8 +31,11 @@ import {getBoundingRects as _getBoundingRects} from '../../utils/hooks/useBoundi
 export const getBoundingRects = (target, reference, container, placement) => {
     const [rbr, tbr, cbr] = _getBoundingRects([reference, target, container]);
     return {
+        // @ts-ignore
         rbr: rbr || new DOMRect(), // Could be undefined initially, before the reference exists
+        // @ts-ignore
         cbr: cbr || new DOMRect(),
+        // @ts-ignore
         tbr: new DOMRect(placement.left, placement.top, tbr?.width, tbr?.height),
     };
 };

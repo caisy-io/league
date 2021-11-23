@@ -26,12 +26,14 @@
             return ref.current.getBoundingClientRect();
         }
         if (ref instanceof Element) {
+            // @ts-ignore
             return ref.getBoundingClientRect();
         }
         if (ref instanceof DOMRect) {
             return ref;
         }
         if (getType(ref) === 'window') {
+            // @ts-ignore
             return new DOMRect(0, 0, window.innerWidth, window.innerHeight)
         }
     })
