@@ -12,7 +12,7 @@ const CSSSolidLabelBase = css`
   border-radius: 4px;
   border: none;
   
-  p, span {
+  > * {
     ${CSSProgressiveCaption01Semibold}
     line-height: normal;
     text-align: center;
