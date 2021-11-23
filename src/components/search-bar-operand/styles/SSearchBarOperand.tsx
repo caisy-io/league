@@ -15,8 +15,7 @@ const CSSActivated = css`
 `;
 
 const Bronze = css<ISearchBarOperandProps>`
-  ${CSSProgressiveCaption01Semibold};
-  max-width: min-content;
+  ${ProgressiveCaption01Semibold};
   height: 28px;
   color: var(--active-ui-01);
   flex-grow: 0;
