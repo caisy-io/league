@@ -1,7 +1,13 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { IToggleProps } from "../Toggle";
 
-const Bronze = css`
+const CSSSmall = css`
+  width: 26px;
+  height: 1rem;
+`;
+
+const Bronze = css<IToggleProps>`
   position: relative;
   width: 38px;
   height: 20px;
@@ -16,6 +22,8 @@ const Bronze = css`
   input:checked + span {
     background-color: var(--active-interactional-tertiary-02);
   } 
+  
+  ${(props) => props.small  ? CSSSmall : ''};
 `;
 
 const Silver = css``;
@@ -26,7 +34,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SToggle = styled.label`
+export const SToggle = styled.label<IToggleProps>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

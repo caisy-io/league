@@ -47,7 +47,7 @@ LeftIcon.args = {
 // With left icon and toggle
 export const IconAndToggle = ({ content, ...args }) => (
   <div style={{ width: "293px" }}>
-    <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>} toggleComponent={<Toggle></Toggle>}>
+    <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>} toggleComponent={<Toggle small></Toggle>}>
       {content}
     </SidebarTitle>
   </div>
