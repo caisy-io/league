@@ -19,9 +19,9 @@ StyleDictionary.registerFormat({
         const name = extVariable + variable;
         let pascalCasedName = startCase(camelCase(name)).replace(/ /g, "");
 
-        fonts = fonts + "export const " + "CSS" + pascalCasedName + " = css`\n";
+        fonts = fonts + "export const CSS" + pascalCasedName + " = css`\n";
         for (property in dictionary.properties[extVariable][variable]) {
-          const value = `var(${kebabCase(dictionary.properties[extVariable][variable][property].value)
+          const value = `var(--${kebabCase(dictionary.properties[extVariable][variable][property].value)
             .replace("$", "--")
             .replace(".", "-")})`;
           if (!defaultValues.includes(value)) fonts = fonts + `  ${kebabCase(property)}: ${value};\n`;
@@ -37,14 +37,13 @@ StyleDictionary.registerFormat({
   name: "styledFonts",
   formatter: function ({ dictionary }) {
     let fonts = 'import { css } from "styled-components" \n\n';
-    fonts += "export const CSSFonts = css `\n";
+    fonts += "export const CSSFonts = css`\n";
     fonts += "  :root {\n";
     dictionary.allTokens.forEach((token) => {
       let value = token.value;
       if ((token.type === "fontSizes" || token.type === "lineHeights") && parseInt(token.value) !== 0) {
         value = `${parseInt(value) / 16}rem`;
       }
-      console.log(token);
       const name = kebabCase(`${token.path[0]}-${token.name}`);
       fonts += `    --${name}: ${value};\n`;
     });
@@ -86,6 +85,24 @@ StyleDictionary.registerFormat({
 
     output = output + "}`;";
     return output;
+  },
+});
+
+StyleDictionary.registerFormat({
+  name: "styledBoxShadows",
+  formatter: function ({ dictionary }) {
+    let boxShadows = 'import { css } from "styled-components" \n\n';
+    boxShadows += "export const CSSBoxShadows = css`\n";
+    boxShadows += "  :root {\n";
+    dictionary.allTokens.forEach((token) => {
+      const value = `${token.value["x"]} ${token.value["y"]} ${token.value["blur"]} ${token.value["spread"]} ${token.value["color"]}`;
+
+      const name = kebabCase(`${token.name}`);
+      boxShadows += `    --box-shadow-${name}: ${value}\n`;
+    });
+    boxShadows = boxShadows + "  }\n";
+    boxShadows = boxShadows + "`;\n";
+    return boxShadows;
   },
 });
 
