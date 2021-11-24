@@ -28,7 +28,7 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
 
   const handleClick = React.useCallback(() => {
     inputRef.current.focus();
-  }, [inputRef.current.focus]);
+  }, [inputRef.current?.focus]);
 
   const resizeInput = React.useCallback(() => {
     if (!inputRef.current.value && props.placeholder) {
@@ -41,7 +41,7 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
       width += 3;
     }
     setInputLength(width + 1);
-  }, [value, props.placeholder, setInputLength]);
+  }, [setInputLength]);
 
   React.useEffect(() => {
     resizeInput();
