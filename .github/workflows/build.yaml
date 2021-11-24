@@ -25,7 +25,7 @@ jobs:
       - name: Build Storybook
         id: buildstorybook
         run: |
-          mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
+          chmod -R 777 node_modules
           bash ./run-sb-exit.sh
       - uses: borales/actions-yarn@v2.3.0
         name: Run yarn build
