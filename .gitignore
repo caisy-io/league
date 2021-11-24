@@ -10,3 +10,4 @@ out
 .vercel
 sb-out.txt
 storybook-static
+yarn-error.log
