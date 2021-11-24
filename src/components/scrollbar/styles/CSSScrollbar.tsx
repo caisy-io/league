@@ -9,10 +9,10 @@ export const CSSScrollbar = css`
   box-sizing: border-box;
 }
 ::-webkit-scrollbar-thumb  {
-  background: var(--interactional-secondary-08);
-  border: 3px solid rgba(0, 0, 0, 0);
+  border: 4px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
   -webkit-border-radius: 49px;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: var(--interactional-secondary-08);
+  width: 4px;
  }
 `;
