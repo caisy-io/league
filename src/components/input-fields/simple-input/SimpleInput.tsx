@@ -26,11 +26,11 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
   const inputRef = React.useRef<any>();
   const spanRef = React.useRef<any>();
 
-  const onClick = () => {
+  const handleClick = React.useCallback(() => {
     inputRef.current.focus();
-  };
+  }, []);
 
-  const resizeInput = () => {
+  const resizeInput = React.useCallback(() => {
     if (!inputRef.current.value && props.placeholder) {
       spanRef.current.innerText = props.placeholder;
     } else {
@@ -41,26 +41,24 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
       width += 3;
     }
     setInputLength(width + 1);
-  };
+  }, [value, props.placeholder]);
 
   React.useEffect(() => {
     resizeInput();
-  }, [value]);
+  }, [value, props.placeholder]);
 
-  const handleFocus = (e) => {
+  const handleFocus = React.useCallback((e) => {
     setActive(true);
     props.onFocus?.(e);
-  };
+  }, []);
 
-  const handleBlur = (e) => {
+  const handleBlur = React.useCallback((e) => {
     setActive(false);
     props.onBlur?.(e);
-  };
-
-  const TranslationBadge = () => (props.translationBadge ? props.translationBadge : null);
+  }, []);
 
   return (
-    <SSimpleInputWrapper active={active} state={state} onClick={onClick}>
+    <SSimpleInputWrapper active={active} state={state} onClick={handleClick}>
       <SSimpleInputTextWidth ref={spanRef} />
       {props.label && (
         <SSimpleInputRequiredIndicatorContainer>
@@ -71,7 +69,7 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
 
       {props.errors && props.errors.map((error) => <SErrorMessage>{error}</SErrorMessage>)}
 
-      <TranslationBadge />
+      {props.translationBadge && props.translationBadge}
 
       <SSimpleInputRequiredIndicatorContainer>
         {required && !props.label && <SSimpleInputRequiredIndicator />}
