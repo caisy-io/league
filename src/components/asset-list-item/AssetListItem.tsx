@@ -25,13 +25,14 @@ export interface IAssetListItemProps {
 }
 
 const SFlexListItem = styled(SFlex)`
-  width: 100%;
+  width: 90%;
+  ${(props) => props.recent || props.error ? "width: 80%" : ''};
 `;
 
 export const AssetListItem: React.FC<IAssetListItemProps> = ({ ...props }) => {
   return (
     <SAssetListItem {...props}>
-      <SFlexListItem>
+      <SFlexListItem {...props}>
         <SImagePlaceholder {...props}>
           {props.icon}
         </SImagePlaceholder>
