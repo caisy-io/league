@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { message } from "../message";
 import { Button } from "../button";
 
@@ -6,21 +6,11 @@ export default {
   title: `Components/Message`,
   component: MessageDemo,
   argTypes: {
-    // example argument type
-    activated: {
-      description: "Changes the state of the component to Activated",
-      control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
-    },
   },
 };
 
 function MessageDemo({ content, ...args }) {
-   // To create a message we simply call a function with "message.error/success/info()"
+  // To create a message we simply call a function with "message.error/success/info()"
   // And pass the children as the first argument:
   const error = () => {
     message.error('Error publishing "Untitled": Validation failed. Please check the individual fields for errors.');
@@ -37,9 +27,9 @@ function MessageDemo({ content, ...args }) {
   // We can also pass a "config" object as the second parameter,
   // With it we can set a custom title, or duration for the message:
 
-  const customTitle = () => {
+  /* const customTitle = () => {
     message.error("Test message with custom title", { title: "I am a custom title!" });
-  };
+  }; */
 
   const customDuration = () => {
     message.info("Test message with custom duration (5s)", { duration: 10000 });
@@ -72,7 +62,7 @@ function MessageDemo({ content, ...args }) {
       <Button onClick={success}>Success</Button>
       <Button onClick={error}>Error</Button>
       <Button onClick={info}>Info</Button>
-      <Button onClick={customTitle}>Custom title</Button>
+      {/* <Button onClick={customTitle}>Custom title</Button> */}
       <Button onClick={customDuration}>Custom duration</Button>
       <input
         placeholder="Custom content!"

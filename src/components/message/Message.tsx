@@ -29,6 +29,7 @@ export interface IMessage {
   content: string;
   id: number;
   duration: number;
+  icon?: React.ReactNode;
 }
 
 const MessageWrapper: React.FC<IMessage> = () => {
