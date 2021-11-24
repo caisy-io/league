@@ -13,6 +13,6 @@ function sb_failed () {
      exit 1
 }
 
-yarn build-storybook --loglevel warn 2> ./sb-out.txt 
+ 
 
 grep -q "failed" ./sb-out.txt; [ $? -eq 0 ] && sb_failed || sb_success

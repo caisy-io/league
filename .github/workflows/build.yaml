@@ -22,11 +22,18 @@ jobs:
         name: lint types
         with:
           cmd: lint:types # will run `yarn lint:types` command
-      - name: Build Storybook
-        id: buildstorybook
-        run: |
-          chmod -R 777 node_modules
-          bash ./run-sb-exit.sh
+          
+      # - name: Build Storybook
+      #   id: buildstorybook
+      #   run: |
+      #     chmod -R 777 node_modules
+      #     bash ./run-sb-exit.sh
+
+      - uses: borales/actions-yarn@v2.3.0
+        name: Build Storybook
+        with:
+          cmd: build:storybook # will run `yarn build` command
+
       - uses: borales/actions-yarn@v2.3.0
         name: Run yarn build
         with:
