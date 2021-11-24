@@ -70,7 +70,14 @@ const CSSPrimaryStickedActivated = css`
   color: var(--active-text-01);
   &:after {
     border-radius: 0;
-    background-color: var(--active-interactional-secondary-03);
+    background-color: var(--active-interactional-tertiary-04);
+  }
+
+  &:disabled {
+    color: var(--disabled-text);
+    &:after {
+      background-color: var(--disabled-interactional-03);
+    }
   }
 `;
 
@@ -85,7 +92,7 @@ const CSSPrimarySticked = css`
   &:hover {
     color: var(--hover-text-01);
     &:after {
-      background-color: var(--hover-interactional-secondary-03);
+      background-color: var(--hover-interactional-tertiary-04);
     }
   }
   &:active {
@@ -308,8 +315,8 @@ const Bronze = css<IButtonProps>`
     border-radius: 6px;
   }
 
-  ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
+  ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
 
   &:active {
     &:after {
