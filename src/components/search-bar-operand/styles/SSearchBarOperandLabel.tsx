@@ -1,18 +1,17 @@
 import styled, { css } from 'styled-components';
+import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISearchBarOperandProps } from '../SearchBarOperand';
-import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 
 const CSSActivated = css`
-  color: var(--text-02);
-  background-color: var(--interactional-primary-01); 
-  
+  color: var(--active-text-04);
 `;
 
 const Bronze = css<ISearchBarOperandProps>`
   ${CSSProgressiveCaption01Semibold};
   color: var(--active-ui-01);
   margin: 2px 4px;
+  ${(props) => props.activated ? CSSActivated : ''};
 `;
 
 const Silver = css``;

@@ -12,7 +12,7 @@ export const SearchBarOperand: React.FC<ISearchBarOperandProps> = ({ ...props })
   return (
     <SSearchBarOperand {...props}>
       {props.children}
-      <SSearchBarOperandLabel>{props.label}</SSearchBarOperandLabel>
+      <SSearchBarOperandLabel {...props}>{props.label}</SSearchBarOperandLabel>
     </SSearchBarOperand>
   )
 }
