@@ -1,255 +1,172 @@
-import { css } from "styled-components" 
+import { css } from "styled-components";
 
 export const CSSProgressiveHeading01 = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-0);
+  line-height: var(--line-heights-0);
+  font-size: var(--font-size-6);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveBody01Semibold = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-1);
+  line-height: var(--line-heights-0);
+  font-size: var(--font-size-6);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveBody01Medium = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-2);
+  line-height: var(--line-heights-0);
+  font-size: var(--font-size-6);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveBody01 = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-3);
+  line-height: var(--line-heights-0);
+  font-size: var(--font-size-6);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveBody02Semibold = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-1);
+  line-height: var(--line-heights-0);
+  font-size: var(--font-size-5);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveBody02Medium = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-2);
+  line-height: var(--line-heights-0);
+  font-size: var(--font-size-5);
+  letter-spacing: var(--letter-spacing-1);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveBody02 = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-3);
+  line-height: var(--line-heights-0);
+  font-size: var(--font-size-5);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveBody03Semibold = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-1);
+  line-height: var(--line-heights-1);
+  font-size: var(--font-size-4);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveBody03Medium = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-2);
+  line-height: var(--line-heights-1);
+  font-size: var(--font-size-4);
+  letter-spacing: var(--letter-spacing-1);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveBody03 = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-3);
+  line-height: var(--line-heights-1);
+  font-size: var(--font-size-4);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveCaption01Semibold = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-1);
+  line-height: var(--line-heights-2);
+  font-size: var(--font-size-3);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveCaption01Medium = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-2);
+  line-height: var(--line-heights-2);
+  font-size: var(--font-size-3);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveCaption01 = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-3);
+  line-height: var(--line-heights-2);
+  font-size: var(--font-size-3);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveCaption02Semibold = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-1);
+  line-height: var(--line-heights-3);
+  font-size: var(--font-size-2);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveCaption02Medium = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-2);
+  line-height: var(--line-heights-3);
+  font-size: var(--font-size-2);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveCaption02 = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-3);
+  line-height: var(--line-heights-3);
+  font-size: var(--font-size-2);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveHighlight = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-0);
+  line-height: var(--line-heights-2);
+  font-size: var(--font-size-2);
+  letter-spacing: var(--letter-spacing-2);
+  text-case: var(--text-case-uppercase);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveHighlightMicro = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-0);
+  line-height: var(--line-heights-4);
+  font-size: var(--font-size-0);
+  letter-spacing: var(--letter-spacing-3);
+  text-case: var(--text-case-uppercase);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressivePrimaryButtons = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-0);
+  line-height: var(--line-heights-2);
+  font-size: var(--font-size-2);
+  letter-spacing: var(--letter-spacing-2);
+  text-case: var(--text-case-uppercase);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveBadgesSmall = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-weight: var(--font-weights-inter-0);
+  line-height: var(--line-heights-2);
+  font-size: var(--font-size-1);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveMonospaceCaption = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-family: var(--font-families-ibm-plex-mono);
+  font-weight: var(--font-weights-ibm-plex-mono-4);
+  line-height: var(--line-heights-5);
+  font-size: var(--font-size-3);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveMonospaceCode = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-family: var(--font-families-ibm-plex-mono);
+  font-weight: var(--font-weights-ibm-plex-mono-4);
+  line-height: var(--line-heights-5);
+  font-size: var(--font-size-3);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
 export const CSSProgressiveMonospaceCount = css`
-  value: var(--);
-  type: var(--);
-  file-path: var(--);
-  is-source: var(--);
-  original: var(--object-object);
-  name: var(--);
-  attributes: var(--);
-  path: var(--);
+  font-family: var(--font-families-ibm-plex-mono);
+  font-weight: var(--font-weights-ibm-plex-mono-5);
+  line-height: var(--line-heights-5);
+  font-size: var(--font-size-0);
+  letter-spacing: var(--letter-spacing-4);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
 `;
-
