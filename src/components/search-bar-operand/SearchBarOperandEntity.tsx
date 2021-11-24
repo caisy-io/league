@@ -1,10 +1,8 @@
 import React from 'react';
+import { ISearchBarOperandProps } from './SearchBarOperand';
 import {SSearchBarOperandEntity} from './styles/SSearchBarOperandEntity';
-interface ISearchBarOperand{
-  activated?: boolean;
-}
 
-export const SearchBarOperandEntity: React.FC<ISearchBarOperand> = ({...props}) => {
+export const SearchBarOperandEntity: React.FC<ISearchBarOperandProps> = ({...props}) => {
   return (
     <SSearchBarOperandEntity {...props}>
       {props.children}
