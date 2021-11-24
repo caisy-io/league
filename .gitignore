@@ -8,3 +8,5 @@ dist-ssr
 *.local
 out
 .vercel
+sb-out.txt
+storybook-static

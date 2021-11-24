@@ -19,7 +19,7 @@ export default {
             control: { type: "select" },
             table: {
                 defaultValue: {
-                    summary: "default",
+                    summary: "default"
                 },
             },
         },
