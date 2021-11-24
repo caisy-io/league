@@ -28,7 +28,7 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
 
   const handleClick = React.useCallback(() => {
     inputRef.current.focus();
-  }, []);
+  }, [inputRef.current.focus]);
 
   const resizeInput = React.useCallback(() => {
     if (!inputRef.current.value && props.placeholder) {
@@ -41,21 +41,27 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
       width += 3;
     }
     setInputLength(width + 1);
-  }, [value, props.placeholder]);
+  }, [value, props.placeholder, setInputLength]);
 
   React.useEffect(() => {
     resizeInput();
   }, [value, props.placeholder]);
 
-  const handleFocus = React.useCallback((e) => {
-    setActive(true);
-    props.onFocus?.(e);
-  }, []);
+  const handleFocus = React.useCallback(
+    (e) => {
+      setActive(true);
+      props.onFocus?.(e);
+    },
+    [setActive, props.onFocus],
+  );
 
-  const handleBlur = React.useCallback((e) => {
-    setActive(false);
-    props.onBlur?.(e);
-  }, []);
+  const handleBlur = React.useCallback(
+    (e) => {
+      setActive(false);
+      props.onBlur?.(e);
+    },
+    [setActive, props.onBlur],
+  );
 
   return (
     <SSimpleInputWrapper active={active} state={state} onClick={handleClick}>
