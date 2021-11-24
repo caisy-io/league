@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 interface ISPreview {
-  size?: 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48; 
+  size?: 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48;
+  flag?: boolean; 
 }
 
 const fontSize: (size: number) => number = size => {
@@ -41,12 +42,12 @@ const iconSize: (size: number) => number = size => {
     default: 
       return 12;
   }
-} 
+}
 
 const Bronze = css<ISPreview>`
   align-items: center;
-  background-color: var(--ui-03);
-  border-radius: 4px;
+  background-color: ${({ flag }) => !flag && "var(--ui-03)"};
+  border-radius: ${({ flag }) => !flag && "4px"};
   color: var(--text-04);
   display: flex;
   font-size: ${({ size }) => fontSize(size)}px;
@@ -57,10 +58,13 @@ const Bronze = css<ISPreview>`
   text-align: center;
   text-transform: uppercase;
   width: ${({ size }) => size ? size : 32}px;
-  svg {
-    width: ${({ size }) => iconSize(size)}px;
-    height: ${({ size }) => iconSize(size)}px;
-  }
+  
+  ${({ flag }) => !flag && `
+    svg {
+      width: ${({ size }) => iconSize(size)}px;
+      height: ${({ size }) => iconSize(size)}px;
+    }
+  `}
   img {
     border-radius: 4px;
   }

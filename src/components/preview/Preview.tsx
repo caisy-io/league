@@ -11,7 +11,7 @@ interface IPreview {
 
 const Preview: FC<IPreview> = ({ flag, icon, image, text, size }) => {
   return (
-    <SPreview size={size}>
+    <SPreview size={size} flag={flag && true}>
       {flag}
       {icon}
       {image}
