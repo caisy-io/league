@@ -18,7 +18,7 @@
     "storybook": "start-storybook -p 6006",
     "build": "rollup -c",
     "build-storybook": "build-storybook -o ./out",
-    "build:storybook": "yarn build-storybook -o . --loglevel warn 2> ./sb-out.txt &&  grep -q \"failed\" ./sb-out.txt && echo \"the storybook output contains failed\" && grep -vwE \"webpack.Progress\" sb-out.txt && exit 1"
+    "build:storybook": "bash ./run-sb-exit.sh"
   },
   "sideEffects": false,
   "devDependencies": {
