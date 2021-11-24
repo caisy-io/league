@@ -5,6 +5,32 @@ const startCase = require("lodash/startCase");
 
 const defaultValues = ["var(--fontFamilies-inter)", "var(--letterSpacing-0)", "var(--paragraphSpacing-0)"];
 
+const ACCEPTED_FONT_WEIGHTS = [
+  "Thin",
+  "Extra Light",
+  "Light",
+  "Regular",
+  "Medium",
+  "Semi Bold",
+  "Bold",
+  "Extra Bold",
+  "Black",
+  "Extra Black",
+];
+
+const FONT_WEIGHTS = {
+  Thin: 100,
+  "Extra Light": 200,
+  Light: 300,
+  Regular: 400,
+  Medium: 500,
+  "Semi Bold": 600,
+  Bold: 700,
+  "Extra Bold": 800,
+  Black: 900,
+  "Extra Black": 950,
+};
+
 console.log("Build started...");
 console.log("\n==============================================");
 
@@ -41,11 +67,24 @@ StyleDictionary.registerFormat({
     fonts += "  :root {\n";
     dictionary.allTokens.forEach((token) => {
       let value = token.value;
-      if ((token.type === "fontSizes" || token.type === "lineHeights") && parseInt(token.value) !== 0) {
-        value = `${parseInt(value) / 16}rem`;
+      if (token.type === "fontSizes" || token.type === "lineHeights" || token.type === "fontWeights") {
+        if ((token.type === "fontSizes" || token.type === "lineHeights") && parseInt(token.value) !== 0) {
+          value = `${parseInt(value) / 16}rem`;
+          const name = kebabCase(`${token.path[0]}-${token.name}`);
+          fonts += `    --${name}: ${value};\n`;
+        } else if (token.type === "fontWeights") {
+          if (!ACCEPTED_FONT_WEIGHTS.includes(value)) {
+            console.warn(`Font weight ${value} is not supported, expecting: ${ACCEPTED_FONT_WEIGHTS.toString()}`);
+          } else {
+            value = `${FONT_WEIGHTS[value]}`;
+            const name = kebabCase(`${token.path[0]}-${token.name}`);
+            fonts += `    --${name}: ${value};\n`;
+          }
+        }
+      } else {
+        const name = kebabCase(`${token.path[0]}-${token.name}`);
+        fonts += `    --${name}: ${value};\n`;
       }
-      const name = kebabCase(`${token.path[0]}-${token.name}`);
-      fonts += `    --${name}: ${value};\n`;
     });
     fonts = fonts + "  }\n";
     fonts = fonts + "`;\n";
