@@ -27,13 +27,16 @@ export default {
             description: "Content of the search bar operand",
             control: { type: "text" },
         },
+        label: {
+            description: "Content of the search bar operand",
+            control: { type: "text" },
+        },
     },
 };
 
 function SearchBarOperandDemo({ content, ...args }) {
     return <CloseButton defaultVisible={(args.state == "hover" || args.state == "activated") || false}>
-        <SearchBarOperand activated={args.state == "activated" } hover={args.state == "hover" }>
-            {content}
+        <SearchBarOperand activated={args.state == "activated" } hover={args.state == "hover" } label={args.label}>
         </SearchBarOperand>
     </CloseButton>
 }
@@ -44,16 +47,16 @@ export const Default = Template.bind({});
 Default.args = {
     state: "default",
     content: "Default",
+    label: "Default"
 };
 
 // With entity
 export const WithEntity = ({ content, ...args }) => (
     <CloseButton defaultVisible={(args.state == "hover" || args.state == "activated") || false}>
-        <SearchBarOperand activated={args.state == "activated" } hover={args.state == "hover" }>
+        <SearchBarOperand activated={args.state == "activated" } hover={args.state == "hover" } label={args.label}>
             <SearchBarOperandEntity activated={args.state == "activated" }>
                 {content}
             </SearchBarOperandEntity>
-            {content}
         </SearchBarOperand>
     </CloseButton>
 );
@@ -61,4 +64,5 @@ export const WithEntity = ({ content, ...args }) => (
 WithEntity.args = {
     state: "default",
     content: "Default",
+    label: "Default"
 };

@@ -1,27 +1,16 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressivehighLightMicro } from '../../../constants/styles/fonts';
+import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISearchBarOperandProps } from '../SearchBarOperand';
 
 const CSSActivated = css`
-  color: var(--text-02);
-  background-color: var(--interactional-primary-01); 
+  color: var(--active-text-04);
 `;
 
 const Bronze = css<ISearchBarOperandProps>`
-  ${CSSProgressivehighLightMicro};  
-  text-transform: uppercase;
-  color: var(--text-02);
-  background-color: var(--active-ui-01);
-  height: 100%;
-  flex-grow: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  position: relative;
-  z-index: 0;
-  padding: 0 4px;
+  ${CSSProgressiveCaption01Semibold};
+  color: var(--active-ui-01);
+  margin: 2px 4px;
   ${(props) => props.activated ? CSSActivated : ''};
 `;
 
@@ -33,7 +22,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSearchBarOperandEntity = styled.div<ISearchBarOperandProps>`
+export const SSearchBarOperandLabel = styled.p<ISearchBarOperandProps>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
