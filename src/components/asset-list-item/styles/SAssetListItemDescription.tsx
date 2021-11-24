@@ -12,7 +12,10 @@ const Bronze = css`
     color: var(--text-03);
     ${(props) => props.error ? CSSError : ''};
     ${(props) => props.progressValue !== null && props.progressValue !== undefined ? CSSDisplayNone : ''};
-`;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    `;
 
 const Silver = css``;
 

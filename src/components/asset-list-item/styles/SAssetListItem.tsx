@@ -13,6 +13,7 @@ const Bronze = css`
   width: 100%;
   background-color: #FFFF;
   border-bottom: 1px solid var(--ui-03);
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;

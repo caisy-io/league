@@ -10,6 +10,8 @@ const Bronze = css`
     ${CSSProgressiveBody02Semibold};
     color: var(--text-01);
     ${(props) => props.error ? CSSError : ''};
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 const Silver = css``;
