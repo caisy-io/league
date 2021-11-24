@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { message } from "../message";
+import { IconStarOutlined } from "../../icons/IconStarOutlined";
 import { Button } from "../button";
+import { message } from "../message";
 
 export default {
   title: `Components/Message`,
@@ -25,14 +26,18 @@ function MessageDemo({ content, ...args }) {
   };
 
   // We can also pass a "config" object as the second parameter,
-  // With it we can set a custom title, or duration for the message:
+  // With it we can set a custom title, custom icon or duration for the message:
 
-  /* const customTitle = () => {
-    message.error("Test message with custom title", { title: "I am a custom title!" });
-  }; */
+  const customIcon = () => {
+    message.info("Test message with a custom icon", { icon: <IconStarOutlined></IconStarOutlined> });
+  };
+
+  const customAction = () => {
+    message.info("Test message with a custom action", { action: <div onClick={console.log("you clicked my action")}>Action</div> });
+  };
 
   const customDuration = () => {
-    message.info("Test message with custom duration (5s)", { duration: 10000 });
+    message.info("Test message with custom duration (5s)", { duration: 5000 });
   };
 
   // The children content can come from anywhere,
@@ -51,28 +56,33 @@ function MessageDemo({ content, ...args }) {
   return (
     <div
       style={{
-        margin: 32,
+        marginTop: 150,
         display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: 125,
+        flexDirection: "row",
+        alignItems: "flex-end",
         gap: 20,
+        flexWrap: "wrap",
       }}
     >
       <Button onClick={success}>Success</Button>
       <Button onClick={error}>Error</Button>
       <Button onClick={info}>Info</Button>
-      {/* <Button onClick={customTitle}>Custom title</Button> */}
+      <Button onClick={customIcon}>Custom icon</Button>
+      <Button onClick={customAction}>Custom action</Button>
       <Button onClick={customDuration}>Custom duration</Button>
-      <input
-        placeholder="Custom content!"
-        type="text"
-        onChange={(e) => setInputValue(e.target.value)}
-        value={inputValue}
-      />
-      <Button onClick={customContent}>Custom content</Button>
-      This is based on a real use case
-      <Button onClick={realUsageExample}>Document was deleted</Button>
+      <div>
+        <input
+          placeholder="Custom content!"
+          type="text"
+          onChange={(e) => setInputValue(e.target.value)}
+          value={inputValue}
+        />
+        <Button onClick={customContent}>Custom content</Button>
+      </div>
+      <div>
+        This is based on a real use case
+        <Button onClick={realUsageExample}>Document was deleted</Button>
+      </div>
     </div>
   );
 }

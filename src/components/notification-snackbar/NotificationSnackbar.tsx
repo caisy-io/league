@@ -12,14 +12,13 @@ import { SNotificationSnackbarLabel } from './styles/SNotificationSnackbarLabel'
 export interface INotificationSnackbarProps {
   exit: boolean;
   icon?: React.ReactNode;
-  action?: String | undefined;
+  action?: React.ReactNode;
   content: String;
   success?: boolean;
   error?: boolean;
 }
 
 export const NotificationSnackbar: React.FC<INotificationSnackbarProps> = ({ ...props }) => {
-  console.log(`NotificationSnackbar props: `, props);
   return (
     <SNotificationSnackbar {...props}>
       <SFlex>

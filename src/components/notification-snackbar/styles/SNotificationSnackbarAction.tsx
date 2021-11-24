@@ -5,6 +5,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 const Bronze = css`
   ${CSSProgressiveCaption01Semibold};
   color: var(--text-10);
+  cursor: pointer;
 `;
 
 const Silver = css``;
@@ -15,7 +16,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SNotificationSnackbarAction = styled.p`
+export const SNotificationSnackbarAction = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

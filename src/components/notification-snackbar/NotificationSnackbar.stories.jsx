@@ -22,7 +22,7 @@ export default {
 };
 
 function NotificationSnackbarDemo({ ...args }) {
-  return <NotificationSnackbar icon={<IconStarOutlined></IconStarOutlined>} content={args.content} action="Action" error={args.error} success={args.success}>
+  return <NotificationSnackbar icon={<IconStarOutlined></IconStarOutlined>} content={args.content} action={<div onClick={console.log("you clicked my action")}>Action</div>} error={args.error} success={args.success}>
   </NotificationSnackbar>
 }
 
