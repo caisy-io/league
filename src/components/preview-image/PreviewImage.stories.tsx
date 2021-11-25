@@ -5,7 +5,14 @@ import { PreviewImage } from './PreviewImage';
 export default {
   title: 'Components/PreviewImage',
   component: PreviewImage,
-  argTypes: {},
+  argTypes: {
+    size: {
+      name: "size",
+      description: "Size of the preview image",
+      control: { type: "number" },
+      type: "number"
+    },
+  },
 } as ComponentMeta<typeof PreviewImage>;
 
 const Template: ComponentStory<typeof PreviewImage> = (args) => <PreviewImage {...args} />;
