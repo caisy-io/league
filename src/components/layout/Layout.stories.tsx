@@ -91,7 +91,6 @@ Default.parameters = {
 export const LeftSider = ({content, ...args}) => {
     const [leftSiderOpened, setLeftSiderOpened] = useState(true);
     const [leftSiderSize, setLeftSiderSize] = useState(initialSize);
-    const [rightSiderSize, setRightSiderSize] = useState(initialSize);
 
     const { width } = useWindowDimensions(); 
     const mainNavWidth = 100;
@@ -123,7 +122,7 @@ export const LeftSider = ({content, ...args}) => {
                         }
                         <SidebarTag left onOpenChanged={setLeftSiderOpened}/>
                     </SLayoutSiderWrapper>
-                    <LayoutContent style={{background: "darkslateblue"}} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
+                    <LayoutContent style={{background: "darkslateblue"}} width={(width - mainNavWidth - leftSiderSize.width) + "px"}>
                         <p style={{wordBreak: 'break-word'}}>{content}</p>
                             {args.children}
                     </LayoutContent>
@@ -144,7 +143,6 @@ LeftSider.parameters = {
 
 // With RightSider
 export const RightSider = ({content, ...args}) => {
-    const [leftSiderSize, setLeftSiderSize] = useState(initialSize);
     const [rightSiderOpened, setRightSiderOpened] = useState(true);
     const [rightSiderSize, setRightSiderSize] = useState(initialSize);
 
@@ -170,7 +168,7 @@ export const RightSider = ({content, ...args}) => {
                     Nav bar
                 </LayoutTopNav>
                 <SLayoutContentWrapper>
-                    <LayoutContent style={{background: "darkslateblue"}} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
+                    <LayoutContent style={{background: "darkslateblue"}} width={(width - mainNavWidth - rightSiderSize.width) + "px"}>
                     <p style={{wordBreak: 'break-word'}}>{content}</p>
                         {args.children}
                     </LayoutContent>
