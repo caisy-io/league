@@ -16,7 +16,6 @@
 
 import React, {useContext} from 'react';
 import PoppableContext from '../../Poppable.context';
-import { STriangle } from './styles/STriangle';
 import {ready, getLeft, getTop} from './Triangle.utils';
 
 interface ITriangleProps {
@@ -26,7 +25,7 @@ interface ITriangleProps {
 export const Triangle = ({size = 0}: ITriangleProps) => {
     const {tbr, rbr} = useContext(PoppableContext);
     return !ready(tbr, rbr) ? null : (
-        <STriangle className='poppable-triangle' style={{
+        <div className='poppable-triangle' style={{
             top: getTop(tbr, rbr, size),
             left: getLeft(tbr, rbr, size),
             borderWidth: size,
