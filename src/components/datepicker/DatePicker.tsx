@@ -11,7 +11,7 @@ import Flatpickr from "react-flatpickr";
 import usePicker from "./context/DatePickerContext";
 import { SDatePickerCalendarWrapper } from "./styles/SDatePickerCalendarWrapper";
 import { DayjsProvider, useDayjs } from "../../provider/DayjsProvider";
-import { useClickOutside } from "../../utils";
+import { useClickOutside } from "../..";
 
 interface IDatePickerHTMLElement extends HTMLElement {
   dateObj: string;

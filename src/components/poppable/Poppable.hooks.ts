@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { useBoundingRectObserver } from "../../utils/hooks";
+import { useBoundingRectObserver } from "../..";
 import { _window } from "../../utils/mocks";
 
  

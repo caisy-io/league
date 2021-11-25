@@ -1,5 +1,5 @@
 import React from "react";
-import { useDimensions } from "../../utils";
+import { useDimensions } from "../..";
 import { ClickOutside } from "../../utils/hooks/useClickOutside";
 import { Popover } from "../popover/Popover";
 import { SSelect } from "./styles/SSelect";
