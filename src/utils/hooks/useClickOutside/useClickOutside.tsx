@@ -15,7 +15,7 @@
  */
 
  import React, {useRef, useCallback, useContext} from 'react';
-import OverrideContext from '.';
+import OverrideContext from './useClickOutside.context';
  import {_document} from '../../mocks';
  import useEventListener from '../useEventListener';
  
