@@ -3,7 +3,7 @@ import { SPopover } from "./styles/SPopover";
 import Stackable from "../stackable";
 import { vbefore, vcenter, vafter, hbefore, hcenter, hafter } from "../poppable/Poppable.placements";
 import { Triangle } from "../poppable";
-import { ClickOutside } from "../..";
+import { ClickOutside } from "../../utils";
 
 enum EPlacements {
   Top = "top",

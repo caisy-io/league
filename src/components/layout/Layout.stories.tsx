@@ -8,7 +8,7 @@ import { SLayoutWrapper } from "./styles/SLayoutWrapper";
 import { SLayoutContentWrapper } from "./styles/SLayoutContentWrapper";
 import { SLayoutSiderWrapper } from "./styles/SLayoutSiderWrapper";
 import { SidebarTag } from "../sidebarTag";
-import { useWindowDimensions } from "../..";
+import { useWindowDimensions } from "../../utils";
 
 function LayoutDemo(args) {
     const [leftSiderOpened, setLeftSiderOpened] = useState(true);

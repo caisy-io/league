@@ -11,7 +11,7 @@ import { IconAngleDown, IconAngleUp, IconLoading } from "../../icons";
 import { FixedSizeList } from "react-window";
 import { Empty } from "../empty/Empty";
 import debounce from "lodash/debounce";
-import { useDimensions } from "../..";
+import { useDimensions } from "../../utils";
 
 export interface IColumn {
   header: React.ReactNode;
