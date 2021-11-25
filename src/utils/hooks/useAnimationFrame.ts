@@ -25,6 +25,7 @@
  
      const start = useCallback((...args) => {
          cancelAnimationFrame(id.current);
+         //@ts-ignore
          id.current = requestAnimationFrame(() => {
              cb.current(...args);
              if (recurring) {

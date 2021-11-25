@@ -21,7 +21,7 @@
 
 const before = (rbr, tbr, {start, size}, offset = 0) => ({[start]: rbr[start] - tbr[size] + offset});
 const center = (rbr, tbr, {start, size}, offset = 0) => ({[start]: rbr[start] + (rbr[size] - tbr[size]) / 2 + offset});
-const after = (rbr, tbr, {start, end}, offset = 0) => ({[start]: rbr[end] + offset});
+const after = (rbr, _, {start, end}, offset = 0) => ({[start]: rbr[end] + offset});
 
 export const vbefore = (rbr, tbr, offset = 0) => before(rbr, tbr, Orientations.VERTICAL, offset);
 export const vcenter = (rbr, tbr, offset = 0) => center(rbr, tbr, Orientations.VERTICAL, offset);
