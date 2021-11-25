@@ -1,7 +1,7 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
+import { Popover, TPlacement } from "../..";
 import { STooltip } from "./styles/STooltip";
 import { STooltipWrapper } from "./styles/STooltipWrapper";
-import { Popover, TPlacement } from "../popover";
 export interface ITooltip {
   content: ReactNode | (() => ReactNode);
   supressArrow?: boolean | undefined;

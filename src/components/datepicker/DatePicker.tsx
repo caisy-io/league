@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Button } from "../button/Button";
-import { Popover } from "../popover/Popover";
 import DatePickerButtonContainer from "./datepicker-button-container/DatePickerButtonContainer";
 import DatePickerCard from "./datepicker-card/DatePickerCard";
 import DatePickerInput from "./datepicker-input/DatePickerInput";
@@ -11,7 +10,7 @@ import Flatpickr from "react-flatpickr";
 import usePicker from "./context/DatePickerContext";
 import { SDatePickerCalendarWrapper } from "./styles/SDatePickerCalendarWrapper";
 import { DayjsProvider, useDayjs } from "../../provider/DayjsProvider";
-import { useClickOutside } from "../..";
+import { Popover, useClickOutside } from "../..";
 
 interface IDatePickerHTMLElement extends HTMLElement {
   dateObj: string;
