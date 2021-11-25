@@ -15,7 +15,8 @@ export default {
 
 // Field card
 function SelectSearchOperatorPopupDemo({ ...args }) {
-  return <SelectSearchOperatorPopup {...args} />;
+  const [selected, setSelected] = React.useState(args.selected);
+  return <SelectSearchOperatorPopup onSelect={(op) => setSelected(op)} {...args} selected={selected} />;
 }
 
 // Template card
