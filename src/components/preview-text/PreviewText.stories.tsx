@@ -5,6 +5,12 @@ export default {
   title: `Components/PreviewText`,
   component: PreviewTextDemo,
   argTypes: {
+    size: {
+      name: "size",
+      description: "Size of the preview text",
+      control: { type: "number" },
+      type: "number"
+    },
   },
 };
 

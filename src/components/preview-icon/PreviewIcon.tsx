@@ -1,5 +1,6 @@
 import React from "react";
 import { SPreviewIcon } from "./styles/SPreviewIcon";
+
 export interface IPreviewIcon {
   icon?: React.ReactNode;
   size: number;
