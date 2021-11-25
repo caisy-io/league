@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconDragable } from '../..';
+import { IconDragable } from '../../icons/IconDragable';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { SSidebarCard } from './styles/SSidebarCard';
 import { SSidebarcardIconWrapper } from './styles/SSidebarCardIconWrapper';
