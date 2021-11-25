@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../..";
 import { Tabs, TabPanel } from "./Tabs";
+import { IconStarOutlined } from "../../icons/IconStarOutlined";
 
 function TabsShowcase() {
   const [currentTab, setCurrentTab] = useState(0);
@@ -25,7 +26,7 @@ function TabsShowcase() {
             }
           }}
         >
-          <TabPanel title={<div>💖 Tab 1</div>}>
+          <TabPanel title="Tab 1" icon={<IconStarOutlined></IconStarOutlined>}>
             This is the first panelThis is the first panelThis is the first panelThis is the first panelThis is the
             first panel
           </TabPanel>
