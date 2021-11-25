@@ -19,9 +19,9 @@ import React, { memo } from 'react';
 import { SResizable } from './styles/SResizable';
 
 interface IResizable {
-    onBeginResize?: () => void,
-    onResize?: () => void,
-    onEndResize?: () => void,
+    onBeginResize?: (e: any) => void,
+    onResize?: (e: any) => void,
+    onEndResize?: (e: any) => void,
     children?: any
 }
 
