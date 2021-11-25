@@ -1,5 +1,6 @@
 import React  from "react";
-import { SelectMultipleSearch, SelectSingleSearch} from ".";
+import { SelectSingleSearch} from "./SelectSingleSearch";
+import { SelectMultipleSearch} from "./SelectMultipleSearch";
 
 
 // Default Select Single Search Demo 

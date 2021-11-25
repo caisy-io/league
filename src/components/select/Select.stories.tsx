@@ -1,5 +1,6 @@
 import React  from "react";
-import { SelectMultiple, SelectSingle} from ".";
+import { SelectMultiple} from "./SelectMultiple";
+import { SelectSingle} from "./SelectSingle";
 
 
 // Default Select Demo (single select)

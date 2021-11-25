@@ -1,6 +1,5 @@
 import React  from "react";
-import { DatePicker } from ".";
-
+import { DatePicker } from "./DatePicker";
 
 // Default Date Picker Demo
 export default {
