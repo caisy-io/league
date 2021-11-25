@@ -64,5 +64,5 @@ export const getCardinalPosition = (tbr, rbr) => getRelativePosition(tbr, rbr).r
  * @returns {string}
  */
 export const getClassNames = (tbr, rbr) => (
-    `${getCardinalPosition(tbr, rbr)}${tbr.bottom < rbr.top ? " vbefore" : ""}${rbr.bottom < tbr.top ? "vafter" : "" }${tbr.right < rbr.left ? "hbefore" : ""}${rbr.right < tbr.left ? "hafter" : ""}`
+    `${getCardinalPosition(tbr, rbr)} ${tbr.bottom < rbr.top ? "vbefore" : ""}${rbr.bottom < tbr.top ? "vafter" : "" }${tbr.right < rbr.left ? "hbefore" : ""}${rbr.right < tbr.left ? "hafter" : ""}`
 );
