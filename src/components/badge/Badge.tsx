@@ -4,10 +4,13 @@ import { SBadgeIconContent } from "./styles/SBadgeIconContent";
 import { SBadgeIcon } from "./styles/SBadgeIcon";
 import { EBadgePosition } from "./EBadgePosition";
 
+type IBadgeType = "regular" | "important" | "white" | "dark" | "color";
+
 export interface IBadge {
   value: string;
   position: EBadgePosition;
   disabled?: boolean;
+  type: IBadgeType;
 }
 
 export const Badge: React.FC<IBadge> = ({ ...props }) => {
