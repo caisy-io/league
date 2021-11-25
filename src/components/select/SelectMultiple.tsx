@@ -1,7 +1,6 @@
 import React from "react";
 import { IconClose } from "../../icons";
-import { useDimensions } from "../..";
-import { ClickOutside } from "../../utils/hooks/useClickOutside";
+import { ClickOutside, useDimensions } from "../..";
 import { Popover } from "../popover/Popover";
 import { SSelect } from "./styles/SSelect";
 import { SSelectDropdown } from "./styles/SSelectDropdown";

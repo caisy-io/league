@@ -1,9 +1,9 @@
 import React from "react";
 import { SPopover } from "./styles/SPopover";
 import Stackable from "../stackable";
-import { ClickOutside } from "../../utils/hooks/useClickOutside";
 import { vbefore, vcenter, vafter, hbefore, hcenter, hafter } from "../poppable/Poppable.placements";
 import { Triangle } from "../poppable";
+import { ClickOutside } from "../..";
 
 enum EPlacements {
   Top = "top",

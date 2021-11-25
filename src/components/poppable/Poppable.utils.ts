@@ -17,7 +17,7 @@
 import cls from 'classnames';
 import {DOMRect} from '../../utils/mocks';
 import {getRelativePosition} from '../../utils/rect';
-import {getBoundingRects as _getBoundingRects} from '../../utils/hooks/useBoundingRectObserver';
+import {getBoundingRects as _getBoundingRects} from '../..';
 
 /**
  * Get the bounding rects of the given elements.

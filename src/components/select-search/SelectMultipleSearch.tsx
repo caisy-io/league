@@ -5,8 +5,7 @@ import { Input } from "../input/Input";
 import { SSelectSearch } from "./styles/SSelectSearch";
 import { SSelectSearchMultipleValue } from "./styles/SSelectSearchMultipleValue";
 import { getSearchedItems } from "./getSearchedItems";
-import { useDimensions } from "../..";
-import { ClickOutside } from "../../utils/hooks/useClickOutside";
+import { ClickOutside, useDimensions } from "../..";
 
 interface IDropdownSearch {
   dataSource: any[];

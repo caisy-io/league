@@ -5,7 +5,7 @@ import { lock, max, min, resize, update } from '../resizable/Resizable.operation
 import { Left, Right } from '../resizable/Resizable.resizers';
 import { SLayoutSiderContent } from './styles/SLayoutSiderContent';
 import { SResizableWrapper } from '../resizable/styles/SResizableWrapper';
-import useWindowDimensions from '../../utils/hooks/WindowDimensionsHook';
+import { useWindowDimensions } from '../..';
 
 interface ILayoutSiderSize {
   width: number;

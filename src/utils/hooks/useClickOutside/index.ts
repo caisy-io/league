@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
- export {useClickOutside, ClickOutside, ClickOutsideOverride } from './useClickOutside';
+ export { useClickOutside, ClickOutside, ClickOutsideOverride } from './useClickOutside';
  import OverrideContext from './useClickOutside.context';
  export default OverrideContext;
