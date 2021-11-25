@@ -6,6 +6,6 @@ interface ILayoutTopNav {
   className?: string;
 }
 
-export const LayoutTopNav: React.FC<ILayoutTopNav> = ({ ...props }) => {
-  return <SLayoutTopNav height={props.height} className={props.className}>{props.children}</SLayoutTopNav>;
+export const LayoutTopNav: React.FC<ILayoutTopNav> = ({  children, ...props }) => {
+  return <SLayoutTopNav {...props}>{children}</SLayoutTopNav>;
 };

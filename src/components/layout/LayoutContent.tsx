@@ -5,6 +5,6 @@ interface ILayoutContent {
   width?: string;
 }
 
-export const LayoutContent: React.FC<ILayoutContent>  = ({ ...props }) => {
-  return <SLayoutContent style={props.style} width={props.width}>{props.children}</SLayoutContent>;
+export const LayoutContent: React.FC<ILayoutContent>  = ({children, ...props }) => {
+  return <SLayoutContent { ...props }>{children}</SLayoutContent>;
 };

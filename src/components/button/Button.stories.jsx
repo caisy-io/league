@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { Button } from "./Button";
 import { IconLink } from "../..";
 import { Badge, EBadgePosition } from "..";
@@ -16,7 +16,7 @@ export default {
   argTypes: {
     type: {
       description: "Changes the overall design of the button",
-      options: ["primary", "secondary", "tertiary", "danger", "neutral", "light", "link", "sidebarTag"],
+      options: ["primary", "secondary", "tertiary", "danger"],
       control: { type: "select" },
       table: {
         defaultValue: {
@@ -47,15 +47,6 @@ export default {
         },
       },
     },
-    round: {
-      description: "Changes the corners of the button",
-      control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
-    },
     disabled: {
       description: "Disables or enables the button",
       control: { type: "boolean" },
@@ -79,7 +70,6 @@ Default.args = {
   type: "primary",
   content: "primary",
   size: "default",
-  round: false,
   activated: false,
   disabled: false,
   sticked: false,
@@ -98,7 +88,6 @@ WithIcon.args = {
   content: "Link existing Document",
   size: "default",
   state: "default",
-  round: false,
   disabled: false,
   activated: false,
   sticked: false,

@@ -45,7 +45,7 @@
     }
 
     if (Array.isArray(a) && a.length === b.length) {
-        return a.every((item, i) => isEqual(a[i], b[i]))
+        return a.every((_, i) => isEqual(a[i], b[i]))
     }
 
     return false;

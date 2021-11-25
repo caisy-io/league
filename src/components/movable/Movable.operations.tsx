@@ -32,7 +32,7 @@ import { isEqual } from "../../utils/object";
   * @returns {operation}
   */
  export const move = movable => createOperation({
-     onBeginMove: (e, shared) => {
+     onBeginMove: (_, shared) => {
          const {top, left} = movable.current.getBoundingClientRect();
          shared.next = {top, left};
          shared.initial = {top, left};
@@ -74,12 +74,12 @@ import { isEqual } from "../../utils/object";
   * @return {operation}
   */
  export const contain = (movable, container) => createOperation({
-     onBeginMove: (e, shared) => {
+     onBeginMove: (_, shared) => {
          const {width, height} = movable.current.getBoundingClientRect();
          shared.bounds = container.current.getBoundingClientRect();
          shared.size = {width, height};
      },
-     onMove: (e, shared) => {
+     onMove: (_, shared) => {
          const {bounds, next, size} = shared;
          shared.next = {
              left: clamp(next.left, bounds.left, bounds.right - size.width),
@@ -98,7 +98,7 @@ import { isEqual } from "../../utils/object";
   * @return {operation}
   */
  export const snap = (horizontal, vertical, strength = 1) => createOperation({
-     onMove: (e, shared) => {
+     onMove: (_, shared) => {
          const {top, left} = shared.next;
          const rl =  Math.round(left / horizontal) * horizontal; // Rounded left
          const rt =  Math.round(top / vertical) * vertical; // Rounded top
@@ -119,8 +119,8 @@ import { isEqual } from "../../utils/object";
   * @returns {operation}
   */
  export const transform = (...t) => createOperation({
-     onBeginMove: (e, shared) => shared.next = t.reduce((acc, cur) => cur(acc), shared.next),
-     onMove: (e, shared) => shared.next = t.reduce((acc, cur) => cur(acc), shared.next),
+     onBeginMove: (_, shared) => shared.next = t.reduce((acc, cur) => cur(acc), shared.next),
+     onMove: (_, shared) => shared.next = t.reduce((acc, cur) => cur(acc), shared.next),
  });
  
  /**
@@ -136,7 +136,7 @@ import { isEqual } from "../../utils/object";
      onMove: _update(onUpdate),
      onEndMove: _update(onUpdate),
  });
- const _update = onUpdate => (e, shared) => {
+ const _update = onUpdate => (_, shared) => {
      if (!isEqual(shared.prev, shared.next)) {
          onUpdate(shared.next);
          shared.prev = shared.next;
@@ -151,7 +151,7 @@ import { isEqual } from "../../utils/object";
   * @returns {*&{onEndMove: ((function(): null)|*), onMove: ((function(): null)|*), onBeginMove: ((function(): null)|*)}}
   */
  export const relative = ref => createOperation({
-     onBeginMove: (e, shared) => {
+     onBeginMove: (_, shared) => {
          const reference = ref.current.getBoundingClientRect();
          shared.reference = reference;
          // When zooming in/out, the bounding rect receives non integer numbers with many decimal places
@@ -162,7 +162,7 @@ import { isEqual } from "../../utils/object";
              top: Math.round(shared.next.top - reference.top),
          };
      },
-     onMove: (e, shared) => {
+     onMove: (_, shared) => {
          const {reference, next} = shared;
          shared.next = {
              left: Math.round(next.left - reference.left),

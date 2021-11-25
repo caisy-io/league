@@ -1,9 +1,7 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-interface ISLayoutLegacyHeader {}
-
-const Bronze = css<ISLayoutLegacyHeader>`
+const Bronze = css`
   height: 64px;
   padding: 0 32px;
   background: rgb(255, 255, 255);

@@ -47,8 +47,7 @@ function LayoutDemo(args) {
                         <SidebarTag left onOpenChanged={setLeftSiderOpened}/>
                     </SLayoutSiderWrapper>
                     <LayoutContent style={{background: "darkslateblue"}} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
-                        <p style={{wordBreak: 'break-word'}}>Content ContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContent</p>
-                        {args.children}
+                        <p style={{wordBreak: 'break-word'}}>{args.content}</p>
                     </LayoutContent>
                     <SLayoutSiderWrapper left={false}>
                         <SidebarTag left={false} onOpenChanged={setRightSiderOpened}/>
@@ -60,7 +59,6 @@ function LayoutDemo(args) {
                     </SLayoutSiderWrapper>
                 </SLayoutContentWrapper>
             </SLayoutWrapper>
-
         </Layout>
     );
 }
@@ -68,12 +66,22 @@ function LayoutDemo(args) {
 export default {
   title: 'Components/Layout',
   component: LayoutDemo,
+  argTypes: {
+    content: {
+      description: "Content of body",
+      control: { type: "text" },
+    },
+  }
 };
+
 const Template = (args) => 
     <LayoutDemo {...args}/>;
 
 export const Default = Template.bind({});
-Default.args = {};
+
+Default.args = {
+    content: "Lorem ipsum dolor sit amet",
+};
 Default.parameters = {
     layout: 'fullscreen',
 };
@@ -116,8 +124,8 @@ export const LeftSider = ({content, ...args}) => {
                         <SidebarTag left onOpenChanged={setLeftSiderOpened}/>
                     </SLayoutSiderWrapper>
                     <LayoutContent style={{background: "darkslateblue"}} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
-                        <p style={{wordBreak: 'break-word'}}>Content ContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContent</p>
-                        {args.children}
+                        <p style={{wordBreak: 'break-word'}}>{content}</p>
+                            {args.children}
                     </LayoutContent>
                 </SLayoutContentWrapper>
             </SLayoutWrapper>
@@ -126,7 +134,9 @@ export const LeftSider = ({content, ...args}) => {
     );
 }
 
-LeftSider.args = {};
+LeftSider.args = {
+    content: "Lorem ipsum dolor sit amet",
+};
 
 LeftSider.parameters = {
     layout: 'fullscreen',
@@ -161,7 +171,7 @@ export const RightSider = ({content, ...args}) => {
                 </LayoutTopNav>
                 <SLayoutContentWrapper>
                     <LayoutContent style={{background: "darkslateblue"}} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
-                        <p style={{wordBreak: 'break-word'}}>Content ContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContent</p>
+                    <p style={{wordBreak: 'break-word'}}>{content}</p>
                         {args.children}
                     </LayoutContent>
                     <SLayoutSiderWrapper left={false}>
@@ -179,7 +189,9 @@ export const RightSider = ({content, ...args}) => {
     );
 }
 
-RightSider.args = {};
+RightSider.args = {
+    content: "Lorem ipsum dolor sit amet",
+};
 
 RightSider.parameters = {
     layout: 'fullscreen',

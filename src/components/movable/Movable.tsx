@@ -15,7 +15,6 @@
  */
 
  import React, {forwardRef, memo} from 'react';
- import cls from 'classnames';
  import {mouseTracker, touchTracker, moveTracker} from './Movable.utils';
 import { SMovable } from './styles/SMovable';
 
@@ -36,7 +35,7 @@ interface IMovable {
      const handleOnTouchStart = touchTracker(tracker);
  
      return (
-         <SMovable {...props} ref={ref} onMouseDown={handleOnMouseDown} onTouchStart={handleOnTouchStart} className={cls('movable', props.className)}/>
+         <SMovable {...props} ref={ref} onMouseDown={handleOnMouseDown} onTouchStart={handleOnTouchStart} className={`movable${props.className ? ` ${props.className}` : ''}`}/>
      );
  });
  

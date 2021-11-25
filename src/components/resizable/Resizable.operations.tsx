@@ -26,7 +26,7 @@ export const createOperation = handlers => ({
 });
 
 export const resize = resizable => createOperation({
-    onBeginResize: (e, shared) => {
+    onBeginResize: (_, shared) => {
         const {left, top, width, height} = resizable?.current?.getBoundingClientRect();
         shared.next = {left, top, width, height};
         shared.initial = {left, top, width, height};
@@ -69,7 +69,7 @@ export const lock = () => createOperation({
  * @return {{onResize: function, onBeginResize: function, onEndResize: function, dependencies: []}}
  */
 export const contain = container => createOperation({
-    onBeginResize: (e, shared) => {
+    onBeginResize: (_, shared) => {
         shared.max = container.current.getBoundingClientRect();
     },
     onResize: ({delta}, shared) => {
@@ -97,7 +97,7 @@ export const contain = container => createOperation({
  * @return {{onResize: function, onBeginResize: function, onEndResize: function, dependencies: []}}
  */
 export const min = (minWidth, minHeight) => createOperation({
-    onResize: (e, shared) => {
+    onResize: (_, shared) => {
         const {width, height} = shared.next;
         shared.next = {
             ...shared.next,
@@ -115,7 +115,7 @@ export const min = (minWidth, minHeight) => createOperation({
  * @return {{onResize: function, onBeginResize: function, onEndResize: function, dependencies: []}}
  */
 export const max = (maxWidth, maxHeight) => createOperation({
-    onResize: (e, shared) => {
+    onResize: (_, shared) => {
         const {width, height} = shared.next;
         shared.next = {
             ...shared.next,
@@ -135,7 +135,7 @@ export const max = (maxWidth, maxHeight) => createOperation({
  * @return {{onResize: function, onBeginResize: function, onEndResize: function, dependencies: []}}
  */
 export const snap = (horizontal, vertical, strength = 1) => createOperation({
-    onResize: (e, shared) => {
+    onResize: (_, shared) => {
         const {width, height} = shared.next;
         const rw =  Math.round(width / horizontal) * horizontal; // Rounded width
         const rh =  Math.round(height / vertical) * vertical; // Rounded height
@@ -158,7 +158,7 @@ export const snap = (horizontal, vertical, strength = 1) => createOperation({
  * @return {{onResize: function, onBeginResize: function, onEndResize: function, dependencies: []}}
  */
 export const ratio = r => createOperation({
-    onResize: (e, {next}) => {
+    onResize: (_, {next}) => {
         if (next.width / next.height > r) {
             next.height = next.width / r;
         } else {
@@ -178,7 +178,7 @@ export const update = onUpdate => createOperation({
     onResize: _update(onUpdate),
     onEndResize: _update(onUpdate),
 });
-const _update = onUpdate => (e, shared) => {
+const _update = onUpdate => (_, shared) => {
    // console.log("shared.prev", shared.prev);
     // console.log("shared.next", shared.next);
 
@@ -197,7 +197,7 @@ const _update = onUpdate => (e, shared) => {
  * @returns {*&{onResize: ((function(): null)|*), onBeginResize: ((function(): null)|*), onEndResize: ((function(): null)|*)}}
  */
 export const relative = ref => createOperation({
-    onBeginResize: (e, shared) => {
+    onBeginResize: (_, shared) => {
         const reference = ref.current.getBoundingClientRect();
         shared.reference = reference;
         // When zooming in/out, the bounding rect receives non integer numbers with many decimal places
@@ -209,7 +209,7 @@ export const relative = ref => createOperation({
             top: Math.round(shared.next.top - reference.top),
         };
     },
-    onResize: (e, shared) => {
+    onResize: (_, shared) => {
         const {reference, next} = shared;
         shared.next = {
             ...shared.next,
