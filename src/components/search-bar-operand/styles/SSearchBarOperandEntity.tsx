@@ -22,7 +22,6 @@ const Bronze = css<ISearchBarOperandProps>`
   position: relative;
   z-index: 0;
   padding: 0 4px;
-  gap: 9px;
   ${(props) => props.activated ? CSSActivated : ''};
 `;
 

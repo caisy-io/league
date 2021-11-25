@@ -30,7 +30,7 @@ export default {
     },
     size: {
       description: "Changes the size of the button",
-      options: ["default", "small", "medium"],
+      options: ["default", "small", "medium", "micro"],
       control: { type: "select" },
       table: {
         defaultValue: {
