@@ -18,14 +18,13 @@
  import {mouseTracker, touchTracker, moveTracker} from './Movable.utils';
 import { SMovable } from './styles/SMovable';
 
-//TODO replace any
 interface IMovable {
     onBeginMove?: (e: any) => void,
     onMove?: (e: any) => void,
     onEndMove?: (e: any) => void,
     className?: string,
     children?: any,
-    style?: {},
+    style?: object,
     ref?: any,
 }
  

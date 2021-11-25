@@ -11,13 +11,10 @@ function DatePickerDemo(args) {
     const today = new Date();
     const yesterday = new Date();
     yesterday.setDate(today.getDate() - 1);
-    // @TODO onSave callback
     const onSave = (dateToSave) => console.log(dateToSave);
-    // @TODO onCancel callback, this run when we press the `Cancel` button
     const onCancel = () => {
         console.log("canceled");
     };
-    // onMonthChange callback
     const onMonthChange = (newDate) => console.log(newDate);
     
     return <DatePicker

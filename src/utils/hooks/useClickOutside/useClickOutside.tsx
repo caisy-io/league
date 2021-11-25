@@ -45,7 +45,7 @@ import OverrideContext from './useClickOutside.context';
      const isClickedOutside = useContext(OverrideContext);
  
      useEventListener('mousedown', _ => {
-         isClickedInside.current = !isClickedOutside(isClickedInside.current) // TODO removed e as argument
+         isClickedInside.current = !isClickedOutside(isClickedInside.current)
      }, {current: _document});
  
      useEventListener('mouseup', e => {

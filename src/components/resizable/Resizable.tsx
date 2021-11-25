@@ -18,11 +18,10 @@
 import React, { memo } from 'react';
 import { SResizable } from './styles/SResizable';
 
-//TODO replace any
 interface IResizable {
-    onBeginResize?: any,
-    onResize?: any,
-    onEndResize?: any,
+    onBeginResize?: () => void,
+    onResize?: () => void,
+    onEndResize?: () => void,
     children?: any
 }
 
