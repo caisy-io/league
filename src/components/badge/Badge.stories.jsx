@@ -14,8 +14,8 @@ export default {
   component: BadgeDemo,
   argTypes: {
     type: {
-      description: "Changes the overall design of the search bar operand",
-      options: ["default", "hover", "activated"],
+      description: "Changes the overall design of the badge",
+      options: ["regular", "important", "white", "dark", "color"],
       control: { type: "select" },
       table: {
         defaultValue: {
@@ -24,14 +24,24 @@ export default {
       },
     },
     value: {
-      description: "Content of the search bar operand",
+      description: "Content of the badge",
       control: { type: "text" },
+    },
+    size: {
+      description: "Changes the size of the badge",
+      options: ["micro", "small", "medium"],
+      control: { type: "select" },
+      table: {
+        defaultValue: {
+          summary: "micro",
+        },
+      },
     },
   },
 };
 
 function BadgeDemo({ content, ...args }) {
-  return <Badge value={1} ><Button><IconStarOutlined /></Button></Badge>
+  return <Badge size={args.size} value={args.value} type={args.type}><Button><IconStarOutlined />Button</Button></Badge>
 }
 
 const Template = (args) => < BadgeDemo {...args} />;
@@ -40,5 +50,15 @@ export const Default = Template.bind({});
 Default.args = {
   state: "regular",
   value: "1",
+};
+
+// With entity
+export const PositionCenter = ({ content, ...args }) => (
+  <Button><IconStarOutlined />Button<Badge size={args.size} value={args.value} type={args.type} position="center"></Badge></Button>
+);
+
+PositionCenter.args = {
+  state: "default",
+  content: "Default",
 };
 
