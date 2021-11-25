@@ -53,40 +53,40 @@ StyleDictionary.registerFormat({
   },
 });
 
-StyleDictionary.registerFormat({
-  name: "styledComponentsFlat",
-  formatter: function ({ dictionary, ...rest }) {
-    let output = 'import { css } from "styled-components" \n\n';
-    output = output + "export const " + `${rest?.platform?.name || "CSSVars"}` + " = css`\n:root {\n";
-    const set = new Set();
+// StyleDictionary.registerFormat({
+//   name: "styledComponentsFlat",
+//   formatter: function ({ dictionary, ...rest }) {
+//     let output = 'import { css } from "styled-components" \n\n';
+//     output = output + "export const " + `${rest?.platform?.name || "CSSVars"}` + " = css`\n:root {\n";
+//     const set = new Set();
 
-    const addToSet = (obj) => {
-      if (typeof obj?.name === "string" && obj.name?.includes("$") && obj?.value) {
-        set.add({ name: obj?.name.replace(/\$/, "--"), value: obj.value });
-      }
-    };
+//     const addToSet = (obj) => {
+//       if (typeof obj?.name === "string" && obj.name?.includes("$") && obj?.value) {
+//         set.add({ name: obj?.name.replace(/\$/, "--"), value: obj.value });
+//       }
+//     };
 
-    for (layer1 in dictionary.properties) {
-      addToSet(dictionary.properties[layer1]);
-      for (layer2 in dictionary.properties[layer1]) {
-        addToSet(dictionary.properties[layer1][layer2]);
-        for (layer3 in dictionary.properties[layer1][layer2]) {
-          addToSet(dictionary.properties[layer1][layer2][layer3]);
-          for (layer4 in dictionary.properties[layer1][layer2][layer3]) {
-            addToSet(dictionary.properties[layer1][layer2][layer3][layer4]);
-          }
-        }
-      }
-    }
+//     for (layer1 in dictionary.properties) {
+//       addToSet(dictionary.properties[layer1]);
+//       for (layer2 in dictionary.properties[layer1]) {
+//         addToSet(dictionary.properties[layer1][layer2]);
+//         for (layer3 in dictionary.properties[layer1][layer2]) {
+//           addToSet(dictionary.properties[layer1][layer2][layer3]);
+//           for (layer4 in dictionary.properties[layer1][layer2][layer3]) {
+//             addToSet(dictionary.properties[layer1][layer2][layer3][layer4]);
+//           }
+//         }
+//       }
+//     }
 
-    set.forEach((item) => {
-      output = output + `${item.name}: ${item.value};\n`;
-    });
+//     set.forEach((item) => {
+//       output = output + `${item.name}: ${item.value};\n`;
+//     });
 
-    output = output + "}`;";
-    return output;
-  },
-});
+//     output = output + "}`;";
+//     return output;
+//   },
+// });
 
 StyleDictionary.registerFormat({
   name: "styledBoxShadows",
@@ -103,6 +103,34 @@ StyleDictionary.registerFormat({
     boxShadows = boxShadows + "  }\n";
     boxShadows = boxShadows + "`;\n";
     return boxShadows;
+  },
+});
+
+StyleDictionary.registerFormat({
+  name: "styledColors",
+  formatter: function ({ dictionary }) {
+    let colors = 'import { css } from "styled-components";\n\n';
+    colors += "export const CSSColors = css`\n";
+    colors += "  :root {\n";
+
+    dictionary.allTokens.forEach((token) => {
+      console.log(token);
+      const value = token.value;
+      const name = kebabCase(`${token.name}`);
+      colors += `    --${name}: ${value}\n`;
+
+      for (property in token.original) {
+        if (property !== "value" && property !== "type") {
+          const value = token.original[property].value;
+          const innerName = `${name}-${property}`;
+          colors += `    --${innerName}: ${value}\n`;
+        }
+      }
+    });
+
+    colors += "  }\n";
+    colors += "`;\n";
+    return colors;
   },
 });
 
