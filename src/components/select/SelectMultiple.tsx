@@ -1,6 +1,7 @@
 import React from "react";
-import { ClickOutside, useDimensions } from "webrix/hooks";
 import { IconClose } from "../../icons";
+import { useDimensions } from "../../utils";
+import { ClickOutside } from "../../utils/hooks/useClickOutside";
 import { Popover } from "../popover/Popover";
 import { SSelect } from "./styles/SSelect";
 import { SSelectDropdown } from "./styles/SSelectDropdown";

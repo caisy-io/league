@@ -1,5 +1,5 @@
 import React  from "react";
-import { SelectSingle } from ".";
+import { SelectMultiple, SelectSingle} from ".";
 
 
 // Default Select Demo (single select)
@@ -38,3 +38,17 @@ const Template = (args) => <SelectDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
+
+// Select multiple demo
+export const MultipleSelect = (args) => {
+    const [multipleSelectValue, setMultipleSelectValue] = React.useState([]);
+
+    return <SelectMultiple
+        dataSource={dataSource}
+        value={multipleSelectValue}
+        placeholder="Select multiple options!"
+        onChange={(e) => setMultipleSelectValue(e)}
+    />
+};
+
+MultipleSelect.args = {};
