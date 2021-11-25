@@ -16,7 +16,6 @@
 
  import React, {useContext, forwardRef, useEffect, useState} from 'react';
  import ReactDOM from 'react-dom';
- import classNames from 'classnames';
  import StackableContext from './Stackable.context';
 import { SStackable } from './styles/SStackable';
 import { _document } from '../../utils/mocks';
@@ -45,7 +44,7 @@ const Stackable = forwardRef(({
      const {depth, ancestors: _ancestors, zIndex: zIndexContext} = useContext(StackableContext);
      const usedZIndex = zIndexContext ?? zIndex;
      const [ancestors, setAncestors] = useState('');
-     const cls = classNames(`stackable depth-${depth}`, className);
+     const cls = `stackable depth-${depth}${className ? className : ""}`;
  
      useEffect(() => {
          let ancestors = '';
@@ -61,7 +60,7 @@ const Stackable = forwardRef(({
  
      return ReactDOM.createPortal(
          <StackableContext.Provider value={{zIndex: usedZIndex + 1, depth: depth + 1, ancestors: `${ancestors} .${cls.split(' ').join('.')}`}}>
-             <SStackable {...props} data-ancestors={ancestors} className={classNames(`stackable depth-${depth}`, className)} style={{...props.style, zIndex: usedZIndex}} ref={ref}>
+             <SStackable {...props} data-ancestors={ancestors} className={`stackable depth-${depth} ${className ? className : ""}`} style={{...props.style, zIndex: usedZIndex}} ref={ref}>
                  {children}
              </SStackable>
          </StackableContext.Provider>,

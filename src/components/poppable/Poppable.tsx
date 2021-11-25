@@ -15,7 +15,6 @@
  */
 
 import React, {useRef, forwardRef, memo, useCallback} from 'react';
-import classNames from 'classnames';
 import Stackable from '../stackable';
 import { copyComponentRef } from '../../utils/react';
 import { SPoppable } from './styles/SPoppable';
@@ -60,10 +59,12 @@ const Poppable = forwardRef(({
     const rects = getBoundingRects(target, reference, container, placement);
     usePosition({target, container, reference, placements, default: props.default ?? 0, onPlacement, strategy: overflow});
 
+    const placementName =  placement.name !== undefined ? {[`placement-${placement.name}`]: placement.name} + " " : "";
+    
     return (
         <Stackable
             {...props} 
-            className={classNames('poppable', {[`placement-${placement.name}`]: placement.name}, className, getClassNames(rects.tbr, rects.rbr))} 
+            className={'poppable ' +  placementName + className + " " + getClassNames(rects.tbr, rects.rbr)} 
             style={{...style, ...placement}}
             ref={copyComponentRef(ref, target)}
             parent={reference} 

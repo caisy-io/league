@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import cls from 'classnames';
 import {DOMRect} from '../../utils/mocks';
 import {getRelativePosition} from '../../utils/rect';
 import {getBoundingRects as _getBoundingRects} from '../..';
@@ -65,10 +64,5 @@ export const getCardinalPosition = (tbr, rbr) => getRelativePosition(tbr, rbr).r
  * @returns {string}
  */
 export const getClassNames = (tbr, rbr) => (
-    cls(getCardinalPosition(tbr, rbr), {
-        vbefore: tbr.bottom < rbr.top,
-        vafter: rbr.bottom < tbr.top,
-        hbefore: tbr.right < rbr.left,
-        hafter: rbr.right < tbr.left,
-    })
+    `${getCardinalPosition(tbr, rbr)}${tbr.bottom < rbr.top ? " vbefore" : ""}${rbr.bottom < tbr.top ? "vafter" : "" }${tbr.right < rbr.left ? "hbefore" : ""}${rbr.right < tbr.left ? "hafter" : ""}`
 );
