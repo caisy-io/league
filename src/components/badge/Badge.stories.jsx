@@ -2,6 +2,7 @@ import React from "react";
 import { Badge } from "../badge";
 import { Button } from "../button";
 import { IconStarOutlined } from "../../icons/IconStarOutlined"
+import { EBadgePosition } from "./EBadgePosition";
 
 export default {
   title: `Components/Badge`,
@@ -33,7 +34,7 @@ export default {
       control: { type: "select" },
       table: {
         defaultValue: {
-          summary: "micro",
+          summary: "small",
         },
       },
     },
@@ -41,24 +42,48 @@ export default {
 };
 
 function BadgeDemo({ content, ...args }) {
-  return <Badge size={args.size} value={args.value} type={args.type}><Button><IconStarOutlined />Button</Button></Badge>
+  return <Badge size={args.size} value={args.value} type={args.type} position={EBadgePosition.TopRight}><Button><IconStarOutlined />Button</Button></Badge>
 }
 
 const Template = (args) => < BadgeDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  state: "regular",
+  type: "regular",
   value: "1",
+  size: "small"
 };
 
-// With entity
+// Position left
+export const PositionLeft = ({ content, ...args }) => (
+  <Badge size={args.size} value={args.value} type={args.type} position={EBadgePosition.TopLeft}><Button><IconStarOutlined />Button</Button></Badge>
+);
+
+PositionLeft.args = {
+  type: "regular",
+  value: "1",
+  size: "small"
+};
+
+// Position center
 export const PositionCenter = ({ content, ...args }) => (
-  <Button><IconStarOutlined />Button<Badge size={args.size} value={args.value} type={args.type} position="center"></Badge></Button>
+  <Button><IconStarOutlined />Button<Badge size={args.size} value={args.value} type={args.type} position={EBadgePosition.Center}></Badge></Button>
 );
 
 PositionCenter.args = {
-  state: "default",
-  content: "Default",
+  type: "regular",
+  value: "1",
+  size: "small"
+};
+
+// Color
+export const Color = ({ content, ...args }) => (
+  <Button><IconStarOutlined />Button<Badge size={args.size} value={args.value} type={args.type} position={EBadgePosition.Center}></Badge></Button>
+);
+
+Color.args = {
+  type: "color",
+  value: "#F43B44",
+  size: "small"
 };
 
