@@ -3,6 +3,7 @@ import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../consta
 
 const CSSMedium = css`
   width: 272px;
+  height: 52px;
 `;
 
 const Bronze = css`
@@ -15,11 +16,6 @@ const Bronze = css`
   padding: 0.5rem 1rem 0.5rem 0.5rem;
   border-radius: 0.375rem;
   ${(props) => props.itemSize == "medium" || props.itemSize == "small" ? CSSMedium : ''};
-  >svg{
-    color: #B4C9D7;
-    height: 16px;
-    width: 16px;
-  }
   &: hover {
     background-color: var(--hover-ui-01);
   }

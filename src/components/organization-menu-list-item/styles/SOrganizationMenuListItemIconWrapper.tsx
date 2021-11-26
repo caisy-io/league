@@ -2,10 +2,6 @@ import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { IOrganizationMenuListItemProps } from '../OrganizationMenuListItem'
 
-const CSSVisible = css`
-  opacity: 1;
-`;
-
 export const CSSDisplayBlock = css`
   display: block;
 `;
@@ -17,10 +13,10 @@ export const CSSDisplayNone = css`
 const Bronze = css<IOrganizationMenuListItemProps>`
   display: flex;
   align-items: center; 
-  gap: 0.5rem;
   svg{
-    color: #B4C9D7;
+    color: #567A98;
     height: 6px;
+    margin-left: 0.5rem;
   }
 `;
 

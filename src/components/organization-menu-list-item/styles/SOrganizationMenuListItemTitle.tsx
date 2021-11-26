@@ -1,17 +1,13 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveHeading01 } from '../../../constants/styles/fonts';
+import { CSSProgressiveBody02Semibold, CSSProgressiveHeading01 } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
-
-const CSSError = css`
-  color: var(--disabled-text);
-`;
 
 const Bronze = css`
     ${CSSProgressiveHeading01};
     color: var(--text-01);
-    ${(props) => props.error ? CSSError : ''};
     overflow: hidden;
     text-overflow: ellipsis;
+    ${(props) => props.itemSize !== "large" ? CSSProgressiveBody02Semibold : ''};
 `;
 
 const Silver = css``;

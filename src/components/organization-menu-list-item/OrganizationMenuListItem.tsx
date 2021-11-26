@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { IconChevron } from '../../icons/IconChevron';
-import { Badge, EBadgePosition } from '../badge';
 import { PreviewImage } from '../preview-image/PreviewImage';
 import { SOrganizationMenuListItem } from './styles/SOrganizationMenuListItem';
 import { SOrganizationMenuListItemIconWrapper } from './styles/SOrganizationMenuListItemIconWrapper';
@@ -17,15 +16,13 @@ export interface IOrganizationMenuListItemProps {
   label?: string | undefined,
   imageUrl?: string | undefined,
   itemSize?: IListItemSize,
-  badgeValue: string,
 }
 
 const SFlexListItem = styled(SFlex)`
   width: 90%;
   gap: 0.75rem;
+  height: 100%;
 `;
-
-
 
 export const OrganizationMenuListItem: React.FC<IOrganizationMenuListItemProps> = ({ ...props }) => {
   return (
@@ -44,7 +41,7 @@ export const OrganizationMenuListItem: React.FC<IOrganizationMenuListItemProps> 
         </SOrganizationMenuListItemTextWrapper>
       </SFlexListItem>
       <SOrganizationMenuListItemIconWrapper {...props}>
-        {props.itemSize !== "large" && <Badge value={props.badgeValue} position={EBadgePosition.Center} type={'regular'} size="small"></Badge>}
+        {props.children}
         <IconChevron></IconChevron>
       </SOrganizationMenuListItemIconWrapper>
     </SOrganizationMenuListItem>

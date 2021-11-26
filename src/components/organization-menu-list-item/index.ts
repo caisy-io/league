@@ -1,1 +1,1 @@
-export { AssetListItem} from "./OrganizationMenuListItem";
+export { OrganizationMenuListItem} from "./OrganizationMenuListItem";
