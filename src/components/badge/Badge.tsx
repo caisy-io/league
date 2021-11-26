@@ -38,7 +38,9 @@ export const Badge: React.FC<IBadgeProps> = ({ children, ...props }) => {
       } else if (props.size == "medium") {
         setHeight(width + 2);
       }
+      /* setHeight(width + 2) */
     }
+
   };
 
   React.useEffect(() => {
