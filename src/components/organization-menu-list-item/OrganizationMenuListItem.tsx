@@ -39,7 +39,7 @@ export const OrganizationMenuListItem: React.FC<IOrganizationMenuListItemProps> 
         </SOrganizationMenuListItemTextWrapper>
       </SFlexListItem>
       <SOrganizationMenuListItemIconWrapper {...props}>
-        <Badge value={'1'} position={EBadgePosition.TopLeft}></Badge>
+        <Badge value={'1'} position={EBadgePosition.Center} type={'regular'} size="small"></Badge>
         <IconChevron></IconChevron>
       </SOrganizationMenuListItemIconWrapper>
     </SOrganizationMenuListItem>
