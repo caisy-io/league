@@ -5,6 +5,9 @@ const Bronze = css`
   position: relative;
   width: fit-content;
   height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Silver = css``;
