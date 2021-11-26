@@ -16,6 +16,8 @@ export const CSSDisplayNone = css`
 
 const Bronze = css<IOrganizationMenuListItemProps>`
   display: flex;
+  align-items: center; 
+  gap: 0.5rem;
   svg{
     color: #B4C9D7;
     height: 6px;

@@ -2,44 +2,49 @@ import React from 'react';
 import styled from 'styled-components';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { IconChevron } from '../../icons/IconChevron';
+import { Badge, EBadgePosition } from '../badge';
 import { PreviewImage } from '../preview-image/PreviewImage';
 import { SOrganizationMenuListItem } from './styles/SOrganizationMenuListItem';
-import { SOrganizationMenuListItemLabel } from './styles/SOrganizationMenuListItemLabel';
 import { SOrganizationMenuListItemIconWrapper } from './styles/SOrganizationMenuListItemIconWrapper';
+import { SOrganizationMenuListItemLabel } from './styles/SOrganizationMenuListItemLabel';
 import { SOrganizationMenuListItemTextWrapper } from './styles/SOrganizationMenuListItemTextWrapper';
 import { SOrganizationMenuListItemTitle } from './styles/SOrganizationMenuListItemTitle';
-import { Badge, EBadgePosition } from '../badge';
 
 export type IListItemSize = "large" | "medium" | "small";
 
 export interface IOrganizationMenuListItemProps {
-  title?: String | undefined,
-  label?: String | undefined,
+  title?: string | undefined,
+  label?: string | undefined,
+  imageUrl?: string | undefined,
   itemSize?: IListItemSize,
+  badgeValue: string,
 }
 
 const SFlexListItem = styled(SFlex)`
   width: 90%;
-  ${(props) => props.recent || props.error ? "width: 80%" : ''};
+  gap: 0.75rem;
 `;
 
-const SPreviewImageListItem = styled(PreviewImage)`
-  margin: 4px;
-`;
+
 
 export const OrganizationMenuListItem: React.FC<IOrganizationMenuListItemProps> = ({ ...props }) => {
   return (
     <SOrganizationMenuListItem {...props}>
       <SFlexListItem {...props}>
-        <SPreviewImageListItem size="48" imageUrl="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=843&q=80"
-        ></SPreviewImageListItem>
+        {props.itemSize == "large" ? (
+          <PreviewImage size={48} imageUrl={props.imageUrl}
+          ></PreviewImage>
+        ) : (
+          <PreviewImage size={36} imageUrl={props.imageUrl}
+          ></PreviewImage>
+        )}
         <SOrganizationMenuListItemTextWrapper>
           <SOrganizationMenuListItemLabel {...props}>{props.label}</SOrganizationMenuListItemLabel>
           <SOrganizationMenuListItemTitle {...props}>{props.title}</SOrganizationMenuListItemTitle>
         </SOrganizationMenuListItemTextWrapper>
       </SFlexListItem>
       <SOrganizationMenuListItemIconWrapper {...props}>
-        <Badge value={'1'} position={EBadgePosition.Center} type={'regular'} size="small"></Badge>
+        {props.itemSize !== "large" && <Badge value={props.badgeValue} position={EBadgePosition.Center} type={'regular'} size="small"></Badge>}
         <IconChevron></IconChevron>
       </SOrganizationMenuListItemIconWrapper>
     </SOrganizationMenuListItem>
