@@ -1,5 +1,6 @@
 import { createGlobalStyle, css } from "styled-components";
 import { CSSReset } from "./css-reset";
+import { CSSBoxShadows } from "./design-tokens/box-shadows/CSSBoxShadows";
 import { CSSColors } from "./design-tokens/colors/CSSColors";
 import { CSSFonts } from "./design-tokens/fonts/CSSFonts";
 
@@ -62,6 +63,7 @@ export const GSBase = createGlobalStyle`
 
 ${CSSColors}
 ${CSSFonts}
+${CSSBoxShadows}
 body{ 
     background-color: var(--white-2);
     color: var(--neutral-700);

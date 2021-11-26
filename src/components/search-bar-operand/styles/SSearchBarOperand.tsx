@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/fonts';
+import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISearchBarOperandProps } from '../SearchBarOperand';
 
@@ -15,20 +15,16 @@ const CSSActivated = css`
 `;
 
 const Bronze = css<ISearchBarOperandProps>`
-  ${CSSProgressiveCaption01Semibold};
-  max-width: min-content;
   height: 28px;
-  color: var(--active-ui-01);
   flex-grow: 0;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  border-radius: 8px;
+  justify-content: flex-start;
+  border-radius: 0.5rem;
   position: relative;
   z-index: 0;
   transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
-  gap: 9px;
-  padding: 4px;
+  padding: 0.25rem;
   box-sizing: border-box;
   background-color: transparent;
   border: 1px solid var(--hover-interactional-secondary-03);
