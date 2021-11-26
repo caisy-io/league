@@ -1,16 +1,12 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveBody03Semibold } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  background-color: var(--ui-01);
-  border: 1px solid var(--ui-03);
-  border-radius: 12px;
-  padding: 0 16px;
-
-  display: flex;
-  align-items: center;
-  min-height: 56px;
-  align-self: stretch;
+  ${CSSProgressiveBody03Semibold}
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: var(--text-04);
 `;
 
 const Silver = css``;
@@ -21,7 +17,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SEmptySchemaItem = styled.div`
+export const SEmptyImageTitle = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

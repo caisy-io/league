@@ -2,15 +2,16 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  background-color: var(--ui-01);
-  border: 1px solid var(--ui-03);
-  border-radius: 12px;
-  padding: 0 16px;
-
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
-  min-height: 56px;
-  align-self: stretch;
+  justify-content: center;
+  z-index: 1;
+  margin-bottom: 24px;
 `;
 
 const Silver = css``;
@@ -21,7 +22,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SEmptySchemaItem = styled.div`
+export const SEmptyImageWrapper = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

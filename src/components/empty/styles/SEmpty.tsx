@@ -11,13 +11,14 @@ const Bronze = css<ISEmpty>`
   width: 100%;
   display: flex;
   flex-direction: ${(props) => (props.type === "schema" ? "column" : "row")};
+  gap: ${(props) => (props.type === "schema" ? "8px" : "16px")};
   align-items: flex-start;
   justify-content: flex-start;
+  overflow: hidden;
 
   background-color: ${(props) => (props.type === "schema" ? "#FDFDFD" : "var(--ui-03)")};
 
   padding: 20px;
-  gap: 20px;
 `;
 
 const Silver = css<ISEmpty>``;
