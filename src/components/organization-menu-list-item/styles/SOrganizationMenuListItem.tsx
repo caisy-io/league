@@ -1,12 +1,8 @@
 import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
-const CSSError = css`
-  background-color: white;
-`;
-
-const CSSRecent = css`
-  background-color: var(--ui-02);
+const CSSMedium = css`
+  width: 272px;
 `;
 
 const Bronze = css`
@@ -18,6 +14,7 @@ const Bronze = css`
   justify-content: space-between;
   padding: 0.5rem 1rem 0.5rem 0.5rem;
   border-radius: 0.375rem;
+  ${(props) => props.itemSize == "medium" || props.itemSize == "small" ? CSSMedium : ''};
   >svg{
     color: #B4C9D7;
     height: 16px;
@@ -25,11 +22,9 @@ const Bronze = css`
   }
   &: hover {
     background-color: var(--hover-ui-01);
-    ${(props) => props.error ? CSSError : ''};
   }
   &: active {
     background-color: #F3F7F9;
-    ${(props) => props.error ? CSSError : ''};
   }
 `;
 

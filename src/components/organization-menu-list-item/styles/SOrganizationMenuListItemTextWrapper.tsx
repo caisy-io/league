@@ -4,7 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 
 const Bronze = css`
   position: relative;
-  width: 75%;
+  width: 70%;
 `;
 
 const Silver = css``;
