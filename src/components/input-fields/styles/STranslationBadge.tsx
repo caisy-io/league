@@ -2,12 +2,21 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  color: var(--text-04);
-  font-size: 8px;
-  font-weight: bold;
-  text-transform: uppercase;
-  word-wrap: break-word;
-  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: var(--ui-03);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-01);
+
+  padding: 5px 6px;
+  border-radius: 0 7px;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
 `;
 
 const Silver = css``;
@@ -18,7 +27,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SMainMenuItemLabel = styled.h6<any>`
+export const STranslationBadge = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

@@ -13,9 +13,11 @@ const Bronze = css<ISBadgeIcon>`
   position: absolute;
   ${CSSProgressiveBadgesSmall}
   z-index: 10;
-  top: ${(props) => `-${props.height / 2}px`};
-  ${(props) => (props.position == EBadgePosition.TopLeft ? `left: -${props.height / 2}px` : "")};
-  ${(props) => (props.position == EBadgePosition.TopRight ? `right: -${props.height / 2}px` : "")};
+  top: ${(props) => `-${props.height + 2}px`};
+  ${(props) => (props.position == EBadgePosition.TopLeft ? `left: -${props.height}px` : "")};
+  ${(props) => (props.position == EBadgePosition.TopRight ? `right: -${props.height + 2}px` : "")};
+  border: 2px solid var(--ui-01);
+  box-sizing: content-box;
 
   color: var(--ui-01);
   text-align: center;
