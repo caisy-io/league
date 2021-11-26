@@ -6,7 +6,8 @@ const Bronze = css`
   font-size: 8px;
   font-weight: bold;
   text-transform: uppercase;
-  margin: auto;
+  word-wrap: break-word;
+  text-align: center;
 `;
 
 const Silver = css``;

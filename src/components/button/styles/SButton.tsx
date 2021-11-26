@@ -5,6 +5,13 @@ import { IButtonProps, IButtonSize, IButtonType } from "../Button";
 
 const getSize = (size?: IButtonSize) => {
   switch (size) {
+    case "micro":
+      return css`
+        height: 16px;
+        padding: 0 5px;
+        font-size: 11px;
+        gap: 5px;
+      `;
     case "medium":
       return css`
         height: 36px;
@@ -63,7 +70,14 @@ const CSSPrimaryStickedActivated = css`
   color: var(--active-text-01);
   &:after {
     border-radius: 0;
-    background-color: var(--active-interactional-secondary-03);
+    background-color: var(--active-interactional-tertiary-04);
+  }
+
+  &:disabled {
+    color: var(--disabled-text);
+    &:after {
+      background-color: var(--disabled-interactional-03);
+    }
   }
 `;
 
@@ -78,7 +92,7 @@ const CSSPrimarySticked = css`
   &:hover {
     color: var(--hover-text-01);
     &:after {
-      background-color: var(--hover-interactional-secondary-03);
+      background-color: var(--hover-interactional-tertiary-04);
     }
   }
   &:active {
@@ -273,7 +287,6 @@ const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
 const Bronze = css<IButtonProps>`
   ${CSSProgressivePrimaryButtons}
   color: var(--text-02);
-  ${(props) => getSize(props.size)};
   flex-grow: 0;
   display: flex;
   justify-content: center;
@@ -286,6 +299,7 @@ const Bronze = css<IButtonProps>`
   gap: 9px;
   padding: 0 12px;
   border: none;
+  ${(props) => getSize(props.size)};
 
   /* this after is there to split the background animation from the button content */
   /* after is the background */
@@ -301,8 +315,8 @@ const Bronze = css<IButtonProps>`
     border-radius: 6px;
   }
 
-  ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
+  ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
 
   &:active {
     &:after {

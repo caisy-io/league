@@ -1,6 +1,7 @@
 import React from "react";
 import { MainMenuItem } from "./MainMenuItem";
 import { IconLink } from "../..";
+import { Badge, EBadgePosition } from "..";
 
 // Default MainMenuItem Demo
 export default {
@@ -32,4 +33,19 @@ export const Default = Template.bind({});
 Default.args = {
   label: "Label",
   activated: false,
+};
+
+// With Badge
+export const WithBadge = ({ content, ...args }) => (
+  <Badge position={EBadgePosition.TopRight} value={args.badgeContent}>
+    <MainMenuItem {...args}>
+      <IconLink />
+    </MainMenuItem>
+  </Badge>
+);
+
+WithBadge.args = {
+  label: "Label",
+  activated: false,
+  badgeContent: 2,
 };
