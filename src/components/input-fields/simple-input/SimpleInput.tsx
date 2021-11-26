@@ -21,6 +21,7 @@ interface ISimpleInput extends InputHTMLAttributes<HTMLInputElement> {
 
 export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children, value, onChange, ...props }) => {
   const [active, setActive] = React.useState(false);
+  const [hover, setHover] = React.useState(false);
   const [inputLength, setInputLength] = React.useState(value?.toString().length);
 
   const inputRef = React.useRef<any>();
@@ -63,13 +64,29 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
     [setActive, props.onBlur],
   );
 
+  const handleOnMouseEnter = React.useCallback(() => {
+    setHover(true);
+  }, [setHover]);
+
+  const handleOnMouseLeave = React.useCallback(() => {
+    setHover(false);
+  }, [setHover]);
+
   return (
-    <SSimpleInputWrapper active={active} state={state} onClick={handleClick}>
+    <SSimpleInputWrapper
+      active={active}
+      state={state}
+      onClick={handleClick}
+      onMouseEnter={handleOnMouseEnter}
+      onMouseLeave={handleOnMouseLeave}
+    >
       <SSimpleInputTextWidth ref={spanRef} />
       {props.label && (
         <SSimpleInputRequiredIndicatorContainer>
           {required && <SSimpleInputRequiredIndicator />}
-          <SLabel>{props.label}</SLabel>
+          <SLabel active={active} hover={hover}>
+            {props.label}
+          </SLabel>
         </SSimpleInputRequiredIndicatorContainer>
       )}
 
