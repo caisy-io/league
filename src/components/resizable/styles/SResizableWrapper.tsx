@@ -12,10 +12,6 @@ const Bronze = css<ISResizableWrapper>`
   overflow: auto;
 `;
 
-
-// flex: 1;
-// order: ${(props) => props.left ? 3 : 1};
-
 const Silver = css``;
 
 const Gold = css``;
