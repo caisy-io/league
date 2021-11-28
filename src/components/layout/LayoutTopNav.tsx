@@ -3,9 +3,8 @@ import { SLayoutTopNav } from "./styles/SLayoutTopNav";
 
 interface ILayoutTopNav {
   height?: string;
-  className?: string;
 }
 
-export const LayoutTopNav: React.FC<ILayoutTopNav> = ({  children, ...props }) => {
+export const LayoutTopNav: React.FC<ILayoutTopNav & React.HTMLProps<HTMLDivElement>> = ({  children, ...props }) => {
   return <SLayoutTopNav {...props}>{children}</SLayoutTopNav>;
 };

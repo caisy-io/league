@@ -8,8 +8,8 @@ export interface ISLayoutMainNav {
 const Bronze = css` 
     display: flex;
     flex-direction: column;
-    width: ${(props: ISLayoutMainNav) => props.width ? (props.width + "px") : "70px"};
-    min-width: ${(props: ISLayoutMainNav) => props.width ? (props.width + "px") : "70px"};
+    width: ${(props: ISLayoutMainNav) => props.width ? (props.width + "px") : "60px"};
+    min-width: ${(props: ISLayoutMainNav) => props.width ? (props.width + "px") : "60px"};
     height: 100%;
 `;
 
