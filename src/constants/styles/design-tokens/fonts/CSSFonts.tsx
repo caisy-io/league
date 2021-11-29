@@ -10,12 +10,11 @@ export const CSSFonts = css`
     --line-heights-3: 0.875rem;
     --line-heights-4: 0.75rem;
     --line-heights-5: 1.125rem;
-    --font-weights-inter-0: Bold;
-    --font-weights-inter-1: Semi Bold;
-    --font-weights-inter-2: Medium;
-    --font-weights-inter-3: Regular;
-    --font-weights-ibm-plex-mono-4: Text;
-    --font-weights-ibm-plex-mono-5: Medium;
+    --font-weights-inter-0: 700;
+    --font-weights-inter-1: 600;
+    --font-weights-inter-2: 500;
+    --font-weights-inter-3: 400;
+    --font-weights-ibm-plex-mono-5: 500;
     --font-size-0: 0.5rem;
     --font-size-1: 0.5625rem;
     --font-size-2: 0.6875rem;
