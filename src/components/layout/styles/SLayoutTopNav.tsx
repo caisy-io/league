@@ -3,12 +3,12 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 interface ISLayoutTopNav {
   height?: string;
+  styleOverwrite?: any;
 }
 
 const Bronze = css<ISLayoutTopNav>`
-  background: lightblue;
-  height: ${props => props.height ? props.height : '10vh'};
-  line-height: ${props => props.height ? props.height : '10vh'};
+  height: ${props => props.height ? props.height : '60px'};
+  line-height: ${props => props.height ? props.height : '60px'};
 `;
 
 const Silver = css``;
@@ -19,10 +19,11 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLayoutTopNav = styled.header`
+export const SLayoutTopNav = styled.header<ISLayoutTopNav>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
