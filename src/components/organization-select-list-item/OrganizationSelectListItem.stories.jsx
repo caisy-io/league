@@ -37,6 +37,7 @@ export default {
 
 function OrganizationSelectListItemDemo({ content, ...args }) {
   return <OrganizationSelectListItem title={args.title} label={args.label} itemSize={args.size} imageUrl={args.imageUrl}>
+  <Badge value="Label" type="regular" size="small" position={EBadgePosition.Center}></Badge>
   </OrganizationSelectListItem>
 }
 

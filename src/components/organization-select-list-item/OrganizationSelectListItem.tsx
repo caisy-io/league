@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
-import { IconChevron } from '../../icons/IconChevron';
 import { PreviewImage } from '../preview-image/PreviewImage';
 import { SOrganizationSelectListItem } from './styles/SOrganizationSelectListItem';
-import { SOrganizationSelectListItemIconWrapper } from './styles/SOrganizationSelectListItemIconWrapper';
 import { SOrganizationSelectListItemLabel } from './styles/SOrganizationSelectListItemLabel';
 import { SOrganizationSelectListItemTextWrapper } from './styles/SOrganizationSelectListItemTextWrapper';
 import { SOrganizationSelectListItemTitle } from './styles/SOrganizationSelectListItemTitle';
@@ -36,11 +34,11 @@ export const OrganizationSelectListItem: React.FC<IOrganizationSelectListItemPro
           ></PreviewImage>
         )}
         <SOrganizationSelectListItemTextWrapper>
-          <SOrganizationSelectListItemLabel {...props}>{props.label}</SOrganizationSelectListItemLabel>
           <SOrganizationSelectListItemTitle {...props}>{props.title}</SOrganizationSelectListItemTitle>
+          <SOrganizationSelectListItemLabel {...props}>{props.label}</SOrganizationSelectListItemLabel>
         </SOrganizationSelectListItemTextWrapper>
       </SFlexListItem>
-      
+      {props.children}
     </SOrganizationSelectListItem>
   )
 }
