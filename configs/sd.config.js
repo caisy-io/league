@@ -43,7 +43,7 @@ module.exports = {
         {
           destination: "CSSTypographies.tsx",
           format: "styledComponents",
-          filter: (token) => token.path[0] === "Progressive",
+          filter: (token) => token.type === "typography",
         },
       ],
     },

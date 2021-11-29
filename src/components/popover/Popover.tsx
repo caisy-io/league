@@ -1,8 +1,9 @@
 import React from "react";
 import { SPopover } from "./styles/SPopover";
-import { Poppable } from "webrix/components";
-import { ClickOutside } from "webrix/hooks";
-import { Stackable } from "../stackable/Stackable";
+import Stackable from "../stackable";
+import { vbefore, vcenter, vafter, hbefore, hcenter, hafter } from "../poppable/Poppable.placements";
+import { Triangle } from "../poppable";
+import { ClickOutside } from "../../utils";
 
 enum EPlacements {
   Top = "top",
@@ -27,7 +28,6 @@ const getPlacement = (placement: TPlacement | undefined): number => {
       return 1;
   }
 };
-
 interface IPopover {
   placement: TPlacement;
   reference: React.MutableRefObject<null>;
@@ -48,9 +48,11 @@ export const Popover: React.FC<IPopover> = ({
   container,
   zIndex,
 }) => {
+  if(!reference || !reference.current) {
+    return null;
+  }
   const placements = React.useCallback((rbr, tbr) => {
     const GAP = disableTriangle ? 8 : 18;
-    const { vbefore, vcenter, vafter, hbefore, hcenter, hafter } = Poppable.Placements;
     return [
       { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top
       { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom
@@ -71,7 +73,7 @@ export const Popover: React.FC<IPopover> = ({
             container={container}
           >
             <>
-              {!disableTriangle ? <SPopover.Triangle size={10} /> : null}
+              {!disableTriangle ? <Triangle size={10} /> : null}
               {children}
             </>
           </SPopover>

@@ -1,5 +1,5 @@
 import React from "react";
-import { SLayoutHeader } from "./styles/SLayoutHeader";
+import { SLayoutLegacyHeader } from "./styles/SLayoutLegacyHeader";
 
 interface ILayoutHeader {
   width?: string;
@@ -7,5 +7,5 @@ interface ILayoutHeader {
 }
 
 export const LayoutHeader: React.FC<ILayoutHeader> = ({ ...props }) => {
-  return <SLayoutHeader className={props.className}>{props.children}</SLayoutHeader>;
+  return <SLayoutLegacyHeader className={props.className}>{props.children}</SLayoutLegacyHeader>;
 };
