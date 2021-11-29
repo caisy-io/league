@@ -5,9 +5,24 @@ const CSSDisplayNone = css`
   display: none !important;
 `;
 
+const CSSMicro = css`
+  font-size: 0.5rem;
+`;
+
+const CSSSmall = css`
+  font-size: 0.563rem;
+`;
+
+const CSSMedium = css`
+  font-size: 0.688rem;
+`;
+
 const Bronze = css`
   display: block;
   ${(props) => (props.type == "color" ? CSSDisplayNone : " ")};
+  ${(props) => (props.size == "micro" ? CSSMicro : " ")};
+  ${(props) => (props.size == "small" ? CSSSmall : " ")};
+  ${(props) => (props.size == "medium" ? CSSMedium : " ")};
 `;
 
 const Silver = css``;
