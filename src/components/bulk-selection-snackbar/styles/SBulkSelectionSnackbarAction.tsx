@@ -6,6 +6,7 @@ const Bronze = css`
   display: flex;
   align-items: center;
   gap: 4px;
+  padding: 4px 6px;
 
   ${CSSProgressiveCaption01Semibold};
   color: var(--text-04);

@@ -2,9 +2,10 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  margin-left: auto;
-  display: flex;
-  align-items: center;
+  height: 16px;
+  width: 1px;
+  margin: 0 8px;
+  background-color: var(--ui-03);
 `;
 
 const Silver = css``;
@@ -15,7 +16,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SBulkSelectionSnackbarChildren = styled.div`
+export const SBulkSelectionSnackbarActionsDivider = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

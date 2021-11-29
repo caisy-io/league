@@ -1,7 +1,8 @@
 import React from "react";
 import { BulkSelectionSnackbar } from "./BulkSelectionSnackbar";
 import { BulkSelectionSnackbarAction } from "./BulkSelectionSnackbarAction";
-import { IconPublish, IconTrashDelete } from "../..";
+import { IconPublish, IconTrashDelete, IconUnpublish } from "../..";
+import { SBulkSelectionSnackbarActionsDivider } from "./styles/SBulkSelectionSnackbarActionsDivider";
 
 function BulkSelectionSnackbarDemo({ ...args }) {
   const handlePublic = () => {
@@ -17,6 +18,11 @@ function BulkSelectionSnackbarDemo({ ...args }) {
         <IconPublish />
         Publish
       </BulkSelectionSnackbarAction>
+      <BulkSelectionSnackbarAction onClick={handleDelete}>
+        <IconUnpublish />
+        Unpublish
+      </BulkSelectionSnackbarAction>
+      <SBulkSelectionSnackbarActionsDivider />
       <BulkSelectionSnackbarAction onClick={handleDelete}>
         <IconTrashDelete />
         Delete
