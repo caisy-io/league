@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import CloseIcon from "./CloseIcon";
 import { SBulkSelectionSnackbar } from "./styles/SBulkSelectionSnackbar";
 import { SBulkSelectionSnackbarChildren } from "./styles/SBulkSelectionSnackbarChildren";
@@ -8,21 +8,21 @@ import { SBulkSelectionSnackbarSelectedBadge } from "./styles/SBulkSelectionSnac
 import { SBulkSelectionSnackbarWrapper } from "./styles/SBulkSelectionSnackbarWrapper";
 
 interface IBulkSelectionSnackbar {
-  selectedItems: any[];
+  selectedItems: number;
   onClose: () => void;
 }
 
-export const BulkSelectionSnackbar: React.FC<IBulkSelectionSnackbar> = ({ ...props }) => {
+export const BulkSelectionSnackbar: FC<IBulkSelectionSnackbar> = ({ selectedItems, onClose, children }) => {
   return (
     <SBulkSelectionSnackbarWrapper>
       <SBulkSelectionSnackbar>
         <SBulkSelectionSnackbarSelected>
-          <SBulkSelectionSnackbarSelectedBadge>{props.selectedItems.length}</SBulkSelectionSnackbarSelectedBadge>
+          <SBulkSelectionSnackbarSelectedBadge>{selectedItems}</SBulkSelectionSnackbarSelectedBadge>
           Items selected
         </SBulkSelectionSnackbarSelected>
-        <SBulkSelectionSnackbarChildren>{props.children}</SBulkSelectionSnackbarChildren>
+        <SBulkSelectionSnackbarChildren>{children}</SBulkSelectionSnackbarChildren>
       </SBulkSelectionSnackbar>
-      <SBulkSelectionSnackbarCloseButton onClick={props.onClose}>
+      <SBulkSelectionSnackbarCloseButton onClick={onClose}>
         <CloseIcon />
       </SBulkSelectionSnackbarCloseButton>
     </SBulkSelectionSnackbarWrapper>

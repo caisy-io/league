@@ -5,6 +5,6 @@ interface IBulkSelectionSnackbarAction {
   onClick: () => void;
 }
 
-export const BulkSelectionSnackbarAction: React.FC<IBulkSelectionSnackbarAction> = ({ ...props }) => {
-  return <SBulkSelectionSnackbarAction onClick={props.onClick}>{props.children}</SBulkSelectionSnackbarAction>;
+export const BulkSelectionSnackbarAction: React.FC<IBulkSelectionSnackbarAction> = ({ onClick, children }) => {
+  return <SBulkSelectionSnackbarAction onClick={onClick}>{children}</SBulkSelectionSnackbarAction>;
 };
