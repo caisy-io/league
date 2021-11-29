@@ -40,4 +40,5 @@ const Template = (args) => <BulkSelectionSnackbarDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   selectedItems: 2,
+  errors: 3,
 };

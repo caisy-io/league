@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveCaption01Semibold } from "../../../constants/styles/fonts";
+import { CSSProgressivehighLightMicro } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
@@ -7,15 +7,13 @@ const Bronze = css`
   align-items: center;
   gap: 4px;
 
-  ${CSSProgressiveCaption01Semibold};
-  color: var(--text-04);
+  ${CSSProgressivehighLightMicro};
+  color: var(--text-02);
+  background-color: var(--ui-supportive-01);
+  text-transform: uppercase;
 
-  cursor: pointer;
-
-  svg {
-    height: 16px;
-    width: 16px;
-  }
+  border-radius: 4px;
+  padding: 4px;
 `;
 
 const Silver = css``;
@@ -26,7 +24,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SBulkSelectionSnackbarAction = styled.div`
+export const SBulkSelectionSnackbarErrors = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

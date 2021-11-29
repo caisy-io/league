@@ -10,6 +10,8 @@ const Bronze = css`
   align-items: center;
 
   flex: 1;
+
+  gap: 12px;
 `;
 
 const Silver = css``;
