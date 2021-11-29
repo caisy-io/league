@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { SEmpty } from "./styles/SEmpty";
 import { SEmptyGridItem } from "./styles/SEmptyGridItem";
 import { SEmptyGradient } from "./styles/SEmptyGradient";
@@ -72,20 +72,20 @@ interface IEmpty {
   description: string;
 }
 
-export const Empty: React.FC<IEmpty> = ({ ...props }) => {
+export const Empty: FC<IEmpty> = ({ type, title, description }) => {
   return (
-    <SEmpty type={props.type}>
-      {props.type === "schema" ? <SchemaLayout /> : <GridLayout />}
-      {props.type === "schema" ? (
-        <EmptyImageComponent title={props.title} description={props.description}>
+    <SEmpty type={type}>
+      {type === "schema" ? <SchemaLayout /> : <GridLayout />}
+      {type === "schema" ? (
+        <EmptyImageComponent title={title} description={description}>
           <EmptySchemaImage />
         </EmptyImageComponent>
       ) : (
-        <EmptyImageComponent title={props.title} description={props.description}>
+        <EmptyImageComponent title={title} description={description}>
           <EmptyGridImage />
         </EmptyImageComponent>
       )}
-      <SEmptyGradient type={props.type} />
+      <SEmptyGradient type={type} />
     </SEmpty>
   );
 };
