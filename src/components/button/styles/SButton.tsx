@@ -7,7 +7,7 @@ const getSize = (size?: IButtonSize) => {
   switch (size) {
     case "micro":
       return css`
-        height: 16px;
+        height: 18px;
         padding: 0 5px;
         font-size: 11px;
         gap: 5px;
