@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SelectSearchOperatorPopup } from "./SelectSearchOperatorPopup";
 
 export default {
@@ -15,7 +15,12 @@ export default {
 
 // Field card
 function SelectSearchOperatorPopupDemo({ ...args }) {
-  const [selected, setSelected] = React.useState(args.selected);
+  const [selected, setSelected] = useState(args.selected);
+
+  useEffect(() => {
+    setSelected(args.selected);
+  }, [args.selected]);
+
   return <SelectSearchOperatorPopup onSelect={(op) => setSelected(op)} {...args} selected={selected} />;
 }
 
@@ -24,4 +29,5 @@ export const Default = ({ ...args }) => <SelectSearchOperatorPopupDemo {...args}
 
 Default.args = {
   operators: ["And", "Or", "Equals"],
+  selected: "",
 };
