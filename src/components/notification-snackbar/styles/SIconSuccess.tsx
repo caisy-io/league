@@ -12,7 +12,7 @@ const CSSDisplayNone = css`
 const Bronze = css`
   display: none;
   ${(props) => props.success ? CSSDIsplayBlock : ''};
-  ${(props) => props.error ? CSSDisplayNone : ''};
+  ${(props) => props.error == "true" ? CSSDisplayNone : ''};
 `;
 
 const Silver = css``;

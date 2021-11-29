@@ -1,6 +1,5 @@
-import React from 'react';
-import { message } from '..';
-import { IconCheckmark, IconError, IconStarOutlined, IconWarning } from '../..';
+import React, { ReactNode } from 'react';
+import { IconCheckmark, IconWarning } from '../..';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { SIcon } from './styles/SIcon';
 import { SIconError } from './styles/SIconError';
@@ -11,29 +10,29 @@ import { SNotificationSnackbarLabel } from './styles/SNotificationSnackbarLabel'
 
 export interface INotificationSnackbarProps {
   exit: boolean;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   action?: React.ReactNode;
   content: String;
   success?: boolean;
   error?: boolean;
 }
 
-export const NotificationSnackbar: React.FC<INotificationSnackbarProps> = ({ ...props }) => {
+export const NotificationSnackbar: React.FC<INotificationSnackbarProps> = ({exit, icon, action, content, success, error}) => {
   return (
-    <SNotificationSnackbar {...props}>
+    <SNotificationSnackbar exit = {exit} error = {error}>
       <SFlex>
-        <SIcon {...props}>
-          {props.icon}
+        <SIcon icon={icon} error={error} success={success}>
+          {icon}
         </SIcon>
-        <SIconSuccess {...props}>
+        <SIconSuccess icon={icon} error={error} success={success}>
           <IconCheckmark></IconCheckmark>
         </SIconSuccess>
-        <SIconError {...props}>
+        <SIconError icon={icon} error={error} success={success}>
           <IconWarning></IconWarning>
         </SIconError>
-        <SNotificationSnackbarLabel>{props.content}</SNotificationSnackbarLabel>
+        <SNotificationSnackbarLabel>{content}</SNotificationSnackbarLabel>
       </SFlex>
-      <SNotificationSnackbarAction>{props.action}</SNotificationSnackbarAction>
+      <SNotificationSnackbarAction>{action}</SNotificationSnackbarAction>
     </SNotificationSnackbar>
   )
 }

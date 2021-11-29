@@ -19,7 +19,7 @@ export interface IMessage {
   id: number;
   duration: number;
   icon?: React.ReactNode;
-  action?: React.ReactNode;
+  actionClick?: () => void;
 }
 
 const MessageWrapper: React.FC<IMessage> = () => {
@@ -43,7 +43,7 @@ const Message: React.FC<IMessage> = (msgConfig: IMessage) => {
 
   return msgContainer
     ? ReactDOM.createPortal(
-      <NotificationSnackbar exit={exit} content={msgConfig.content} success={msgConfig.type == "success"} error={msgConfig.type == "error"} icon={msgConfig.icon} action={msgConfig.action}></NotificationSnackbar>,
+      <NotificationSnackbar exit={exit} content={msgConfig.content} success={msgConfig.type == "success"} error={msgConfig.type == "error"} icon={msgConfig.icon} action={msgConfig.actionClick}></NotificationSnackbar>,
       msgContainer,
     )
     : null;
@@ -83,7 +83,6 @@ const renderMessage = (children, config, type) => {
     ReactDOM.render(<MessageWrapper {...msgConfig} />, msgWrapper);
   }
 
-  // REPLACE ME
   const msgContainer = document.createElement("div");
   const msgContainerId = `caisy-message-container-${msgConfig.id}`;
   msgContainer.id = msgContainerId;
