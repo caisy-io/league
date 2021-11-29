@@ -16,7 +16,7 @@ export interface IBadgeProps {
 }
 
 export const Badge: React.FC<IBadgeProps> = ({ children, ...props }) => {
-  const badgeRef = React.useRef<HTMLDivElement>(null);
+  /* const badgeRef = React.useRef<HTMLDivElement>(null);
   const [height, setHeight] = React.useState(0);
 
   const resizeInput = () => {
@@ -39,19 +39,19 @@ export const Badge: React.FC<IBadgeProps> = ({ children, ...props }) => {
         setHeight(width + 2);
       }
       /* setHeight(width + 2) */
-    }
+ /*    }
 
-  };
+  }; */
 
-  React.useEffect(() => {
+  /* React.useEffect(() => {
     resizeInput();
-  }, [props.value, props.size, props.type]);
+  }, [props.value, props.size, props.type]); */
 
   return (
     <SBadge>
-      <SBadgeIcon height={height} {...props}>
+      <SBadgeIcon /* height={height} */ {...props}>
         <div style={{ width: "fit-content", visibility: "hidden", position: "absolute" }} />
-        <SBadgeIconContent ref={badgeRef} {...props}>{props.type !== "color" && props.value}</SBadgeIconContent>
+        <SBadgeIconContent /* ref={badgeRef} */ {...props}>{props.type !== "color" && props.value}</SBadgeIconContent>
       </SBadgeIcon>
       {children}
     </SBadge>
