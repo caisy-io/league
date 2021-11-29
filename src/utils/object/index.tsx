@@ -1,0 +1,1 @@
+export { isEqual, get, set, omit } from './object';

@@ -2,11 +2,13 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  background: #f3f5f8;
-  position: relative;
+  width: 100%;
+  height: 100%;
+  
   display: flex;
-  flex-direction: column;
-  flex: auto;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 `;
 
 const Silver = css``;
