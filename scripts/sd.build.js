@@ -53,41 +53,6 @@ StyleDictionary.registerFormat({
   },
 });
 
-// StyleDictionary.registerFormat({
-//   name: "styledComponentsFlat",
-//   formatter: function ({ dictionary, ...rest }) {
-//     let output = 'import { css } from "styled-components" \n\n';
-//     output = output + "export const " + `${rest?.platform?.name || "CSSVars"}` + " = css`\n:root {\n";
-//     const set = new Set();
-
-//     const addToSet = (obj) => {
-//       if (typeof obj?.name === "string" && obj.name?.includes("$") && obj?.value) {
-//         set.add({ name: obj?.name.replace(/\$/, "--"), value: obj.value });
-//       }
-//     };
-
-//     for (layer1 in dictionary.properties) {
-//       addToSet(dictionary.properties[layer1]);
-//       for (layer2 in dictionary.properties[layer1]) {
-//         addToSet(dictionary.properties[layer1][layer2]);
-//         for (layer3 in dictionary.properties[layer1][layer2]) {
-//           addToSet(dictionary.properties[layer1][layer2][layer3]);
-//           for (layer4 in dictionary.properties[layer1][layer2][layer3]) {
-//             addToSet(dictionary.properties[layer1][layer2][layer3][layer4]);
-//           }
-//         }
-//       }
-//     }
-
-//     set.forEach((item) => {
-//       output = output + `${item.name}: ${item.value};\n`;
-//     });
-
-//     output = output + "}`;";
-//     return output;
-//   },
-// });
-
 StyleDictionary.registerFormat({
   name: "styledBoxShadows",
   formatter: function ({ dictionary }) {
