@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { createPortal } from "react-dom";
-import { Stackable } from "../stackable/Stackable";
+import Stackable from "../stackable";
 import { SModal } from "./styles/SModal";
 import { SModalBackground } from "./styles/SModalBackground";
 
