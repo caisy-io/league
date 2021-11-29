@@ -1,5 +1,5 @@
 import React from "react";
-import { ClickOutside, useDimensions } from "webrix/hooks";
+import { ClickOutside, useDimensions } from "../../utils";
 import { Popover } from "../popover/Popover";
 import { SSelect } from "./styles/SSelect";
 import { SSelectDropdown } from "./styles/SSelectDropdown";
