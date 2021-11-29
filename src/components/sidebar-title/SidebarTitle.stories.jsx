@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { SidebarTitle } from './SidebarTitle';
 import { IconStarOutlined } from '../../icons/IconStarOutlined'
 import { Toggle } from '../toggle';
@@ -47,8 +47,9 @@ LeftIcon.args = {
 // With left icon and toggle
 export const IconAndToggle = ({ content, ...args }) => (
   <div style={{ width: "293px" }}>
-    <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>} toggleComponent={<Toggle small></Toggle>}>
+    <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>} toggle="true">
       {content}
+
     </SidebarTitle>
   </div>
 );

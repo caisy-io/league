@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 import { CSSProgressiveHighLight } from '../../../constants/styles/fonts';
-import { Toggle } from '../..';
+import { Toggle } from '../../toggle';
 
 const Bronze = css`
   ${CSSProgressiveHighLight};
@@ -12,9 +12,6 @@ const Bronze = css`
   justify-content: space-between;
   width: 100%;
   margin-bottom: 0.75rem;
-  ${Toggle}{
-    width: 20px;
-  }
 `;
 
 const Silver = css``;
