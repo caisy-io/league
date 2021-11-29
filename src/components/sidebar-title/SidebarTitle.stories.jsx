@@ -43,13 +43,11 @@ LeftIcon.args = {
   content: "Default",
 };
 
-
 // With left icon and toggle
 export const IconAndToggle = ({ content, ...args }) => (
   <div style={{ width: "293px" }}>
     <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>} toggle="true">
       {content}
-
     </SidebarTitle>
   </div>
 );
