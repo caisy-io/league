@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import CloseIcon from "./CloseIcon";
+import { IconClose } from "../..";
 import { SBulkSelectionSnackbar } from "./styles/SBulkSelectionSnackbar";
 import { SBulkSelectionSnackbarChildren } from "./styles/SBulkSelectionSnackbarChildren";
 import { SBulkSelectionSnackbarCloseButton } from "./styles/SBulkSelectionSnackbarCloseButton";
@@ -23,7 +23,7 @@ export const BulkSelectionSnackbar: FC<IBulkSelectionSnackbar> = ({ selectedItem
         <SBulkSelectionSnackbarChildren>{children}</SBulkSelectionSnackbarChildren>
       </SBulkSelectionSnackbar>
       <SBulkSelectionSnackbarCloseButton onClick={onClose}>
-        <CloseIcon />
+        <IconClose />
       </SBulkSelectionSnackbarCloseButton>
     </SBulkSelectionSnackbarWrapper>
   );

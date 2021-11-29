@@ -39,5 +39,5 @@ const Template = (args) => <BulkSelectionSnackbarDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  selectedItems: ["This item is selected", "This item is also selected"],
+  selectedItems: 2,
 };
