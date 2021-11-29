@@ -41,6 +41,7 @@ const CSSColor = css<{ value: string }>`
 
 const CSSCenter = css`
   border: 1px solid transparent;
+  position: relative;
 `;
 
 const CSSTopRight = css`
