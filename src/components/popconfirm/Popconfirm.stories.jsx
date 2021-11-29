@@ -1,5 +1,6 @@
 import React from "react";
-import { Popconfirm, Button, IconError } from "../..";
+import { Button, IconError } from "../..";
+import { Popconfirm } from "./Popconfirm";
 
 function PopconfirmDemo() {
     const onConfirm = () => {
