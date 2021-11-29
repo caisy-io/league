@@ -3,6 +3,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 interface ISLayoutTopNav {
   height?: string;
+  styleOverwrite?: any;
 }
 
 const Bronze = css<ISLayoutTopNav>`
@@ -24,4 +25,5 @@ export const SLayoutTopNav = styled.header<ISLayoutTopNav>`
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;

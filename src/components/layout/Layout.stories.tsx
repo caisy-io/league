@@ -9,6 +9,26 @@ import { SLayoutContentWrapper } from "./styles/SLayoutContentWrapper";
 import { SLayoutSiderWrapper } from "./styles/SLayoutSiderWrapper";
 import { SidebarTag } from "../sidebarTag";
 import { useWindowDimensions } from "../../utils";
+import {css} from "styled-components";
+
+const CSSLayoutOverwrite = css`
+    color: #000000;
+    line-height: 3;
+    height: 100vh;
+`;
+
+const CSSLayoutMainNavOverwrite = css`
+    background-color:rgba(16, 83, 255, 0.5);
+`;
+const CSSLayoutTopNavOverwrite = css`
+    background-color:rgba(16, 83, 255, 0.4);
+`;
+const CSSLayoutSiderOverwrite = css`
+    background-color:rgba(16, 83, 255, 0.25);
+`;
+const CSSLayoutContentOverwrite = css`
+    background-color:rgba(16, 83, 255, 0.1);
+`;
 
 function LayoutDemo(args) {
     const [leftSiderOpened, setLeftSiderOpened] = useState(true);
@@ -21,36 +41,32 @@ function LayoutDemo(args) {
 
     return (
         <Layout 
-            style={{
-                color: "#000000",
-                lineHeight: 3,
-                height: "100vh",
-            }} 
+            styleOverwrite={CSSLayoutOverwrite}
             {...args}
         >
-            <LayoutMainNav style={{backgroundColor: "rgba(16, 83, 255, 0.5)"}} width={mainNavWidth}>
+            <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={mainNavWidth}>
                 <p>nav</p>
             </LayoutMainNav>
             <SLayoutWrapper>
-                <LayoutTopNav style={{backgroundColor: "rgba(16, 83, 255, 0.4)"}}>
+                <LayoutTopNav styleOverwrite={CSSLayoutTopNavOverwrite}>
                     Nav bar
                 </LayoutTopNav>
                 <SLayoutContentWrapper>
                     <SLayoutSiderWrapper left>
                         {leftSiderOpened && 
-                            <LayoutSider left style={{background: "rgba(16, 83, 255, 0.25)"}} onSizeChanged={setLeftSiderSize}>
+                            <LayoutSider left styleOverwrite={CSSLayoutSiderOverwrite} onSizeChanged={setLeftSiderSize}>
                                 <p>Sider left, resizable side on right side</p>
                             </LayoutSider>
                         }
                         <SidebarTag left onOpenChanged={setLeftSiderOpened}/>
                     </SLayoutSiderWrapper>
-                    <LayoutContent style={{background: "rgba(16, 83, 255, 0.1)"}} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
-                        <p style={{wordBreak: 'break-word'}}>{args.content}</p>
+                    <LayoutContent styleOverwrite={CSSLayoutContentOverwrite} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
+                        <p >{args.content}</p>
                     </LayoutContent>
                     <SLayoutSiderWrapper left={false}>
                         <SidebarTag left={false} onOpenChanged={setRightSiderOpened}/>
                         {rightSiderOpened && 
-                            <LayoutSider style={{background: "rgba(16, 83, 255, 0.25)"}} left={false} onSizeChanged={setRightSiderSize}>
+                            <LayoutSider styleOverwrite={CSSLayoutSiderOverwrite} left={false} onSizeChanged={setRightSiderSize}>
                                 <p>Sider right, resizable side on left side</p>
                             </LayoutSider>
                         }
@@ -95,31 +111,27 @@ export const LeftSider = ({content, ...args}) => {
 
     return (
         <Layout 
-            style={{
-                color: "#000000",
-                lineHeight: 3,
-                height: "100vh",
-            }} 
+            styleOverwrite={CSSLayoutOverwrite}
             {...args}
         >
-            <LayoutMainNav style={{background: "rgba(16, 83, 255, 0.5)"}} width={mainNavWidth}>
+            <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={mainNavWidth}>
                 <p>nav</p>
             </LayoutMainNav>
             <SLayoutWrapper>
-                <LayoutTopNav style={{backgroundColor: "rgba(16, 83, 255, 0.4)"}}>
+                <LayoutTopNav styleOverwrite={CSSLayoutTopNavOverwrite}>
                     Nav bar
                 </LayoutTopNav>
                 <SLayoutContentWrapper>
                     <SLayoutSiderWrapper left>
                         {leftSiderOpened && 
-                            <LayoutSider style={{background: "rgba(16, 83, 255, 0.25)"}} left onSizeChanged={setLeftSiderSize}>
+                            <LayoutSider styleOverwrite={CSSLayoutSiderOverwrite} left onSizeChanged={setLeftSiderSize}>
                                 <p>Sider left, resizable side on right side</p>
                             </LayoutSider>
                         }
                         <SidebarTag left onOpenChanged={setLeftSiderOpened}/>
                     </SLayoutSiderWrapper>
-                    <LayoutContent style={{background: "rgba(16, 83, 255, 0.1)"}} width={(width - mainNavWidth - leftSiderSize.width) + "px"}>
-                        <p style={{wordBreak: 'break-word'}}>{content}</p>
+                    <LayoutContent styleOverwrite={CSSLayoutContentOverwrite} width={(width - mainNavWidth - leftSiderSize.width) + "px"}>
+                        <p>{content}</p>
                             {args.children}
                     </LayoutContent>
                 </SLayoutContentWrapper>
@@ -147,29 +159,25 @@ export const RightSider = ({content, ...args}) => {
 
     return (
         <Layout 
-            style={{
-                color: "#000000",
-                lineHeight: 3,
-                height: "100vh",
-            }} 
+            styleOverwrite={CSSLayoutOverwrite}
             {...args}
         >
-            <LayoutMainNav style={{background: "rgba(16, 83, 255, 0.5)"}} width={mainNavWidth}>
+            <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={mainNavWidth}>
                 <p>nav</p>
             </LayoutMainNav>
             <SLayoutWrapper>
-                <LayoutTopNav style={{backgroundColor: "rgba(16, 83, 255, 0.4)"}}>
+                <LayoutTopNav styleOverwrite={CSSLayoutTopNavOverwrite}>
                     Nav bar
                 </LayoutTopNav>
                 <SLayoutContentWrapper>
-                    <LayoutContent style={{background: "rgba(16, 83, 255, 0.1)"}} width={(width - mainNavWidth - rightSiderSize.width) + "px"}>
-                    <p style={{wordBreak: 'break-word'}}>{content}</p>
+                    <LayoutContent styleOverwrite={CSSLayoutContentOverwrite} width={(width - mainNavWidth - rightSiderSize.width) + "px"}>
+                        <p>{content}</p>
                         {args.children}
                     </LayoutContent>
                     <SLayoutSiderWrapper left={false}>
                         <SidebarTag left={false} onOpenChanged={setRightSiderOpened}/>
                         {rightSiderOpened && 
-                            <LayoutSider style={{background: "rgba(16, 83, 255, 0.25)"}} left={false} onSizeChanged={setRightSiderSize}>
+                            <LayoutSider styleOverwrite={CSSLayoutSiderOverwrite} left={false} onSizeChanged={setRightSiderSize}>
                                 <p>Sider right, resizable side on left side</p>
                             </LayoutSider>
                         }
