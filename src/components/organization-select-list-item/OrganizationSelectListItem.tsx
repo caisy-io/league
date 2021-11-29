@@ -14,12 +14,14 @@ export interface IOrganizationSelectListItemProps {
   label?: string | undefined,
   imageUrl?: string | undefined,
   itemSize?: IListItemSize,
+  children?
 }
 
 const SFlexListItem = styled(SFlex)`
-  width: 90%;
+  width: 100%;
   gap: 0.75rem;
   height: 100%;
+  ${(props) => props.children ? "width: 85%;" : ''};
 `;
 
 export const OrganizationSelectListItem: React.FC<IOrganizationSelectListItemProps> = ({ ...props }) => {

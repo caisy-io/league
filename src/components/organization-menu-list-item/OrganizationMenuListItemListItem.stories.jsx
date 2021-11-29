@@ -16,7 +16,7 @@ export default {
     },
     size: {
       description: "Changes the size of the list item",
-      options: ["small", "medium", "large"],
+      options: ["medium", "large"],
       control: { type: "select" },
       table: {
         defaultValue: {

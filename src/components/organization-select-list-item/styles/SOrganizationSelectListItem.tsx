@@ -2,19 +2,19 @@ import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const CSSMedium = css`
-  width: 272px;
-  height: 52px;
+  width: 256px;
+  height: 67px;
 `;
 
 const Bronze = css`
-  width: 288px;
+  width: 272px;
   background-color: #FFFF;
+  border-bottom: 1px solid var(--ui-03);
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem 0.5rem 0.5rem;
-  border-radius: 0.375rem;
   ${(props) => props.itemSize == "medium" || props.itemSize == "small" ? CSSMedium : ''};
   &: hover {
     background-color: var(--hover-ui-01);

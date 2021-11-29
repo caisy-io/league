@@ -14,6 +14,10 @@ export default {
       description: "Changes the label text of the component",
       control: { type: "text" },
     },
+    badgeText: {
+      description: "Changes the badge label text of the component",
+      control: { type: "text" },
+    },
     size: {
       description: "Changes the size of the list item",
       options: ["small", "medium", "large"],
@@ -37,8 +41,8 @@ export default {
 
 function OrganizationSelectListItemDemo({ content, ...args }) {
   return <OrganizationSelectListItem title={args.title} label={args.label} itemSize={args.size} imageUrl={args.imageUrl}>
-  <Badge value="Label" type="regular" size="small" position={EBadgePosition.Center}></Badge>
-  </OrganizationSelectListItem>
+    {args.badge && <Badge value={args.badgeText} type="regular" size="small" position={EBadgePosition.Center}></Badge>
+    }  </OrganizationSelectListItem>
 }
 
 const Template = (args) => < OrganizationSelectListItemDemo {...args} />;
@@ -47,6 +51,7 @@ export const Default = Template.bind({});
 Default.args = {
   title: "Default",
   label: "Label",
+  badgeText: "Label",
   size: "large",
   badge: true,
   imageUrl: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=843&q=80"
