@@ -11,14 +11,8 @@ interface ITab {
 export const Tab: React.FC<ITab> = ({ size, activated, icon, ...props }) => {
   const onlyIcon = !!icon && !props.children;
 
-  const [innerActivated, setInnerActivated] = useState(activated);
-
-  useEffect(() => {
-    setInnerActivated(activated);
-  }, [activated]);
-
   return (
-    <STab onClick={() => setInnerActivated(true)} activated={innerActivated} onlyIcon={onlyIcon} size={size}>
+    <STab activated={activated} onlyIcon={onlyIcon} size={size}>
       {icon && icon}
       {props.children}
     </STab>
