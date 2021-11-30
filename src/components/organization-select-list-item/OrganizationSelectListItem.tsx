@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { PreviewImage } from '../preview-image/PreviewImage';
@@ -24,23 +24,23 @@ const SFlexListItem = styled(SFlex)`
   ${(props) => props.children ? "width: 85%;" : ''};
 `;
 
-export const OrganizationSelectListItem: React.FC<IOrganizationSelectListItemProps> = ({ ...props }) => {
+export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = ({ title, label, imageUrl, itemSize, children }) => {
   return (
-    <SOrganizationSelectListItem {...props}>
-      <SFlexListItem {...props}>
-        {props.itemSize == "large" ? (
-          <PreviewImage size={48} imageUrl={props.imageUrl}
+    <SOrganizationSelectListItem itemSize={itemSize}>
+      <SFlexListItem {...children}>
+        {itemSize == "large" ? (
+          <PreviewImage size={48} imageUrl={imageUrl}
           ></PreviewImage>
         ) : (
-          <PreviewImage size={36} imageUrl={props.imageUrl}
+          <PreviewImage size={36} imageUrl={imageUrl}
           ></PreviewImage>
         )}
         <SOrganizationSelectListItemTextWrapper>
-          <SOrganizationSelectListItemTitle {...props}>{props.title}</SOrganizationSelectListItemTitle>
-          <SOrganizationSelectListItemLabel {...props}>{props.label}</SOrganizationSelectListItemLabel>
+          <SOrganizationSelectListItemTitle itemSize={itemSize}>{title}</SOrganizationSelectListItemTitle>
+          <SOrganizationSelectListItemLabel itemSize={itemSize}>{label}</SOrganizationSelectListItemLabel>
         </SOrganizationSelectListItemTextWrapper>
       </SFlexListItem>
-      {props.children}
+      {children}
     </SOrganizationSelectListItem>
   )
 }
