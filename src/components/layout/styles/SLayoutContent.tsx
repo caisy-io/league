@@ -18,12 +18,13 @@ const Diamond = css``;
 
 export const SLayoutContent = styled.div.attrs(({ width }) => ({
   style: {
-    width
-  }
+    width,
+  },
 }))`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({ styleOverwrite }: { styleOverwrite: any }) => styleOverwrite ?? ""};
 `;

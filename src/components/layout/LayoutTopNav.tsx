@@ -3,9 +3,12 @@ import { SLayoutTopNav } from "./styles/SLayoutTopNav";
 
 interface ILayoutTopNav {
   height?: string;
-  className?: string;
+  styleOverwrite?: any;
 }
 
-export const LayoutTopNav: React.FC<ILayoutTopNav> = ({  children, ...props }) => {
-  return <SLayoutTopNav {...props}>{children}</SLayoutTopNav>;
+export const LayoutTopNav: React.FC<ILayoutTopNav> = ({
+  children,
+  styleOverwrite,
+}) => {
+  return <SLayoutTopNav styleOverwrite={styleOverwrite}>{children}</SLayoutTopNav>;
 };

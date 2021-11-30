@@ -19,10 +19,15 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLayout = styled.div`
+interface ISLayout{
+  styleOverwrite?: any
+}
+
+export const SLayout = styled.div<ISLayout>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;

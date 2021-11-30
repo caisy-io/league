@@ -2,10 +2,10 @@ import React from "react";
 import { SLayoutMainNav } from "./styles/SLayoutMainNav";
 
 interface ILayoutMainNav {
-  style?: any;
   width?: number;
+  styleOverwrite?: any;
 }
 
-export const LayoutMainNav: React.FC<ILayoutMainNav> = ({ children, ...props }) => {
-  return <SLayoutMainNav {...props}>{children}</SLayoutMainNav>;
+export const LayoutMainNav: React.FC<ILayoutMainNav> = ({ children, styleOverwrite }) => {
+  return <SLayoutMainNav styleOverwrite={styleOverwrite}>{children}</SLayoutMainNav>;
 };
