@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components";
 import { CSSProgressivePrimaryButtons } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
-import { IButtonProps, IButtonSize, IButtonType } from "../Button";
+import { IButtonProps, IButtonType } from "../Button";
+import { ISizesWithDefault } from "../../..";
 
-const getSize = (size?: IButtonSize) => {
+const getSize = (size?: ISizesWithDefault) => {
   switch (size) {
     case "micro":
       return css`
