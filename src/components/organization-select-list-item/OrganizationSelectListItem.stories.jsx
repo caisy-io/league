@@ -5,6 +5,12 @@ import { OrganizationSelectListItem } from './OrganizationSelectListItem';
 export default {
   title: `Components/OrganizationSelectListItem`,
   component: OrganizationSelectListItemDemo,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=1123%3A16712",
+    },
+  },
   argTypes: {
     title: {
       description: "Changes the title text of the component",

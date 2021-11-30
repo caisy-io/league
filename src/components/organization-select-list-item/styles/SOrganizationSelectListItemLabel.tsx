@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveCaption01, CSSProgressiveCaption01Semibold, CSSProgressiveCaption02Medium } from '../../../constants/styles/fonts';
+import { CSSProgressiveCaption01 } from '../../../constants/styles/fonts';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
