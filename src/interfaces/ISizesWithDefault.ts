@@ -1,0 +1,1 @@
+export type ISizes = "default" | "micro" | "small" | "medium";
