@@ -4,29 +4,29 @@ import { CSSProgressiveCaption01 } from '../../../constants/styles/fonts';
 
 interface ISOutLineLabel {
   size?: 'medium' | 'large';
-  activated?: boolean;
+  isActivated?: boolean;
 }
 
 const Bronze = css<ISOutLineLabel>`
   ${CSSProgressiveCaption01};
-  font-size: ${(props) => props.size === 'medium' ? '12px' : '14px'};
-  font-weight: ${(props) => props.size === 'medium' ? '400' : '500'};
-  color: ${(props) => props.activated ? 'var(--text-02)' : 'var(--text-01)'};
-  line-height:  ${(props) => props.size === 'medium' ? '16px' : '20px'};
+  font-size: ${({ size }) => size === 'medium' ? '12px' : '14px'};
+  font-weight: ${({ size }) => size === 'medium' ? '400' : '500'};
+  color: ${({ isActivated }) => isActivated ? 'var(--text-02)' : 'var(--text-01)'};
+  line-height:  ${({ size }) => size === 'medium' ? '16px' : '20px'};
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: ${(props) => props.size === 'medium' ? '4px 8px' : '8px 12px'};
+  padding: ${({ size }) => size === 'medium' ? '4px 8px' : '8px 12px'};
   position: absolute;
-  background-color: ${(props) => props.activated ? 'var(--interactional-primary-01)' : 'var(--ui-01)'};
+  background-color: ${({ isActivated }) => isActivated ? 'var(--interactional-primary-01)' : 'var(--ui-01)'};
   border: 1px solid var(--ui-03);
   box-sizing: border-box;
   border-radius: 4px;
   &:hover {
-    background-color: ${(props) => !props.activated && 'var(--hover-ui-01)'};
+    background-color: ${({ isActivated }) => !isActivated && 'var(--hover-ui-01)'};
   }
   &:active {
-    background-color:  ${(props) => !props.activated && 'var(--active-interactional-tertiary-04)'};
+    background-color:  ${({ isActivated }) => !isActivated && 'var(--active-interactional-tertiary-04)'};
   }
 `;
 

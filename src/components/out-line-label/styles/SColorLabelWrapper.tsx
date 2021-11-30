@@ -2,14 +2,14 @@ import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 interface ISColorLabelWrapper {
-  size: 'medium' | 'large';
-  activated: boolean;
+  size?: 'medium' | 'large';
+  isActivated?: boolean;
 }
 
 const Bronze = css<ISColorLabelWrapper>`
-  margin-right: ${(props) => props.size === 'medium' ? 4 : 8}px;
+  margin-right: ${({ size }) => size === 'medium' ? 4 : 8}px;
   div {
-    background-color: ${(props) => props.activated && 'var(--ui-01)'};
+    background-color: ${({ isActivated }) => isActivated && 'var(--ui-01)'};
   }
 `;
 

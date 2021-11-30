@@ -2,12 +2,13 @@ import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 interface ISImageWrapper {
+  size?: 'medium' | 'large';
 }
 
 const Bronze = css<ISImageWrapper>`
-  width: ${(props) => props.size === 'medium' ? 20 : 30}px;
-  height: ${(props) => props.size === 'medium' ? 20 : 30}px;
-  margin: ${(props) => props.size === 'medium' ? '0 8px 0 -4px' : '-3px 8px -3px -6px'};
+  width: ${({ size }) => size === 'medium' ? 20 : 30}px;
+  height: ${({ size }) => size === 'medium' ? 20 : 30}px;
+  margin: ${({ size }) => size === 'medium' ? '0 8px 0 -4px' : '-3px 8px -3px -6px'};
   img {
     border-radius: 4px;
   }

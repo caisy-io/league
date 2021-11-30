@@ -3,16 +3,17 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 
 interface ISIconWrapper {
   size?: 'medium' | 'large';
+  isActivated?: boolean;
 }
 
 const Bronze = css<ISIconWrapper>`
-  color: ${(props) => props.activated ? 'var(--text-02)' : 'var(--text-04)'};
+  color: ${({ isActivated }) => isActivated ? 'var(--text-02)' : 'var(--text-04)'};
   display: flex;
   margin-right: -4px;
   margin-left: 4px;
   svg {
-    width: ${(props) => props.size === 'medium' ? 16 : 20 }px;
-    height: ${(props) => props.size === 'medium' ? 16 : 20 }px;
+    width: ${({ size }) => size === 'medium' ? 16 : 20 }px;
+    height: ${({ size }) => size === 'medium' ? 16 : 20 }px;
     path {
       stroke-width: 2.5;
     }
