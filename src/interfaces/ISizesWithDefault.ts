@@ -1,1 +1,1 @@
-export type ISizes = "default" | "micro" | "small" | "medium";
+export type ISizesWithDefault = "default" | "micro" | "small" | "medium";
