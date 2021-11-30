@@ -1,17 +1,17 @@
 import React, {FC} from "react";
+import { ISizes } from "../../interfaces/ISizes";
 import { EBadgePosition } from "./EBadgePosition";
 import { SBadge } from "./styles/SBadge";
 import { SBadgeIcon } from "./styles/SBadgeIcon";
 import { SBadgeIconContent } from "./styles/SBadgeIconContent";
 
 export type IBadgeType = "regular" | "important" | "white" | "dark" | "color";
-export type IBadgeSizeType = "micro" | "small" | "medium";
 
 export interface IBadgeProps {
   value: string;
   position: EBadgePosition;
   type: IBadgeType;
-  size?: IBadgeSizeType;
+  size?: ISizes;
 }
 
 export const Badge: FC<IBadgeProps> = ({ children, value, position, type, size }) => {
