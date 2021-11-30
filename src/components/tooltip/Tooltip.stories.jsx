@@ -1,5 +1,30 @@
 import React from "react";
-import { Tooltip, Button } from "../..";
+import { Tooltip, Button, IconCheckmark } from "../..";
+
+const checkmarkOutlinedStyles = {
+  color: "green",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: 8,
+  border: "1px solid green",
+  width: "fit-content",
+  borderRadius: "50%",
+  marginBottom: 8,
+};
+
+const checkmarkFilledStyles = {
+  color: "white",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: 8,
+  border: "1px solid green",
+  width: "fit-content",
+  borderRadius: "50%",
+  marginBottom: 8,
+  backgroundColor: "green",
+};
 
 function TooltipDemo({ ...args }) {
   const tooltipContent = (
@@ -8,10 +33,14 @@ function TooltipDemo({ ...args }) {
         width: 175,
         display: "flex",
         flexDirection: "column",
+        alignItems: "center",
         gap: 4,
       }}
     >
-      <h1 style={{ fontSize: 14, fontWeight: "bold", textAlign: "center" }}>A friendly reminder</h1>
+      <div style={args.color === "white" ? checkmarkOutlinedStyles : checkmarkFilledStyles}>
+        <IconCheckmark />
+      </div>
+      <h1 style={{ fontSize: 14, fontWeight: "bold", textAlign: "center", lineHeight: "20px" }}>A friendly reminder</h1>
       <p
         style={{
           fontSize: 12,
@@ -46,6 +75,12 @@ function TooltipDemo({ ...args }) {
 export default {
   title: "Components/Tooltip",
   component: TooltipDemo,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=301%3A4565",
+    },
+  },
   argTypes: {
     color: {
       description: "Changes the color of the Tooltip",
