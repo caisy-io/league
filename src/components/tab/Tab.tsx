@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ISizesWithDefault } from "../..";
 import { STab } from "./styles/STab";
 
-type ITabSize = "Micro" | "Small" | "Medium" | "Default";
-
 interface ITab {
-  size?: ITabSize;
+  size?: ISizesWithDefault;
   activated?: boolean;
   icon?: JSX.Element;
 }
 
-export const Tab: React.FC<ITab> = ({ ...props }) => {
-  const onlyIcon = !!props.icon && !props.children;
+export const Tab: React.FC<ITab> = ({ size, activated, icon, ...props }) => {
+  const onlyIcon = !!icon && !props.children;
+
+  const [innerActivated, setInnerActivated] = useState(activated);
+
+  useEffect(() => {
+    setInnerActivated(activated);
+  }, [activated]);
 
   return (
-    <STab onlyIcon={onlyIcon} {...props}>
-      {props.icon && props.icon}
+    <STab onClick={() => setInnerActivated(true)} activated={innerActivated} onlyIcon={onlyIcon} size={size}>
+      {icon && icon}
       {props.children}
     </STab>
   );

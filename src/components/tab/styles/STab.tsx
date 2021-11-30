@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { ISizesWithDefault } from "../../..";
 import {
   CSSProgressiveBody02Semibold,
   CSSProgressiveBody03Semibold,
@@ -6,10 +7,8 @@ import {
 } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-type ISTabSize = "Micro" | "Small" | "Medium" | "Default";
-
 interface ISTab {
-  size: ISTabSize;
+  size: ISizesWithDefault;
   activated: boolean;
   onlyIcon: boolean;
 }
@@ -52,15 +51,15 @@ const CSSDefault = css`
   ${CSSProgressiveBody02Semibold}
 `;
 
-const getSizeStyling = (size: ISTabSize) => {
+const getSizeStyling = (size: ISizesWithDefault) => {
   switch (size) {
-    case "Micro":
+    case "micro":
       return CSSMicro;
-    case "Small":
+    case "small":
       return CSSSmall;
-    case "Medium":
+    case "medium":
       return CSSMedium;
-    case "Default":
+    case "default":
     default:
       return CSSDefault;
   }
