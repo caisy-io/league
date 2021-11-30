@@ -121,3 +121,4 @@ export { IconCheckmarkOutlined } from "./IconCheckmarkOutlined";
 export { IconDocuments } from "./IconDocuments";
 export { IconAssetsImage } from "./IconAssetsImage";
 export { IconTypeface } from "./IconTypeface";
+export { IconChevronDown } from "./IconChevronDown"; 
