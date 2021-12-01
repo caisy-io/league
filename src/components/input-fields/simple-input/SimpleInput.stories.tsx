@@ -1,7 +1,7 @@
 import React from "react";
 import { SimpleInput } from "./SimpleInput";
-import GermanFlagIcon from "./GermanFlagIcon";
 import { STranslationBadge } from "../styles/STranslationBadge";
+import Flag from "../../flag/Flag";
 
 function SimpleInputDemo({ ...args }) {
   const [value, setValue] = React.useState("");
@@ -12,7 +12,7 @@ function SimpleInputDemo({ ...args }) {
   const TranslationBadge = () => {
     return (
       <STranslationBadge>
-        <GermanFlagIcon />
+        <Flag countryCode="de" size={16} />
         DE
       </STranslationBadge>
     );

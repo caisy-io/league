@@ -25,7 +25,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLayoutSider = styled.aside`
+export const SLayoutLegacySider = styled.aside`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
