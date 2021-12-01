@@ -1,15 +1,28 @@
-import React from "react";
+import React, { FC } from "react";
+import { SIconBase } from "./styles/SIconBase";
+import { IIconSize } from "../utils/types";
 
-export function IconNotificationBell() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M17.5 17.359a1.9 1.9 0 001.9-1.894 2.005 2.005 0 00-.591-1.419l-1.259-1.26V9.043A5.544 5.544 0 0012 3.5v0a5.544 5.544 0 00-5.541 5.543v3.74L5.2 14.043a2.006 2.006 0 00-.592 1.419v0a1.9 1.9 0 001.9 1.894l10.992.003zM10.521 20.5h2.957"
-      ></path>
-    </svg>
-  );
+const IconSize = {
+  16: <SIconBase width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.66663 10H10.6666" stroke="#172C55" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M5.33337 6L7.33337 7.66667L5.33337 9.33333" stroke="#172C55" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path fillRule="evenodd" clipRule="evenodd" d="M12 14H4C2.89533 14 2 13.1047 2 12V4C2 2.89533 2.89533 2 4 2H12C13.1047 2 14 2.89533 14 4V12C14 13.1047 13.1047 14 12 14Z" stroke="#172C55" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+      </SIconBase>,
+  20: <SIconBase width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10.8334 12.5H13.3334" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M6.66663 7.5L9.16663 9.58333L6.66663 11.6667" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path fillRule="evenodd" clipRule="evenodd" d="M15 17.5H5C3.61917 17.5 2.5 16.3808 2.5 15V5C2.5 3.61917 3.61917 2.5 5 2.5H15C16.3808 2.5 17.5 3.61917 17.5 5V15C17.5 16.3808 16.3808 17.5 15 17.5Z" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </SIconBase>,
+  24: <SIconBase width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 15H16" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M8 9L11 11.5L8 14" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path fillRule="evenodd" clipRule="evenodd" d="M18 21H6C4.343 21 3 19.657 3 18V6C3 4.343 4.343 3 6 3H18C19.657 3 21 4.343 21 6V18C21 19.657 19.657 21 18 21Z" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </SIconBase>,
+  32: <SIconBase width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.3333 20H21.3333" stroke="#172C55" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M10.6667 12L14.6667 15.3333L10.6667 18.6667" stroke="#172C55" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        <path fillRule="evenodd" clipRule="evenodd" d="M24 28H8C5.79067 28 4 26.2093 4 24V8C4 5.79067 5.79067 4 8 4H24C26.2093 4 28 5.79067 28 8V24C28 26.2093 26.2093 28 24 28Z" stroke="#172C55" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+      </SIconBase>
 }
+
+export const IconNotificationBell: FC<IIconSize> = ({ size= 24 }) => IconSize[size];

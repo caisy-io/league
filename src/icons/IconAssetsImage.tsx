@@ -1,29 +1,28 @@
-import React from "react";
+import React, { FC } from "react";
+import { SIconBase } from "./styles/SIconBase";
+import { IIconSize } from "../utils/types";
 
-export function IconAssetsImage() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      fill="none"
-      viewBox="0 0 20 20"
-    >
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M17.5 14.167a3.333 3.333 0 01-3.333 3.333H5.833A3.333 3.333 0 012.5 14.167V5.833A3.333 3.333 0 015.833 2.5h8.334A3.333 3.333 0 0117.5 5.833v8.334z"
-      ></path>
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M2.5 10.833l1.08-1.079a2.01 2.01 0 012.84 0l3.58 3.58M5.836 17.5l5.246-5.246a2.01 2.01 0 012.841 0l3.283 3.283"
-      ></path>
-    </svg>
-  );
+const IconSize = {
+  16: <SIconBase width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 11.3333C14 12.0406 13.719 12.7189 13.219 13.219C12.7189 13.719 12.0406 14 11.3333 14H4.66667C3.95942 14 3.28115 13.719 2.78105 13.219C2.28095 12.7189 2 12.0406 2 11.3333V4.66667C2 3.95942 2.28095 3.28115 2.78105 2.78105C3.28115 2.28095 3.95942 2 4.66667 2H11.3333C12.0406 2 12.7189 2.28095 13.219 2.78105C13.719 3.28115 14 3.95942 14 4.66667V11.3333Z" stroke="#172C55" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M2 8.66674L2.86344 7.8033C3.01269 7.65404 3.18989 7.53565 3.3849 7.45487C3.57991 7.37409 3.78892 7.33252 4 7.33252C4.21107 7.33252 4.42009 7.37409 4.6151 7.45487C4.81011 7.53565 4.9873 7.65404 5.13655 7.8033L8 10.6667" stroke="#172C55" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M4.66858 14.0001L8.86536 9.80329C9.16679 9.50186 9.57562 9.33252 10.0019 9.33252C10.4282 9.33252 10.837 9.50186 11.1385 9.80329L13.7646 12.4294" stroke="#172C55" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+      </SIconBase>,
+  20: <SIconBase width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.5 14.1667C17.5 15.0507 17.1488 15.8986 16.5237 16.5237C15.8986 17.1488 15.0507 17.5 14.1667 17.5H5.83333C4.94928 17.5 4.10143 17.1488 3.47631 16.5237C2.85119 15.8986 2.5 15.0507 2.5 14.1667V5.83333C2.5 4.94928 2.85119 4.10143 3.47631 3.47631C4.10143 2.85119 4.94928 2.5 5.83333 2.5H14.1667C15.0507 2.5 15.8986 2.85119 16.5237 3.47631C17.1488 4.10143 17.5 4.94928 17.5 5.83333V14.1667Z" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M2.5 10.8334L3.5793 9.75412C3.76587 9.56755 3.98736 9.41956 4.23112 9.31859C4.47488 9.21762 4.73615 9.16565 5 9.16565C5.26384 9.16565 5.52511 9.21762 5.76887 9.31859C6.01263 9.41956 6.23412 9.56755 6.42069 9.75412L10 13.3334" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M5.83569 17.5001L11.0817 12.2541C11.4585 11.8773 11.9695 11.6656 12.5024 11.6656C13.0352 11.6656 13.5463 11.8773 13.9231 12.2541L17.2057 15.5368" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </SIconBase>,
+  24: <SIconBase width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 17C21 18.0609 20.5786 19.0783 19.8284 19.8284C19.0783 20.5786 18.0609 21 17 21H7C5.93913 21 4.92172 20.5786 4.17157 19.8284C3.42143 19.0783 3 18.0609 3 17V7C3 5.93913 3.42143 4.92172 4.17157 4.17157C4.92172 3.42143 5.93913 3 7 3H17C18.0609 3 19.0783 3.42143 19.8284 4.17157C20.5786 4.92172 21 5.93913 21 7V17Z" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M3 13.0001L4.29516 11.7049C4.51904 11.4811 4.78483 11.3035 5.07734 11.1823C5.36986 11.0611 5.68338 10.9988 6 10.9988C6.31661 10.9988 6.63013 11.0611 6.92265 11.1823C7.21516 11.3035 7.48095 11.4811 7.70483 11.7049L12 16.0001" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M7.00281 21.0001L13.298 14.7049C13.7501 14.2528 14.3634 13.9988 15.0028 13.9988C15.6422 13.9988 16.2555 14.2528 16.7076 14.7049L20.6468 18.6441" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </SIconBase>,
+  32: <SIconBase width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M28 22.6667C28 24.0812 27.4381 25.4377 26.4379 26.4379C25.4377 27.4381 24.0812 28 22.6667 28H9.33333C7.91885 28 6.56229 27.4381 5.5621 26.4379C4.5619 25.4377 4 24.0812 4 22.6667V9.33333C4 7.91885 4.5619 6.56229 5.5621 5.5621C6.56229 4.5619 7.91885 4 9.33333 4H22.6667C24.0812 4 25.4377 4.5619 26.4379 5.5621C27.4381 6.56229 28 7.91885 28 9.33333V22.6667Z" stroke="#172C55" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M4 17.3335L5.72688 15.6066C6.02539 15.3081 6.37977 15.0713 6.76979 14.9097C7.15981 14.7482 7.57784 14.665 7.99999 14.665C8.42215 14.665 8.84017 14.7482 9.23019 14.9097C9.62022 15.0713 9.9746 15.3081 10.2731 15.6066L16 21.3335" stroke="#172C55" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M9.33716 28.0001L17.7307 19.6066C18.3336 19.0037 19.1512 18.665 20.0038 18.665C20.8564 18.665 21.6741 19.0037 22.2769 19.6066L27.5292 24.8588" stroke="#172C55" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+      </SIconBase>
 }
 
+export const IconAssetsImage: FC<IIconSize> = ({ size= 24 }) => IconSize[size];
