@@ -2,6 +2,7 @@ export * from "./avatar";
 export * from "./avatar-legacy";
 export * from "./badge";
 export * from "./body-layout";
+export * from "./bulk-selection-snackbar";
 export * from "./button";
 export * from "./card";
 export * from "./collapsible";
