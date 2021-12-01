@@ -42,9 +42,14 @@ const Bronze = css<IMenuListItemProps>`
     align-items: center; 
     gap: 15px;
     overflow: hidden;
+    span{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
     svg {
-      width: 24px;
-      height: 24px;
+      min-width: 24px;
+      min-height: 24px;
     }
   }
   div:nth-of-type(2){

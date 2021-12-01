@@ -30,7 +30,7 @@ export default {
 function MenuListItemDemo({ content, size, disabled }) {
   return <div style={{ width: "320px" }}>
     <MenuListItem size={size} disabled={disabled}>
-      <div> <IconStarOutlined /> <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{content}</span> <IconStarOutlined />  </div>
+      <div> <IconStarOutlined /> <span >{content}</span> <IconStarOutlined />  </div>
       <div> <IconStarOutlined /> Default </div>
     </MenuListItem>
   </div>
@@ -46,10 +46,10 @@ Default.args = {
 };
 
 // With icon on the left
-export const Simple = ({size, disabled, content}) => (
+export const Simple = ({ size, disabled, content }) => (
   <div style={{ width: "320px" }}>
     <MenuListItem size={size} disabled={disabled}>
-      {content}
+      <span>{content}</span>
     </MenuListItem>
   </div>
 );
@@ -61,10 +61,10 @@ Simple.args = {
 };
 
 // With icon on the left
-export const LeftIcon = ({size, disabled, content }) => (
+export const LeftIcon = ({ size, disabled, content }) => (
   <div style={{ width: "320px" }}>
     <MenuListItem size={size} disabled={disabled}>
-      <div> <IconStarOutlined /> {content}   </div>
+      <div> <IconStarOutlined />  <span>{content}</span>  </div>
     </MenuListItem>
   </div>
 );
@@ -76,10 +76,10 @@ LeftIcon.args = {
 };
 
 // With icon on the left and text on the right
-export const LeftIconRightText = ({content, size, disabled }) => (
+export const LeftIconRightText = ({ content, size, disabled }) => (
   <div style={{ width: "320px" }}>
     <MenuListItem size={size} disabled={disabled}>
-      <div> <IconStarOutlined /> {content}   </div>
+      <div> <IconStarOutlined />  <span>{content}</span>  </div>
       <div> {content} </div>
     </MenuListItem>
   </div>
@@ -92,10 +92,10 @@ LeftIconRightText.args = {
 };
 
 // With icon after text and on the right
-export const LeftIconRightTexRightIcon = ({content, size, disabled }) => (
+export const LeftIconRightTexRightIcon = ({ content, size, disabled }) => (
   <div style={{ width: "320px" }}>
     <MenuListItem size={size} disabled={disabled}>
-      <div> {content} <IconStarOutlined />   </div>
+      <div>  <span>{content}</span> <IconStarOutlined />   </div>
       <div> <IconStarOutlined />  </div>
     </MenuListItem>
   </div>
@@ -108,10 +108,10 @@ LeftIconRightTexRightIcon.args = {
 };
 
 // With icon on the right
-export const RightIcon = ({disabled, size, content }) => (
+export const RightIcon = ({ disabled, size, content }) => (
   <div style={{ width: "320px" }}>
     <MenuListItem size={size} disabled={disabled}>
-      <div> {content} </div>
+      <div>  <span>{content}</span></div>
       <div> <IconStarOutlined />  </div>
     </MenuListItem>
   </div>
