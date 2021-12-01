@@ -1,7 +1,3 @@
-import styled from "styled-components";
-const IconBase = styled.svg<{size: number}>`
-
-`
 import React from "react";
 interface ICrossProps {
   variant: "close" | "plus";
@@ -16,7 +12,7 @@ export const IconCross = ({ variant }: ICrossProps) => {
   const rotationDegree = rotationDegrees[variant];
 
   return (
-    <IconBase xmlns="http://www.w3.org/2000/svg"  fill="none" width="24px" height="24px" viewBox="0 0 20 20">
+    <svg xmlns="http://www.w3.org/2000/svg"  fill="none" width="24px" height="24px" viewBox="0 0 20 20">
       <path
         stroke="currentColor"
         strokeLinecap="round"
@@ -25,6 +21,6 @@ export const IconCross = ({ variant }: ICrossProps) => {
         d="M10 5.455v9.09M14.546 10H5.455"
         transform={`rotate(${rotationDegree} 10 10)`}
       />
-    </IconBase>
+    </svg>
   );
 };
