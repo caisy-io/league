@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveBody02Semibold, CSSProgressiveHeading01 } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
+import { CSSProgressiveHeading01 } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-    ${CSSProgressiveHeading01};
-    color: var(--text-01);
-    overflow: hidden;
-    text-overflow: ellipsis;
+  ${CSSProgressiveHeading01};
+  color: var(--text-01);
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Silver = css``;

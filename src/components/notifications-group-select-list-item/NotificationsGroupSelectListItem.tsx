@@ -12,8 +12,7 @@ export interface INotificationsGroupSelectListItemProps {
   title?: string | undefined,
   label?: string | undefined,
   imageUrl?: string | undefined,
-  activated?: boolean,
-  children?
+  activated?: boolean
 }
 
 const SFlexListItem = styled(SFlex)`
@@ -22,7 +21,7 @@ const SFlexListItem = styled(SFlex)`
   height: 100%;
 `;
 
-export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelectListItemProps> = ({title, imageUrl, children, activated }) => {
+export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelectListItemProps> = ({title, imageUrl, activated }) => {
   return (
     <SNotificationsGroupSelectListItem activated={activated}>
       <SFlexListItem>
@@ -30,7 +29,6 @@ export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelec
         ></PreviewImage>
         <SNotificationsGroupSelectListItemTitle>{title}</SNotificationsGroupSelectListItemTitle>
       </SFlexListItem>
-      {children}
       <IconChevronDown></IconChevronDown>
     </SNotificationsGroupSelectListItem>
   )

@@ -4,21 +4,25 @@ import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../consta
 const CSSActivated = css`
   background-color: var(--active-ui-01-1);
     svg{
-      transition: transform 1s ease;
-      transform: rotate(180deg);
+      transform: rotate(-180deg);
       color: #008CFF;
-  }
+    }
 `;
 
 const Bronze = css`
   width: 256px;
+  height: 59px;
   background-color: #FFFF;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  padding: 1rem;
   border-bottom: 1px solid var(--ui-03);
+  transition: background-color 0.3s ease-in-out;
+  svg{
+    transition: transform 0.75s ease-in-out;
+  }
   &: hover {
     background-color: var(--hover-ui-01);
   }
