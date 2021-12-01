@@ -3,7 +3,7 @@ import React from "react";
 import Flag from "./Flag";
 
 export default {
-  title: "Components/Flag",
+  title: "Components/Style Guide/Flag",
   component: Flag,
   argTypes: {
     size: {

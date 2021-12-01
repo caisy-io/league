@@ -5,7 +5,7 @@ import { Badge, EBadgePosition } from "..";
 
 // Default Button Demo
 export default {
-  title: "Components/Button",
+  title: "Components/Buttons/Button",
   component: ButtonDemo,
   parameters: {
     design: {

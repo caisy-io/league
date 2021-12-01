@@ -27,7 +27,7 @@ function DrawerDemo() {
 }
 
 export default {
-  title: 'Components/Drawer',
+  title: 'Components/Legacy/Drawer',
   component: DrawerDemo,
 };
 const Template = (args) => <DrawerDemo {...args} />;

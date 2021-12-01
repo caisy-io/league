@@ -4,7 +4,7 @@ import { IconStarOutlined } from "../..";
 
 // Default FlatActionButton Demo
 export default {
-  title: "Components/FlatActionButton",
+  title: "Components/Buttons/FlatActionButton",
   component: FlatActionButtonDemo,
   parameters: {
     design: {

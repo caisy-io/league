@@ -6,7 +6,7 @@ function EmptyDemo() {
 }
 
 export default {
-  title: 'Components/Empty',
+  title: 'Components/Legacy/Empty',
   component: EmptyDemo,
 };
 const Template = (args) => <EmptyDemo {...args} />;
