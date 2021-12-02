@@ -8,6 +8,7 @@ const Bronze = css`
   overflow: hidden;
   white-space: nowrap;
   max-width: 170px;
+  margin-bottom: 0.25rem;
 `;
 
 const Silver = css``;
