@@ -1,14 +1,19 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveCaption01Semibold, CSSProgressivehighLightMicro } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  width: 100%;
-  height: 100%;
-  
   display: flex;
-  padding: 0;
-  margin: 0;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  height: 12px;
+  width: 12px;
+  background-color: var(--ui-01);
+  border-radius: 50%;
+
+  ${CSSProgressivehighLightMicro};
+  color: var(--text-06);
 `;
 
 const Silver = css``;
@@ -19,15 +24,10 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-interface ISLayout{
-  styleOverwrite?: any
-}
-
-export const SLayout = styled.div<ISLayout>`
+export const SBulkSelectionSnackbarErrorsBadge = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
-  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;

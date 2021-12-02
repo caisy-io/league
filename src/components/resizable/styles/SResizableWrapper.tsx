@@ -5,6 +5,7 @@ interface ISResizableWrapper {
     width: string;
     height: string;
     left?: boolean;
+    styleOverwrite?: any;
 }
 
 const Bronze = css<ISResizableWrapper>`
@@ -30,4 +31,5 @@ export const SResizableWrapper = styled.div.attrs(({ width, height }) => ({
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}: ISResizableWrapper) => styleOverwrite ?? ''};
 `;
