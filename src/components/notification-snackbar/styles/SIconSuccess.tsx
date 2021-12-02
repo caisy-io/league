@@ -1,14 +1,18 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
+const CSSDIsplayBlock = css`
+  display: block;
+`;
+
+const CSSDisplayNone = css`
+  display: none;
+`;
+
 const Bronze = css`
-  ${CSSProgressiveCaption01Semibold};
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  max-width: 170px;
-  margin-bottom: 0.25rem;
+  display: none;
+  ${(props) => props.success ? CSSDIsplayBlock : ''};
+  ${(props) => props.error == "true" ? CSSDisplayNone : ''};
 `;
 
 const Silver = css``;
@@ -19,7 +23,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSidebarCardTitle = styled.h3`
+export const SIconSuccess = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

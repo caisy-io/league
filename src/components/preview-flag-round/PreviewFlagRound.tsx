@@ -1,18 +1,11 @@
 import React, { FC } from "react";
-import * as Flags from "./flags"
-import { SPreviewFlagRound } from "./styles/SPreviewFlagRound";
-import { IFlag } from "./IFlag";
+import Flag from "../flag";
+import { IFlag } from "../flag/IFlag";
 
-const PreviewFlagRound: FC<IFlag> = ({ countryCode, size }) => {
-  const CountryFlag = countryCode && Flags[countryCode];
-   
+const PreviewFlagRound: FC<IFlag> = ({ countryCode }) => {
   return (
     <>
-      {CountryFlag && 
-        <SPreviewFlagRound size={size}>
-          <CountryFlag/>
-        </SPreviewFlagRound>
-      }
+      <Flag countryCode={countryCode} />
     </>
   )
 };
