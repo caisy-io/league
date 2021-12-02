@@ -3,6 +3,8 @@ import { OrganizationMenu } from './OrganizationMenu';
 import { SettingsList } from './SettingsList';
 import { OrganizationMenuListItem } from '../organization-menu-list-item';
 import { Button } from '../button';
+import { MenuListItem } from '../menu-list-item';
+import { IconCog } from '../../icons/IconCog';
 
 export default {
   title: `Components/OrganizationMenu`,
