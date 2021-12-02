@@ -15,7 +15,7 @@ export const CSSColors = css`
     --ui-supportive-04: #edfaf5;
     --ui-supportive-05: #008cff;
     --ui-01: #ffffff;
-    --ui-01-description: undefined;
+    --ui-01-description: #ffffff;
     --hover-ui-01: #e8eff3;
     --hover-ui-01-1: #f7f9fa;
     --active-ui-01: #172c55;
@@ -92,7 +92,7 @@ export const CSSColors = css`
     --active-interactional-tertiary-04-1: #008cff;
     --disabled-text: #c7cad1;
     --text-02: #ffffff;
-    --text-02-description: undefined;
+    --text-02-description: #ffffff;
     --text-05: #f7f9fa;
     --text-supprotive-01: #ffffffa3;
     --text-suppportive-02: #008cff;
@@ -130,7 +130,7 @@ export const CSSColors = css`
     --active-text-10: #ffffff;
     --disabled-icon: #d9dbdf;
     --icon-02: #ffffff;
-    --icon-02-description: undefined;
+    --icon-02-description: #ffffff;
     --icon-05: #f7f9fa;
     --icon-supportive-01: #ffffffa3;
     --icon-01: #172c55;
@@ -155,14 +155,15 @@ export const CSSColors = css`
     --hover-icon-08: #829db4;
     --active-icon-08: #008cff;
     --disabled-icon: #c7cad1;
+    --icon-02-description: #ffffff;
     --hover-icon-02: #ffffffb3;
-    --hover-icon-02-description: undefined;
+    --hover-icon-02-description: #ffffff;
     --active-icon-02: #ffffff66;
-    --active-icon-02-description: undefined;
+    --active-icon-02-description: #ffffff;
     --activated-icon-02: #ffffff;
     --activated-icon-02-1: #ed3e3e;
-    --activated-icon-02-description: undefined;
-    --activated-icon-02-1-description: undefined;
+    --activated-icon-02-description: #ffffff;
+    --activated-icon-02-1-description: #ffffff;
     --active-icon-01-2: #172c55;
     --active-icon-03-1: #007cc1;
     --icon-07: #41c300;

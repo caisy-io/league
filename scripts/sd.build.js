@@ -34,6 +34,14 @@ const FONT_WEIGHTS = {
 console.log("Build started...");
 console.log("\n==============================================");
 
+const enforceHexString = s => {
+  if (s === "white") {
+    return "#ffffff"
+  } else {
+    return s
+  }
+}
+
 // Register fontFaces
 
 StyleDictionary.registerFormat({
@@ -119,26 +127,21 @@ StyleDictionary.registerFormat({
 
     dictionary.allTokens.forEach((token) => {
       console.log(token);
-      const value = token.value;
+      const value = enforceHexString(token.value);
       const name = kebabCase(`${token.name}`);
       // to prevent duplicates
-      if(!colors.includes(`--${name}: ${value};`)){
-        if(`${value}` === 'undefined'){
-          console.log(`undefined token `, token);
-        }
+      if (!colors.includes(`--${name}: ${value};`)) {
         colors += `    --${name}: ${value};\n`;
       }
 
       for (property in token.original) {
         if (property !== "value" && property !== "type") {
-          const value = token.original[property].value;
+          let value = enforceHexString(token.original[property].value);
           const innerName = `${name}-${property}`;
           // to prevent duplicates
-          if(!colors.includes(`--${innerName}: ${value};`)){
-            if(`${value}` === 'undefined'){
-              console.log(`      undefined         token.original[property]
-`,               token.original[property]
-);
+          if (!colors.includes(`--${innerName}: ${value};`)) {
+            if (`${value}` === 'undefined') {
+              value = enforceHexString(token.original[property])
             }
             colors += `    --${innerName}: ${value};\n`;
           }
