@@ -50,7 +50,7 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children }) =
         return "var(--ui-overlay-02)";
       case "white":
       default:
-        return "var(--ui-02)";
+        return "var(--ui-01)";
     }
   };
 
