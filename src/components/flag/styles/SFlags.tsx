@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 interface ISFlags {
-  size?: 12 | 16 | 20 | 28 | 32 | 36 | 40 | 48;
+  size?: 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48;
 }
 
 const Bronze = css<ISFlags>`
@@ -37,7 +37,7 @@ const Bronze = css<ISFlags>`
         case 48:
           return 3.2;
         default: 
-          return 2.667;
+          return 2.1333;
       }
     }});
   }
