@@ -7,7 +7,7 @@ module.exports = {
       files: [
         {
           destination: "CSSColors.tsx",
-          format: "styledComponentsFlat",
+          format: "styledColors",
           filter: {
             type: "color",
           },

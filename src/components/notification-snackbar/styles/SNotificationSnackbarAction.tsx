@@ -1,14 +1,11 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
+import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/fonts';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
   ${CSSProgressiveCaption01Semibold};
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  max-width: 170px;
-  margin-bottom: 0.25rem;
+  color: var(--text-10);
+  cursor: pointer;
 `;
 
 const Silver = css``;
@@ -19,7 +16,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSidebarCardTitle = styled.h3`
+export const SNotificationSnackbarAction = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
