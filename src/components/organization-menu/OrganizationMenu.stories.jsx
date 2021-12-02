@@ -1,5 +1,8 @@
 import React from "react";
 import { OrganizationMenu } from './OrganizationMenu';
+import { SettingsList } from './SettingsList';
+import { OrganizationMenuListItem } from '../organization-menu-list-item';
+import { Button } from '../button';
 
 export default {
   title: `Components/OrganizationMenu`,
@@ -20,8 +23,14 @@ export default {
 
 function OrganizationMenuDemo({ content, ...args }) {
   return <OrganizationMenu>
-    {content}
-  </OrganizationMenu>
+    <OrganizationMenuListItem title="Default" label="Organization"></OrganizationMenuListItem>
+    <Button type="tertiary">Organization settings</Button>
+    <SettingsList listTitle="Project settings">
+      <MenuListItem>
+        <div><IconCog></IconCog></div>
+      </MenuListItem>
+    </SettingsList>
+  </OrganizationMenu >
 }
 
 const Template = (args) => < OrganizationMenuDemo {...args} />;

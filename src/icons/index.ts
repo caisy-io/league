@@ -122,3 +122,4 @@ export { IconDocuments } from "./IconDocuments";
 export { IconAssetsImage } from "./IconAssetsImage";
 export { IconTypeface } from "./IconTypeface";
 export { IconChevron } from "./IconChevron";
+export { IconCog } from "./IconCog";

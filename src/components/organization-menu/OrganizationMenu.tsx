@@ -11,8 +11,7 @@ export const OrganizationMenu: React.FC<IOrganizationMenu> = ({...props}) => {
   
   return (
     <SOrganizationMenu>
-      <OrganizationMenuListItem></OrganizationMenuListItem>
-      <Button type="tertiary"></Button>
+      {props.children}
     </SOrganizationMenu>
   )
 }
