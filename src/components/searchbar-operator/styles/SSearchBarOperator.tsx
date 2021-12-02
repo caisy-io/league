@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { CSSProgressivehighLightMicro } from "../../../constants/styles/fonts";
+import { CSSProgressiveHighlightMicro } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
 import { ISearchBarOperatorProps } from "../SearchBarOperator";
 
@@ -11,16 +11,15 @@ const CSSHover = css`
 
 const CSSActive = css`
   background-color: white;
-  color: var(--ui-supportive-03);
-  outline: 1px solid var(--ui-supportive-03);
+  color: var(--active-text-04);
+  outline: 1px solid var(--active-text-04);
   outline-offset: -1px;
 `;
 
 const Bronze = css<ISearchBarOperatorProps>`
-  ${CSSProgressivehighLightMicro};
+  ${CSSProgressiveHighlightMicro};
   color: var(--text-04);
   text-transform: uppercase;
-  max-width: min-content;
   height: 1.3 rem;
   box-sizing: border-box;
   background-color: var(--ui-03);

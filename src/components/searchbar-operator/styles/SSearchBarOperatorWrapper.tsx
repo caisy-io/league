@@ -7,7 +7,7 @@ const CSSHover = css`
 `;
 
 const CSSActive = css`
-  border-color: var(--ui-supportive-03);
+  border-color: var(--active-text-04);
 `;
 
 const Bronze = css<ISearchBarOperatorProps>`

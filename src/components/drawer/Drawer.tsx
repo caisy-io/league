@@ -6,7 +6,7 @@ import { SDrawerHeader } from "./styles/SDrawerHeader";
 import { SDrawerCloseButton } from "./styles/SDrawerCloseButton";
 import { IconClose } from "../../icons/IconClose";
 import { Divider } from "../divider/Divider";
-import { Stackable } from "../stackable/Stackable";
+import Stackable from "../stackable";
 
 interface IDrawer {
   open: boolean;

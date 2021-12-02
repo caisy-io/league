@@ -1,5 +1,5 @@
 import React from "react";
-import { Drawer } from "../..";
+import { Drawer } from "./Drawer";
 
 function DrawerDemo() {
     const [open, setOpen] = React.useState(false);
