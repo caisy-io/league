@@ -102,7 +102,7 @@ StyleDictionary.registerFormat({
       const value = `${token.value["x"]} ${token.value["y"]} ${token.value["blur"]} ${token.value["spread"]} ${token.value["color"]}`;
 
       const name = kebabCase(`${token.name}`);
-      boxShadows += `    --box-shadow-${name}: ${value}\n`;
+      boxShadows += `    --box-shadow-${name}: ${value};\n`;
     });
     boxShadows = boxShadows + "  }\n";
     boxShadows = boxShadows + "`;\n";
@@ -121,13 +121,13 @@ StyleDictionary.registerFormat({
       console.log(token);
       const value = token.value;
       const name = kebabCase(`${token.name}`);
-      colors += `    --${name}: ${value}\n`;
+      colors += `    --${name}: ${value};\n`;
 
       for (property in token.original) {
         if (property !== "value" && property !== "type") {
           const value = token.original[property].value;
           const innerName = `${name}-${property}`;
-          colors += `    --${innerName}: ${value}\n`;
+          colors += `    --${innerName}: ${value};\n`;
         }
       }
     });
