@@ -4,7 +4,7 @@ import { SearchBarOperand } from './SearchBarOperand';
 import { SearchBarOperandEntity } from './SearchBarOperandEntity';
 
 export default {
-    title: `Components/SearchBarOperand`,
+    title: `Components/Forms/SearchBarOperand`,
     parameters: {
         design: {
           type: "figma",

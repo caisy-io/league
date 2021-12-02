@@ -3,7 +3,7 @@ import { IconGearSettings, IconStarOutlined } from "../../icons";
 import { SidebarCard } from '../sidebar-card';
 
 export default {
-  title: `Components/SidebarCard`,
+  title: `Components/Cards/SidebarCard`,
   component: SidebarCardDemo,
   parameters: {
     design: {

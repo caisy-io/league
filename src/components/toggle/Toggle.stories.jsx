@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Toggle } from "./Toggle";
 
 export default {
-  title: `Components/Toggle`,
+  title: `Components/Forms/Toggle`,
   component: ToggleDemo,
   parameters: {
     design: {

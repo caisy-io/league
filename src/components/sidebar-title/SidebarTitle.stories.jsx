@@ -4,7 +4,7 @@ import { IconStarOutlined } from '../../icons/IconStarOutlined'
 import { Toggle } from '../toggle';
 
 export default {
-  title: `Components/SidebarTitle`,
+  title: `Components/Text/SidebarTitle`,
   component: SidebarTitleDemo,
   argTypes: {
     content: {
