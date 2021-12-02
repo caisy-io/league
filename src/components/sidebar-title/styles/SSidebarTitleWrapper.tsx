@@ -6,8 +6,8 @@ const Bronze = css`
   align-items: center;
   max-width: 90%; 
   svg{
-    min-width: 20px;
-    min-height: 20px;
+    width: 16px;
+    height: 16px;
     margin-right: 0.5rem;
   }
   svg path {
