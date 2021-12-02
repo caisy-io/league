@@ -1,1 +1,0 @@
-export type ISizes = "micro" | "small" | "medium";

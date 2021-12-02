@@ -1,5 +1,5 @@
-import React, {FC} from "react";
-import { ISizes } from "../../interfaces/ISizes";
+import React, { FC } from "react";
+import { ISizes } from "../../interfaces/";
 import { EBadgePosition } from "./EBadgePosition";
 import { SBadge } from "./styles/SBadge";
 import { SBadgeIcon } from "./styles/SBadgeIcon";
@@ -15,11 +15,12 @@ export interface IBadgeProps {
 }
 
 export const Badge: FC<IBadgeProps> = ({ children, value, position, type, size }) => {
-
   return (
     <SBadge>
       <SBadgeIcon value={value} position={position} type={type} size={size}>
-        <SBadgeIconContent  type={type} size={size}>{type !== "color" && value}</SBadgeIconContent>
+        <SBadgeIconContent type={type} size={size}>
+          {type !== "color" && value}
+        </SBadgeIconContent>
       </SBadgeIcon>
       {children}
     </SBadge>
