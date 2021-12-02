@@ -19,6 +19,11 @@ export default {
     disabled: {
       description: "Disables the menu list item",
       control: { type: "boolean" },
+      table: {
+        defaultValue: {
+          summary: "false",
+        },
+      },
     },
     content: {
       description: "Disables the menu list item",
@@ -27,11 +32,12 @@ export default {
   },
 };
 
+// With everything possible
 function MenuListItemDemo({ content, size, disabled }) {
   return <div style={{ width: "320px" }}>
     <MenuListItem size={size} disabled={disabled}>
       <div> <IconStarOutlined /> <span >{content}</span> <IconStarOutlined />  </div>
-      <div> <IconStarOutlined /> Default </div>
+      <div> <IconStarOutlined /> <span >{content}</span> </div>
     </MenuListItem>
   </div>
 }
@@ -41,7 +47,7 @@ const Template = (args) => < MenuListItemDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   size: "small",
-  disabled: "false",
+  disabled: false,
   content: "Default"
 };
 
@@ -56,7 +62,7 @@ export const Simple = ({ size, disabled, content }) => (
 
 Simple.args = {
   size: "small",
-  disabled: "false",
+  disabled: false,
   content: "Default"
 };
 
@@ -71,7 +77,7 @@ export const LeftIcon = ({ size, disabled, content }) => (
 
 LeftIcon.args = {
   size: "small",
-  disabled: "false",
+  disabled: false,
   content: "Default"
 };
 
@@ -87,7 +93,7 @@ export const LeftIconRightText = ({ content, size, disabled }) => (
 
 LeftIconRightText.args = {
   size: "small",
-  disabled: "false",
+  disabled: false,
   content: "Default"
 };
 
@@ -103,7 +109,7 @@ export const LeftIconRightTexRightIcon = ({ content, size, disabled }) => (
 
 LeftIconRightTexRightIcon.args = {
   size: "small",
-  disabled: "false",
+  disabled: false,
   content: "Default"
 };
 
@@ -119,6 +125,6 @@ export const RightIcon = ({ disabled, size, content }) => (
 
 RightIcon.args = {
   size: "small",
-  disabled: "false",
+  disabled: false,
   content: "Default"
 };
