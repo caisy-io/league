@@ -121,13 +121,19 @@ StyleDictionary.registerFormat({
       console.log(token);
       const value = token.value;
       const name = kebabCase(`${token.name}`);
-      colors += `    --${name}: ${value};\n`;
+      // to prevent duplicates
+      if(!colors.includes(`--${name}: ${value};`)){
+        colors += `    --${name}: ${value};\n`;
+      }
 
       for (property in token.original) {
         if (property !== "value" && property !== "type") {
           const value = token.original[property].value;
           const innerName = `${name}-${property}`;
-          colors += `    --${innerName}: ${value};\n`;
+          // to prevent duplicates
+          if(!colors.includes(`--${innerName}: ${value};`)){
+            colors += `    --${innerName}: ${value};\n`;
+          }
         }
       }
     });
