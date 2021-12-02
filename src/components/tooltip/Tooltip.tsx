@@ -2,12 +2,9 @@ import React, { ReactNode, FC, useState, useRef } from "react";
 import { STooltip } from "./styles/STooltip";
 import { STooltipWrapper } from "./styles/STooltipWrapper";
 import { Popover, TPlacement } from "../../components/popover";
-<<<<<<< HEAD
-=======
 
 type TTooltipColor = "white" | "black";
 
->>>>>>> 1ec36cb776411607011dafc8b183c6ac4f6c12ef
 export interface ITooltip {
   content: ReactNode | (() => ReactNode);
   placement?: TPlacement | undefined;
