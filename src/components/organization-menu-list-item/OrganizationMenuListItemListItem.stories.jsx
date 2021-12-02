@@ -35,7 +35,7 @@ export default {
   },
 };
 
-function OrganizationMenuListItemDemo({ content, ...args }) {
+function OrganizationMenuListItemDemo({ ...args }) {
   return <OrganizationMenuListItem title={args.title} label={args.label} itemSize={args.size} imageUrl={args.imageUrl}>
     {args.badge && <Badge value="1" position={EBadgePosition.Center} type={'regular'} size="small"></Badge>}
   </OrganizationMenuListItem>

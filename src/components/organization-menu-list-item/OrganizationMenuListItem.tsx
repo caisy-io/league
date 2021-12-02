@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { IconChevron } from '../../icons/IconChevron';
@@ -16,6 +16,7 @@ export interface IOrganizationMenuListItemProps {
   label?: string | undefined,
   imageUrl?: string | undefined,
   itemSize?: IListItemSize,
+  children?
 }
 
 const SFlexListItem = styled(SFlex)`
@@ -24,24 +25,24 @@ const SFlexListItem = styled(SFlex)`
   height: 100%;
 `;
 
-export const OrganizationMenuListItem: React.FC<IOrganizationMenuListItemProps> = ({ ...props }) => {
+export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({title, label, imageUrl, itemSize, children}) => {
   return (
-    <SOrganizationMenuListItem {...props}>
-      <SFlexListItem {...props}>
-        {props.itemSize == "large" ? (
-          <PreviewImage size={48} imageUrl={props.imageUrl}
+    <SOrganizationMenuListItem itemSize={itemSize}>
+      <SFlexListItem >
+        {itemSize == "large" ? (
+          <PreviewImage size={48} imageUrl={imageUrl}
           ></PreviewImage>
         ) : (
-          <PreviewImage size={36} imageUrl={props.imageUrl}
+          <PreviewImage size={36} imageUrl={imageUrl}
           ></PreviewImage>
         )}
         <SOrganizationMenuListItemTextWrapper>
-          <SOrganizationMenuListItemLabel {...props}>{props.label}</SOrganizationMenuListItemLabel>
-          <SOrganizationMenuListItemTitle {...props}>{props.title}</SOrganizationMenuListItemTitle>
+          <SOrganizationMenuListItemLabel itemSize={itemSize}>{label}</SOrganizationMenuListItemLabel>
+          <SOrganizationMenuListItemTitle itemSize={itemSize}>{title}</SOrganizationMenuListItemTitle>
         </SOrganizationMenuListItemTextWrapper>
       </SFlexListItem>
-      <SOrganizationMenuListItemIconWrapper {...props}>
-        {props.children}
+      <SOrganizationMenuListItemIconWrapper >
+        {children}
         <IconChevron></IconChevron>
       </SOrganizationMenuListItemIconWrapper>
     </SOrganizationMenuListItem>
