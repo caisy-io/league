@@ -1,8 +1,9 @@
-import React, { ReactNode, useState, FC } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
+import styled from 'styled-components';
+import { Toggle } from '../toggle';
 import { SSidebarTitle } from './styles/SSidebarTitle';
 import { SSidebarTitleLabel } from './styles/SSidebarTitleLabel';
 import { SSidebarTitleWrapper } from './styles/SSidebarTitleWrapper';
-import { Toggle } from '../toggle';
 
 export interface ISidebarTitleProps {
   icon?: ReactNode,
@@ -10,15 +11,19 @@ export interface ISidebarTitleProps {
   children?
 }
 
-export const SidebarTitle: FC<ISidebarTitleProps> = ({icon, toggle, children}) => {
+const SToggle = styled(Toggle)`
+  /* margin-left: 0.5rem; */
+`;
+
+export const SidebarTitle: FC<ISidebarTitleProps> = ({ icon, toggle, children }) => {
   const [value, onChange] = useState(true);
   return (
     <SSidebarTitle>
       <SSidebarTitleWrapper icon={icon} toggle={toggle}>
         {icon}
-        <SSidebarTitleLabel icon={icon} toggle={toggle}>{children}</SSidebarTitleLabel>
+        <SSidebarTitleLabel>{children}</SSidebarTitleLabel>
       </SSidebarTitleWrapper>
-      {toggle && <Toggle small value={value} onChange={() => onChange(!value)}></Toggle>}
+      {toggle && <SToggle small value={value} onChange={() => onChange(!value)}></SToggle>}
     </SSidebarTitle >
   )
 }

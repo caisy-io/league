@@ -3,13 +3,6 @@ import { CSSProgressiveHighlight } from '../../../constants/styles/design-tokens
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISidebarTitleProps } from '../SidebarTitle';
 
-const CSSWidth85 = css`
-  max-width: 85%; 
-`;
-
-const CSSWidth95 = css`
-  max-width: 95%; 
-`;
 
 const Bronze = css<ISidebarTitleProps>`
   ${CSSProgressiveHighlight};
@@ -19,8 +12,8 @@ const Bronze = css<ISidebarTitleProps>`
   overflow: hidden;
   white-space: nowrap;
   width: 100%;
-  ${(props) => props.toggle || props.icon ? CSSWidth95 : ''};
-  ${(props) => props.icon && props.toggle ? CSSWidth85 : ''};
+  margin-right: 0.5rem;
+  
 `;
 
 const Silver = css``;
