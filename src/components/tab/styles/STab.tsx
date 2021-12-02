@@ -79,17 +79,18 @@ const Bronze = css<ISTab>`
     height: 20px;
     width: 20px;
   }
-  ${CSSProgressiveBody03Semibold}
+  ${CSSProgressiveBody03Semibold};
 
   &:hover {
     background-color: var(--hover-ui-01);
+    ${(props: ISTab) => props.activated && CSSActivated};
   }
 
   &:active {
-    ${CSSActivated}
+    ${CSSActivated};
   }
 
-  ${(props: ISTab) => props.activated && CSSActivated}
+  ${(props: ISTab) => props.activated && CSSActivated};
 
   ${(props: ISTab) => getSizeStyling(props.size)};
 
