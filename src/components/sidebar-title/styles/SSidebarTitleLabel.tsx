@@ -7,6 +7,10 @@ const CSSWidth85 = css`
   max-width: 85%; 
 `;
 
+const CSSWidth95 = css`
+  max-width: 95%; 
+`;
+
 const Bronze = css<ISidebarTitleProps>`
   ${CSSProgressiveHighlight};
   color: var(--text-04);
@@ -14,7 +18,9 @@ const Bronze = css<ISidebarTitleProps>`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  ${(props) => props.icon || props.toggle ? CSSWidth85 : ''};
+  width: 100%;
+  ${(props) => props.toggle || props.icon ? CSSWidth95 : ''};
+  ${(props) => props.icon && props.toggle ? CSSWidth85 : ''};
 `;
 
 const Silver = css``;
