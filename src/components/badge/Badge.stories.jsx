@@ -20,7 +20,7 @@ export default {
       control: { type: "select" },
       table: {
         defaultValue: {
-          summary: "default",
+          summary: "regular",
         },
       },
     },
@@ -47,14 +47,15 @@ function BadgeDemo({ content, ...args }) {
 
 const Template = (args) => < BadgeDemo {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+// Position top right
+export const TopRight = Template.bind({});
+TopRight.args = {
   type: "regular",
   value: "1",
   size: "small"
 };
 
-// Position left
+// Position top left
 export const PositionLeft = ({ content, ...args }) => (
   <Badge size={args.size} value={args.value} type={args.type} position={EBadgePosition.TopLeft}><Button><IconStarOutlined />Button</Button></Badge>
 );
@@ -76,7 +77,7 @@ PositionCenter.args = {
   size: "small"
 };
 
-// Color
+// Type color
 export const Color = ({ content, ...args }) => (
   <Button><IconStarOutlined />Button<Badge size={args.size} value={args.value} type={args.type} position={EBadgePosition.Center}></Badge></Button>
 );
