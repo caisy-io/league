@@ -7,8 +7,8 @@ export default {
     title: `Components/SearchBarOperand`,
     parameters: {
         design: {
-          type: "figma",
-          url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=1094%3A18210",
+            type: "figma",
+            url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=1094%3A18210",
         },
     },
     component: SearchBarOperandDemo,
@@ -23,20 +23,20 @@ export default {
                 },
             },
         },
-        content: {
+        label: {
             description: "Content of the search bar operand",
             control: { type: "text" },
         },
-        label: {
-            description: "Content of the search bar operand",
+        entity: {
+            description: "Content of the search bar operand entity",
             control: { type: "text" },
         },
     },
 };
 
-function SearchBarOperandDemo({ content, ...args }) {
-    return <CloseButton defaultVisible={(args.state == "hover" || args.state == "activated") || false}>
-        <SearchBarOperand activated={args.state == "activated" } hover={args.state == "hover" } label={args.label}>
+function SearchBarOperandDemo({ state, label }) {
+    return <CloseButton defaultVisible={(state == "hover" || state == "activated") || false}>
+        <SearchBarOperand activated={state == "activated"} hover={state == "hover"} label={label}>
         </SearchBarOperand>
     </CloseButton>
 }
@@ -46,16 +46,15 @@ const Template = (args) => <SearchBarOperandDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     state: "default",
-    content: "Default",
     label: "Default"
 };
 
 // With entity
-export const WithEntity = ({ content, ...args }) => (
-    <CloseButton defaultVisible={(args.state == "hover" || args.state == "activated") || false}>
-        <SearchBarOperand activated={args.state == "activated" } hover={args.state == "hover" } label={args.label}>
-            <SearchBarOperandEntity activated={args.state == "activated" }>
-                {content}
+export const WithEntity = ({ state, label, entity }) => (
+    <CloseButton defaultVisible={(state == "hover" || state == "activated") || false}>
+        <SearchBarOperand activated={state == "activated"} hover={state == "hover"} label={label}>
+            <SearchBarOperandEntity activated={state == "activated"}>
+                {entity}
             </SearchBarOperandEntity>
         </SearchBarOperand>
     </CloseButton>
@@ -63,6 +62,6 @@ export const WithEntity = ({ content, ...args }) => (
 
 WithEntity.args = {
     state: "default",
-    content: "Default",
+    entity: "Default",
     label: "Default"
 };
