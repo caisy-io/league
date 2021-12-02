@@ -123,6 +123,9 @@ StyleDictionary.registerFormat({
       const name = kebabCase(`${token.name}`);
       // to prevent duplicates
       if(!colors.includes(`--${name}: ${value};`)){
+        if(`${value}` === 'undefined'){
+          console.log(`undefined token `, token);
+        }
         colors += `    --${name}: ${value};\n`;
       }
 
@@ -132,6 +135,11 @@ StyleDictionary.registerFormat({
           const innerName = `${name}-${property}`;
           // to prevent duplicates
           if(!colors.includes(`--${innerName}: ${value};`)){
+            if(`${value}` === 'undefined'){
+              console.log(`      undefined         token.original[property]
+`,               token.original[property]
+);
+            }
             colors += `    --${innerName}: ${value};\n`;
           }
         }
