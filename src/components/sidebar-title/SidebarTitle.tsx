@@ -1,23 +1,24 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, FC } from 'react';
 import { SSidebarTitle } from './styles/SSidebarTitle';
 import { SSidebarTitleLabel } from './styles/SSidebarTitleLabel';
 import { SSidebarTitleWrapper } from './styles/SSidebarTitleWrapper';
 import { Toggle } from '../toggle';
 
 export interface ISidebarTitleProps {
-  icon?: ReactNode;
-  toggle?: boolean;
+  icon?: ReactNode,
+  toggle?: boolean,
+  children?
 }
 
-export const SidebarTitle: React.FC<ISidebarTitleProps> = ({ ...props }) => {
+export const SidebarTitle: FC<ISidebarTitleProps> = ({icon, toggle, children}) => {
   const [value, onChange] = useState(true);
   return (
     <SSidebarTitle>
-      <SSidebarTitleWrapper {...props}>
-        {props.icon}
-        <SSidebarTitleLabel {...props}>{props.children}</SSidebarTitleLabel>
+      <SSidebarTitleWrapper icon={icon} toggle={toggle}>
+        {icon}
+        <SSidebarTitleLabel icon={icon} toggle={toggle}>{children}</SSidebarTitleLabel>
       </SSidebarTitleWrapper>
-      {props.toggle && <Toggle small value={value} onChange={() => onChange(!value)}></Toggle>}
+      {toggle && <Toggle small value={value} onChange={() => onChange(!value)}></Toggle>}
     </SSidebarTitle >
   )
 }

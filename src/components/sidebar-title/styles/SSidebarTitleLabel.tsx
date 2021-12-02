@@ -1,24 +1,20 @@
 import styled, { css } from 'styled-components';
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
-import { CSSProgressiveHighLight } from '../../../constants/styles/fonts';
+import { CSSProgressiveHighlight } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
+import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISidebarTitleProps } from '../SidebarTitle';
 
-const CSSWidth90 = css`
-  max-width: 90%; 
+const CSSWidth85 = css`
+  max-width: 85%; 
 `;
 
 const Bronze = css<ISidebarTitleProps>`
-  ${CSSProgressiveHighLight};
+  ${CSSProgressiveHighlight};
   color: var(--text-04);
   text-transform: uppercase;
-  overflow: ellipsis;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  ${(props) => props.icon || props.toggleComponent ? CSSWidth90 : ''};
+  ${(props) => props.icon || props.toggle ? CSSWidth85 : ''};
 `;
 
 const Silver = css``;

@@ -1,25 +1,13 @@
 import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
-import { ISidebarTitleProps } from '../SidebarTitle';
 
-const CSSWidth80 = css`
-  max-width: 80%; 
-`;
-
-const CSSWidth95 = css`
-  max-width: 95%; 
-`;
-
-const Bronze = css<ISidebarTitleProps>`
+const Bronze = css`
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 90%;
-  ${(props) => props.icon ? CSSWidth95 : ''};
-  ${(props) => props.toggleComponent ? CSSWidth80 : ''};
+  max-width: 90%; 
   svg{
-    width: 16px;
-    height: 16px;
+    min-width: 20px;
+    min-height: 20px;
     margin-right: 0.5rem;
   }
   svg path {
