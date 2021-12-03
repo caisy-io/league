@@ -15,6 +15,7 @@ const Bronze = css`
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem 0.5rem 0.5rem;
+  gap: 0.75rem;
   ${(props) => props.itemSize == "medium" || props.itemSize == "small" ? CSSMedium : ''};
   &: hover {
     background-color: var(--hover-ui-01);
