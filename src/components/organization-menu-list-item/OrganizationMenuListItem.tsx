@@ -1,8 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { Badge, EBadgePosition } from '..';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
+import { Img } from '../../base-components/img';
 import { IconChevron } from '../../icons/IconChevron';
-import { PreviewImage } from '../preview-image/PreviewImage';
+import Preview from '../preview';
+import { IPreview } from '../preview/Preview';
 import { SOrganizationMenuListItem } from './styles/SOrganizationMenuListItem';
 import { SOrganizationMenuListItemIconWrapper } from './styles/SOrganizationMenuListItemIconWrapper';
 import { SOrganizationMenuListItemLabel } from './styles/SOrganizationMenuListItemLabel';
@@ -14,8 +17,9 @@ export type IListItemSize = "large" | "medium" | "small";
 export interface IOrganizationMenuListItemProps {
   title?: string | undefined,
   label?: string | undefined,
-  imageUrl?: string | undefined,
+  badgeValue?: string | undefined,
   itemSize?: IListItemSize,
+  previewProps?: IPreview,
   children?
 }
 
@@ -25,16 +29,14 @@ const SFlexListItem = styled(SFlex)`
   height: 100%;
 `;
 
-export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({title, label, imageUrl, itemSize, children}) => {
+export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({ title, label, badgeValue, itemSize, previewProps }) => {
   return (
     <SOrganizationMenuListItem itemSize={itemSize}>
-      <SFlexListItem >
+      <SFlexListItem>
         {itemSize == "large" ? (
-          <PreviewImage size={48} imageUrl={imageUrl}
-          ></PreviewImage>
+          <Preview size={48} {...previewProps}></Preview>
         ) : (
-          <PreviewImage size={36} imageUrl={imageUrl}
-          ></PreviewImage>
+          <Preview size={36} {...previewProps}></Preview>
         )}
         <SOrganizationMenuListItemTextWrapper>
           <SOrganizationMenuListItemLabel itemSize={itemSize}>{label}</SOrganizationMenuListItemLabel>
@@ -42,7 +44,7 @@ export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({ti
         </SOrganizationMenuListItemTextWrapper>
       </SFlexListItem>
       <SOrganizationMenuListItemIconWrapper >
-        {children}
+        {badgeValue != undefined && <Badge value={badgeValue} position={EBadgePosition.Center} type={'regular'} size="small"></Badge>}
         <IconChevron></IconChevron>
       </SOrganizationMenuListItemIconWrapper>
     </SOrganizationMenuListItem>
