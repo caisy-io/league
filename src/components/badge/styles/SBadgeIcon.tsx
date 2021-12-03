@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ISizes } from "../../..";
+import { ISizes } from "../../../interfaces/index";
 import { CSSProgressiveBadgesSmall } from "../../../constants/styles/fonts";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
 import { IBadgeType } from "../Badge";
