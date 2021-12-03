@@ -123,3 +123,5 @@ export { IconAssetsImage } from "./IconAssetsImage";
 export { IconTypeface } from "./IconTypeface";
 export { IconChevron } from "./IconChevron";
 export { IconCog } from "./IconCog";
+export { IconTeam } from "./IconTeam";
+export { IconWorkflow } from "./IconWorkflow";

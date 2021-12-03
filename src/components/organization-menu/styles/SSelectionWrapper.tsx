@@ -2,13 +2,10 @@ import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  width: 320px;
-  background-color: #FFFF;
-  box-shadow: 0px 8px 24px rgba(184, 184, 184, 0.24);
+  border: 1px solid #E8EFF3;
   border-radius: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 1rem;
+  padding: 0.75rem 0.5rem;
   `;
 
 const Silver = css``;
@@ -19,7 +16,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SOrganizationMenu = styled.div`
+export const SSelectionWrapper = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

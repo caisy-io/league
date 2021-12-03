@@ -4,7 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 
 const Bronze = css`
   ${CSSProgressiveCaption01Semibold};
-  var(--text-03);
+  color: var(--text-03);
   `;
 
 const Silver = css``;

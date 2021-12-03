@@ -1,13 +1,11 @@
 import React from 'react';
-import { Button } from '..';
-import { OrganizationMenuListItem } from '../organization-menu-list-item/OrganizationMenuListItem';
-import {SOrganizationMenu } from './styles/SOrganizationMenu';
+import { SOrganizationMenu } from './styles/SOrganizationMenu';
 
-interface IOrganizationMenu{
+interface IOrganizationMenuProps{
 
 }
 
-export const OrganizationMenu: React.FC<IOrganizationMenu> = ({...props}) => {
+export const OrganizationMenu: React.FC<IOrganizationMenuProps> = ({...props}) => {
   
   return (
     <SOrganizationMenu>
