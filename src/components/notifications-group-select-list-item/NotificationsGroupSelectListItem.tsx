@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { IconChevronDown } from '../../icons/IconChevronDown';
+import Preview from '../preview';
 import { PreviewImage } from '../preview-image/PreviewImage';
+import { IPreview } from '../preview/Preview';
 import { SNotificationsGroupSelectListItem } from './styles/SNotificationsGroupSelectListItem';
 import { SNotificationsGroupSelectListItemTitle } from './styles/SNotificationsGroupSelectListItemTitle';
 
@@ -12,7 +14,8 @@ export interface INotificationsGroupSelectListItemProps {
   title?: string | undefined,
   label?: string | undefined,
   imageUrl?: string | undefined,
-  activated?: boolean
+  activated?: boolean,
+  previewProps?: IPreview,
 }
 
 const SFlexListItem = styled(SFlex)`
@@ -21,12 +24,12 @@ const SFlexListItem = styled(SFlex)`
   height: 100%;
 `;
 
-export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelectListItemProps> = ({title, imageUrl, activated }) => {
+export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelectListItemProps> = ({ title, activated, previewProps }) => {
   return (
     <SNotificationsGroupSelectListItem activated={activated}>
       <SFlexListItem>
-        <PreviewImage size={28} imageUrl={imageUrl}
-        ></PreviewImage>
+        <Preview size={28} {...previewProps}
+        ></Preview>
         <SNotificationsGroupSelectListItemTitle>{title}</SNotificationsGroupSelectListItemTitle>
       </SFlexListItem>
       <IconChevronDown></IconChevronDown>
