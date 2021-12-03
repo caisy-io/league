@@ -41,7 +41,6 @@ const CSSColor = css<{ value: string }>`
 `;
 
 const CSSCenter = css`
-  border: 1px solid transparent;
   position: relative;
 `;
 
@@ -74,7 +73,6 @@ const Bronze = css<ISBadgeIcon>`
   position: absolute;
   ${CSSProgressiveBadgesSmall}
   z-index: 10;
-  border: 2px solid var(--ui-01);
   height: 0.75rem;
   color: var(--ui-01);
   text-align: center;
