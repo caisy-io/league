@@ -50,6 +50,7 @@ const Bronze = css<ISPreview>`
   border-radius: ${({ isFlag }) => !isFlag && "4px"};
   color: var(--text-04);
   display: flex;
+  flex-shrink: 0;
   font-size: ${({ size }) => fontSize(size)}px;
   font-weight: 700;
   height: ${({ size }) => size ? size : 32}px;
