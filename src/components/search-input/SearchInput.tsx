@@ -40,7 +40,7 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
     onClose?.();
   };
 
-  const handleClickFilter = (e) => {
+  const handleClickFilter = () => {
     onClickFilter?.();
   };
 
