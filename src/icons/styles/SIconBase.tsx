@@ -9,4 +9,8 @@ export const SIconBase = styled.svg`
     stroke: var(--icon-05);
     fill: var(--icon-05);
   }
+
+  path.stroke-transparent {
+    stroke: transparent
+  }
 `
