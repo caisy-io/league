@@ -176,7 +176,7 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
             {RenderRow}
           </FixedSizeList>
         ) : (
-          <Empty description={props.emptyMessage ? props.emptyMessage : "No data found."} />
+          <Empty type="schema" title="" description={props.emptyMessage ? props.emptyMessage : "No data found."} />
         )}
       </STbody>
     </STable>
