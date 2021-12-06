@@ -54,22 +54,12 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children }) =
     }
   };
 
-  const getColor = () => {
-    switch (color) {
-      case "black":
-        return "var(--text-02)";
-      case "white":
-      default:
-        return "var(--text-01)";
-    }
-  };
-
   return (
     <STooltipWrapper ref={ref} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       {children}
       {open && (
         <Popover trianglecolor={getBackgroundColor()} placement={placement || "top"} reference={ref}>
-          <STooltip closing={closing} color={getColor()} backgroundColor={getBackgroundColor()}>
+          <STooltip closing={closing} color={color}>
             {content}
           </STooltip>
         </Popover>
