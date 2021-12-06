@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveBody02Medium, CSSProgressiveBody03Medium, CSSProgressiveCaption01Medium } from '../../../constants/styles/fonts';
+import { CSSProgressiveBody03Medium, CSSProgressiveCaption01Medium } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { IMenuListItemProps } from '../MenuListItem';
 
@@ -29,9 +29,9 @@ const Bronze = css<IMenuListItemProps>`
   align-items: center;
   box-sizing: border-box;
   width: 100%;
-  ${CSSProgressiveBody02Medium};
+  ${CSSProgressiveBody03Medium};
   color: var(--text-01);
-  background-color: #FFFF;
+  background-color: transparent;
   border-bottom: 1px solid var(--ui-03);
   padding: 1rem 0.75rem;
   overflow: hidden;
@@ -48,8 +48,10 @@ const Bronze = css<IMenuListItemProps>`
       white-space: nowrap;
     }
     svg {
-      min-width: 24px;
-      min-height: 24px;
+      min-width: 18px;
+      min-height: 18px;
+      max-width: 18px;
+      max-height: 18px;
     }
   }
   div:nth-of-type(2){
