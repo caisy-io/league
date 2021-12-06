@@ -17,6 +17,7 @@ interface ISearchInput {
 
 export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, withFilter, onClickFilter }) => {
   const [active, setActive] = useState(false);
+  const [clickingFilter, setClickingFilter] = useState(false);
   const inputRef = useRef<HTMLInputElement>();
 
   const handleClick = () => {
@@ -28,7 +29,7 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
   };
 
   const handleBlur = () => {
-    setActive(false);
+    if (!clickingFilter) setActive(false);
   };
 
   const handleClose = () => {
@@ -39,8 +40,15 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
     onClose?.();
   };
 
-  const handleClickFilter = () => {
+  const handleClickFilter = (e) => {
     onClickFilter?.();
+  };
+
+  const handleMouseDownFilter = () => {
+    setClickingFilter(true);
+  };
+  const handleMouseUpFilter = () => {
+    setClickingFilter(false);
   };
 
   return (
@@ -54,10 +62,20 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
         placeholder={placeholder}
       />
       <SSearchIconContainer>
-        <SSearchIconWrapper onClick={handleClickFilter}>{withFilter && <SearchFilterIcon />}</SSearchIconWrapper>
-        <SSearchIconWrapper onClick={handleClose}>
-          {((inputRef.current?.value && inputRef.current?.value.length > 0) || active) && <SearchCloseIcon />}
-        </SSearchIconWrapper>
+        {withFilter && (
+          <SSearchIconWrapper
+            onMouseDown={handleMouseDownFilter}
+            onMouseUp={handleMouseUpFilter}
+            onClick={handleClickFilter}
+          >
+            <SearchFilterIcon />
+          </SSearchIconWrapper>
+        )}
+        {((inputRef.current?.value && inputRef.current?.value.length > 0) || active) && (
+          <SSearchIconWrapper onClick={handleClose}>
+            <SearchCloseIcon />
+          </SSearchIconWrapper>
+        )}
       </SSearchIconContainer>
     </SSearchInputWrapper>
   );
