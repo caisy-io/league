@@ -7,9 +7,14 @@ export interface ISearchBarOperatorBadgeSelectProps {
   onSelect?: () => void;
 }
 
-export const SearchBarOperatorBadgeSelect: React.FC<ISearchBarOperatorBadgeSelectProps> = ({ onSelect, ...props }) => {
+export const SearchBarOperatorBadgeSelect: React.FC<ISearchBarOperatorBadgeSelectProps> = ({
+  onSelect,
+  hover,
+  activated,
+  ...props
+}) => {
   return (
-    <SSearchBarOperatorBadgeSelect onClick={onSelect} {...props}>
+    <SSearchBarOperatorBadgeSelect onClick={onSelect} hover={hover} activated={activated}>
       {props.children}
     </SSearchBarOperatorBadgeSelect>
   );
