@@ -1,21 +1,91 @@
-import React from "react";
+import React, { FC } from "react";
 import { SEmpty } from "./styles/SEmpty";
-import { SEmptyContent } from "./styles/SEmptyContent";
-import { SEmptyDescription } from "./styles/SEmptyDescription";
-import { Status } from "../../components/status/Status";
+import { SEmptyGridItem } from "./styles/SEmptyGridItem";
+import { SEmptyGradient } from "./styles/SEmptyGradient";
+import { SEmptyGridItemHeader } from "./styles/SEmptyGridItemHeader";
+import { SEmptyGridItemTitle } from "./styles/SEmptyGridItemTitle";
+import { SEmptyGridItemSubtitle } from "./styles/SEmptyGridItemSubtitle";
+import { SEmptyGridItemContent } from "./styles/SEmptyGridItemContent";
+import { SEmptySchemaItem } from "./styles/SEmptySchemaItem";
+import { SEmptyGridItemSquare } from "./styles/SEmptySchemaItemSquare";
+import { SEmptySchemaItemHeader } from "./styles/SEmptySchemaItemHeader";
+import { SEmptySchemaItemTitle } from "./styles/SEmptySchemaItemTitle";
+import EmptyGridImage from "./EmptyGridImage";
+import { SEmptyImageWrapper } from "./styles/SEmptyImageWrapper";
+import EmptySchemaImage from "./EmptySchemaImage";
+import { SEmptyImageTitle } from "./styles/SEmptyImageTitle";
+import { SEmptyImageDescription } from "./styles/SEmptyImageDescription";
+import { SEmptyImageContainer } from "./styles/SEmptyImageContainer";
+
+const GridLayout = () => {
+  const gridItems = [1, 2, 3];
+  return (
+    <>
+      {gridItems.map((item) => (
+        <SEmptyGridItem key={item}>
+          <SEmptyGridItemHeader>
+            <SEmptyGridItemTitle />
+            <SEmptyGridItemSubtitle />
+          </SEmptyGridItemHeader>
+          <SEmptyGridItemContent />
+        </SEmptyGridItem>
+      ))}
+    </>
+  );
+};
+
+const SchemaLayout = () => {
+  const schemaItems = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  return (
+    <>
+      {schemaItems.map((item) => (
+        <SEmptySchemaItem key={item}>
+          <SEmptySchemaItemHeader>
+            <SEmptyGridItemSquare size={16} />
+            <SEmptyGridItemSquare size={16} />
+            <SEmptySchemaItemTitle />
+            <SEmptySchemaItemTitle style={{ marginLeft: "auto" }} />
+          </SEmptySchemaItemHeader>
+          <SEmptyGridItemSquare style={{ marginLeft: "auto" }} size={32} />
+        </SEmptySchemaItem>
+      ))}
+    </>
+  );
+};
+
+const EmptyImageComponent = ({ title, description, ...props }) => {
+  return (
+    <SEmptyImageWrapper>
+      <SEmptyImageContainer>
+        {props.children}
+        <SEmptyImageTitle>{title}</SEmptyImageTitle>
+        <SEmptyImageDescription>{description}</SEmptyImageDescription>
+      </SEmptyImageContainer>
+    </SEmptyImageWrapper>
+  );
+};
 
 interface IEmpty {
-  description: React.ReactNode;
+  type: "grid" | "schema";
+  title: string;
+  description: string;
 }
 
-export const Empty: React.FC<IEmpty> = ({ ...props }) => {
+export const Empty: FC<IEmpty> = ({ type, title, description }) => {
   return (
-    <SEmpty>
-      <SEmptyContent>
-        <Status emote="😶">
-          <SEmptyDescription>{props.description}</SEmptyDescription>
-        </Status>
-      </SEmptyContent>
+    <SEmpty type={type}>
+      {type === "schema" ? <SchemaLayout /> : <GridLayout />}
+      {type === "schema" ? (
+        <EmptyImageComponent title={title} description={description}>
+          <EmptySchemaImage />
+        </EmptyImageComponent>
+      ) : (
+        <EmptyImageComponent title={title} description={description}>
+          <EmptyGridImage />
+        </EmptyImageComponent>
+      )}
+      <SEmptyGradient type={type} />
     </SEmpty>
   );
 };
