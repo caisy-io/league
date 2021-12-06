@@ -1,12 +1,13 @@
 import React from "react";
+import { ISizesWithDefault } from "../..";
 import { SButton } from "./styles/SButton";
+
 export type IButtonType = "primary" | "secondary" | "tertiary" | "danger";
-export type IButtonSize = "default" | "medium" | "small" | "micro";
 export type IButtonState = "default" | "hover" | "focus" | "disabled";
 
 export interface IButtonProps {
   type?: IButtonType;
-  size?: IButtonSize;
+  size?: ISizesWithDefault;
   dashed?: boolean;
   disabled?: boolean;
   onClick?: (e: Event) => void;

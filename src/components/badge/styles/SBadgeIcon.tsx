@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
+import { ISizes } from "../../..";
 import { CSSProgressiveBadgesSmall } from "../../../constants/styles/fonts";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
-import { IBadgeSizeType, IBadgeType } from "../Badge";
+import { IBadgeType } from "../Badge";
 import { EBadgePosition } from "../EBadgePosition";
 
 interface ISBadgeIcon {
@@ -9,7 +10,7 @@ interface ISBadgeIcon {
   disabled?: boolean;
   height: number;
   type: IBadgeType;
-  size?: IBadgeSizeType;
+  size?: ISizes;
   value: string;
 }
 
@@ -34,9 +35,9 @@ const CSSDark = css`
 `;
 
 const CSSColor = css<{ value: string }>`
-  background-color: ${(props) => (props.value ? `${props.value}` : "")}; 
-  outline: 1px solid #E8EFF3;
-  border: 2px solid #FFFF;
+  background-color: ${(props) => (props.value ? `${props.value}` : "")};
+  outline: 1px solid #e8eff3;
+  border: 2px solid #ffff;
 `;
 
 const CSSCenter = css`
@@ -73,7 +74,7 @@ const Bronze = css<ISBadgeIcon>`
   position: absolute;
   ${CSSProgressiveBadgesSmall}
   z-index: 10;
-  border: 2px solid var(--ui-01); 
+  border: 2px solid var(--ui-01);
   height: 0.75rem;
   color: var(--ui-01);
   text-align: center;
@@ -101,7 +102,7 @@ const Bronze = css<ISBadgeIcon>`
   ${(props) => (props.size == "micro" ? CSSMicro : " ")};
   ${(props) => (props.size == "small" ? CSSSmall : " ")};
   ${(props) => (props.size == "medium" ? CSSMedium : " ")};
-  `;
+`;
 
 const Silver = css``;
 

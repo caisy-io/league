@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, EBadgePosition } from '../badge';
+import { Img } from "../../base-components/img/Img";
 import { OrganizationMenuListItem } from './OrganizationMenuListItem';
 
 export default {
@@ -24,20 +24,20 @@ export default {
         },
       },
     },
-    imageUrl: {
-      description: "Changes the image url",
-      control: { type: "text" },
-    },
-    badge: {
-      description: "Toggles the existence of the badge",
-      control: { type: "boolean" },
+    badgeValue: {
+      description: "Defines the value of the badge",
+      control: { type: "number" },
+      table: {
+        defaultValue: {
+          summary: undefined,
+        },
+      },
     },
   },
 };
 
-function OrganizationMenuListItemDemo({ content, ...args }) {
-  return <OrganizationMenuListItem title={args.title} label={args.label} itemSize={args.size} imageUrl={args.imageUrl}>
-    {args.badge && <Badge value="1" position={EBadgePosition.Center} type={'regular'} size="small"></Badge>}
+function OrganizationMenuListItemDemo({ title, label, size, badgeValue }) {
+  return <OrganizationMenuListItem title={title} label={label} itemSize={size} badgeValue={badgeValue} previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }}>
   </OrganizationMenuListItem>
 }
 
@@ -48,6 +48,12 @@ Default.args = {
   title: "Default",
   label: "Label",
   size: "large",
-  badge: true,
-  imageUrl: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=843&q=80"
+};
+
+export const WithBadge = Template.bind({});
+WithBadge.args = {
+  title: "Default",
+  label: "Label",
+  size: "large",
+  badgeValue: "1"
 };
