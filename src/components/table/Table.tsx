@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { STable } from "./styles/STable";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
@@ -10,8 +10,8 @@ import { STableLoading } from "./styles/STableLoading";
 import { IconAngleDown, IconAngleUp, IconLoading } from "../../icons";
 import { FixedSizeList } from "react-window";
 import { Empty } from "../empty/Empty";
-import { useDimensions } from "webrix/hooks";
 import debounce from "lodash/debounce";
+import { useDimensions } from "../../utils";
 
 export interface IColumn {
   header: React.ReactNode;
@@ -176,7 +176,7 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
             {RenderRow}
           </FixedSizeList>
         ) : (
-          <Empty description={props.emptyMessage ? props.emptyMessage : "No data found."} />
+          <Empty type="schema" title="" description={props.emptyMessage ? props.emptyMessage : "No data found."} />
         )}
       </STbody>
     </STable>

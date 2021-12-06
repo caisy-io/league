@@ -3,8 +3,8 @@ import { IconAngleDown } from "../../icons";
 import { Dropdown } from "../dropdown/Dropdown";
 import { Input } from "../input/Input";
 import { SSelectSearch } from "./styles/SSelectSearch";
-import { ClickOutside, useDimensions } from "webrix/hooks";
 import { getSearchedItems } from "./getSearchedItems";
+import { ClickOutside, useDimensions } from "../../utils";
 
 interface IDropdownSearch {
   dataSource: any[];

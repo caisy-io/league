@@ -3,7 +3,8 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 interface ITooltip {
   closing: boolean;
-  color?: string;
+  backgroundColor: string;
+  color: string;
 }
 
 const Bronze = css<ITooltip>`
@@ -11,14 +12,13 @@ const Bronze = css<ITooltip>`
   z-index: 120;
   width: max-content;
 
-  font-family: Inter;
-  font-size: 12px;
-  line-height: 1.67;
-  font-weight: 600;
-  border-radius: 6px;
-  background-color: ${(props) => (props.color ? props.color : "var(--neutral-600)")};
-  color: var(--ui-01);
+  border-radius: 4px;
+  background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.color};
   animation: ${(props) => (props.closing ? "close" : "open")} 100ms ease-in-out;
+  padding: 16px;
+
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
 
   @keyframes open {
     0% {
