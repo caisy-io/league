@@ -1,9 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { Badge, EBadgePosition } from '..';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import Preview from '../preview';
-import { PreviewImage } from '../preview-image/PreviewImage';
 import { IPreview } from '../preview/Preview';
 import { SOrganizationSelectListItem } from './styles/SOrganizationSelectListItem';
 import { SOrganizationSelectListItemLabel } from './styles/SOrganizationSelectListItemLabel';
@@ -21,12 +20,14 @@ export interface IOrganizationSelectListItemProps {
   previewProps?: IPreview
 }
 
-const SFlexListItem = styled(SFlex)`
-  width: 100%;
+interface ISFlex {
+  badgeWitdh: number;
+}
+
+const SFlexListItem = styled(SFlex)<ISFlex>`
   gap: 0.75rem;
   height: 100%;
-  ${(props) => props.badgeText ? "width: 80%" : ''};
-
+  width: ${(props) => `calc(100% - ${props.width}px - 0.5rem)`};
 `;
 
 const SBadge = styled(Badge)`
@@ -35,10 +36,20 @@ const SBadge = styled(Badge)`
   overflow: hidden;
 `;
 
-export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = ({ title, label, itemSize, previewProps, badgeText}) => {
+export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = ({ title, label, itemSize, previewProps, badgeText }) => {
+  const badgeRef = useRef<HTMLElement>(null);
+
+  const [width, setWidth] = React.useState(0);
+
+  // calculate width of the badge
+  useEffect(() => {
+    const badgeWidth = badgeRef.current  ? badgeRef.current.offsetWidth : 0;
+    setWidth(badgeWidth);
+  }, [badgeText, badgeRef.current]);
+
   return (
     <SOrganizationSelectListItem itemSize={itemSize}>
-      <SFlexListItem badgeText={badgeText}>
+      <SFlexListItem badgeText={badgeText} width={width}>
         {itemSize == "large" ? (
           <Preview size={48} {...previewProps}></Preview>
         ) : (
@@ -49,7 +60,7 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
           <SOrganizationSelectListItemLabel itemSize={itemSize}>{label}</SOrganizationSelectListItemLabel>
         </SOrganizationSelectListItemTextWrapper>
       </SFlexListItem>
-      {badgeText && <SBadge value={badgeText} type="regular" size="small" position={EBadgePosition.Center}></SBadge>
+      {badgeText && <SBadge ref={badgeRef} value={badgeText} type="regular" size="small" position={EBadgePosition.Center}></SBadge>
       }
     </SOrganizationSelectListItem>
   )

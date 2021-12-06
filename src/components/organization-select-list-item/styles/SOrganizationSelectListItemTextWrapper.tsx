@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  width: 68%;
   overflow: hidden;
 `;
 
