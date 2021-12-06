@@ -34,7 +34,19 @@ To overcome current problems we propose to follow this guide as a check list to 
 
 [] Always cut your branch off dev. Do not merge other branches into you working branch.
 
+[] Always use the branch name that linear suggests, because this helps with ticket linking.
+
+[] If PR is open for several days, make sure your PR is up to date with DEV.
+
+[] If your PR has some conflicts, you are the owner and need to make sure those are fixed before reviews.
+
 [] IMPORTANT: Before submitting a PR for review, add a capture of component render and also a capture from figma to compare.
 
 [] IMPORTANT: Before submitting a PR test the component in storybook.
 
+## Dev precheck
+
+[] Make sure the ticket has all the info for doing the job
+[] Verify that the figma includes all the details
+[] Ask all questions on FE channel
+[] Make sure to not duplicate components
