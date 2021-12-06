@@ -17,9 +17,9 @@ export interface INotificationSnackbarProps {
   error?: boolean;
 }
 
-export const NotificationSnackbar: React.FC<INotificationSnackbarProps> = ({exit, icon, action, content, success, error}) => {
+export const NotificationSnackbar: React.FC<INotificationSnackbarProps> = ({ exit, icon, action, content, success, error }) => {
   return (
-    <SNotificationSnackbar exit = {exit} error = {error}>
+    <SNotificationSnackbar exit={exit} error={error}>
       <SFlex>
         <SIcon icon={icon} error={error} success={success}>
           {icon}

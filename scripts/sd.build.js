@@ -34,13 +34,13 @@ const FONT_WEIGHTS = {
 console.log("Build started...");
 console.log("\n==============================================");
 
-const enforceHexString = s => {
+const enforceHexString = (s) => {
   if (s === "white") {
-    return "#ffffff"
+    return "#ffffff";
   } else {
-    return s
+    return s;
   }
-}
+};
 
 // Register fontFaces
 
@@ -110,7 +110,7 @@ StyleDictionary.registerFormat({
       const value = `${token.value["x"]} ${token.value["y"]} ${token.value["blur"]} ${token.value["spread"]} ${token.value["color"]}`;
 
       const name = kebabCase(`${token.name}`);
-      boxShadows += `    --box-shadow-${name}: ${value}\n`;
+      boxShadows += `    --box-shadow-${name}: ${value};\n`;
     });
     boxShadows = boxShadows + "  }\n";
     boxShadows = boxShadows + "`;\n";
@@ -140,8 +140,8 @@ StyleDictionary.registerFormat({
           const innerName = `${name}-${property}`;
           // to prevent duplicates
           if (!colors.includes(`--${innerName}: ${value};`)) {
-            if (`${value}` === 'undefined') {
-              value = enforceHexString(token.original[property])
+            if (`${value}` === "undefined") {
+              value = enforceHexString(token.original[property]);
             }
             colors += `    --${innerName}: ${value};\n`;
           }

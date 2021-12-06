@@ -6,13 +6,13 @@ const CSSError = css`
 `;
 
 const Bronze = css`
-  background-color: var(--ui-overlay-02);  
+  background-color: rgba(0, 0, 0, 0.74);
   border-radius: 0.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 40px;
-  width: 454px;
+  height: 2.5rem;
+  width: 28.375rem;
   padding: 0.75rem;
   box-sizing: border-box;
   margin: 1.25rem auto;
@@ -20,7 +20,9 @@ const Bronze = css`
   box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.14);
   svg{
     color: #FFFF;
-    margin-right: 10px;
+    margin-right: 0.625rem;
+    width: 1rem;
+    height: 1rem;
   }
   ${(props) => props.error ? CSSError : ''};
   animation: ${(props) => (props.exit ? "SlideRight 1000ms forwards" : "SlideTop 350ms forwards")};
