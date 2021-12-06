@@ -3,7 +3,6 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 interface ITooltip {
   closing: boolean;
-  backgroundColor: string;
   color: string;
 }
 
