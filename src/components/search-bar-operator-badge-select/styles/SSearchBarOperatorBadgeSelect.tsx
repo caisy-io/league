@@ -4,7 +4,7 @@ import { CSSProgressiveHighLight } from "../../../constants/styles/fonts";
 import { ISearchBarOperatorBadgeSelectProps } from "../SearchBarOperatorBadgeSelect";
 
 const CSSHover = css`
-  background-color: var(--hover-ui-03-2);
+  background-color: var(--hover-ui-03);
   color: var(--hover-text-04);
   cursor: pointer;
 `;
