@@ -20,8 +20,17 @@ export default {
 function NotificationsGroupSelectListItemDemo({ content, ...args }) {
 
   const [onActivated, setActivated] = React.useState(false);
-  
-  return <NotificationsGroupSelectListItem activated={onActivated} title={args.title} previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }}>
+
+  const handleClick = () => {
+    if (!onActivated) {
+      setActivated(true);
+    }
+    else {
+      setActivated(false);
+    }
+  };
+
+  return <NotificationsGroupSelectListItem activated={onActivated || args.activated} onClick={() => handleClick()} title={args.title} previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }}>
   </NotificationsGroupSelectListItem>
 }
 

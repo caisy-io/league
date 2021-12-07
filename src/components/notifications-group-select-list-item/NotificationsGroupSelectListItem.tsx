@@ -13,8 +13,7 @@ export interface INotificationsGroupSelectListItemProps {
   title?: string | undefined,
   activated: boolean,
   previewProps?: IPreview,
-  onChange?: (e: any) => void;
-  onClick?: (e: any) => void;
+  onClick?: (e: Event) => void,
 }
 
 const SFlexListItem = styled(SFlex)`
@@ -23,21 +22,10 @@ const SFlexListItem = styled(SFlex)`
   height: 100%;
 `;
 
-export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelectListItemProps> = ({ title, activated, previewProps }) => {
-
-  const [onActivated, setActivated] = React.useState(activated);
-
-  const handleClick = () => {
-    if (!onActivated) {
-      setActivated(true);
-    }
-    else {
-      setActivated(false);
-    }
-  };
+export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelectListItemProps> = ({ title, activated, previewProps, onClick }) => {
 
   return (
-    <SNotificationsGroupSelectListItem onClick={() => handleClick()} activated={onActivated}>
+    <SNotificationsGroupSelectListItem onClick={onClick} activated={activated}>
       <SFlexListItem>
         <Preview size={28} {...previewProps}
         ></Preview>
