@@ -34,6 +34,14 @@ const FONT_WEIGHTS = {
 console.log("Build started...");
 console.log("\n==============================================");
 
+const enforceHexString = (s) => {
+  if (s === "white") {
+    return "#ffffff";
+  } else {
+    return s;
+  }
+};
+
 // Register fontFaces
 
 StyleDictionary.registerFormat({
@@ -93,41 +101,6 @@ StyleDictionary.registerFormat({
 });
 
 StyleDictionary.registerFormat({
-  name: "styledComponentsFlat",
-  formatter: function ({ dictionary, ...rest }) {
-    let output = 'import { css } from "styled-components";\n\n';
-    output = output + "export const " + `${rest?.platform?.name || "CSSVars"}` + " = css`\n:root {\n";
-    const set = new Set();
-
-    const addToSet = (obj) => {
-      if (typeof obj?.name === "string" && obj.name?.includes("$") && obj?.value) {
-        set.add({ name: obj?.name.replace(/\$/, "--"), value: obj.value });
-      }
-    };
-
-    for (layer1 in dictionary.properties) {
-      addToSet(dictionary.properties[layer1]);
-      for (layer2 in dictionary.properties[layer1]) {
-        addToSet(dictionary.properties[layer1][layer2]);
-        for (layer3 in dictionary.properties[layer1][layer2]) {
-          addToSet(dictionary.properties[layer1][layer2][layer3]);
-          for (layer4 in dictionary.properties[layer1][layer2][layer3]) {
-            addToSet(dictionary.properties[layer1][layer2][layer3][layer4]);
-          }
-        }
-      }
-    }
-
-    set.forEach((item) => {
-      output = output + `${item.name}: ${item.value};\n`;
-    });
-
-    output = output + "}`;";
-    return output;
-  },
-});
-
-StyleDictionary.registerFormat({
   name: "styledBoxShadows",
   formatter: function ({ dictionary }) {
     let boxShadows = 'import { css } from "styled-components";\n\n';
@@ -137,11 +110,48 @@ StyleDictionary.registerFormat({
       const value = `${token.value["x"]} ${token.value["y"]} ${token.value["blur"]} ${token.value["spread"]} ${token.value["color"]}`;
 
       const name = kebabCase(`${token.name}`);
-      boxShadows += `    --box-shadow-${name}: ${value}\n`;
+      boxShadows += `    --box-shadow-${name}: ${value};\n`;
     });
     boxShadows = boxShadows + "  }\n";
     boxShadows = boxShadows + "`;\n";
     return boxShadows;
+  },
+});
+
+StyleDictionary.registerFormat({
+  name: "styledColors",
+  formatter: function ({ dictionary }) {
+    let colors = 'import { css } from "styled-components";\n\n';
+    colors += "export const CSSColors = css`\n";
+    colors += "  :root {\n";
+
+    dictionary.allTokens.forEach((token) => {
+      console.log(token);
+      const value = enforceHexString(token.value);
+      const name = kebabCase(`${token.name}`);
+      // to prevent duplicates
+      if (!colors.includes(`--${name}: ${value};`)) {
+        colors += `    --${name}: ${value};\n`;
+      }
+
+      for (property in token.original) {
+        if (property !== "value" && property !== "type") {
+          let value = enforceHexString(token.original[property].value);
+          const innerName = `${name}-${property}`;
+          // to prevent duplicates
+          if (!colors.includes(`--${innerName}: ${value};`)) {
+            if (`${value}` === "undefined") {
+              value = enforceHexString(token.original[property]);
+            }
+            colors += `    --${innerName}: ${value};\n`;
+          }
+        }
+      }
+    });
+
+    colors += "  }\n";
+    colors += "`;\n";
+    return colors;
   },
 });
 

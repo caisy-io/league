@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { SMessage } from "./styles/SMessage";
-import { SIconClose } from "./styles/SIconClose";
-import { SMessageTitle } from "./styles/SMessageTitle";
-import { SMessageBody } from "./styles/SMessageBody";
-import { SMessageContent } from "./styles/SMessageContent";
+import { NotificationSnackbar } from "../notification-snackbar/NotificationSnackbar";
 import { SMessageWrapper } from "./styles/SMessageWrapper";
-import { SMessageIcon } from "./styles/SMessageIcon";
-import { IconError } from "../../icons/IconError";
-import { IconCheckmark } from "../../icons/IconCheckmark";
-import { IconInfo } from "../../icons/IconInfo";
-import { IconClose } from "../../icons/IconClose";
 
 export enum EMessageType {
   Success = "success",
@@ -23,11 +14,12 @@ export enum EMessageType {
 // and we don't want to accidentally import "Message" instead of "message" on our app
 
 export interface IMessage {
-  title?: string;
   type: string;
   content: string;
   id: number;
   duration: number;
+  icon?: React.ReactNode;
+  actionClick?: () => void;
 }
 
 const MessageWrapper: React.FC<IMessage> = () => {
@@ -49,45 +41,11 @@ const Message: React.FC<IMessage> = (msgConfig: IMessage) => {
     }, 350);
   };
 
-  const msgIcon = () => {
-    switch (msgConfig.type) {
-      case EMessageType.Success:
-        return (
-          <SMessageIcon backgroundColor={"var(--states-success-bg)"} color="var(--states-success)">
-            {<IconCheckmark />}
-          </SMessageIcon>
-        );
-      case EMessageType.Error:
-        return (
-          <SMessageIcon backgroundColor={"var(--states-error-bg)"} color="var(--states-error)">
-            {<IconError />}
-          </SMessageIcon>
-        );
-      case EMessageType.Info:
-        return (
-          <SMessageIcon backgroundColor={"var(--states-info-bg)"} color="var(--text-suppportive-02)">
-            {<IconInfo />}
-          </SMessageIcon>
-        );
-      default:
-        return undefined;
-    }
-  };
-
   return msgContainer
     ? ReactDOM.createPortal(
-        <SMessage exit={exit}>
-          {msgIcon()}
-          <SMessageContent>
-            <SMessageTitle>{msgConfig.title}</SMessageTitle>
-            <SMessageBody>{msgConfig.content}</SMessageBody>
-          </SMessageContent>
-          <SIconClose onClick={handleCloseMessage}>
-            <IconClose></IconClose>
-          </SIconClose>
-        </SMessage>,
-        msgContainer,
-      )
+      <NotificationSnackbar exit={exit} content={msgConfig.content} success={msgConfig.type == "success"} error={msgConfig.type == "error"} icon={msgConfig.icon} action={msgConfig.actionClick}></NotificationSnackbar>,
+      msgContainer,
+    )
     : null;
 };
 
@@ -98,32 +56,25 @@ interface IMessageDispatcher {
 }
 
 // COMPONENT TO IMPORT IN OUR APP
-export function message(): React.FC<IMessageDispatcher> | void {}
+export function message(): React.FC<IMessageDispatcher> | void { }
 
 const renderMessage = (children, config, type) => {
-  const defaultTitle = () => {
-    switch (type) {
-      case EMessageType.Success:
-        return "Success!";
-      case EMessageType.Error:
-        return "Something went wrong!";
-      case EMessageType.Info:
-        return "Did you know?";
-    }
-  };
-
-  const title = config?.title ? config.title : defaultTitle();
   const duration = config?.duration ? config.duration : 3000;
+
+  const icon = config?.icon;
+
+  const action = config?.action;
 
   const msgConfig = {
     type,
-    title,
     content: children,
     duration,
     id: Date.now(),
+    icon,
+    action
   };
 
-  const nextDiv = document.getElementById("__next");
+  const nextDiv = document.getElementById("root") || document.getElementById("__next");
 
   let msgWrapper = document.querySelector(".caisy-message-wrapper");
   if (!msgWrapper) {
