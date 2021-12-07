@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, forwardRef } from "react";
 import { ISizes } from "../../interfaces/";
 import { EBadgePosition } from "./EBadgePosition";
 import { SBadge } from "./styles/SBadge";
@@ -12,9 +12,11 @@ export interface IBadgeProps {
   position: EBadgePosition;
   type: IBadgeType;
   size?: ISizes;
+  children?
+  ref?
 }
 
-export const Badge: FC<IBadgeProps> = ({ children, value, position, type, size }) => {
+export const Badge: FC<IBadgeProps> = forwardRef(({ children, value, position, type, size }: IBadgeProps, ref: any) => {
   return (
     <SBadge>
       <SBadgeIcon value={value} position={position} type={type} size={size}>
@@ -25,4 +27,4 @@ export const Badge: FC<IBadgeProps> = ({ children, value, position, type, size }
       {children}
     </SBadge>
   );
-};
+});
