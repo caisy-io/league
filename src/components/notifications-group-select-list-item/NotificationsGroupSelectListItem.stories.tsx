@@ -21,7 +21,7 @@ function NotificationsGroupSelectListItemDemo({ content, ...args }) {
 
   const [onActivated, setActivated] = React.useState(false);
   
-  return <NotificationsGroupSelectListItem activated={onActivated} onChange={(e) => setActivated(e)} title={args.title} previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }}>
+  return <NotificationsGroupSelectListItem activated={onActivated} title={args.title} previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }}>
   </NotificationsGroupSelectListItem>
 }
 

@@ -25,29 +25,25 @@ const SFlexListItem = styled(SFlex)`
 
 export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelectListItemProps> = ({ title, activated, previewProps, onClick }) => {
 
-  const [onActivated, setActivated] = React.useState(false);
+  const [onActivated, setActivated] = React.useState(activated);
 
   const handleClick = () => {
-    if (!activated) { 
-      setActivated(true); 
+    if (!onActivated) {
+      setActivated(true);
     }
-     else { 
-       setActivated(false); 
-      }
+    else {
+      setActivated(false);
+    }
   };
 
   return (
-    <SNotificationsGroupSelectListItem activated={onActivated}>
+    <SNotificationsGroupSelectListItem onClick={() => handleClick()} activated={onActivated}>
       <SFlexListItem>
         <Preview size={28} {...previewProps}
         ></Preview>
         <SNotificationsGroupSelectListItemTitle>{title}</SNotificationsGroupSelectListItemTitle>
       </SFlexListItem>
-      <div onClick={() => handleClick()} >
-        <IconChevronDown />
-      </div>
+      <IconChevronDown />
     </SNotificationsGroupSelectListItem>
   )
 }
-
-
