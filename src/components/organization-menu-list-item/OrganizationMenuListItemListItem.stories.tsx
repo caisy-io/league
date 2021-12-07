@@ -26,7 +26,7 @@ export default {
     },
     badgeValue: {
       description: "Defines the value of the badge",
-      control: { type: "number" },
+      control: { type: "text" },
       table: {
         defaultValue: {
           summary: undefined,
