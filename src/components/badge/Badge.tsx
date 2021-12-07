@@ -12,7 +12,8 @@ export interface IBadgeProps {
   position: EBadgePosition;
   type: IBadgeType;
   size?: ISizes;
-  children?
+  children?;
+  ref?
 }
 
 export const Badge: FC<IBadgeProps> = forwardRef(({ children, value, position, type, size }: IBadgeProps, ref: any) => {
