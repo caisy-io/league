@@ -30,10 +30,6 @@ const SFlexListItem = styled(SFlex)<ISFlex>`
   width: ${(props) => `calc(100% - ${props.width}px - 0.5rem)`};
 `;
 
-const SBadge = styled(Badge)`
-  white-space: nowrap;
-`;
-
 export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = ({ title, label, itemSize, previewProps, badgeText }) => {
   const badgeRef = useRef<HTMLElement>(null);
 
@@ -58,7 +54,7 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
           <SOrganizationSelectListItemLabel itemSize={itemSize}>{label}</SOrganizationSelectListItemLabel>
         </SOrganizationSelectListItemTextWrapper>
       </SFlexListItem>
-      {badgeText && <SBadge ref={badgeRef} value={badgeText} type="regular" size="small" position={EBadgePosition.Center}></SBadge>
+      {badgeText && <Badge ref={badgeRef} value={badgeText} type="regular" size="small" position={EBadgePosition.Center}></Badge>
       }
     </SOrganizationSelectListItem>
   )
