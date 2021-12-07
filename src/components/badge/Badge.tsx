@@ -18,7 +18,7 @@ export interface IBadgeProps {
 
 export const Badge: FC<IBadgeProps> = forwardRef(({ children, value, position, type, size }: IBadgeProps, ref: any) => {
   return (
-    <SBadge>
+    <SBadge ref={ref}>
       <SBadgeIcon value={value} position={position} type={type} size={size}>
         <SBadgeIconContent type={type} size={size}>
           {type !== "color" && value}
