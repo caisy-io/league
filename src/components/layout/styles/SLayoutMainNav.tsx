@@ -3,13 +3,14 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 export interface ISLayoutMainNav {
     width: number;
+    styleOverwrite?: any;
 }
 
 const Bronze = css` 
     display: flex;
     flex-direction: column;
-    width: ${(props: ISLayoutMainNav) => props.width ? (props.width + "px") : "70px"};
-    min-width: ${(props: ISLayoutMainNav) => props.width ? (props.width + "px") : "70px"};
+    width: ${(props: ISLayoutMainNav) => props.width ? (props.width + "px") : "60px"};
+    min-width: ${(props: ISLayoutMainNav) => props.width ? (props.width + "px") : "60px"};
     height: 100%;
 `;
 
@@ -21,10 +22,11 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLayoutMainNav = styled.div`
+export const SLayoutMainNav = styled.div<ISLayoutMainNav>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;

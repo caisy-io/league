@@ -7,7 +7,7 @@ module.exports = {
       files: [
         {
           destination: "CSSColors.tsx",
-          format: "styledComponentsFlat",
+          format: "styledColors",
           filter: {
             type: "color",
           },
@@ -43,7 +43,7 @@ module.exports = {
         {
           destination: "CSSTypographies.tsx",
           format: "styledComponents",
-          filter: (token) => token.path[0] === "Progressive",
+          filter: (token) => token.type === "typography",
         },
       ],
     },

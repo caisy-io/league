@@ -1,13 +1,18 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
+const CSSSmall = css`
+  width: 10px;
+  height: 10px;
+`;
+
 const Bronze = css`
   display: inline-block;
   border-radius: 15rem;
   position: absolute;
   cursor: pointer;
-  width: 38px;
-  height: 1.25rem;
+  width: 100%;
+  height: 100%;
   border-radius: 1.25rem;
   background-color: var(--text-priority-neutral-5);
   top: 0;
@@ -30,6 +35,7 @@ const Bronze = css`
     width: 14px;
     height: 14px;
     background-color: var(--ui-01);
+    ${(props) => props.small  ? CSSSmall : ''};
   }
   &:hover{
     background-color: var(--active-interactional-tertiary-02);

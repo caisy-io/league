@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { SidebarTitle } from './SidebarTitle';
 import { IconStarOutlined } from '../../icons/IconStarOutlined'
 import { Toggle } from '../toggle';
@@ -11,13 +11,22 @@ export default {
       description: "Content of the sidebar title",
       control: { type: "text" },
     },
+    toggle: {
+      description: "Visibility of toggle button",
+      control: { type: "boolean" },
+      table: {
+        defaultValue: {
+          summary: "false",
+        },
+      },
+    },
   },
 };
 
 // Default
-function SidebarTitleDemo({ content, ...args }) {
+function SidebarTitleDemo({ content, toggle }) {
   return <div style={{ width: "293px" }}>
-    <SidebarTitle {...args}>
+    <SidebarTitle toggle={toggle}>
       {content}
     </SidebarTitle>
   </div>
@@ -28,12 +37,13 @@ const Template = (args) => < SidebarTitleDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: "Default",
+  toggle: false
 };
 
 // With left icon
-export const LeftIcon = ({ content, ...args }) => (
+export const LeftIcon = ({ content, toggle }) => (
   <div style={{ width: "293px" }}>
-    <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>}>
+    <SidebarTitle icon={<IconStarOutlined></IconStarOutlined>} toggle={toggle}>
       {content}
     </SidebarTitle>
   </div>
@@ -41,13 +51,13 @@ export const LeftIcon = ({ content, ...args }) => (
 
 LeftIcon.args = {
   content: "Default",
+  toggle: false
 };
 
-
 // With left icon and toggle
-export const IconAndToggle = ({ content, ...args }) => (
+export const IconAndToggle = ({ content, toggle }) => (
   <div style={{ width: "293px" }}>
-    <SidebarTitle {...args} icon={<IconStarOutlined></IconStarOutlined>} toggleComponent={<Toggle></Toggle>}>
+    <SidebarTitle icon={<IconStarOutlined></IconStarOutlined>} toggle={toggle}>
       {content}
     </SidebarTitle>
   </div>
@@ -55,4 +65,5 @@ export const IconAndToggle = ({ content, ...args }) => (
 
 IconAndToggle.args = {
   content: "Default",
+  toggle: true
 };
