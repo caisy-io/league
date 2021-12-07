@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import { SPreview } from "./styles/SPreview"
 
-interface IPreview {
+export interface IPreview {
   flag?: ReactNode;
   icon?: ReactNode;
   image?: ReactNode;
