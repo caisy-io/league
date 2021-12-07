@@ -73,7 +73,7 @@ function TooltipDemo({ ...args }) {
 }
 
 export default {
-  title: "Components/Tooltip",
+  title: "Components/Menus & Popovers/Tooltip",
   component: TooltipDemo,
   parameters: {
     design: {

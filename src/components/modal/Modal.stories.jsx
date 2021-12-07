@@ -137,7 +137,7 @@ function ModalDemo() {
 }
 
 export default {
-  title: 'Components/Modal',
+  title: 'Components/Menus & Popovers/Modal',
   component: ModalDemo,
 };
 const Template = (args) => <ModalDemo {...args} />;

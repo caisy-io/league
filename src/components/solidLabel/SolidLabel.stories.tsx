@@ -3,7 +3,7 @@ import { SolidLabel } from "./SolidLabel"
 
 // Default Solid Label Demo
 export default {
-  title: "Components/SolidLabel",
+  title: "Components/Forms/SolidLabel",
   component: SolidLabelDemo,
   parameters: {
     design: {

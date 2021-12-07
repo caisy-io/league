@@ -48,7 +48,7 @@ function TranslationMenuDemo() {
 }
 
 export default {
-  title: 'Components/TranslationMenu',
+  title: 'Components/Legacy/TranslationMenu',
   component: TranslationMenuDemo,
 };
 const Template = (args) => <TranslationMenuDemo {...args} />;

@@ -28,7 +28,7 @@ function CardDemo() {
 }
 
 export default {
-  title: 'Components/Card',
+  title: 'Components/Cards/Card',
   component: CardDemo,
 };
 const Template = (args) => <CardDemo {...args} />;

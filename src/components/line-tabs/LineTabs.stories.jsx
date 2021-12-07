@@ -3,7 +3,7 @@ import { LineTabs } from './LineTabs';
 import { IconStarOutlined } from '../..';
 
 export default {
-  title: `Components/LineTabs`,
+  title: `Components/Navigation/LineTabs`,
   component: LineTabsDemo,
   argTypes: {
     state: {
