@@ -3,7 +3,7 @@ import { SidebarTag } from "./SidebarTag";
 
 // Default SidebarTag Demo
 export default {
-  title: "Components/SidebarTag",
+  title: "Components/Navigation/SidebarTag",
   component: SiderbarTagDemo,
   parameters: {
     design: {

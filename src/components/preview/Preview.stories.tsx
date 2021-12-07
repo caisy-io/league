@@ -6,7 +6,7 @@ import { Img } from "../../base-components/img/Img";
 import Flag from "../flag";
 
 export default {
-  title: "Components/Preview",
+  title: "Components/Style Guide/Preview",
   component: Preview,
   argTypes: {
     size: {

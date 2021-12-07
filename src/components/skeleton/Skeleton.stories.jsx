@@ -6,7 +6,7 @@ function SkeletonDemo() {
 }
 
 export default {
-  title: 'Components/Skeleton',
+  title: 'Components/Legacy/Skeleton',
   component: SkeletonDemo,
 };
 const Template = (args) => <SkeletonDemo {...args} />;

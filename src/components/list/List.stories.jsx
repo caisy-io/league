@@ -142,7 +142,7 @@ function ListDemo() {
 }
 
 export default {
-  title: "Components/List",
+  title: "Components/Legacy/List",
   component: ListDemo,
 };
 const Template = (args) => <ListDemo {...args} />;

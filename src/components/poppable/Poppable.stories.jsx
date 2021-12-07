@@ -64,7 +64,7 @@ function PoppableDemo() {
 }
 
 export default {
-  title: 'Components/Poppable',
+  title: 'Components/Utilities/Poppable',
   component: PoppableDemo,
 };
 

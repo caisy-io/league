@@ -2,7 +2,7 @@ import React from "react";
 import { SearchBarOperatorBadgeSelect } from "./SearchBarOperatorBadgeSelect";
 
 export default {
-  title: `Components/SearchBarOperatorBadgeSelect`,
+  title: `Components/Forms/SearchBarOperatorBadgeSelect`,
   component: SearchBarOperatorBadgeSelectDemo,
   parameters: {
     design: {
