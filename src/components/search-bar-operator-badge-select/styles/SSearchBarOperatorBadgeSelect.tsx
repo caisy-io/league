@@ -16,6 +16,7 @@ const CSSActivated = css`
 
 const Bronze = css<ISearchBarOperatorBadgeSelectProps>`
   ${CSSProgressiveHighLight};
+  line-height: 16px;
   color: var(--text-04);
   text-transform: uppercase;
   max-width: min-content;
