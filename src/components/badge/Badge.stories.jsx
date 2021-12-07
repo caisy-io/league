@@ -84,7 +84,7 @@ export const Color = ({ content, ...args }) => (
 
 Color.args = {
   type: "color",
-  value: "#F43B44",
+  value: "#0047FF",
   size: "small"
 };
 
