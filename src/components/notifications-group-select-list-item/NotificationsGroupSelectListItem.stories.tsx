@@ -10,10 +10,6 @@ export default {
       description: "Changes the title text of the component",
       control: { type: "text" },
     },
-    label: {
-      description: "Changes the label text of the component",
-      control: { type: "text" },
-    },
     activated: {
       description: "Changes the state of the component to activated",
       control: { type: "boolean" },
@@ -22,7 +18,10 @@ export default {
 };
 
 function NotificationsGroupSelectListItemDemo({ content, ...args }) {
-  return <NotificationsGroupSelectListItem activated={args.activated} title={args.title} label={args.label} previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }}>
+
+  const [onActivated, setActivated] = React.useState(false);
+  
+  return <NotificationsGroupSelectListItem activated={onActivated} onChange={(e) => setActivated(e)} title={args.title} previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }}>
   </NotificationsGroupSelectListItem>
 }
 

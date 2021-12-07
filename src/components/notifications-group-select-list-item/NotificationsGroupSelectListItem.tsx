@@ -11,10 +11,10 @@ export type IListItemSize = "large" | "medium" | "small";
 
 export interface INotificationsGroupSelectListItemProps {
   title?: string | undefined,
-  label?: string | undefined,
-  imageUrl?: string | undefined,
-  activated?: boolean,
+  activated: boolean,
   previewProps?: IPreview,
+  onChange?: (e: any) => void;
+  onClick?: (e: any) => void;
 }
 
 const SFlexListItem = styled(SFlex)`
@@ -23,15 +23,31 @@ const SFlexListItem = styled(SFlex)`
   height: 100%;
 `;
 
-export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelectListItemProps> = ({ title, activated, previewProps }) => {
+export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelectListItemProps> = ({ title, activated, previewProps, onClick }) => {
+
+  const [onActivated, setActivated] = React.useState(false);
+
+  const handleClick = () => {
+    if (!activated) { 
+      setActivated(true); 
+    }
+     else { 
+       setActivated(false); 
+      }
+  };
+
   return (
-    <SNotificationsGroupSelectListItem activated={activated}>
+    <SNotificationsGroupSelectListItem activated={onActivated}>
       <SFlexListItem>
         <Preview size={28} {...previewProps}
         ></Preview>
         <SNotificationsGroupSelectListItemTitle>{title}</SNotificationsGroupSelectListItemTitle>
       </SFlexListItem>
-      <IconChevronDown></IconChevronDown>
+      <div onClick={() => handleClick()} >
+        <IconChevronDown />
+      </div>
     </SNotificationsGroupSelectListItem>
   )
 }
+
+

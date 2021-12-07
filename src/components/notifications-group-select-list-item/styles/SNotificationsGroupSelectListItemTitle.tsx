@@ -7,6 +7,7 @@ const Bronze = css`
   color: var(--text-01);
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const Silver = css``;
