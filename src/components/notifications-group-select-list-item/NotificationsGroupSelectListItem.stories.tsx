@@ -3,7 +3,7 @@ import { Img } from "../../base-components/img/Img";
 import { NotificationsGroupSelectListItem } from './NotificationsGroupSelectListItem';
 
 export default {
-  title: `Components/NotificationsGroupSelectListItem`,
+  title: `Components/Navigation/NotificationsGroupSelectListItem`,
   component: NotificationsGroupSelectListItemDemo,
   argTypes: {
     title: {
