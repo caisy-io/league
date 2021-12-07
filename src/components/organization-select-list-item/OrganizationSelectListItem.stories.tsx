@@ -26,7 +26,7 @@ export default {
     },
     size: {
       description: "Changes the size of the list item",
-      options: ["small", "medium", "large"],
+      options: ["medium", "large"],
       control: { type: "select" },
       table: {
         defaultValue: {
@@ -49,7 +49,6 @@ Default.args = {
   title: "Default",
   label: "Label",
   size: "large",
-  imageUrl: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=843&q=80"
 };
 
 export const WithBadge = Template.bind({});
@@ -58,5 +57,4 @@ WithBadge.args = {
   label: "Label",
   badgeText: "Label",
   size: "large",
-  imageUrl: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=843&q=80"
 };
