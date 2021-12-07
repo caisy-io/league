@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { Badge, EBadgePosition } from '..';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
@@ -24,15 +24,26 @@ export interface IOrganizationMenuListItemProps {
 }
 
 const SFlexListItem = styled(SFlex)`
-  width: 90%;
+  width: ${(props) => `calc(100% - ${props.width}px - 1.75rem)`};
   gap: 0.75rem;
   height: 100%;
 `;
 
 export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({ title, label, badgeValue, itemSize, previewProps }) => {
+  
+  const badgeRef = useRef<HTMLElement>(null);
+
+  const [width, setWidth] = React.useState(0);
+
+  // calculate width of the badge
+  useEffect(() => {
+    const badgeWidth = badgeRef.current ? badgeRef.current.offsetWidth : 0;
+    setWidth(badgeWidth);
+  }, [badgeValue, badgeRef.current]);
+
   return (
     <SOrganizationMenuListItem itemSize={itemSize}>
-      <SFlexListItem>
+      <SFlexListItem width={width}>
         {itemSize == "large" ? (
           <Preview size={48} {...previewProps}></Preview>
         ) : (
@@ -44,7 +55,7 @@ export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({ t
         </SOrganizationMenuListItemTextWrapper>
       </SFlexListItem>
       <SOrganizationMenuListItemIconWrapper >
-        {badgeValue != undefined && <Badge value={badgeValue} position={EBadgePosition.Center} type={'regular'} size="small"></Badge>}
+        {badgeValue != undefined && <Badge ref={badgeRef} value={badgeValue} position={EBadgePosition.Center} type={'regular'} size="small"></Badge>}
         <IconChevron></IconChevron>
       </SOrganizationMenuListItemIconWrapper>
     </SOrganizationMenuListItem>

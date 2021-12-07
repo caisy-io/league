@@ -3,7 +3,7 @@ import { Img } from "../../base-components/img/Img";
 import { OrganizationMenuListItem } from './OrganizationMenuListItem';
 
 export default {
-  title: `Components/OrganizationMenuListItem`,
+  title: `Components/Navigation/OrganizationMenuListItem`,
   component: OrganizationMenuListItemDemo,
   argTypes: {
     title: {

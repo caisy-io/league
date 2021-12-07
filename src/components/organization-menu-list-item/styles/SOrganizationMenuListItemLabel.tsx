@@ -10,6 +10,7 @@ const Bronze = css`
   text-overflow: ellipsis;
   max-width: 250px;
   margin-bottom: 0.13rem;
+  white-space: nowrap;
 `;
 
 const Silver = css``;
