@@ -5,7 +5,7 @@ import { SelectSingle} from "./SelectSingle";
 
 // Default Select Demo (single select)
 export default {
-    title: "Components/Select",
+    title: "Components/Legacy/Select",
     component: SelectDemo,
 };
 

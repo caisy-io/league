@@ -2,7 +2,7 @@ import React from "react";
 import { SearchBarOperator } from "./SearchBarOperator";
 
 export default {
-  title: `Components/SearchBarOperator`,
+  title: `Components/Forms/SearchBarOperator`,
   component: SearchBarOperatorDemo,
   parameters: {
     design: {

@@ -14,7 +14,6 @@ const Bronze = css<ISearchBarOperandProps>`
   color: var(--text-02);
   background-color: var(--active-ui-01);
   height: 100%;
-  flex-grow: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,6 +21,8 @@ const Bronze = css<ISearchBarOperandProps>`
   position: relative;
   z-index: 0;
   padding: 0 4px;
+  margin-right: 0.25rem;
+  white-space: nowrap;
   ${(props) => props.activated ? CSSActivated : ''};
 `;
 
