@@ -12,7 +12,7 @@ export interface IBadgeProps {
   position: EBadgePosition;
   type: IBadgeType;
   size?: ISizes;
-  children?;
+  children?
   ref?
 }
 
