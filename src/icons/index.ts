@@ -123,10 +123,7 @@ export { IconCheckmarkOutlined } from "./IconCheckmarkOutlined";
 export { IconDocumentsComponents } from "./IconDocumentsComponents";
 export { IconAssetsImage } from "./IconAssetsImage";
 export { IconTypeface } from "./IconTypeface";
-<<<<<<< HEAD
 export { IconChevron } from "./IconChevron";
-=======
 export { IconUpload } from "./IconUpload";
 export { IconDocuments } from "./IconDocuments";
 export { IconComponents } from "./IconComponents";
->>>>>>> origin/dev
