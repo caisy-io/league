@@ -45,7 +45,7 @@ function TabsShowcase() {
 }
 
 export default {
-  title: "Components/Tabs",
+  title: "Components/Navigation/Tabs",
   component: TabsShowcase,
 };
 

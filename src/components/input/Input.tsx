@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, ReactElement } from "react";
+import React, { InputHTMLAttributes, ReactNode } from "react";
 import { SInput } from "./styles/SInput";
 import { SInputIcon } from "./styles/SInputIcon";
 import { SInputCloseButton } from "./styles/SInputCloseButton";
@@ -8,7 +8,7 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
   type?: "number" | "password" | "email" | "text";
-  icon?: () => ReactElement;
+  icon?: ReactNode;
   hasCloseButton?: boolean;
   onClose?: () => void;
   onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
@@ -24,7 +24,7 @@ export const Input: React.FC<IInput> = ({ hasCloseButton, onClose, icon, type = 
 
   return (
     <SInput style={wrapperStyle}>
-      {icon && <SInputIcon onClick={onIconClick}>{icon()}</SInputIcon>}
+      {icon && <SInputIcon onClick={onIconClick}>{icon}</SInputIcon>}
       <input ref={ref} {...props} type={type} onKeyUp={(e) => props.onKeyUp?.(e)} />
       {hasCloseButton && <SInputCloseButton onClick={onClose}>{IconClose()}</SInputCloseButton>}
     </SInput>

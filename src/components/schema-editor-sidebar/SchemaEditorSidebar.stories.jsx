@@ -8,7 +8,7 @@ import { SchemaEditorSidebar } from './SchemaEditorSidebar';
 import { SidebarCategory } from "./SidebarCategory";
 
 export default {
-  title: `Components/SchemaEditorSidebar`,
+  title: `Components/Navigation/SchemaEditorSidebar`,
   component: SchemaEditorSidebarDemo,
   parameters: {
     design: {

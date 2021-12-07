@@ -25,7 +25,7 @@ const Bronze = css<ISearchBarOperandProps>`
   transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
   padding: 0.25rem;
   box-sizing: border-box;
-  background-color: transparent;
+  background-color: #FFFF;
   border: 1px solid var(--hover-interactional-secondary-03);
   ${(props) => props.hover ? CSSHover : ''};
   :hover{

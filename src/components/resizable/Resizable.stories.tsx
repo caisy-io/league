@@ -73,7 +73,7 @@ function ResizableDemo(args) {
 }
 
 export default {
-  title: 'Components/Resizable',
+  title: 'Components/Utilities/Resizable',
   component: ResizableDemo,
   argTypes: {
     content: {

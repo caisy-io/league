@@ -23,7 +23,7 @@ const defaultEnviroment = {
 
 // Default OrganizationSelectMenu Demo
 export default {
-  title: "Components/OrganizationSelectMenu",
+  title: "Components/Navigation/OrganizationSelectMenu",
   component: OrganizationSelectMenu,
 };
 

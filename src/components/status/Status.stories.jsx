@@ -75,7 +75,7 @@ function StatusDemo() {
 }
 
 export default {
-  title: 'Components/Status',
+  title: 'Components/Legacy/Status',
   component: StatusDemo,
 };
 const Template = (args) => <StatusDemo {...args} />;

@@ -50,17 +50,7 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children }) =
         return "var(--ui-overlay-02)";
       case "white":
       default:
-        return "var(--ui-02)";
-    }
-  };
-
-  const getColor = () => {
-    switch (color) {
-      case "black":
-        return "var(--text-02)";
-      case "white":
-      default:
-        return "var(--text-01)";
+        return "var(--ui-01)";
     }
   };
 
@@ -69,7 +59,7 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children }) =
       {children}
       {open && (
         <Popover trianglecolor={getBackgroundColor()} placement={placement || "top"} reference={ref}>
-          <STooltip closing={closing} color={getColor()} backgroundColor={getBackgroundColor()}>
+          <STooltip closing={closing} color={color}>
             {content}
           </STooltip>
         </Popover>
