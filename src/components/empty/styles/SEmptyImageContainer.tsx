@@ -5,6 +5,9 @@ const Bronze = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  max-width: 192px;
+  text-align: center;
 `;
 
 const Silver = css``;
