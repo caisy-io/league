@@ -23,7 +23,7 @@ const SFlexListItem = styled(SFlex)`
   height: 100%;
 `;
 
-export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelectListItemProps> = ({ title, activated, previewProps, onClick }) => {
+export const NotificationsGroupSelectListItem: React.FC<INotificationsGroupSelectListItemProps> = ({ title, activated, previewProps }) => {
 
   const [onActivated, setActivated] = React.useState(activated);
 
