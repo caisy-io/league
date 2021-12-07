@@ -3,6 +3,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 interface ISPreview {
   size?: 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48;
   isFlag?: boolean; 
+  styleOverwrite?: any;
 }
 
 const fontSize: (size: number) => number = size => {
@@ -50,6 +51,7 @@ const Bronze = css<ISPreview>`
   border-radius: ${({ isFlag }) => !isFlag && "4px"};
   color: var(--text-04);
   display: flex;
+  flex-shrink: 0;
   font-size: ${({ size }) => fontSize(size)}px;
   font-weight: 700;
   height: ${({ size }) => size ? size : 32}px;
@@ -68,6 +70,7 @@ const Bronze = css<ISPreview>`
   img {
     border-radius: 4px;
   }
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
 
 const Silver = css``;
