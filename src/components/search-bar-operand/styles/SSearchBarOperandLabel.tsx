@@ -11,6 +11,7 @@ const Bronze = css<ISearchBarOperandProps>`
   ${CSSProgressiveCaption01Semibold};
   color: var(--active-ui-01);
   margin: 2px 4px;
+  white-space: nowrap;
   ${(props) => props.activated ? CSSActivated : ''};
 `;
 
