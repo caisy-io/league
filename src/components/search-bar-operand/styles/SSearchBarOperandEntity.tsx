@@ -22,6 +22,7 @@ const Bronze = css<ISearchBarOperandProps>`
   z-index: 0;
   padding: 0 4px;
   margin-right: 0.25rem;
+  white-space: nowrap;
   ${(props) => props.activated ? CSSActivated : ''};
 `;
 
