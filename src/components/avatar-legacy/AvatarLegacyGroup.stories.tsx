@@ -5,7 +5,7 @@ import { AvatarLegacyGroup } from './AvatarLegacyGroup';
 import { Tooltip } from '../tooltip/Tooltip';
 
 export default {
-  title: 'Components/AvatarGroup',
+  title: 'Components/Legacy/AvatarGroup',
   component: AvatarLegacyGroup,
   argTypes: {},
 } as ComponentMeta<typeof AvatarLegacyGroup>;

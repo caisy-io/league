@@ -3,9 +3,18 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 interface ITooltip {
   closing: boolean;
-  backgroundColor: string;
   color: string;
 }
+
+const CSSBlack = css`
+  background-color: var(--ui-overlay-02);
+  color: var(--text-02);
+`;
+
+const CSSWhite = css`
+  background-color: var(--ui-01);
+  color: var(--text-01);
+`;
 
 const Bronze = css<ITooltip>`
   display: flex;
@@ -13,12 +22,11 @@ const Bronze = css<ITooltip>`
   width: max-content;
 
   border-radius: 4px;
-  background-color: ${(props) => props.backgroundColor};
-  color: ${(props) => props.color};
+  ${(props) => (props.color === "black" ? CSSBlack : CSSWhite)}
   animation: ${(props) => (props.closing ? "close" : "open")} 100ms ease-in-out;
   padding: 16px;
 
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--box-shadow-sticked-top-ui);
 
   @keyframes open {
     0% {

@@ -34,7 +34,7 @@ function MovableDemo() {
 }
 
 export default {
-  title: 'Components/Movable',
+  title: 'Components/Utilities/Movable',
   component: MovableDemo,
 };
 const Template = (args) => <MovableDemo {...args} />;

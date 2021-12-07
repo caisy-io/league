@@ -41,7 +41,7 @@ function PopconfirmDemo() {
 }
 
 export default {
-  title: 'Components/Popconfirm',
+  title: 'Components/Legacy/Popconfirm',
   component: PopconfirmDemo,
 };
 const Template = (args) => <PopconfirmDemo {...args} />;

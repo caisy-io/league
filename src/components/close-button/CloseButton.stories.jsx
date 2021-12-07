@@ -2,7 +2,7 @@ import React from "react";
 import { CloseButton } from './CloseButton';
 
 export default {
-  title: `Components/CloseButton`,
+  title: `Components/Buttons/CloseButton`,
   parameters: {
     design: {
       type: "figma",

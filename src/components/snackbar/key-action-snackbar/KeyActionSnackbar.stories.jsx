@@ -5,7 +5,7 @@ function KeyActionSnackbarDemo({ ...args }) {
 }
 
 export default {
-  title: "Components/Snackbar/KeyActionSnackbar",
+  title: "Components/Cards/KeyActionSnackbar",
   parameters: {
     design: {
       type: "figma",

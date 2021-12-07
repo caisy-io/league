@@ -5,7 +5,7 @@ import { AvatarGroup } from './AvatarGroup';
 import { Tooltip } from '../tooltip/Tooltip';
 
 export default {
-  title: 'Components/AvatarGroup',
+  title: 'Components/Style guide/AvatarGroup',
   component: AvatarGroup,
   argTypes: {},
 } as ComponentMeta<typeof AvatarGroup>;
