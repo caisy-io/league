@@ -3,7 +3,7 @@ import { Img } from "../../base-components/img/Img";
 import { OrganizationSelectListItem } from './OrganizationSelectListItem';
 
 export default {
-  title: `Components/OrganizationSelectListItem`,
+  title: `Components/Navigation/OrganizationSelectListItem`,
   component: OrganizationSelectListItemDemo,
   parameters: {
     design: {

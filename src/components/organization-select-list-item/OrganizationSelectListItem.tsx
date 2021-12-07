@@ -31,9 +31,7 @@ const SFlexListItem = styled(SFlex)<ISFlex>`
 `;
 
 const SBadge = styled(Badge)`
-  max-width: 4rem;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = ({ title, label, itemSize, previewProps, badgeText }) => {
