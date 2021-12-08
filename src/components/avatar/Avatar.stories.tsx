@@ -3,7 +3,7 @@ import React from 'react';
 import { Avatar } from './Avatar';
 
 export default {
-  title: 'Components/Avatar',
+  title: 'Components/Style guide/Avatar',
   component: Avatar,
   argTypes: {},
 } as ComponentMeta<typeof Avatar>;

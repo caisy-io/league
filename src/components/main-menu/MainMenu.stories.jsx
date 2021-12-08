@@ -56,7 +56,7 @@ const UploadContainer = () => {
 
 // Default MainMenu Demo
 export default {
-  title: "Components/MainMenu",
+  title: "Components/Navigation/MainMenu",
   component: MainMenuDemo,
   argTypes: {},
 };

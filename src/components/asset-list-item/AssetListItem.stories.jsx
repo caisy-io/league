@@ -3,7 +3,7 @@ import { IconDocuments } from '../../icons/IconDocuments';
 import { AssetListItem } from './AssetListItem';
 
 export default {
-  title: `Components/AssetListItem`,
+  title: `Components/List items/AssetListItem`,
   component: AssetListItemDemo,
   argTypes: {
     error: {

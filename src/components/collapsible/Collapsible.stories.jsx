@@ -67,7 +67,7 @@ function CollapsibleDemo() {
 }
 
 export default {
-  title: 'Components/Collapsible',
+  title: 'Components/Utilities/Collapsible',
   component: CollapsibleDemo,
 };
 const Template = (args) => <CollapsibleDemo {...args} />;

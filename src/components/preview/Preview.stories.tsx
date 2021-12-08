@@ -6,14 +6,15 @@ import { Img } from "../../base-components/img/Img";
 import Flag from "../flag";
 
 export default {
-  title: "Components/Preview",
+  title: "Components/Style Guide/Preview",
   component: Preview,
   argTypes: {
     size: {
       name: "size",
       description: "Size of the icon",
       control: { type: "number" },
-      type: "number"
+      type: "number",
+      defaultValue: 16,
     },
     flag: {
       name: "flag",
@@ -55,7 +56,6 @@ Preview_image_default.args = {
   image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48}/>,
 };
 
-export const Preview_flag_default = Template.bind({});
-Preview_flag_default.args = {
-  flag: <Flag countryCode="ar"/>,
-};
+export const Preview_flag_default: ComponentStory<typeof Preview> = (args) => (
+  <Preview {...args} flag={<Flag countryCode="ar" size={args.size}/>}/> 
+);

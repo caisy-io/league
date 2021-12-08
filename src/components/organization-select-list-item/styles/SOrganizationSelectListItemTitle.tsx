@@ -7,6 +7,11 @@ const Bronze = css`
     color: var(--text-01);
     overflow: hidden;
     text-overflow: ellipsis;
+<<<<<<< HEAD
+=======
+    white-space: nowrap;
+    width: 100%;
+>>>>>>> origin/dev
     ${(props) => props.itemSize !== "large" ? CSSProgressiveBody02Semibold : ''};
 `;
 

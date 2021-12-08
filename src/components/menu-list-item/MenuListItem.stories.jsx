@@ -1,5 +1,6 @@
 import React from "react";
 import { MenuListItem } from './MenuListItem';
+import { SStoryContainer } from './styles/SStoryContainer';
 import { IconStarOutlined } from '../../icons'
 
 export default {
@@ -32,14 +33,14 @@ export default {
   },
 };
 
-// With everything possible
+// With every icon/ text possible
 function MenuListItemDemo({ content, size, disabled }) {
-  return <div style={{ width: "320px" }}>
+  return <SStoryContainer>
     <MenuListItem size={size} disabled={disabled}>
       <div> <IconStarOutlined /> <span >{content}</span> <IconStarOutlined />  </div>
       <div> <IconStarOutlined /> <span >{content}</span> </div>
     </MenuListItem>
-  </div>
+  </SStoryContainer>
 }
 
 const Template = (args) => < MenuListItemDemo {...args} />;

@@ -8,6 +8,7 @@ const Bronze = css`
   gap: 4px;
 
   ${CSSProgressivehighLightMicro};
+  line-height: unset;
   color: var(--text-02);
   background-color: var(--ui-supportive-01);
   text-transform: uppercase;

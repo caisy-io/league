@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
-import { IOrganizationMenuListItemProps } from '../OrganizationMenuListItem'
 
 export const CSSDisplayBlock = css`
   display: block;
@@ -10,7 +9,7 @@ export const CSSDisplayNone = css`
   display: none;
 `;
 
-const Bronze = css<IOrganizationMenuListItemProps>`
+const Bronze = css`
   display: flex;
   align-items: center; 
   svg{
@@ -28,7 +27,11 @@ const Platinum = css``;
 
 const Diamond = css``;
 
+<<<<<<< HEAD
 export const SOrganizationMenuListItemIconWrapper = styled.div<IOrganizationMenuListItemProps>`
+=======
+export const SOrganizationMenuListItemIconWrapper = styled.div`
+>>>>>>> origin/dev
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

@@ -1,25 +1,26 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-interface ISEmptyContent {}
-
-const Bronze = css<ISEmptyContent>`
+const Bronze = css`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
+
+  padding: 4px 3px;
+
+  gap: 8px;
+
+  width: 50%;
 `;
 
-const Silver = css<ISEmptyContent>``;
+const Silver = css``;
 
-const Gold = css<ISEmptyContent>``;
+const Gold = css``;
 
-const Platinum = css<ISEmptyContent>``;
+const Platinum = css``;
 
-const Diamond = css<ISEmptyContent>``;
+const Diamond = css``;
 
-export const SEmptyContent = styled.div`
+export const SEmptySchemaItemHeader = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

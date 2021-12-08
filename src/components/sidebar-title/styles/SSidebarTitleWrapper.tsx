@@ -2,29 +2,26 @@ import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISidebarTitleProps } from '../SidebarTitle';
 
-const CSSWidth80 = css`
-  max-width: 80%; 
+const CSSWidth85 = css`
+  max-width: 90%; 
 `;
 
-const CSSWidth95 = css`
-  max-width: 95%; 
-`;
 
 const Bronze = css<ISidebarTitleProps>`
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 90%;
-  ${(props) => props.icon ? CSSWidth95 : ''};
-  ${(props) => props.toggleComponent ? CSSWidth80 : ''};
+  max-width: 95%; 
+  gap: 0.5rem;
   svg{
-    width: 16px;
-    height: 16px;
-    margin-right: 0.5rem;
+    min-width: 16px;
+    min-height: 16px;
+    max-width: 16px;
+    max-height: 16px;
   }
   svg path {
     stroke-width: 1.2px;
   }
+  ${(props) => props.icon && props.toggle || props.toggle ? CSSWidth85 : ''};
 `;
 
 const Silver = css``;
