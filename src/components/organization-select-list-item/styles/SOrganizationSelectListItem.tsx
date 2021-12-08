@@ -8,10 +8,7 @@ const CSSMedium = css`
 
 const Bronze = css`
   width: 272px;
-<<<<<<< HEAD
-=======
   height: 79px;
->>>>>>> origin/dev
   background-color: #FFFF;
   border-bottom: 1px solid var(--ui-03);
   box-sizing: border-box;
@@ -19,12 +16,8 @@ const Bronze = css`
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem 0.5rem 0.5rem;
-<<<<<<< HEAD
-  ${(props) => props.itemSize == "medium" || props.itemSize == "small" ? CSSMedium : ''};
-=======
   gap: 0.75rem;
   ${(props) => props.itemSize == "medium" ? CSSMedium : ''};
->>>>>>> origin/dev
   &: hover {
     background-color: var(--hover-ui-01);
   }
