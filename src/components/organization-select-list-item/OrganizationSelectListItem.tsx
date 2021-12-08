@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import React, { FC } from 'react';
-import styled from 'styled-components';
-import { SFlex } from '../../base-components/flex/styles/SFlex';
-import { PreviewImage } from '../preview-image/PreviewImage';
-=======
 import React, { FC, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { Badge, EBadgePosition } from '..';
@@ -11,7 +5,6 @@ import { SFlex } from '../../base-components/flex/styles/SFlex';
 import Preview from '../preview';
 import { IPreview } from '../preview/Preview';
 import { SFlexBadgeWrapper } from './styles/SFlexBadgeWrapper';
->>>>>>> origin/dev
 import { SOrganizationSelectListItem } from './styles/SOrganizationSelectListItem';
 import { SOrganizationSelectListItemLabel } from './styles/SOrganizationSelectListItemLabel';
 import { SOrganizationSelectListItemTextWrapper } from './styles/SOrganizationSelectListItemTextWrapper';
@@ -23,29 +16,6 @@ export interface IOrganizationSelectListItemProps {
   title?: string | undefined,
   label?: string | undefined,
   imageUrl?: string | undefined,
-<<<<<<< HEAD
-  itemSize?: IListItemSize,
-  children?
-}
-
-const SFlexListItem = styled(SFlex)`
-  width: 100%;
-  gap: 0.75rem;
-  height: 100%;
-  ${(props) => props.children ? "width: 85%;" : ''};
-`;
-
-export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = ({ title, label, imageUrl, itemSize, children }) => {
-  return (
-    <SOrganizationSelectListItem itemSize={itemSize}>
-      <SFlexListItem {...children}>
-        {itemSize == "large" ? (
-          <PreviewImage size={48} imageUrl={imageUrl}
-          ></PreviewImage>
-        ) : (
-          <PreviewImage size={36} imageUrl={imageUrl}
-          ></PreviewImage>
-=======
   badgeText?: string | undefined,
   itemSize?: IListItemSize,
   previewProps?: IPreview
@@ -79,21 +49,16 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
           <Preview size={48} {...previewProps}></Preview>
         ) : (
           <Preview size={36} {...previewProps}></Preview>
->>>>>>> origin/dev
         )}
         <SOrganizationSelectListItemTextWrapper>
           <SOrganizationSelectListItemTitle itemSize={itemSize}>{title}</SOrganizationSelectListItemTitle>
           <SOrganizationSelectListItemLabel itemSize={itemSize}>{label}</SOrganizationSelectListItemLabel>
         </SOrganizationSelectListItemTextWrapper>
       </SFlexListItem>
-<<<<<<< HEAD
-      {children}
-=======
       {badgeText && <SFlexBadgeWrapper>
         <Badge ref={badgeRef} value={badgeText} type="regular" size="small" position={EBadgePosition.Center}/>
       </SFlexBadgeWrapper>
       }
->>>>>>> origin/dev
     </SOrganizationSelectListItem>
   )
 }

@@ -124,12 +124,9 @@ export { IconDocumentsComponents } from "./IconDocumentsComponents";
 export { IconAssetsImage } from "./IconAssetsImage";
 export { IconTypeface } from "./IconTypeface";
 export { IconChevron } from "./IconChevron";
-<<<<<<< HEAD
 export { IconCog } from "./IconCog";
 export { IconTeam } from "./IconTeam";
 export { IconWorkflow } from "./IconWorkflow";
-=======
 export { IconUpload } from "./IconUpload";
 export { IconDocuments } from "./IconDocuments";
 export { IconComponents } from "./IconComponents";
->>>>>>> origin/dev
