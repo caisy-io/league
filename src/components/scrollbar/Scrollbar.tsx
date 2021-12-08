@@ -1,10 +1,14 @@
-import React, { forwardRef } from 'react';
+import React, { FC, forwardRef } from 'react';
 import { SScrollbar } from './styles/SScrollbar';
 
-export const Scrollbar = React.forwardRef((props, ref) => {
+interface IScrollbarProps{
+  children?
+}
+
+export const Scrollbar: FC<IScrollbarProps> = forwardRef((children, ref) => {
   return (
     <SScrollbar ref={ref}>
-      {props.children}
+      {children}
     </SScrollbar>
   )
 });
