@@ -2,15 +2,18 @@ import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  width: 320px;
-  position: relative;
-  background-color: #FFFF;
-  box-shadow: 0px 8px 24px rgba(184, 184, 184, 0.24);
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #FFFFFF;
   border-radius: 0.75rem;
-  display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 0.5rem;
+  ${(props) => (props.active == true ? "display: flex" : "")};
   `;
 
 const Silver = css``;
@@ -21,7 +24,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SOrganizationMenu = styled.div`
+export const SPopoverContentWrapper = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

@@ -130,3 +130,4 @@ export { IconWorkflow } from "./IconWorkflow";
 export { IconUpload } from "./IconUpload";
 export { IconDocuments } from "./IconDocuments";
 export { IconComponents } from "./IconComponents";
+export { IconHierarchyGit } from "./IconHierarchyGit";

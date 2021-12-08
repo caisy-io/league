@@ -3,6 +3,12 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 
 const Bronze = css`
   width: 100%;
+  > * {
+    &:last-child {
+      border-bottom: none;
+      border-radius: 0 0 0.75rem 0.75rem;
+    }
+  }
   `;
 
 const Silver = css``;
