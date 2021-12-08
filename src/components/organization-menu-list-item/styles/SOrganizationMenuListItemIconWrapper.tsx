@@ -27,11 +27,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-<<<<<<< HEAD
-export const SOrganizationMenuListItemIconWrapper = styled.div<IOrganizationMenuListItemProps>`
-=======
 export const SOrganizationMenuListItemIconWrapper = styled.div`
->>>>>>> origin/dev
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
