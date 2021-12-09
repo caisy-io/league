@@ -13,6 +13,7 @@ const Bronze = css`
   border-radius: 50%;
 
   ${CSSProgressiveCaption01Semibold};
+  line-height: unset;
   color: var(--text-04);
 `;
 
