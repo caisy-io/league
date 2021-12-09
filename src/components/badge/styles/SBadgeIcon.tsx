@@ -54,19 +54,26 @@ const CSSTopLeft = css`
   left: -0.25rem;
 `;
 
-const CSSMicro = css`
+const CSSPadding = css`
+  padding: 2px 4px;
+`;
+
+const CSSMicro = css<{ width: number }>`
   height: 0.75rem;
   min-width: 0.75rem;
+  ${(props) => props.width > 12 ? CSSPadding : ''};
 `;
 
-const CSSSmall = css`
+const CSSSmall = css<{ width: number }>`
   height: 1rem;
   min-width: 1rem;
+  ${(props) => props.width > 16 ? CSSPadding : ''};
 `;
 
-const CSSMedium = css`
+const CSSMedium = css<{ width: number }>`
   height: 1.25rem;
   min-width: 1.25rem;
+  ${(props) => props.width > 20 ? CSSPadding : ''};
 `;
 
 const Bronze = css<ISBadgeIcon>`
