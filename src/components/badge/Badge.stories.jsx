@@ -88,3 +88,14 @@ Color.args = {
   size: "small"
 };
 
+// With text
+export const WithText = ({ content, ...args }) => (
+  <Button><IconStarOutlined />Button<Badge size={args.size} value={args.value} type={args.type} position={EBadgePosition.Center}></Badge></Button>
+);
+
+WithText.args = {
+  type: "dark",
+  value: "Label",
+  size: "small"
+};
+
