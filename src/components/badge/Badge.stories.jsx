@@ -5,7 +5,7 @@ import { IconStarOutlined } from "../../icons/IconStarOutlined"
 import { EBadgePosition } from "./EBadgePosition";
 
 export default {
-  title: `Components/Badge`,
+  title: `Components/Badges & Labels/Badge`,
   parameters: {
     design: {
       type: "figma",
@@ -84,7 +84,18 @@ export const Color = ({ content, ...args }) => (
 
 Color.args = {
   type: "color",
-  value: "#F43B44",
+  value: "#0047FF",
+  size: "small"
+};
+
+// With text
+export const WithText = ({ content, ...args }) => (
+  <Button><IconStarOutlined />Button<Badge size={args.size} value={args.value} type={args.type} position={EBadgePosition.Center}></Badge></Button>
+);
+
+WithText.args = {
+  type: "dark",
+  value: "Label",
   size: "small"
 };
 
