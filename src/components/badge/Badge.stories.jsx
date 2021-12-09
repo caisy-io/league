@@ -5,7 +5,7 @@ import { IconStarOutlined } from "../../icons/IconStarOutlined"
 import { EBadgePosition } from "./EBadgePosition";
 
 export default {
-  title: `Components/Badge`,
+  title: `Components/Badges & Labels/Badge`,
   parameters: {
     design: {
       type: "figma",
