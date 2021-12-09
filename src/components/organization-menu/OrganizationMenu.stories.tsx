@@ -7,7 +7,6 @@ import { IconWorkflow } from '../../icons/IconWorkflow';
 import { Badge, EBadgePosition } from '../badge';
 import { Button } from '../button';
 import { MenuListItem } from '../menu-list-item/MenuListItem';
-import { Scrollbar } from '../scrollbar';
 import { OrganizationMenuListItem } from '../organization-menu-list-item';
 import { OrganizationSelectListItem } from '../organization-select-list-item';
 import { SearchInput } from "../search-input/SearchInput";
@@ -94,9 +93,8 @@ function OrganizationMenuDemo({ content, ...args }) {
   return <OrganizationMenu>
     <OrganizationMenuListItem onClick={() => showPage("organization")} itemSize="large" title="Default" label="Organization" previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }}
     ></OrganizationMenuListItem>
+    {/* TO DO: full width button */}
     <Button type="tertiary">Organization settings</Button>
-
-
 
     <SelectionWrapper>
       <OrganizationMenuListItem onClick={() => showPage("group")} title="Default" label="Group" itemSize="medium" badgeValue="3" previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }}><Badge value="1" position={EBadgePosition.Center} type={'regular'} size="small" /></OrganizationMenuListItem>
