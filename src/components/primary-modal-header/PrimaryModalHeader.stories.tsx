@@ -1,11 +1,12 @@
 PrimaryModalHeader;
-import React from "react";
+import React, { useState } from "react";
 import { PrimaryModalHeader } from "./PrimaryModalHeader";
-import { Tabs, TabPanel } from "../tabs/Tabs";
+import { IconStarAdd, IconStarOutlined } from "../..";
+import { Divider, Tab } from "..";
 
 // Default PrimaryModalHeader Demo
 export default {
-  title: "Components/PrimaryModalHeader",
+  title: "Components/Navigation/PrimaryModalHeader",
   component: PrimaryModalHeaderDemo,
   parameters: {
     design: {
@@ -17,10 +18,45 @@ export default {
 };
 
 function PrimaryModalHeaderDemo({ ...args }) {
-  return <PrimaryModalHeader {...args}>Demo</PrimaryModalHeader>;
+  const [selectedTab, setSelectedTab] = React.useState(null);
+
+  const handleLabelClick = (value) => {
+    window.alert(`Clicked on Label ${value}`);
+  };
+
+  const [breadcrumbs, setBreadcrumbs] = useState([
+    {
+      title: "Label 1",
+      icon: <IconStarOutlined />,
+      value: 1,
+      onClick: (value) => handleLabelClick(value),
+    },
+    {
+      title: "Label 2",
+      icon: <IconStarAdd />,
+      value: 2,
+      onClick: (value) => handleLabelClick(value),
+    },
+  ]);
+
+  return (
+    <PrimaryModalHeader withCloseIcon={args.withCloseIcon} breadcrumbs={breadcrumbs} {...args}>
+      <div style={{ height: 20, width: 1, backgroundColor: "#E8EFF3", margin: "0 24px" }} />
+      <div style={{ display: "flex", gap: 8 }}>
+        <Tab activated={selectedTab === 1} onClick={setSelectedTab} size="small" value={1}>
+          Tab 1
+        </Tab>
+        <Tab activated={selectedTab === 2} onClick={setSelectedTab} size="small" value={2}>
+          Tab 2
+        </Tab>
+      </div>
+    </PrimaryModalHeader>
+  );
 }
 
 const Template = (args) => <PrimaryModalHeaderDemo {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  withCloseIcon: true,
+};

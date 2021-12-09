@@ -2,13 +2,9 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  margin-left: auto;
-  cursor: pointer;
-
-  svg {
-    height: 24px;
-    width: 24px;
-  }
+  display: flex;
+  align-items: center;
+  gap: 8px;
 `;
 
 const Silver = css``;
@@ -19,7 +15,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SPrimaryModalHeaderCloseIcon = styled.div`
+export const SPrimaryModalHeaderBreadcrumb = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
