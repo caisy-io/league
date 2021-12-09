@@ -94,7 +94,20 @@ export default {
     },
     placement: {
       description: "Changes the placement of the Tooltip",
-      options: ["top", "bottom", "left", "right"],
+      options: [
+        "top",
+        "bottom",
+        "left",
+        "right",
+        "topRight",
+        "topLeft",
+        "bottomRight",
+        "bottomLeft",
+        "leftTop",
+        "leftBottom",
+        "rightTop",
+        "rightBottom",
+      ],
       control: { type: "select" },
       table: {
         defaultValue: {
