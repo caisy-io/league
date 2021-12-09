@@ -6,6 +6,7 @@ import { IconTeam } from '../../icons/IconTeam';
 import { IconWorkflow } from '../../icons/IconWorkflow';
 import { Badge, EBadgePosition } from '../badge';
 import { Button } from '../button';
+import { Scrollbar } from '../scrollbar';
 import { MenuListItem } from '../menu-list-item/MenuListItem';
 import { OrganizationMenuListItem } from '../organization-menu-list-item';
 import { OrganizationSelectListItem } from '../organization-select-list-item';
@@ -116,11 +117,16 @@ function OrganizationMenuDemo({ content, ...args }) {
     </SettingsList>
 
     <PopoverContentWrapper active={organizationOpened}>
-      <p>Organizations Modal header</p>
+      <p style={{ height: "64px"}}>Organizations Modal header</p>
       <SearchInput></SearchInput>
-     
+      <Scrollbar>
+        
         <OrganizationSelectListItem title="Metacarbon" label="metacarbon.com" itemSize="large" badgeText="Owner" previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }} ></OrganizationSelectListItem>
-     
+        <OrganizationSelectListItem title="Metacarbon" label="metacarbon.com" itemSize="large" badgeText="Owner" previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }} ></OrganizationSelectListItem>
+        <OrganizationSelectListItem title="Metacarbon" label="metacarbon.com" itemSize="large" badgeText="Owner" previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }} ></OrganizationSelectListItem>
+
+      </Scrollbar>
+
       <Button onClick={() => closePage("organization")}>Close</Button>
     </PopoverContentWrapper>
 
