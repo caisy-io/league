@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ISizes } from "../../..";
+import { ISizes } from "../../../interfaces/index";
 import { CSSProgressiveBadgesSmall } from "../../../constants/styles/fonts";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
 import { IBadgeType } from "../Badge";
@@ -41,7 +41,6 @@ const CSSColor = css<{ value: string }>`
 `;
 
 const CSSCenter = css`
-  border: 1px solid transparent;
   position: relative;
 `;
 
@@ -55,26 +54,32 @@ const CSSTopLeft = css`
   left: -0.25rem;
 `;
 
-const CSSMicro = css`
+const CSSPadding = css`
+  padding: 2px 4px;
+`;
+
+const CSSMicro = css<{ width: number }>`
   height: 0.75rem;
   min-width: 0.75rem;
+  ${(props) => props.width > 12 ? CSSPadding : ''};
 `;
 
-const CSSSmall = css`
+const CSSSmall = css<{ width: number }>`
   height: 1rem;
   min-width: 1rem;
+  ${(props) => props.width > 16 ? CSSPadding : ''};
 `;
 
-const CSSMedium = css`
+const CSSMedium = css<{ width: number }>`
   height: 1.25rem;
   min-width: 1.25rem;
+  ${(props) => props.width > 20 ? CSSPadding : ''};
 `;
 
 const Bronze = css<ISBadgeIcon>`
   position: absolute;
   ${CSSProgressiveBadgesSmall}
   z-index: 10;
-  border: 2px solid var(--ui-01);
   height: 0.75rem;
   color: var(--ui-01);
   text-align: center;
