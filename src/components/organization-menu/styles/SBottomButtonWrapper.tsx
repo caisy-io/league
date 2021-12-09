@@ -1,12 +1,11 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
+import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
   height: 72px;
   width: 100%;
   display: flex;
-  justify-conten: center;
+  justify-content: center;
   align-items: center;
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.04);
   z-index: 10;

@@ -85,10 +85,6 @@ function OrganizationMenuDemo({ content, ...args }) {
         setEnvironmentOpened(false);
         break;
       }
-      default: {
-        //statements; 
-        break;
-      }
     }
   };
 
