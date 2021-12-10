@@ -55,7 +55,7 @@ const CSSTopLeft = css`
 `;
 
 const CSSPadding = css`
-  padding: 2px 4px;
+  padding: 2px 6px;
 `;
 
 const CSSMicro = css<{ width: number }>`
