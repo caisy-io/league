@@ -38,7 +38,7 @@ export const BlueprintEditorSubnav: FC<IBlueprintEditorSubnav> = ({
   return (
     <SBlueprintEditorSubnav>
       <SBlueprintEditorSubnavAddButton onClick={onGroupAdd}>
-        <IconPlusCircle />
+        <IconPlusCircle size={16} />
       </SBlueprintEditorSubnavAddButton>
 
       <SBlueprintEditorSubnavTabs>

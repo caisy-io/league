@@ -4,11 +4,6 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 const Bronze = css`
   display: flex;
   align-items: center;
-
-  svg {
-    height: 16px;
-    width: 16px;
-  }
 `;
 
 const Silver = css``;
