@@ -4,7 +4,7 @@ import { IIconSize } from "../utils/types";
 
 const IconSize = {
   12: (
-    <SIconBase width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <SIconBase width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M6.66675 10.6667L9.33341 8.00001L6.66675 5.33334" stroke="#172C55" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
     </SIconBase>
   ),
@@ -24,7 +24,7 @@ const IconSize = {
     </SIconBase>
   ),
   28: (
-    <SIconBase width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <SIconBase width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M10 16L14 12L10 8" stroke="#172C55" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </SIconBase>
   ),
@@ -34,17 +34,17 @@ const IconSize = {
     </SIconBase>
   ),
   36: (
-    <SIconBase width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <SIconBase width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M13.3335 21.3334L18.6668 16L13.3335 10.6667" stroke="#172C55" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
     </SIconBase>
   ),
   40: (
-    <SIconBase width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <SIconBase width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M13.3335 21.3334L18.6668 16L13.3335 10.6667" stroke="#172C55" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
     </SIconBase>
   ),
   48: (
-    <SIconBase width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <SIconBase width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M13.3335 21.3334L18.6668 16L13.3335 10.6667" stroke="#172C55" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
     </SIconBase>
   ),
