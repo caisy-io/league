@@ -3,7 +3,7 @@ import { CSSProgressiveHeading01 } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const CSSActive = css`
-  color: var(--text-04);
+  color: var(--text-01);
 `;
 
 const Bronze = css`

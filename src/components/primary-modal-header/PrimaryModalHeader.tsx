@@ -1,4 +1,5 @@
 import React from "react";
+import { Badge, EBadgePosition } from "..";
 import { IconAngleRight, IconClose } from "../..";
 import { PrimaryModalHeaderLabel } from "./PrimaryModalHeaderLabel";
 import { SPrimaryModalHeader } from "./styles/SPrimaryModalHeader";
@@ -10,6 +11,7 @@ interface IPrimaryModalHeaderLabel {
   value?: string | number;
   onClick?: (value: string | number | undefined) => void;
   icon?: JSX.Element;
+  badgeContent?: string;
 }
 
 interface IPrimaryModalHeader {
@@ -36,6 +38,9 @@ export const PrimaryModalHeader: React.FC<IPrimaryModalHeader> = ({
             >
               {label.icon}
               {label.title}
+              {label.badgeContent && (
+                <Badge size="medium" position={EBadgePosition.Center} type="important" value={label.badgeContent} />
+              )}
               {index < breadcrumbs.length - 1 && <IconAngleRight />}
             </PrimaryModalHeaderLabel>
           </>
