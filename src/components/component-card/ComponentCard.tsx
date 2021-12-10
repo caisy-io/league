@@ -12,11 +12,12 @@ interface IComponentCard {
   description?: string | undefined;
 }
 
-export const ComponentCard: React.FC<IComponentCard> = ({title, description, children}) => {
+export const ComponentCard: React.FC<IComponentCard> = ({ title, description, children }) => {
 
   return (
-    <SComponentCard>
-      <Card>
+   
+      <SComponentCard>
+
         <SComponentCardTitle>{title}</SComponentCardTitle>
         <SComponentCardDescription>{description}</SComponentCardDescription>
         <SFlex>
@@ -24,8 +25,8 @@ export const ComponentCard: React.FC<IComponentCard> = ({title, description, chi
           <STagText>Tag A, Tag B, Tag C</STagText>
         </SFlex>
 
-      </Card>
-      {children}
-    </SComponentCard>
+        {children}
+      </SComponentCard>
+
   )
 }
