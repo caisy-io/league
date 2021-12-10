@@ -5,7 +5,7 @@ import {
 } from './index';
 
 export default {
-  title: "Icons/Icons/StarIconDummy",
+  title: "Icons/StarIconDummy/Icon",
   component: IconStarOutlined,
   argTypes: {
     size: {

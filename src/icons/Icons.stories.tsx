@@ -39,7 +39,7 @@ const MainMenuIconDemo: FC<IMainMenuIconDemo> = ({ ...args }) => {
 };
 
 export default {
-  title: "Icons/Icons/MainMenu",
+  title: "Icons/MainMenu/Icon",
   component: MainMenuIconDemo,
   argTypes: {
     size: {
