@@ -1,10 +1,10 @@
-import styled, { css } from "styled-components";
+import styled, { css, CSSProp } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 import Poppable from "../../poppable";
 
 interface ISPopover {
   trianglecolor: string;
-  triangleExtraCSS?: any;
+  triangleExtraCSS?: CSSProp;
 }
 
 const Bronze = css<ISPopover>`
