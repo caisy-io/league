@@ -4,11 +4,13 @@ import Poppable from "../../poppable";
 
 interface ISPopover {
   trianglecolor: string;
+  triangleExtraCSS?: any;
 }
 
 const Bronze = css<ISPopover>`
   .poppable-triangle {
     --triangle-color: ${(props) => props.trianglecolor};
+    ${(props) => props.triangleExtraCSS && props.triangleExtraCSS}
   }
 `;
 

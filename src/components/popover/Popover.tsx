@@ -31,6 +31,7 @@ const getPlacement = (placement: TPlacement | undefined): number => {
 interface IPopover {
   placement: TPlacement;
   reference: React.MutableRefObject<null>;
+  triangleExtraCSS?: any;
   trianglecolor?: string;
   disableTriangle?: boolean;
   onClickOutside?: () => void;
@@ -47,8 +48,9 @@ export const Popover: React.FC<IPopover> = ({
   trianglecolor,
   container,
   zIndex,
+  triangleExtraCSS,
 }) => {
-  if(!reference || !reference.current) {
+  if (!reference || !reference.current) {
     return null;
   }
   const placements = React.useCallback((rbr, tbr) => {
@@ -70,6 +72,7 @@ export const Popover: React.FC<IPopover> = ({
             placements={placements}
             reference={reference}
             trianglecolor={trianglecolor}
+            triangleExtraCSS={triangleExtraCSS}
             container={container}
           >
             <>
