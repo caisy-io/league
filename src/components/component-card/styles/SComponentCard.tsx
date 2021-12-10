@@ -5,6 +5,9 @@ const Bronze = css`
   background-color: var(--ui-02);
   border-radius: 0.75rem;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   &: hover{
     background-color: var(--ui-01);
     box-shadow: 0px 8px 24px rgba(184, 184, 184, 0.24);

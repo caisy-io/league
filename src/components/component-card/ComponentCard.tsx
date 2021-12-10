@@ -1,7 +1,6 @@
 import React from 'react';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { IconTags } from '../../icons';
-import { Card } from '../card';
 import { SComponentCard } from './styles/SComponentCard';
 import { SComponentCardDescription } from './styles/SComponentCardDescription';
 import { SComponentCardTitle } from './styles/SComponentCardTitle';
@@ -15,18 +14,17 @@ interface IComponentCard {
 export const ComponentCard: React.FC<IComponentCard> = ({ title, description, children }) => {
 
   return (
-   
-      <SComponentCard>
-
+    <SComponentCard>
+      <div>
         <SComponentCardTitle>{title}</SComponentCardTitle>
         <SComponentCardDescription>{description}</SComponentCardDescription>
-        <SFlex>
-          <IconTags></IconTags>
-          <STagText>Tag A, Tag B, Tag C</STagText>
-        </SFlex>
-
-        {children}
-      </SComponentCard>
+      </div>
+      <SFlex>
+        <IconTags></IconTags>
+        <STagText>Tag A, Tag B, Tag C</STagText>
+      </SFlex>
+      {children}
+    </SComponentCard>
 
   )
 }
