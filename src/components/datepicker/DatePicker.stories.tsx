@@ -3,7 +3,7 @@ import { DatePicker } from "./DatePicker";
 
 // Default Date Picker Demo
 export default {
-    title: "Components/DatePicker",
+    title: "Components/Legacy/DatePicker",
     component: DatePickerDemo,
 };
 

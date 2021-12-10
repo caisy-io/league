@@ -1,37 +1,112 @@
 import styled, { css } from "styled-components";
+import { ISizes } from "../../../interfaces/index";
 import { CSSProgressiveBadgesSmall } from "../../../constants/styles/fonts";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
+import { IBadgeType } from "../Badge";
 import { EBadgePosition } from "../EBadgePosition";
 
 interface ISBadgeIcon {
   position: EBadgePosition;
   disabled?: boolean;
   height: number;
+  type: IBadgeType;
+  size?: ISizes;
+  value: string;
 }
+
+const CSSRegular = css`
+  background-color: var(--ui-03);
+  color: var(--text-04);
+`;
+
+const CSSImportant = css`
+  background-color: var(--ui-supportive-01);
+  color: var(--text-02);
+`;
+
+const CSSWhite = css`
+  background-color: var(--ui-01);
+  color: var(--text-04);
+`;
+
+const CSSDark = css`
+  background-color: var(--ui-06);
+  color: var(--text-02);
+`;
+
+const CSSColor = css<{ value: string }>`
+  background-color: ${(props) => (props.value ? `${props.value}` : "")};
+  outline: 1px solid #e8eff3;
+  border: 2px solid #ffff;
+`;
+
+const CSSCenter = css`
+  position: relative;
+`;
+
+const CSSTopRight = css`
+  top: -0.25rem;
+  right: -0.25rem;
+`;
+
+const CSSTopLeft = css`
+  top: -0.25rem;
+  left: -0.25rem;
+`;
+
+const CSSPadding = css`
+  padding: 2px 4px;
+`;
+
+const CSSMicro = css<{ width: number }>`
+  height: 0.75rem;
+  min-width: 0.75rem;
+  ${(props) => props.width > 12 ? CSSPadding : ''};
+`;
+
+const CSSSmall = css<{ width: number }>`
+  height: 1rem;
+  min-width: 1rem;
+  ${(props) => props.width > 16 ? CSSPadding : ''};
+`;
+
+const CSSMedium = css<{ width: number }>`
+  height: 1.25rem;
+  min-width: 1.25rem;
+  ${(props) => props.width > 20 ? CSSPadding : ''};
+`;
 
 const Bronze = css<ISBadgeIcon>`
   position: absolute;
   ${CSSProgressiveBadgesSmall}
   z-index: 10;
-  top: ${(props) => `-${props.height + 2}px`};
-  ${(props) => (props.position == EBadgePosition.TopLeft ? `left: -${props.height}px` : "")};
-  ${(props) => (props.position == EBadgePosition.TopRight ? `right: -${props.height + 2}px` : "")};
-  border: 2px solid var(--ui-01);
-  box-sizing: content-box;
-
+  height: 0.75rem;
   color: var(--ui-01);
   text-align: center;
-  padding: 4.5px;
-
-  /* Center the text contents */
-  display: ${({ disabled }) => (disabled ? "none" : "inline-flex")};
+  padding: 0.125rem;
   align-items: center;
   justify-content: center;
   background-color: var(--ui-supportive-01);
-  border-radius: 50%;
-  height: ${(props) => props.height}px;
-  width: fit-content;
-  aspect-ratio: 1;
+  box-sizing: border-box;
+  border-radius: 6.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  /* POSITION OF BADGE */
+  ${(props) => (props.position == EBadgePosition.Center ? CSSCenter : " ")};
+  ${(props) => (props.position == EBadgePosition.TopLeft ? CSSTopLeft : " ")};
+  ${(props) => (props.position == EBadgePosition.TopRight ? CSSTopRight : " ")};
+  /* TYPE OF BADGE */
+  ${(props) => (props.type == "regular" ? CSSRegular : " ")};
+  ${(props) => (props.type == "important" ? CSSImportant : " ")};
+  ${(props) => (props.type == "white" ? CSSWhite : " ")};
+  ${(props) => (props.type == "dark" ? CSSDark : " ")};
+  ${(props) => (props.type == "color" ? CSSColor : " ")};
+  /* SIZE OF BADGE */
+  ${(props) => (props.size == "micro" ? CSSMicro : " ")};
+  ${(props) => (props.size == "small" ? CSSSmall : " ")};
+  ${(props) => (props.size == "medium" ? CSSMedium : " ")};
 `;
 
 const Silver = css``;

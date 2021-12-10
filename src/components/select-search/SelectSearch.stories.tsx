@@ -5,7 +5,7 @@ import { SelectMultipleSearch} from "./SelectMultipleSearch";
 
 // Default Select Single Search Demo 
 export default {
-    title: "Components/SelectSearch",
+    title: "Components/Legacy/SelectSearch",
     component: SelectSearchDemo,
 };
 

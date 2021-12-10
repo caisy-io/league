@@ -3,7 +3,7 @@ import React from 'react';
 import { AvatarLegacy } from './AvatarLegacy';
 
 export default {
-  title: 'Components/AvatarLegacy',
+  title: 'Components/Legacy/AvatarLegacy',
   component: AvatarLegacy,
   argTypes: {},
 } as ComponentMeta<typeof AvatarLegacy>;

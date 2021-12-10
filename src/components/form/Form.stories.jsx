@@ -63,7 +63,7 @@ function FormShowcase() {
 }
 
 export default {
-  title: "Components/Form",
+  title: "Components/Forms/Form",
   component: FormShowcase,
 };
 const Template = (args) => <FormShowcase {...args} />;

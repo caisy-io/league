@@ -1,40 +1,41 @@
-import React from "react";
-import { SBadge } from "./styles/SBadge";
-import { SBadgeIconContent } from "./styles/SBadgeIconContent";
-import { SBadgeIcon } from "./styles/SBadgeIcon";
+import React, { FC, forwardRef, useEffect, useRef } from "react";
+import { ISizes } from "../../interfaces/";
 import { EBadgePosition } from "./EBadgePosition";
+import { SBadge } from "./styles/SBadge";
+import { SBadgeIcon } from "./styles/SBadgeIcon";
+import { SBadgeIconContent } from "./styles/SBadgeIconContent";
 
-export interface IBadge {
-  value: string;
-  position: EBadgePosition;
-  disabled?: boolean;
+export type IBadgeType = "regular" | "important" | "white" | "dark" | "color";
+
+export interface IBadgeProps {
+  value: string,
+  position: EBadgePosition,
+  type: IBadgeType,
+  size?: ISizes,
+  children?,
+  ref?
 }
 
-export const Badge: React.FC<IBadge> = ({ ...props }) => {
-  const badgeRef = React.useRef<HTMLDivElement>(null);
-  const [height, setHeight] = React.useState(0);
-
-  const resizeInput = () => {
-    if (badgeRef.current) {
-      badgeRef.current.innerText = props.value;
-
-      let width = badgeRef.current.scrollWidth;
-
-      setHeight(width + 1);
-    }
-  };
-
-  React.useEffect(() => {
-    resizeInput();
-  }, [props.value]);
-
+export const Badge: FC<IBadgeProps> = forwardRef(({ children, value, position, type, size }: IBadgeProps, ref: any) => {
+  
+  const badgeRef = useRef<HTMLElement>(null);
+  const [width, setWidth] = React.useState(0);
+  // calculate width of the badge
+  useEffect(() => {
+    const badgeWidth = badgeRef.current ? badgeRef.current.offsetWidth : 0;
+    setWidth(badgeWidth);
+  }, [value, badgeRef.current]);
+  
+  console.log(width);
+  
   return (
-    <SBadge>
-      <SBadgeIcon disabled={props.disabled} position={props.position} height={height}>
-        <div ref={badgeRef} style={{ width: "fit-content", visibility: "hidden", position: "absolute", fontSize: 9 }} />
-        <SBadgeIconContent>{props.value}</SBadgeIconContent>
+    <SBadge ref={ref}>
+      <SBadgeIcon ref={badgeRef} value={value} position={position} type={type} size={size} width={width}>
+        <SBadgeIconContent type={type} size={size}>
+          {type !== "color" && value}
+        </SBadgeIconContent>
       </SBadgeIcon>
-      {props.children}
+      {children}
     </SBadge>
   );
-};
+});

@@ -3,10 +3,12 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 interface ISPreview {
   size?: 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48;
   isFlag?: boolean; 
+  styleOverwrite?: any;
 }
 
 const fontSize: (size: number) => number = size => {
   switch(size) {
+    case 12:
     case 16:
       return 6;
     case 20:
@@ -27,6 +29,7 @@ const fontSize: (size: number) => number = size => {
 
 const iconSize: (size: number) => number = size => {
   switch(size) {
+    case 12:
     case 16:
       return 6;
     case 20:
@@ -44,13 +47,32 @@ const iconSize: (size: number) => number = size => {
   }
 }
 
+const iconStroke: (size: number) => number = size => {
+  switch(size) {
+    case 12:
+    case 16:
+    case 20:
+    case 24:
+    case 28:
+    case 32:
+      return 1.2;
+   
+    case 40:
+    case 48:
+      return 1.8;
+    default: 
+      return 1.2;
+  }
+} 
+
 const Bronze = css<ISPreview>`
   align-items: center;
   background-color: ${({ isFlag }) => !isFlag && "var(--ui-03)"};
   border-radius: ${({ isFlag }) => !isFlag && "4px"};
   color: var(--text-04);
   display: flex;
-  font-size: ${({ size }) => fontSize(size)}px;
+  flex-shrink: 0;
+  font-size: ${({ size }) => size && fontSize(size)}px;
   font-weight: 700;
   height: ${({ size }) => size ? size : 32}px;
   justify-content: center;
@@ -59,15 +81,19 @@ const Bronze = css<ISPreview>`
   text-transform: uppercase;
   width: ${({ size }) => size ? size : 32}px;
   
-  ${({ isFlag }) => !isFlag && `
+  ${({ isFlag, size }) => !isFlag && `
     svg {
-      width: ${({ size }) => iconSize(size)}px;
-      height: ${({ size }) => iconSize(size)}px;
+      width: ${size && iconSize(size)}px;
+      height: ${size && iconSize(size)}px;
+      path {
+        stroke-width: ${size && iconStroke(size)}px;
+      } 
     }
   `}
   img {
     border-radius: 4px;
   }
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
 
 const Silver = css``;

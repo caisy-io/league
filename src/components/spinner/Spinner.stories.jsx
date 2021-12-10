@@ -9,7 +9,7 @@ function SpinnerDemo() {
 }
 
 export default {
-  title: 'Components/Spinner',
+  title: 'Components/Legacy/Spinner',
   component: SpinnerDemo,
 };
 const Template = (args) => <SpinnerDemo {...args} />;

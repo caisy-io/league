@@ -22,8 +22,8 @@ const CSSMicro = css`
   padding: 4px 6px;
   gap: 4px;
   svg {
-    height: 16px;
-    width: 16px;
+    height: 12px;
+    width: 12px;
   }
   ${CSSProgressiveCaption01Semibold};
 `;
@@ -32,8 +32,8 @@ const CSSSmall = css`
   padding: 4px 8px;
 
   svg {
-    height: 16px;
-    width: 16px;
+    height: 12px;
+    width: 12px;
   }
 `;
 
@@ -45,8 +45,8 @@ const CSSDefault = css`
   padding: 8px 12px;
   gap: 10px;
   svg {
-    height: 24px;
-    width: 24px;
+    height: 18px;
+    width: 18px;
   }
   ${CSSProgressiveBody02Semibold}
 `;
@@ -76,8 +76,8 @@ const Bronze = css<ISTab>`
   align-items: center;
   gap: 8px;
   svg {
-    height: 20px;
-    width: 20px;
+    height: 14px;
+    width: 14px;
   }
   ${CSSProgressiveBody03Semibold};
 

@@ -145,7 +145,7 @@ function TableDemo() {
 }
 
 export default {
-  title: "Components/Table",
+  title: "Components/Legacy/Table",
   component: TableDemo,
 };
 const Template = (args) => <TableDemo {...args} />;

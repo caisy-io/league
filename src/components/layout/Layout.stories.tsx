@@ -78,7 +78,7 @@ function LayoutDemo(args) {
 }
 
 export default {
-  title: 'Components/Layout',
+  title: 'Components/Utilities/Layout',
   component: LayoutDemo,
   argTypes: {
     content: {

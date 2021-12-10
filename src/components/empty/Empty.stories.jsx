@@ -10,7 +10,7 @@ function EmptyDemo({ ...args }) {
 }
 
 export default {
-  title: "Components/Empty",
+  title: 'Components/Legacy/Empty',
   component: EmptyDemo,
   parameters: {
     design: {

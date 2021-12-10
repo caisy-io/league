@@ -2,7 +2,7 @@ import React from "react";
 import { Scrollbar } from './Scrollbar';
 
 export default {
-  title: `Components/Scrollbar`,
+  title: `Components/Navigation/Scrollbar`,
   component: ScrollbarDemo,
   parameters: {
     design: {

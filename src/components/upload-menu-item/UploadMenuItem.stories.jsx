@@ -3,7 +3,7 @@ import { UploadMenuItem } from "./UploadMenuItem";
 
 // Default MainMenuItem Demo
 export default {
-  title: "Components/UploadMenuItem",
+  title: "Components/Navigation/UploadMenuItem",
   component: UploadMenuItemDemo,
   parameters: {
     design: {

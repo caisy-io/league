@@ -5,7 +5,7 @@ import { Badge, EBadgePosition } from "..";
 
 // Default MainMenuItem Demo
 export default {
-  title: "Components/MainMenuItem",
+  title: "Components/Navigation/MainMenuItem",
   component: MainMenuItemDemo,
   argTypes: {
     label: {
