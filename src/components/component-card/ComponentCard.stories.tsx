@@ -14,12 +14,16 @@ export default {
       description: "Description of the component card",
       control: { type: "text" },
     },
+    tags: {
+      description: "Description of the component card",
+      control: { type: "text" },
+    },
   },
 };
 
-function ComponentCardDemo({ title, description }) {
+function ComponentCardDemo({ title, description,tags }) {
   return <SComponentCardWrapper>
-    <ComponentCard title={title} description={description}>
+    <ComponentCard title={title} description={description} tags={tags}>
     </ComponentCard>
   </SComponentCardWrapper>
 }
@@ -29,5 +33,6 @@ const Template = (args) => < ComponentCardDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   title: "Default",
-  description: "Description"
+  description: "Description",
+  tags: "Tag A, Tag B, Tag C"
 };
