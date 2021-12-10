@@ -18,7 +18,7 @@ export interface IOrganizationMenuListItemProps {
   label?: string | undefined,
   badgeValue?: string | undefined,
   itemSize?: IListItemSize,
-  styleOverwrite?: any,
+  styleOverwrite?: string,
   previewProps?: IPreview,
   children?
 }
