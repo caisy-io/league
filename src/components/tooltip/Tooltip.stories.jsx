@@ -2,7 +2,7 @@ import React from "react";
 import { Tooltip, Button, IconCheckmark, FlatActionButton } from "../..";
 
 const checkmarkOutlinedStyles = {
-  color: "green",
+  color: "#41C300",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
