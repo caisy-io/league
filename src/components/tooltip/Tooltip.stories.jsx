@@ -1,32 +1,7 @@
 import React from "react";
-import { Tooltip, Button, IconCheckmark, FlatActionButton } from "../..";
-
-const checkmarkOutlinedStyles = {
-  color: "#41C300",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: 8,
-  border: "1px solid #41C300",
-  borderRadius: "50%",
-  marginBottom: 8,
-  height: 16,
-  width: 16,
-};
-
-const checkmarkFilledStyles = {
-  color: "white",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: 8,
-  border: "1px solid #41C300",
-  borderRadius: "50%",
-  marginBottom: 8,
-  backgroundColor: "#41C300",
-  height: 16,
-  width: 16,
-};
+import { Tooltip, Button, FlatActionButton } from "../..";
+import CheckMarkIcon from "./CheckMarkIcon";
+import CheckMarkIconFilled from "./CheckMarkIconFilled";
 
 function TooltipDemo({ color, placement, ...args }) {
   const tooltipContent = (
@@ -39,11 +14,7 @@ function TooltipDemo({ color, placement, ...args }) {
         gap: 4,
       }}
     >
-      {args.withIcon && (
-        <div style={color === "white" ? checkmarkOutlinedStyles : checkmarkFilledStyles}>
-          <IconCheckmark />
-        </div>
-      )}
+      {args.withIcon && (color === "white" ? <CheckMarkIcon /> : <CheckMarkIconFilled />)}
       <h1 style={{ fontSize: 14, fontWeight: 600, textAlign: "center", lineHeight: "20px" }}>{args.title}</h1>
       <p
         style={{
