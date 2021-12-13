@@ -12,20 +12,15 @@ export const Checkbox: React.FC<ICheckbox> = ({ loading }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
-    <SCheckbox>
+    <SCheckbox >
       <label>
         <input
           type="checkbox"
-          onChange={() => {
-            setIsChecked(!isChecked);
-          }}
-        />
+          onChange={() => { setIsChecked(!isChecked) }} />
         <SCustomCheckbox
-          checked={isChecked}
-        >
+          checked={isChecked} loading={loading}>
           <IconCheckmark></IconCheckmark>
         </SCustomCheckbox>
-
       </label>
     </SCheckbox>
   )

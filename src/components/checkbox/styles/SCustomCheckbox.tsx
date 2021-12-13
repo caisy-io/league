@@ -7,6 +7,18 @@ background: var(--active-icon-04);
   svg{
     opacity: 1;
   }
+  svg path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+    transition: all .3s linear;
+    transition-delay: .15s;      
+  }
+`;
+
+const CSSLoading = css`
+  border-color: var(--active-icon-04);
+  background: var(--ui-03);
+  radius: 4px;
 `;
 
 const Bronze = css`
@@ -25,14 +37,12 @@ const Bronze = css`
     color: #FFFF;
     width: 8px;
   }
-  svg path {
-	fill: none;
-	transition: stroke-dashoffset 0.2s ease-in 0s;
-  }
+  
   &:hover{
     border: 1px solid var(--active-icon-04);
   }
   ${(props) => (props.checked ? CSSChecked : "")}
+  ${(props) => (props.loading ? CSSLoading : "")}
 }`;
 
 const Silver = css``;
