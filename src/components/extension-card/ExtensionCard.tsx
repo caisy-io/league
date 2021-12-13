@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Button } from '..';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { IButtonType } from '../button/Button';
@@ -25,8 +25,11 @@ export const STitleButtonFlex = styled(SFlex)`
   margin-bottom: 0.5rem;
 `;
 
-export const ExtensionCard: React.FC<IExtensionCard> = ({ titleIcon, title, description, flatButtonIcon, flatButtonText }) => {
+const ButtonOverwrite = css`
+  width: 80px;
+`;
 
+export const ExtensionCard: React.FC<IExtensionCard> = ({ titleIcon, title, description, flatButtonIcon, flatButtonText }) => {
   const [primaryButtonText, setprimaryButtonText] = useState("ADD");
   const [buttonType, setbuttonType] = useState<IButtonType>("primary");
   const buttonOnClickHandler = () => {
@@ -38,7 +41,6 @@ export const ExtensionCard: React.FC<IExtensionCard> = ({ titleIcon, title, desc
       setbuttonType("primary")
     }
   };
-
   return (
     <SExtensionCard>
       <STitleButtonFlex justify="space-between">
@@ -46,7 +48,7 @@ export const ExtensionCard: React.FC<IExtensionCard> = ({ titleIcon, title, desc
           {titleIcon}
           <SExtensionCardTitle>{title}</SExtensionCardTitle>
         </STitleFlex>
-        <Button onClick={() => buttonOnClickHandler()} type={buttonType} size="small">{primaryButtonText}</Button>
+        <Button onClick={() => buttonOnClickHandler()} type={buttonType} size="small" styleOverwrite={ButtonOverwrite}>{primaryButtonText}  </Button>
       </STitleButtonFlex>
       <SExtensionCardDescription>{description}</SExtensionCardDescription>
       <FlatActionButton type="grey">  {flatButtonIcon} {flatButtonText}  </FlatActionButton>
