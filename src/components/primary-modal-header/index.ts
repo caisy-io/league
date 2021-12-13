@@ -1,0 +1,1 @@
+export { PrimaryModalHeader } from "./PrimaryModalHeader";
