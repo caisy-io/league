@@ -17,7 +17,7 @@ const Bronze = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 23px 1rem 1rem;
   border-bottom: 1px solid var(--ui-03);
   transition: background-color 0.3s ease-in-out;
   svg{
