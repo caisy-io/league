@@ -49,6 +49,7 @@ export * from "./tabs";
 export * from "./theme";
 export * from "./tooltip";
 export * from "./translation-menu";
+export * from "./translation-menu-legacy";
 export * from "./tree";
 export * from "./search-bar-operand";
 export * from "./close-button";
