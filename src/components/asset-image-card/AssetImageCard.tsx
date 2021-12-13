@@ -1,15 +1,17 @@
-import React from 'react';
-import {SAssetImageCard } from './styles/SAssetImageCard';
+import React, { ReactNode } from 'react';
+import { SAssetImage } from './styles/SAssetImage';
+import { SAssetImageCard } from './styles/SAssetImageCard';
+import { SAssetImageRadioContainer } from './styles/SAssetImageRadioContainer';
 
-interface IAssetImageCard{
-
+interface IAssetImageCard {
+  image?: ReactNode;
 }
 
-export const AssetImageCard: React.FC<IAssetImageCard> = ({...props}) => {
-  console.log(`AssetImageCard props: `, props);
+export const AssetImageCard: React.FC<IAssetImageCard> = ({ image }) => {
   return (
     <SAssetImageCard>
-      {props.children}
+      <SAssetImage>{image}</SAssetImage>
+      <SAssetImageRadioContainer></SAssetImageRadioContainer>
     </SAssetImageCard>
   )
 }

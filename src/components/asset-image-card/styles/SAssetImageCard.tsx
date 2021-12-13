@@ -4,12 +4,13 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 const Bronze = css`
   background-color: var(--ui-01);
   border-radius: 0.5rem;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   box-sizing: border-box;
   border: 1px solid #E8EFF3;
+  height: 228px;
+  justify-content: space-between;
+  width: 240px;
   &: hover{
     background-color: var(--ui-01);
     box-shadow: 0px 8px 24px rgba(184, 184, 184, 0.24);
