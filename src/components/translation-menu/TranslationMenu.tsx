@@ -5,7 +5,7 @@ import { STranslationMenu } from "./styles/STranslationMenu";
 import { STranslationMenuHeader } from "./styles/STranslationMenuHeader";
 import { ILanguageFlagToggleListItemLocale } from "../language-flag-toggle-list-item/LanguageFlagToggleListItem";
 
-interface ITranslationMenu {
+export interface ITranslationMenu {
   opened: boolean | true;
   locales: ILanguageFlagToggleListItemLocale[];
   onToggleOpened: (newOpened: boolean) => void;
