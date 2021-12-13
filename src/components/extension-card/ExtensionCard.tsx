@@ -19,6 +19,10 @@ interface IExtensionCard {
 export const STitleFlex = styled(SFlex)`
   gap: 10px;
   max-width: 80%;
+  svg {
+    width: 19px;
+    flex-shrink: 0;
+  }
 `;
 
 export const STitleButtonFlex = styled(SFlex)`
