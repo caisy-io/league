@@ -5,15 +5,14 @@ export default {
   title: `Components/Badges & Labels/SmallWarning`,
   component: SmallWarningDemo,
   argTypes: {
-    // example argument type
     content: {
-      description: "Changes the state of the component to Activated",
+      description: "Text content of the small warning component",
       control: { type: "text" },
     },
   },
 };
 
-function SmallWarningDemo({ content, ...args }) {
+function SmallWarningDemo({ content }) {
   return <SmallWarning>
     {content}
   </SmallWarning>

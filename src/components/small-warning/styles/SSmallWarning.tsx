@@ -10,6 +10,7 @@ const Bronze = css`
     flex-grow: 0;
     width: 1rem;
   }
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
 
 const Silver = css``;

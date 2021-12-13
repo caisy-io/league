@@ -3,15 +3,16 @@ import { IconWarningHex } from '../..';
 import { SSmallWarning } from './styles/SSmallWarning';
 import { SSmallWarningText } from './styles/SSmallWarningText';
 
-interface ISmallWarning {
+interface ISmallWarningProps {
+  styleOverwrite?: string,
   children?
 }
 
-export const SmallWarning: React.FC<ISmallWarning> = ({ children }) => {
+export const SmallWarning: React.FC<ISmallWarningProps> = ({ styleOverwrite, children }) => {
   return (
-    <SSmallWarning>
+    <SSmallWarning styleOverwrite={styleOverwrite}>
       <IconWarningHex></IconWarningHex>
-      <SSmallWarningText> {children}</SSmallWarningText>
+      <SSmallWarningText> {children} </SSmallWarningText>
     </SSmallWarning>
   )
 }
