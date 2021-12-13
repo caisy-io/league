@@ -10,6 +10,10 @@ export const SIconBase = styled.svg<ISIconBase>`
     ${({ solid }) => solid && "fill: var(--icon-01);"}
   }
 
+  circle {
+    stroke: var(--icon-01);
+  }
+
   path.overwrite {
     stroke: var(--icon-05);
     fill: var(--icon-05);
