@@ -40,10 +40,11 @@ const Bronze = css`
 
   &:hover {
     ${CSSHover};
-    ${(props) => props.dragging && CSSDragging};
   }
 
-  ${(props) => props.dragging && CSSDragging};
+  &:active {
+    ${CSSDragging}
+  }
 `;
 
 const Silver = css``;

@@ -14,13 +14,12 @@ export interface ILanguageFlagToggleListItemLocale {
 
 interface ILanguageFlagToggleListItem {
   locale: ILanguageFlagToggleListItemLocale;
-  dragging: boolean;
   onLocaleToggle: (newValue: boolean) => void;
 }
 
-export const LanguageFlagToggleListItem: FC<ILanguageFlagToggleListItem> = ({ locale, onLocaleToggle, dragging }) => {
+export const LanguageFlagToggleListItem: FC<ILanguageFlagToggleListItem> = ({ locale, onLocaleToggle }) => {
   return (
-    <SLanguageFlagToggleListItem dragging={dragging}>
+    <SLanguageFlagToggleListItem draggable={true}>
       <SLanguageFlagToggleListItemDragIcon>
         <IconDragable size={16} />
       </SLanguageFlagToggleListItemDragIcon>

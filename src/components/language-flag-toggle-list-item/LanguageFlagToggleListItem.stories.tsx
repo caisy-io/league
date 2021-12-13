@@ -25,7 +25,7 @@ function LanguageFlagToggleListItemDemo({ localeName, localeId, dragging }) {
 
   return (
     <div style={{ width: 320 }}>
-      <LanguageFlagToggleListItem dragging={dragging} onLocaleToggle={handleLocaleToggle} locale={locale} />
+      <LanguageFlagToggleListItem onLocaleToggle={handleLocaleToggle} locale={locale} />
     </div>
   );
 }
@@ -50,5 +50,4 @@ export const Default = Template.bind({});
 Default.args = {
   localeName: "Default",
   localeId: "de",
-  dragging: false,
 };
