@@ -18,6 +18,7 @@ export * from "./dropdown-results-list";
 export * from "./dropdown-search";
 export * from "./empty";
 export * from "./flag";
+export * from "./flat-action-button";
 export * from "./form";
 export * from "./form-item";
 export * from "./input";
