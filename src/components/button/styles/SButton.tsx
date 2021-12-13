@@ -342,6 +342,7 @@ const Bronze = css<IButtonProps>`
     height: 10px;
     width: 10px;
   }
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
 
 const Silver = css``;
