@@ -1,8 +1,13 @@
 import styled from "styled-components"
 
-export const SIconBase = styled.svg`
+interface ISIconBase {
+  solid?: boolean;
+}
+
+export const SIconBase = styled.svg<ISIconBase>`
   path {
     stroke: var(--icon-01);
+    ${({ solid }) => solid && "fill: var(--icon-01);"}
   }
 
   path.overwrite {
