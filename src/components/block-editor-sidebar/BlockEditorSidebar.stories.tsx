@@ -4,11 +4,11 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { TranslationMenu } from "../translation-menu";
 import { BlockEditorSidebar } from "./BlockEditorSidebar";
 import { BlockEditorSidebarListItem } from "./BlockEditorSidebarListItem";
-import { ITranslationMenuState } from "..";
+import { ITranslationMenuLocale } from "..";
 
 // Default BlockEditorSidebar Demo
 export default {
-  title: "Components/BlockEditorSidebar",
+  title: "Components/Navigation/BlockEditorSidebar",
   component: BlockEditorSidebarDemo,
   parameters: {
     design: {
@@ -20,21 +20,19 @@ export default {
 };
 
 const TranslationsComponent = () => {
-  const [state, setState] = useState<ITranslationMenuState>({
-    expanded: true,
-    locales: [
-      { id: "en", name: "English", default: true, active: true },
-      { id: "de", name: "Deutsch", active: true },
-      { id: "es", name: "Spanisch", active: true },
-      { id: "fr", name: "French", active: false },
-      { id: "ru", name: "Russisch", active: true },
-    ],
-  });
+  const [opened, setOpened] = useState(true);
+  const [locales, setLocales] = useState<ITranslationMenuLocale[]>([
+    { id: "en", name: "English", default: true, active: true },
+    { id: "de", name: "Deutsch", active: true },
+    { id: "es", name: "Spanish", active: true },
+    { id: "fr", name: "French", active: false },
+    { id: "ru", name: "Russisch", active: true },
+  ]);
 
   return (
     <BlockEditorSidebarListItem>
       <DndProvider backend={HTML5Backend}>
-        <TranslationMenu initialState={state} onChange={setState} />
+        <TranslationMenu locales={locales} opened={opened} onLocalesChange={setLocales} onToggleOpened={setOpened} />
       </DndProvider>
     </BlockEditorSidebarListItem>
   );
