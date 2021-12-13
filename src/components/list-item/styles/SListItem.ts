@@ -45,7 +45,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSmallListItem = styled.div`
+export const SListItem = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

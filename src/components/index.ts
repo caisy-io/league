@@ -23,7 +23,7 @@ export * from "./form-item";
 export * from "./input";
 export * from "./layout";
 export * from "./list";
-export * from "./list-item";
+export * from "./list-item-legacy";
 export * from "./menu-dnd";
 export * from "./menu-item-nestable-as-function";
 export * from "./message";
