@@ -12,7 +12,8 @@ export default {
       control: { type: "select" },
     },
     image: {
-      description: "Changes the image of the component image",
+      name: "image",
+      description: "Image of the component image",
       control: { type: "ReactNode" },
     },
   },
