@@ -13,7 +13,7 @@ export default {
     },
     image: {
       description: "Changes the image of the component image",
-      control: { type: "text" },
+      control: { type: "ReactNode" },
     },
   },
 };
