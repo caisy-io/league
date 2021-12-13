@@ -131,5 +131,4 @@ export { IconComponents } from "./IconComponents";
 export { IconChevronRight } from  "./IconChevronRight";
 export { IconChevronLeft } from  "./IconChevronLeft";
 export { IconChevronUp } from  "./IconChevronUp";
-export { IconChevronDown } from  "./IconChevronDown";
 export { IconCross } from "./IconCross";
