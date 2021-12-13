@@ -1,8 +1,8 @@
 import React from "react";
 
-export function IconDragable() {
+export function IconDragable({ size }) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M14.997 17.5C14.722 17.5 14.497 17.725 14.5 18C14.5 18.275 14.725 18.5 15 18.5C15.275 18.5 15.5 18.275 15.5 18C15.5 17.725 15.275 17.5 14.997 17.5Z"
         fill="currentColor"
