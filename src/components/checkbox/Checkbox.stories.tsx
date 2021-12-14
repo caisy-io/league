@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Checkbox } from './Checkbox';
 
 export default {
@@ -18,9 +18,9 @@ export default {
   },
 };
 
-function CheckboxDemo({ content, ...args }) {
-  return <Checkbox>
-    {content}
+function CheckboxDemo({ ...args }) {
+  const [isChecked, setIsChecked] = useState(false);
+  return <Checkbox onChange={() => { setIsChecked(!isChecked) }} checked={isChecked}>
   </Checkbox>
 }
 
