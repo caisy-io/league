@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { Collapsible, LanguageFlagToggleListItem, MenuDnd } from "..";
+import { Collapsible, MenuDnd } from "..";
 import { IconChevron } from "../..";
 import { STranslationMenu } from "./styles/STranslationMenu";
 import { STranslationMenuHeader } from "./styles/STranslationMenuHeader";
-import { ILanguageFlagToggleListItemLocale } from "..";
+import { ILanguageFlagToggleListItemLocale } from "../language-flag-toggle-list-item/LanguageFlagToggleListItem";
 
 export interface ITranslationMenu {
   opened: boolean | true;
@@ -37,7 +37,7 @@ export const TranslationMenu: FC<ITranslationMenu> = ({ locales, opened, onToggl
       <Collapsible expanded={opened}>
         <MenuDnd onDrop={onDrop}>
           {locales?.map((locale) => {
-            return <LanguageFlagToggleListItem onLocaleToggle={() => onLocaleToggle(locale.id)} locale={locale} />;
+            return <div>{locale.name}</div>;
           })}
         </MenuDnd>
       </Collapsible>
