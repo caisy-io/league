@@ -10,18 +10,6 @@ input[type="checkbox"] {
   position: absolute;
   white-space: nowrap;
   width: 1px;
-  span {
-    display: inline-block; 
-    height: 20px;
-    width: 20px;
-    background: #fff;
-    border: 2px #ddd solid;
-    margin-right: 4px;
-  }
-  .checkbox--active {
-    border-color: purple;
-    background: purple;
-  }
 }`;
 
 const Silver = css``;

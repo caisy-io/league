@@ -9,9 +9,9 @@ background: var(--active-icon-04);
   }
   svg path {
     stroke-dasharray: 60;
-    stroke-dashoffset: 0;
-    transition: all .3s linear;
-    transition-delay: .15s;      
+    stroke-dashoffset: 0;  
+    transition: all .8s ease-in-out;
+    transition-delay: .25s;      
   }
 `;
 
@@ -35,9 +35,15 @@ const Bronze = css`
   svg{
     opacity: 0;
     color: #FFFF;
+    fill: none;
     width: 8px;
   }
-  
+  svg path {
+    stroke-dasharray: 100% 200%;
+	  stroke-dashoffset: 100%;
+    transition: all .8s ease-in-out;
+    transition-delay: .15s;   
+  }
   &:hover{
     border: 1px solid var(--active-icon-04);
   }
@@ -53,7 +59,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SCustomCheckbox = styled.span`
+export const SCustomCheckbox = styled.label`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
