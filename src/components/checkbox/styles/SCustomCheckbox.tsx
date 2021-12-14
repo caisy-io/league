@@ -4,14 +4,9 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 const CSSChecked = css`
 border-color: var(--active-icon-04);
 background: var(--active-icon-04);
-  svg{
-    opacity: 1;
-  }
   svg path {
     stroke-dasharray: 60;
     stroke-dashoffset: 0;  
-    transition: all .8s ease-in-out;
-    transition-delay: .25s;      
   }
 `;
 
@@ -32,8 +27,8 @@ const Bronze = css`
   border-radius: 50%;
   margin-right: 4px;
   box-sizing: border-box;
+  transition: all 0.75s linear;
   svg{
-    opacity: 0;
     color: #FFFF;
     fill: none;
     width: 8px;
@@ -41,8 +36,7 @@ const Bronze = css`
   svg path {
     stroke-dasharray: 100% 200%;
 	  stroke-dashoffset: 100%;
-    transition: all .8s ease-in-out;
-    transition-delay: .15s;   
+    transition: all .5s ease-in-out;
   }
   &:hover{
     border: 1px solid var(--active-icon-04);
