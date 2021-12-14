@@ -5,15 +5,20 @@ const CSSChecked = css`
 border-color: var(--active-icon-04);
 background: var(--active-icon-04);
   svg path {
-    stroke-dasharray: 60;
+    stroke-dasharray: -60;
     stroke-dashoffset: 0;  
   }
 `;
 
 const CSSLoading = css`
+  transition: none;
   border-color: var(--active-icon-04);
   background: var(--ui-03);
-  radius: 4px;
+  border: none;
+  border-radius: 4px;
+  svg {
+    opacity: 0;
+  }
 `;
 
 const Bronze = css`
@@ -40,6 +45,7 @@ const Bronze = css`
   }
   &:hover{
     border: 1px solid var(--active-icon-04);
+    ${(props) => (props.loading ? CSSLoading : "")}
   }
   ${(props) => (props.checked ? CSSChecked : "")}
   ${(props) => (props.loading ? CSSLoading : "")}

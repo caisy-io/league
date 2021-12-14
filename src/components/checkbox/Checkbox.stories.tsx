@@ -6,7 +6,7 @@ export default {
   component: CheckboxDemo,
   argTypes: {
     // example argument type
-    activated: {
+    loading: {
       description: "Changes the state of the component to Activated",
       control: { type: "boolean" },
       table: {
@@ -18,9 +18,9 @@ export default {
   },
 };
 
-function CheckboxDemo({ ...args }) {
+function CheckboxDemo({loading }) {
   const [isChecked, setIsChecked] = useState(false);
-  return <Checkbox onChange={() => { setIsChecked(!isChecked) }} checked={isChecked}>
+  return <Checkbox loading={loading} onChange={() => { setIsChecked(!isChecked) }} checked={isChecked}>
   </Checkbox>
 }
 
