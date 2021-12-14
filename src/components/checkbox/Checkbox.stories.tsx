@@ -7,7 +7,7 @@ export default {
   argTypes: {
     // example argument type
     loading: {
-      description: "Changes the state of the component to Activated",
+      description: "Changes the state of the component to loading",
       control: { type: "boolean" },
       table: {
         defaultValue: {
@@ -28,5 +28,5 @@ const Template = (args) => < CheckboxDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-
+  loading: "false",
 };
