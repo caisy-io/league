@@ -1,7 +1,7 @@
 PrimaryModalHeader;
 import React, { useEffect, useState } from "react";
 import { PrimaryModalHeader } from "./PrimaryModalHeader";
-import { IconStarOutlined } from "../..";
+import { IconClose, IconStarOutlined } from "../..";
 import { FlatActionButton, Tab } from "..";
 
 // Default PrimaryModalHeader Demo
@@ -61,11 +61,10 @@ function PrimaryModalHeaderDemo({ ...args }) {
           </div>
         </>
       )}
-      {args.showFlatActionButton && (
-        <div style={{ marginLeft: "auto" }}>
-          <FlatActionButton type="grey">Default</FlatActionButton>
-        </div>
-      )}
+      <div style={{ marginLeft: "auto", display: "flex", gap: 12 }}>
+        {args.showFlatActionButton && <FlatActionButton type="grey">Default</FlatActionButton>}
+        {args.withCloseIcon && <IconClose size={24} />}
+      </div>
     </PrimaryModalHeader>
   );
 }
