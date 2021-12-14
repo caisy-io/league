@@ -9,10 +9,6 @@ export interface ISolidLabelProps {
   onClick?: () => void;
 }
 
-export const SolidLabel: React.FC = (props) => {
-  return (
-    <SSolidLabel {...props}>
-      {props.children}
-    </SSolidLabel>
-  );
+export const SolidLabel: React.FC<ISolidLabelProps> = (props) => {
+  return <SSolidLabel {...props}>{props.children}</SSolidLabel>;
 };
