@@ -31,6 +31,18 @@ export default {
       url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=558%3A8536",
     },
   },
+  argTypes: {
+    size: {
+      description: "Changes the overall design of the button",
+      options: ["small", "medium"],
+      control: { type: "select" },
+      table: {
+        defaultValue: {
+          summary: "medium",
+        },
+      },
+    },
+  },
 };
 const Template = ({ content, description, size, showRightIcon, showLeftIcon }) => (
   <ToggleListItemDemo
