@@ -1,8 +1,8 @@
 PrimaryModalHeader;
 import React, { useEffect, useState } from "react";
 import { PrimaryModalHeader } from "./PrimaryModalHeader";
-import { IconStarAdd, IconStarOutlined } from "../..";
-import { Divider, FlatActionButton, Tab } from "..";
+import { IconStarOutlined } from "../..";
+import { FlatActionButton, Tab } from "..";
 
 // Default PrimaryModalHeader Demo
 export default {
@@ -27,7 +27,7 @@ function PrimaryModalHeaderDemo({ ...args }) {
   const [breadcrumbs, setBreadcrumbs] = useState(
     args.labels.map((label, index) => ({
       title: label,
-      icon: args.labelsWithIcons ? <IconStarOutlined /> : null,
+      icon: args.labelsWithIcons ? <IconStarOutlined size={24} /> : null,
       value: index + 1,
       onClick: (value) => handleLabelClick(value),
       badgeContent: args.showBadge && index + 1 === args.labels.lenght ? "12" : undefined,

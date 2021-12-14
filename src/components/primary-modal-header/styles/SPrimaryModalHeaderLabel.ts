@@ -15,11 +15,6 @@ const Bronze = css`
   color: var(--text-03);
 
   ${(props) => props.active && CSSActive};
-
-  svg {
-    height: 18px;
-    width: 18px;
-  }
 `;
 
 const Silver = css``;
