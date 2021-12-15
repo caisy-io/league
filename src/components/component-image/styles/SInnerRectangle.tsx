@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 export const CSSTypeGrid = css`
+    
     border-radius: 0.25rem;
 `;
 
@@ -13,9 +14,11 @@ const Bronze = css`
     background-color: var(--ui-01);
     width: 100%;
     height: 100%;
-    border-radius: 0.5rem;
-    ${(props) => props.type == "grid" ? CSSTypeGrid : ""};
-    ${(props) => props.type == "list-item" ? CSSTypeListItem : ""};
+    img{
+        border-radius: 0.5rem;
+        ${(props) => props.type == "grid" ? CSSTypeGrid : ""};
+        ${(props) => props.type == "list-item" ? CSSTypeListItem : ""};
+    }
 `;
 
 const Silver = css``;
