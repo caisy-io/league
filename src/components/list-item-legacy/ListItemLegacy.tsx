@@ -12,18 +12,26 @@ interface IListItemLegacy {
   description?: React.ReactNode;
   avatar?: string;
   childrenStyle?: React.CSSProperties;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-export const ListItemLegacy: React.FC<IListItemLegacy> = ({ ...props }) => {
+export const ListItemLegacy: React.FC<IListItemLegacy> = ({
+  title,
+  description,
+  avatar,
+  childrenStyle,
+  children,
+  onClick,
+}) => {
   return (
-    <div>
+    <div onClick={onClick}>
       <SListItem>
-        {props.avatar ? <SListItemAvatar src={props.avatar} /> : null}
+        {avatar ? <SListItemAvatar src={avatar} /> : null}
         <SListItemContentWrapper>
-          <SListItemTitle>{props.title}</SListItemTitle>
-          <SListItemDescription>{props.description}</SListItemDescription>
+          <SListItemTitle>{title}</SListItemTitle>
+          <SListItemDescription>{description}</SListItemDescription>
         </SListItemContentWrapper>
-        <SListItemChildren style={props.childrenStyle}>{props.children}</SListItemChildren>
+        <SListItemChildren style={childrenStyle}>{children}</SListItemChildren>
       </SListItem>
       <Divider marginTop={8} marginBottom={8} />
     </div>

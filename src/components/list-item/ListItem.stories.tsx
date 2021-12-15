@@ -2,9 +2,9 @@ import { ListItem } from "./ListItem";
 import { IconChevronRight, IconDragable, IconGearSettings, IconPin, IconStarOutlined } from "../..";
 import { useState } from "react";
 
-function ListItemDemo({ children, activated, onClick = undefined, ...props }) {
+function ListItemDemo({ children, activated, onClick, ...props }) {
   return (
-    <div {...props} style={{ width: "fit-content", minWidth: 320 }}>
+    <div {...props} style={{ width: 320 }}>
       <ListItem activated={activated} onClick={onClick}>
         {children}
       </ListItem>
@@ -23,23 +23,38 @@ export default {
   },
 };
 
-const SmallListItemTemplate = ({ showLeftIcon, showRightIcon, activated, content }) => (
-  <ListItemDemo activated={activated}>
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-      {showLeftIcon && <IconStarOutlined size={16} />}
-      {content}
-    </div>
-    {showRightIcon && (
-      <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <IconChevronRight size={16} />
+const SmallListItemTemplate = ({ showLeftIcon, showRightIcon, content }) => {
+  const [activated, setActivated] = useState(false);
+
+  const toggleActivated = () => {
+    setActivated((prev) => !prev);
+  };
+
+  return (
+    <ListItemDemo onClick={toggleActivated} activated={activated}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          {showLeftIcon && <IconStarOutlined size={16} />}
+        </div>
+        <p style={{ width: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{content}</p>
       </div>
-    )}
-  </ListItemDemo>
-);
+      {showRightIcon && (
+        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <IconChevronRight size={16} />
+        </div>
+      )}
+    </ListItemDemo>
+  );
+};
 
 export const SmallListItem = SmallListItemTemplate.bind({});
 SmallListItem.args = {
-  activated: false,
   showLeftIcon: true,
   showRightIcon: true,
   content: "Default",
