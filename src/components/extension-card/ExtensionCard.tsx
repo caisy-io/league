@@ -14,6 +14,8 @@ interface IExtensionCard {
   description?: string | undefined;
   flatButtonIcon?: ReactNode;
   flatButtonText?: string | undefined;
+  onAdd?: () => any;
+  onRemove?: () => any;
 }
 
 export const STitleFlex = styled(SFlex)`
