@@ -7,6 +7,7 @@ import { SBlueprintEditorSubnavAddButton } from "./styles/SBlueprintEditorSubnav
 import { SBlueprintEditorSubnavConfig } from "./styles/SBlueprintEditorSubnavConfig";
 import { SBlueprintEditorSubnavConfigButtons } from "./styles/SBlueprintEditorSubnavConfigButtons";
 import { SBlueprintEditorSubnavConfigDivider } from "./styles/SBlueprintEditorSubnavConfigDivider";
+import { SBlueprintEditorSubnavEditIconWrapper } from "./styles/SBlueprintEditorSubnavEditIconWrapper";
 import { SBlueprintEditorSubnavTab } from "./styles/SBlueprintEditorSubnavTab";
 import { SBlueprintEditorSubnavTabs } from "./styles/SBlueprintEditorSubnavTabs";
 
@@ -54,12 +55,9 @@ export const BlueprintEditorSubnav: FC<IBlueprintEditorSubnav> = ({
             <LineTabs activated={selectedGroup === group.name} onClick={() => onSelectGroup(group.name)}>
               {group.name}
               {!!onEditGroup && (
-                <div
-                  onClick={(e) => handleEditTab(e, group)}
-                  style={{ display: "flex", alignItems: "center", justifyContent: "center", marginLeft: 4 }}
-                >
+                <SBlueprintEditorSubnavEditIconWrapper onClick={(e) => handleEditTab(e, group)}>
                   <IconEdit size={16} />
-                </div>
+                </SBlueprintEditorSubnavEditIconWrapper>
               )}
             </LineTabs>
           </SBlueprintEditorSubnavTab>
