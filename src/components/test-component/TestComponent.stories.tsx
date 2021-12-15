@@ -1,9 +1,9 @@
 import React from "react";
-import { {{ properCase name }} } from './{{ properCase name }}';
+import { TestComponent } from './TestComponent';
 
 export default {
-  title: `Components/{{ properCase name }}`,
-  component: {{ properCase name }}Demo,
+  title: `Components/TestComponent`,
+  component: TestComponentDemo,
   argTypes: {
     boolean: {
       description: "An example boolean argument type",
@@ -31,12 +31,12 @@ export default {
   },
 };
 
-function {{properCase name}}Demo({ boolean, text, select }) {
-  return <{{properCase name}}>
-    </{{properCase name}}>
+function TestComponentDemo({ boolean, text, table }) {
+  return <TestComponent>
+    </TestComponent>
 }
 
-const Template = (args) => < {{ properCase name }}Demo {...args } />;
+const Template = (args) => < TestComponentDemo {...args } />;
 
 export const Default = Template.bind({});
 Default.args = {
