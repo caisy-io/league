@@ -82,7 +82,7 @@ const ListSpoilerTemplate = ({ showLeftIcon, showRightIcon, content }) => {
       </div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
         {showLeftIcon && <IconStarOutlined size={16} />}
-        {content}
+        <p style={{ width: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{content}</p>
       </div>
       {showRightIcon && (
         <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -120,7 +120,9 @@ const ViewSectionTemplate = ({ content }) => {
       >
         <IconChevronRight size={16} />
       </div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>🤘 {content}</div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+        🤘 <p style={{ width: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{content}</p>
+      </div>
       <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
         <IconGearSettings size={16} />
         <IconDragable size={16} />
@@ -154,7 +156,7 @@ const ViewListItemTemplate = ({ content }) => {
           fontSize: 14,
         }}
       >
-        {content}
+        <p style={{ width: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{content}</p>{" "}
       </div>
       {(hover || activated) && (
         <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
