@@ -7,11 +7,15 @@ export type IFontSizeType = "12" | "16" | "18" | "20" | "24";
 interface ITypography {
   fontWeight?: IFontWeightType,
   fontSize?: IFontSizeType,
+  lineHeight?: IFontSizeType,
+  spacing?: number,
+  text: string,
 }
 
-export const Typography: React.FC<ITypography> = ({ fontWeight, fontSize }) => {
+export const Typography: React.FC<ITypography> = ({ fontWeight, fontSize, text, spacing, lineHeight }) => {
   return (
-    <STypography fontWeight={fontWeight} fontSize={fontSize}>
+    <STypography fontWeight={fontWeight} fontSize={fontSize} spacing={spacing} lineHeight={lineHeight}>
+      {text}
     </STypography>
   )
 }
