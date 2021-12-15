@@ -56,7 +56,7 @@ import {
   IconPersonalKeyToken,
   IconPasswordKey,
   IconMessageChat,
-  IconSecurityAuth
+  IconSecurityAuth,
 } from './index';
 
 const icons = {
