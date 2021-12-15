@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 interface IIconSize {
-  size: 12 | 16 | 20 | 24 | 32 | 40;
+  size?: 12 | 16 | 20 | 24 | 32 | 40;
 }
 
 export const IconCheckmark: FC<IIconSize> = ({ }) => {
