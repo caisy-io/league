@@ -37,6 +37,17 @@ function BlueprintEditorSubnavDemo({ configBadgeValue }) {
     }
   };
 
+  const onEditGroup = ({ name }) => {
+    const editedGroup = groups.find((group) => group.name === name);
+    if (editedGroup) {
+      const newName = window.prompt("Enter new name", `${name}`);
+      const newGroups = groups.slice();
+      const groupIndex = newGroups.findIndex((group) => group.name === name);
+      newGroups[groupIndex] = { name: newName };
+      setGroups(newGroups);
+    }
+  };
+
   return (
     <BlueprintEditorSubnav
       configBadgeValue={configBadgeValue}
@@ -44,6 +55,7 @@ function BlueprintEditorSubnavDemo({ configBadgeValue }) {
       onSelectGroup={onSelectGroup}
       selectedGroup={selectedGroup}
       groups={groups}
+      onEditGroup={onEditGroup}
     />
   );
 }

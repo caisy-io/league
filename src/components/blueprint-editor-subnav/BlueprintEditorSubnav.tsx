@@ -23,6 +23,7 @@ interface IBlueprintEditorSubnav {
   configBadgeValue?: string;
   onRedo?: () => void;
   onUndo?: () => void;
+  onEditGroup?: (group: IBlueprintEditorSubnavGroup) => void;
 }
 
 export const BlueprintEditorSubnav: FC<IBlueprintEditorSubnav> = ({
@@ -34,7 +35,13 @@ export const BlueprintEditorSubnav: FC<IBlueprintEditorSubnav> = ({
   onRedo,
   onClickConfig,
   configBadgeValue,
+  onEditGroup,
 }) => {
+  const handleEditTab = (e, group) => {
+    e.stopPropagation();
+    onEditGroup?.(group);
+  };
+
   return (
     <SBlueprintEditorSubnav>
       <SBlueprintEditorSubnavAddButton onClick={onGroupAdd}>
@@ -46,7 +53,14 @@ export const BlueprintEditorSubnav: FC<IBlueprintEditorSubnav> = ({
           <SBlueprintEditorSubnavTab>
             <LineTabs activated={selectedGroup === group.name} onClick={() => onSelectGroup(group.name)}>
               {group.name}
-              <IconEdit />
+              {!!onEditGroup && (
+                <div
+                  onClick={(e) => handleEditTab(e, group)}
+                  style={{ display: "flex", alignItems: "center", justifyContent: "center", marginLeft: 4 }}
+                >
+                  <IconEdit size={16} />
+                </div>
+              )}
             </LineTabs>
           </SBlueprintEditorSubnavTab>
         ))}
