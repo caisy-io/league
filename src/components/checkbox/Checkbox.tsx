@@ -17,7 +17,7 @@ export const Checkbox: React.FC<ICheckboxProps> = ({ loading, checked, onChange 
         <input
           type="checkbox"
         />
-        <IconCheckmark></IconCheckmark>
+        <IconCheckmark size={12}></IconCheckmark>
       </SCustomCheckbox>
     </SCheckbox>
   )
