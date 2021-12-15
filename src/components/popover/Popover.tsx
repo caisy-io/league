@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { CSSProp } from "styled-components";
+import { CSSProp } from "styled-components"
 import { SPopover } from "./styles/SPopover";
 import Stackable from "../stackable";
 import { vbefore, vcenter, vafter, hbefore, hcenter, hafter } from "../poppable/Poppable.placements";

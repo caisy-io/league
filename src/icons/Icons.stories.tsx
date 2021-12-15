@@ -11,7 +11,7 @@ import {
   IconSearch,
   IconChat,
   IconUpload,
-  IconComponents
+  IconComponents,
 } from './index';
 
 const icons = {
@@ -29,7 +29,7 @@ const icons = {
 };
 
 interface IMainMenuIconDemo {
-  size?: 16 | 20 | 24 | 32;
+  size?: 12 | 16 | 20 | 24 | 32 | 40;
   icon?: string;
 }
 
@@ -45,7 +45,7 @@ export default {
     size: {
       name: "size",
       description: "Size of the icon",
-      options: [16, 20, 24, 32],
+      options: [12, 16, 20, 24, 32, 40],
       control: { type: 'select' }
     },
     icon: {
