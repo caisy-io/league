@@ -1,7 +1,7 @@
 PrimaryModalHeader;
 import React, { useEffect, useState } from "react";
 import { PrimaryModalHeader } from "./PrimaryModalHeader";
-import { IconClose, IconStarOutlined } from "../..";
+import { IconClose, IconGithub, IconGitlab, IconStarOutlined } from "../..";
 import { FlatActionButton, Tab } from "..";
 
 // Default PrimaryModalHeader Demo
@@ -53,9 +53,11 @@ function PrimaryModalHeaderDemo({ ...args }) {
           <div style={{ height: 20, width: 1, backgroundColor: "#E8EFF3", margin: "0 24px" }} />
           <div style={{ display: "flex", gap: 8 }}>
             <Tab activated={selectedTab === 1} onClick={setSelectedTab} size="small" value={1}>
+              {args.tabsWithIcons && <IconGithub />}
               Tab 1
             </Tab>
             <Tab activated={selectedTab === 2} onClick={setSelectedTab} size="small" value={2}>
+              {args.tabsWithIcons && <IconGitlab />}
               Tab 2
             </Tab>
           </div>
@@ -76,6 +78,7 @@ Default.args = {
   withCloseIcon: true,
   labels: ["Label 1", "Label 2"],
   labelsWithIcons: true,
+  tabsWithIcons: true,
   showBadge: false,
   showTabs: true,
   showFlatActionButton: true,
