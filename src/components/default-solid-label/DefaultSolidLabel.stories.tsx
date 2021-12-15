@@ -18,9 +18,8 @@ export default {
   },
 };
 
-function DefaultSolidLabelDemo({ content, labelText, leftImage }) {
+function DefaultSolidLabelDemo({ labelText, leftImage }) {
   return <DefaultSolidLabel labelText={labelText} leftImage={leftImage}>
-    {content}
   </DefaultSolidLabel>
 }
 
