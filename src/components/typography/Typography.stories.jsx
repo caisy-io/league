@@ -6,21 +6,16 @@ export default {
   component: TypographyDemo,
   argTypes: {
     // example argument type
-    activated: {
+    text: {
       description: "Changes the state of the component to Activated",
-      control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
+      control: { type: "text" },
     },
   },
 };
 
-function TypographyDemo({ content, ...args }) {
+function TypographyDemo({ text }) {
   return <Typography>
-    {content}
+    {text}
   </Typography>
 }
 
@@ -28,5 +23,5 @@ const Template = (args) => < TypographyDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-
+  text: ""
 };

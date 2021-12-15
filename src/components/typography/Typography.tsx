@@ -1,15 +1,17 @@
 import React from 'react';
-import {STypography } from './styles/STypography';
+import { STypography } from './styles/STypography';
 
-interface ITypography{
+export type IFontWeightType = "400" | "500" | "600" | "700";
+export type IFontSizeType = "12" | "16" | "18" | "20" | "24";
 
+interface ITypography {
+  fontWeight?: IFontWeightType,
+  fontSize?: IFontSizeType,
 }
 
-export const Typography: React.FC<ITypography> = ({...props}) => {
-  console.log(`Typography props: `, props);
+export const Typography: React.FC<ITypography> = ({ fontWeight, fontSize }) => {
   return (
-    <STypography>
-      {props.children}
+    <STypography fontWeight={fontWeight} fontSize={fontSize}>
     </STypography>
   )
 }
