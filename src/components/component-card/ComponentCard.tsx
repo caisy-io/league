@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { IconTags } from '../../icons';
 import { ComponentImage } from '../component-image';
 import { SComponentCard } from './styles/SComponentCard';
@@ -11,16 +11,17 @@ interface IComponentCard {
   title?: string | undefined;
   description?: string | undefined;
   tags?: string | undefined;
+  image?: ReactNode;
 }
 
-export const ComponentCard: React.FC<IComponentCard> = ({ title, description, tags }) => {
+export const ComponentCard: React.FC<IComponentCard> = ({ title, description, tags, image }) => {
   return (
     <SComponentCard>
       <div>
         <SComponentCardTitle>{title}</SComponentCardTitle>
         <SComponentCardDescription>{description}</SComponentCardDescription>
       </div>
-      <ComponentImage type="grid"></ComponentImage>
+      <ComponentImage type="grid" image={image}></ComponentImage>
       <STagContainer>
         <IconTags></IconTags>
         <STagText>{tags}</STagText>
