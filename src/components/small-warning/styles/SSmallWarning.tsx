@@ -8,7 +8,6 @@ const Bronze = css`
   gap: 10px;
   svg{
     flex-grow: 0;
-    width: 1rem;
   }
   ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 
-export function IconWarningHex() {
+interface IIconSize {
+  size: 12 | 16 | 20 | 24 | 32 | 40;
+}
+
+export const IconWarningHex: FC<IIconSize> = ({}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

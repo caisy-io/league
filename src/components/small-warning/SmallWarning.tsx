@@ -11,7 +11,7 @@ interface ISmallWarningProps {
 export const SmallWarning: React.FC<ISmallWarningProps> = ({ styleOverwrite, children }) => {
   return (
     <SSmallWarning styleOverwrite={styleOverwrite}>
-      <IconWarningHex></IconWarningHex>
+      <IconWarningHex size={16}></IconWarningHex>
       <SSmallWarningText> {children} </SSmallWarningText>
     </SSmallWarning>
   )
