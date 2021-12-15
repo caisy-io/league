@@ -5,7 +5,7 @@ import { IIconSize } from "../utils/types";
 const IconSize = {
   12: (
     <SIconBase width="9" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-      <path className="stroke-transparent" d="M1 14.98H15V0.98H1V14.98Z" fill="url(#pattern0)"/>
+      <path className="transparent-stroke" d="M1 14.98H15V0.98H1V14.98Z" fill="url(#pattern0)"/>
       <defs>
         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_30_848" transform="scale(0.015625)"/>
@@ -16,7 +16,7 @@ const IconSize = {
   ),
   16: (
     <SIconBase width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-      <path className="stroke-transparent" d="M1 14.98H15V0.98H1V14.98Z" fill="url(#pattern0)"/>
+      <path className="transparent-stroke" d="M1 14.98H15V0.98H1V14.98Z" fill="url(#pattern0)"/>
       <defs>
         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_30_848" transform="scale(0.015625)"/>
@@ -27,7 +27,7 @@ const IconSize = {
   ),
   20: (
     <SIconBase width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-      <path className="stroke-transparent" d="M1.3335 19.26H19.3335V1.26H1.3335V19.26Z" fill="url(#pattern0)"/>
+      <path className="transparent-stroke" d="M1.3335 19.26H19.3335V1.26H1.3335V19.26Z" fill="url(#pattern0)"/>
       <defs>
         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_30_852" transform="scale(0.015625)"/>
@@ -38,7 +38,7 @@ const IconSize = {
   ),
   24: (
     <SIconBase width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-      <path className="stroke-transparent" d="M2.6665 22.4H22.6665V2.4H2.6665V22.4Z" fill="url(#pattern0)"/>
+      <path className="transparent-stroke" d="M2.6665 22.4H22.6665V2.4H2.6665V22.4Z" fill="url(#pattern0)"/>
       <defs>
         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_30_856" transform="scale(0.015625)"/>
@@ -49,7 +49,7 @@ const IconSize = {
   ),
   28: (
     <SIconBase width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-      <path className="stroke-transparent" d="M2.6665 22.4H22.6665V2.4H2.6665V22.4Z" fill="url(#pattern0)"/>
+      <path className="transparent-stroke" d="M2.6665 22.4H22.6665V2.4H2.6665V22.4Z" fill="url(#pattern0)"/>
       <defs>
         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_30_856" transform="scale(0.015625)"/>
@@ -60,7 +60,7 @@ const IconSize = {
   ),
   32: (
     <SIconBase width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-      <path className="stroke-transparent" d="M4 27.68H28V3.68H4V27.68Z" fill="url(#pattern0)"/>
+      <path className="transparent-stroke" d="M4 27.68H28V3.68H4V27.68Z" fill="url(#pattern0)"/>
       <defs>
         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_30_860" transform="scale(0.015625)"/>
@@ -71,7 +71,7 @@ const IconSize = {
   ),
   36: (
     <SIconBase width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-      <path className="stroke-transparent" d="M4 27.68H28V3.68H4V27.68Z" fill="url(#pattern0)"/>
+      <path className="transparent-stroke" d="M4 27.68H28V3.68H4V27.68Z" fill="url(#pattern0)"/>
       <defs>
         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_30_860" transform="scale(0.015625)"/>
@@ -82,7 +82,7 @@ const IconSize = {
   ),
   40: (
     <SIconBase width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-      <path className="stroke-transparent" d="M4 27.68H28V3.68H4V27.68Z" fill="url(#pattern0)"/>
+      <path className="transparent-stroke" d="M4 27.68H28V3.68H4V27.68Z" fill="url(#pattern0)"/>
       <defs>
         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_30_860" transform="scale(0.015625)"/>
@@ -93,7 +93,7 @@ const IconSize = {
   ),
   48: (
     <SIconBase width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-      <path className="stroke-transparent" d="M4 27.68H28V3.68H4V27.68Z" fill="url(#pattern0)"/>
+      <path className="transparent-stroke" d="M4 27.68H28V3.68H4V27.68Z" fill="url(#pattern0)"/>
       <defs>
         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_30_860" transform="scale(0.015625)"/>
