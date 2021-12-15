@@ -9,6 +9,7 @@ import {
   CSSProgressiveBody03Semibold,
 } from "../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { CSSProgressiveCaption01 } from "../../constants/styles/fonts";
+import { IconDotsHorizontal, IconPublish } from "../..";
 
 function TableRowDemo({ children, ...args }) {
   return (
@@ -22,6 +23,8 @@ export default {
   title: "Components/Table/TableRow",
   component: TableRowDemo,
 };
+
+// --------------- PREVIEW TEMPLATE --------------- //
 
 const PreviewTemplate = (args) => {
   const [activated, setActivated] = useState(false);
@@ -47,6 +50,8 @@ const PreviewTemplate = (args) => {
 
 export const Preview = PreviewTemplate.bind({});
 Preview.args = {};
+
+// --------------- STRING TEMPLATE --------------- //
 
 const CSSSimple = css`
   ${CSSProgressiveBody03}
@@ -99,6 +104,8 @@ String.args = {
   withBadge: false,
 };
 
+// --------------- TAGS TEMPLATE --------------- //
+
 const STags = styled.div`
   padding: 32px 16px;
   display: flex;
@@ -150,6 +157,8 @@ const TagsTemplate = (args) => {
 export const Tags = TagsTemplate.bind({});
 Tags.args = {};
 
+// --------------- STATUS TEMPLATE --------------- //
+
 const StatusTemplate = (args) => {
   const [activated, setActivated] = useState(false);
 
@@ -164,3 +173,135 @@ const StatusTemplate = (args) => {
 
 export const Status = StatusTemplate.bind({});
 Status.args = {};
+
+// --------------- ACTION ICON BUTTON TEMPLATE --------------- //
+
+const ActionIconButtonTemplate = (args) => {
+  const [activated, setActivated] = useState(false);
+
+  return (
+    <TableRowDemo onClick={setActivated} activated={activated} {...args}>
+      <span style={{ padding: "28px 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 6,
+            border: "1px solid #E8EFF3",
+            boxSizing: "border-box",
+            borderRadius: 6,
+          }}
+        >
+          <IconDotsHorizontal size={20} />
+        </div>
+      </span>
+    </TableRowDemo>
+  );
+};
+
+export const ActionIconButton = ActionIconButtonTemplate.bind({});
+ActionIconButton.args = {};
+
+// --------------- ICON FLAT BUTTON TEMPLATE --------------- //
+
+const SFlatButton = styled.div`
+  ${CSSProgressiveBody03Semibold};
+  padding: 34px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-04);
+  gap: 8px;
+  transition: color 150ms;
+
+  &:hover {
+    color: var(--hover-text-01);
+    ${(props) => props.activated && "color: var(--active-text-01);"}
+  }
+  ${(props) => props.activated && "color: var(--active-text-01);"}
+
+  &:active {
+    color: var(--active-text-01);
+  }
+`;
+
+const ActionFlatButtonTemplate = (args) => {
+  const [activated, setActivated] = useState(false);
+
+  return (
+    <TableRowDemo onClick={setActivated} activated={activated} {...args}>
+      <SFlatButton activated={activated}>
+        <IconPublish size={20} /> Publish
+      </SFlatButton>
+    </TableRowDemo>
+  );
+};
+
+export const ActionFlatButton = ActionFlatButtonTemplate.bind({});
+ActionFlatButton.args = {};
+
+// --------------- USER TEMPLATE --------------- //
+
+const SUserName = styled.p`
+  ${CSSProgressiveBody03Semibold};
+  display: flex;
+  align-items: center;
+  color: var(--text-01);
+`;
+
+const SUserMail = styled.p`
+  ${CSSProgressiveCaption01};
+  display: flex;
+  align-items: center;
+  color: var(--text-01);
+`;
+
+const SUserInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const UserTemplate = (args) => {
+  const [activated, setActivated] = useState(false);
+
+  return (
+    <TableRowDemo onClick={setActivated} activated={activated} {...args}>
+      <span
+        style={{
+          padding: "24px 16px",
+          display: "flex",
+          alignItems: "stretch",
+          justifyContent: "center",
+          gap: 16,
+          maxWidth: 250,
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          minWidth: 0,
+        }}
+      >
+        <PreviewComponent
+          size={40}
+          image={
+            <Img
+              lazyload={false}
+              src={
+                "https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!
+              }
+              resolution={48}
+            />
+          }
+        />
+        <SUserInfo>
+          <SUserName>John Doe</SUserName>
+          <SUserMail>email.example@gmail.com</SUserMail>
+        </SUserInfo>
+      </span>
+    </TableRowDemo>
+  );
+};
+
+export const User = UserTemplate.bind({});
+User.args = {};
