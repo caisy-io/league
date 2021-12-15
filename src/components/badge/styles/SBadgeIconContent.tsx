@@ -7,17 +7,14 @@ const CSSDisplayNone = css`
 
 const CSSMicro = css`
   font-size: 0.5rem;
-  line-height: 0.5rem;
 `;
 
 const CSSSmall = css`
   font-size: 0.563rem;
-  line-height: 0.563rem;
 `;
 
 const CSSMedium = css`
   font-size: 0.688rem;
-  line-height: 0.688rem;
 `;
 
 const Bronze = css`
