@@ -45,3 +45,21 @@ Default.args = {
   lineHeight: "12",
   fontWeight: "400",
 };
+
+export const Heading_01 = Template.bind({});
+Heading_01.args = {
+  text: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+  fontSize: "18",
+  lineHeight: "24",
+  fontWeight: "00",
+  spacing: 0,
+};
+
+export const Body_01_Semibold = Template.bind({});
+Heading_01.args = {
+  text: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+  fontSize: "18",
+  lineHeight: "24",
+  fontWeight: "00",
+  spacing: 0,
+};
