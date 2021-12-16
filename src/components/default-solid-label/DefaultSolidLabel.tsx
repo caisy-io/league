@@ -1,20 +1,21 @@
 import React, { ReactNode } from 'react';
-import { IconCross } from '../..';
+import { IconCross } from '../../icons/IconCross';
 import { SDefaultSolidLabel } from './styles/SDefaultSolidLabel';
 import { SLeftImage } from './styles/SLeftImage';
 
 interface IDefaultSolidLabel {
   labelText?: string,
-  onClick?: () => void,
+  onRemove?: () => void,
   leftImage?: ReactNode
 }
 
-export const DefaultSolidLabel: React.FC<IDefaultSolidLabel> = ({ leftImage, labelText, onClick }) => {
+export const DefaultSolidLabel: React.FC<IDefaultSolidLabel> = ({ leftImage, labelText, onRemove }) => {
   return (
-    <SDefaultSolidLabel onClick={onClick}>
+    <SDefaultSolidLabel onRemove={onRemove}>
       {leftImage && <SLeftImage>{leftImage}</SLeftImage>}
       {labelText}
-      <IconCross size={20} />
+      <a onClick={onRemove}>      <IconCross size={20} />
+      </a>
     </SDefaultSolidLabel>
   )
 }
