@@ -128,7 +128,56 @@ export { IconChevron } from "./IconChevron";
 export { IconUpload } from "./IconUpload";
 export { IconDocuments } from "./IconDocuments";
 export { IconComponents } from "./IconComponents";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export { IconChevronRight } from  "./IconChevronRight";
 export { IconChevronLeft } from  "./IconChevronLeft";
 export { IconChevronUp } from  "./IconChevronUp";
 export { IconCross } from "./IconCross";
+export { IconCrossCircle } from "./IconCrossCircle";
+export { IconCircle } from "./IconCircle";
+export { IconCheckmarkCircle } from "./IconCheckmarkCircle";
