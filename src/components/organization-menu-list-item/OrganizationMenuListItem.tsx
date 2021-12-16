@@ -18,6 +18,7 @@ export interface IOrganizationMenuListItemProps {
   label?: string | undefined,
   badgeValue?: string | undefined,
   itemSize?: IListItemSize,
+  styleOverwrite?: string,
   previewProps?: IPreview,
   children?
 }
@@ -28,7 +29,7 @@ const SFlexListItem = styled(SFlex)`
   height: 100%;
 `;
 
-export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({ title, label, badgeValue, itemSize, previewProps }) => {
+export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({ title, label, badgeValue, itemSize, styleOverwrite, previewProps }) => {
   const badgeRef = useRef<HTMLElement>(null);
   const [width, setWidth] = React.useState(0);
   // calculate width of the badge
@@ -38,7 +39,7 @@ export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({ t
   }, [badgeValue, badgeRef.current]);
 
   return (
-    <SOrganizationMenuListItem itemSize={itemSize}>
+    <SOrganizationMenuListItem itemSize={itemSize} styleOverwrite={styleOverwrite}>
       <SFlexListItem width={width}>
         {itemSize == "large" ? (
           <Preview size={48} {...previewProps}/>
