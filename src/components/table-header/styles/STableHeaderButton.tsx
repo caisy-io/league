@@ -37,7 +37,7 @@ const Bronze = css`
   padding: 4px;
   border-radius: 4px;
 
-  transition: background-color 150ms, color 150ms;
+  transition: background-color 200ms, color 200ms;
 
   cursor: pointer;
 
@@ -45,6 +45,13 @@ const Bronze = css`
   text-overflow: ellipsis;
   white-space: nowrap;
   min-width: 0;
+
+  svg {
+    path {
+      transition: stroke 200ms;
+      stroke: var(--text-04);
+    }
+  }
 
   ${(props) => props.locked && CSSHover};
 

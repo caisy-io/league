@@ -7,6 +7,8 @@ const Bronze = css`
   justify-content: center;
   width: 16px;
 
+  transition: transform 200ms;
+
   transform: rotate(${(props) => (props.activated ? "180deg" : 0)});
 `;
 

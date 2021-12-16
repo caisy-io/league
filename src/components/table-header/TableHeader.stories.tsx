@@ -37,22 +37,31 @@ ColumnHeader.args = {
   sorted: false,
 };
 
-const IconSectionTemplate = (args) => (
-  <TableHeaderDemo {...args}>
-    <span
-      style={{
-        padding: "14px 16px",
-        height: "fit-content",
-        width: "fit-content",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <IconDotsHorizontal size={20} />
-    </span>
-  </TableHeaderDemo>
-);
+const IconSectionTemplate = (args) => {
+  const [hover, setHover] = useState(false);
+  const [active, setActive] = useState(false);
+  return (
+    <TableHeaderDemo {...args}>
+      <span
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        onClick={() => setActive((prev) => !prev)}
+        style={{
+          padding: "14px 16px",
+          height: "fit-content",
+          width: "fit-content",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: (hover || active) && "#007EE6",
+          cursor: "pointer",
+        }}
+      >
+        <IconDotsHorizontal size={20} />
+      </span>
+    </TableHeaderDemo>
+  );
+};
 
 export const IconSection = IconSectionTemplate.bind({});
 IconSection.args = {};
