@@ -24,6 +24,7 @@ const Bronze = css`
   &: active {
     background-color: #F3F7F9;
   }
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
 
 const Silver = css``;
