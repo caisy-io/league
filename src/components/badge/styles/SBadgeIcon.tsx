@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 import { ISizes } from "../../../interfaces/index";
-import { CSSProgressiveBadgesSmall } from "../../../constants/styles/fonts";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
 import { IBadgeType } from "../Badge";
 import { EBadgePosition } from "../EBadgePosition";
+import { CSSProgressiveHighlight } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 
 interface ISBadgeIcon {
   position: EBadgePosition;
@@ -78,7 +78,8 @@ const CSSMedium = css<{ width: number }>`
 
 const Bronze = css<ISBadgeIcon>`
   position: absolute;
-  ${CSSProgressiveBadgesSmall}
+  ${CSSProgressiveHighlight};
+  font-family: "Inter";
   z-index: 10;
   height: 0.75rem;
   color: var(--ui-01);
