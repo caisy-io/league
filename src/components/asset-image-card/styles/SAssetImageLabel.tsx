@@ -1,15 +1,12 @@
 import styled, { css } from 'styled-components';
+import { CSSProgressiveCaption01Medium } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  height: 40px;
-  background-color: #FFFF;
-  border-radius: inherit;
-  display: flex;
-  align-items: center;
-  padding: 0.875rem;
-  box-sizing: border-box;
-  gap: 0.625rem;
+  ${CSSProgressiveCaption01Medium};
+  color: var(--text-01);
+  color: ${(props) => props.activated ? 'var(--active-text-01)' : ''};
+  transition: color 0.2s ease-in;
 `;
 
 const Silver = css``;
@@ -20,7 +17,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SAssetImageRadioContainer = styled.div`
+export const SAssetImageLabel = styled.p`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
