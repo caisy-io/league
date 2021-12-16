@@ -8,11 +8,22 @@ const CSSHover = css`
 const CSSPressed = css`
   background-color: var(--active-ui-03);
   color: var(--active-text-04);
+  svg {
+    path {
+      stroke: var(--active-text-04);
+    }
+  }
 `;
 
 const CSSLockedHover = css`
   background-color: var(--hover-ui-03);
   color: var(--active-text-04);
+
+  svg {
+    path {
+      stroke: var(--active-text-04);
+    }
+  }
 `;
 
 const Bronze = css`
@@ -29,6 +40,11 @@ const Bronze = css`
   transition: background-color 150ms, color 150ms;
 
   cursor: pointer;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 
   ${(props) => props.locked && CSSHover};
 

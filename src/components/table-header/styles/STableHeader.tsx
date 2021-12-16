@@ -13,6 +13,10 @@ const Bronze = css`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const Silver = css``;
