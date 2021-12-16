@@ -4,6 +4,12 @@ import { Typography } from './Typography';
 export default {
   title: `Components/Style Guide/Typography`,
   component: TypographyDemo,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/wnVXVXskMPUYEiA6C1FU8R/Style-Guide?node-id=6%3A2889",
+    },
+  },
   argTypes: {
     lineHeight: {
       description: "Changes the overall design of the search bar operand",
@@ -16,7 +22,7 @@ export default {
     },
     fontSize: {
       description: "Changes the overall design of the search bar operand",
-      options: ["12", "16", "18", "20", "24"],
+      options: ["8", "9", "11", "12", "16", "18", "20", "24"],
       control: { type: "select" },
     },
     lineHeight: {
@@ -36,21 +42,12 @@ export default {
   },
 };
 
-function TypographyDemo({ text, fontSize, fontWeight, lineHeight, spacing }) {
-  return <Typography text={text} fontSize={fontSize} fontWeight={fontWeight} lineHeight={lineHeight} spacing={spacing}>
+function TypographyDemo({ fontFamily, text, fontSize, fontWeight, lineHeight, spacing }) {
+  return <Typography fontFamily={fontFamily} text={text} fontSize={fontSize} fontWeight={fontWeight} lineHeight={lineHeight} spacing={spacing}>
   </Typography>
 }
 
 const Template = (args) => < TypographyDemo {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  text: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
-  fontFamily: "Inter",
-  fontSize: "12",
-  lineHeight: "12",
-  fontWeight: "400",
-};
 
 export const Heading_01 = Template.bind({});
 Heading_01.args = {
@@ -139,6 +136,15 @@ Body_03.args = {
   fontSize: "14",
   lineHeight: "20",
   fontWeight: "400",
+  spacing: 0,
+};
+
+export const Caption_01_Semibold = Template.bind({});
+Caption_01_Semibold.args = {
+  text: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+  fontSize: "12",
+  lineHeight: "16",
+  fontWeight: "600",
   spacing: 0,
 };
 
@@ -234,11 +240,21 @@ Primary_Buttons.args = {
 
 export const Monospace_Caption = Template.bind({});
 Monospace_Caption.args = {
-  text: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+  text: '<iframe src="https://www.caisy.io" title="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.></iframe>',
   fontFamily: "IBM Plex Mono",
-  fontSize: "11",
-  lineHeight: "16",
-  fontWeight: "700",
+  fontSize: "12",
+  lineHeight: "18",
+  fontWeight: "400",
+  spacing: 0,
+};
+
+export const Monospace_Count = Template.bind({});
+Monospace_Count.args = {
+  text: "1, 2, 3, 4, 5",
+  fontFamily: "IBM Plex Mono",
+  fontSize: "8",
+  lineHeight: "18",
+  fontWeight: "500",
   spacing: 0,
 };
 

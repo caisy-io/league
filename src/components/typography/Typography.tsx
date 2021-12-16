@@ -3,7 +3,7 @@ import { STypography } from './styles/STypography';
 
 export type IFontFamilyType = "Inter" | "IBM Plex Mono";
 export type IFontWeightType = "400" | "500" | "600" | "700";
-export type IFontSizeType = "12" | "16" | "18" | "20" | "24";
+export type IFontSizeType = "8" | "9" | "11" | "12" | "16" | "18" | "20" | "24";
 
 interface ITypography {
   fontFamily?: IFontFamilyType,
