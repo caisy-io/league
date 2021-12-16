@@ -1,5 +1,6 @@
 import React from "react";
 import { SmallHeader } from './SmallHeader';
+import { SSmallHeaderWrapper } from "./styles/SSmallHeaderWrapper";
 import { IconStarOutlined } from "../../icons";
 
 export default {
@@ -25,8 +26,10 @@ export default {
 };
 
 function SmallHeaderDemo({ leftIcon, headerText, rightIcon }) {
-  return <SmallHeader leftIcon={leftIcon} headerText={headerText} rightIcon={rightIcon}>
-  </SmallHeader>
+  return <SSmallHeaderWrapper>
+    <SmallHeader leftIcon={leftIcon} headerText={headerText} rightIcon={rightIcon}>
+    </SmallHeader>
+  </SSmallHeaderWrapper>
 }
 
 const Template = (args) => < SmallHeaderDemo {...args} />;
