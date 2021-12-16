@@ -15,7 +15,7 @@ export default {
     headerText: {
       name: "headerText",
       description: "Changes the state of the component to Activated",
-      control: { type: "Text" },
+      control: { type: "text" },
     },
     rightIcon: {
       name: "rightIcon",

@@ -4,6 +4,9 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 
 const Bronze = css`
   ${CSSProgressiveBody02Semibold};
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   padding: ${(props) => props.leftIcon ? '0 0 0 11px' : ''};
   padding: ${(props) => props.rightIcon ? '0 7px 0 0' : ''};
 `;
@@ -16,7 +19,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSmallHeaderText = styled.div`
+export const SSmallHeaderText = styled.p`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
