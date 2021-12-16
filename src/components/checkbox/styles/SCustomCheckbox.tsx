@@ -32,7 +32,7 @@ const Bronze = css`
   border-radius: 50%;
   margin-right: 4px;
   box-sizing: border-box;
-  transition: all 0.75s linear;
+  transition: all 0.2s linear;
   svg{
     color: #FFFF;
     fill: none;
@@ -41,7 +41,7 @@ const Bronze = css`
   svg path {
     stroke-dasharray: 100% 200%;
 	  stroke-dashoffset: 100%;
-    transition: all .5s ease-in-out;
+    transition: all .15s ease-in-out;
   }
   &:hover{
     border: 1px solid var(--active-icon-04);
