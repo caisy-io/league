@@ -9,6 +9,8 @@ const Bronze = css`
   align-self: stretch;
 
   color: var(--text-01);
+
+  overflow: hidden;
 `;
 
 const Silver = css``;

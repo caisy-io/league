@@ -46,7 +46,7 @@ export const ComponentListItem: FC<IComponentListItem> = ({
   return (
     <SComponentListItem onClick={onClick}>
       {/* @TODO Placeholder of ComponentImage */}
-      <div style={{ width: 92, height: 92, backgroundColor: "red", borderRadius: 8 }} />
+      <div style={{ minWidth: 92, minHeight: 92, backgroundColor: "red", borderRadius: 8 }} />
       {selectable && (
         <SComponentListItemCheckboxWrapper>
           {/* @TODO Placeholder of Checkbox */}

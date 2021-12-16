@@ -8,6 +8,7 @@ const Bronze = css`
 
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 `;
 
 const Silver = css``;
