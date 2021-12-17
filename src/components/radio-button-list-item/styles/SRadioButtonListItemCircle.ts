@@ -21,6 +21,7 @@ const Bronze = css`
   justify-content: center;
 
   color: var(--icon-01);
+  cursor: pointer;
 
   ${(props) => props.hover && CSSHover}
   ${(props) => props.activated && CSSActivated}

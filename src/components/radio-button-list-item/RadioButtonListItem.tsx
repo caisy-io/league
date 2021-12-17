@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { IconCircle } from "../..";
+import { IconCheckmarkOutlined, IconCircle, IconCheckmarkSolid } from "../..";
 import { SRadioButtonListItem } from "./styles/SRadioButtonListItem";
 import { SRadioButtonListItemCircle } from "./styles/SRadioButtonListItemCircle";
 
@@ -18,13 +18,11 @@ export const RadioButtonListItem: FC<IRadioButtonListItem> = ({ activated, disab
     }
 
     if (activated) {
-      // Placeholder for @TODO Checkmark
-      return <IconCircle size={20} />;
+      return <IconCheckmarkSolid size={20} />;
     }
 
     if (hover) {
-      // Placeholder for @TODO Checkmark
-      return <IconCircle size={20} />;
+      return <IconCheckmarkOutlined size={20} />;
     }
 
     return <IconCircle size={20} />;

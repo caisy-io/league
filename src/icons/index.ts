@@ -134,3 +134,4 @@ export { IconChevronRight } from "./IconChevronRight";
 export { IconChevronLeft } from "./IconChevronLeft";
 export { IconChevronUp } from "./IconChevronUp";
 export { IconCross } from "./IconCross";
+export { IconCheckmarkSolid } from "./IconCheckmarkSolid";
