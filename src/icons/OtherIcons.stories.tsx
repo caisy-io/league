@@ -136,7 +136,7 @@ export default {
     size: {
       name: "size",
       description: "Size of the icon",
-      options: [12, 16, 20, 24, 32, 40, 36, 28, 48],
+      options: [12, 16, 20, 24, 32],
       control: { type: 'select' }
     },
     icon: {
