@@ -8,10 +8,11 @@ const Bronze = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: fit-content;
+  width: 7.25rem;
   box-sizing: border-box;
+  border: 1px solid #F7F9FA;
   &:active{
-    outline: 1px solid #008CFF;
+    border: 1px solid #008CFF;
   }
 `;
 
