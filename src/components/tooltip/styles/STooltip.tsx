@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 interface ITooltip {
-  closing: boolean;
+  animation: any;
   color: string;
 }
 
@@ -23,28 +23,11 @@ const Bronze = css<ITooltip>`
 
   border-radius: 4px;
   ${(props) => (props.color === "black" ? CSSBlack : CSSWhite)}
-  animation: ${(props) => (props.closing ? "close" : "open")} 100ms ease-in-out;
   padding: 16px;
 
   box-shadow: var(--box-shadow-sticked-top-ui);
 
-  @keyframes open {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes close {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
+  ${(props) => props.animation}
 `;
 
 const Silver = css``;
