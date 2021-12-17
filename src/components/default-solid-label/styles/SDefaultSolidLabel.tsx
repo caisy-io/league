@@ -23,6 +23,11 @@ const Bronze = css`
   &: active{
     background-color: var(--active-interactional-secondary-08);
   }
+  a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Silver = css``;
