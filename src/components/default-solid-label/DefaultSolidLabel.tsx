@@ -11,7 +11,7 @@ interface IDefaultSolidLabel {
 
 export const DefaultSolidLabel: React.FC<IDefaultSolidLabel> = ({ leftImage, labelText, onRemove }) => {
   return (
-    <SDefaultSolidLabel onRemove={onRemove}>
+    <SDefaultSolidLabel>
       {leftImage && <SLeftImage>{leftImage}</SLeftImage>}
       {labelText}
       <a onClick={onRemove}>      <IconCross size={20} />
