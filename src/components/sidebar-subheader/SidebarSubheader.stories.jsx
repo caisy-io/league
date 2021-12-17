@@ -3,7 +3,7 @@ import { SidebarSubheader } from './SidebarSubheader';
 import { SSidebarSubheaderWrapper } from './styles/SSidebarSubheaderWrapper';
 
 export default {
-  title: `Components/SidebarSubheader`,
+  title: `Components/List items/SidebarSubheader`,
   component: SidebarSubheaderDemo,
   argTypes: {
     subheaderText: {

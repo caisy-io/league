@@ -1,26 +1,19 @@
 import React from 'react';
-import { css } from 'styled-components';
 import { Button } from '../../components/button';
 import { IconChevronLeft } from '../../icons/IconChevronLeft';
+import { SButtonOverwrite } from './styles/SButtonOverwrite';
 import { SSidebarSubheader } from './styles/SSidebarSubheader';
 import { SSidebarSubheaderText } from './styles/SSidebarSubheaderText';
 
-
 interface ISidebarSubheader {
   subheaderText?: string,
+  onExit?: () => void,
 }
 
-const ButtonOverwrite = css`
-  position: absolute;
-  left: 1rem;
-  top: 0.5rem;
-`;
-
-export const SidebarSubheader: React.FC<ISidebarSubheader> = ({ subheaderText }) => {
-
+export const SidebarSubheader: React.FC<ISidebarSubheader> = ({ subheaderText, onExit }) => {
   return (
     <SSidebarSubheader>
-      <Button styleOverwrite={ButtonOverwrite} type="secondary" size="small"> <IconChevronLeft size={16} /> </Button>
+      <Button onClick={onExit} styleOverwrite={SButtonOverwrite} type="secondary" size="small"> <IconChevronLeft size={20} /> </Button>
       <SSidebarSubheaderText> {subheaderText} </SSidebarSubheaderText>
     </SSidebarSubheader>
   )
