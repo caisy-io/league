@@ -11,6 +11,13 @@ module.exports = function (plop) {
     styledComponent: "plop-templates/styled-component.js",
     storybookStory: "plop-templates/storybook-story.js",
     cssSnippet: "plop-templates/css.js",
+    indexFile: "plop-templates/index-file.js"
+  };
+
+  var createIndexFile = {
+    type: "add",
+    path: "src/components/{{kebabCase name}}/index.ts",
+    templateFile: files.indexFile,
   };
 
   var createFunctionComponent = {
@@ -40,7 +47,7 @@ module.exports = function (plop) {
 
   var createStory = {
     type: "add",
-    path: "src/components/{{kebabCase name}}/{{pascalCase name}}.stories.jsx",
+    path: "src/components/{{kebabCase name}}/{{pascalCase name}}.stories.tsx",
     templateFile: files.storybookStory,
   };
 
@@ -91,6 +98,7 @@ module.exports = function (plop) {
     description: "Function Component",
     prompts: [getComponentName],
     actions: [
+      createIndexFile,
       createFunctionComponent,
       createStyle,
       createStory,
