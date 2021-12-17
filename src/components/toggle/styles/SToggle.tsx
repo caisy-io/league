@@ -6,7 +6,7 @@ const Bronze = css`
     props.activated ? "var(--active-interactional-tertiary-02);" : "var(--interactional-secondary-01);"};
   border-radius: 23.1px;
   width: 32px;
-  height: 23px;
+  height: 20px;
   position: relative;
   display: flex;
   align-items: center;
