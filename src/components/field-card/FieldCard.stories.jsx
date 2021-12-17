@@ -2,25 +2,18 @@ import React from "react";
 import { FieldCard } from './FieldCard';
 
 export default {
-  title: `Components/FieldCard`,
+  title: `Components/Cards/FieldCard`,
   component: FieldCardDemo,
   argTypes: {
-    // example argument type
-    activated: {
+    cardText: {
       description: "Changes the state of the component to Activated",
-      control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
+      control: { type: "text" },
     },
   },
 };
 
-function FieldCardDemo({ content, ...args }) {
-  return <FieldCard>
-    {content}
+function FieldCardDemo({ cardText }) {
+  return <FieldCard cardText={cardText}>
   </FieldCard>
 }
 
@@ -28,5 +21,5 @@ const Template = (args) => < FieldCardDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-
+  cardText: "Default",
 };

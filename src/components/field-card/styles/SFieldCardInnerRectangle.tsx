@@ -2,13 +2,9 @@ import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  background-color: var(--ui-01);
-  radius: 0.25rem;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: fit-content;
+  background-color: var(--ui-02);
+  width: 100px;
+  height: 80px;
 `;
 
 const Silver = css``;
@@ -19,7 +15,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SFieldCard = styled.div`
+export const SFieldCardInnerRectangle = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

@@ -1,15 +1,17 @@
 import React from 'react';
-import {SFieldCard } from './styles/SFieldCard';
+import { SFieldCard } from './styles/SFieldCard';
+import { SFieldCardInnerRectangle } from './styles/SFieldCardInnerRectangle';
 
-interface IFieldCard{
-
+interface IFieldCard {
+  cardText?: string,
 }
 
-export const FieldCard: React.FC<IFieldCard> = ({...props}) => {
-  console.log(`FieldCard props: `, props);
+export const FieldCard: React.FC<IFieldCard> = ({ cardText }) => {
+
   return (
     <SFieldCard>
-      {props.children}
+      <SFieldCardInnerRectangle></SFieldCardInnerRectangle>
+      {cardText}
     </SFieldCard>
   )
 }
