@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
+import { CSSProgressiveCaption01Medium } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  background-color: var(--ui-02);
-  width: 100px;
-  height: 80px;
+  ${CSSProgressiveCaption01Medium}
+  padding: 0.5rem 0;
 `;
 
 const Silver = css``;
@@ -15,7 +15,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SFieldCardInnerRectangle = styled.div`
+export const SFieldCardText = styled.p`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

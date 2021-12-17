@@ -3,12 +3,16 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 
 const Bronze = css`
   background-color: var(--ui-01);
-  radius: 0.25rem;
-  padding: 0.5rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.5rem 0 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: fit-content;
+  box-sizing: border-box;
+  &:active{
+    outline: 1px solid #008CFF;
+  }
 `;
 
 const Silver = css``;
