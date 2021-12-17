@@ -9,6 +9,7 @@ const Bronze = css`
   text-overflow: ellipsis;
   width: 100%;
   white-space: nowrap;
+  text-align: center;
 `;
 
 const Silver = css``;
