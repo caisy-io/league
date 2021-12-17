@@ -38,10 +38,6 @@ export const SIconBase = styled.svg<ISIconBase>`
     ${({ solid }) => solid && "stroke: var(--icon-05)"};
   }
   
-  circle.solid-fill-toogle {
-    fill: ${({ solid }) => solid ? "var(--icon-01)" : "transparent"};
-  }
-
   .solid-fill-toogle {
     fill: ${({ solid }) => solid ? "var(--icon-01)" : "transparent"};
   }

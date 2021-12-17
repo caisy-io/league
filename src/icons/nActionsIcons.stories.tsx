@@ -7,7 +7,19 @@ import {
   IconUnpublish,
   IconArchive,
   IconDelete,
-  IconBookmark 
+  IconBookmark,
+  IconPublishDocuments,
+  IconScheduleNewRelease,
+  IconAddToRelease,
+  IconEye,
+  IconEyeHidden,
+  IconSortDecending,
+  IconSortAscending,
+  IconMoveFolder,
+  IconEdit,
+  IconUndo,
+  IconRedo,
+  IconMessageBubbleChat 
 } from './index';
 
 const icons = {
@@ -18,6 +30,18 @@ const icons = {
   IconArchive: ({size}) => <IconArchive size={size}/>,
   IconDelete: ({size}) => <IconDelete size={size}/>,
   IconBookmark: ({size, solid }) => <IconBookmark size={size} solid={solid}/>,
+  IconPublishDocuments: ({size}) => <IconPublishDocuments size={size}/>,
+  IconScheduleNewRelease: ({size}) => <IconScheduleNewRelease size={size}/>,
+  IconAddToRelease: ({size}) => <IconAddToRelease size={size}/>,
+  IconEye: ({size}) => <IconEye size={size}/>,
+  IconEyeHidden: ({size}) => <IconEyeHidden size={size}/>,
+  IconSortDecending: ({size}) => <IconSortDecending size={size}/>,
+  IconSortAscending: ({size}) => <IconSortAscending size={size}/>,
+  IconMoveFolder: ({size}) => <IconMoveFolder size={size}/>,
+  IconEdit: ({size}) => <IconEdit size={size}/>,
+  IconUndo: ({size}) => <IconUndo size={size}/>,
+  IconRedo: ({size}) => <IconRedo size={size}/>,
+  IconMessageBubbleChat: ({size, solid }) => <IconMessageBubbleChat size={size} solid={solid}/>,
 };
 
 interface IActionIconsDemo {
@@ -44,7 +68,8 @@ export default {
     icon: {
       name: "icon",
       description: "Icon name",
-      options: ["IconDuplicate", "IconCopy", "IconPublish", "IconUnpublish", "IconArchive", "IconDelete", "IconBookmark"],
+      options: ["IconDuplicate", "IconCopy", "IconPublish", "IconUnpublish", "IconArchive", "IconDelete", "IconBookmark", "IconPublishDocuments", "IconScheduleNewRelease", "IconAddToRelease",
+      "IconEye", "IconEyeHidden", "IconSortDecending", "IconSortAscending", "IconMoveFolder", "IconEdit", "IconUndo", "IconRedo", "IconMessageBubbleChat"],
       control: { type: 'select' },
       defaultValue: 'IconDuplicate'
     },
