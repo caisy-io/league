@@ -63,7 +63,7 @@ function PrimaryModalHeaderDemo({ ...args }) {
           </div>
         </>
       )}
-      <div style={{ marginLeft: "auto", display: "flex", gap: 12 }}>
+      <div style={{ marginLeft: "auto", display: "flex", gap: 12, alignItems: "center" }}>
         {args.showFlatActionButton && <FlatActionButton type="grey">Default</FlatActionButton>}
         {args.withCloseIcon && <IconClose size={24} />}
       </div>
