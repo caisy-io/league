@@ -15,20 +15,29 @@ export default {
   argTypes: {},
 };
 
-function RadioButtonListItemDemo({ disabled }) {
+function RadioButtonListItemDemo({ disabled, content, withIcon }) {
   const [activated, setActivated] = useState(false);
   return (
     <div style={{ width: 320 }}>
       <RadioButtonListItem onChange={setActivated} activated={activated} disabled={disabled}>
-        <IconStarOutlined size={20} /> Default
+        {withIcon && (
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <IconStarOutlined size={20} />
+          </div>
+        )}
+        <p style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{content}</p>
       </RadioButtonListItem>
     </div>
   );
 }
 
-const Template = ({ disabled }) => <RadioButtonListItemDemo disabled={disabled} />;
+const Template = ({ disabled, content, withIcon }) => (
+  <RadioButtonListItemDemo withIcon={withIcon} content={content} disabled={disabled} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
   disabled: false,
+  withIcon: false,
+  content: "Default",
 };
