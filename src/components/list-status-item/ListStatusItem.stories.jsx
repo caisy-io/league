@@ -10,16 +10,21 @@ export default {
     description: "Preview of the icon",
     control: { type: "ReactNode" },
   },
-  itemText: {
+  listItemText: {
+    name: "itemText",
+    description: "Preview of the icon",
+    control: { type: "text" },
+  },
+  labelText: {
     name: "itemText",
     description: "Preview of the icon",
     control: { type: "text" },
   },
 };
 
-function ListStatusItemDemo({ itemText, itemIcon }) {
+function ListStatusItemDemo({ listItemText, itemIcon, labelText }) {
   return <SListStatusItemWrapper>
-    <ListStatusItem itemText={itemText} itemIcon={itemIcon}>
+    <ListStatusItem listItemText={listItemText} itemIcon={itemIcon} labelText={labelText}>
     </ListStatusItem>
   </SListStatusItemWrapper>
 }
@@ -28,6 +33,7 @@ const Template = (args) => < ListStatusItemDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  itemText: "Default",
-  itemIcon: <IconStarOutlined size={20} />,
+  listItemText: "Default",
+  itemIcon: <IconStarOutlined size={16} />,
+  labelText: "Default"
 };

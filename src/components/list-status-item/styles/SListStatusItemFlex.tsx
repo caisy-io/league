@@ -5,8 +5,12 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 const Bronze = css`
   gap: 6px;
   width: 75%;
+  color: var(--text-04);
   svg{
     flex-shrink: 0;
+  }
+  svg path {
+    stroke: var(--text-04);
   }
 `;
 

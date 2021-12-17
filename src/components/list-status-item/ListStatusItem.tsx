@@ -6,17 +6,18 @@ import { SListStatusItemText } from './styles/SListStatusItemText';
 
 interface IListStatusItem {
   itemIcon?: ReactNode,
-  itemText?: string,
+  listItemText?: string,
+  labelText?: string,
 }
 
-export const ListStatusItem: React.FC<IListStatusItem> = ({ itemIcon, itemText }) => {
+export const ListStatusItem: React.FC<IListStatusItem> = ({ itemIcon, listItemText, labelText }) => {
   return (
     <SListStatusItem>
       <SListStatusItemFlex>
         {itemIcon}
-        <SListStatusItemText>{itemText}</SListStatusItemText>
+        <SListStatusItemText>{listItemText}</SListStatusItemText>
       </SListStatusItemFlex>
-      <SolidLabel>Default</SolidLabel>
+      <SolidLabel type="grey">{labelText}</SolidLabel>
     </SListStatusItem>
   )
 }

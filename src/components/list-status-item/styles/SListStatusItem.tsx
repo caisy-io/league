@@ -6,6 +6,7 @@ const Bronze = css`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
   border-bottom: 1px solid var(--ui-03);
   padding: 12px 16px 12px 18px;
 `;
