@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { CSSProp } from "styled-components"
 import { SPopover } from "./styles/SPopover";
 import Stackable from "../stackable";
 import { vbefore, vcenter, vafter, hbefore, hcenter, hafter } from "../poppable/Poppable.placements";
@@ -10,9 +11,29 @@ enum EPlacements {
   Bottom = "bottom",
   Right = "right",
   Left = "left",
+  TopLeft = "topLeft",
+  TopRight = "topRight",
+  BottomLeft = "bottomLeft",
+  BottomRight = "bottomRight",
+  LeftTop = "leftTop",
+  LeftBottom = "leftBottom",
+  RightTop = "rightTop",
+  RightBottom = "rightBottom",
 }
 
-export type TPlacement = "top" | "bottom" | "right" | "left";
+export type TPlacement =
+  | "top"
+  | "bottom"
+  | "right"
+  | "left"
+  | "topLeft"
+  | "topRight"
+  | "bottomLeft"
+  | "bottomRight"
+  | "leftTop"
+  | "leftBottom"
+  | "rightTop"
+  | "rightBottom";
 
 const getPlacement = (placement: TPlacement | undefined): number => {
   switch (placement) {
@@ -24,6 +45,22 @@ const getPlacement = (placement: TPlacement | undefined): number => {
       return 2;
     case EPlacements.Right:
       return 3;
+    case EPlacements.TopLeft:
+      return 4;
+    case EPlacements.TopRight:
+      return 5;
+    case EPlacements.BottomLeft:
+      return 6;
+    case EPlacements.BottomRight:
+      return 7;
+    case EPlacements.LeftTop:
+      return 8;
+    case EPlacements.LeftBottom:
+      return 9;
+    case EPlacements.RightTop:
+      return 10;
+    case EPlacements.RightBottom:
+      return 11;
     default:
       return 1;
   }
@@ -31,6 +68,7 @@ const getPlacement = (placement: TPlacement | undefined): number => {
 interface IPopover {
   placement: TPlacement;
   reference: React.MutableRefObject<null>;
+  triangleExtraCSS?: CSSProp;
   trianglecolor?: string;
   disableTriangle?: boolean;
   onClickOutside?: () => void;
@@ -47,20 +85,30 @@ export const Popover: React.FC<IPopover> = ({
   trianglecolor,
   container,
   zIndex,
+  triangleExtraCSS,
 }) => {
-  if(!reference || !reference.current) {
+  if (!reference || !reference.current) {
     return null;
   }
-  const placements = React.useCallback((rbr, tbr) => {
+
+  const placements = useCallback((rbr, tbr) => {
     const GAP = disableTriangle ? 8 : 18;
+
     return [
-      { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top
-      { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom
-      { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Left
-      { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, GAP) }, // Right
+      { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
+      { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
+      { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
+      { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, GAP) }, // Center right
+      { ...vbefore(rbr, tbr, -GAP), left: hbefore(rbr, tbr, -GAP).left + (reference.current as any).offsetWidth }, // Top left
+      { ...vbefore(rbr, tbr, -GAP), left: hafter(rbr, tbr, GAP).left - (reference.current as any).offsetWidth }, // Top right
+      { ...vafter(rbr, tbr, GAP), left: hbefore(rbr, tbr, -GAP).left + (reference.current as any).offsetWidth }, // Bottom left
+      { ...vafter(rbr, tbr, GAP), left: hafter(rbr, tbr, GAP).left - (reference.current as any).offsetWidth }, // Bottom right
+      { top: vcenter(rbr, tbr).top - (reference.current as any).offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Top
+      { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Bottom
+      { top: vcenter(rbr, tbr).top - (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Top
+      { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Bottom
     ];
   }, []);
-
   return (
     <ClickOutside onClickOutside={onClickOutside || (() => {})}>
       {reference && (
@@ -70,10 +118,11 @@ export const Popover: React.FC<IPopover> = ({
             placements={placements}
             reference={reference}
             trianglecolor={trianglecolor}
+            triangleExtraCSS={triangleExtraCSS}
             container={container}
           >
             <>
-              {!disableTriangle ? <Triangle size={10} /> : null}
+              {!disableTriangle ? <Triangle size={9} /> : null}
               {children}
             </>
           </SPopover>
