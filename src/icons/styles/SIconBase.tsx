@@ -42,3 +42,4 @@ export const SIconBase = styled.svg<ISIconBase>`
   .solid-fill-toogle {
     fill: ${({ solid }) => solid ? "var(--icon-01)" : "transparent"};
   }
+`
