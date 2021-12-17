@@ -19,7 +19,18 @@ import {
   IconEdit,
   IconUndo,
   IconRedo,
-  IconMessageBubbleChat 
+  IconMessageBubbleChat,
+  IconLink,
+  IconUnlink,
+  IconOpenSidebarMenu,
+  IconsDocumentVersionsClock,
+  IconLinkDocument,
+  IconFilterSettings,
+  IconGearSettings,
+  IconSmileEmojiSelector,
+  IconQuestionCircle,
+  IconExternalLink,
+  IconExpand 
 } from './index';
 
 const icons = {
@@ -42,6 +53,17 @@ const icons = {
   IconUndo: ({size}) => <IconUndo size={size}/>,
   IconRedo: ({size}) => <IconRedo size={size}/>,
   IconMessageBubbleChat: ({size, solid }) => <IconMessageBubbleChat size={size} solid={solid}/>,
+  IconLink: ({size}) => <IconLink size={size}/>,
+  IconUnlink: ({size}) => <IconUnlink size={size}/>,
+  IconOpenSidebarMenu: ({size}) => <IconOpenSidebarMenu size={size}/>,
+  IconsDocumentVersionsClock: ({size}) => <IconsDocumentVersionsClock size={size}/>,
+  IconLinkDocument: ({size}) => <IconLinkDocument size={size}/>,
+  IconFilterSettings: ({size}) => <IconFilterSettings size={size}/>,
+  IconGearSettings: ({size}) => <IconGearSettings size={size}/>,
+  IconSmileEmojiSelector: ({size}) => <IconSmileEmojiSelector size={size}/>,
+  IconQuestionCircle: ({size}) => <IconQuestionCircle size={size}/>,
+  IconExternalLink: ({size}) => <IconExternalLink size={size}/>,
+  IconExpand: ({size}) => <IconExpand size={size}/>,
 };
 
 interface IActionIconsDemo {
@@ -62,14 +84,15 @@ export default {
     size: {
       name: "size",
       description: "Size of the icon",
-      options: [16, 20, 24, 32],
+      options: [12, 16, 20, 24, 32],
       control: { type: 'select' }
     },
     icon: {
       name: "icon",
       description: "Icon name",
       options: ["IconDuplicate", "IconCopy", "IconPublish", "IconUnpublish", "IconArchive", "IconDelete", "IconBookmark", "IconPublishDocuments", "IconScheduleNewRelease", "IconAddToRelease",
-      "IconEye", "IconEyeHidden", "IconSortDecending", "IconSortAscending", "IconMoveFolder", "IconEdit", "IconUndo", "IconRedo", "IconMessageBubbleChat"],
+      "IconEye", "IconEyeHidden", "IconSortDecending", "IconSortAscending", "IconMoveFolder", "IconEdit", "IconUndo", "IconRedo", "IconMessageBubbleChat", "IconLink", "IconUnlink", "IconOpenSidebarMenu",
+      "IconsDocumentVersionsClock", "IconLinkDocument", "IconFilterSettings", "IconGearSettings", "IconSmileEmojiSelector", "IconQuestionCircle", "IconExternalLink", "IconExpand"],
       control: { type: 'select' },
       defaultValue: 'IconDuplicate'
     },
