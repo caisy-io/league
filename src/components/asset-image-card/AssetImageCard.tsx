@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
+import { Checkbox } from '../checkbox/Checkbox';
 import { SAssetImage } from './styles/SAssetImage';
 import { SAssetImageCard } from './styles/SAssetImageCard';
 import { SAssetImageLabel } from './styles/SAssetImageLabel';
@@ -14,11 +15,16 @@ interface IAssetImageCard {
 }
 
 export const AssetImageCard: React.FC<IAssetImageCard> = ({ labelText, size, image, activated }) => {
+  const [isActivated, setIsActivated] = useState(false);
+  const handleChange = () => {
+    setIsActivated(true)
+  }
   return (
     <SAssetImageCard size={size}>
       <SAssetImage>{image}</SAssetImage>
       <SAssetImageRadioContainer>
-        <SAssetImageLabel activated={activated}>{labelText}</SAssetImageLabel>
+        <Checkbox onChange={handleChange()}></Checkbox>
+        <SAssetImageLabel activated={isActivated}>{labelText}</SAssetImageLabel>
       </SAssetImageRadioContainer>
     </SAssetImageCard>
   )
