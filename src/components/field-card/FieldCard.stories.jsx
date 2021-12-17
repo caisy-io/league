@@ -6,7 +6,7 @@ export default {
   component: FieldCardDemo,
   argTypes: {
     cardText: {
-      description: "Changes the state of the component to Activated",
+      description: "Text of the field card",
       control: { type: "text" },
     },
   },
