@@ -35,18 +35,25 @@ const ButtonOverwrite = css`
   width: 80px;
 `;
 
-export const ExtensionCard: React.FC<IExtensionCard> = ({ titleIcon, title, description, flatButtonIcon, flatButtonText }) => {
+export const ExtensionCard: React.FC<IExtensionCard> = ({ titleIcon, title, description, flatButtonIcon, flatButtonText, onAdd, onRemove }) => {
   const [primaryButtonText, setprimaryButtonText] = useState("ADD");
   const [buttonType, setbuttonType] = useState<IButtonType>("primary");
   const buttonOnClickHandler = () => {
     if (primaryButtonText == "ADD") {
       setprimaryButtonText("REMOVE")
       setbuttonType("tertiary")
+      if (typeof onAdd === 'function') {
+        onAdd()
+      }
     } else {
       setprimaryButtonText("ADD")
       setbuttonType("primary")
+      if (typeof onRemove === 'function') {
+        onRemove()
+      }
     }
   };
+  
   return (
     <SExtensionCard>
       <STitleButtonFlex justify="space-between">
