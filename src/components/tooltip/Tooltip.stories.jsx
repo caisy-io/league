@@ -26,7 +26,11 @@ function TooltipDemo({ color, placement, ...args }) {
       >
         {args.description}
       </p>
-      {args.withButton && <FlatActionButton type={color === "white" ? "default" : "white"}>Got it</FlatActionButton>}
+      {args.withButton && (
+        <FlatActionButton type={color === "white" ? "default" : "white"}>
+          <span style={{ opacity: 0.64 }}>Got it</span>
+        </FlatActionButton>
+      )}
     </span>
   );
 
