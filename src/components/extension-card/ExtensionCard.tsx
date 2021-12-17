@@ -14,8 +14,8 @@ interface IExtensionCard {
   description?: string | undefined;
   flatButtonIcon?: ReactNode;
   flatButtonText?: string | undefined;
-  onAdd?: () => any;
-  onRemove?: () => any;
+  onAdd: () => any;
+  onRemove: () => any;
 }
 
 export const STitleFlex = styled(SFlex)`
@@ -42,18 +42,14 @@ export const ExtensionCard: React.FC<IExtensionCard> = ({ titleIcon, title, desc
     if (primaryButtonText == "ADD") {
       setprimaryButtonText("REMOVE")
       setbuttonType("tertiary")
-      if (typeof onAdd === 'function') {
-        onAdd()
-      }
+      onAdd()
     } else {
       setprimaryButtonText("ADD")
       setbuttonType("primary")
-      if (typeof onRemove === 'function') {
-        onRemove()
-      }
+      onRemove()
     }
   };
-  
+
   return (
     <SExtensionCard>
       <STitleButtonFlex justify="space-between">
