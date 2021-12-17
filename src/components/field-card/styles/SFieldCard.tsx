@@ -10,9 +10,9 @@ const Bronze = css`
   align-items: center;
   width: 7.25rem;
   box-sizing: border-box;
-  border: 1px solid #F7F9FA;
+  outline: 1px solid #F7F9FA;
   &:active{
-    border: 1px solid #008CFF;
+    outline: 1px solid #008CFF;
   }
 `;
 
