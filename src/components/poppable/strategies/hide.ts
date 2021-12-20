@@ -26,11 +26,11 @@ import {HIDDEN_PLACEMENT} from '../Poppable.constants';
   * @param rbr {DOMRect} Reference Bounding Rect
   * @returns {{top: *, left: *}|{top: number, left: number}}
   */
-const hideStrat = ({tbr, cbr, rbr}) => {
+const hideStrategy = ({tbr, cbr, rbr}) => {
      if (!intersect(rbr, cbr)) {
          return HIDDEN_PLACEMENT;
      }
      return tbr;
  };
 
- export default hideStrat;
+ export default hideStrategy;

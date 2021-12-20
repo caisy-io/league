@@ -73,11 +73,11 @@ export const filterPlacements = (placements, tbr, cbr) => (
  * @param {Object} wbr Winådow Bounding Rect
  * @returns {{top: *, left: *}}
  */
-const reposition = ({tbr, cbr, rbr}, {placements, default: _default}) => {
+const repositionStrategy = ({tbr, cbr, rbr}, {placements, default: _default}) => {
     const _placements = placements(rbr, tbr);
     const desired = _placements[_default];
     const {top, left} = sortPlacements(filterPlacements(_placements, tbr, cbr), desired, tbr, cbr)[0] || desired;
     return new DOMRect(left, top, tbr.width, tbr.height);
 };
 
-export default reposition;
+export default repositionStrategy;
