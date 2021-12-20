@@ -30,7 +30,6 @@ const Bronze = css`
   background: #fff;
   border: 1px #567A98 solid;
   border-radius: 50%;
-  margin-right: 4px;
   box-sizing: border-box;
   transition: all 0.2s linear;
   svg{
