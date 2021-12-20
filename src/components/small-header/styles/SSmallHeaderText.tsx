@@ -7,8 +7,8 @@ const Bronze = css`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  padding: ${(props) => props.leftIcon ? '0 0 0 11px' : ''};
-  padding: ${(props) => props.rightIcon ? '0 7px 0 0' : ''};
+  padding: ${(props) => props.leftIcon ? '0 0 0 8px' : ''};
+  padding: ${(props) => props.rightIcon ? '0 4px 0 0' : ''};
 `;
 
 const Silver = css``;
