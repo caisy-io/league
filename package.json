@@ -57,7 +57,8 @@
     "react-dom": "^17"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "resolutions": {
     "dayjs": "1.10.5",
