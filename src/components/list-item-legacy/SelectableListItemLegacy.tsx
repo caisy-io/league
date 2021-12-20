@@ -6,9 +6,9 @@ import { SListItemAvatar } from "./styles/SListItemAvatar";
 import { SListItemContentWrapper } from "./styles/SListItemContentWrapper";
 import { SSelectableListItemCheckbox } from "./styles/SSelectableListItemCheckbox";
 import { IconCheckmark } from "../../icons/IconCheckmark";
-import { Divider } from "../../components/divider/Divider";
+import { Divider } from "../divider/Divider";
 
-interface ISelectableListItem {
+interface ISelectableListItemLegacy {
   title: React.ReactNode;
   description: React.ReactNode;
   avatar?: string;
@@ -17,7 +17,7 @@ interface ISelectableListItem {
   onUnselect: () => void;
 }
 
-export const SelectableListItem: React.FC<ISelectableListItem> = ({ ...props }) => {
+export const SelectableListItemLegacy: React.FC<ISelectableListItemLegacy> = ({ ...props }) => {
   const [hovering, setHovering] = React.useState(false);
 
   const onClick = () => {
