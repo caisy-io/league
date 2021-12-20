@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { SErrorMessage } from "../styles/SErrorMessage";
 import { SLabel } from "../styles/SLabel";
 import { SSimpleInput } from "./styles/SSimpleInput";
@@ -9,7 +9,7 @@ import { SSimpleInputWrapper } from "./styles/SSimpleInputWrapper";
 
 type TSimpleInputState = "success" | "error";
 
-interface ISimpleInput extends InputHTMLAttributes<HTMLInputElement> {
+interface ISimpleInput {
   label?: string;
   errors?: string[];
   state?: TSimpleInputState;
@@ -17,69 +17,95 @@ interface ISimpleInput extends InputHTMLAttributes<HTMLInputElement> {
   required?: boolean;
   onChange: any;
   value: any;
+  placeholder?: string;
+  onFocus?: (e: InputEvent) => void;
+  onBlur?: (e: InputEvent) => void;
+  icon?: JSX.Element;
 }
 
-export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children, value, onChange, ...props }) => {
-  const [active, setActive] = React.useState(false);
-  const [inputLength, setInputLength] = React.useState(value?.toString().length);
+export const SimpleInput: FC<ISimpleInput> = ({
+  state,
+  required,
+  value,
+  onChange,
+  placeholder,
+  onFocus,
+  onBlur,
+  label,
+  errors,
+  translationBadge,
+}) => {
+  const [active, setActive] = useState(false);
+  const [hover, setHover] = useState(false);
+  const [inputLength, setInputLength] = useState(value?.toString().length);
 
-  const inputRef = React.useRef<any>();
-  const spanRef = React.useRef<any>();
+  const inputRef = useRef<HTMLInputElement>();
+  const spanRef = useRef<HTMLSpanElement>();
 
-  const handleClick = React.useCallback(() => {
-    inputRef.current.focus();
+  const handleClick = useCallback(() => {
+    inputRef.current?.focus();
   }, [inputRef.current?.focus]);
 
-  const resizeInput = React.useCallback(() => {
-    if (!inputRef.current.value && props.placeholder) {
-      spanRef.current.innerText = props.placeholder;
+  const resizeInput = useCallback(() => {
+    if (!inputRef.current?.value && placeholder) {
+      (spanRef.current as HTMLSpanElement).innerText = placeholder;
     } else {
-      spanRef.current.innerText = inputRef.current.value;
+      (spanRef.current as HTMLSpanElement).innerText = inputRef.current?.value as string;
     }
-    let width = spanRef.current.scrollWidth;
-    if (inputRef.current.value[inputRef.current.value.toString().length - 1] === " ") {
+    let width: number = spanRef.current?.scrollWidth as number;
+    if (inputRef.current?.value[inputRef.current.value.toString().length - 1] === " ") {
       width += 3;
     }
     setInputLength(width + 1);
-  }, [setInputLength]);
+  }, [setInputLength, placeholder]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     resizeInput();
-  }, [value, props.placeholder]);
+  }, [value, placeholder]);
 
-  const handleFocus = React.useCallback(
+  const handleFocus = useCallback(
     (e) => {
       setActive(true);
-      props.onFocus?.(e);
+      onFocus?.(e);
+      console.log(active);
     },
-    [setActive, props.onFocus],
+    [setActive, onFocus],
   );
 
-  const handleBlur = React.useCallback(
+  const handleBlur = useCallback(
     (e) => {
       setActive(false);
-      props.onBlur?.(e);
+      onBlur?.(e);
     },
-    [setActive, props.onBlur],
+    [setActive, onBlur],
   );
 
   return (
-    <SSimpleInputWrapper active={active} state={state} onClick={handleClick}>
+    <SSimpleInputWrapper
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      active={active}
+      state={state}
+      onClick={handleClick}
+    >
       <SSimpleInputTextWidth ref={spanRef} />
-      {props.label && (
+      {label && (
         <SSimpleInputRequiredIndicatorContainer>
           {required && <SSimpleInputRequiredIndicator />}
-          <SLabel>{props.label}</SLabel>
+          <SLabel active={active} hover={hover}>
+            {label}
+          </SLabel>
         </SSimpleInputRequiredIndicatorContainer>
       )}
 
-      {props.errors && props.errors.map((error) => <SErrorMessage>{error}</SErrorMessage>)}
+      {errors && errors.map((error) => <SErrorMessage>{error}</SErrorMessage>)}
 
-      {props.translationBadge && props.translationBadge}
+      {translationBadge}
 
       <SSimpleInputRequiredIndicatorContainer>
-        {required && !props.label && <SSimpleInputRequiredIndicator />}
+        {required && !label && <SSimpleInputRequiredIndicator />}
         <SSimpleInput
+          error={state === "error" && errors?.length === 0}
           onChange={(e) => {
             resizeInput();
             onChange(e);
@@ -90,7 +116,7 @@ export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children,
           onFocus={handleFocus}
           onBlur={handleBlur}
           value={value || ""}
-          {...props}
+          placeholder={placeholder}
         />
       </SSimpleInputRequiredIndicatorContainer>
     </SSimpleInputWrapper>

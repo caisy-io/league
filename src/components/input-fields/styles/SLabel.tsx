@@ -5,7 +5,8 @@ const Bronze = css`
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
-  color: var(--text-04);
+  color: ${(props) => (props.hover || props.active ? "var(--active-text-04)" : "var(--text-04)")};
+  transition: color 150ms;
 `;
 
 const Silver = css``;

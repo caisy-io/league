@@ -6,7 +6,7 @@ const Bronze = css`
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-  color: var(--text-01);
+  color: ${(props) => (props.error ? "var(--text-06)" : "var(--text-01)")};
   width: ${(props) => `${props.width}px`};
   max-width: 320px;
 

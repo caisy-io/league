@@ -18,7 +18,15 @@ function SimpleInputDemo({ ...args }) {
     );
   };
 
-  return <SimpleInput translationBadge={<TranslationBadge />} required onChange={onChange} value={value} {...args} />;
+  return (
+    <SimpleInput
+      translationBadge={args.withTranslationBadge && <TranslationBadge />}
+      required
+      onChange={onChange}
+      value={value}
+      {...args}
+    />
+  );
 }
 
 export default {
@@ -47,4 +55,5 @@ Default.args = {
   placeholder: "This is a placeholder",
   state: "error",
   required: true,
+  withTranslationBadge: false,
 };
