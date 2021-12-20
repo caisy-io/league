@@ -8,6 +8,10 @@ const Bronze = css`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  transition: color 150ms;
+
+  ${(props) => props.selected && "color: var(--active-text-01)"};
 `;
 
 const Silver = css``;

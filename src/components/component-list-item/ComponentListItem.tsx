@@ -1,5 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
+import { IconCheckmarkOutlined, Img } from "../..";
+import { IconCheckmarkSolid } from "../../icons/IconCheckmarkSolid";
+import { IconCircle } from "../../icons/IconCircle";
 import { IconTags } from "../../icons/IconTags";
+import { ComponentImage } from "../component-image";
 import { SComponentListItem } from "./styles/SComponentListItem";
 import { SComponentListItemCheckboxWrapper } from "./styles/SComponentListItemCheckboxWrapper";
 import { SComponentListItemChildren } from "./styles/SComponentListItemChildren";
@@ -18,6 +22,7 @@ interface IComponentListItemBasic {
   description?: string;
   tags?: IComponentListItemTag[];
   onClick?: () => void;
+  imageSrc?: string;
 }
 
 interface IComponentListItemWithoutMultiselect extends IComponentListItemBasic {
@@ -42,19 +47,35 @@ export const ComponentListItem: FC<IComponentListItem> = ({
   selectable,
   selected,
   onSelect,
+  imageSrc,
 }) => {
+  const handleSelect = (e) => {
+    e.stopPropagation();
+    onSelect?.(!selected);
+  };
+  const [hoveringCheckmark, setHoveringCheckmark] = useState(false);
   return (
     <SComponentListItem onClick={onClick}>
-      {/* @TODO Placeholder of ComponentImage */}
-      <div style={{ minWidth: 92, minHeight: 92, backgroundColor: "red", borderRadius: 8 }} />
+      <ComponentImage image={imageSrc && <Img lazyload={false} src={imageSrc} resolution={48} />} type="list-item" />
       {selectable && (
-        <SComponentListItemCheckboxWrapper>
-          {/* @TODO Placeholder of Checkbox */}
-          <div style={{ width: 18, height: 18, borderRadius: "50%", backgroundColor: "red" }} />
+        <SComponentListItemCheckboxWrapper
+          onMouseEnter={() => setHoveringCheckmark(true)}
+          onMouseLeave={() => setHoveringCheckmark(false)}
+          selected={selected}
+          hover={hoveringCheckmark}
+          onClick={handleSelect}
+        >
+          {hoveringCheckmark ? (
+            <IconCheckmarkOutlined />
+          ) : selected ? (
+            <IconCheckmarkSolid size={24} />
+          ) : (
+            <IconCircle size={24} />
+          )}
         </SComponentListItemCheckboxWrapper>
       )}
       <SComponentListItemContent>
-        <SComponentListItemChildren>{children}</SComponentListItemChildren>
+        <SComponentListItemChildren selected={selected}>{children}</SComponentListItemChildren>
         <SComponentListItemDescription>{description}</SComponentListItemDescription>
         {tags && tags.length > 0 && (
           <SComponentListItemTags>
