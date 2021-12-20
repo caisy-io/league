@@ -30,9 +30,11 @@ export {default as trap} from './trap';
  * 2. Reposition the target if it is overflowing the cbr/wbr
  * 3. Trap the target within the wbr if it overflows it
  */
-export default (rects, props) => {
+const indexStrategies = (rects, props) => {
     if (HIDDEN_PLACEMENT !== hide(rects) && HIDDEN_PLACEMENT !== hide({...rects, cbr: rects.wbr})) {
         return trap({...rects, cbr: rects.wbr, tbr: reposition(rects, props)});
     }
     return HIDDEN_PLACEMENT;
 };
+
+export default indexStrategies;
