@@ -23,7 +23,7 @@ export const ComponentCard: React.FC<IComponentCard> = ({ title, description, ta
       </div>
       <ComponentImage type="grid" image={image}></ComponentImage>
       <STagContainer>
-        <IconTags></IconTags>
+        <IconTags size={20}></IconTags>
         <STagText>{tags}</STagText>
       </STagContainer>
     </SComponentCard>

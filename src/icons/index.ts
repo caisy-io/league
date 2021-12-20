@@ -128,7 +128,6 @@ export { IconChevron } from "./IconChevron";
 export { IconUpload } from "./IconUpload";
 export { IconDocuments } from "./IconDocuments";
 export { IconComponents } from "./IconComponents";
-export { IconTags } from "./IconTags";
 export { IconCog } from "./IconCog";
 export { IconPlusBox } from "./IconPlusBox";
 export { IconPlusCircle } from "./IconPlusCircle";
