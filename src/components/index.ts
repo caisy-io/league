@@ -59,3 +59,4 @@ export * from "./line-tabs";
 export * from "./solidLabel";
 export * from "./toggle";
 export * from "./organization-select-menu";
+export * from "./main-menu-items";
