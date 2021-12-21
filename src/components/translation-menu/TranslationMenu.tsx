@@ -1,23 +1,15 @@
-import React, { FC, Fragment } from "react";
-import { Button, Collapsible, MenuDnd, Toggle } from "..";
-import { IconChevron, IconDragable, IconEye, IconEyeHidden } from "../..";
-import { STranslationMenuRow } from "./styles/STranslationMenuRow";
-import { STranslationMenuRowRight } from "../translation-menu-legacy/styles/STranslationMenuRowRight";
+import React, { FC } from "react";
+import { Collapsible, MenuDnd } from "..";
+import { IconChevron } from "../..";
 import { STranslationMenu } from "./styles/STranslationMenu";
 import { STranslationMenuHeader } from "./styles/STranslationMenuHeader";
+import { ILanguageFlagToggleListItemLocale } from "../language-flag-toggle-list-item/LanguageFlagToggleListItem";
 
-export interface ITranslationMenuLocale {
-  id: string;
-  name: string;
-  active: boolean;
-  default?: boolean;
-}
-
-interface ITranslationMenu {
+export interface ITranslationMenu {
   opened: boolean | true;
-  locales: ITranslationMenuLocale[];
+  locales: ILanguageFlagToggleListItemLocale[];
   onToggleOpened: (newOpened: boolean) => void;
-  onLocalesChange: (newLocales: ITranslationMenuLocale[]) => void;
+  onLocalesChange: (newLocales: ILanguageFlagToggleListItemLocale[]) => void;
 }
 
 export const TranslationMenu: FC<ITranslationMenu> = ({ locales, opened, onToggleOpened, onLocalesChange }) => {
@@ -28,8 +20,10 @@ export const TranslationMenu: FC<ITranslationMenu> = ({ locales, opened, onToggl
   };
 
   const onLocaleToggle = (localeId: string) => {
-    const isCurrentlyActive = !!(locales as ITranslationMenuLocale[]).find((locale) => locale.id === localeId)?.active;
-    const newLocales = locales.map((locale: ITranslationMenuLocale) =>
+    const isCurrentlyActive = !!(locales as ILanguageFlagToggleListItemLocale[]).find(
+      (locale) => locale.id === localeId,
+    )?.active;
+    const newLocales = locales.map((locale: ILanguageFlagToggleListItemLocale) =>
       locale.id === localeId ? { ...locale, active: !isCurrentlyActive } : locale,
     );
     onLocalesChange(newLocales);
