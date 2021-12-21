@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
-import { IconCheckmark, IconWarning } from '../..';
+import { IconCheckmark } from "../../icons/IconCheckmark";
+import { IconWarning } from "../../icons/IconWarning";
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { SIcon } from './styles/SIcon';
 import { SIconError } from './styles/SIconError';
