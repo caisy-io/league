@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IconClose } from "../..";
+import { IconClose } from "../../icons/IconClose";
 import { SBulkSelectionSnackbarErrorsBadge } from "./styles/SBulkSelectionSnackbarErrorsBadge";
 import { SBulkSelectionSnackbar } from "./styles/SBulkSelectionSnackbar";
 import { SBulkSelectionSnackbarChildren } from "./styles/SBulkSelectionSnackbarChildren";

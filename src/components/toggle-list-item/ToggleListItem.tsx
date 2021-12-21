@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Toggle } from "..";
+import { Toggle } from "../toggle";
 import { SToggleListItemChildren } from "./styles/SToggleListItemChildren";
 import { SToggleListItemDescription } from "./styles/SToggleListItemDescription";
 import { SToggleListItemIcon } from "./styles/SToggleListItemIcon";
