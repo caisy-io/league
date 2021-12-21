@@ -2,14 +2,13 @@ import React from 'react';
 import {S{{ properCase name }} } from './styles/S{{ properCase name }}';
 
 interface I{{ properCase name }}{
-
+  children?
 }
 
-export const {{ properCase name }}: React.FC<I{{ properCase name }}> = ({...props}) => {
-  console.log(`{{properCase name}} props: `, props);
+export const {{ properCase name }}: React.FC<I{{ properCase name }}> = ({children}) => {
   return (
     <S{{properCase name}}>
-      {props.children}
+      {children}
     </S{{properCase name}}>
   )
 }

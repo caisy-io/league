@@ -7,8 +7,13 @@ export interface ISolidLabelProps {
   type?: ISolidLabelType;
   style?: object;
   onClick?: () => void;
+  children?
 }
 
-export const SolidLabel: React.FC<ISolidLabelProps> = (props) => {
-  return <SSolidLabel {...props}>{props.children}</SSolidLabel>;
+export const SolidLabel: React.FC<ISolidLabelProps> = ({ type, children }) => {
+  return (
+    <SSolidLabel type={type}>
+      {children}
+    </SSolidLabel>
+  );
 };

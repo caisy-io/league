@@ -16,9 +16,8 @@
 
 import {useEffect, useRef} from 'react';
 
-export default (type, handler, ref, options = {}) => {
+const useEventLister = (type, handler, ref, options = {}) => {
     const cache = useRef({});
-
     // We're maintaining the handler & options in cache
     // so that we can avoid adding them to the deps array
     // of the last useEffect call, and reduce the calls
@@ -37,3 +36,5 @@ export default (type, handler, ref, options = {}) => {
         return () => element?.removeEventListener?.(type, handler, options);
     }, [type, ref]);
 };
+
+export default useEventLister;
