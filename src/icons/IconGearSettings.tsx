@@ -1,14 +1,8 @@
 import React from "react";
 
-export function IconGearSettings() {
+export function IconGearSettings({ size = 24 }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      fill="none"
-      viewBox="0 0 24 24"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="none" viewBox="0 0 24 24">
       <path
         fillRule="evenodd"
         stroke="currentColor"
@@ -30,4 +24,3 @@ export function IconGearSettings() {
     </svg>
   );
 }
-

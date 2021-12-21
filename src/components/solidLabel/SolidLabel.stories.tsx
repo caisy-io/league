@@ -29,9 +29,9 @@ export default {
     }  
 };
 
-function SolidLabelDemo({ content, ...args }) {
+function SolidLabelDemo({ content, type }) {
   return (
-    <SolidLabel {...args}>
+    <SolidLabel type={type}>
       <span>{content}</span>
     </SolidLabel>
   );
