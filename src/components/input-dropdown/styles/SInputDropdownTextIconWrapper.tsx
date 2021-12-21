@@ -3,10 +3,11 @@ import { SFlex } from '../../../base-components/flex/styles/SFlex';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  gap: 0.25rem;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
+  gap: 0.5rem;
+  width: 90%;
+  svg{
+    flex-shrink: 0;
+  }
 `;
 
 const Silver = css``;
@@ -17,7 +18,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SInputDropdownTextWrapper = styled(SFlex)`
+export const SInputDropdownTextIconWrapper = styled(SFlex)`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

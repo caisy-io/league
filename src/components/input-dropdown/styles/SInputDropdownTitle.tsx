@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveBody03Medium, CSSProgressiveCaption01Semibold } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
+import { CSSProgressiveBody03Medium } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
-import { IInputDropdownProps } from '../InputDropdown';
 
 const CSSActive = css`
   border-color: var(--ui-supportive-03);
@@ -14,8 +13,8 @@ const CSSError = css`
 const CSSRequired = css`
   &:after{
     content: "";
-    width: 2px;
-    height: 2px;
+    width: 4px;
+    height: 4px;
     background-color: var(--ui-supportive-01);
     position: absolute;
     top: 0;
@@ -30,6 +29,10 @@ const Bronze = css`
   line-height: 0.75rem;
   color: var(--text-03);
   position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 90%;
   width: fit-content;
   ${(props) => props.required && !props.label ? CSSRequired : ''};
 `;

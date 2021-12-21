@@ -15,6 +15,7 @@ const Bronze = css`
   width: 320px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 10px 12px;
   background-color: var(--ui-01);
   border: 1px solid var(--ui-03);
@@ -22,7 +23,10 @@ const Bronze = css`
   transition: border 200ms;
   gap: 2px;
   ${(props) => props.active && CSSActive};
-  ${(props) => props.state && props.state === "error" && CSSError}
+  ${(props) => props.state && props.state === "error" && CSSError};
+  >svg{
+    flex-shrink: 0;
+  }
 `;
 
 const Silver = css``;
