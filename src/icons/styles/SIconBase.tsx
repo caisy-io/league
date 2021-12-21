@@ -14,16 +14,15 @@ export const SIconBase = styled.svg<ISIconBase>`
   circle {
     stroke: var(--icon-01);
   }
-  
+
   .overwrite {
     stroke: var(--icon-05);
     fill: var(--icon-05);
   }
-  
+
   .transparent-stroke {
-    stroke: transparent
+    stroke: transparent;
   }
-  
   .white-stroke {
     ${({ solid }) => solid && "stroke: var(--icon-05)"};
   }

@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import { CSSProp } from "styled-components"
 import { SPopover } from "./styles/SPopover";
 import Stackable from "../stackable";
 import { vbefore, vcenter, vafter, hbefore, hcenter, hafter } from "../poppable/Poppable.placements";
@@ -67,6 +68,7 @@ const getPlacement = (placement: TPlacement | undefined): number => {
 interface IPopover {
   placement: TPlacement;
   reference: React.MutableRefObject<null>;
+  triangleExtraCSS?: CSSProp;
   trianglecolor?: string;
   disableTriangle?: boolean;
   onClickOutside?: () => void;
@@ -83,6 +85,7 @@ export const Popover: React.FC<IPopover> = ({
   trianglecolor,
   container,
   zIndex,
+  triangleExtraCSS,
 }) => {
   if (!reference || !reference.current) {
     return null;
@@ -115,6 +118,7 @@ export const Popover: React.FC<IPopover> = ({
             placements={placements}
             reference={reference}
             trianglecolor={trianglecolor}
+            triangleExtraCSS={triangleExtraCSS}
             container={container}
           >
             <>
