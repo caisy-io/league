@@ -77,4 +77,4 @@ const IconSize = {
   ),
 }
 
-export const IconsDocumentVersionsClock: FC<IIconSize> = ({ size= 24 }) => IconSize[size];
+export const IconDocumentVersionsClock: FC<IIconSize> = ({ size= 24 }) => IconSize[size];
