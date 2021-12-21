@@ -1,5 +1,5 @@
 import React from "react";
-import { MainMenuItem } from "./MainMenuItem";
+import { MainMenuItem } from "../..";
 import { IconLink } from "../..";
 import { Badge, EBadgePosition } from "..";
 
