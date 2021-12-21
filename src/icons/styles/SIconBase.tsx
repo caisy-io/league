@@ -23,6 +23,7 @@ export const SIconBase = styled.svg<ISIconBase>`
   .transparent-stroke {
     stroke: transparent;
   }
+
   .white-stroke {
     ${({ solid }) => solid && "stroke: var(--icon-05)"};
   }
