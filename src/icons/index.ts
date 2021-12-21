@@ -20,7 +20,6 @@ export { IconPublish } from "./IconPublish";
 export { IconUnpublish } from "./IconUnpublish";
 export { IconCalendar } from "./IconCalendar";
 export { IconChat } from "./IconChat";
-export { IconCircle } from "./IconCircle";
 export { IconCopy } from "./IconCopy";
 export { IconPin } from "./IconPin";
 export { IconPlus } from "./IconPlus";
