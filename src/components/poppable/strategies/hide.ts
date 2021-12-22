@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
- import { intersect } from '../../../utils/rect';
+import { intersect } from '../../../utils/rect';
 import {HIDDEN_PLACEMENT} from '../Poppable.constants';
  
  /**
@@ -26,9 +26,11 @@ import {HIDDEN_PLACEMENT} from '../Poppable.constants';
   * @param rbr {DOMRect} Reference Bounding Rect
   * @returns {{top: *, left: *}|{top: number, left: number}}
   */
- export default ({tbr, cbr, rbr}) => {
+const hideStrategy = ({tbr, cbr, rbr}) => {
      if (!intersect(rbr, cbr)) {
          return HIDDEN_PLACEMENT;
      }
      return tbr;
  };
+
+ export default hideStrategy;
