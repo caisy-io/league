@@ -229,3 +229,4 @@ export { IconBriefcase } from "./IconBriefcase";
 export { IconSwitchArrows } from "./IconSwitchArrows";
 export { IconUploadArrow } from "./IconUploadArrow";
 export { IconBrowserWeb } from "./IconBrowserWeb";
+export { IconCollapse } from "./IconCollapse";

@@ -65,7 +65,8 @@ import {
   IconBriefcase,
   IconSwitchArrows,
   IconUploadArrow,
-  IconBrowserWeb 
+  IconBrowserWeb,
+  IconCollapse 
 } from './index';
 
 const icons = {
@@ -134,6 +135,7 @@ const icons = {
   IconSwitchArrows: ({size}) => <IconSwitchArrows size={size}/>,
   IconUploadArrow: ({size}) => <IconUploadArrow size={size}/>,
   IconBrowserWeb: ({size}) => <IconBrowserWeb size={size}/>,
+  IconCollapse: ({size}) => <IconCollapse size={size}/>,
 };
 
 interface IActionIconsDemo {
@@ -165,7 +167,8 @@ export default {
       "IconDocumentVersionsClock", "IconLinkDocument", "IconFilterSettings", "IconGearSettings", "IconSmileEmojiSelector", "IconQuestionCircle", "IconExternalLink", "IconExpand", "IconRefresh", "IconMaximizeFullScreenMode", 
       "IconMinimizeFullScreenMode", "IconExternalWindowMode", "IconMinimizePictureMode", "IconDownloadArrow", "IconColorPalette", "IconCode", "IconLocationPin", "IconAnimalsDog", "IconFoodApples", "IconSportBasketball",
       "IconPlane", "IconLightBulb", "IconHeartLike", "IconFlag", "IconTemplateViewSwitch", "IconTemplateLayout", "IconGridViewSwitch", "IconListViewSwitch", "IconCreateSectionSeparate", "IconColorPicker", "IconToggleHeaderRowColumn",
-      "IconAlignLeft", "IconAlignRight", "IconAlignCenter", "IconJustifyFullWidth", "IconMagicWand", "IconPlayCircle", "IconGridAssign", "IconFolderAdd", "IconBriefcase", "IconSwitchArrows", "IconUploadArrow", "IconBrowserWeb"],
+      "IconAlignLeft", "IconAlignRight", "IconAlignCenter", "IconJustifyFullWidth", "IconMagicWand", "IconPlayCircle", "IconGridAssign", "IconFolderAdd", "IconBriefcase", "IconSwitchArrows", "IconUploadArrow", "IconBrowserWeb",
+      "IconCollapse"],
       control: { type: 'select' },
       defaultValue: 'IconDuplicate'
     },
