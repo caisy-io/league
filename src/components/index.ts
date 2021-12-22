@@ -60,3 +60,4 @@ export * from "./solidLabel";
 export * from "./toggle";
 export * from "./organization-select-menu";
 export * from "./main-menu-items";
+export * from "./upload-menu-item";
