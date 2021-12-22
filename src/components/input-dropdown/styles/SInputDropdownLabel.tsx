@@ -2,14 +2,6 @@ import styled, { css } from 'styled-components';
 import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
-const CSSActive = css`
-  border-color: var(--ui-supportive-03);
-`;
-
-const CSSError = css`
-  border-color: var(--ui-supportive-01);
-`;
-
 const CSSRequired = css`
   &:after{
     content: "";
@@ -19,7 +11,7 @@ const CSSRequired = css`
     position: absolute;
     top: 0;
     border-radius: 50%;
-    right: -3px;
+    right: 0;
     z-index: 10;
   }
 `;
@@ -35,6 +27,7 @@ const Bronze = css`
   white-space: nowrap;
   max-width: 90%;
   width: fit-content;
+  padding-right: 0.5rem;
   ${(props) => props.required && CSSRequired};
 `;
 

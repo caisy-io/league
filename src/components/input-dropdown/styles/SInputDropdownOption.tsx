@@ -19,14 +19,16 @@ const Bronze = css`
   justify-content: space-between;
   padding: 10px 12px;
   background-color: var(--ui-01);
-  border: 1px solid var(--ui-03);
-  border-radius: 8px;
+  border-bottom: 1px solid var(--ui-03);
   transition: border 200ms;
   gap: 2px;
   ${(props) => props.active && CSSActive};
   ${(props) => props.error && CSSError};
   >svg{
     flex-shrink: 0;
+  }
+  &:hover{
+    background-color: var(--ui-02);
   }
 `;
 

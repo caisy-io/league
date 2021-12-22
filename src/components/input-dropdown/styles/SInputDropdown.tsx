@@ -9,6 +9,10 @@ const CSSError = css`
   border-color: var(--ui-supportive-01);
 `;
 
+const CSSOpened = css`
+  border: 1px solid #008CFF;
+`;
+
 const Bronze = css`
   position: relative;
   overflow: hidden;
@@ -25,6 +29,7 @@ const Bronze = css`
   gap: 2px;
   ${(props) => props.active && CSSActive};
   ${(props) => props.error && CSSError};
+  ${(props) => props.opened ? CSSOpened : ''};  
   >svg{
     flex-shrink: 0;
   }

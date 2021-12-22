@@ -34,14 +34,6 @@ const dataSource = [
     label: "Label",
     icon: <IconStarOutlined size={20}></IconStarOutlined>,
   },
-  {
-    key: "button_external_link",
-    title: "Button external link",
-  },
-  {
-    key: "button_internal_pages",
-    title: "Button internal pages",
-  },
 ];
 
 function SelectDemo({ error, required }) {
@@ -61,5 +53,5 @@ const Template = (args) => <SelectDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   error: false,
-  required: false,
+  required: true,
 };
