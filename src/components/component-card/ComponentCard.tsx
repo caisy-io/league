@@ -12,11 +12,12 @@ interface IComponentCard {
   description?: string | undefined;
   tags?: string | undefined;
   image?: ReactNode;
+  onClick?: () => void;
 }
 
-export const ComponentCard: React.FC<IComponentCard> = ({ title, description, tags, image }) => {
+export const ComponentCard: React.FC<IComponentCard> = ({ title, description, tags, image, onClick }) => {
   return (
-    <SComponentCard>
+    <SComponentCard onClick={onClick}>
       <div>
         <SComponentCardTitle>{title}</SComponentCardTitle>
         <SComponentCardDescription>{description}</SComponentCardDescription>
