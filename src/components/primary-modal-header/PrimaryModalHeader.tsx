@@ -1,10 +1,10 @@
 import React from "react";
-import { Badge, EBadgePosition } from "..";
-import { IconAngleRight, IconClose } from "../..";
+import { Badge, EBadgePosition } from "../badge";
+import { IconClose } from "../../icons/IconClose";
+import { IconAngleRight } from "../../icons/IconAngleRight";
 import { PrimaryModalHeaderLabel } from "./PrimaryModalHeaderLabel";
 import { SPrimaryModalHeader } from "./styles/SPrimaryModalHeader";
 import { SPrimaryModalHeaderBreadcrumb } from "./styles/SPrimaryModalHeaderBreadcrumb";
-import { SPrimaryModalHeaderCloseIcon } from "./styles/SPrimaryModalHeaderCloseIcon";
 
 interface IPrimaryModalHeaderLabel {
   title: string;
@@ -20,12 +20,7 @@ interface IPrimaryModalHeader {
   onClose?: () => void;
 }
 
-export const PrimaryModalHeader: React.FC<IPrimaryModalHeader> = ({
-  onClose,
-  breadcrumbs,
-  withCloseIcon,
-  children,
-}) => {
+export const PrimaryModalHeader: React.FC<IPrimaryModalHeader> = ({ breadcrumbs, children }) => {
   return (
     <SPrimaryModalHeader>
       <SPrimaryModalHeaderBreadcrumb>
@@ -47,11 +42,6 @@ export const PrimaryModalHeader: React.FC<IPrimaryModalHeader> = ({
         ))}
       </SPrimaryModalHeaderBreadcrumb>
       {children}
-      {withCloseIcon && (
-        <SPrimaryModalHeaderCloseIcon onClick={onClose}>
-          <IconClose />
-        </SPrimaryModalHeaderCloseIcon>
-      )}
     </SPrimaryModalHeader>
   );
 };
