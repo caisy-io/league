@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from "react";
-import { SPreview } from "./styles/SPreview"
+import { SPreview } from "./styles/SPreview";
 
 export interface IPreview {
   flag?: ReactNode;
@@ -10,7 +10,7 @@ export interface IPreview {
   styleOverwrite?: any;
 }
 
-const Preview: FC<IPreview> = ({ flag, icon, image, text, size, styleOverwrite }) => {
+export const Preview: FC<IPreview> = ({ flag, icon, image, text, size, styleOverwrite }) => {
   return (
     <SPreview styleOverwrite={styleOverwrite} size={size} isFlag={flag && true}>
       {flag}
@@ -18,7 +18,5 @@ const Preview: FC<IPreview> = ({ flag, icon, image, text, size, styleOverwrite }
       {image}
       {text}
     </SPreview>
-  )
-}
-
-export default Preview;
+  );
+};
