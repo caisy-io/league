@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FieldCard } from './FieldCard';
 
 export default {
@@ -13,7 +13,8 @@ export default {
 };
 
 function FieldCardDemo({ cardText }) {
-  return <FieldCard cardText={cardText}>
+  const [isActivated, setIsActivated] = useState(false);
+  return <FieldCard cardText={cardText} onClick={() => { setIsActivated(!isActivated) }} activated={isActivated}>
   </FieldCard>
 }
 

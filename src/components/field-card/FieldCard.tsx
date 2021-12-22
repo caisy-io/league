@@ -5,11 +5,13 @@ import { SFieldCardText } from './styles/SFieldCardText';
 
 interface IFieldCard {
   cardText?: string,
+  activated?: boolean,
+  onClick?: () => void,
 }
 
-export const FieldCard: React.FC<IFieldCard> = ({ cardText }) => {
+export const FieldCard: React.FC<IFieldCard> = ({ cardText, activated, onClick }) => {
   return (
-    <SFieldCard>
+    <SFieldCard activated={activated} onClick={onClick}>
       <SFieldCardInnerRectangle />
       <SFieldCardText>  {cardText}</SFieldCardText>
     </SFieldCard>
