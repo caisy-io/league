@@ -181,3 +181,63 @@ export { IconPersonalKeyToken } from "./IconPersonalKeyToken";
 export { IconPasswordKey } from "./IconPasswordKey";
 export { IconMessageChat } from "./IconMessageChat";
 export { IconSecurityAuth } from "./IconSecurityAuth";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export { IconTextAlignLeft } from "./IconTextAlignLeft";
+export { IconTextAlignCenter } from "./IconTextAlignCenter";
+export { IconTextAlignRight } from "./IconTextAlignRight";
+export { IconTextAlignJustified } from "./IconTextAlignJustified";
+export { IconTableGrid } from "./IconTableGrid";
+export { IconEmbeddedWindow } from "./IconEmbeddedWindow";
+export { IconEnablePower } from "./IconEnablePower";
+export { IconWrappingInLine } from "./IconWrappingInLine";
+export { IconWrapText } from "./IconWrapText";
+export { IconWrappingBehind } from "./IconWrappingBehind";
+export { IconWrappingFront } from "./IconWrappingFront";
+export { IconFlipHorizontal } from "./IconFlipHorizontal";
