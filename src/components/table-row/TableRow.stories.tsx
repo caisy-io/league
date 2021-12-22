@@ -40,6 +40,7 @@ const SGhostSquare = styled.div`
 
 const PreviewTemplate = (args) => {
   const [activated, setActivated] = useState(false);
+  const [hover, setHover] = useState(false);
 
   return (
     <TableRowDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
@@ -48,7 +49,18 @@ const PreviewTemplate = (args) => {
           <SGhostSquare height={48} width={48} />
         </SGhostWrapper>
       ) : (
-        <span style={{ padding: 20, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <span
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          style={{
+            padding: 20,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: `${activated ? "#F3F7F9" : hover ? "#E8EFF3" : "#fff"}`,
+            transition: "background-color 150ms",
+          }}
+        >
           <PreviewComponent
             size={48}
             image={
