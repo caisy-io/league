@@ -5,8 +5,13 @@ export type IFlatActionButtonType = "white" | "blue" | "success" | "danger" | "g
 
 interface IFlatActionButton {
   type: IFlatActionButtonType;
+  onClick?: () => void;
 }
 
-export const FlatActionButton: React.FC<IFlatActionButton> = ({ ...props }) => {
-  return <SFlatActionButton {...props}>{props.children}</SFlatActionButton>;
+export const FlatActionButton: React.FC<IFlatActionButton> = ({ type, onClick, children }) => {
+  return (
+    <SFlatActionButton type={type} onClick={onClick}>
+      {children}
+    </SFlatActionButton>
+  );
 };

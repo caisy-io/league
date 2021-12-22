@@ -21,16 +21,25 @@ export const SIconBase = styled.svg<ISIconBase>`
   }
 
   .transparent-stroke {
-    stroke: transparent
+    stroke: transparent;
   }
+
   .white-stroke {
     ${({ solid }) => solid && "stroke: var(--icon-05)"};
   }
   .transparent-fill {
     ${({ solid }) => solid && "fill: transparent"};
   }
-
+  
   .solid-fill {
     fill: var(--icon-01);
+  }
+  
+  path.white-stroke-path {
+    ${({ solid }) => solid && "stroke: var(--icon-05)"};
+  }
+ 
+  .solid-fill-toogle {
+    fill: ${({ solid }) => solid ? "var(--icon-01)" : "transparent"};
   }
 `
