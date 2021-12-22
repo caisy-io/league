@@ -44,7 +44,7 @@ function SelectDemo({ error, required }) {
     dataSource={dataSource}
     placeholder="Select an option.."
     value={selectValue}
-    onChange={(e) => setSelectValue(e)}
+    onSelectValue={(e) => setSelectValue(e)}
   />
 }
 
