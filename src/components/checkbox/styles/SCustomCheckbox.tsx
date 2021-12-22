@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const CSSChecked = css`
-border-color: var(--active-icon-04);
-background: var(--active-icon-04);
-  svg path {
-    stroke-dasharray: -60;
-    stroke-dashoffset: 0;  
-  }
+  border-color: var(--active-icon-04);
+  background: var(--active-icon-04);
+    svg path {
+      stroke-dasharray: -60;
+      stroke-dashoffset: 0;  
+    }
 `;
 
 const CSSLoading = css`
@@ -48,7 +48,7 @@ const Bronze = css`
   }
   ${(props) => (props.checked ? CSSChecked : "")}
   ${(props) => (props.loading ? CSSLoading : "")}
-}`;
+`;
 
 const Silver = css``;
 
