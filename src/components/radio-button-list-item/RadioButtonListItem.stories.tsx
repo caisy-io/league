@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IconStarOutlined } from "../..";
+import { IconStarOutlined } from "../../icons/IconStarOutlined";
 import { RadioButtonListItem } from "./RadioButtonListItem";
 
 // Default RadioButtonListItem Demo
