@@ -9,6 +9,7 @@ import { SComponentListItemCheckboxWrapper } from "./styles/SComponentListItemCh
 import { SComponentListItemChildren } from "./styles/SComponentListItemChildren";
 import { SComponentListItemContent } from "./styles/SComponentListItemContent";
 import { SComponentListItemDescription } from "./styles/SComponentListItemDescription";
+import { SComponentListItemImageWrapper } from "./styles/SComponentListItemImageWrapper";
 import { SComponentListItemTag } from "./styles/SComponentListItemTag";
 import { SComponentListItemTagIconWrapper } from "./styles/SComponentListItemTagIconWrapper";
 import { SComponentListItemTags } from "./styles/SComponentListItemTags";
@@ -56,7 +57,9 @@ export const ComponentListItem: FC<IComponentListItem> = ({
   const [hoveringCheckmark, setHoveringCheckmark] = useState(false);
   return (
     <SComponentListItem onClick={onClick}>
-      <ComponentImage image={imageSrc && <Img lazyload={false} src={imageSrc} resolution={48} />} type="list-item" />
+      <SComponentListItemImageWrapper>
+        <ComponentImage image={imageSrc && <Img lazyload={false} src={imageSrc} resolution={48} />} type="list-item" />
+      </SComponentListItemImageWrapper>
       {selectable && (
         <SComponentListItemCheckboxWrapper
           onMouseEnter={() => setHoveringCheckmark(true)}
