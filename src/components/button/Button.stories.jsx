@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "./Button";
 import { IconLink } from "../..";
-import { Badge, EBadgePosition } from "..";
+import { Badge, EBadgePosition } from "../badge";
 
 // Default Button Demo
 export default {
@@ -95,7 +95,7 @@ WithIcon.args = {
 
 // With Badge
 export const WithBadge = ({ content, ...args }) => (
-  <Badge position={EBadgePosition.TopRight} value={args.badgeContent}>
+  <Badge position={EBadgePosition.TopRight} value={args.badgeContent} size={"small"}>
     <Button {...args}>{content}</Button>
   </Badge>
 );
