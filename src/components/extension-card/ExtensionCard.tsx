@@ -32,7 +32,11 @@ export const STitleButtonFlex = styled(SFlex)`
 `;
 
 const ButtonOverwrite = css`
-  width: 80px;
+  width: 74px;
+  padding: 0 9.5px;
+  span{
+    line-height: 11px;
+  }
 `;
 
 export const ExtensionCard: React.FC<IExtensionCard> = ({ titleIcon, title, description, flatButtonIcon, flatButtonText, onAdd, onRemove }) => {
