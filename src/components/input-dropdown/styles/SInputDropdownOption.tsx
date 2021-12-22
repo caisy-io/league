@@ -38,7 +38,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SInputDropdown = styled.div`
+export const SInputDropdownOption = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
