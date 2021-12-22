@@ -7,13 +7,13 @@ import { SSidebarSubheaderText } from './styles/SSidebarSubheaderText';
 
 interface ISidebarSubheader {
   subheaderText?: string,
-  onExit?: () => void,
+  onClick?: () => void,
 }
 
-export const SidebarSubheader: React.FC<ISidebarSubheader> = ({ subheaderText, onExit }) => {
+export const SidebarSubheader: React.FC<ISidebarSubheader> = ({ subheaderText, onClick }) => {
   return (
     <SSidebarSubheader>
-      <Button onClick={onExit} styleOverwrite={SButtonOverwrite} type="secondary" size="small"> <IconChevronLeft size={20} /> </Button>
+      <Button onClick={onClick} styleOverwrite={SButtonOverwrite} type="secondary" size="small"> <IconChevronLeft size={20} /> </Button>
       <SSidebarSubheaderText> {subheaderText} </SSidebarSubheaderText>
     </SSidebarSubheader>
   )
