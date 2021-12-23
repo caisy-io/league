@@ -9,9 +9,7 @@ import { SInputDropdownOption } from "./styles/SInputDropdownOption";
 import { SInputDropdownTextIconWrapper } from "./styles/SInputDropdownTextIconWrapper";
 import { SInputDropdownTextWrapper } from "./styles/SInputDropdownTextWrapper";
 import { SInputDropdownTitle } from "./styles/SInputDropdownTitle";
-import { SSelect } from "./styles/SSelect";
 import { SSelectDropdown } from "./styles/SSelectDropdown";
-import { SSelectOption } from "./styles/SSelectOption";
 
 export interface IDataSourceItem {
   title: string;
@@ -56,12 +54,12 @@ export const SelectSingle: React.FC<ISelectSingle> = ({ error, placeholder, data
   return (
     <ClickOutside onClickOutside={() => setOpened(false)}>
       <div>
-        <SInputDropdown onClick={() => setOpened((prev) => !prev)} ref={ref} error={error} opened={opened}>
+        <SInputDropdown onClick={() => setOpened((prev) => !prev)} ref={ref} error={error} opened={opened} selectTitle={selectTitle}>
           <SInputDropdownTextIconWrapper>
             {selectIcon ? selectIcon : ""}
             <SInputDropdownTextWrapper>
               {selectLabel && <SInputDropdownLabel required={required}>{selectLabel ? selectLabel : ""}</SInputDropdownLabel>}
-              <SInputDropdownTitle label={selectLabel} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+              <SInputDropdownTitle selectTitle={selectTitle} label={selectLabel} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
             </SInputDropdownTextWrapper>
           </SInputDropdownTextIconWrapper>
           <SDropdownArrow opened={opened}>
@@ -81,7 +79,7 @@ export const SelectSingle: React.FC<ISelectSingle> = ({ error, placeholder, data
                         {option.icon ? option.icon : ""}
                         <SInputDropdownTextWrapper>
                           {option.label && <SInputDropdownLabel required={required}>{option.label ? option.label : ""}</SInputDropdownLabel>}
-                          <SInputDropdownTitle label={option.label} required={required}>{option.title}</SInputDropdownTitle>
+                          <SInputDropdownTitle selectTitle={selectTitle} label={option.label} required={required}>{option.title}</SInputDropdownTitle>
                         </SInputDropdownTextWrapper>
                       </SInputDropdownTextIconWrapper>
                     </SInputDropdownOption>

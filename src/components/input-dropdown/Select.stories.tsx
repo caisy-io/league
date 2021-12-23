@@ -53,5 +53,11 @@ const Template = (args) => <SelectDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   error: false,
+  required: false,
+};
+
+export const Required = Template.bind({});
+Required.args = {
+  error: false,
   required: true,
 };

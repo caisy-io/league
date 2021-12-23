@@ -16,6 +16,12 @@ const CSSRequired = css`
   }
 `;
 
+const CSSNormal = css`
+  &:after{
+    display: none;
+  }
+`;
+
 const Bronze = css`
   ${CSSProgressiveBody03Medium};
   line-height: 0.75rem;

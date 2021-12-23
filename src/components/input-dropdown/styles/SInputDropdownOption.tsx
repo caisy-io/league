@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
+import { SInputDropdownTitle } from './SInputDropdownTitle';
 
 const CSSActive = css`
   border-color: var(--ui-supportive-03);

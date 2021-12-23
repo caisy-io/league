@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
+import { SInputDropdownTitle } from './SInputDropdownTitle';
 
 const CSSActive = css`
   border-color: var(--ui-supportive-03);
@@ -13,6 +14,12 @@ const CSSOpened = css`
   border: 1px solid #008CFF;
 `;
 
+const CSSNormal = css`
+  &:after{
+    display: none;
+  }
+`;
+
 const Bronze = css`
   position: relative;
   overflow: hidden;
@@ -21,10 +28,10 @@ const Bronze = css`
   align-items: center;
   cursor: pointer;
   justify-content: space-between;
-  padding: 10px 12px;
+  padding: 0.625rem 0.75rem;
   background-color: var(--ui-01);
   border: 1px solid var(--ui-03);
-  border-radius: 8px;
+  border-radius: 0.5rem;
   transition: border 200ms;
   gap: 2px;
   ${(props) => props.active && CSSActive};
@@ -32,6 +39,9 @@ const Bronze = css`
   ${(props) => props.opened ? CSSOpened : ''};  
   >svg{
     flex-shrink: 0;
+  }
+  ${SInputDropdownTitle}{
+    ${(props) => !props.selectTitle ? CSSNormal : ''};
   }
 `;
 
