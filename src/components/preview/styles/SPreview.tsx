@@ -65,11 +65,30 @@ const iconStroke: (size: number) => number = size => {
       return 1.2;
   }
 }; 
+const borderRadius: (size: number) => number = size => {
+  switch(size) {
+    case 12:
+    case 16:
+      case 20:
+      return 3;
+    case 24:
+      return 4;
+    case 28:
+    case 32:
+    case 36:
+    case 40:
+      return 6;
+    case 48:
+      return 8;
+    default: 
+      return 4;
+  }
+}; 
 
 const Bronze = css<ISPreview>`
   align-items: center;
   background-color: ${({ isFlag }) => !isFlag && "var(--ui-03)"};
-  border-radius: ${({ isFlag }) => !isFlag && "4px"};
+  border-radius: ${({ isFlag, size }) => !isFlag && borderRadius(size)}px;
   color: var(--text-04);
   display: flex;
   flex-shrink: 0;
