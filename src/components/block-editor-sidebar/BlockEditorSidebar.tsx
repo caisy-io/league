@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { LineTabs } from "..";
 import { IconDocuments } from "../..";
 import { SBlockEditorSidebar } from "./styles/SBlockEditorSidebar";
