@@ -2,6 +2,18 @@ import styled, { css } from "styled-components";
 import { CSSProgressiveBody03Semibold } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
+const CSSOpened = css`
+  background-color: var(--active-ui-01-1);
+
+  svg {
+    transform: rotate(90deg);
+  }
+`;
+
+const CSSHover = css`
+  background-color: var(--hover-ui-01);
+`;
+
 const Bronze = css`
   ${CSSProgressiveBody03Semibold};
   color: var(--text-01);
@@ -9,14 +21,22 @@ const Bronze = css`
   align-items: center;
   gap: 8px;
   padding: 16px;
+  background-color: var(--ui-01);
+  transition: background-color 150ms;
 
   cursor: pointer;
-  background-color: var(--active-ui-01-1);
 
   svg {
     transition: transform 150ms;
-    transform: rotate(${(props) => (props.opened ? "90deg" : 0)});
+    transform: rotate(0);
   }
+
+  &:hover {
+    ${CSSHover}
+    ${(props) => props.opened && CSSOpened}
+  }
+
+  ${(props) => props.opened && CSSOpened}
 `;
 
 const Silver = css``;
