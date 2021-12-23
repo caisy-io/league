@@ -1,0 +1,1 @@
+export { SmallHeader } from "./SmallHeader";

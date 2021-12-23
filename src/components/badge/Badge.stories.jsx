@@ -74,7 +74,7 @@ export const PositionCenter = ({ content, ...args }) => (
 PositionCenter.args = {
   type: "regular",
   value: "1",
-  size: "small"
+  size: "micro"
 };
 
 // Type color

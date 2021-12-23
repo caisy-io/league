@@ -1,7 +1,7 @@
 import React from "react";
 import { FixedSizeList } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
-import { SListItemLoading } from "../list-item/styles/SListItemLoading";
+import { SListItemLoading } from "../list-item-legacy/styles/SListItemLoading";
 import { SList } from "./styles/SList";
 import { SListHeaderContainer } from "./styles/SListHeaderContainer";
 import { SListWrapper } from "./styles/SListWrapper";
