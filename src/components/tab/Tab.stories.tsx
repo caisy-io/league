@@ -2,6 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Tab } from "./Tab";
 import { IconStarOutlined } from "../..";
 
+const iconSize: (size: string) => 16 | 20 | 24 = (size) => {
+  switch(size) {
+    case "micro":
+    case "small":
+      return 16;
+    case "medium":
+      return 20;
+    default:
+      return 24;
+  }
+} 
+
 // Default Tab Demo
 export default {
   title: "Components/Tab",
@@ -63,7 +75,7 @@ Default.args = {
 
 function TabDemoWithIcon({ content, selected, ...args }) {
   const [currSelected, setSelected] = useState("none");
-
+  console.log(args)
   const handleSelect = (value) => {
     setSelected(value);
   };
@@ -74,10 +86,10 @@ function TabDemoWithIcon({ content, selected, ...args }) {
 
   return (
     <div style={{ display: "flex", gap: 8 }}>
-      <Tab value="1" onClick={handleSelect} activated={currSelected === "1"} icon={<IconStarOutlined />} {...args}>
+      <Tab value="1" onClick={handleSelect} activated={currSelected === "1"} icon={<IconStarOutlined size={iconSize(args.size)}/>} {...args}>
         Tab 1
       </Tab>
-      <Tab value="2" onClick={handleSelect} activated={currSelected === "2"} icon={<IconStarOutlined />} {...args}>
+      <Tab value="2" onClick={handleSelect} activated={currSelected === "2"} icon={<IconStarOutlined size={iconSize(args.size)}/>} {...args}>
         Tab 2
       </Tab>
     </div>
