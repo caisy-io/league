@@ -3,7 +3,7 @@ import { IconStarOutlined } from "../../icons/IconStarOutlined";
 import { SelectSingle } from "./SelectSingle";
 
 export default {
-  title: "Components/Forms/Select",
+  title: "Components/Forms/SingleSelect",
   component: SelectDemo,
   argTypes: {
     required: {

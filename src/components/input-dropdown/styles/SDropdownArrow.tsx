@@ -4,14 +4,15 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 const CSSOpened = css`
   svg{
     transform: rotate(-180deg);
-    color: #008CFF;
+  }
+  svg path {
+    stroke: #008CFF;
   }
 `;
 
 const CSSError = css`
-  svg{
-    transform: rotate(-180deg);
-    color: #008CFF;
+  svg path{
+    stroke: #ED3E3E;
   }
 `;
 
@@ -20,6 +21,7 @@ const Bronze = css`
     transition: transform 0.25s ease-in-out;
   }
   ${(props) => props.opened ? CSSOpened : ''};  
+  ${(props) => props.translationBadge && props.error ? CSSError : ''};  
 `;
 
 const Silver = css`

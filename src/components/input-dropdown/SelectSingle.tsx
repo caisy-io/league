@@ -65,7 +65,7 @@ export const SelectSingle: React.FC<ISelectSingle> = ({ error, placeholder, data
               {translationBadge &&
                 <SFlex>
                   <SInputDropdownTitle selectTitle={selectTitle} label={selectLabel} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
-                  <SDropdownArrow opened={opened}>
+                  <SDropdownArrow opened={opened} translationBadge={translationBadge} error={error}>
                     <IconChevronDown size={24}></IconChevronDown>
                   </SDropdownArrow>
                 </SFlex>}
