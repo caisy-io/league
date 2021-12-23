@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import { IconChevronDown } from "../..";
+import { SFlex } from "../../base-components/flex/styles/SFlex";
 import { ClickOutside, useDimensions } from "../../utils";
 import { Popover } from "../popover/Popover";
 import { SDropdownArrow } from "./styles/SDropdownArrow";
@@ -10,6 +11,7 @@ import { SInputDropdownTextIconWrapper } from "./styles/SInputDropdownTextIconWr
 import { SInputDropdownTextWrapper } from "./styles/SInputDropdownTextWrapper";
 import { SInputDropdownTitle } from "./styles/SInputDropdownTitle";
 import { SSelectDropdown } from "./styles/SSelectDropdown";
+import { TranslationBadge } from "./TranslationBadge";
 
 export interface IDataSourceItem {
   title: string;
@@ -28,13 +30,14 @@ interface ISelectSingle {
   placeholder?: string;
   required?: boolean;
   error?: boolean;
+  translationBadge?: boolean;
   onClose?: () => void;
   inputStyle?: React.CSSProperties;
   dropdownStyle?: React.CSSProperties;
   optionsStyle?: React.CSSProperties;
 }
 
-export const SelectSingle: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onSelectValue }) => {
+export const SelectSingle: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onSelectValue, translationBadge }) => {
   const [opened, setOpened] = React.useState(false);
   const [selectTitle, setSelectTitle] = React.useState<string | null | undefined>(null);
   const [selectLabel, setSelectLabel] = React.useState<string | null | undefined>(null);
@@ -59,12 +62,21 @@ export const SelectSingle: React.FC<ISelectSingle> = ({ error, placeholder, data
             {selectIcon ? selectIcon : ""}
             <SInputDropdownTextWrapper>
               {selectLabel && <SInputDropdownLabel required={required}>{selectLabel ? selectLabel : ""}</SInputDropdownLabel>}
-              <SInputDropdownTitle selectTitle={selectTitle} label={selectLabel} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+              {translationBadge &&
+                <SFlex>
+                  <SInputDropdownTitle selectTitle={selectTitle} label={selectLabel} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+                  <SDropdownArrow opened={opened}>
+                    <IconChevronDown size={24}></IconChevronDown>
+                  </SDropdownArrow>
+                </SFlex>}
+              {!translationBadge && <SInputDropdownTitle selectTitle={selectTitle} label={selectLabel} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+              }
             </SInputDropdownTextWrapper>
           </SInputDropdownTextIconWrapper>
-          <SDropdownArrow opened={opened}>
+          {!translationBadge && <SDropdownArrow opened={opened}>
             <IconChevronDown size={24}></IconChevronDown>
-          </SDropdownArrow>
+          </SDropdownArrow>}
+          {translationBadge && <TranslationBadge countryCode="de"></TranslationBadge>}
         </SInputDropdown>
         {opened && (
           <Popover disableTriangle placement="bottom" reference={ref}>

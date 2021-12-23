@@ -8,6 +8,13 @@ const CSSOpened = css`
   }
 `;
 
+const CSSError = css`
+  svg{
+    transform: rotate(-180deg);
+    color: #008CFF;
+  }
+`;
+
 const Bronze = css`
   svg{
     transition: transform 0.25s ease-in-out;

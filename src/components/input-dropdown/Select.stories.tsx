@@ -14,6 +14,10 @@ export default {
       description: "An example boolean argument type",
       control: { type: "boolean" },
     },
+    translationBadge: {
+      description: "An example boolean argument type",
+      control: { type: "boolean" },
+    },
   },
 };
 
@@ -36,11 +40,12 @@ const dataSource = [
   },
 ];
 
-function SelectDemo({ error, required }) {
+function SelectDemo({ error, required, translationBadge }) {
   const [selectValue, setSelectValue] = React.useState(null);
   return <SelectSingle
     error={error}
     required={required}
+    translationBadge={translationBadge}
     dataSource={dataSource}
     placeholder="Select an option.."
     value={selectValue}
@@ -54,10 +59,19 @@ export const Default = Template.bind({});
 Default.args = {
   error: false,
   required: false,
+  translationBadge: false,
 };
 
 export const Required = Template.bind({});
 Required.args = {
   error: false,
   required: true,
+  translationBadge: false,
+};
+
+export const Translation = Template.bind({});
+Translation.args = {
+  error: false,
+  required: false,
+  translationBadge: true,
 };
