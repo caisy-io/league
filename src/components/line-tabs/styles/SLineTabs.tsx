@@ -19,10 +19,11 @@ const Bronze = css<ILineTabsProps>`
   color: var(--text-04);
   max-width: min-content;
   white-space: nowrap;
-  padding-bottom: 1rem;
   display: inline-flex;
   align-items: center;
   margin-left: 1.5rem;
+  height: 48px;
+  box-sizing: border-box;
   ${(props) => props.hover ? CSSHover : ''};
   ${(props) => props.activated ? CSSActivated : ''};
   :hover {
