@@ -1,8 +1,8 @@
 import React from "react";
 
-export function IconClose() {
+export function IconClose({ size = 40 }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 40 40">
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="none" viewBox="0 0 40 40">
       <path
         stroke="currentColor"
         strokeLinecap="round"

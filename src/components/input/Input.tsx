@@ -26,7 +26,11 @@ export const Input: React.FC<IInput> = ({ hasCloseButton, onClose, icon, type = 
     <SInput style={wrapperStyle}>
       {icon && <SInputIcon onClick={onIconClick}>{icon}</SInputIcon>}
       <input ref={ref} {...props} type={type} onKeyUp={(e) => props.onKeyUp?.(e)} />
-      {hasCloseButton && <SInputCloseButton onClick={onClose}>{IconClose()}</SInputCloseButton>}
+      {hasCloseButton && (
+        <SInputCloseButton onClick={onClose}>
+          <IconClose />
+        </SInputCloseButton>
+      )}
     </SInput>
   );
 };
