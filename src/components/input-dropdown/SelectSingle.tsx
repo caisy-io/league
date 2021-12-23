@@ -13,6 +13,10 @@ import { SInputDropdownTitle } from "./styles/SInputDropdownTitle";
 import { SSelectDropdown } from "./styles/SSelectDropdown";
 import { TranslationBadge } from "./TranslationBadge";
 
+/* TO DO 
+- single select is working -> not all styles are correct (add "success" prop after selection maybe)
+- multi select not yet begun */
+
 export interface IDataSourceItem {
   title: string;
   label?: string;
@@ -51,7 +55,7 @@ export const SelectSingle: React.FC<ISelectSingle> = ({ error, placeholder, data
     setSelectIcon(dataSource.find((option) => option.key === e)?.icon);
     setOpened(false);
   };
-
+  
   const { width } = useDimensions(ref);
 
   return (
