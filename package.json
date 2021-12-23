@@ -2,7 +2,8 @@
   "name": "@caisy/league",
   "version": "0.1.17-prerelease1",
   "access": "public",
-  "main": "src/index.ts",
+  "module": "dist/esm/index.js",
+  "types": "dist/types.d.ts",
   "license": "MIT",
   "scripts": {
     "prepare": "install-peers",
