@@ -31,21 +31,21 @@ const iconSize: (size: number) => number = size => {
   switch(size) {
     case 12:
     case 16:
-      return 6;
+      return 8;
     case 20:
     case 24:
     case 28:
     case 32:
-      return 12;
+      return 17.14;
     case 36:
-      return 14;
+      return 17.24;
     case 40:
     case 48:
-      return 18;
+      return 21.18;
     default: 
-      return 12;
+      return 16;
   }
-}
+};
 
 const iconStroke: (size: number) => number = size => {
   switch(size) {
@@ -54,16 +54,17 @@ const iconStroke: (size: number) => number = size => {
     case 20:
     case 24:
     case 28:
-    case 32:
       return 1.2;
-   
+    case 32:
+    case 36:
+      return 1.5;
     case 40:
     case 48:
       return 1.8;
     default: 
       return 1.2;
   }
-} 
+}; 
 
 const Bronze = css<ISPreview>`
   align-items: center;
