@@ -229,6 +229,7 @@ export { IconSecurityAuth } from "./IconSecurityAuth";
 
 
 
+
 export { IconTextAlignLeft } from "./IconTextAlignLeft";
 export { IconTextAlignCenter } from "./IconTextAlignCenter";
 export { IconTextAlignRight } from "./IconTextAlignRight";
@@ -241,3 +242,24 @@ export { IconWrapText } from "./IconWrapText";
 export { IconWrappingBehind } from "./IconWrappingBehind";
 export { IconWrappingFront } from "./IconWrappingFront";
 export { IconFlipHorizontal } from "./IconFlipHorizontal";
+export { IconFlipVertical } from "./IconFlipVertical";
+export { IconTuneImage } from "./IconTuneImage";
+export { IconScaleBigger } from "./IconScaleBigger";
+export { IconScaleSmaller } from "./IconScaleSmaller";
+export { IconEditImageAsset } from "./IconEditImageAsset";
+export { IconPointTarget } from "./IconPointTarget";
+export { IconMarkerTool } from "./IconMarkerTool";
+export { IconEraserTool } from "./IconEraserTool";
+export { IconSquareTool } from "./IconSquareTool";
+export { IconArrowTool } from "./IconArrowTool";
+export { IconTextTool } from "./IconTextTool";
+export { IconCropImage } from "./IconCropImage";
+export { IconCropShape } from "./IconCropShape";
+export { IconImageFilters } from "./IconImageFilters";
+export { IconArrowNone } from "./IconArrowNone";
+export { IconArrowLine } from "./IconArrowLine";
+export { IconArrowTriangle } from "./IconArrowTriangle";
+export { IconArrowReversed } from "./IconArrowReversed";
+export { IconArrowDiamond } from "./IconArrowDiamond";
+export { IconRotateImage } from "./IconRotateImage";
+export { IconCaisyLogo } from "./IconCaisyLogo";
