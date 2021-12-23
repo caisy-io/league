@@ -3,10 +3,22 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../../con
 
 const CSSActive = css`
   border-color: var(--active-ui-03-2);
+  & input::placeholder {
+    color: var(--text-01);
+  }
 `;
 
 const CSSError = css`
   border-color: var(--ui-supportive-01);
+  & input::placeholder {
+    color: var(--text-01);
+  }
+`;
+
+const CSSSuccess = css`
+  & input::placeholder {
+    color: var(--text-01);
+  }
 `;
 
 const Bronze = css`
@@ -25,6 +37,7 @@ const Bronze = css`
 
   ${(props) => props.active && CSSActive};
   ${(props) => props.state && props.state === "error" && CSSError}
+  ${(props) => props.state && props.state === "success" && CSSSuccess}
 `;
 
 const Silver = css``;

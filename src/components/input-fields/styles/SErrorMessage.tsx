@@ -2,10 +2,12 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
+  position: relative;
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
   color: var(--text-06);
+  width: fit-content;
 `;
 
 const Silver = css``;

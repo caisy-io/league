@@ -35,11 +35,11 @@ export default {
   argTypes: {
     state: {
       description: "Changes the state of the input",
-      options: ["error", "success"],
+      options: ["error", "success", "default"],
       control: { type: "select" },
       table: {
         defaultValue: {
-          summary: "success",
+          summary: "default",
         },
       },
     },

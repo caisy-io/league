@@ -7,7 +7,7 @@ import { SSimpleInputRequiredIndicatorContainer } from "./styles/SSimpleInputReq
 import { SSimpleInputTextWidth } from "./styles/SSimpleInputTextWidth";
 import { SSimpleInputWrapper } from "./styles/SSimpleInputWrapper";
 
-type TSimpleInputState = "success" | "error";
+type TSimpleInputState = "success" | "error" | "default";
 
 interface ISimpleInput {
   label?: string;
@@ -98,12 +98,18 @@ export const SimpleInput: FC<ISimpleInput> = ({
         </SSimpleInputRequiredIndicatorContainer>
       )}
 
-      {errors && errors.map((error) => <SErrorMessage>{error}</SErrorMessage>)}
+      {errors &&
+        errors.map((error, index) => (
+          <SErrorMessage>
+            {required && !label && index + 1 === errors.length && <SSimpleInputRequiredIndicator />}
+            {error}
+          </SErrorMessage>
+        ))}
 
       {translationBadge}
 
       <SSimpleInputRequiredIndicatorContainer>
-        {required && !label && <SSimpleInputRequiredIndicator />}
+        {required && !label && (!errors || errors.length === 0) && <SSimpleInputRequiredIndicator />}
         <SSimpleInput
           error={state === "error" && errors?.length === 0}
           onChange={(e) => {
