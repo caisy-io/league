@@ -1,8 +1,7 @@
 {
   "name": "@caisy/league",
-  "version": "0.1.16",
+  "version": "0.1.17-prerelease1",
   "access": "public",
-  
   "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
