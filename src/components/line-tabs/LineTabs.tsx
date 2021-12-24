@@ -1,5 +1,6 @@
-import React, { ReactNode } from 'react';
-import { SLineTabs } from './styles/SLineTabs';
+import React, { ReactNode, useEffect, useState } from "react";
+import { SLineTabs } from "./styles/SLineTabs";
+import { SLineTabsLine } from "./styles/SLineTabsLine";
 
 export interface ILineTabsProps {
   hover?: boolean;
@@ -8,11 +9,12 @@ export interface ILineTabsProps {
   onClick: () => void;
 }
 
-export const LineTabs: React.FC<ILineTabsProps> = ({ ...props }) => {
+export const LineTabs: React.FC<ILineTabsProps> = ({ hover, activated, title, onClick, children }) => {
   return (
-    <SLineTabs {...props}>
-      {props.title}
-      {props.children}
+    <SLineTabs hover={hover} activated={activated} onClick={onClick}>
+      {title}
+      {children}
+      <SLineTabsLine />
     </SLineTabs>
-  )
-}
+  );
+};
