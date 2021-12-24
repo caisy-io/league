@@ -70,7 +70,7 @@ Default.args = {
 
 function TabDemoWithIcon({ content, selected, ...args }) {
   const [currSelected, setSelected] = useState("none");
-  console.log(args)
+
   const handleSelect = (value) => {
     setSelected(value);
   };
