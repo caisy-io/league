@@ -1,6 +1,6 @@
 import React from "react";
 import { LineTabs } from "..";
-import { IconChevronDown, IconClose, IconCross, IconOpenSidebarMenu } from "../..";
+import { IconChevronDown, IconCross, IconOpenSidebarMenu } from "../..";
 import { SDocumentsEditorSubtopNav } from "./styles/SDocumentsEditorSubtopNav";
 import { SDocumentsEditorSubtopNavDocStructure } from "./styles/SDocumentsEditorSubtopNavDocStructure";
 import { SDocumentsEditorSubtopNavIconWrapper } from "./styles/SDocumentsEditorSubtopNavIconWrapper";

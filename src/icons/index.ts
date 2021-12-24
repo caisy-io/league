@@ -195,7 +195,6 @@ export { IconMoveFolder } from "./IconMoveFolder";
 export { IconUndo } from "./IconUndo";
 export { IconRedo } from "./IconRedo";
 export { IconMessageBubbleChat } from "./IconMessageBubbleChat";
-export { IconOpenSidebarMenu } from "./IconOpenSidebarMenu";
 export { IconDocumentVersionsClock } from "./IconDocumentVersionsClock";
 export { IconLinkDocument } from "./IconLinkDocument";
 export { IconFilterSettings } from "./IconFilterSettings";
