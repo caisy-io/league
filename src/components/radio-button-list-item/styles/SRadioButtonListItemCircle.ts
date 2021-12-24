@@ -3,6 +3,11 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const CSSDisabled = css`
   color: var(--disabled-icon);
+  svg {
+    path {
+      stroke: var(--disabled-icon);
+    }
+  }
 `;
 
 const CSSHover = css`
