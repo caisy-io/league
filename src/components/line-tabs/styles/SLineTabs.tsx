@@ -46,12 +46,6 @@ const Bronze = css<ILineTabsProps>`
   :active {
     ${CSSActivated}
   }
-  svg {
-    width: 12px;
-    height: 12px;
-    stroke-width: 1.2px;
-    margin-left: 0.375rem;
-  }
 `;
 
 const Silver = css``;
