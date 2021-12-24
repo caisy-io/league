@@ -25,9 +25,6 @@ export const DocumentsEditorSubtopNav: React.FC<IDocumentsEditorSubtopNav> = ({
   onSelectBlock,
   onViewClick,
 }) => {
-  const handleSelectBlock = (block) => {
-    onSelectBlock(block);
-  };
   return (
     <SDocumentsEditorSubtopNav>
       <SDocumentsEditorSubtopNavDocStructure>
@@ -39,7 +36,7 @@ export const DocumentsEditorSubtopNav: React.FC<IDocumentsEditorSubtopNav> = ({
       <SDocumentsEditorSubtopNavTabsContainer>
         {blocks.map((block) => (
           <SDocumentsEditorSubtopNavTab>
-            <LineTabs activated={selectedBlock === block.name} onClick={() => handleSelectBlock(block.name)}>
+            <LineTabs activated={selectedBlock === block.name} onClick={() => onSelectBlock(block.name)}>
               {block.name}
             </LineTabs>
           </SDocumentsEditorSubtopNavTab>
