@@ -98,7 +98,7 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
       if (row) {
         prepareRow(row);
         return (
-          <tr
+          <STr
             onClick={() => (!!props.onRowClick ? props.onRowClick(row) : () => {})}
             key={index}
             {...row.getRowProps({
@@ -107,16 +107,16 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
           >
             {row.cells.map((cell, cellIndex) => {
               return (
-                <td
+                <STd
                   key={cellIndex}
                   style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block" }}
                   {...cell.getCellProps()}
                 >
                   {cell.render("Cell")}
-                </td>
+                </STd>
               );
             })}
-          </tr>
+          </STr>
         );
       }
       return null;
@@ -137,11 +137,11 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
 
   return (
     <STable ref={containerRef} style={props.style} {...getTableProps()}>
-      <thead ref={headerRef}>
+      <SThead ref={headerRef}>
         {headerGroups.map((headerGroup, headerIndex) => (
-          <tr style={props.rowStyle} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
+          <STr style={props.rowStyle} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column, columnIndex) => (
-              <th
+              <STh
                 {...column.getHeaderProps(column.getSortByToggleProps())}
                 onClick={() => props.onHeaderClick && props.onHeaderClick(column)}
                 key={columnIndex}
@@ -154,11 +154,11 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
                     <IconAngleUp />
                   )
                 ) : null}
-              </th>
+              </STh>
             ))}
-          </tr>
+          </STr>
         ))}
-      </thead>
+      </SThead>
       <STbody {...getTableBodyProps()}>
         {props.loading ? (
           <STableLoading height={height}>
