@@ -1,6 +1,11 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
+const CSSSmall = css`
+  width: 28px;
+  height: 16px;
+`;
+
 const Bronze = css`
   background-color: ${(props) =>
     props.activated ? "var(--active-interactional-tertiary-02);" : "var(--interactional-secondary-01);"};
@@ -19,6 +24,8 @@ const Bronze = css`
   &:active {
     background-color: var(--active-interactional-tertiary-02);
   }
+
+  ${(props) => props.size === "small" && CSSSmall}
 `;
 
 const Silver = css``;

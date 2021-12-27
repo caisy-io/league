@@ -7,12 +7,14 @@ export default {
   argTypes: {},
 };
 
-function ToggleDemo() {
+function ToggleDemo({ small }) {
   const [activated, setActivated] = useState(false);
-  return <Toggle activated={activated} onChange={setActivated} />;
+  return <Toggle size={small ? "small" : undefined} activated={activated} onChange={setActivated} />;
 }
 
 const Template = (args) => <ToggleDemo {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  small: false,
+};

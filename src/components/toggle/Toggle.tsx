@@ -5,12 +5,13 @@ import { SToggleCircle } from "./styles/SToggleCircle";
 interface IToggle {
   activated: boolean;
   onChange: (newValue: boolean) => void;
+  size?: "small";
 }
 
-export const Toggle: React.FC<IToggle> = ({ activated, onChange }) => {
+export const Toggle: React.FC<IToggle> = ({ activated, onChange, size }) => {
   return (
-    <SToggle activated={activated} onClick={() => onChange?.(!activated)}>
-      <SToggleCircle activated={activated} />
+    <SToggle size={size} activated={activated} onClick={() => onChange?.(!activated)}>
+      <SToggleCircle size={size} activated={activated} />
     </SToggle>
   );
 };
