@@ -62,3 +62,4 @@ export * from "./line-tabs";
 export * from "./solidLabel";
 export * from "./toggle";
 export * from "./out-line-label";
+export * from "./menu-list-item";
