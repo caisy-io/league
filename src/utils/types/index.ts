@@ -1,2 +1,2 @@
 export * from './types';
-export { IIconSize } from './IIconSize';
+export type { IIconSize } from './IIconSize';

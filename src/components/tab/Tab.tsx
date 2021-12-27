@@ -1,5 +1,5 @@
 import React from "react";
-import { ISizesWithDefault } from "../..";
+import { ISizesWithDefault } from "../../interfaces";
 import { STab } from "./styles/STab";
 
 interface ITab {

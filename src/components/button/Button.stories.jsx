@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "./Button";
-import { IconLink } from "../..";
-import { Badge, EBadgePosition } from "..";
+import { IconLink } from "../../icons";
+import { Badge, EBadgePosition } from "../badge";
 
 // Default Button Demo
 export default {

@@ -1,6 +1,6 @@
 import React from "react";
-import { IconStarOutlined } from "../..";
-import { NotificationSnackbar } from './NotificationSnackbar';
+import { IconStarOutlined } from "../../icons";
+import { NotificationSnackbar } from "./NotificationSnackbar";
 
 export default {
   title: `Components/NotificationSnackbar`,
