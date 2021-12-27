@@ -74,7 +74,7 @@ Regular_Pop_Up_Menu_with_Scroll.args = {
   listItems: ["Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default"],
 };
 
-export const Regular_Pop_Up_Menu_without_Scroll = Template.bind({});
-Regular_Pop_Up_Menu_without_Scroll.args = {
+export const Regular_Pop_Up_Menu = Template.bind({});
+Regular_Pop_Up_Menu.args = {
   listItems: ["Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default"],
 };
