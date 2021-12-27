@@ -46,6 +46,7 @@ export * from "./stackable";
 export * from "./status";
 export * from "./toggle";
 export * from "./table";
+export * from "./table-row";
 export * from "./tab";
 export * from "./tabs";
 export * from "./theme";
