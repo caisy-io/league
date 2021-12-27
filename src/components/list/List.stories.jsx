@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { List, ListItemLegacy, SelectableListItemLegacy, Button, IconTrashDelete } from "../..";
+import { Button } from "../button";
+import { ListItemLegacy, SelectableListItemLegacy } from "../list-item-legacy";
+import { List } from "../list";
+import { IconTrashDelete } from "../../icons";
 
 const ListFooter = styled.div`
   padding: 16px 32px;
