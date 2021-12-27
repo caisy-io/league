@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { FC } from "react";
 import { 
@@ -58,6 +59,10 @@ import {
   IconMessageChat,
   IconSecurityAuth,
 } from './index';
+
+const IconWrapper: any = styled.div`
+  color: var(--icon-01);
+`
 
 const icons = {
   IconEmojis: ({size}) => <IconEmojis size={size}/>,
@@ -126,7 +131,11 @@ interface IOtherIconsDemo {
 
 const OtherIconsDemo: FC<IOtherIconsDemo> = ({ ...args }) => {
   const Icon = icons[args.icon]
-  return <Icon size={args.size} solid={args.solid}/>;
+  return (
+    <IconWrapper>
+      <Icon size={args.size} solid={args.solid}/>
+    </IconWrapper>
+  );
 };
 
 export default {

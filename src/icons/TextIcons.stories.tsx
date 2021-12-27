@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { FC } from "react";
 import { 
@@ -40,6 +41,10 @@ import {
   IconArrowNone,
   IconCaisyLogo
 } from './index';
+
+const IconWrapper: any = styled.div`
+  color: var(--icon-01);
+`
 
 const icons = {
   // IconLock: ({size, solid }) => <IconLock size={size} solid={solid}/>,
@@ -91,7 +96,11 @@ interface ITextIconsDemo {
 
 const TextIconsDemo: FC<ITextIconsDemo> = ({ ...args }) => {
   const Icon = icons[args.icon]
-  return <Icon size={args.size} solid={args.solid}/>;
+  return (
+    <IconWrapper>
+      <Icon size={args.size} solid={args.solid}/>
+    </IconWrapper>
+  );
 };
 
 export default {
