@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Tab } from "./Tab";
-import { IconStarOutlined } from "../..";
+import { IconStarOutlined } from "../../icons";
 
 // Default Tab Demo
 export default {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Empty } from "../..";
+import { Empty } from "../empty";
 
 function EmptyDemo({ ...args }) {
   return (

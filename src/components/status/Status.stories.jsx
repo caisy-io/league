@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Status } from "../..";
+import { Status } from "../status";
+import { Button } from "../button";
 
 function StatusDemo() {
     const divStyle = {
