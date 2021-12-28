@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Card, SCardBody, SCardHeaderTitle } from "../..";
+import { Card, SCardBody, SCardHeaderTitle } from "../card";
 
 const SDemo = styled.div`
   margin: 32px;

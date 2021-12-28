@@ -1,5 +1,5 @@
 import React from "react";
-import { ISizesWithDefault } from "../..";
+import { ISizesWithDefault } from "../../interfaces";
 import { SButton } from "./styles/SButton";
 
 export type IButtonType = "primary" | "secondary" | "tertiary" | "danger";
