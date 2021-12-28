@@ -36,10 +36,9 @@ interface ITable {
   onRowClick?: (payload: any) => void;
   tableOptions?: any;
   onHeaderClick?: (column: any) => Promise<void>;
-  renderHeaders?: (props: any) => JSX.Element;
 }
 
-export const Table: React.FC<ITable> = ({ dataSource, tableOptions, renderHeaders, ...props }) => {
+export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) => {
   const containerRef = React.useRef<any>({});
   const headerRef = React.useRef<any>({});
   const bodyRef = React.useRef<HTMLDivElement>();
@@ -103,7 +102,7 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, renderHeader
             onClick={() => (!!props.onRowClick ? props.onRowClick(row) : () => {})}
             key={index}
             {...row.getRowProps({
-              style: { ...style, width: withScrollbar ? "calc(100% - 32px)" : "calc(100% - 32px)", ...props.rowStyle },
+              style: { ...style, width: withScrollbar ? "calc(100% - 32px)" : "calc(100%)", ...props.rowStyle },
             })}
           >
             {row.cells.map((cell, cellIndex) => {
@@ -140,38 +139,25 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, renderHeader
     <STable ref={containerRef} style={props.style} {...getTableProps()}>
       <SThead ref={headerRef}>
         {headerGroups.map((headerGroup, headerIndex) => (
-          <STr style={props.rowStyle} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
+          <STr
+            style={{ ...props.rowStyle, width: withScrollbar ? "calc(100% - 32px)" : "calc(100%)" }}
+            key={headerIndex}
+            {...headerGroup.getHeaderGroupProps()}
+          >
             {headerGroup.headers.map((column, columnIndex) => (
               <STh
                 {...column.getHeaderProps(column.getSortByToggleProps())}
                 onClick={() => props.onHeaderClick && props.onHeaderClick(column)}
                 key={columnIndex}
               >
-                {renderHeaders ? (
-                  renderHeaders(
-                    <>
-                      {column.render("Header")}
-                      {column.defaultCanSort !== false && column.isSorted ? (
-                        column.isSortedDesc == "DESC" ? (
-                          <IconAngleDown />
-                        ) : (
-                          <IconAngleUp />
-                        )
-                      ) : null}
-                    </>,
+                {column.render("Header")}
+                {column.defaultCanSort !== false && column.isSorted ? (
+                  column.isSortedDesc == "DESC" ? (
+                    <IconAngleDown />
+                  ) : (
+                    <IconAngleUp />
                   )
-                ) : (
-                  <>
-                    {column.render("Header")}
-                    {column.defaultCanSort !== false && column.isSorted ? (
-                      column.isSortedDesc == "DESC" ? (
-                        <IconAngleDown />
-                      ) : (
-                        <IconAngleUp />
-                      )
-                    ) : null}
-                  </>
-                )}
+                ) : null}
               </STh>
             ))}
           </STr>

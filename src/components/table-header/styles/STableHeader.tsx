@@ -7,7 +7,7 @@ const Bronze = css`
   background-color: var(--ui-02);
   border-bottom: var(--ui-03);
   color: var(--text-04);
-  width: fit-content;
+  width: 100%;
   height: 48px;
 
   display: flex;
