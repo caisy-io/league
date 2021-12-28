@@ -219,7 +219,7 @@ const StatusTemplate = (args) => {
     <TableRowDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
       {args.ghost ? (
         <SGhostWrapper padding="32px 16px">
-          <SGhostSquare height={25} width={50} />
+          <SGhostSquare height={29} width={53.64} />
         </SGhostWrapper>
       ) : (
         <span style={{ padding: "32px 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
