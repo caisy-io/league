@@ -59,3 +59,4 @@ export * from "./sidebar-card";
 export * from "./line-tabs";
 export * from "./solidLabel";
 export * from "./toggle";
+export * from "./component-list-item";

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ISizesWithDefault } from "../../..";
+import { ISizesWithDefault } from "../../../interfaces";
 import {
   CSSProgressiveBody02Semibold,
   CSSProgressiveBody03Semibold,
