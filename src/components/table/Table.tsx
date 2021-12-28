@@ -102,7 +102,7 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
             onClick={() => (!!props.onRowClick ? props.onRowClick(row) : () => {})}
             key={index}
             {...row.getRowProps({
-              style: { ...style, width: withScrollbar ? "calc(100% - 32px)" : "calc(100%)", ...props.rowStyle },
+              style: { ...style, ...props.rowStyle },
             })}
           >
             {row.cells.map((cell, cellIndex) => {
@@ -124,8 +124,6 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
     [prepareRow, rows],
   );
 
-  const withScrollbar = props.itemSize * rows.length > height;
-
   const triggerLoadMoreItems = () => {
     const table = bodyRef.current;
     if (!!table && table.scrollTop / (table.scrollHeight - table.clientHeight) > 0.8) {
@@ -139,11 +137,7 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
     <STable ref={containerRef} style={props.style} {...getTableProps()}>
       <SThead ref={headerRef}>
         {headerGroups.map((headerGroup, headerIndex) => (
-          <STr
-            style={{ ...props.rowStyle, width: withScrollbar ? "calc(100% - 32px)" : "calc(100%)" }}
-            key={headerIndex}
-            {...headerGroup.getHeaderGroupProps()}
-          >
+          <STr style={{ ...props.rowStyle }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column, columnIndex) => (
               <STh
                 {...column.getHeaderProps(column.getSortByToggleProps())}
