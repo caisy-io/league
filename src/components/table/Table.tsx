@@ -149,13 +149,16 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, renderHeader
               >
                 {renderHeaders ? (
                   renderHeaders(
-                    column.defaultCanSort !== false && column.isSorted ? (
-                      column.isSortedDesc == "DESC" ? (
-                        <IconAngleDown />
-                      ) : (
-                        <IconAngleUp />
-                      )
-                    ) : null,
+                    <>
+                      {column.render("Header")}
+                      {column.defaultCanSort !== false && column.isSorted ? (
+                        column.isSortedDesc == "DESC" ? (
+                          <IconAngleDown />
+                        ) : (
+                          <IconAngleUp />
+                        )
+                      ) : null}
+                    </>,
                   )
                 ) : (
                   <>
