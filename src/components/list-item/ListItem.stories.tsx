@@ -1,5 +1,5 @@
 import { ListItem } from "./ListItem";
-import { IconChevronRight, IconDragable, IconGearSettings, IconPin, IconStarOutlined } from "../..";
+import { IconChevronRight, IconDragable, IconGearSettings, IconPin, IconStarOutlined } from "../../icons";
 import { useState } from "react";
 
 function ListItemDemo({ children, activated, onClick, ...props }) {

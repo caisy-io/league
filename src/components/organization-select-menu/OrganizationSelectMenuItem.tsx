@@ -1,5 +1,5 @@
 import React from "react";
-import { Img } from "../..";
+import { Img } from "../../base-components/img";
 import { SOrganizationSelectMenuItem } from "./styles/SOrganizationSelectMenuItem";
 
 interface IOrganizationSelectMenuItem {
