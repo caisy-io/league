@@ -1,5 +1,5 @@
 import React, { FC, forwardRef, useEffect, useRef } from "react";
-import { ISizes } from "../../interfaces/";
+import { ISizes } from "../../interfaces";
 import { EBadgePosition } from "./EBadgePosition";
 import { SBadge } from "./styles/SBadge";
 import { SBadgeIcon } from "./styles/SBadgeIcon";

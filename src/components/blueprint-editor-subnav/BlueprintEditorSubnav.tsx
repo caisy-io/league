@@ -1,6 +1,7 @@
 import React, { FC } from "react";
-import { Badge, LineTabs, EBadgePosition } from "..";
-import { IconArrowDo, IconArrowUndo, IconEdit, IconGearSettings, IconPlusCircle } from "../..";
+import { Badge, EBadgePosition } from "../badge";
+import { LineTabs } from "../line-tabs";
+import { IconArrowDo, IconArrowUndo, IconEdit, IconGearSettings, IconPlusCircle } from "../../icons";
 import { FlatActionButton } from "../flat-action-button/FlatActionButton";
 import { SBlueprintEditorSubnav } from "./styles/SBlueprintEditorSubnav";
 import { SBlueprintEditorSubnavAddButton } from "./styles/SBlueprintEditorSubnavAddButton";
