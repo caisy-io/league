@@ -36,9 +36,10 @@ interface ITable {
   onRowClick?: (payload: any) => void;
   tableOptions?: any;
   onHeaderClick?: (column: any) => Promise<void>;
+  renderHeaders?: (props: any) => JSX.Element;
 }
 
-export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) => {
+export const Table: React.FC<ITable> = ({ dataSource, tableOptions, renderHeaders, ...props }) => {
   const containerRef = React.useRef<any>({});
   const headerRef = React.useRef<any>({});
   const bodyRef = React.useRef<HTMLDivElement>();
@@ -146,14 +147,28 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
                 onClick={() => props.onHeaderClick && props.onHeaderClick(column)}
                 key={columnIndex}
               >
-                {column.render("Header")}
-                {column.defaultCanSort !== false && column.isSorted ? (
-                  column.isSortedDesc == "DESC" ? (
-                    <IconAngleDown />
-                  ) : (
-                    <IconAngleUp />
+                {renderHeaders ? (
+                  renderHeaders(
+                    column.defaultCanSort !== false && column.isSorted ? (
+                      column.isSortedDesc == "DESC" ? (
+                        <IconAngleDown />
+                      ) : (
+                        <IconAngleUp />
+                      )
+                    ) : null,
                   )
-                ) : null}
+                ) : (
+                  <>
+                    {column.render("Header")}
+                    {column.defaultCanSort !== false && column.isSorted ? (
+                      column.isSortedDesc == "DESC" ? (
+                        <IconAngleDown />
+                      ) : (
+                        <IconAngleUp />
+                      )
+                    ) : null}
+                  </>
+                )}
               </STh>
             ))}
           </STr>
