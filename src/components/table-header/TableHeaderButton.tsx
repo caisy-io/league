@@ -15,7 +15,7 @@ export const TableHeaderButton: FC<ITableHeaderButton> = ({ children, locked, so
   return (
     <STableHeaderButton onClick={onClick} locked={locked}>
       {locked ? (
-        <IconLock />
+        <IconLock size={16} solid />
       ) : (
         <STableHeaderButtonIconWrapper>
           <IconDragable size={16} />
