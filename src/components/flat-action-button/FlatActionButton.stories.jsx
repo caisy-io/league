@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatActionButton } from "./FlatActionButton";
-import { IconStarOutlined } from "../..";
+import { IconStarOutlined } from "../../icons";
 
 // Default FlatActionButton Demo
 export default {

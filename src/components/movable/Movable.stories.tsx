@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useRef } from 'react';
-import { Movable, useMove } from ".";
+import {  useMove } from "./Movable.hooks";
+import { Movable } from "./Movable";
 import { move, update } from './Movable.operations';
 
 function MovableDemo() {

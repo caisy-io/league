@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { CSSProgressivePrimaryButtons } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 import { IButtonProps, IButtonType } from "../Button";
-import { ISizesWithDefault } from "../../..";
+import { ISizesWithDefault } from "../../../interfaces";
 
 const getSize = (size?: ISizesWithDefault) => {
   switch (size) {
