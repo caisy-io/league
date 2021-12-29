@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { ILanguageFlagToggleListItemLocale } from "../language-flag-toggle-list-item/LanguageFlagToggleListItem";
 import { TranslationMenu } from "../translation-menu";
 import { BlockEditorSidebar } from "./BlockEditorSidebar";
 import { BlockEditorSidebarListItem } from "./BlockEditorSidebarListItem";
-import { ITranslationMenuLocale } from "..";
 
 // Default BlockEditorSidebar Demo
 export default {
@@ -21,8 +21,7 @@ export default {
 
 const TranslationsComponent = () => {
   const [opened, setOpened] = useState(true);
-  const [locales, setLocales] = useState<ITranslationMenuLocale[]>([
-    { id: "en", name: "English", default: true, active: true },
+  const [locales, setLocales] = useState<ILanguageFlagToggleListItemLocale[]>([
     { id: "de", name: "Deutsch", active: true },
     { id: "es", name: "Spanish", active: true },
     { id: "fr", name: "French", active: false },

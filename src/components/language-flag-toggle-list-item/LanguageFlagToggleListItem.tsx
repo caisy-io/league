@@ -1,7 +1,8 @@
-import React, { FC, useState } from "react";
-import { IconDragable } from "../..";
+import React, { FC } from "react";
+import { IconDragable } from "../../icons";
 import { SLanguageFlagToggleListItem } from "./styles/SLanguageFlagToggleListItem";
-import { Flag, Toggle } from "..";
+import { Flag } from "../flag";
+import { Toggle } from "../toggle";
 import { ICountryCode } from "../flag/IFlag";
 import { SLanguageFlagToggleListItemDragIcon } from "./styles/SLanguageFlagToggleListItemDragIcon";
 import { SLanguageFlagToggleListItemToggleButton } from "./styles/SLanguageFlagToggleListItemToggleButton";

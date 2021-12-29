@@ -15,7 +15,7 @@ import { IconAngleCollapse } from "../../icons/IconAngleCollapse";
 import { IconAngleExpand } from "../../icons/IconAngleExpand";
 import { STranslationMenuRow } from "./styles/STranslationMenuRow";
 import { STranslationMenuRowRight } from "./styles/STranslationMenuRowRight";
-import { ITranslationMenuLegacy, ITranslationMenuLegacyState, ITranslationMenuLegacyLocale } from "./types";
+import { ITranslationMenuLegacy, ITranslationMenuLegacyLocale } from "./types";
 
 export const TranslationMenuLegacy: React.FC<ITranslationMenuLegacy> = ({ initialState, onChange }) => {
   const [expanded, setExpanded] = useState<boolean>(initialState?.expanded || false);

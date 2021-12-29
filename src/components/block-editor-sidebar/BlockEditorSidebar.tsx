@@ -1,6 +1,6 @@
 import React from "react";
-import { LineTabs } from "..";
-import { IconDocuments } from "../..";
+import { LineTabs } from "../line-tabs";
+import { IconDocuments } from "../../icons";
 import { SBlockEditorSidebar } from "./styles/SBlockEditorSidebar";
 import { SBlockEditorSidebarListItem } from "./styles/SBlockEditorSidebarListItem";
 import { SBlockEditorSidebarStatus } from "./styles/SBlockEditorSidebarStatus";

@@ -1,6 +1,7 @@
 import React, { FC } from "react";
-import { Collapsible, MenuDnd } from "..";
-import { IconChevron } from "../..";
+import { Collapsible } from "../collapsible";
+import { MenuDnd } from "../menu-dnd";
+import { IconChevron } from "../../icons";
 import { STranslationMenu } from "./styles/STranslationMenu";
 import { STranslationMenuHeader } from "./styles/STranslationMenuHeader";
 import {

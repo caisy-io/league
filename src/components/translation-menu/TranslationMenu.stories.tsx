@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TranslationMenu } from "../..";
+import { TranslationMenu } from "../translation-menu/TranslationMenu";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { ILanguageFlagToggleListItemLocale } from "../language-flag-toggle-list-item/LanguageFlagToggleListItem";
@@ -7,7 +7,6 @@ import { ILanguageFlagToggleListItemLocale } from "../language-flag-toggle-list-
 function TranslationMenuDemo() {
   const [opened, setOpened] = useState<boolean>(false);
   const [locales, setLocales] = useState<ILanguageFlagToggleListItemLocale[]>([
-    { id: "en" as any, name: "English", active: true },
     { id: "de", name: "Deutsch", active: true },
     { id: "es", name: "Spanish", active: true },
     { id: "fr", name: "French", active: false },
