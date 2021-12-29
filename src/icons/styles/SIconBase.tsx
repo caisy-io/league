@@ -5,17 +5,41 @@ interface ISIconBase {
 }
 
 export const SIconBase = styled.svg<ISIconBase>`
+  ${({ solid }) => solid && "fill: currentColor"};
   path {
-    stroke: var(--icon-01);
-    ${({ solid }) => solid && "fill: var(--icon-01);"}
+    stroke: currentColor;
+  }
+  rect,
+  ellipse,
+  circle {
+    stroke: currentColor;
   }
 
-  path.overwrite {
+  .overwrite {
     stroke: var(--icon-05);
     fill: var(--icon-05);
   }
 
-  path.stroke-transparent {
-    stroke: transparent
+  .transparent-stroke {
+    stroke: transparent;
+  }
+
+  .white-stroke {
+    ${({ solid }) => solid && "stroke: var(--icon-05)"};
+  }
+  .transparent-fill {
+    ${({ solid }) => solid && "fill: transparent"};
+  }
+  
+  .solid-fill {
+    fill: currentColor;
+  }
+  
+  path.white-stroke-path {
+    ${({ solid }) => solid && "stroke: var(--icon-05)"};
+  }
+ 
+  .solid-fill-toogle {
+    fill: ${({ solid }) => solid ? "currentColor" : "transparent"};
   }
 `

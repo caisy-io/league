@@ -1,7 +1,7 @@
 import React from "react";
 import { BulkSelectionSnackbar } from "./BulkSelectionSnackbar";
 import { BulkSelectionSnackbarAction } from "./BulkSelectionSnackbarAction";
-import { IconPublish, IconTrashDelete, IconUnpublish } from "../..";
+import { IconPublish, IconTrashDelete, IconUnpublish } from "../../icons";
 import { SBulkSelectionSnackbarActionsDivider } from "./styles/SBulkSelectionSnackbarActionsDivider";
 
 function BulkSelectionSnackbarDemo({ ...args }) {

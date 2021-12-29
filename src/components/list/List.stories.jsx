@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { List, ListItem, SelectableListItem, Button, IconTrashDelete } from "../..";
+import { Button } from "../button";
+import { ListItemLegacy, SelectableListItemLegacy } from "../list-item-legacy";
+import { List } from "../list";
+import { IconTrashDelete } from "../../icons";
 
 const ListFooter = styled.div`
   padding: 16px 32px;
@@ -100,7 +103,7 @@ function ListDemo() {
           isNextPageLoading={isNextPageLoading}
           loadNextPage={loadNextPage}
           itemSize={66}
-          renderItem={(item) => <ListItem key={item.id} title={item.title} description={item.description} />}
+          renderItem={(item) => <ListItemLegacy key={item.id} title={item.title} description={item.description} />}
           header={header}
         />
       </div>
@@ -113,7 +116,7 @@ function ListDemo() {
           loadNextPage={loadNextPage}
           itemSize={66}
           renderItem={(item) => (
-            <SelectableListItem
+            <SelectableListItemLegacy
               selected={selectedItems.some((itm) => itm === item.id)}
               onSelect={() => onSelect(item.id)}
               onUnselect={() => onUnselect(item.id)}

@@ -1,5 +1,5 @@
 import React, { FC, forwardRef, useEffect, useRef } from "react";
-import { ISizes } from "../../interfaces/";
+import { ISizes } from "../../interfaces";
 import { EBadgePosition } from "./EBadgePosition";
 import { SBadge } from "./styles/SBadge";
 import { SBadgeIcon } from "./styles/SBadgeIcon";
@@ -17,7 +17,6 @@ export interface IBadgeProps {
 }
 
 export const Badge: FC<IBadgeProps> = forwardRef(({ children, value, position, type, size }: IBadgeProps, ref: any) => {
-  
   const badgeRef = useRef<HTMLElement>(null);
   const [width, setWidth] = React.useState(0);
   // calculate width of the badge
@@ -25,9 +24,7 @@ export const Badge: FC<IBadgeProps> = forwardRef(({ children, value, position, t
     const badgeWidth = badgeRef.current ? badgeRef.current.offsetWidth : 0;
     setWidth(badgeWidth);
   }, [value, badgeRef.current]);
-  
-  console.log(width);
-  
+
   return (
     <SBadge ref={ref}>
       <SBadgeIcon ref={badgeRef} value={value} position={position} type={type} size={size} width={width}>

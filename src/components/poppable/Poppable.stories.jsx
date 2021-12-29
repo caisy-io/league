@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
-import Poppable from ".";
-import {useClickOutside, useVisibilityState} from "../..";
+import Poppable from "./Poppable";
+import {useClickOutside, useVisibilityState} from "../../utils/hooks";
 import { Triangle } from "./components/triangle/Triangle";
 import { SPoppableWrapper } from "./styles/SPoppableWrapper"
 import { vbefore, vafter, hcenter } from "./Poppable.placements";
