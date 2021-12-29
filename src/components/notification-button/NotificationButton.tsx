@@ -1,18 +1,27 @@
 import React from "react";
 import { SNotificationButton } from "./styles/SNotificationButton";
+import { SNotificationButtonImageWrapper } from "./styles/SNotificationButtonImageWrapper";
 
-type INotificationButtonIcon = JSX.Element;
-type INotificationButtonImagePreview = JSX.Element;
-
-interface INotificationButton {
-  indicator: INotificationButtonIcon | INotificationButtonImagePreview;
+interface INotificationButtonBasic {
   onClick?: () => void;
 }
 
-export const NotificationButton: React.FC<INotificationButton> = ({ children, indicator, onClick }) => {
+interface INotificationButtonWithIcon extends INotificationButtonBasic {
+  image?: never;
+  icon: JSX.Element;
+}
+
+interface INotificationButtonWithImage extends INotificationButtonBasic {
+  icon?: never;
+  image: JSX.Element;
+}
+
+type INotificationButton = INotificationButtonWithIcon | INotificationButtonWithImage;
+
+export const NotificationButton: React.FC<INotificationButton> = ({ children, image, icon, onClick }) => {
   return (
     <SNotificationButton onClick={onClick}>
-      {indicator}
+      {icon ? <>{icon}</> : <SNotificationButtonImageWrapper>{image}</SNotificationButtonImageWrapper>}
       {children}
     </SNotificationButton>
   );

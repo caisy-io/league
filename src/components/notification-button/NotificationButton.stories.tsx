@@ -1,7 +1,7 @@
 import React from "react";
 import { NotificationButton } from "./NotificationButton";
-import { IconDocumentsComponents, Img } from "../..";
-import { Preview } from "../";
+import { IconDocumentsComponents } from "../../icons";
+import { Img } from "../../base-components/img";
 
 export default {
   title: `Components/Notifications/NotificationButton`,
@@ -15,28 +15,25 @@ export default {
   },
 };
 
-function NotificationButtonDemo({ children, indicator }) {
-  return <NotificationButton indicator={indicator}>{children}</NotificationButton>;
+function NotificationButtonDemo({ children }) {
+  return children;
 }
 
 const UserTemplate = ({ content }) => (
-  <NotificationButtonDemo
-    indicator={
-      <Preview
-        image={
-          <Img
-            lazyload={false}
-            src={
-              "https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!
-            }
-            resolution={48}
-          />
-        }
-        size={20}
-      />
-    }
-  >
-    {content}
+  <NotificationButtonDemo>
+    <NotificationButton
+      image={
+        <Img
+          lazyload={false}
+          src={
+            "https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!
+          }
+          resolution={48}
+        />
+      }
+    >
+      {content}
+    </NotificationButton>
   </NotificationButtonDemo>
 );
 
@@ -46,7 +43,9 @@ User.args = {
 };
 
 const DocumentTemplate = ({ content }) => (
-  <NotificationButtonDemo indicator={<IconDocumentsComponents size={16} />}>{content}</NotificationButtonDemo>
+  <NotificationButtonDemo>
+    <NotificationButton icon={<IconDocumentsComponents size={16} />}>{content}</NotificationButton>
+  </NotificationButtonDemo>
 );
 
 export const Document = DocumentTemplate.bind({});
