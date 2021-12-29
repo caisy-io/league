@@ -3,7 +3,10 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { FC, useState } from "react";
 import RegularPopUpMenu from '.';
 import { IRegularPopUpMenu } from "./RegularPopUpMenu";
-import { IconStarOutlined } from "../..";
+import { SimpleInput } from "../input-fields/simple-input/SimpleInput";
+import { IconStarOutlined } from "../../icons";
+import { RegularPopUpInput } from "./RegularPopUpInput";
+import { RegularPopUpItem } from "./RegularPopUpItem";
 
 const STooglePopUp = styled.h2`
   cursor: pointer;
@@ -13,7 +16,7 @@ const STooglePopUp = styled.h2`
 `
 
 interface IRegularPopUpMenuMemo extends IRegularPopUpMenu {
-  listItems: Array<string>;
+  listItems: Record<string, any>[];
 }
 
 const RegularPopUpMenuDemo: FC<IRegularPopUpMenuMemo> = ({listItems}) => {
@@ -26,19 +29,24 @@ const RegularPopUpMenuDemo: FC<IRegularPopUpMenuMemo> = ({listItems}) => {
   const onChange = (e) => {
     setValue(e.target.value);
   };
+
   return (
     <>
     {toogleModal ? (
-        <RegularPopUpMenu 
-          onClose={onToggleModal}
-          headerLabel="Label"
-          onChange={onChange}
-          inputValue={value}
-          menuItemsList={listItems}
-          inputLabel="Label"
-          placeholder="Defalut"
-          icon={<IconStarOutlined />}
-        />
+      <RegularPopUpMenu title="Default" onClose={onToggleModal}>
+
+          <RegularPopUpInput>
+            <SimpleInput label='Label' placeholder="Default" onChange={onChange} value={value}/>
+          </RegularPopUpInput>
+
+          {listItems.map((item, ind) => {
+            return (
+              <RegularPopUpItem key={`menu-item-${ind}`}>
+                <div> <IconStarOutlined/> <span>{item}</span> </div>
+              </RegularPopUpItem>
+          )})}
+          
+      </RegularPopUpMenu>
       ) : (
         <STooglePopUp onClick={() => onToggleModal()}>Click me!!</STooglePopUp>
     )}

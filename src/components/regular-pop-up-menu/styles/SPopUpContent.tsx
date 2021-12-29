@@ -24,4 +24,3 @@ export const SPopUpContent = styled.div<ISPopUpHeader>`
   height: 561px;
   overflow: auto;
 `;
-

@@ -1,47 +1,30 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import { ModalHeader } from "..";
 import { ModalHeaderTitle } from "..";
-import { MenuListItem } from "../menu-list-item/MenuListItem";
-import { SimpleInput } from "../input-fields/simple-input/SimpleInput";
 import { SRegularPopUpMenu } from "./styles/SRegularPopUpMenu";
 import { SPopUpHeader } from "./styles/SPopUpHeader";
 import { SPopUpContent } from "./styles/SPopUpContent";
-import { SPopUpInput } from "./styles/SPopUpInput";
-import { SPopUpItem } from "./styles/SPopUpItem";
+
 
 export interface IRegularPopUpMenu {
   onClose?: () => any;
-  headerLabel?: string;
-  menuItemsList?: Array<ReactNode>;
-  onChange?: any;
-  inputValue?: any;
-  inputLabel?: string;
-  placeholder?: string;
-  icon?: ReactNode; 
+  title?: string;
 }
 
-const RegularPopUpMenu: FC<IRegularPopUpMenu> = ({onClose, headerLabel, onChange, inputValue, menuItemsList, inputLabel, placeholder, icon }) => {
+const RegularPopUpMenu: FC<IRegularPopUpMenu> = ({onClose, title, children}) => {
   return (
     <SRegularPopUpMenu>
+     
       <SPopUpHeader>
         <ModalHeader onClose={onClose}>
-          <ModalHeaderTitle>{headerLabel}</ModalHeaderTitle>
+          <ModalHeaderTitle>{title}</ModalHeaderTitle>
         </ModalHeader>
       </SPopUpHeader>
-
+     
       <SPopUpContent>
-        <SPopUpInput>
-          <SimpleInput label={inputLabel} placeholder={placeholder} onChange={onChange} value={inputValue}/>
-        </SPopUpInput>
-
-        {menuItemsList?.map((item, ind) =>
-          <SPopUpItem key={`${ind}-menu-item`}>
-            <MenuListItem >
-              <div> {icon && icon} <span>{`${item} ${ind + 1}`}</span> </div>
-            </MenuListItem>
-          </SPopUpItem>
-        )}
+        {children}
       </SPopUpContent> 
+
     </SRegularPopUpMenu>
   )
 }
