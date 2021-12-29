@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ISizesWithDefault } from "../../..";
+import { ISizesWithDefault } from "../../../interfaces";
 import {
   CSSProgressiveBody02Semibold,
   CSSProgressiveBody03Semibold,
@@ -16,25 +16,19 @@ interface ISTab {
 const CSSActivated = css`
   color: var(--text-01);
   background-color: var(--active-ui-01-1);
+  path {
+    stroke: var(--text-01);
+  }
 `;
 
 const CSSMicro = css`
   padding: 4px 6px;
   gap: 4px;
-  svg {
-    height: 12px;
-    width: 12px;
-  }
   ${CSSProgressiveCaption01Semibold};
 `;
 
 const CSSSmall = css`
   padding: 4px 8px;
-
-  svg {
-    height: 12px;
-    width: 12px;
-  }
 `;
 
 const CSSMedium = css`
@@ -44,10 +38,6 @@ const CSSMedium = css`
 const CSSDefault = css`
   padding: 8px 12px;
   gap: 10px;
-  svg {
-    height: 18px;
-    width: 18px;
-  }
   ${CSSProgressiveBody02Semibold}
 `;
 
@@ -75,9 +65,8 @@ const Bronze = css<ISTab>`
   display: flex;
   align-items: center;
   gap: 8px;
-  svg {
-    height: 14px;
-    width: 14px;
+  path {
+    stroke: var(--text-04);
   }
   ${CSSProgressiveBody03Semibold};
 

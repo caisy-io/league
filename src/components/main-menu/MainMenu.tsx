@@ -1,5 +1,5 @@
 import React from "react";
-import { Img } from "../..";
+import { Img } from "../../base-components/img";
 import { SMainMenu } from "./styles/SMainMenu";
 import { SMainMenuDivider } from "./styles/SMainMenuDivider";
 import { SMainMenuLogoContainer } from "./styles/SMainMenuLogoContainer";
