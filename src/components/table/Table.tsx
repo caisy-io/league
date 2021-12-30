@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { STable } from "./styles/STable";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
@@ -18,6 +18,7 @@ export interface IColumn {
   key: string;
   defaultCanSort?: boolean;
   renderItem?: (cellValue: any, index: number) => JSX.Element;
+  style?: CSSProperties;
 }
 
 interface ITable {
@@ -58,11 +59,13 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
                 accessor: column.key,
                 Cell: (cellProps) => (column.renderItem as any)(cellProps.cell.value, cellProps.cell.row.index),
                 defaultCanSort: column.defaultCanSort,
+                style: column.style,
               }
             : {
                 Header: column.header,
                 accessor: column.key,
                 defaultCanSort: column.defaultCanSort,
+                style: column.style,
               };
         }),
       );
@@ -106,10 +109,11 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
             })}
           >
             {row.cells.map((cell, cellIndex) => {
+              console.log(cell);
               return (
                 <STd
                   key={cellIndex}
-                  style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block" }}
+                  style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell.value.style }}
                   {...cell.getCellProps()}
                 >
                   {cell.render("Cell")}
@@ -138,22 +142,26 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
       <SThead ref={headerRef}>
         {headerGroups.map((headerGroup, headerIndex) => (
           <STr style={{ ...props.rowStyle }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column, columnIndex) => (
-              <STh
-                {...column.getHeaderProps(column.getSortByToggleProps())}
-                onClick={() => props.onHeaderClick && props.onHeaderClick(column)}
-                key={columnIndex}
-              >
-                {column.render("Header")}
-                {column.defaultCanSort !== false && column.isSorted ? (
-                  column.isSortedDesc == "DESC" ? (
-                    <IconAngleDown />
-                  ) : (
-                    <IconAngleUp />
-                  )
-                ) : null}
-              </STh>
-            ))}
+            {headerGroup.headers.map((column, columnIndex) => {
+              console.log(column);
+              return (
+                <STh
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  onClick={() => props.onHeaderClick && props.onHeaderClick(column)}
+                  key={columnIndex}
+                  style={{ ...column.style }}
+                >
+                  {column.render("Header")}
+                  {column.defaultCanSort !== false && column.isSorted ? (
+                    column.isSortedDesc == "DESC" ? (
+                      <IconAngleDown />
+                    ) : (
+                      <IconAngleUp />
+                    )
+                  ) : null}
+                </STh>
+              );
+            })}
           </STr>
         ))}
       </SThead>

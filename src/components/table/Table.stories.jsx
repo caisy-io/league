@@ -10,7 +10,13 @@ function TableDemo() {
       name: "testName",
       lastName: "testLastNameas,mdnasmdnas,mdnas,mdn,masdn,masdajhsdasdgasd",
       id: 0,
-      actions: { id: 0 },
+      actions: {
+        id: 0,
+        style: {
+          width: 32,
+          flex: "none",
+        },
+      },
     },
     {
       name: "testName 1",
@@ -93,6 +99,10 @@ function TableDemo() {
           </Button>
         </div>
       ),
+      style: {
+        width: 32,
+        flex: "none",
+      },
     },
   ];
 
