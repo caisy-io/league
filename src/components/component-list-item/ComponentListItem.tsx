@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
-import { IconCheckmarkOutlined, Img } from "../..";
+import { IconCheckmarkOutlined } from "../../icons";
+import { Img } from "../../base-components/img";
 import { IconCheckmarkSolid } from "../../icons/IconCheckmarkSolid";
 import { IconCircle } from "../../icons/IconCircle";
 import { IconTags } from "../../icons/IconTags";
