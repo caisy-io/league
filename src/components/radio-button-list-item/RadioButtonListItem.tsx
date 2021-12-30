@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { IconCheckmarkOutlined, IconCircle, IconCheckmarkSolid } from "../..";
+import { IconCheckmarkOutlined, IconCircle, IconCheckmarkSolid } from "../../icons";
 import { SRadioButtonListItem } from "./styles/SRadioButtonListItem";
 import { SRadioButtonListItemCircle } from "./styles/SRadioButtonListItemCircle";
 
