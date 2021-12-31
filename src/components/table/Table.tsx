@@ -25,7 +25,6 @@ interface ITable {
   columns: IColumn[];
   dataSource: any;
   globalFilter?: string;
-  width?: number;
   itemSize: number;
   isNextPageLoading?: boolean;
   loadNextPage?: () => Promise<void>;
@@ -39,20 +38,35 @@ interface ITable {
   onHeaderClick?: (column: any) => Promise<void>;
 }
 
-export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) => {
+export const Table: React.FC<ITable> = ({
+  dataSource,
+  tableOptions,
+  globalFilter,
+  itemSize,
+  isNextPageLoading,
+  loadNextPage,
+  hasNextPage,
+  loading,
+  emptyMessage,
+  style,
+  rowStyle,
+  onRowClick,
+  onHeaderClick,
+  columns,
+}) => {
   const containerRef = React.useRef<any>({});
   const headerRef = React.useRef<any>({});
   const bodyRef = React.useRef<HTMLDivElement>();
-  const [columns, setColumns] = React.useState<any[]>([]);
+  const [innerColumns, setColumns] = React.useState<any[]>([]);
 
   const { height: containerHeight } = useDimensions(containerRef);
   const { height: headerHeight } = useDimensions(headerRef);
   const height = containerHeight - headerHeight;
 
   React.useEffect(() => {
-    props.columns &&
+    columns &&
       setColumns(
-        props.columns.map((column) => {
+        columns.map((column) => {
           return !!column.renderItem
             ? {
                 Header: column.header,
@@ -69,11 +83,11 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
               };
         }),
       );
-  }, [props.columns]);
+  }, [columns]);
 
   // Only load 1 page of items at a time.
   // Pass an empty callback to InfiniteLoader in case it asks us to load more than once.
-  const loadMoreItems = props.isNextPageLoading ? () => {} : props.loadNextPage;
+  const loadMoreItems = isNextPageLoading ? () => {} : loadNextPage;
 
   // Every row is loaded except for our loading indicator row.
   // const isItemLoaded = (index) => !props.hasNextPage || index < props.dataSource.length;
@@ -83,7 +97,7 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, setGlobalFilter } = useTable(
     {
-      columns,
+      columns: innerColumns,
       data: dataSource,
       ...(tableOptions ? tableOptions : {}),
     },
@@ -92,8 +106,8 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
   );
 
   React.useEffect(() => {
-    setGlobalFilter(props.globalFilter);
-  }, [props.globalFilter]);
+    setGlobalFilter(globalFilter);
+  }, [globalFilter]);
 
   const RenderRow = React.useCallback(
     ({ index, style }) => {
@@ -102,10 +116,10 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
         prepareRow(row);
         return (
           <STr
-            onClick={() => (!!props.onRowClick ? props.onRowClick(row) : () => {})}
+            onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
             key={index}
             {...row.getRowProps({
-              style: { ...style, ...props.rowStyle },
+              style: { ...style, rowStyle },
             })}
           >
             {row.cells.map((cell, cellIndex) => {
@@ -131,23 +145,23 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
   const triggerLoadMoreItems = () => {
     const table = bodyRef.current;
     if (!!table && table.scrollTop / (table.scrollHeight - table.clientHeight) > 0.8) {
-      props.hasNextPage && (loadMoreItems as any)();
+      hasNextPage && (loadMoreItems as any)();
     }
   };
 
   const onScroll = debounce(() => triggerLoadMoreItems(), 160);
 
   return (
-    <STable ref={containerRef} style={props.style} {...getTableProps()}>
+    <STable ref={containerRef} style={style} {...getTableProps()}>
       <SThead ref={headerRef}>
         {headerGroups.map((headerGroup, headerIndex) => (
-          <STr style={{ ...props.rowStyle }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
+          <STr style={{ ...rowStyle }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column, columnIndex) => {
               console.log(column);
               return (
                 <STh
                   {...column.getHeaderProps(column.getSortByToggleProps())}
-                  onClick={() => props.onHeaderClick && props.onHeaderClick(column)}
+                  onClick={() => onHeaderClick && onHeaderClick(column)}
                   key={columnIndex}
                   style={{ ...column.style }}
                 >
@@ -166,7 +180,7 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
         ))}
       </SThead>
       <STbody {...getTableBodyProps()}>
-        {props.loading ? (
+        {loading ? (
           <STableLoading height={height}>
             <IconLoading />
           </STableLoading>
@@ -176,13 +190,13 @@ export const Table: React.FC<ITable> = ({ dataSource, tableOptions, ...props }) 
             outerRef={bodyRef}
             className="league-table"
             height={height}
-            itemSize={props.itemSize}
+            itemSize={itemSize}
             itemCount={dataSource?.length || 0}
           >
             {RenderRow}
           </FixedSizeList>
         ) : (
-          <Empty type="schema" title="" description={props.emptyMessage ? props.emptyMessage : "No data found."} />
+          <Empty type="schema" title="" description={emptyMessage ? emptyMessage : "No data found."} />
         )}
       </STbody>
     </STable>
