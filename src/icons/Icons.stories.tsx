@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { FC } from "react";
 import { 
@@ -13,6 +14,10 @@ import {
   IconUpload,
   IconComponents,
 } from './index';
+
+const IconWrapper: any = styled.div`
+  color: var(--icon-01);
+`
 
 const icons = {
   IconDocumentsComponents: ({size}) => <IconDocumentsComponents size={size}/>,
@@ -35,7 +40,11 @@ interface IMainMenuIconDemo {
 
 const MainMenuIconDemo: FC<IMainMenuIconDemo> = ({ ...args }) => {
   const Icon = icons[args.icon]
-  return <Icon size={args.size}/>;
+  return (
+    <IconWrapper>
+      <Icon size={args.size}/>
+    </IconWrapper>
+  );
 };
 
 export default {

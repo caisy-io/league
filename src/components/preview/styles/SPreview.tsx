@@ -31,21 +31,21 @@ const iconSize: (size: number) => number = size => {
   switch(size) {
     case 12:
     case 16:
-      return 6;
+      return 8;
     case 20:
     case 24:
     case 28:
     case 32:
-      return 12;
+      return 17.14;
     case 36:
-      return 14;
+      return 17.24;
     case 40:
     case 48:
-      return 18;
+      return 21.18;
     default: 
-      return 12;
+      return 16;
   }
-}
+};
 
 const iconStroke: (size: number) => number = size => {
   switch(size) {
@@ -54,21 +54,41 @@ const iconStroke: (size: number) => number = size => {
     case 20:
     case 24:
     case 28:
-    case 32:
       return 1.2;
-   
+    case 32:
+    case 36:
+      return 1.5;
     case 40:
     case 48:
       return 1.8;
     default: 
       return 1.2;
   }
-} 
+}; 
+const borderRadius: (size: number) => number = size => {
+  switch(size) {
+    case 12:
+    case 16:
+      case 20:
+      return 3;
+    case 24:
+      return 4;
+    case 28:
+    case 32:
+    case 36:
+    case 40:
+      return 6;
+    case 48:
+      return 8;
+    default: 
+      return 4;
+  }
+}; 
 
 const Bronze = css<ISPreview>`
   align-items: center;
   background-color: ${({ isFlag }) => !isFlag && "var(--ui-03)"};
-  border-radius: ${({ isFlag }) => !isFlag && "4px"};
+  border-radius: ${({ isFlag, size }) => !isFlag && borderRadius(size)}px;
   color: var(--text-04);
   display: flex;
   flex-shrink: 0;

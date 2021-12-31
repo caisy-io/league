@@ -1,17 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  Modal,
-  ModalFooter,
-  ModalHeader,
-  ModalHeaderTitle,
-  ModalContent,
-  Button,
-  IconClose,
-  IconInfo,
-  Img,
-  SModalHeaderCloseIcon,
-} from "../..";
+import { IconClose, IconInfo } from "../../icons";
+import { Img } from "../../base-components/img";
+import { Button } from "../button";
+import { Modal, ModalFooter, ModalHeader, ModalHeaderTitle, ModalContent, SModalHeaderCloseIcon } from "../modal";
 
 function ModalDemo() {
     const showcaseStyles = {

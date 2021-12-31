@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "../..";
+import { Button } from "../button";
 import { Tabs, TabPanel } from "./Tabs";
 import { IconStarOutlined } from "../../icons/IconStarOutlined";
 

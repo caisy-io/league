@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { Badge, EBadgePosition } from '..';
+import { Badge, EBadgePosition } from '../badge';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import Preview from '../preview';
 import { IPreview } from '../preview/Preview';
