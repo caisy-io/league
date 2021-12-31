@@ -141,7 +141,7 @@ function TableDemo() {
         hasNextPage={hasNextPage}
         itemSize={57}
         globalFilter={globalFilter}
-        dataSource={[]}
+        dataSource={dataSource}
         columns={columns}
       />
     </div>
