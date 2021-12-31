@@ -36,7 +36,7 @@ const RegularPopUpMenuDemo: FC<IRegularPopUpMenuMemo> = ({listItems}) => {
       <RegularPopUpMenu title="Default" onClose={onToggleModal}>
 
           <RegularPopUpInput>
-            <SimpleInput label='Label' placeholder="Default" onChange={onChange} value={value}/>
+            <SimpleInput label="Label" placeholder="Default" onChange={onChange} value={value}/>
           </RegularPopUpInput>
 
           {listItems.map((item, ind) => {
