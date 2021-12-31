@@ -2,28 +2,20 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const CSSSmall = css`
-  width: 28px;
-  height: 16px;
+  height: 12px;
+  width: 12px;
+  right: ${(props) => (props.activated ? "2px" : "14px")};
 `;
 
 const Bronze = css`
-  background-color: ${(props) =>
-    props.activated ? "var(--active-interactional-tertiary-02);" : "var(--interactional-secondary-01);"};
-  border-radius: 23.1px;
-  width: 32px;
-  height: 20px;
-  position: relative;
-  display: flex;
-  align-items: center;
+  background-color: var(--ui-01);
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  right: ${(props) => (props.activated ? "3px" : "15px")};
 
-  transition: background-color 200ms;
-
-  cursor: pointer;
-
-  &:hover,
-  &:active {
-    background-color: var(--active-interactional-tertiary-02);
-  }
+  transition: right 200ms;
 
   ${(props) => props.size === "small" && CSSSmall}
 `;
@@ -36,7 +28,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SToggle = styled.div`
+export const SToggleCircle = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
