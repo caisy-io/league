@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, FC, ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { STable } from "./styles/STable";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
@@ -7,14 +7,15 @@ import { STd } from "./styles/STd";
 import { STbody } from "./styles/STbody";
 import { SThead } from "./styles/SThead";
 import { STableLoading } from "./styles/STableLoading";
-import { IconAngleDown, IconAngleUp, IconLoading } from "../../icons";
+import { IconAngleDown, IconAngleUp } from "../../icons";
 import { FixedSizeList } from "react-window";
 import { Empty } from "../empty/Empty";
 import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
+import { Spinner } from "../spinner";
 
 export interface IColumn {
-  header: React.ReactNode;
+  header: ReactNode;
   key: string;
   defaultCanSort?: boolean;
   renderItem?: (cellValue: any, index: number) => JSX.Element;
@@ -31,14 +32,14 @@ interface ITable {
   hasNextPage?: boolean;
   loading?: boolean;
   emptyMessage?: string;
-  style?: React.CSSProperties;
-  rowStyle?: React.CSSProperties;
+  style?: CSSProperties;
+  rowStyle?: CSSProperties;
   onRowClick?: (payload: any) => void;
   tableOptions?: any;
   onHeaderClick?: (column: any) => Promise<void>;
 }
 
-export const Table: React.FC<ITable> = ({
+export const Table: FC<ITable> = ({
   dataSource,
   tableOptions,
   globalFilter,
@@ -54,16 +55,16 @@ export const Table: React.FC<ITable> = ({
   onHeaderClick,
   columns,
 }) => {
-  const containerRef = React.useRef<any>({});
-  const headerRef = React.useRef<any>({});
-  const bodyRef = React.useRef<HTMLDivElement>();
-  const [innerColumns, setColumns] = React.useState<any[]>([]);
+  const containerRef = useRef<any>({});
+  const headerRef = useRef<any>({});
+  const bodyRef = useRef<HTMLDivElement>();
+  const [innerColumns, setColumns] = useState<any[]>([]);
 
   const { height: containerHeight } = useDimensions(containerRef);
   const { height: headerHeight } = useDimensions(headerRef);
   const height = containerHeight - headerHeight;
 
-  React.useEffect(() => {
+  useEffect(() => {
     columns &&
       setColumns(
         columns.map((column) => {
@@ -105,11 +106,11 @@ export const Table: React.FC<ITable> = ({
     useSortBy,
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     setGlobalFilter(globalFilter);
   }, [globalFilter]);
 
-  const RenderRow = React.useCallback(
+  const RenderRow = useCallback(
     ({ index, style }) => {
       const row = rows[index];
       if (row) {
@@ -180,7 +181,7 @@ export const Table: React.FC<ITable> = ({
       <STbody {...getTableBodyProps()}>
         {loading ? (
           <STableLoading height={height}>
-            <IconLoading />
+            <Spinner />
           </STableLoading>
         ) : dataSource?.length ? (
           <FixedSizeList

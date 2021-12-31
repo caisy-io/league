@@ -7,8 +7,6 @@ interface ISEmpty {
 
 const Bronze = css<ISEmpty>`
   position: relative;
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: ${(props) => (props.type === "schema" ? "column" : "row")};
   gap: ${(props) => (props.type === "schema" ? "8px" : "16px")};
