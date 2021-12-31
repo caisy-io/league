@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IconChevronUp, IconDragable, IconLock } from "../..";
+import { IconChevronUp, IconDragable, IconLock } from "../../icons";
 import { IconSortAsc } from "../../icons/IconSortAsc";
 import { STableHeaderButton } from "./styles/STableHeaderButton";
 import { STableHeaderButtonIconWrapper } from "./styles/STableHeaderButtonIconWrapper";

@@ -1,6 +1,6 @@
 import { TableHeader } from "./TableHeader";
 import { TableHeaderButton } from "./TableHeaderButton";
-import { IconDotsHorizontal } from "../..";
+import { IconDotsHorizontal } from "../../icons";
 import { useState } from "react";
 
 function TableHeaderDemo({ children }) {
