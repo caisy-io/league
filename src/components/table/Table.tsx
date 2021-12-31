@@ -123,7 +123,6 @@ export const Table: React.FC<ITable> = ({
             })}
           >
             {row.cells.map((cell, cellIndex) => {
-              console.log(cell);
               return (
                 <STd
                   key={cellIndex}
@@ -157,7 +156,6 @@ export const Table: React.FC<ITable> = ({
         {headerGroups.map((headerGroup, headerIndex) => (
           <STr style={{ ...rowStyle }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column, columnIndex) => {
-              console.log(column);
               return (
                 <STh
                   {...column.getHeaderProps(column.getSortByToggleProps())}
