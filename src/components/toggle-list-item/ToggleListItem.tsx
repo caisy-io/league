@@ -32,7 +32,7 @@ export const ToggleListItem: FC<IToggleListItem> = ({ children, size, onChange, 
       </SToggleListItemChildren>
       <SToggleListItemToggleWrapper withDescription={withDescription}>
         <Toggle
-          value={active}
+          activated={active}
           onChange={() => {
             onChange(active);
           }}

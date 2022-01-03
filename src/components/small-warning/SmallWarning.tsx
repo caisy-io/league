@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconWarningHex } from '../..';
+import { IconWarningHex } from '../../icons';
 import { SSmallWarning } from './styles/SSmallWarning';
 import { SSmallWarningText } from './styles/SSmallWarningText';
 

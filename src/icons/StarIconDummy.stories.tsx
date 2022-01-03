@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 import { 
@@ -23,7 +24,11 @@ export default {
   },
 } as ComponentMeta<typeof IconStarOutlined>;
 
-const Template:  ComponentStory<typeof IconStarOutlined>= (args) => <IconStarOutlined  {...args} />;
+const IconWrapper: any = styled.div`
+  color: var(--icon-01);
+`
+
+const Template:  ComponentStory<typeof IconStarOutlined>= (args) => <IconWrapper> <IconStarOutlined  {...args} /> </IconWrapper> ;
 
 export const StarIconDummy = Template.bind({});
 StarIconDummy.args = {

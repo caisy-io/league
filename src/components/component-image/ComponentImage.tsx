@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
-import { SComponentImage } from './styles/SComponentImage';
-import { SInnerRectangle } from './styles/SInnerRectangle';
+import React, { ReactNode } from "react";
+import { SComponentImage } from "./styles/SComponentImage";
+import { SInnerRectangle } from "./styles/SInnerRectangle";
 
-export type IComponentImageTypes = "open" | "grid" | "list item";
+export type IComponentImageTypes = "open" | "grid" | "list-item";
 
 interface IComponentImage {
   type?: IComponentImageTypes;
@@ -12,9 +12,7 @@ interface IComponentImage {
 export const ComponentImage: React.FC<IComponentImage> = ({ type, image }) => {
   return (
     <SComponentImage type={type}>
-      <SInnerRectangle type={type}>
-        {image}
-      </SInnerRectangle>
+      <SInnerRectangle type={type}>{image}</SInnerRectangle>
     </SComponentImage>
-  )
-}
+  );
+};
