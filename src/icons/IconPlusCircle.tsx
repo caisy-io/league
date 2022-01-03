@@ -69,3 +69,4 @@ const IconSize = {
 };
 
 export const IconPlusCircle: FC<IIconSize> = ({ size = 24 }) => IconSize[size];
+
