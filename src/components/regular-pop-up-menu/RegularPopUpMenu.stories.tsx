@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { FC, useState } from "react";
-import RegularPopUpMenu from '.';
+import RegularPopUpMenu from './RegularPopUpMenu';
 import { IRegularPopUpMenu } from "./RegularPopUpMenu";
 import { SimpleInput } from "../input-fields/simple-input/SimpleInput";
 import { IconStarOutlined } from "../../icons";
