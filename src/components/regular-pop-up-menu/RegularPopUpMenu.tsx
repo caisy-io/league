@@ -4,6 +4,7 @@ import { ModalHeaderTitle } from "../modal";
 import { SRegularPopUpMenu } from "./styles/SRegularPopUpMenu";
 import { SPopUpHeader } from "./styles/SPopUpHeader";
 import { SPopUpContent } from "./styles/SPopUpContent";
+import { Scrollbar } from '../scrollbar';
 
 export interface IRegularPopUpMenu {
   onClose?: () => any;
@@ -21,7 +22,9 @@ const RegularPopUpMenu: FC<IRegularPopUpMenu> = ({onClose, title, children}) => 
       </SPopUpHeader>
      
       <SPopUpContent>
-        {children}
+        <Scrollbar>
+          {children}
+        </Scrollbar>
       </SPopUpContent> 
 
     </SRegularPopUpMenu>
