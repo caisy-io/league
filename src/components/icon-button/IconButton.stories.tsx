@@ -4,7 +4,7 @@ import { IconStarOutlined } from "../../icons";
 import { Badge, EBadgePosition } from "../badge";
 
 export default {
-  title: `Components/IconButton`,
+  title: `Components/Buttons/IconButton`,
   component: IconButtonDemo,
   argTypes: {
     type: {
