@@ -6,7 +6,7 @@ const CSSOpened = css`
     transform: rotate(-180deg);
   }
   svg path {
-    stroke: #008CFF;
+    stroke: #172C55;
   }
 `;
 

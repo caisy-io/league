@@ -13,10 +13,6 @@ import { SInputDropdownTitle } from "./styles/SInputDropdownTitle";
 import { SSelectDropdown } from "./styles/SSelectDropdown";
 import { TranslationBadge } from "./TranslationBadge";
 
-/* TO DO 
-- single select is working -> not all styles are correct (add "success" prop after selection maybe)
-- multi select not yet begun */
-
 export interface IDataSourceItem {
   title: string;
   label?: string;
@@ -41,7 +37,7 @@ interface ISelectSingle {
   optionsStyle?: React.CSSProperties;
 }
 
-export const SelectSingle: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onSelectValue, translationBadge }) => {
+export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onSelectValue, translationBadge }) => {
   const [opened, setOpened] = React.useState(false);
   const [selectTitle, setSelectTitle] = React.useState<string | null | undefined>(null);
   const [selectLabel, setSelectLabel] = React.useState<string | null | undefined>(null);
@@ -55,7 +51,7 @@ export const SelectSingle: React.FC<ISelectSingle> = ({ error, placeholder, data
     setSelectIcon(dataSource.find((option) => option.key === e)?.icon);
     setOpened(false);
   };
-  
+
   const { width } = useDimensions(ref);
 
   return (
@@ -65,7 +61,7 @@ export const SelectSingle: React.FC<ISelectSingle> = ({ error, placeholder, data
           <SInputDropdownTextIconWrapper>
             {selectIcon ? selectIcon : ""}
             <SInputDropdownTextWrapper>
-              {selectLabel && <SInputDropdownLabel required={required}>{selectLabel ? selectLabel : ""}</SInputDropdownLabel>}
+              {selectLabel && <SInputDropdownLabel error={error} required={required} opened={opened}>{selectLabel ? selectLabel : ""}</SInputDropdownLabel>}
               {translationBadge &&
                 <SFlex>
                   <SInputDropdownTitle selectTitle={selectTitle} label={selectLabel} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>

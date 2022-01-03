@@ -1,10 +1,10 @@
 import React from "react";
 import { IconStarOutlined } from "../../icons/IconStarOutlined";
-import { SelectSingle } from "./SelectSingle";
+import { SimpleInputDropdown } from "./SimpleInputDropdown";
 
 export default {
-  title: "Components/Forms/SingleSelect",
-  component: SelectDemo,
+  title: "Components/Forms/SimpleInputDropdown",
+  component: SimpleInputDropdownDemo,
   argTypes: {
     required: {
       description: "An example boolean argument type",
@@ -40,9 +40,9 @@ const dataSource = [
   },
 ];
 
-function SelectDemo({ error, required, translationBadge }) {
+function SimpleInputDropdownDemo({ error, required, translationBadge }) {
   const [selectValue, setSelectValue] = React.useState(null);
-  return <SelectSingle
+  return <SimpleInputDropdown
     error={error}
     required={required}
     translationBadge={translationBadge}
@@ -53,7 +53,7 @@ function SelectDemo({ error, required, translationBadge }) {
   />
 }
 
-const Template = (args) => <SelectDemo {...args} />;
+const Template = (args) => <SimpleInputDropdownDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

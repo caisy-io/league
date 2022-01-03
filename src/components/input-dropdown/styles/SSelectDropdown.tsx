@@ -12,9 +12,7 @@ const Bronze = css<ISSelectDropdown>`
   max-height: 300px;
   overflow: auto;
   ${CSSScrollbarStyles};
-
   color: var(--form-item-text-color);
-
   transition: box-shadow ease 0.5s, border ease 0.5s;
   &:hover {
     box-shadow: 0 2px 7px 0 rgba(89, 106, 122, 0.14);

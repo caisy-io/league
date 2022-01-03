@@ -16,6 +16,14 @@ const CSSRequired = css`
   }
 `;
 
+const CSSError = css`
+  color: var(--text-06);
+`;
+
+const CSSOpened = css`
+  color: var(--active-text-04);
+`;
+
 const Bronze = css`
   ${CSSProgressiveCaption01Semibold};
   line-height: 0.75rem;
@@ -29,6 +37,8 @@ const Bronze = css`
   width: fit-content;
   padding-right: 0.5rem;
   ${(props) => props.required && CSSRequired};
+  ${(props) => props.opened ? CSSOpened : ''};  
+  ${(props) => props.error && CSSError};
 `;
 
 const Silver = css``;
