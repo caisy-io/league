@@ -6,10 +6,14 @@ const Bronze = css`
   ${CSSProgressiveBody02Semibold};
   line-height: 1rem;
   text-align: center;
-  width: 62%;
+  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  box-sizing: border-box;
+  >span{
+    padding: 0 3rem;
+  }
 `;
 
 const Silver = css``;

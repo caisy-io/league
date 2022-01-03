@@ -11,6 +11,8 @@ const Bronze = css`
   height: 48px;
   box-sizing: border-box;
   border-bottom: 1px solid var(--ui-03);
+  background-color: #FFFF;
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
 
 const Silver = css``;
