@@ -63,5 +63,6 @@ export * from "./solidLabel";
 export * from "./toggle";
 export * from "./out-line-label";
 export * from "./menu-list-item";
+export * from "./preview";
 export * from "./radio-button-list-item";
 export * from "./component-list-item";

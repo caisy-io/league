@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 import { TableRow } from "./TableRow";
 import PreviewComponent from "../preview/Preview";
-import { Badge, EBadgePosition, SolidLabel } from "..";
+import { Badge, EBadgePosition } from "../badge";
+import { SolidLabel } from "../solidLabel";
 import { Img } from "../../base-components/img/Img";
 import { useState } from "react";
 import {
@@ -9,7 +10,7 @@ import {
   CSSProgressiveBody03Semibold,
 } from "../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { CSSProgressiveCaption01 } from "../../constants/styles/fonts";
-import { IconDotsHorizontal, IconPublish } from "../..";
+import { IconDotsHorizontal, IconPublish } from "../../icons";
 
 function TableRowDemo({ children, ...args }) {
   return (
@@ -218,11 +219,13 @@ const StatusTemplate = (args) => {
   return (
     <TableRowDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
       {args.ghost ? (
-        <SGhostWrapper padding="32px 16px">
-          <SGhostSquare height={29} width={53.64} />
+        <SGhostWrapper
+          style={{ height: 88, width: 86, display: "flex", alignItems: "center", justifyContent: "center" }}
+        >
+          <SGhostSquare height={24} width={54} />
         </SGhostWrapper>
       ) : (
-        <span style={{ padding: "32px 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <span style={{ height: 88, width: 86, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <SolidLabel type="green">Status</SolidLabel>
         </span>
       )}
