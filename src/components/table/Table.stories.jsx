@@ -1,5 +1,8 @@
 import React from "react";
-import { Button, IconEdit, IconTrashDelete, Input, Table } from "../..";
+import { Table } from "../table";
+import { Input } from "../input";
+import { IconEdit, IconTrashDelete } from "../../icons";
+import { Button } from "../button";
 
 function TableDemo() {
   const [dataSource, setDataSource] = React.useState([

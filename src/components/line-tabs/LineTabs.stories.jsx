@@ -1,6 +1,6 @@
 import React from "react";
 import { LineTabs } from './LineTabs';
-import { IconStarOutlined } from '../..';
+import { IconStarOutlined } from '../../icons';
 
 export default {
   title: `Components/Navigation/LineTabs`,

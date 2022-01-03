@@ -1,8 +1,8 @@
 import React from "react";
 import { css } from "styled-components";
-import { IconLink } from "../..";
-import { Badge, EBadgePosition } from "../badge";
 import { Button } from "./Button";
+import { IconLink } from "../../icons";
+import { Badge, EBadgePosition } from "../badge";
 
 // Default Button Demo
 export default {

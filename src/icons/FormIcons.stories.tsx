@@ -1,3 +1,4 @@
+import styled from "styled-components"
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { FC } from "react";
 import { 
@@ -5,6 +6,10 @@ import {
   IconCircle,
   IconCheckmarkCircle
 } from './index';
+
+const IconWrapper: any = styled.div`
+  color: var(--icon-01);
+`
 
 const icons = {
   IconCrossCircle: ({size}) => <IconCrossCircle size={size}/>,
@@ -20,7 +25,11 @@ interface IFormIconsDemo {
 
 const FormIconsDemo: FC<IFormIconsDemo> =  ({ ...args }) => {
   const Icon = icons[args.icon]
-  return <Icon size={args.size} solid={args.solid}/>;
+  return (
+    <IconWrapper>
+      <Icon size={args.size} solid={args.solid}/>
+    </IconWrapper>
+  );
 };
 
 export default {
