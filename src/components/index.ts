@@ -66,3 +66,4 @@ export * from "./menu-list-item";
 export * from "./preview";
 export * from "./radio-button-list-item";
 export * from "./component-list-item";
+export * from "./icon-button";
