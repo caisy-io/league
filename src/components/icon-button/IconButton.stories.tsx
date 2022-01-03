@@ -42,8 +42,8 @@ function IconButtonDemo({ size, type, withBadge }) {
     }
   }, [size]);
 
-  const handleClick = (newActivatedValue: boolean) => {
-    setActivated(newActivatedValue);
+  const handleClick = () => {
+    setActivated((prev) => !prev);
   };
 
   return (
