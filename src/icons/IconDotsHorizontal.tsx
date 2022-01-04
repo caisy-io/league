@@ -1,8 +1,8 @@
 import React from "react";
 
-export function IconDotsHorizontal() {
+export function IconDotsHorizontal({ size = 24 }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="none" viewBox="0 0 24 24">
       <path
         fill="currentColor"
         stroke="currentColor"

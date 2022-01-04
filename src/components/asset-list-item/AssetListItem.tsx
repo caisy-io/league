@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IconWarning } from '../..';
+import { IconWarning } from '../../icons';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { IconCheckmarkOutlined } from '../../icons/IconCheckmarkOutlined';
 import { IconCross } from '../../icons/IconCross';

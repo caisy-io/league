@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import Preview from "./Preview";
+import { Preview } from "./Preview";
 import { IconStarOutlined }from "../../icons";
 import { Img } from "../../base-components/img/Img";
 import Flag from "../flag";

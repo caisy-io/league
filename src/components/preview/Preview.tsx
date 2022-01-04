@@ -10,7 +10,7 @@ export interface IPreview {
   styleOverwrite?: any;
 }
 
-const Preview: FC<IPreview> = ({ flag, icon, image, text, size, styleOverwrite }) => {
+export const Preview: FC<IPreview> = ({ flag, icon, image, text, size, styleOverwrite }) => {
   return (
     <SPreview styleOverwrite={styleOverwrite} size={size} isFlag={flag && true}>
       {flag}
@@ -20,5 +20,3 @@ const Preview: FC<IPreview> = ({ flag, icon, image, text, size, styleOverwrite }
     </SPreview>
   )
 }
-
-export default Preview;
