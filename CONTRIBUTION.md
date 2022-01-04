@@ -44,6 +44,8 @@ To overcome current problems we propose to follow this guide as a check list to 
 
 [] If your PR has some conflicts, you are the owner and need to make sure those are fixed before reviews.
 
+[] Avoid imports that may cause circular references, like `../..` or `..`.
+
 [] IMPORTANT: Before submitting a PR for review, add a capture of component render and also a capture from figma to compare in the github PR. (zoom should be default 100% on both)
 
 [] IMPORTANT: Before submitting a PR test the component in storybook.
