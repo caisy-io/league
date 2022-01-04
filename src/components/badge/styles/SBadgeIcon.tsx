@@ -45,13 +45,13 @@ const CSSCenter = css`
 `;
 
 const CSSTopRight = css`
-  top: -0.25rem;
-  right: -0.25rem;
+  top: -0.438rem;
+  right: -0.438rem;
 `;
 
 const CSSTopLeft = css`
-  top: -0.25rem;
-  left: -0.25rem;
+  top: -0.438rem;
+  left: -0.438rem;
 `;
 
 const CSSPadding = css`
