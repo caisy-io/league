@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { FC, useState } from "react";
 import RegularPopUpMenu from './RegularPopUpMenu';
+import { Button } from "../button";
 import { IRegularPopUpMenu } from "./RegularPopUpMenu";
 import { SimpleInput } from "../input-fields/simple-input/SimpleInput";
 import { IconStarOutlined } from "../../icons";
@@ -48,8 +49,8 @@ const RegularPopUpMenuDemo: FC<IRegularPopUpMenuMemo> = ({listItems}) => {
           
       </RegularPopUpMenu>
       ) : (
-        <STooglePopUp onClick={() => onToggleModal()}>Click me!!</STooglePopUp>
-    )}
+        <Button onClick={() => onToggleModal()}>Click me</Button>
+      )}
     </>
   );
 };
