@@ -27,7 +27,7 @@ export const DocumentsEditorSubtopNav: React.FC<IDocumentsEditorSubtopNav> = ({
 }) => {
   return (
     <SDocumentsEditorSubtopNav>
-      <SDocumentsEditorSubtopNavDocStructure>
+      <SDocumentsEditorSubtopNavDocStructure documentStructureOpened={documentStructureOpened}>
         <SDocumentsEditorSubtopNavIconWrapper onClick={() => onOpenDocumentStructure?.(!documentStructureOpened)}>
           {documentStructureOpened ? <IconCross size={20} /> : <IconOpenSidebarMenu />}
         </SDocumentsEditorSubtopNavIconWrapper>

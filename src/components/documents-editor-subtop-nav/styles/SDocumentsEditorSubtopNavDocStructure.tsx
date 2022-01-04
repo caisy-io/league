@@ -2,6 +2,11 @@ import styled, { css } from "styled-components";
 import { CSSProgressiveBody03Semibold } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
+const CSSOpened = css`
+  width: 247px;
+  justify-content: flex-start;
+`;
+
 const Bronze = css`
   ${CSSProgressiveBody03Semibold};
   border-right: 1px solid var(--ui-03);
@@ -14,6 +19,8 @@ const Bronze = css`
   gap: 8px;
 
   color: var(--text-01);
+
+  ${(props) => props.documentStructureOpened && CSSOpened}
 `;
 
 const Silver = css``;
