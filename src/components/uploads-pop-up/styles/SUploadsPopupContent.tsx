@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SUploadsPopupContent: any = styled.div`
   width: 100%;
-  div {
+  > div {
     height: 344px;
   }
 `

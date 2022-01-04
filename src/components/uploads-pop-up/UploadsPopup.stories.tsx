@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import React, { useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import UploadsPopUp, { UploadsPopupContent } from "./index"
+import UploadsPopUp, { UploadsPopupContent } from "./index";
+import { AssetListItem } from "../asset-list-item";
 
 const ClickMe = styled.h2`
   cursor: pointer;
@@ -24,53 +25,48 @@ export const UploadsPopup_Default: ComponentStory<typeof UploadsPopUp> = () => {
   return (
     <>
       {showUploadsPopup ? (
-        <UploadsPopUp title="Default" onClose={() => handleShowUploadsPopup()}>
+        <UploadsPopUp poupTitle="Uploads" onClose={() => handleShowUploadsPopup()}>
 
         <UploadsPopupContent>
-          asdadadas<br/>
-          asasd<br/>
-          asdadf<br/>
-          sdfgdfgdf<br/>
-          fjfdghdfghfg<br/>
-          dfghdfgh<br/>
-          fghdfg<br/>
-          hfgdh<br/>
-          dfgh<br/>
-          dfghfgd<br/>
-          hdfgh<br/>
-          asdadadas<br/>
-          asasd<br/>
-          asdadf<br/>
-          sdfgdfgdf<br/>
-          fjfdghdfghfg<br/>
-          dfghdfgh<br/>
-          fghdfg<br/>
-          hfgdh<br/>
-          dfgh<br/>
-          dfghfgd<br/>
-          hdfgh<br/>
-          asdadadas<br/>
-          asasd<br/>
-          asdadf<br/>
-          sdfgdfgdf<br/>
-          fjfdghdfghfg<br/>
-          dfghdfgh<br/>
-          fghdfg<br/>
-          hfgdh<br/>
-          dfgh<br/>
-          dfghfgd<br/>
-          hdfgh<br/>
-          asdadadas<br/>
-          asasd<br/>
-          asdadf<br/>
-          sdfgdfgdf<br/>
-          fjfdghdfghfg<br/>
-          dfghdfgh<br/>
-          fghdfg<br/>
-          hfgdh<br/>
-          dfgh<br/>
-          dfghfgd<br/>
-          hdfgh<br/>
+          <AssetListItem 
+              title="Default"
+              description="Default upload"
+              progressValue={65}
+          />
+          <AssetListItem 
+              title="Default"
+              description="Default upload"
+              progressValue={undefined}
+              error={true}
+          />
+          <AssetListItem 
+              title="Default"
+              description="Default upload"
+              progressValue={undefined}
+              recent={true}
+          />
+          <AssetListItem 
+              title="Default"
+              description="Default upload"
+              progressValue={undefined}
+              error={true}
+          />
+          <AssetListItem 
+              title="Default"
+              description="Default upload"
+              progressValue={undefined}
+              recent={true}
+          />
+          <AssetListItem 
+              title="Default"
+              description="Default upload"
+              progressValue={23}
+          />
+          <AssetListItem 
+              title="Default"
+              description="Default upload"
+              progressValue={75}
+          />
         </UploadsPopupContent>
         </UploadsPopUp>
       ) : (
