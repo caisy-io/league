@@ -67,7 +67,6 @@ export const SimpleInput: FC<ISimpleInput> = ({
     (e) => {
       setActive(true);
       onFocus?.(e);
-      console.log(active);
     },
     [setActive, onFocus],
   );
