@@ -63,3 +63,4 @@ export * from "./toggle";
 export * from "./preview";
 export * from "./radio-button-list-item";
 export * from "./component-list-item";
+export * from "./checkbox";
