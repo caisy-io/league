@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IconCheckmark } from '../..';
+import { IconCheckmark } from '../../icons';
 import { SCheckbox } from './styles/SCheckbox';
 import { SCustomCheckbox } from './styles/SCustomCheckbox';
 
