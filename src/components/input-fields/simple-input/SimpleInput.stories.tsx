@@ -24,18 +24,19 @@ function SimpleInputDemo({ ...args }) {
       required
       onChange={onChange}
       value={value}
+      disabled={args.state === "locked"}
       {...args}
     />
   );
 }
 
 export default {
-  title: "Components/InputFields/SimpleInput",
+  title: "Components/Forms/SimpleInput",
   component: SimpleInputDemo,
   argTypes: {
     state: {
       description: "Changes the state of the input",
-      options: ["error", "success", "default"],
+      options: ["error", "success", "default", "locked"],
       control: { type: "select" },
       table: {
         defaultValue: {

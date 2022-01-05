@@ -21,6 +21,14 @@ const CSSSuccess = css`
   }
 `;
 
+const CSSLocked = css`
+  background-color: var(--active-ui-01-1);
+  border: 1px solid var(--active-ui-01-1);
+  & input::placeholder {
+    color: var(--text-04);
+  }
+`;
+
 const Bronze = css`
   position: relative;
   overflow: hidden;
@@ -38,6 +46,7 @@ const Bronze = css`
   ${(props) => props.active && CSSActive};
   ${(props) => props.state && props.state === "error" && CSSError}
   ${(props) => props.state && props.state === "success" && CSSSuccess}
+  ${(props) => props.state && props.state === "locked" && CSSLocked}
 `;
 
 const Silver = css``;

@@ -7,7 +7,7 @@ import { SSimpleInputRequiredIndicatorContainer } from "./styles/SSimpleInputReq
 import { SSimpleInputTextWidth } from "./styles/SSimpleInputTextWidth";
 import { SSimpleInputWrapper } from "./styles/SSimpleInputWrapper";
 
-type TSimpleInputState = "success" | "error" | "default";
+type TSimpleInputState = "success" | "error" | "default" | "locked";
 
 interface ISimpleInput {
   label?: string;
@@ -21,6 +21,7 @@ interface ISimpleInput {
   onFocus?: (e: InputEvent) => void;
   onBlur?: (e: InputEvent) => void;
   icon?: JSX.Element;
+  disabled?: boolean;
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
@@ -34,6 +35,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
   label,
   errors,
   translationBadge,
+  disabled,
+  icon,
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -91,7 +94,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
       {label && (
         <SSimpleInputRequiredIndicatorContainer>
           {required && <SSimpleInputRequiredIndicator />}
-          <SLabel active={active} hover={hover}>
+          <SLabel locked={state === "locked"} error={state === "error"} active={active} hover={hover}>
             {label}
           </SLabel>
         </SSimpleInputRequiredIndicatorContainer>
@@ -110,7 +113,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
       <SSimpleInputRequiredIndicatorContainer>
         {required && !label && (!errors || errors.length === 0) && <SSimpleInputRequiredIndicator />}
         <SSimpleInput
-          error={state === "error" && errors?.length === 0}
+          error={state === "error"}
+          locked={state === "locked"}
           onChange={(e) => {
             resizeInput();
             onChange(e);
@@ -122,6 +126,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
           onBlur={handleBlur}
           value={value || ""}
           placeholder={placeholder}
+          disabled={disabled}
         />
       </SSimpleInputRequiredIndicatorContainer>
     </SSimpleInputWrapper>
