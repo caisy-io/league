@@ -1,6 +1,7 @@
 import React from "react";
 import { SimpleInput } from "./SimpleInput";
 import { STranslationBadge } from "../styles/STranslationBadge";
+import { IconStarOutlined } from "../../../icons";
 import Flag from "../../flag/Flag";
 
 function SimpleInputDemo({ ...args }) {
@@ -25,6 +26,10 @@ function SimpleInputDemo({ ...args }) {
       onChange={onChange}
       value={value}
       disabled={args.state === "locked"}
+      leftIcon={args.withLeftIcon && <IconStarOutlined size={20} />}
+      rightIcon={args.withRightIcon && <IconStarOutlined size={20} />}
+      errors={args.state === "error" && ["Error message"]}
+      placeholder="Placeholder"
       {...args}
     />
   );
@@ -44,6 +49,15 @@ export default {
         },
       },
     },
+    required: {
+      description: "Marks the input with a required inidicator",
+      control: { type: "boolean" },
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
   },
 };
 
@@ -52,9 +66,14 @@ const Template = ({ ...args }) => <SimpleInputDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   label: "This is a label",
-  errors: ["This is an error message", "This is another error message"],
-  placeholder: "This is a placeholder",
   state: "error",
   required: true,
-  withTranslationBadge: false,
+  withLeftIcon: false,
+  withRightIcon: false,
+};
+
+export const WithTranslationBadge = Template.bind({});
+WithTranslationBadge.args = {
+  label: "This is a label",
+  withTranslationBadge: true,
 };

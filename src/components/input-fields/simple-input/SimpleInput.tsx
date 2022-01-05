@@ -2,8 +2,12 @@ import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { SErrorMessage } from "../styles/SErrorMessage";
 import { SLabel } from "../styles/SLabel";
 import { SSimpleInput } from "./styles/SSimpleInput";
+import { SSimpleInputIconWrapper } from "./styles/SSimpleInputIconWrapper";
+import { SSimpleInputInsideContainer } from "./styles/SSimpleInputInsideContainer";
+import { SSimpleInputOutsideContainer } from "./styles/SSimpleInputOutsideContainer";
 import { SSimpleInputRequiredIndicator } from "./styles/SSimpleInputRequiredIndicator";
 import { SSimpleInputRequiredIndicatorContainer } from "./styles/SSimpleInputRequiredIndicatorContainer";
+import { SSimpleInputRightWrapper } from "./styles/SSimpleInputRightIcon";
 import { SSimpleInputTextWidth } from "./styles/SSimpleInputTextWidth";
 import { SSimpleInputWrapper } from "./styles/SSimpleInputWrapper";
 
@@ -20,8 +24,9 @@ interface ISimpleInput {
   placeholder?: string;
   onFocus?: (e: InputEvent) => void;
   onBlur?: (e: InputEvent) => void;
-  icon?: JSX.Element;
   disabled?: boolean;
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
@@ -36,7 +41,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
   errors,
   translationBadge,
   disabled,
-  icon,
+  leftIcon,
+  rightIcon,
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -90,45 +96,53 @@ export const SimpleInput: FC<ISimpleInput> = ({
       state={state}
       onClick={handleClick}
     >
-      <SSimpleInputTextWidth ref={spanRef} />
-      {label && (
-        <SSimpleInputRequiredIndicatorContainer>
-          {required && <SSimpleInputRequiredIndicator />}
-          <SLabel locked={state === "locked"} error={state === "error"} active={active} hover={hover}>
-            {label}
-          </SLabel>
-        </SSimpleInputRequiredIndicatorContainer>
-      )}
+      <SSimpleInputOutsideContainer>
+        <SSimpleInputIconWrapper>{leftIcon}</SSimpleInputIconWrapper>
+        <SSimpleInputInsideContainer>
+          <SSimpleInputTextWidth ref={spanRef} />
+          {label && (
+            <SSimpleInputRequiredIndicatorContainer>
+              {required && <SSimpleInputRequiredIndicator />}
+              <SLabel locked={state === "locked"} error={state === "error"} active={active} hover={hover}>
+                {label}
+              </SLabel>
+            </SSimpleInputRequiredIndicatorContainer>
+          )}
 
-      {errors &&
-        errors.map((error, index) => (
-          <SErrorMessage>
-            {required && !label && index + 1 === errors.length && <SSimpleInputRequiredIndicator />}
-            {error}
-          </SErrorMessage>
-        ))}
+          {errors &&
+            errors.map((error, index) => (
+              <SErrorMessage>
+                {required && !label && index + 1 === errors.length && <SSimpleInputRequiredIndicator />}
+                {error}
+              </SErrorMessage>
+            ))}
 
-      {translationBadge}
+          {translationBadge}
 
-      <SSimpleInputRequiredIndicatorContainer>
-        {required && !label && (!errors || errors.length === 0) && <SSimpleInputRequiredIndicator />}
-        <SSimpleInput
-          error={state === "error"}
-          locked={state === "locked"}
-          onChange={(e) => {
-            resizeInput();
-            onChange(e);
-          }}
-          width={inputLength}
-          required={required}
-          ref={inputRef}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          value={value || ""}
-          placeholder={placeholder}
-          disabled={disabled}
-        />
-      </SSimpleInputRequiredIndicatorContainer>
+          <SSimpleInputRequiredIndicatorContainer>
+            {required && !label && (!errors || errors.length === 0) && <SSimpleInputRequiredIndicator />}
+            <SSimpleInput
+              error={state === "error"}
+              locked={state === "locked"}
+              onChange={(e) => {
+                resizeInput();
+                onChange(e);
+              }}
+              width={inputLength}
+              required={required}
+              ref={inputRef}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              value={value || ""}
+              placeholder={placeholder}
+              disabled={disabled}
+            />
+          </SSimpleInputRequiredIndicatorContainer>
+        </SSimpleInputInsideContainer>
+        <SSimpleInputRightWrapper>
+          <SSimpleInputIconWrapper>{rightIcon}</SSimpleInputIconWrapper>
+        </SSimpleInputRightWrapper>
+      </SSimpleInputOutsideContainer>
     </SSimpleInputWrapper>
   );
 };
