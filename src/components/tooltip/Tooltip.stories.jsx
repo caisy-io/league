@@ -1,5 +1,7 @@
 import React from "react";
-import { Tooltip, Button, FlatActionButton } from "../..";
+import { Button } from "../button";
+import { Tooltip } from "../tooltip";
+import { FlatActionButton } from "../flat-action-button";
 import CheckMarkIcon from "./CheckMarkIcon";
 import CheckMarkIconFilled from "./CheckMarkIconFilled";
 

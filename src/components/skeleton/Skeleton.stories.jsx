@@ -1,4 +1,4 @@
-import { Skeleton } from "../..";
+import { Skeleton } from "../skeleton";
 
 
 function SkeletonDemo() {

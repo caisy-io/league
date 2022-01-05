@@ -1,5 +1,8 @@
 import React from "react";
-import { Button, DatePicker, Form, Input, useForm, FormField, SelectSingleSearch } from "../../";
+import { Form, useForm, FormField } from "../form";
+import { Input } from "../input";
+import { Button } from "../button";
+import { DatePicker } from "../datepicker";
 
 function FormShowcase() {
   const { control, handleSubmit, validate } = useForm();
