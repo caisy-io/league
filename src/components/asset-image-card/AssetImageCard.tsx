@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { Checkbox } from '../checkbox/Checkbox';
 import { SAssetImage } from './styles/SAssetImage';
 import { SAssetImageCard } from './styles/SAssetImageCard';

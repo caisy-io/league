@@ -9,11 +9,6 @@ export default {
     activated: {
       description: "Changes the state of the component to Activated",
       control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
     },
     size: {
       description: "Changes the size of the card",
@@ -26,13 +21,8 @@ export default {
       },
     },
     image: {
-      description: "Changes the state of the component to Activated",
-      control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
+      description: "Changes the source image",
+      control: { type: "ReactNode" },
     },
     labelText: {
       description: "Changes the label text of the card",
@@ -43,7 +33,7 @@ export default {
 
 function AssetImageCardDemo({ image, size, labelText, activated }) {
   const [isActivated, setIsActivated] = useState(false);
-  return <AssetImageCard activated={isActivated } image={image} size={size} labelText={labelText} onChange={() => { setIsActivated(!isActivated) }}>
+  return <AssetImageCard activated={isActivated || activated} image={image} size={size} labelText={labelText} onChange={() => { setIsActivated(!isActivated) }}>
   </AssetImageCard>
 }
 
@@ -53,5 +43,6 @@ export const Default = Template.bind({});
 Default.args = {
   size: "simple",
   labelText: "Default",
+  activated: false,
   image: <Img lazyload={false} src={"https://images.unsplash.com/photo-1491147334573-44cbb4602074?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80"!} resolution={48} />,
 };
