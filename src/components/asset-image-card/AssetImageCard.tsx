@@ -12,16 +12,17 @@ interface IAssetImageCard {
   size?: IAssetImageCardSizeType;
   labelText?: string;
   activated?: boolean;
+  onChange: (e: Event) => void,
 }
 
-export const AssetImageCard: React.FC<IAssetImageCard> = ({ labelText, size, image }) => {
-  const [isActivated, setIsActivated] = useState(false);
+export const AssetImageCard: React.FC<IAssetImageCard> = ({ labelText, size, image, activated, onChange }) => {
+
   return (
-    <SAssetImageCard size={size} activated={isActivated}>
+    <SAssetImageCard size={size} activated={activated}>
       <SAssetImage>{image}</SAssetImage>
       <SAssetImageRadioContainer>
-        <Checkbox onChange={() => { setIsActivated(!isActivated) }} checked={isActivated}></Checkbox>
-        <SAssetImageLabel activated={isActivated}>{labelText}</SAssetImageLabel>
+        <Checkbox onChange={onChange} checked={activated}></Checkbox>
+        <SAssetImageLabel activated={activated}>{labelText}</SAssetImageLabel>
       </SAssetImageRadioContainer>
     </SAssetImageCard>
   )
