@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { IconChevronDown } from '../../icons/IconChevronDown';
-import Preview from '../preview';
+import { Preview } from '../preview';
 import { IPreview } from '../preview/Preview';
 import { SNotificationsGroupSelectListItem } from './styles/SNotificationsGroupSelectListItem';
 import { SNotificationsGroupSelectListItemTitle } from './styles/SNotificationsGroupSelectListItemTitle';
