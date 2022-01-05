@@ -8,12 +8,6 @@ interface ISMainMenuItem {
 const CSSActive = css`
   background-color: var(--active-ui-01);
   color: var(--ui-01);
-
-  svg {
-    path {
-      stroke: var(--ui-01);
-    }
-  }
 `;
 
 const Bronze = css<ISMainMenuItem>`
@@ -33,11 +27,6 @@ const Bronze = css<ISMainMenuItem>`
   &:hover {
     background-color: var(--hover-ui-01);
     color: var(--hover-icon-04);
-    svg {
-      path {
-        stroke: var(--hover-icon-04);
-      }
-    }
   }
 
   &:active {
