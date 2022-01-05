@@ -17,7 +17,7 @@ interface IAssetImageCard {
 export const AssetImageCard: React.FC<IAssetImageCard> = ({ labelText, size, image }) => {
   const [isActivated, setIsActivated] = useState(false);
   return (
-    <SAssetImageCard size={size}>
+    <SAssetImageCard size={size} activated={isActivated}>
       <SAssetImage>{image}</SAssetImage>
       <SAssetImageRadioContainer>
         <Checkbox onChange={() => { setIsActivated(!isActivated) }} checked={isActivated}></Checkbox>

@@ -6,6 +6,10 @@ const CSSSmall = css`
   width: 7.5rem;
 `;
 
+const CSSActivated = css`
+  border: 1px solid #E8EFF3;
+`;
+
 const Bronze = css`
   background-color: var(--ui-01);
   border-radius: 0.5rem;
@@ -16,6 +20,7 @@ const Bronze = css`
   height: 14.25rem;
   width: 15rem;
   justify-content: space-between;
+  transition: 0.15s border ease-in;
   &: hover{
     background-color: var(--ui-01);
     box-shadow: 0px 8px 24px rgba(184, 184, 184, 0.24);
@@ -27,6 +32,7 @@ const Bronze = css`
     box-shadow: none;
   }
   ${(props) => props.size == "small" ? CSSSmall : ''};
+  ${(props) => props.activated ? CSSActivated : ''};
 `;
 
 const Silver = css``;
