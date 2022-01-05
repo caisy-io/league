@@ -1,4 +1,4 @@
-import { Spinner } from "../..";
+import { Spinner } from "../spinner";
 
 function SpinnerDemo() {
     return (

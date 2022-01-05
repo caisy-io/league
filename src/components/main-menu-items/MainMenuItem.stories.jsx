@@ -1,7 +1,7 @@
 import React from "react";
-import { MainMenuItem } from "../..";
-import { IconLink } from "../..";
-import { Badge, EBadgePosition } from "..";
+import { MainMenuItem } from "./MainMenuItem";
+import { IconLink } from "../../icons";
+import { Badge, EBadgePosition } from "../badge";
 
 // Default MainMenuItem Demo
 export default {

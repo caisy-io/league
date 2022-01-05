@@ -4,6 +4,12 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const CSSActive = css`
   color: var(--text-01);
+
+  svg {
+    path {
+      stroke: var(--text-01);
+    }
+  }
 `;
 
 const Bronze = css`
@@ -14,12 +20,12 @@ const Bronze = css`
   cursor: pointer;
   color: var(--text-03);
 
-  ${(props) => props.active && CSSActive};
-
   svg {
-    height: 18px;
-    width: 18px;
+    path {
+      stroke: var(--text-03);
+    }
   }
+  ${(props) => props.active && CSSActive};
 `;
 
 const Silver = css``;

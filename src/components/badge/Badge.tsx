@@ -1,5 +1,5 @@
 import React, { FC, forwardRef, useEffect, useRef } from "react";
-import { ISizes } from "../../interfaces/";
+import { ISizes } from "../../interfaces";
 import { EBadgePosition } from "./EBadgePosition";
 import { SBadge } from "./styles/SBadge";
 import { SBadgeIcon } from "./styles/SBadgeIcon";
@@ -12,12 +12,12 @@ export interface IBadgeProps {
   position: EBadgePosition,
   type: IBadgeType,
   size?: ISizes,
+  styleOverwrite?: string,
   children?,
   ref?
 }
 
-export const Badge: FC<IBadgeProps> = forwardRef(({ children, value, position, type, size }: IBadgeProps, ref: any) => {
-  
+export const Badge: FC<IBadgeProps> = forwardRef(({ children, value, position, type, size, styleOverwrite }: IBadgeProps, ref: any) => {
   const badgeRef = useRef<HTMLElement>(null);
   const [width, setWidth] = React.useState(0);
   // calculate width of the badge
@@ -25,11 +25,9 @@ export const Badge: FC<IBadgeProps> = forwardRef(({ children, value, position, t
     const badgeWidth = badgeRef.current ? badgeRef.current.offsetWidth : 0;
     setWidth(badgeWidth);
   }, [value, badgeRef.current]);
-  
-  console.log(width);
-  
+
   return (
-    <SBadge ref={ref}>
+    <SBadge ref={ref} styleOverwrite={styleOverwrite}>
       <SBadgeIcon ref={badgeRef} value={value} position={position} type={type} size={size} width={width}>
         <SBadgeIconContent type={type} size={size}>
           {type !== "color" && value}

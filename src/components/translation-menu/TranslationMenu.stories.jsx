@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { TextArea, TranslationMenu } from "../..";
+import { TranslationMenu } from "../translation-menu";
+import { TextArea } from "../input";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 

@@ -1,14 +1,14 @@
-import React, { FC, useEffect, useRef } from "react";
-import styled from "styled-components";
-import { Badge, EBadgePosition } from "..";
-import { SFlex } from "../../base-components/flex/styles/SFlex";
-import { Preview } from "../preview";
-import { IPreview } from "../preview/Preview";
-import { SFlexBadgeWrapper } from "./styles/SFlexBadgeWrapper";
-import { SOrganizationSelectListItem } from "./styles/SOrganizationSelectListItem";
-import { SOrganizationSelectListItemLabel } from "./styles/SOrganizationSelectListItemLabel";
-import { SOrganizationSelectListItemTextWrapper } from "./styles/SOrganizationSelectListItemTextWrapper";
-import { SOrganizationSelectListItemTitle } from "./styles/SOrganizationSelectListItemTitle";
+import React, { FC, useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import { Badge, EBadgePosition } from '../badge';
+import { SFlex } from '../../base-components/flex/styles/SFlex';
+import { Preview } from '../preview';
+import { IPreview } from '../preview/Preview';
+import { SFlexBadgeWrapper } from './styles/SFlexBadgeWrapper';
+import { SOrganizationSelectListItem } from './styles/SOrganizationSelectListItem';
+import { SOrganizationSelectListItemLabel } from './styles/SOrganizationSelectListItemLabel';
+import { SOrganizationSelectListItemTextWrapper } from './styles/SOrganizationSelectListItemTextWrapper';
+import { SOrganizationSelectListItemTitle } from './styles/SOrganizationSelectListItemTitle';
 
 export type IListItemSize = "large" | "medium";
 
@@ -67,5 +67,5 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
         </SFlexBadgeWrapper>
       )}
     </SOrganizationSelectListItem>
-  );
-};
+  )
+}

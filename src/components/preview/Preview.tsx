@@ -18,5 +18,5 @@ export const Preview: FC<IPreview> = ({ flag, icon, image, text, size, styleOver
       {image}
       {text}
     </SPreview>
-  );
-};
+  )
+}

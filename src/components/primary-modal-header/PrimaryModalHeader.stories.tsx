@@ -1,8 +1,9 @@
 PrimaryModalHeader;
 import React, { useEffect, useState } from "react";
 import { PrimaryModalHeader } from "./PrimaryModalHeader";
-import { IconStarAdd, IconStarOutlined } from "../..";
-import { Divider, FlatActionButton, Tab } from "..";
+import { IconClose, IconGithub, IconGitlab, IconStarOutlined } from "../../icons";
+import { FlatActionButton } from "../flat-action-button";
+import { Tab } from "../tab";
 
 // Default PrimaryModalHeader Demo
 export default {
@@ -27,7 +28,7 @@ function PrimaryModalHeaderDemo({ ...args }) {
   const [breadcrumbs, setBreadcrumbs] = useState(
     args.labels.map((label, index) => ({
       title: label,
-      icon: args.labelsWithIcons ? <IconStarOutlined /> : null,
+      icon: args.labelsWithIcons ? <IconStarOutlined size={24} /> : null,
       value: index + 1,
       onClick: (value) => handleLabelClick(value),
       badgeContent: args.showBadge && index + 1 === args.labels.lenght ? "12" : undefined,
@@ -53,19 +54,20 @@ function PrimaryModalHeaderDemo({ ...args }) {
           <div style={{ height: 20, width: 1, backgroundColor: "#E8EFF3", margin: "0 24px" }} />
           <div style={{ display: "flex", gap: 8 }}>
             <Tab activated={selectedTab === 1} onClick={setSelectedTab} size="small" value={1}>
+              {args.tabsWithIcons && <IconGithub />}
               Tab 1
             </Tab>
             <Tab activated={selectedTab === 2} onClick={setSelectedTab} size="small" value={2}>
+              {args.tabsWithIcons && <IconGitlab />}
               Tab 2
             </Tab>
           </div>
         </>
       )}
-      {args.showFlatActionButton && (
-        <div style={{ marginLeft: "auto" }}>
-          <FlatActionButton type="grey">Default</FlatActionButton>
-        </div>
-      )}
+      <div style={{ marginLeft: "auto", display: "flex", gap: 12, alignItems: "center" }}>
+        {args.showFlatActionButton && <FlatActionButton type="grey">Default</FlatActionButton>}
+        {args.withCloseIcon && <IconClose size={24} />}
+      </div>
     </PrimaryModalHeader>
   );
 }
@@ -77,6 +79,7 @@ Default.args = {
   withCloseIcon: true,
   labels: ["Label 1", "Label 2"],
   labelsWithIcons: true,
+  tabsWithIcons: true,
   showBadge: false,
   showTabs: true,
   showFlatActionButton: true,

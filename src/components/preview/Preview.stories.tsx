@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 import { Preview } from "./Preview";
-import { IconStarOutlined } from "../../icons";
+import { IconStarOutlined }from "../../icons";
 import { Img } from "../../base-components/img/Img";
 import Flag from "../flag";
 
@@ -12,8 +12,8 @@ export default {
     size: {
       name: "size",
       description: "Size of the icon",
-      control: { type: "number" },
-      type: "number",
+      options: [12, 16, 20, 24, 28, 32, 36, 40, 48],
+      control: { type: 'select' },
       defaultValue: 16,
     },
     flag: {
@@ -46,10 +46,9 @@ Preview_text_default.args = {
   text: "pdf",
 };
 
-export const Preview_icon_default = Template.bind({});
-Preview_icon_default.args = {
-  icon: <IconStarOutlined />,
-};
+export const Preview_icon_default: ComponentStory<typeof Preview> = (args) => (
+  <Preview {...args} icon={<IconStarOutlined size={args.size}/>} /> 
+);
 
 export const Preview_image_default = Template.bind({});
 Preview_image_default.args = {

@@ -1,15 +1,15 @@
-import React, { FC, useEffect, useRef } from "react";
-import styled from "styled-components";
-import { Badge, EBadgePosition } from "..";
-import { SFlex } from "../../base-components/flex/styles/SFlex";
-import { IconChevron } from "../../icons/IconChevron";
-import { Preview } from "../preview";
-import { IPreview } from "../preview/Preview";
-import { SOrganizationMenuListItem } from "./styles/SOrganizationMenuListItem";
-import { SOrganizationMenuListItemIconWrapper } from "./styles/SOrganizationMenuListItemIconWrapper";
-import { SOrganizationMenuListItemLabel } from "./styles/SOrganizationMenuListItemLabel";
-import { SOrganizationMenuListItemTextWrapper } from "./styles/SOrganizationMenuListItemTextWrapper";
-import { SOrganizationMenuListItemTitle } from "./styles/SOrganizationMenuListItemTitle";
+import React, { FC, useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import { Badge, EBadgePosition } from '../badge';
+import { SFlex } from '../../base-components/flex/styles/SFlex';
+import { IconChevron } from '../../icons/IconChevron';
+import { Preview } from '../preview';
+import { IPreview } from '../preview/Preview';
+import { SOrganizationMenuListItem } from './styles/SOrganizationMenuListItem';
+import { SOrganizationMenuListItemIconWrapper } from './styles/SOrganizationMenuListItemIconWrapper';
+import { SOrganizationMenuListItemLabel } from './styles/SOrganizationMenuListItemLabel';
+import { SOrganizationMenuListItemTextWrapper } from './styles/SOrganizationMenuListItemTextWrapper';
+import { SOrganizationMenuListItemTitle } from './styles/SOrganizationMenuListItemTitle';
 
 export type IListItemSize = "large" | "medium" | "small";
 
@@ -67,5 +67,5 @@ export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({
         <IconChevron />
       </SOrganizationMenuListItemIconWrapper>
     </SOrganizationMenuListItem>
-  );
-};
+  )
+}

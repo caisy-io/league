@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IconStarOutlined } from "../..";
+import { IconStarOutlined } from "../../icons";
 import { ToggleListItem } from "./ToggleListItem";
 
 function ToggleListItemDemo({ content, description, size, showRightIcon, showLeftIcon }) {
