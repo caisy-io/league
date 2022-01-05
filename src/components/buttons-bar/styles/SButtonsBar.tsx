@@ -22,7 +22,7 @@ const Bronze = css<IButtonsBar>`
     height: 44px;
     :after {
       background-color: var(--ui-01);
-      border-radius: unset;
+      border-radius: 0;
     }
     svg {
       width: 20px;
