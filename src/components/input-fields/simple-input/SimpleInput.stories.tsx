@@ -30,7 +30,8 @@ function SimpleInputDemo({ ...args }) {
       rightIcon={args.withRightIcon && <IconStarOutlined size={20} />}
       errors={args.state === "error" && ["Error message"]}
       placeholder="Placeholder"
-      {...args}
+      label={args.label}
+      state={args.state}
     />
   );
 }
