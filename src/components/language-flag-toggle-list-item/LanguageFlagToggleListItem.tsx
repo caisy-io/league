@@ -35,7 +35,7 @@ export const LanguageFlagToggleListItem: FC<ILanguageFlagToggleListItem> = ({
       </SLanguageFlagToggleListItemDragIcon>
       <Flag size={16} countryCode={locale.id} /> {locale.name}
       <SLanguageFlagToggleListItemToggleButton>
-        <Toggle onChange={() => onLocaleToggle(!locale.active)} value={locale.active} />
+        <Toggle onChange={() => onLocaleToggle(!locale.active)} activated={locale.active} />
       </SLanguageFlagToggleListItemToggleButton>
     </SLanguageFlagToggleListItem>
   );
