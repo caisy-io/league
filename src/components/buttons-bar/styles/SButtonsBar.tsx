@@ -7,7 +7,6 @@ interface IButtonsBar {
 const Bronze = css<IButtonsBar>`
   display: flex;
   flex: 1;
-  height: 44px;
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.04);
 
   button:not(:last-child) {
@@ -24,6 +23,10 @@ const Bronze = css<IButtonsBar>`
     :after {
       background-color: var(--ui-01);
       border-radius: unset;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 `;
