@@ -76,4 +76,5 @@ export const WithTranslationBadge = Template.bind({});
 WithTranslationBadge.args = {
   label: "This is a label",
   withTranslationBadge: true,
+  required: false,
 };
