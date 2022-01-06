@@ -12,10 +12,6 @@ function TableDemo() {
       id: 0,
       actions: {
         id: 0,
-        style: {
-          width: 32,
-          flex: "none",
-        },
       },
     },
     {
@@ -99,10 +95,6 @@ function TableDemo() {
           </Button>
         </div>
       ),
-      style: {
-        width: 32,
-        flex: "none",
-      },
     },
   ];
 
@@ -114,7 +106,6 @@ function TableDemo() {
 
   const loadNextPage = () => {
     setIsNextPageLoading(true);
-    console.log("loading");
     return new Promise((resolve) =>
       setTimeout(() => {
         // setHasNextPage(dataSource.length < 100);
