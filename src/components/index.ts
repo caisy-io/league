@@ -74,3 +74,4 @@ export * from "./radio-button-list-item";
 export * from "./component-list-item";
 export * from "./icon-button";
 export * from "./checkbox";
+export * from "./search-input";
