@@ -28,6 +28,8 @@ const Bronze = css`
 
   transition: background-color 200ms, color 200ms;
 
+  line-height: 16px;
+
   cursor: pointer;
 
   overflow: hidden;
