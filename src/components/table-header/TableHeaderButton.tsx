@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { IconChevronUp, IconDragable, IconLock } from "../../icons";
 import { IconSortAsc } from "../../icons/IconSortAsc";
 import { STableHeaderButton } from "./styles/STableHeaderButton";
@@ -12,14 +12,22 @@ interface ITableHeaderButton {
 }
 
 export const TableHeaderButton: FC<ITableHeaderButton> = ({ children, locked, sorted, activated, onClick }) => {
+  const [hover, setHover] = useState(false);
   return (
-    <STableHeaderButton onClick={onClick} locked={locked}>
+    <STableHeaderButton
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onClick={onClick}
+      locked={locked}
+    >
       {locked ? (
         <IconLock size={16} solid />
       ) : (
-        <STableHeaderButtonIconWrapper>
-          <IconDragable size={16} />
-        </STableHeaderButtonIconWrapper>
+        (hover || activated) && (
+          <STableHeaderButtonIconWrapper>
+            <IconDragable size={16} />
+          </STableHeaderButtonIconWrapper>
+        )
       )}
 
       {sorted && <IconSortAsc />}
