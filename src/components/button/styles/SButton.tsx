@@ -168,10 +168,7 @@ const CSSTertiary = css`
   border: solid 1px var(--interactional-tertiary-01);
   &:hover {
     color: var(--hover-text-04);
-    &:after {
-      border: solid 1px var(--hover-interactional-tertiary-01);
-      transition: none;
-    }
+    border: solid 1px var(--hover-interactional-tertiary-01);
   }
   &:active {
     color: var(--text-02);
@@ -190,6 +187,7 @@ const CSSTertiary = css`
 
 const CSSTertiaryPressed = css`
   color: var(--text-02);
+  border: solid 1px var(--active-interactional-tertiary-01);
   &:after {
     background-color: var(--active-interactional-tertiary-01);
   }
