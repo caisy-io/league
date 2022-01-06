@@ -12,6 +12,7 @@ const getSize = (size?: ISizesWithDefault) => {
         padding: 0 5px;
         font-size: 11px;
         gap: 5px;
+        border-radius: 4px;
         svg {
           height: 8px;
           width: 8px;
