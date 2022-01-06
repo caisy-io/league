@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "./Button";
-import { IconLink } from "../../icons";
+import { IconStarOutlined } from "../../icons";
 import { Badge, EBadgePosition } from "../badge";
 
 // Default Button Demo
@@ -79,7 +79,7 @@ Default.args = {
 export const WithIcon = ({ content, ...args }) => {
   return(
   <Button {...args}>
-    <IconLink />
+    <IconStarOutlined />
     {content}
   </Button>
 )};
