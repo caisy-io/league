@@ -1,1 +1,1 @@
-export { default } from "./Flag";
+export { Flag } from "./Flag";
