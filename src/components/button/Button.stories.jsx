@@ -76,12 +76,13 @@ Default.args = {
 };
 
 // With Icon
-export const WithIcon = ({ content, ...args }) => (
+export const WithIcon = ({ content, ...args }) => {
+  return(
   <Button {...args}>
     <IconLink />
     {content}
   </Button>
-);
+)};
 
 WithIcon.args = {
   type: "primary",
