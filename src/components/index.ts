@@ -67,4 +67,5 @@ export * from "./upload-menu-item";
 export * from "./preview";
 export * from "./radio-button-list-item";
 export * from "./component-list-item";
+export * from "./icon-button";
 export * from "./checkbox";
