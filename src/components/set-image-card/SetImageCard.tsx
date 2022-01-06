@@ -25,7 +25,7 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
 
   const imageRef = useRef<HTMLInputElement>(null);
 
-  const mockProcessIamge = () => {
+  const openImagePicker = () => {
     imageRef?.current?.click();
   };
 
@@ -77,7 +77,7 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
           </SSetImageCardPreview>
         )}
         {!isLoading && !image && (
-          <Button type="primary" onClick={mockProcessIamge}>
+          <Button type="primary" onClick={openImagePicker}>
             SELECT FILE
           </Button>
         )}
@@ -85,7 +85,7 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
       </SSetImageCardBody>
       {image && (
         <SSetImageCardButtonsBar>
-          <FlatActionButton disabled={isLoading} type="default" onClick={mockProcessIamge}>
+          <FlatActionButton disabled={isLoading} type="default" onClick={openImagePicker}>
             <IconEdit />
             CHANGE PREVIEW
           </FlatActionButton>
