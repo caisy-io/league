@@ -1,14 +1,22 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveHighLight } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  position: relative;
+  ${CSSProgressiveHighLight};
+  background-color: var(--ui-02);
+  border-bottom: 1px solid var(--ui-03);
+  color: var(--text-04);
   width: fit-content;
-  height: fit-content;
+  height: 48px;
+
   display: flex;
-  justify-content: center;
   align-items: center;
-  ${({styleOverwrite}) => styleOverwrite ?? ''};
+  justify-content: center;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const Silver = css``;
@@ -19,7 +27,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SBadge = styled.div`
+export const STableHeader = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

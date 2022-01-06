@@ -1,0 +1,33 @@
+name: Build and Publish NPM
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    name: Build and Publish NPM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.3.0
+        name: lint
+        with:
+          cmd: lint # will run `yarn lint` command
+      - uses: borales/actions-yarn@v2.3.0
+        name: lint types
+        with:
+          cmd: lint:types # will run `yarn lint:types` command
+
+      - uses: borales/actions-yarn@v2.3.0
+        name: Run yarn build
+        with:
+          cmd: build # will run `yarn build` command
+      - uses: mikeal/merge-release@master
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        

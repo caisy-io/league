@@ -136,3 +136,4 @@ const IconSize = {
 };
 
 export const IconLock: FC<IIconSolid> = ({ size = 24, solid }) => IconSize[size](solid);
+
