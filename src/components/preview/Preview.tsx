@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from "react";
-import { SPreview } from "./styles/SPreview"
+import { SPreview } from "./styles/SPreview";
 
 export interface IPreview {
   flag?: ReactNode;
