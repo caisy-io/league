@@ -12,7 +12,7 @@ const processImageMock = (file: File) => {
 
     return new Promise<string>((resolve) => {
       setTimeout(() => {
-        resolve(imageUrl);
+        resolve("https://images.pexels.com/photos/775201/pexels-photo-775201.jpeg?cs=srgb&dl=pexels-kaique-rocha-775201.jpg&fm=jpg");
       }, 1000);
     });
   }

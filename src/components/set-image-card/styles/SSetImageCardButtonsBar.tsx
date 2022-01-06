@@ -1,18 +1,21 @@
 import styled, { css } from "styled-components";
+import { SFlex } from "../../../base-components/flex/styles/SFlex";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  position: relative;
-  width: 460px;
-  height: 520px;
-  background-color: var(--ui-background);
+  background-color: var(--ui-01);
 
-  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
+
+  button {
+    width: 100%;
+    height: 44px;
+  }
 `;
 
 const Silver = css``;
@@ -23,7 +26,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSetImageCard = styled.div`
+export const SSetImageCardButtonsBar = styled(SFlex)`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

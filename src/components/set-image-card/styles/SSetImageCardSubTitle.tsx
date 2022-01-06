@@ -1,18 +1,14 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveBody02Medium } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  position: relative;
-  width: 460px;
-  height: 520px;
-  background-color: var(--ui-background);
+  margin-bottom: 32px;
 
-  box-sizing: border-box;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  ${CSSProgressiveBody02Medium};
+  color: var(--text-01);
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Silver = css``;
@@ -23,7 +19,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSetImageCard = styled.div`
+export const SSetImageCardSubTitle = styled.p`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

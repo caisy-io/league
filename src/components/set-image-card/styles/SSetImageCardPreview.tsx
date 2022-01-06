@@ -2,17 +2,19 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  position: relative;
-  width: 460px;
-  height: 520px;
-  background-color: var(--ui-background);
+  width: 282px;
+  height: 148px;
 
-  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: var(--box-shadow-strong-pop-elavation);
+  object-fit: cover;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  overflow: hidden;
+
+  > div {
+    width: inherit;
+    height: inherit;
+  }
 `;
 
 const Silver = css``;
@@ -23,7 +25,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSetImageCard = styled.div`
+export const SSetImageCardPreview = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

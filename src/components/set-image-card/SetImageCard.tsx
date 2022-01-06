@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FlatActionButton } from "..";
-import { IconDelete, IconEdit } from "../../icons";
+
+import { FlatActionButton } from "../flat-action-button";
 import { Button } from "../button";
 import { Divider } from "../divider";
-import {
-  SSetImageCard,
-  SSetImageBody,
-  SSetImageHeader,
-  SSetImageTitle,
-  SSetImageSubtitle,
-  SSetImagePreview,
-  SSetImageButtonsBar,
-} from "./styles/SSetImageCard";
+import { IconDelete, IconEdit } from "../../icons";
+import { Img } from "../../base-components";
+
+import { SSetImageCard } from "./styles/SSetImageCard";
+import { SSetImageCardBody } from "./styles/SSetImageCardBody";
+import { SSetImageCardButtonsBar } from "./styles/SSetImageCardButtonsBar";
+import { SSetImageCardPreview } from "./styles/SSetImageCardPreview";
+import { SSetImageCardTitle } from "./styles/SSetImageCardTitle";
+import { SSetImageCardSubTitle } from "./styles/SSetImageCardSubTitle";
 
 interface ISetImageCard {
   onChange: (url: string) => void;
@@ -26,15 +26,16 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
   const imageRef = useRef<HTMLInputElement>(null);
 
   const mockProcessIamge = () => {
-    setLoading(true);
     imageRef?.current?.click();
   };
 
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if(image) {
+    setLoading(true);
+
+    if (image) {
       removeImage();
-    }
-    
+    }    
+
     const { files = [] } = e.target;
 
     if (files && files.length > 0) {
@@ -62,39 +63,38 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
 
   return (
     <SSetImageCard>
-      <SSetImageBody>
-        <SSetImageHeader>
-          {isLoading && <SSetImageTitle>Loading...</SSetImageTitle>}
-          {!isLoading && !image && (
-            <>
-              <SSetImageTitle>Drag and drop file to upload</SSetImageTitle>
-              <SSetImageSubtitle>Supported formats: .jpg, .png, .gif, .webp or video file</SSetImageSubtitle>
-            </>
-          )}
-        </SSetImageHeader>
-        {/* FIXME! */}
-        {/* Probably we should change img wrapper to existing element when url processing is done on server */}
-        {/* {image && <Img resolution={48} src={image} />} */}
-        {!isLoading && image && <SSetImagePreview src={image} />}
+      <SSetImageCardBody>
+        {isLoading && <SSetImageCardTitle>Loading...</SSetImageCardTitle>}
+        {!isLoading && !image && (
+          <>
+            <SSetImageCardTitle>Drag and drop file to upload</SSetImageCardTitle>
+            <SSetImageCardSubTitle>Supported formats: .jpg, .png, .gif, .webp or video file</SSetImageCardSubTitle>
+          </>
+        )}
+        {!isLoading && image && (
+          <SSetImageCardPreview>
+            <Img resolution={48} src={image} />
+          </SSetImageCardPreview>
+        )}
         {!isLoading && !image && (
           <Button type="primary" onClick={mockProcessIamge}>
             SELECT FILE
           </Button>
         )}
         <input hidden type="file" ref={imageRef} onChange={uploadImage} />
-      </SSetImageBody>
+      </SSetImageCardBody>
       {image && (
-        <SSetImageButtonsBar>
-          <FlatActionButton disabled={isLoading} width="50%" height="44px" type="default" onClick={mockProcessIamge}>
+        <SSetImageCardButtonsBar>
+          <FlatActionButton disabled={isLoading} type="default" onClick={mockProcessIamge}>
             <IconEdit />
             CHANGE PREVIEW
           </FlatActionButton>
-          <Divider vertical width={44} />
-          <FlatActionButton disabled={isLoading} width="50%" height="44px" type="danger" onClick={removeImage}>
+          <Divider marginBottom={0} marginTop={0} vertical width={44} />
+          <FlatActionButton disabled={isLoading} type="danger" onClick={removeImage}>
             <IconDelete />
             DELETE
           </FlatActionButton>
-        </SSetImageButtonsBar>
+        </SSetImageCardButtonsBar>
       )}
     </SSetImageCard>
   );
