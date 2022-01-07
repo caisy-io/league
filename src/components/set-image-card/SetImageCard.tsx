@@ -12,6 +12,7 @@ import { SSetImageCardButtonsBar } from "./styles/SSetImageCardButtonsBar";
 import { SSetImageCardPreview } from "./styles/SSetImageCardPreview";
 import { SSetImageCardTitle } from "./styles/SSetImageCardTitle";
 import { SSetImageCardSubTitle } from "./styles/SSetImageCardSubTitle";
+import ButtonsBar from "../buttons-bar";
 
 interface ISetImageCard {
   onChange: (url: string) => void;
@@ -34,7 +35,7 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
 
     if (image) {
       removeImage();
-    }    
+    }
 
     const { files = [] } = e.target;
 
@@ -85,15 +86,16 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
       </SSetImageCardBody>
       {image && (
         <SSetImageCardButtonsBar>
-          <FlatActionButton disabled={isLoading} type="default" onClick={openImagePicker}>
-            <IconEdit />
-            CHANGE PREVIEW
-          </FlatActionButton>
-          <Divider marginBottom={0} marginTop={0} vertical width={44} />
-          <FlatActionButton disabled={isLoading} type="danger" onClick={removeImage}>
-            <IconDelete />
-            DELETE
-          </FlatActionButton>
+          <ButtonsBar>
+            <Button onClick={openImagePicker} type="primary" sticked={true}>
+              <IconEdit size={20} />
+              {"CHANGE PREVIEW"}
+            </Button>
+            <Button onClick={removeImage} type="danger" sticked={true}>
+              <IconDelete size={20} />
+              {"DELETE"}
+            </Button>
+          </ButtonsBar>
         </SSetImageCardButtonsBar>
       )}
     </SSetImageCard>
