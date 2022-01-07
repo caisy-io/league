@@ -5,6 +5,8 @@ const Bronze = css`
   background-color: var(--ui-01);
   box-shadow: var(--box-shadow-right-sidebar);
   height: 100%;
+  width: 100%;
+  border-left: 1px solid var(--ui-03);
 `;
 
 const Silver = css``;

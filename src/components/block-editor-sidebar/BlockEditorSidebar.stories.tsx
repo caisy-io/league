@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { Layout, LayoutSider } from "../layout";
+import { SidebarTag } from "../sidebarTag";
+import { ILanguageFlagToggleListItemLocale } from "../language-flag-toggle-list-item";
 import { TranslationMenu } from "../translation-menu";
 import { BlockEditorSidebar } from "./BlockEditorSidebar";
 import { BlockEditorSidebarListItem } from "./BlockEditorSidebarListItem";
-import { ITranslationMenuState } from "..";
 
 // Default BlockEditorSidebar Demo
 export default {
-  title: "Components/BlockEditorSidebar",
+  title: "Components/Navigation/BlockEditorSidebar",
   component: BlockEditorSidebarDemo,
   parameters: {
     design: {
@@ -20,49 +22,51 @@ export default {
 };
 
 const TranslationsComponent = () => {
-  const [state, setState] = useState<ITranslationMenuState>({
-    expanded: true,
-    locales: [
-      { id: "en", name: "English", default: true, active: true },
-      { id: "de", name: "Deutsch", active: true },
-      { id: "es", name: "Spanisch", active: true },
-      { id: "fr", name: "French", active: false },
-      { id: "ru", name: "Russisch", active: true },
-    ],
-  });
+  const [opened, setOpened] = useState(false);
+  const [locales, setLocales] = useState<ILanguageFlagToggleListItemLocale[]>([
+    { id: "de", name: "Deutsch", active: true },
+    { id: "es", name: "Spanisch", active: true },
+    { id: "fr", name: "French", active: false },
+    { id: "ru", name: "Russisch", active: true },
+  ]);
 
   return (
     <BlockEditorSidebarListItem>
       <DndProvider backend={HTML5Backend}>
-        <TranslationMenu initialState={state} onChange={setState} />
+        <TranslationMenu opened={opened} locales={locales} onToggleOpened={setOpened} onLocalesChange={setLocales} />
       </DndProvider>
     </BlockEditorSidebarListItem>
   );
 };
 
-function BlockEditorSidebarDemo({ status, ...args }) {
+function BlockEditorSidebarDemo({ status }) {
   const [activeTab, setActiveTab] = useState(null);
+  const [opened, setOpened] = useState(true);
 
-  const [tabs, setTabs] = useState(
-    args.tabs.map((tab) => ({
-      tab,
-      component: tab === "Configuration" ? <TranslationsComponent /> : null,
-    })),
-  );
-
-  useEffect(() => {
-    setTabs(
-      args.tabs.map((tab) => ({
-        tab,
-        component: tab === "Configuration" ? <TranslationsComponent /> : null,
-      })),
-    );
-  }, [args.tabs]);
+  const tabs = [
+    {
+      tab: "Configuration",
+      component: <TranslationsComponent />,
+    },
+    {
+      tab: "Details",
+      component: <div>Details tab :)</div>,
+    },
+  ];
 
   return (
-    <div style={{ width: 305, height: "100vh" }}>
-      <BlockEditorSidebar selectedTab={activeTab} onTabClick={setActiveTab} tabs={tabs} status={status} />
-    </div>
+    <Layout styleOverwrite={{ height: "calc(100vh - 40px)", justifyContent: "flex-end" }}>
+      <div style={{ position: "relative", order: 3 }}>
+        <div style={{ display: "flex", height: "100%", width: opened ? 305 : 0 }}>
+          <SidebarTag left={false} onOpenChanged={setOpened} />
+          {opened && (
+            <LayoutSider styleOverwrite={{ overflow: "unset" }}>
+              <BlockEditorSidebar selectedTab={activeTab} onTabClick={setActiveTab} tabs={tabs} status={status} />
+            </LayoutSider>
+          )}
+        </div>
+      </div>
+    </Layout>
   );
 }
 
@@ -71,5 +75,4 @@ const Template = (args) => <BlockEditorSidebarDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   status: "Draft",
-  tabs: ["Configuration", "Details"],
 };

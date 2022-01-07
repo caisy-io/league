@@ -1,6 +1,6 @@
 import React from "react";
 import { LineTabs } from "..";
-import { IconDocuments } from "../..";
+import { IconDocuments } from "../../icons";
 import { SBlockEditorSidebar } from "./styles/SBlockEditorSidebar";
 import { SBlockEditorSidebarListItem } from "./styles/SBlockEditorSidebarListItem";
 import { SBlockEditorSidebarStatus } from "./styles/SBlockEditorSidebarStatus";
@@ -24,7 +24,8 @@ export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({ status, tabs
     <SBlockEditorSidebar>
       <SBlockEditorSidebarListItem>
         <SBlockEditorSidebarStatus>
-          <IconDocuments size={16} /> CURRENT STATUS
+          <IconDocuments size={16} />
+          CURRENT STATUS
           <SBlockEditorSidebarStatusBadge>{status}</SBlockEditorSidebarStatusBadge>
         </SBlockEditorSidebarStatus>
       </SBlockEditorSidebarListItem>
