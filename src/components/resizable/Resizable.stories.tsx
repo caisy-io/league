@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Left, Resizable, Right, useResize } from ".";
+import { useResize } from "./Resizable.hooks";
+import { Left, Right } from "./Resizable.resizers";
+import { Resizable } from "./Resizable";
 import { lock, max, min, resize, update } from "./Resizable.operations";
 import { SResizableWrapper } from "./styles/SResizableWrapper";
 

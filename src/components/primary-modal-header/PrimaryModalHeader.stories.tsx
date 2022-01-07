@@ -1,8 +1,9 @@
 PrimaryModalHeader;
 import React, { useEffect, useState } from "react";
 import { PrimaryModalHeader } from "./PrimaryModalHeader";
-import { IconClose, IconGithub, IconGitlab, IconStarOutlined } from "../..";
-import { FlatActionButton, Tab } from "..";
+import { IconClose, IconGithub, IconGitlab, IconStarOutlined } from "../../icons";
+import { FlatActionButton } from "../flat-action-button";
+import { Tab } from "../tab";
 
 // Default PrimaryModalHeader Demo
 export default {

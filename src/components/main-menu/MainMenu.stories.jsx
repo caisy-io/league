@@ -4,7 +4,7 @@ import sampleOrgLogo from "../organization-select-menu/sampleGroup.png";
 import { OrganizationSelectMenu } from "../organization-select-menu/OrganizationSelectMenu";
 import { MainMenuItem } from "../main-menu-items/MainMenuItem";
 import { UploadMenuItem } from "../upload-menu-item/UploadMenuItem";
-import { IconLink, IconBoolean, IconAttachmentSquare, IconCode } from "../..";
+import { IconLink, IconBoolean, IconAttachmentSquare, IconCode } from "../../icons";
 
 const logoSquareAssetUrl =
   "https://assets.caisy.io/asset/9aff2246-1dd1-44a7-ad8d-47feaaa1cce9/bbf6fabc3fd88c4c854aa6877fd9366f/CAISY_ICON.svg?w=800";
