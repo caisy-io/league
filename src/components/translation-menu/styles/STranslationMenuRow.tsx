@@ -2,16 +2,10 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
+  background-color: var(--ui-01);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  :not(:last-child) {
-    margin-bottom: 12px;
-  }
-  padding: 4px;
-  cursor: grab;
-  background-color: var(--white-2);
-  border-radius: 6px;
+  justify-content: space-between;
 `;
 
 const Silver = css``;
