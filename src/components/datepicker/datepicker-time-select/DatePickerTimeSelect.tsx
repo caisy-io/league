@@ -1,10 +1,11 @@
 import React from "react";
-import DatePickerCard from "../datepicker-card/DatePickerCard";
 import SDatePickerTimeSelect from "./styles/SDatePickerTimeSelect";
 import SDatePickerAMPMIndicator from "./styles/SDatePickerAMPMIndicator";
 import SDatePickerTimeIndicator from "./styles/SDatePickerTimeIndicator";
 import DatePickerTimePicker from "./DatePickerTimePicker";
 import usePicker from "../context/DatePickerContext";
+import SDatePickerTimePickerWrapper from "./styles/SDatePickerTimePickerWrapper";
+import { IconClock } from "../../../icons/IconClock";
 
 interface IDatePickerTimeSelect {}
 
@@ -45,10 +46,13 @@ const DatePickerTimeSelect: React.FC<IDatePickerTimeSelect> = () => {
     const newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), newHours, newMinutes);
     onChange(newDate);
   };
-
+  
+  console.log(onChange)
+  
   return (
     <SDatePickerTimeSelect>
-      <DatePickerCard flexDirection="row">
+      <SDatePickerTimePickerWrapper>
+        <IconClock/>
         <SDatePickerTimeIndicator onClick={openHours}>
           <DatePickerTimePicker value="hours" show={showHours} options={hoursOptions} />
           {hours?.toString().length === 1 ? `0${hours}` : `${hours}`}
@@ -58,15 +62,15 @@ const DatePickerTimeSelect: React.FC<IDatePickerTimeSelect> = () => {
           <DatePickerTimePicker value="minutes" show={showMinutes} options={minutesOptions} />
           {minutes?.toString().length === 1 ? `0${minutes}` : `${minutes}`}
         </SDatePickerTimeIndicator>
-      </DatePickerCard>
-      <DatePickerCard flexDirection="row">
+      </SDatePickerTimePickerWrapper>
+      <SDatePickerTimePickerWrapper>
         <SDatePickerAMPMIndicator onClick={() => onAmPmClick(true)} active={isAm}>
           AM
         </SDatePickerAMPMIndicator>
         <SDatePickerAMPMIndicator onClick={() => onAmPmClick(false)} active={!isAm}>
           PM
         </SDatePickerAMPMIndicator>
-      </DatePickerCard>
+      </SDatePickerTimePickerWrapper>
     </SDatePickerTimeSelect>
   );
 };

@@ -14,6 +14,9 @@ const SDatePickerTimeIndicator = styled.div`
     margin-left: 8px;
     margin-right: 0;
   }
+  :first-child{
+    margin-left: 4px;
+  }
 `;
 
 export default SDatePickerTimeIndicator;

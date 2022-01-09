@@ -60,6 +60,7 @@ export interface IDatePickerI18n {
   today?: string;
   tomorrow?: string;
   nextWeek?: string;
+  currentTime?: string;
 }
 
 const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", ...props}) => {
@@ -170,7 +171,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", .
         </DatePickerCard>
       )}
       {/*{(withDefaultActive || active) && !loadingRef && (*/}
-      <Popover zIndex={props.popoverZIndex} reference={reference} placement="bottom" disableTriangle>
+      <Popover zIndex={props.popoverZIndex} reference={reference} placement="top" disableTriangle>
         <DatePickerCard>
           <SDatePickerCalendarWrapper>
             <SDatePickerWrapperHeader>
@@ -227,13 +228,26 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", .
             <DatePickerButtonContainer>
               <Button onClick={() => increaseDate(0)}>
                 <IconCalendar/>
-                {props.i18n?.today ?? "Today"}
+                {props.i18n?.currentTime ?? "current time"}
               </Button>
             </DatePickerButtonContainer>
           )}
           {getCurrentDate() && (
             <>
-              {withTime ? <DatePickerTimeSelect/> : <div style={{margin: "8px 0px"}}></div>}
+              {withTime ? (
+                <>
+                <DatePickerTimeSelect/>
+                {withQuickSelectionButtons && (
+                  <DatePickerButtonContainer>
+                    <Button onClick={() => increaseDate(0)}>
+                      <IconCalendar/>
+                      {props.i18n?.today ?? "Today"}
+                    </Button>
+                  </DatePickerButtonContainer>
+                )}
+              </>
+              ) : (
+                <div style={{margin: "8px 0px"}}></div>)}
               {withBottomButtons && (
                 <DatePickerButtonContainer>
                   {withCloseButton && (
