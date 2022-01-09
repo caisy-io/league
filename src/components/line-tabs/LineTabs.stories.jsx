@@ -3,7 +3,7 @@ import { Button } from "../button";
 import { LineTabs, LineTabPanel } from "./LineTabs";
 import { IconStarOutlined } from "../../icons/IconStarOutlined";
 
-function TabsShowcase() {
+function LineTabsShowcase() {
   const [currentTab, setCurrentTab] = useState(0);
 
   return (
@@ -46,7 +46,7 @@ function TabsShowcase() {
 
 export default {
   title: "Components/Navigation/LineTabs",
-  component: TabsShowcase,
+  component: LineTabsShowcase,
   parameters: {
     design: {
       type: "figma",
@@ -55,7 +55,7 @@ export default {
   },
 };
 
-const Template = (args) => <TabsShowcase {...args} />;
+const Template = (args) => <LineTabsShowcase {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
