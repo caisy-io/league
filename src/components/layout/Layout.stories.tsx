@@ -40,7 +40,7 @@ const Template = (args) => {
   const mainNavWidth = 60;
 
   return (
-    <Layout styleOverwrite={CSSLayoutOverwrite} {...args}>
+    <Layout styleOverwrite={CSSLayoutOverwrite} >
       <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={mainNavWidth}>
         <p>nav</p>
       </LayoutMainNav>
@@ -104,7 +104,7 @@ export const LeftSider = ({ content, ...args }) => {
   const mainNavWidth = 60;
 
   return (
-    <Layout styleOverwrite={CSSLayoutOverwrite} {...args}>
+    <Layout styleOverwrite={CSSLayoutOverwrite}>
       <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={mainNavWidth}>
         <p>nav</p>
       </LayoutMainNav>
