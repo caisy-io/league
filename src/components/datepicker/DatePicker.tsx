@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { Button } from "../button/Button";
-import { Popover } from "../popover/Popover";
+import React, {useEffect} from "react";
+import {Button} from "../button/Button";
+import {Popover} from "../popover/Popover";
 import DatePickerButtonContainer from "./datepicker-button-container/DatePickerButtonContainer";
 import DatePickerCard from "./datepicker-card/DatePickerCard";
 import DatePickerInput from "./datepicker-input/DatePickerInput";
@@ -9,9 +9,17 @@ import DatePickerState from "./context/DatePickerState";
 import SDatePicker from "./styles/SDatePicker";
 import Flatpickr from "react-flatpickr";
 import usePicker from "./context/DatePickerContext";
-import { SDatePickerCalendarWrapper } from "./styles/SDatePickerCalendarWrapper";
-import { DayjsProvider, useDayjs } from "../../provider/DayjsProvider";
-import { useClickOutside } from "../../utils";
+import {SDatePickerCalendarWrapper} from "./styles/SDatePickerCalendarWrapper";
+import {SDatePickerNavigationButton} from "./styles/SDatePickerNavigationButton";
+import {SDatePickerButton} from "./styles/SDatePickerButton";
+import {SDatePickerMonthAndYear} from "./styles/SDatePickerMonthAndYear";
+import {SDatePickerWrapperHeader} from "./styles/SDatePickerWrapperHeader";
+import {DayjsProvider, useDayjs} from "../../provider/DayjsProvider";
+import {useClickOutside} from "../../utils";
+import {IconAngleLeft} from "../../icons/IconAngleLeft";
+import {IconAngleRight} from "../../icons/IconAngleRight";
+import {IconAngleDown} from "../../icons/IconAngleDown";
+import {IconCalendar} from "../../icons/IconCalendar";
 
 interface IDatePickerHTMLElement extends HTMLElement {
   dateObj: string;
@@ -44,6 +52,7 @@ export interface IDatePickerConfig {
   withSelectedDisplay?: boolean;
   withQuickSelectionButtons?: boolean;
 }
+
 export interface IDatePickerI18n {
   placeholder?: any;
   cancelButtonText?: string;
@@ -53,7 +62,7 @@ export interface IDatePickerI18n {
   nextWeek?: string;
 }
 
-const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale = "en", ...props }) => {
+const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", ...props}) => {
   const {
     setShowMinutes,
     setShowHours,
@@ -80,18 +89,18 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale = "en", 
     withTime,
     withDefaultActive,
   } = config;
-
+  
   useEffect(() => {
     setDate(props.initialDate);
   }, [props.initialDate]);
-
+  
   const dayjs = useDayjs();
   React.useEffect(() => {
     dayjs.locale(locale);
   }, [locale]);
   const [calendarMonth, setCalendarMonth] = React.useState(dayjs().format("MMMM"));
   const [calendarYear, setCalendarYear] = React.useState(dayjs().format("YYYY"));
-
+  
   const handleOnClickOutside = React.useCallback(() => {
     if (typeof props.onClickOutside === "function") {
       props.onClickOutside();
@@ -99,12 +108,12 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale = "en", 
     setActive(false);
   }, [setActive]);
   const handleOnMouseDownCapture = useClickOutside(handleOnClickOutside);
-
+  
   const closeSelectors = () => {
     setShowMinutes(false);
     setShowHours(false);
   };
-
+  
   const increaseDate = (amount) => {
     const newDate = new Date();
     newDate.setDate(newDate.getDate() + amount);
@@ -116,7 +125,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale = "en", 
       new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate(), isAm ? hours : hours + 12, minutes),
     );
   };
-
+  
   const closePicker = () => {
     setDate(props.initialDate);
     setHours(0);
@@ -125,7 +134,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale = "en", 
     setActive(false);
     onCancel?.();
   };
-
+  
   const onMonthChange = (currentDate, flatPicker) => {
     const newDate = new Date(flatPicker.currentYear, flatPicker.currentMonth);
     const newDayjsWithoutDays = dayjs(newDate);
@@ -136,20 +145,20 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale = "en", 
     setCalendarMonth(newDayjsWithoutDays.format("MMMM"));
     props.onMonthChange?.(newDate);
   };
-
+  
   const onYearChange = (currentDate, flatPicker) => {
     const newDate = new Date(flatPicker.currentYear, flatPicker.currentMonth, dayjs(currentDate).date());
     setDate(newDate);
     setCalendarYear(dayjs(newDate).format("YYYY"));
   };
-
+  
   const [loadingRef, setLoadingRef] = React.useState(true);
   React.useEffect(() => {
     setLoadingRef(false);
   }, []);
-
+  
   const reference = React.useRef(null);
-
+  
   return (
     <SDatePicker ref={reference} onMouseDownCapture={handleOnMouseDownCapture} onClick={closeSelectors}>
       {withSelectedDisplay && (
@@ -157,76 +166,101 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({ config = {}, locale = "en", 
           <DatePickerInput
             withTime={withTime}
             placeholder={props.i18n?.placeholder ?? "Select a date"}
-          ></DatePickerInput>
+          />
         </DatePickerCard>
       )}
-      {(withDefaultActive || active) && !loadingRef && (
-        <Popover zIndex={props.popoverZIndex} reference={reference} placement="bottom" disableTriangle>
-          <DatePickerCard>
-            {withQuickSelectionButtons && (
-              <DatePickerButtonContainer>
-                <Button onClick={() => increaseDate(0)} size="small">
-                  {props.i18n?.today ?? "Today"}
-                </Button>
-                <Button onClick={() => increaseDate(1)} size="small">
-                  {props.i18n?.tomorrow ?? "Tomorrow"}
-                </Button>
-                <Button onClick={() => increaseDate(7)} size="small">
-                  {props.i18n?.nextWeek ?? "Next Week"}
-                </Button>
-              </DatePickerButtonContainer>
-            )}
-            <SDatePickerCalendarWrapper month={calendarMonth} year={calendarYear}>
-              <Flatpickr
-                value={getCurrentDate()}
-                onMonthChange={([currentDate], __, flatPicker) => {
-                  onMonthChange(currentDate, flatPicker);
-                }}
-                onYearChange={([currentDate], __, flatPicker) => {
-                  onYearChange(currentDate, flatPicker);
-                }}
-                onChange={([date]) => {
-                  setDate(
-                    new Date(date.getFullYear(), date.getMonth(), date.getDate(), isAm ? hours : hours + 12, minutes),
-                  );
-                  onChange?.(
-                    new Date(date.getFullYear(), date.getMonth(), date.getDate(), isAm ? hours : hours + 12, minutes),
-                  );
-                }}
-                onDayCreate={(_, __, ___, data) => props.onDayCreate?.(data)}
-                options={{ inline: true, minDate: props.minDate, maxDate: props.maxDate }}
-              />
-            </SDatePickerCalendarWrapper>
-            {getCurrentDate() && (
-              <>
-                {withTime ? <DatePickerTimeSelect /> : <div style={{ margin: "8px 0px" }}></div>}
-                {withBottomButtons && (
-                  <DatePickerButtonContainer>
-                    {withCloseButton && (
-                      <Button onClick={closePicker}>{props.i18n?.cancelButtonText ?? "Cancel"}</Button>
-                    )}
-                    {withSaveButton && (
-                      <Button
-                        onClick={() => {
-                          onSave?.(getCurrentDate());
-                        }}
-                      >
-                        {props.i18n?.saveButtonText ?? "Save"}
-                      </Button>
-                    )}
-                  </DatePickerButtonContainer>
-                )}
-                {props.children}
-              </>
-            )}
-          </DatePickerCard>
-        </Popover>
-      )}
+      {/*{(withDefaultActive || active) && !loadingRef && (*/}
+      <Popover zIndex={props.popoverZIndex} reference={reference} placement="bottom" disableTriangle>
+        <DatePickerCard>
+          <SDatePickerCalendarWrapper>
+            <SDatePickerWrapperHeader>
+              <SDatePickerNavigationButton>
+                <IconAngleLeft/>
+              </SDatePickerNavigationButton>
+              <SDatePickerMonthAndYear>
+                <SDatePickerButton onClick={() => {
+                  console.log("TODO design missing")
+                }}>
+                  {calendarMonth}
+                  <IconAngleDown/>
+                </SDatePickerButton>
+                <SDatePickerButton onClick={() => {
+                  console.log("TODO design missing")
+                }}>
+                  {calendarYear}
+                  <IconAngleDown/>
+                </SDatePickerButton>
+              </SDatePickerMonthAndYear>
+              <SDatePickerNavigationButton>
+                <IconAngleRight/>
+              </SDatePickerNavigationButton>
+            </SDatePickerWrapperHeader>
+            <Flatpickr
+              value={getCurrentDate()}
+              onMonthChange={([currentDate], __, flatPicker) => {
+                onMonthChange(currentDate, flatPicker);
+              }}
+              onYearChange={([currentDate], __, flatPicker) => {
+                onYearChange(currentDate, flatPicker);
+              }}
+              onChange={([date]) => {
+                setDate(
+                  new Date(date.getFullYear(), date.getMonth(), date.getDate(), isAm ? hours : hours + 12, minutes),
+                );
+                onChange?.(
+                  new Date(date.getFullYear(), date.getMonth(), date.getDate(), isAm ? hours : hours + 12, minutes),
+                );
+              }}
+              onDayCreate={(_, __, ___, data) => props.onDayCreate?.(data)}
+              options={{
+                inline: true, minDate: props.minDate, maxDate: props.maxDate,
+                locale: {
+                  firstDayOfWeek: 1,
+                  weekdays: {
+                    shorthand: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+                  }
+                }
+              }}
+            />
+          </SDatePickerCalendarWrapper>
+          {withQuickSelectionButtons && (
+            <DatePickerButtonContainer>
+              <Button onClick={() => increaseDate(0)}>
+                <IconCalendar/>
+                {props.i18n?.today ?? "Today"}
+              </Button>
+            </DatePickerButtonContainer>
+          )}
+          {getCurrentDate() && (
+            <>
+              {withTime ? <DatePickerTimeSelect/> : <div style={{margin: "8px 0px"}}></div>}
+              {withBottomButtons && (
+                <DatePickerButtonContainer>
+                  {withCloseButton && (
+                    <Button onClick={closePicker}>{props.i18n?.cancelButtonText ?? "Cancel"}</Button>
+                  )}
+                  {withSaveButton && (
+                    <Button
+                      onClick={() => {
+                        onSave?.(getCurrentDate());
+                      }}
+                    >
+                      {props.i18n?.saveButtonText ?? "Save"}
+                    </Button>
+                  )}
+                </DatePickerButtonContainer>
+              )}
+              {props.children}
+            </>
+          )}
+        </DatePickerCard>
+      </Popover>
+      {/*)}*/}
     </SDatePicker>
   );
 };
 
-export const DatePicker: React.FC<IDatePicker> = ({ ...props }) => {
+export const DatePicker: React.FC<IDatePicker> = ({...props}) => {
   const defaultConfig: IDatePickerConfig = {
     withDefaultActive: false,
     withCloseButton: false,
@@ -236,10 +270,10 @@ export const DatePicker: React.FC<IDatePicker> = ({ ...props }) => {
     withSelectedDisplay: true,
     withTime: true,
   };
-
-  const config: IDatePickerConfig = { ...defaultConfig, ...props.config };
+  
+  const config: IDatePickerConfig = {...defaultConfig, ...props.config};
   config.withSelectedDisplay || (config.withDefaultActive = true);
-
+  
   return (
     <DatePickerState {...props} defaultActive={config.withDefaultActive}>
       <DayjsProvider>
