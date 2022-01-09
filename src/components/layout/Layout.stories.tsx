@@ -7,9 +7,10 @@ import { LayoutTopNav } from "./LayoutTopNav";
 import { SLayoutWrapper } from "./styles/SLayoutWrapper";
 import { SLayoutContentWrapper } from "./styles/SLayoutContentWrapper";
 import { SLayoutSiderWrapper } from "./styles/SLayoutSiderWrapper";
-import { SidebarTag } from "../sidebarTag";
+import { SidebarTag } from "../sidebar-tag";
 import { useWindowDimensions } from "../../utils";
 import { css } from "styled-components";
+import { MAIN_NAV_WIDTH } from "./fixtures";
 
 const CSSLayoutOverwrite = css`
   color: #000000;
@@ -37,11 +38,10 @@ const Template = (args) => {
   const [rightSiderSize, setRightSiderSize] = useState(initialSize);
 
   const { width } = useWindowDimensions();
-  const mainNavWidth = 60;
 
   return (
     <Layout styleOverwrite={CSSLayoutOverwrite} >
-      <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={mainNavWidth}>
+      <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={MAIN_NAV_WIDTH}>
         <p>nav</p>
       </LayoutMainNav>
       <SLayoutWrapper>
@@ -57,7 +57,7 @@ const Template = (args) => {
           </SLayoutSiderWrapper>
           <LayoutContent
             styleOverwrite={CSSLayoutContentOverwrite}
-            width={width - mainNavWidth - leftSiderSize.width - rightSiderSize.width + "px"}
+            width={width - MAIN_NAV_WIDTH - leftSiderSize.width - rightSiderSize.width + "px"}
           >
             <p>{args.content}</p>
           </LayoutContent>
@@ -99,13 +99,11 @@ Default.parameters = {
 export const LeftSider = ({ content, ...args }) => {
   const [leftSiderOpened, setLeftSiderOpened] = useState(true);
   const [leftSiderSize, setLeftSiderSize] = useState(initialSize);
-
   const { width } = useWindowDimensions();
-  const mainNavWidth = 60;
 
   return (
     <Layout styleOverwrite={CSSLayoutOverwrite}>
-      <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={mainNavWidth}>
+      <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={MAIN_NAV_WIDTH}>
         <p>nav</p>
       </LayoutMainNav>
       <SLayoutWrapper>
@@ -121,7 +119,7 @@ export const LeftSider = ({ content, ...args }) => {
           </SLayoutSiderWrapper>
           <LayoutContent
             styleOverwrite={CSSLayoutContentOverwrite}
-            width={width - mainNavWidth - leftSiderSize.width + "px"}
+            width={width - MAIN_NAV_WIDTH - leftSiderSize.width + "px"}
           >
             <p>{content}</p>
             {args.children}
