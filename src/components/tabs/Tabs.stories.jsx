@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Tabs, TabPanel } from "./Tabs";
-import { IconStarOutlined } from "../../icons/IconStarOutlined";
-import { IconAddToRelease, IconAlarmClock, IconAngleDown, IconAnimalsDog, IconBookmark } from "../../icons";
+import { IconAlarmClock, IconBookmark } from "../../icons";
 
   function TabsShowcase({ content, selected, ...args }) {
     const [currentTab, setCurrentTab] = useState(1);
