@@ -61,7 +61,7 @@ export * from "./tree";
 export * from "./search-bar-operand";
 export * from "./close-button";
 export * from "./sidebar-card";
-export * from "./line-tabs";
+export * from "./line-tab";
 export * from "./solidLabel";
 export * from "./toggle";
 export * from "./organization-select-menu";

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Badge, EBadgePosition } from "../badge";
-import { LineTabs } from "../line-tabs";
+import { LineTab } from "../line-tab";
 import { IconArrowDo, IconArrowUndo, IconEdit, IconGearSettings, IconPlusCircle } from "../../icons";
 import { FlatActionButton } from "../flat-action-button/FlatActionButton";
 import { SBlueprintEditorSubnav } from "./styles/SBlueprintEditorSubnav";
@@ -53,14 +53,14 @@ export const BlueprintEditorSubnav: FC<IBlueprintEditorSubnav> = ({
       <SBlueprintEditorSubnavTabs>
         {groups.map((group) => (
           <SBlueprintEditorSubnavTab>
-            <LineTabs activated={selectedGroup === group.name} onClick={() => onSelectGroup(group.name)}>
+            <LineTab activated={selectedGroup === group.name} onClick={() => onSelectGroup(group.name)}>
               {group.name}
               {!!onEditGroup && (
                 <SBlueprintEditorSubnavEditIconWrapper onClick={(e) => handleEditTab(e, group)}>
                   <IconEdit size={16} />
                 </SBlueprintEditorSubnavEditIconWrapper>
               )}
-            </LineTabs>
+            </LineTab>
           </SBlueprintEditorSubnavTab>
         ))}
       </SBlueprintEditorSubnavTabs>
