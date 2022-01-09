@@ -38,7 +38,6 @@ const Template = (args) => {
   const [rightSiderSize, setRightSiderSize] = useState(initialSize);
 
   const { width } = useWindowDimensions();
-  const MAIN_NAV_WIDTH = 60;
 
   return (
     <Layout styleOverwrite={CSSLayoutOverwrite} >
