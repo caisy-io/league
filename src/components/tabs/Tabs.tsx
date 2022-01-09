@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import { STabBar } from "./styles/STabBar";
 import { Tab } from "../tab/Tab";
+import { ISizesWithDefault } from "../../interfaces";
 interface ITabs {
   initialValue: number;
   onChange?: (newValue: number) => void;
@@ -8,6 +9,7 @@ interface ITabs {
   loading?: boolean;
   loadingComponent?: ReactNode;
   reference?: any;
+  size?: ISizesWithDefault;
   style?: React.CSSProperties;
 }
 
@@ -32,6 +34,7 @@ export const Tabs: React.FC<ITabs> = (props) => {
                 props.onChange && props.onChange(index);
               }}
               icon={child?.props?.icon}
+              size={props?.size}
               activated={index === selected}
             >
               {child && child.props.title ? child.props.title : null}

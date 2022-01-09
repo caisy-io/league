@@ -26,9 +26,7 @@ export default {
       options: ["micro", "small", "medium", "default"],
       control: { type: "select" },
       table: {
-        defaultValue: {
-          summary: "Default",
-        },
+        defaultValue: "default",
       },
     },
     selected: {
