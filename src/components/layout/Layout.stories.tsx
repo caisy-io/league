@@ -7,192 +7,179 @@ import { LayoutTopNav } from "./LayoutTopNav";
 import { SLayoutWrapper } from "./styles/SLayoutWrapper";
 import { SLayoutContentWrapper } from "./styles/SLayoutContentWrapper";
 import { SLayoutSiderWrapper } from "./styles/SLayoutSiderWrapper";
-import { SidebarTag } from "../sidebarTag";
+import { SidebarTag } from "../sidebar-tag";
 import { useWindowDimensions } from "../../utils";
-import {css} from "styled-components";
+import { css } from "styled-components";
+import { MAIN_NAV_WIDTH } from "./fixtures";
 
 const CSSLayoutOverwrite = css`
-    color: #000000;
-    line-height: 3;
-    height: 100vh;
+  color: #000000;
+  line-height: 3;
+  height: 100vh;
 `;
 
 const CSSLayoutMainNavOverwrite = css`
-    background-color:rgba(16, 83, 255, 0.5);
+  background-color: rgba(16, 83, 255, 0.5);
 `;
 const CSSLayoutTopNavOverwrite = css`
-    background-color:rgba(16, 83, 255, 0.4);
+  background-color: rgba(16, 83, 255, 0.4);
 `;
 const CSSLayoutSiderOverwrite = css`
-    background-color:rgba(16, 83, 255, 0.25);
+  background-color: rgba(16, 83, 255, 0.25);
 `;
 const CSSLayoutContentOverwrite = css`
-    background-color:rgba(16, 83, 255, 0.1);
+  background-color: rgba(16, 83, 255, 0.1);
 `;
 
-function LayoutDemo(args) {
-    const [leftSiderOpened, setLeftSiderOpened] = useState(true);
-    const [leftSiderSize, setLeftSiderSize] = useState(initialSize);
-    const [rightSiderOpened, setRightSiderOpened] = useState(true);
-    const [rightSiderSize, setRightSiderSize] = useState(initialSize);
+const Template = (args) => {
+  const [leftSiderOpened, setLeftSiderOpened] = useState(true);
+  const [leftSiderSize, setLeftSiderSize] = useState(initialSize);
+  const [rightSiderOpened, setRightSiderOpened] = useState(true);
+  const [rightSiderSize, setRightSiderSize] = useState(initialSize);
 
-    const { width } = useWindowDimensions(); 
-    const mainNavWidth = 60;
+  const { width } = useWindowDimensions();
+  const MAIN_NAV_WIDTH = 60;
 
-    return (
-        <Layout 
-            styleOverwrite={CSSLayoutOverwrite}
-            {...args}
-        >
-            <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={mainNavWidth}>
-                <p>nav</p>
-            </LayoutMainNav>
-            <SLayoutWrapper>
-                <LayoutTopNav styleOverwrite={CSSLayoutTopNavOverwrite}>
-                    Nav bar
-                </LayoutTopNav>
-                <SLayoutContentWrapper>
-                    <SLayoutSiderWrapper left>
-                        {leftSiderOpened && 
-                            <LayoutSider left styleOverwrite={CSSLayoutSiderOverwrite} onSizeChanged={setLeftSiderSize}>
-                                <p>Sider left, resizable side on right side</p>
-                            </LayoutSider>
-                        }
-                        <SidebarTag left onOpenChanged={setLeftSiderOpened}/>
-                    </SLayoutSiderWrapper>
-                    <LayoutContent styleOverwrite={CSSLayoutContentOverwrite} width={(width - mainNavWidth - leftSiderSize.width - rightSiderSize.width) + "px"}>
-                        <p >{args.content}</p>
-                    </LayoutContent>
-                    <SLayoutSiderWrapper left={false}>
-                        <SidebarTag left={false} onOpenChanged={setRightSiderOpened}/>
-                        {rightSiderOpened && 
-                            <LayoutSider styleOverwrite={CSSLayoutSiderOverwrite} left={false} onSizeChanged={setRightSiderSize}>
-                                <p>Sider right, resizable side on left side</p>
-                            </LayoutSider>
-                        }
-                    </SLayoutSiderWrapper>
-                </SLayoutContentWrapper>
-            </SLayoutWrapper>
-        </Layout>
-    );
-}
+  return (
+    <Layout styleOverwrite={CSSLayoutOverwrite} >
+      <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={MAIN_NAV_WIDTH}>
+        <p>nav</p>
+      </LayoutMainNav>
+      <SLayoutWrapper>
+        <LayoutTopNav styleOverwrite={CSSLayoutTopNavOverwrite}>Nav bar</LayoutTopNav>
+        <SLayoutContentWrapper>
+          <SLayoutSiderWrapper left>
+            {leftSiderOpened && (
+              <LayoutSider left styleOverwrite={CSSLayoutSiderOverwrite} onSizeChanged={setLeftSiderSize}>
+                <p>Sider left, resizable side on right side</p>
+              </LayoutSider>
+            )}
+            <SidebarTag left onOpenChanged={setLeftSiderOpened} />
+          </SLayoutSiderWrapper>
+          <LayoutContent
+            styleOverwrite={CSSLayoutContentOverwrite}
+            width={width - MAIN_NAV_WIDTH - leftSiderSize.width - rightSiderSize.width + "px"}
+          >
+            <p>{args.content}</p>
+          </LayoutContent>
+          <SLayoutSiderWrapper left={false}>
+            <SidebarTag left={false} onOpenChanged={setRightSiderOpened} />
+            {rightSiderOpened && (
+              <LayoutSider styleOverwrite={CSSLayoutSiderOverwrite} left={false} onSizeChanged={setRightSiderSize}>
+                <p>Sider right, resizable side on left side</p>
+              </LayoutSider>
+            )}
+          </SLayoutSiderWrapper>
+        </SLayoutContentWrapper>
+      </SLayoutWrapper>
+    </Layout>
+  );
+};
 
 export default {
-  title: 'Components/Utilities/Layout',
-  component: LayoutDemo,
+  title: "Components/Utilities/Layout",
+  component: Template,
   argTypes: {
     content: {
       description: "Content of body",
       control: { type: "text" },
     },
-  }
+  },
 };
-
-const Template = (args) => 
-    <LayoutDemo {...args}/>;
 
 export const Default = Template.bind({});
 
 Default.args = {
-    content: "Lorem ipsum dolor sit amet",
+  content: "Lorem ipsum dolor sit amet",
 };
 Default.parameters = {
-    layout: 'fullscreen',
+  layout: "fullscreen",
 };
 
-
 // With LeftSider
-export const LeftSider = ({content, ...args}) => {
-    const [leftSiderOpened, setLeftSiderOpened] = useState(true);
-    const [leftSiderSize, setLeftSiderSize] = useState(initialSize);
+export const LeftSider = ({ content, ...args }) => {
+  const [leftSiderOpened, setLeftSiderOpened] = useState(true);
+  const [leftSiderSize, setLeftSiderSize] = useState(initialSize);
+  const { width } = useWindowDimensions();
 
-    const { width } = useWindowDimensions(); 
-    const mainNavWidth = 60;
-
-    return (
-        <Layout 
-            styleOverwrite={CSSLayoutOverwrite}
-            {...args}
-        >
-            <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={mainNavWidth}>
-                <p>nav</p>
-            </LayoutMainNav>
-            <SLayoutWrapper>
-                <LayoutTopNav styleOverwrite={CSSLayoutTopNavOverwrite}>
-                    Nav bar
-                </LayoutTopNav>
-                <SLayoutContentWrapper>
-                    <SLayoutSiderWrapper left>
-                        {leftSiderOpened && 
-                            <LayoutSider styleOverwrite={CSSLayoutSiderOverwrite} left onSizeChanged={setLeftSiderSize}>
-                                <p>Sider left, resizable side on right side</p>
-                            </LayoutSider>
-                        }
-                        <SidebarTag left onOpenChanged={setLeftSiderOpened}/>
-                    </SLayoutSiderWrapper>
-                    <LayoutContent styleOverwrite={CSSLayoutContentOverwrite} width={(width - mainNavWidth - leftSiderSize.width) + "px"}>
-                        <p>{content}</p>
-                            {args.children}
-                    </LayoutContent>
-                </SLayoutContentWrapper>
-            </SLayoutWrapper>
-
-        </Layout>
-    );
-}
+  return (
+    <Layout styleOverwrite={CSSLayoutOverwrite}>
+      <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={MAIN_NAV_WIDTH}>
+        <p>nav</p>
+      </LayoutMainNav>
+      <SLayoutWrapper>
+        <LayoutTopNav styleOverwrite={CSSLayoutTopNavOverwrite}>Nav bar</LayoutTopNav>
+        <SLayoutContentWrapper>
+          <SLayoutSiderWrapper left>
+            {leftSiderOpened && (
+              <LayoutSider styleOverwrite={CSSLayoutSiderOverwrite} left onSizeChanged={setLeftSiderSize}>
+                <p>Sider left, resizable side on right side</p>
+              </LayoutSider>
+            )}
+            <SidebarTag left onOpenChanged={setLeftSiderOpened} />
+          </SLayoutSiderWrapper>
+          <LayoutContent
+            styleOverwrite={CSSLayoutContentOverwrite}
+            width={width - MAIN_NAV_WIDTH - leftSiderSize.width + "px"}
+          >
+            <p>{content}</p>
+            {args.children}
+          </LayoutContent>
+        </SLayoutContentWrapper>
+      </SLayoutWrapper>
+    </Layout>
+  );
+};
 
 LeftSider.args = {
-    content: "Lorem ipsum dolor sit amet",
+  content: "Lorem ipsum dolor sit amet",
 };
 
 LeftSider.parameters = {
-    layout: 'fullscreen',
+  layout: "fullscreen",
 };
 
 // With RightSider
-export const RightSider = ({content, ...args}) => {
-    const [rightSiderOpened, setRightSiderOpened] = useState(true);
-    const [rightSiderSize, setRightSiderSize] = useState(initialSize);
+export const RightSider = ({ content, ...args }) => {
+  const [rightSiderOpened, setRightSiderOpened] = useState(true);
+  const [rightSiderSize, setRightSiderSize] = useState(initialSize);
 
-    const { width } = useWindowDimensions(); 
-    const mainNavWidth = 60;
+  const { width } = useWindowDimensions();
+  const mainNavWidth = 60;
 
-    return (
-        <Layout 
-            styleOverwrite={CSSLayoutOverwrite}
-            {...args}
-        >
-            <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={mainNavWidth}>
-                <p>nav</p>
-            </LayoutMainNav>
-            <SLayoutWrapper>
-                <LayoutTopNav styleOverwrite={CSSLayoutTopNavOverwrite}>
-                    Nav bar
-                </LayoutTopNav>
-                <SLayoutContentWrapper>
-                    <LayoutContent styleOverwrite={CSSLayoutContentOverwrite} width={(width - mainNavWidth - rightSiderSize.width) + "px"}>
-                        <p>{content}</p>
-                        {args.children}
-                    </LayoutContent>
-                    <SLayoutSiderWrapper left={false}>
-                        <SidebarTag left={false} onOpenChanged={setRightSiderOpened}/>
-                        {rightSiderOpened && 
-                            <LayoutSider styleOverwrite={CSSLayoutSiderOverwrite} left={false} onSizeChanged={setRightSiderSize}>
-                                <p>Sider right, resizable side on left side</p>
-                            </LayoutSider>
-                        }
-                    </SLayoutSiderWrapper>
-                </SLayoutContentWrapper>
-            </SLayoutWrapper>
-
-        </Layout>
-    );
-}
+  return (
+    <Layout styleOverwrite={CSSLayoutOverwrite} {...args}>
+      <LayoutMainNav styleOverwrite={CSSLayoutMainNavOverwrite} width={mainNavWidth}>
+        <p>nav</p>
+      </LayoutMainNav>
+      <SLayoutWrapper>
+        <LayoutTopNav styleOverwrite={CSSLayoutTopNavOverwrite}>Nav bar</LayoutTopNav>
+        <SLayoutContentWrapper>
+          <LayoutContent
+            styleOverwrite={CSSLayoutContentOverwrite}
+            width={width - mainNavWidth - rightSiderSize.width + "px"}
+          >
+            <p>{content}</p>
+            {args.children}
+          </LayoutContent>
+          <SLayoutSiderWrapper left={false}>
+            <SidebarTag left={false} onOpenChanged={setRightSiderOpened} />
+            {rightSiderOpened && (
+              <LayoutSider styleOverwrite={CSSLayoutSiderOverwrite} left={false} onSizeChanged={setRightSiderSize}>
+                <p>Sider right, resizable side on left side</p>
+              </LayoutSider>
+            )}
+          </SLayoutSiderWrapper>
+        </SLayoutContentWrapper>
+      </SLayoutWrapper>
+    </Layout>
+  );
+};
 
 RightSider.args = {
-    content: "Lorem ipsum dolor sit amet",
+  content: "Lorem ipsum dolor sit amet",
 };
 
 RightSider.parameters = {
-    layout: 'fullscreen',
+  layout: "fullscreen",
 };
