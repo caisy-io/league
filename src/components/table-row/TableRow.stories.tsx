@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { TableRow } from "./TableRow";
-import { Preview }from "../preview";
+import { Preview as PreviewComponent } from "../preview";
 import { Badge, EBadgePosition } from "../badge";
 import { SolidLabel } from "../solidLabel";
 import { Img } from "../../base-components/img/Img";
@@ -62,7 +62,7 @@ const PreviewTemplate = (args) => {
             transition: "background-color 150ms",
           }}
         >
-          <Preview
+          <PreviewComponent
             size={48}
             image={(
               <Img
@@ -80,8 +80,8 @@ const PreviewTemplate = (args) => {
   );
 };
 
-export const Previews = PreviewTemplate.bind({});
-Previews.args = {
+export const Preview = PreviewTemplate.bind({});
+Preview.args = {
   ghost: false,
 };
 
@@ -376,7 +376,7 @@ const UserTemplate = (args) => {
           }}
         >
           <>
-            <Preview
+            <PreviewComponent
               size={40}
               image={
                 <Img
