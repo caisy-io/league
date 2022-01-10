@@ -19,9 +19,10 @@ export interface IButtonProps {
   activated?: boolean;
   sticked?: boolean;
   styleOverwrite?: string;
+  badge?: JSX.Element;
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(({ children, onClick, ...props }, ref) => (
+export const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(({ children, onClick, badge, ...props }, ref) => (
   <SButton htmlType={props.htmlType} onClick={!props.disabled && onClick ? onClick : undefined} {...props} ref={ref} styleOverwrite={props.styleOverwrite}>
     {React.Children.map(children, (child: any) => {
       if (!child) {

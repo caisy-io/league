@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { TableRow } from "./TableRow";
-import PreviewComponent from "../preview/Preview";
+import { Preview }from "../preview";
 import { Badge, EBadgePosition } from "../badge";
 import { SolidLabel } from "../solidLabel";
 import { Img } from "../../base-components/img/Img";
@@ -62,16 +62,16 @@ const PreviewTemplate = (args) => {
             transition: "background-color 150ms",
           }}
         >
-          <PreviewComponent
+          <Preview
             size={48}
-            image={
+            image={(
               <Img
                 lazyload={false}
                 src={
                   "https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!
                 }
                 resolution={48}
-              />
+              />)
             }
           />
         </span>
@@ -80,8 +80,8 @@ const PreviewTemplate = (args) => {
   );
 };
 
-export const Preview = PreviewTemplate.bind({});
-Preview.args = {
+export const Previews = PreviewTemplate.bind({});
+Previews.args = {
   ghost: false,
 };
 
@@ -376,7 +376,7 @@ const UserTemplate = (args) => {
           }}
         >
           <>
-            <PreviewComponent
+            <Preview
               size={40}
               image={
                 <Img
