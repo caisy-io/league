@@ -13,7 +13,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const STabPanel = styled.div`
+export const SLineTabPanel = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
