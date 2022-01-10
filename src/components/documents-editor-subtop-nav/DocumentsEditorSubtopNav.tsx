@@ -1,5 +1,5 @@
 import React from "react";
-import { LineTabs } from "../line-tabs";
+import { LineTab } from "../line-tab";
 import { IconChevronDown, IconCross, IconOpenSidebarMenu } from "../../icons";
 import { SDocumentsEditorSubtopNav } from "./styles/SDocumentsEditorSubtopNav";
 import { SDocumentsEditorSubtopNavDocStructure } from "./styles/SDocumentsEditorSubtopNavDocStructure";
@@ -36,9 +36,9 @@ export const DocumentsEditorSubtopNav: React.FC<IDocumentsEditorSubtopNav> = ({
       <SDocumentsEditorSubtopNavTabsContainer>
         {blocks.map((block) => (
           <SDocumentsEditorSubtopNavTab>
-            <LineTabs activated={selectedBlock === block.name} onClick={() => onSelectBlock(block.name)}>
+            <LineTab activated={selectedBlock === block.name} onClick={() => onSelectBlock(block.name)}>
               {block.name}
-            </LineTabs>
+            </LineTab>
           </SDocumentsEditorSubtopNavTab>
         ))}
       </SDocumentsEditorSubtopNavTabsContainer>
