@@ -22,7 +22,7 @@ function SimpleInputDemo({ ...args }) {
   return (
     <SimpleInput
       translationBadge={args.withTranslationBadge && <TranslationBadge />}
-      required
+      required={args.required}
       onChange={onChange}
       value={value}
       disabled={args.state === "locked"}
