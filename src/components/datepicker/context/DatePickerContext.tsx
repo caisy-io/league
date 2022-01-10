@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
 import { IDatePickerConfig } from "../DatePicker";
 
-type THourOptions = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
-type TMinutesOptions = 0 | 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55;
+export type THourOptions = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+export type TMinutesOptions = 0 | 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55;
 
 interface IDatePickerContext extends IDatePickerConfig {
   hoursOptions: string[];

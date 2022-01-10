@@ -17,15 +17,15 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     font-size: 12px;
     line-height: 16px;
     text-align: center;
-    color: var(--text-03);
     width: 28px;
     height: 28px;
     margin: 2px 5.915px;
     color: var(--text-01);
+    cursor: pointer;
     flex: 0;
     flex-basis: 28px;
     border-radius: 60px;
-    
+    background-color: var(--interactional-tertiary-03);
     &.prevMonthDay,
     &.nextMonthDay,
     &.flatpickr-disabled {
@@ -45,6 +45,18 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     &.selected.today {
       color: var(--text-02);
       background-color: var(--active-interactional-tertiary-03-1);
+    }
+    &.selected.has-badge{
+      :after{
+        box-shadow: 0 0 0 1px #fff;
+      }
+    }
+    &.inRange, &.endRange, &.startRange{
+      background-color: var(--interactional-secondary-03);
+      color: var(--text-04);
+      &.today{
+        color: var(--text-suppportive-02);
+      }
     }
   }
   
@@ -187,44 +199,23 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
   }
   
   .flatpickr-day {
-    box-sizing: border-box;
-    color: #404848;
-    cursor: pointer;
-    font-weight: 400;
-    width: 14.2857143%;
-    flex-basis: 14.2857143%;
-    max-width: 39px;
-    height: 39px;
-    line-height: 39px;
-    display: inline-block;
-    position: relative;
-    justify-content: center;
-    text-align: center;
-    
     &.has-badge {
-      position: relative !important;
+      position: relative;
       
       &:after {
         content: attr(data-badge-content);
-        z-index: 10;
+        z-index: 8;
         position: absolute;
-        top: 5px;
-        right: 5px;
-        transform: translate(50%, -50%);
-        width: 20px;
-        height: 20px;
-        background: var(--ui-supportive-03);
-        border: 1px solid var(--ui-01);
+        top: 1px;
+        right: 1px;
+        width: 6px;
+        height: 6px;
+        background: var(--ui-supportive-01);
         box-sizing: border-box;
-        border-radius: 100px;
-        
+        border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        
-        ${CSSParagraphXSmallRegular};
-        text-align: center;
-        color: var(--ui-01);
       }
     }
   }
@@ -275,12 +266,5 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
   
   .dayContainer {
     border-right: 0;
-  }
-  
-  @media screen and (min-width: 0) and (min-resolution: +72dpi) {
-    span.flatpickr-day {
-      display: block;
-      flex: 1 0 auto;
-    }
   }
 `;

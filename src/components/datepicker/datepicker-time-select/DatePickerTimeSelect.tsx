@@ -47,7 +47,6 @@ const DatePickerTimeSelect: React.FC<IDatePickerTimeSelect> = () => {
     onChange(newDate);
   };
   
-  console.log(onChange)
   
   return (
     <SDatePickerTimeSelect>

@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import {IconClock} from "../../icons";
 import {Button} from "../button/Button";
 import {Popover} from "../popover/Popover";
 import DatePickerButtonContainer from "./datepicker-button-container/DatePickerButtonContainer";
@@ -8,8 +9,9 @@ import DatePickerTimeSelect from "./datepicker-time-select/DatePickerTimeSelect"
 import DatePickerState from "./context/DatePickerState";
 import SDatePicker from "./styles/SDatePicker";
 import Flatpickr from "react-flatpickr";
-import usePicker from "./context/DatePickerContext";
+import usePicker, {THourOptions, TMinutesOptions} from "./context/DatePickerContext";
 import {SDatePickerCalendarWrapper} from "./styles/SDatePickerCalendarWrapper";
+import SDatePickerContainer from "./styles/SDatePickerContainer";
 import {SDatePickerNavigationButton} from "./styles/SDatePickerNavigationButton";
 import {SDatePickerButton} from "./styles/SDatePickerButton";
 import {SDatePickerMonthAndYear} from "./styles/SDatePickerMonthAndYear";
@@ -41,6 +43,7 @@ interface IDatePicker {
   children?: any;
   popoverZIndex?: number;
   locale?: string;
+  range?: boolean;
 }
 
 export interface IDatePickerConfig {
@@ -63,7 +66,7 @@ export interface IDatePickerI18n {
   currentTime?: string;
 }
 
-const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", ...props}) => {
+const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", range, ...props}) => {
   const {
     setShowMinutes,
     setShowHours,
@@ -172,7 +175,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", .
       )}
       {/*{(withDefaultActive || active) && !loadingRef && (*/}
       <Popover zIndex={props.popoverZIndex} reference={reference} placement="top" disableTriangle>
-        <DatePickerCard>
+        <SDatePickerContainer>
           <SDatePickerCalendarWrapper>
             <SDatePickerWrapperHeader>
               <SDatePickerNavigationButton>
@@ -214,7 +217,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", .
               }}
               onDayCreate={(_, __, ___, data) => props.onDayCreate?.(data)}
               options={{
-                inline: true, minDate: props.minDate, maxDate: props.maxDate,
+                inline: true, minDate: props.minDate, maxDate: props.maxDate, mode: `${range ? "range" : "single"}`,
                 locale: {
                   firstDayOfWeek: 1,
                   weekdays: {
@@ -228,26 +231,34 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", .
             <DatePickerButtonContainer>
               <Button onClick={() => increaseDate(0)}>
                 <IconCalendar/>
-                {props.i18n?.currentTime ?? "current time"}
+                {props.i18n?.today ?? "Today"}
               </Button>
             </DatePickerButtonContainer>
           )}
           {getCurrentDate() && (
             <>
-              {withTime ? (
+              {withTime && (
                 <>
-                <DatePickerTimeSelect/>
-                {withQuickSelectionButtons && (
-                  <DatePickerButtonContainer>
-                    <Button onClick={() => increaseDate(0)}>
-                      <IconCalendar/>
-                      {props.i18n?.today ?? "Today"}
-                    </Button>
-                  </DatePickerButtonContainer>
-                )}
-              </>
-              ) : (
-                <div style={{margin: "8px 0px"}}></div>)}
+                  <DatePickerTimeSelect/>
+                  {withQuickSelectionButtons && (
+                    <DatePickerButtonContainer>
+                      <Button onClick={() => {
+                        const date = new Date();
+                        setHours(+date.getHours() >= 12 ? (+date.getHours() - 12 as THourOptions) : (+date.getHours() as THourOptions));
+                        setMinutes(Math.ceil(+date.getMinutes() / 5) * 5 as TMinutesOptions);
+                        setIsAm(+date.getHours() < 12);
+                        const currentDate = getCurrentDate();
+                        const newDate = new Date(currentDate.getFullYear(),
+                          currentDate.getMonth(), currentDate.getDate(), date.getHours(), date.getMinutes());
+                        onChange(newDate);
+                      }}>
+                        <IconClock/>
+                        {props.i18n?.currentTime ?? "current Time"}
+                      </Button>
+                    </DatePickerButtonContainer>
+                  )}
+                </>
+              )}
               {withBottomButtons && (
                 <DatePickerButtonContainer>
                   {withCloseButton && (
@@ -267,7 +278,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", .
               {props.children}
             </>
           )}
-        </DatePickerCard>
+        </SDatePickerContainer>
       </Popover>
       {/*)}*/}
     </SDatePicker>
@@ -298,3 +309,5 @@ export const DatePicker: React.FC<IDatePicker> = ({...props}) => {
     </DatePickerState>
   );
 };
+{/*`${range ? "range" : "single"}`*/
+}
