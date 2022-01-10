@@ -1,55 +1,95 @@
-import React, { useState } from "react";
-import { Button } from "../button";
+import React, { useState, useEffect } from "react";
 import { Tabs, TabPanel } from "./Tabs";
-import { IconStarOutlined } from "../../icons/IconStarOutlined";
+import { IconAlarmClock, IconBookmark } from "../../icons";
 
-function TabsShowcase() {
-  const [currentTab, setCurrentTab] = useState(0);
+function TabsShowcase({ content, selected, ...args }) {
+  const [currentTab, setCurrentTab] = useState(1);
+
+  useEffect(() => {
+    setCurrentTab(selected);
+  }, [selected]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        padding: "32px 60px",
-        flexWrap: "wrap",
-        backgroundColor: "var(--ui-01)",
-        boxShadow: "0 10px 30px 0 rgba(89, 106, 122, 0.11)",
-        borderRadius: "5px",
+    <Tabs
+      loading={false}
+      initialValue={currentTab}
+      onChange={(newValue) => {
+        if (newValue != currentTab) {
+          setCurrentTab(newValue);
+        }
       }}
+      size={args.size}
     >
-      <div style={{ width: "100%" }}>
-        <Tabs
-          initialValue={currentTab}
-          onChange={(newValue) => {
-            if (newValue != currentTab) {
-              setCurrentTab(newValue);
-            }
-          }}
-        >
-          <TabPanel title="Tab 1" icon={<IconStarOutlined></IconStarOutlined>}>
-            This is the first panelThis is the first panelThis is the first panelThis is the first panelThis is the
-            first panel
-          </TabPanel>
-          <TabPanel title="Tab 2">This is the second panel</TabPanel>
-          <TabPanel title="Tab 3">This is the third panel</TabPanel>
-        </Tabs>
-        <br />
-        <p>Current tab: {currentTab}</p>
-        <br />
-        <Button size="small" onClick={() => setCurrentTab((currentTab + 1) % 3)}>
-          Change to next tab
-        </Button>
-      </div>
-    </div>
+      <TabPanel title={"Past"}>tab 1</TabPanel>
+      <TabPanel title={"Current"}>tab 2</TabPanel>
+      <TabPanel title={"Upcoming"}>tab 3</TabPanel>
+    </Tabs>
   );
 }
 
 export default {
   title: "Components/Navigation/Tabs",
   component: TabsShowcase,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/1hz5D4Q7pj5w0YrRw7hXbu/UI-Kit?node-id=812%3A11729",
+    },
+  },
+  argTypes: {
+    size: {
+      description: "Changes the size of the Tab component",
+      options: ["micro", "small", "medium", "default"],
+      control: { type: "select" },
+      table: {
+        defaultValue: "default",
+      },
+    },
+    selected: {
+      options: [0, 1, 2],
+      control: { type: "select" },
+    },
+  },
 };
 
 const Template = (args) => <TabsShowcase {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
+
+function TabDemoWithIcon({ content, selected, ...args }) {
+  const [currentTab, setCurrentTab] = useState(1);
+
+  useEffect(() => {
+    setCurrentTab(selected);
+  }, [selected]);
+
+  return (
+    <Tabs
+      loading={false}
+      initialValue={currentTab}
+      size={args.size}
+      onChange={(newValue) => {
+        if (newValue != currentTab) {
+          setCurrentTab(newValue);
+        }
+      }}
+    >
+      <TabPanel title={"Past"} icon={<IconAlarmClock size={20} />}>
+        tab 1
+      </TabPanel>
+      <TabPanel title={"Current"} icon={<IconBookmark size={20} />}>
+        tab 2
+      </TabPanel>
+      <TabPanel title={"Upcoming"}>tab 3</TabPanel>
+    </Tabs>
+  );
+}
+
+const TemplateWithIcon = (args) => <TabDemoWithIcon {...args} />;
+
+export const WithIcon = TemplateWithIcon.bind({});
+WithIcon.args = {
+  size: "default",
+  selected: 1,
+};

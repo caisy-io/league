@@ -2,15 +2,16 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  font-family: Inter;
-  > div {
-    width: 100%;
-  }
-  > ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 0;
-    box-shadow: inset 0 -1px 0 var(--neutral-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 8px;
+  color: #95a4c2;
+
+  svg {
+    transition: opacity 200ms;
+    opacity: 0;
   }
 `;
 
@@ -22,7 +23,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const STabs = styled.div`
+export const SLanguageFlagToggleListItemDragIcon = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
