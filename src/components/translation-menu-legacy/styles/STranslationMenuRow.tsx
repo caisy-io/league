@@ -2,16 +2,16 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  font-family: Inter;
-  > div {
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  :not(:last-child) {
+    margin-bottom: 12px;
   }
-  > ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 0;
-    box-shadow: inset 0 -1px 0 var(--neutral-200);
-  }
+  padding: 4px;
+  cursor: grab;
+  background-color: var(--white-2);
+  border-radius: 6px;
 `;
 
 const Silver = css``;
@@ -22,7 +22,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const STabs = styled.div`
+export const STranslationMenuRow = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
