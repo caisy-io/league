@@ -54,6 +54,7 @@ export interface IDatePickerConfig {
   withTime?: boolean;
   withSelectedDisplay?: boolean;
   withQuickSelectionButtons?: boolean;
+  withRange: boolean
 }
 
 export interface IDatePickerI18n {
@@ -66,7 +67,7 @@ export interface IDatePickerI18n {
   currentTime?: string;
 }
 
-const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", range, ...props}) => {
+const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", ...props}) => {
   const {
     setShowMinutes,
     setShowHours,
@@ -92,6 +93,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", r
     withBottomButtons,
     withTime,
     withDefaultActive,
+    withRange
   } = config;
   
   useEffect(() => {
@@ -173,114 +175,114 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({config = {}, locale = "en", r
           />
         </DatePickerCard>
       )}
-      {/*{(withDefaultActive || active) && !loadingRef && (*/}
-      <Popover zIndex={props.popoverZIndex} reference={reference} placement="top" disableTriangle>
-        <SDatePickerContainer>
-          <SDatePickerCalendarWrapper>
-            <SDatePickerWrapperHeader>
-              <SDatePickerNavigationButton>
-                <IconAngleLeft/>
-              </SDatePickerNavigationButton>
-              <SDatePickerMonthAndYear>
-                <SDatePickerButton onClick={() => {
-                  console.log("TODO design missing")
-                }}>
-                  {calendarMonth}
-                  <IconAngleDown/>
-                </SDatePickerButton>
-                <SDatePickerButton onClick={() => {
-                  console.log("TODO design missing")
-                }}>
-                  {calendarYear}
-                  <IconAngleDown/>
-                </SDatePickerButton>
-              </SDatePickerMonthAndYear>
-              <SDatePickerNavigationButton>
-                <IconAngleRight/>
-              </SDatePickerNavigationButton>
-            </SDatePickerWrapperHeader>
-            <Flatpickr
-              value={getCurrentDate()}
-              onMonthChange={([currentDate], __, flatPicker) => {
-                onMonthChange(currentDate, flatPicker);
-              }}
-              onYearChange={([currentDate], __, flatPicker) => {
-                onYearChange(currentDate, flatPicker);
-              }}
-              onChange={([date]) => {
-                setDate(
-                  new Date(date.getFullYear(), date.getMonth(), date.getDate(), isAm ? hours : hours + 12, minutes),
-                );
-                onChange?.(
-                  new Date(date.getFullYear(), date.getMonth(), date.getDate(), isAm ? hours : hours + 12, minutes),
-                );
-              }}
-              onDayCreate={(_, __, ___, data) => props.onDayCreate?.(data)}
-              options={{
-                inline: true, minDate: props.minDate, maxDate: props.maxDate, mode: `${range ? "range" : "single"}`,
-                locale: {
-                  firstDayOfWeek: 1,
-                  weekdays: {
-                    shorthand: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+      {(withDefaultActive || active) && !loadingRef && (
+        <Popover zIndex={props.popoverZIndex} reference={reference} placement="top" disableTriangle>
+          <SDatePickerContainer>
+            <SDatePickerCalendarWrapper>
+              <SDatePickerWrapperHeader>
+                <SDatePickerNavigationButton>
+                  <IconAngleLeft/>
+                </SDatePickerNavigationButton>
+                <SDatePickerMonthAndYear>
+                  <SDatePickerButton onClick={() => {
+                    console.log("TODO design missing")
+                  }}>
+                    {calendarMonth}
+                    <IconAngleDown/>
+                  </SDatePickerButton>
+                  <SDatePickerButton onClick={() => {
+                    console.log("TODO design missing")
+                  }}>
+                    {calendarYear}
+                    <IconAngleDown/>
+                  </SDatePickerButton>
+                </SDatePickerMonthAndYear>
+                <SDatePickerNavigationButton>
+                  <IconAngleRight/>
+                </SDatePickerNavigationButton>
+              </SDatePickerWrapperHeader>
+              <Flatpickr
+                value={getCurrentDate()}
+                onMonthChange={([currentDate], __, flatPicker) => {
+                  onMonthChange(currentDate, flatPicker);
+                }}
+                onYearChange={([currentDate], __, flatPicker) => {
+                  onYearChange(currentDate, flatPicker);
+                }}
+                onChange={([date]) => {
+                  setDate(
+                    new Date(date.getFullYear(), date.getMonth(), date.getDate(), isAm ? hours : hours + 12, minutes),
+                  );
+                  onChange?.(
+                    new Date(date.getFullYear(), date.getMonth(), date.getDate(), isAm ? hours : hours + 12, minutes),
+                  );
+                }}
+                onDayCreate={(_, __, ___, data) => props.onDayCreate?.(data)}
+                options={{
+                  inline: true, minDate: props.minDate, maxDate: props.maxDate, mode: `${withRange ? "range" : "single"}`,
+                  locale: {
+                    firstDayOfWeek: 1,
+                    weekdays: {
+                      shorthand: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+                    }
                   }
-                }
-              }}
-            />
-          </SDatePickerCalendarWrapper>
-          {withQuickSelectionButtons && (
-            <DatePickerButtonContainer>
-              <Button onClick={() => increaseDate(0)}>
-                <IconCalendar/>
-                {props.i18n?.today ?? "Today"}
-              </Button>
-            </DatePickerButtonContainer>
-          )}
-          {getCurrentDate() && (
-            <>
-              {withTime && (
-                <>
-                  <DatePickerTimeSelect/>
-                  {withQuickSelectionButtons && (
-                    <DatePickerButtonContainer>
-                      <Button onClick={() => {
-                        const date = new Date();
-                        setHours(+date.getHours() >= 12 ? (+date.getHours() - 12 as THourOptions) : (+date.getHours() as THourOptions));
-                        setMinutes(Math.ceil(+date.getMinutes() / 5) * 5 as TMinutesOptions);
-                        setIsAm(+date.getHours() < 12);
-                        const currentDate = getCurrentDate();
-                        const newDate = new Date(currentDate.getFullYear(),
-                          currentDate.getMonth(), currentDate.getDate(), date.getHours(), date.getMinutes());
-                        onChange(newDate);
-                      }}>
-                        <IconClock/>
-                        {props.i18n?.currentTime ?? "current Time"}
+                }}
+              />
+            </SDatePickerCalendarWrapper>
+            {withQuickSelectionButtons && (
+              <DatePickerButtonContainer>
+                <Button onClick={() => increaseDate(0)}>
+                  <IconCalendar/>
+                  {props.i18n?.today ?? "Today"}
+                </Button>
+              </DatePickerButtonContainer>
+            )}
+            {getCurrentDate() && (
+              <>
+                {withTime && (
+                  <>
+                    <DatePickerTimeSelect/>
+                    {withQuickSelectionButtons && (
+                      <DatePickerButtonContainer>
+                        <Button onClick={() => {
+                          const date = new Date();
+                          setHours(+date.getHours() >= 12 ? (+date.getHours() - 12 as THourOptions) : (+date.getHours() as THourOptions));
+                          setMinutes(Math.ceil(+date.getMinutes() / 5) * 5 as TMinutesOptions);
+                          setIsAm(+date.getHours() < 12);
+                          const currentDate = getCurrentDate();
+                          const newDate = new Date(currentDate.getFullYear(),
+                            currentDate.getMonth(), currentDate.getDate(), date.getHours(), date.getMinutes());
+                          onChange(newDate);
+                        }}>
+                          <IconClock/>
+                          {props.i18n?.currentTime ?? "current Time"}
+                        </Button>
+                      </DatePickerButtonContainer>
+                    )}
+                  </>
+                )}
+                {withBottomButtons && (
+                  <DatePickerButtonContainer>
+                    {withCloseButton && (
+                      <Button onClick={closePicker}>{props.i18n?.cancelButtonText ?? "Cancel"}</Button>
+                    )}
+                    {withSaveButton && (
+                      <Button
+                        onClick={() => {
+                          onSave?.(getCurrentDate());
+                        }}
+                      >
+                        {props.i18n?.saveButtonText ?? "Save"}
                       </Button>
-                    </DatePickerButtonContainer>
-                  )}
-                </>
-              )}
-              {withBottomButtons && (
-                <DatePickerButtonContainer>
-                  {withCloseButton && (
-                    <Button onClick={closePicker}>{props.i18n?.cancelButtonText ?? "Cancel"}</Button>
-                  )}
-                  {withSaveButton && (
-                    <Button
-                      onClick={() => {
-                        onSave?.(getCurrentDate());
-                      }}
-                    >
-                      {props.i18n?.saveButtonText ?? "Save"}
-                    </Button>
-                  )}
-                </DatePickerButtonContainer>
-              )}
-              {props.children}
-            </>
-          )}
-        </SDatePickerContainer>
-      </Popover>
-      {/*)}*/}
+                    )}
+                  </DatePickerButtonContainer>
+                )}
+                {props.children}
+              </>
+            )}
+          </SDatePickerContainer>
+        </Popover>
+      )}
     </SDatePicker>
   );
 };
