@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Layout, LayoutSider } from "../layout";
-import { SidebarTag } from "../sidebarTag";
+import { SidebarTag } from "../sidebar-tag";
 import { ILanguageFlagToggleListItemLocale } from "../language-flag-toggle-list-item";
 import { TranslationMenu } from "../translation-menu";
 import { BlockEditorSidebar } from "./BlockEditorSidebar";

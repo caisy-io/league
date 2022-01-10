@@ -1,5 +1,5 @@
 import React from "react";
-import { LineTabs } from "..";
+import { LineTab } from "../line-tab";
 import { IconDocuments } from "../../icons";
 import { SBlockEditorSidebar } from "./styles/SBlockEditorSidebar";
 import { SBlockEditorSidebarListItem } from "./styles/SBlockEditorSidebarListItem";
@@ -32,9 +32,9 @@ export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({ status, tabs
       <SBlockEditorSidebarListItem>
         <SBlockEditorSidebarTabs>
           {tabs.map((tab) => (
-            <LineTabs activated={selectedTab?.tab === tab.tab} onClick={() => onTabClick(tab)}>
+            <LineTab activated={selectedTab?.tab === tab.tab} onClick={() => onTabClick(tab)}>
               {tab.tab}
-            </LineTabs>
+            </LineTab>
           ))}
         </SBlockEditorSidebarTabs>
       </SBlockEditorSidebarListItem>
