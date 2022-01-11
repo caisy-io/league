@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { STopNavDefaultTitle } from "./styles/STopNavDefaultTitle";
-import { STopNavDefaultDivider } from "./styles/STopNavDefaultDivider";
 import { TopNavDefault } from "./TopNavDefault";
+import { TopNavDefaultTitle } from "./TopNavDefaultTitle";
+import { TopNavDefaultDivider } from "./TopNavDefaultDivider";
 import { Button } from "../button/Button";
 import { Tab } from "../tab/Tab";
 import { IconChevronDown, IconStarOutlined } from "../../icons";
@@ -27,13 +27,13 @@ function TopNavDefaultDemo({ withButton = false, withTabs = false, withIcon = fa
   return (
     <TopNavDefault>
       <div style={{ display: "flex", padding: "0 16px", alignItems: "center", flex: 1 }}>
-        <STopNavDefaultTitle>
+        <TopNavDefaultTitle>
           {withIcon && <IconStarOutlined size={24} />}
           Page name
-        </STopNavDefaultTitle>
+        </TopNavDefaultTitle>
         {withTabs && (
           <>
-            <STopNavDefaultDivider />
+            <TopNavDefaultDivider />
             <div style={{ display: "flex", gap: 8 }}>
               {tabs.map((tab) => (
                 <Tab
