@@ -58,7 +58,6 @@ export interface IDatePickerI18n {
   today?: string;
   tomorrow?: string;
   nextWeek?: string;
-  shortHandWeekDays?: string;
   currentTime?: string
 }
 
@@ -165,7 +164,10 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   }, []);
   
   const reference = React.useRef(null);
-  
+  const flatRef = React.useRef(null);
+  React.useEffect(() => {
+    console.log(flatRef);
+  }, [flatRef]);
   return (
     <SDatePicker ref={reference} onMouseDownCapture={handleOnMouseDownCapture} onClick={closeSelectors}>
       {withSelectedDisplay && (
@@ -206,6 +208,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
                 </SDatePickerNavigationButton>
               </SDatePickerWrapperHeader>
               <Flatpickr
+                ref={flatRef}
                 value={date}
                 onMonthChange={(_, __, flatPicker) => {
                   onMonthChanged(flatPicker);
