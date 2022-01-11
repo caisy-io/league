@@ -9,9 +9,9 @@ const SDatePickerTimeIndicator = styled.div`
 
   cursor: pointer;
 
-  margin-right: 8px;
+  margin-right: 1px;
   & + & {
-    margin-left: 8px;
+    margin-left: 1px;
     margin-right: 0;
   }
   :first-child{

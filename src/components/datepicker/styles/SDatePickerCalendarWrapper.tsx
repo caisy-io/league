@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {CSSParagraphXSmallRegular} from "../../../constants/styles/fonts";
 
 interface ISDatePickerCalendarWrapper {
 }
@@ -26,6 +25,7 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     flex-basis: 28px;
     border-radius: 60px;
     background-color: var(--interactional-tertiary-03);
+    
     &.prevMonthDay,
     &.nextMonthDay,
     &.flatpickr-disabled {
@@ -46,15 +46,18 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
       color: var(--text-02);
       background-color: var(--active-interactional-tertiary-03-1);
     }
-    &.selected.has-badge{
-      :after{
+    
+    &.selected.has-badge {
+      :after {
         box-shadow: 0 0 0 1px #fff;
       }
     }
-    &.inRange, &.endRange, &.startRange{
+    
+    &.inRange, &.endRange, &.startRange, &.selected.today.startRange, &.selected.today.endRange {
       background-color: var(--interactional-secondary-03);
       color: var(--text-04);
-      &.today{
+      
+      &.today {
         color: var(--text-suppportive-02);
       }
     }
@@ -187,7 +190,6 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
   }
   
   .dayContainer {
-    padding: 0;
     outline: 0;
     text-align: left;
     box-sizing: border-box;

@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-import {Img} from "../../base-components";
+import React from "react";
 import {DatePicker} from "./DatePicker";
 
 // Default Date Picker Demo
@@ -14,6 +13,7 @@ export default {
         defaultValue: {
           summary: false,
         },
+        category: 'Configurations'
       }
     },
     range: {
@@ -23,96 +23,153 @@ export default {
         defaultValue: {
           summary: false,
         },
+        category: 'Configurations'
       }
     },
-    time :{
+    time: {
       description: "Select time",
       control: {type: "boolean"},
       table: {
         defaultValue: {
           summary: false,
         },
+        category: 'Configurations'
       }
     },
-    quickSelectionButtons:{
+    quickSelectionButtons: {
       description: "Show quick selection buttons",
       control: {type: "boolean"},
       table: {
         defaultValue: {
           summary: false,
         },
+        category: 'Configurations'
       }
     },
-    bottomButtons:{
+    bottomButtons: {
       description: "Show bottom buttons",
       control: {type: "boolean"},
       table: {
         defaultValue: {
           summary: false,
         },
+        category: 'Configurations'
       }
     },
-    closeButton:{
+    closeButton: {
       description: "Show close button. you must enable bottomButtons",
       control: {type: "boolean"},
       table: {
         defaultValue: {
           summary: false,
         },
+        category: 'Configurations'
       }
     },
-    saveButton:{
+    saveButton: {
       description: "Show save button. you must enable bottomButtons",
       control: {type: "boolean"},
       table: {
         defaultValue: {
           summary: false,
         },
+        category: 'Configurations'
       }
     },
-    selectedDisplay:{
-      description: "Show input to handle visibility of date picker.",
+    selectedDisplay: {
+      description: "Show input to handle visibility of date picker",
       control: {type: "boolean"},
       table: {
         defaultValue: {
           summary: true,
         },
+        category: 'Configurations'
+      }
+    },
+    initialDate: {
+      description: "Set initial Date, this field is required. value is array of dates (array of one date if you use single select or array of two dates if you use two dates)",
+      table: {
+        category: 'Options'
+      }
+    },
+    minDate: {
+      description: "Set minimum date",
+      table: {
+        category: 'Options'
+      }
+    },
+    maxDate: {
+      description: "Set maximum date",
+      table: {
+        category: 'Options'
+      }
+    },
+    locale: {
+      description: "Set localization",
+      table: {
+        defaultValue: {
+          summary: "en",
+        },
+        category: 'Options'
+      }
+    },
+    onSave: {
+      description: "Run when you clicked save button and you get value of selected dates",
+      table: {
+        category: 'Methods'
+      }
+    },
+    onChange: {
+      description: "to get value of dates when changed",
+      table: {
+        category: 'Methods'
+      }
+    },
+    onMonthChange: {
+      description: "to get date of month when you changed month",
+      table: {
+        category: 'Methods'
+      }
+    },
+    onClickOutside: {
+      description: "run when you clicked outside datepicker",
+      table: {
+        category: 'Methods'
+      }
+    },
+    onDayCreate: {
+      description: "Take full control of every date cell",
+      table: {
+        category: 'Methods'
+      }
+    },
+    onCancel: {
+      description: "run when clicked cancel button",
+      table: {
+        category: 'Methods'
       }
     }
+    
   },
 }
 
 function DatePickerDemo(args) {
-  const today = new Date();
-  const yesterday = new Date();
-  yesterday.setDate(today.getDate() - 1);
-  const onSave = (dateToSave) => console.log(dateToSave);
-  const onCancel = () => {
-    console.log("canceled");
-  };
-  const onMonthChange = (newDate) => console.log(newDate);
   
   return <DatePicker
-    initialDate={yesterday}
-    // onCancel={onCancel}
-    onMonthChange={(newDate) => onMonthChange(newDate.toISOString())}
-    // onSave={(dateToSave) => onSave(dateToSave.toISOString())}
-    onChange={(date) => console.log(date.toISOString())}
+    initialDate={args.initialDate}
     onDayCreate={(dayElem) => {
       if (Math.random() > 0.2) return;
       dayElem.classList.add("has-badge");
-      // dayElem.dataset.badgeContent = (Math.random() * 100).toFixed(0);
     }}
-    config={{
-      withDefaultActive: args.active,
-      withRange: args.range,
-      withTime: args.time,
-      withSelectedDisplay: args.selectedDisplay,
-      withCloseButton: args.closeButton,
-      withSaveButton: args.saveButton,
-      withBottomButtons: args.bottomButtons,
-      withQuickSelectionButtons: args.quickSelectionButtons,
-    }}
+    locale={args.locale}
+    withDefaultActive={args.active}
+    withRange={args.range}
+    withTime={args.time}
+    withSelectedDisplay={args.selectedDisplay}
+    withCloseButton={args.closeButton}
+    withSaveButton={args.saveButton}
+    withBottomButtons={args.bottomButtons}
+    withQuickSelectionButtons={args.quickSelectionButtons}
   />;
 }
 
@@ -122,10 +179,12 @@ export const Default = Template.bind({});
 Default.args = {
   active: false,
   range: false,
-  time:false,
-  quickSelectionButtons:false,
+  time: false,
+  quickSelectionButtons: false,
   bottomButtons: false,
   closeButton: false,
   saveButton: false,
-  selectedDisplay: true
+  selectedDisplay: true,
+  initialDate: [new Date()],
+  locale: "en"
 };
