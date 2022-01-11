@@ -12,6 +12,7 @@ import Flatpickr from "react-flatpickr";
 import usePicker, {TDates, THourOptions, TMinutesOptions} from "./context/DatePickerContext";
 import {SDatePickerCalendarWrapper} from "./styles/SDatePickerCalendarWrapper";
 import SDatePickerContainer from "./styles/SDatePickerContainer";
+import {SDatePickerCurrentTime} from "./styles/SDatePickerCurrentTime";
 import {SDatePickerNavigationButton} from "./styles/SDatePickerNavigationButton";
 import {SDatePickerButton} from "./styles/SDatePickerButton";
 import {SDatePickerMonthAndYear} from "./styles/SDatePickerMonthAndYear";
@@ -250,7 +251,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
                   <>
                     <DatePickerTimeSelect/>
                     {withQuickSelectionButtons && (
-                      <>
+                      <SDatePickerCurrentTime>
                         <Button onClick={() => {
                           const date = new Date();
                           setHours(+date.getHours() >= 12 ? (+date.getHours() - 12 as THourOptions) : (+date.getHours() as THourOptions));
@@ -265,7 +266,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
                           <IconClock/>
                           {i18n?.currentTime ?? "current Time"}
                         </Button>
-                      </>
+                      </SDatePickerCurrentTime>
                     )}
                   </>
                 )}
