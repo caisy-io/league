@@ -17,7 +17,7 @@ const tabs = [
 ];
 
 export default {
-  title: `Components/TopNavDefault`,
+  title: `Components/Navigation/TopNavDefault`,
   component: TopNavDefaultDemo,
   argTypes: {},
 };
