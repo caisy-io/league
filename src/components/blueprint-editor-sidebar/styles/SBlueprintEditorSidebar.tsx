@@ -19,7 +19,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSchemaEditorSidebar = styled.div`
+export const SBlueprintEditorSidebar = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
