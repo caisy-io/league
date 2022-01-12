@@ -1,21 +1,32 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { IEmptyType } from "../Empty";
 
 interface ISEmpty {
-  type: "grid" | "schema";
+  type: IEmptyType;
 }
+
+const CSSBlueprint = css`
+  flex-direction: column;
+  gap: 8px;
+  background-color: #fdfdfd;
+`;
+
+const CSSGrid = css`
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--ui-03);
+`;
 
 const Bronze = css<ISEmpty>`
   position: relative;
   display: flex;
-  flex-direction: ${(props) => (props.type === "schema" ? "column" : "row")};
-  gap: ${(props) => (props.type === "schema" ? "8px" : "16px")};
   align-items: flex-start;
   justify-content: flex-start;
   overflow: hidden;
   min-height: calc(100% - 40px);
 
-  background-color: ${(props) => (props.type === "schema" ? "#FDFDFD" : "var(--ui-03)")};
+  ${(props) => (props.type === "blueprint" ? CSSBlueprint : CSSGrid)};
 
   padding: 20px;
 `;

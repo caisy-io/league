@@ -6,7 +6,7 @@ const Bronze = css`
   ${CSSProgressiveBody03Semibold}
   margin-top: 24px;
   margin-bottom: 8px;
-  color: var(--text-04);
+  color: var(--text-01);
 `;
 
 const Silver = css``;
