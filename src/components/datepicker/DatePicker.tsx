@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import React, {useEffect, useState} from "react"
 import {Button} from "../button";
 import {Popover} from "../popover";
+import {Scrollbar} from "../scrollbar";
 import DatePickerButtonContainer from "./datepicker-button-container/DatePickerButtonContainer";
 import DatePickerCard from "./datepicker-card/DatePickerCard";
 import DatePickerInput from "./datepicker-input/DatePickerInput";
@@ -13,6 +14,9 @@ import usePicker, {TDates, THourOptions, TMinutesOptions} from "./context/DatePi
 import {SDatePickerCalendarWrapper} from "./styles/SDatePickerCalendarWrapper";
 import SDatePickerContainer from "./styles/SDatePickerContainer";
 import {SDatePickerCurrentTime} from "./styles/SDatePickerCurrentTime";
+import SDatePickerMenuContainer from "./styles/SDatePickerMenuContainer";
+import SDatePickerMenuItem from "./styles/SDatePickerMenuItem";
+import SDatePickerMonthContainer from "./styles/SDatePickerMonthContainer";
 import {SDatePickerNavigationButton} from "./styles/SDatePickerNavigationButton";
 import {SDatePickerButton} from "./styles/SDatePickerButton";
 import {SDatePickerMonthAndYear} from "./styles/SDatePickerMonthAndYear";
@@ -21,6 +25,7 @@ import {DayjsProvider, useDayjs} from "../../provider/DayjsProvider";
 import {useClickOutside} from "../../utils";
 import {IconAngleLeft, IconAngleRight, IconAngleDown, IconCalendar, IconClock} from "../../icons";
 import localeData from 'dayjs/plugin/localeData'
+import SDatePickerYearContainer from "./styles/SDatePickerYearContainer";
 
 dayjs.extend(localeData);
 
@@ -101,7 +106,6 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   } = usePicker();
   
   const [isRange, setIsRange] = useState(withRange);
-  
   useEffect(() => {
     setDate(initialDate);
     initialDate.length === 2 && setIsRange(true);
@@ -164,11 +168,31 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
     setLoadingRef(false);
   }, []);
   
+  const getCurrentTime = () => {
+    const date = new Date();
+    setHours(+date.getHours() >= 12 ? (+date.getHours() - 12 as THourOptions) : (+date.getHours() as THourOptions));
+    setMinutes(Math.round(+date.getMinutes() / 5) * 5 as TMinutesOptions);
+    setIsAm(+date.getHours() < 12);
+    const currentDate = date;
+    const newDate = new Date(currentDate.getFullYear(),
+      currentDate.getMonth(), currentDate.getDate(), date.getHours(), date.getMinutes());
+    setDate([newDate]);
+    onChange?.([newDate]);
+  }
   const reference = React.useRef(null);
   const flatRef = React.useRef(null);
-  React.useEffect(() => {
-    console.log(flatRef);
-  }, [flatRef]);
+  const monthRefCont = React.useRef<HTMLDivElement>(null)
+  const YearRefCont = React.useRef<HTMLDivElement>(null)
+  
+  const [showMonthMenu, setShowMonthMenu] = React.useState(false);
+  const [showYearMenu, setShowYearMenu] = React.useState(false);
+  
+  const clickOutsideMenuMonth = useClickOutside((e) => {
+    !monthRefCont.current?.contains(e.target) && setShowMonthMenu(false);
+  })
+  const clickOutsideMenuYear = useClickOutside((e) => {
+    !YearRefCont.current?.contains(e.target) && setShowYearMenu(false);
+  })
   return (
     <SDatePicker ref={reference} onMouseDownCapture={handleOnMouseDownCapture} onClick={closeSelectors}>
       {withSelectedDisplay && (
@@ -191,18 +215,48 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
                   <IconAngleLeft/>
                 </SDatePickerNavigationButton>
                 <SDatePickerMonthAndYear>
-                  <SDatePickerButton onClick={() => {
-                    console.log("TODO design missing")
-                  }}>
-                    {calendarMonth}
-                    <IconAngleDown/>
-                  </SDatePickerButton>
-                  <SDatePickerButton onClick={() => {
-                    console.log("TODO design missing")
-                  }}>
-                    {calendarYear}
-                    <IconAngleDown/>
-                  </SDatePickerButton>
+                  <SDatePickerMonthContainer ref={monthRefCont}>
+                    <SDatePickerButton onClick={(e) => {
+                      e.stopPropagation();
+                      setShowMonthMenu(!showMonthMenu);
+                    }}>
+                      {calendarMonth}
+                      <IconAngleDown/>
+                    </SDatePickerButton>
+                    {showMonthMenu && (
+                      <SDatePickerMenuContainer onMouseDownCapture={clickOutsideMenuMonth}>
+                        <Scrollbar>
+                          {dayjs.months().map((month, index) => <SDatePickerMenuItem key={month} onClick={() => {
+                            (flatRef.current as Flatpickr)?.flatpickr?.changeMonth(index, false)
+                            setShowMonthMenu(false);
+                          }}>{month}</SDatePickerMenuItem>)}
+                        </Scrollbar>
+                      </SDatePickerMenuContainer>
+                    )}
+                  </SDatePickerMonthContainer>
+                  <SDatePickerYearContainer>
+                    <SDatePickerButton onClick={() => {
+                      setShowYearMenu(!showYearMenu);
+                    }}>
+                      {calendarYear}
+                      <IconAngleDown/>
+                    </SDatePickerButton>
+                    {showYearMenu && (
+                      <SDatePickerMenuContainer onMouseDownCapture={clickOutsideMenuYear}>
+                        <Scrollbar>
+                          {[...new Array(16)].map((_, index) => {
+                            const year = dayjs().add(-5 + index, "year").year();
+                            return (
+                              <SDatePickerMenuItem key={year} onClick={() => {
+                                (flatRef.current as Flatpickr).flatpickr.changeYear(year);
+                                setShowYearMenu(false);
+                              }}>{year}</SDatePickerMenuItem>
+                            )
+                          })}
+                        </Scrollbar>
+                      </SDatePickerMenuContainer>
+                    )}
+                  </SDatePickerYearContainer>
                 </SDatePickerMonthAndYear>
                 <SDatePickerNavigationButton>
                   <IconAngleRight/>
@@ -218,7 +272,11 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
                   onYearChange(currentDate, flatPicker);
                 }}
                 onChange={([startDate, endDate]) => {
-                  const dates: TDates = endDate ? [new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), isAm ? hours : hours + 12, minutes), new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), isAm ? hours : hours + 12, minutes)] : [new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), isAm ? hours : hours + 12, minutes)]
+                  const dateStart = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), isAm ? hours : hours + 12, minutes);
+                  const dates: TDates = endDate ?
+                    [dateStart, new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), isAm ? hours : hours + 12, minutes)]
+                    :
+                    [dateStart]
                   setDate(dates)
                   onChange?.(dates);
                 }}
@@ -252,17 +310,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
                     <DatePickerTimeSelect/>
                     {withQuickSelectionButtons && (
                       <SDatePickerCurrentTime>
-                        <Button onClick={() => {
-                          const date = new Date();
-                          setHours(+date.getHours() >= 12 ? (+date.getHours() - 12 as THourOptions) : (+date.getHours() as THourOptions));
-                          setMinutes(Math.round(+date.getMinutes() / 5) * 5 as TMinutesOptions);
-                          setIsAm(+date.getHours() < 12);
-                          const currentDate = date;
-                          const newDate = new Date(currentDate.getFullYear(),
-                            currentDate.getMonth(), currentDate.getDate(), date.getHours(), date.getMinutes());
-                          setDate([newDate]);
-                          onChange?.([newDate]);
-                        }}>
+                        <Button onClick={getCurrentTime}>
                           <IconClock/>
                           {i18n?.currentTime ?? "current Time"}
                         </Button>

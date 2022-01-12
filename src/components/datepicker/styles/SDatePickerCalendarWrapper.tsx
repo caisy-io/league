@@ -206,7 +206,6 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
       
       &:after {
         content: attr(data-badge-content);
-        z-index: 8;
         position: absolute;
         top: 1px;
         right: 1px;
