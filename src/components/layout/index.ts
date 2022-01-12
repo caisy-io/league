@@ -6,3 +6,4 @@ export { SLayoutContentWrapper } from "./styles/SLayoutContentWrapper";
 export { SLayoutSiderWrapper } from "./styles/SLayoutSiderWrapper";
 export { LayoutSider } from "./LayoutSider";
 export { LayoutContent } from "./LayoutContent";
+export { MAIN_NAV_WIDTH } from "./fixtures";
