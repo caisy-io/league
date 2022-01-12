@@ -3,13 +3,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 interface ISThead {}
 
-const Bronze = css<ISThead>`
-  background-color: rgba(0, 0, 0, 0.02);
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.01);
-  }
-`;
+const Bronze = css<ISThead>``;
 
 const Silver = css<ISThead>``;
 

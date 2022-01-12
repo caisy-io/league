@@ -54,11 +54,11 @@ const SchemaLayout = () => {
   );
 };
 
-const EmptyImageComponent = ({ title, description, ...props }) => {
+const EmptyImageComponent = ({ title, description, children }) => {
   return (
     <SEmptyImageWrapper>
       <SEmptyImageContainer>
-        {props.children}
+        {children}
         <SEmptyImageTitle>{title}</SEmptyImageTitle>
         <SEmptyImageDescription>{description}</SEmptyImageDescription>
       </SEmptyImageContainer>

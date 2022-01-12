@@ -1,23 +1,22 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-interface ISTr {}
-
-const Bronze = css<ISTr>`
-  display: flex;
-  align-items: center;
-  width: 100%;
+const Bronze = css`
+  height: 20px;
+  width: 1px;
+  background-color: var(--ui-03);
+  margin: 0 24px;
 `;
 
-const Silver = css<ISTr>``;
+const Silver = css``;
 
-const Gold = css<ISTr>``;
+const Gold = css``;
 
-const Platinum = css<ISTr>``;
+const Platinum = css``;
 
-const Diamond = css<ISTr>``;
+const Diamond = css``;
 
-export const STr = styled.div`
+export const STopNavDefaultDivider = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
