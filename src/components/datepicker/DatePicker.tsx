@@ -248,7 +248,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
                             const year = dayjs().add(-5 + index, "year").year();
                             return (
                               <SDatePickerMenuItem key={year} onClick={() => {
-                                (flatRef.current as Flatpickr).flatpickr.changeYear(year);
+                                (flatRef.current as Flatpickr)?.flatpickr?.changeYear(year);
                                 setShowYearMenu(false);
                               }}>{year}</SDatePickerMenuItem>
                             )
