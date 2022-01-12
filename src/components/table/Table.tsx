@@ -127,7 +127,7 @@ export const Table: FC<ITable> = ({
               return (
                 <STd
                   key={cellIndex}
-                  style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell.value.style }}
+                  style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
                   {...cell.getCellProps()}
                 >
                   {cell.render("Cell")}
