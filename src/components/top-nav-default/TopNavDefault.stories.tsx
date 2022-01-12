@@ -26,39 +26,37 @@ function TopNavDefaultDemo({ withButton = false, withTabs = false, withIcon = fa
   const [selectedTab, setSelectedTab] = useState(0);
   return (
     <TopNavDefault>
-      <div style={{ display: "flex", padding: "0 16px", alignItems: "center", flex: 1 }}>
-        <TopNavDefaultTitle>
-          {withIcon && <IconStarOutlined size={24} />}
-          Page name
-        </TopNavDefaultTitle>
-        {withTabs && (
-          <>
-            <TopNavDefaultDivider />
-            <div style={{ display: "flex", gap: 8 }}>
-              {tabs.map((tab) => (
-                <Tab
-                  activated={selectedTab === tab.id}
-                  onClick={(value) => setSelectedTab(value as number)}
-                  key={tab.id}
-                  value={tab.id}
-                  size="small"
-                >
-                  <IconStarOutlined size={16} />
-                  {tab.name}
-                </Tab>
-              ))}
-            </div>
-          </>
-        )}
-        {withButton && (
-          <div style={{ marginLeft: "auto" }}>
-            <Button type="primary" size="medium">
-              DEFAULT
-              <IconChevronDown size={16} />
-            </Button>
+      <TopNavDefaultTitle>
+        {withIcon && <IconStarOutlined size={24} />}
+        Page name
+      </TopNavDefaultTitle>
+      {withTabs && (
+        <>
+          <TopNavDefaultDivider />
+          <div style={{ display: "flex", gap: 8 }}>
+            {tabs.map((tab) => (
+              <Tab
+                activated={selectedTab === tab.id}
+                onClick={(value) => setSelectedTab(value as number)}
+                key={tab.id}
+                value={tab.id}
+                size="small"
+              >
+                <IconStarOutlined size={16} />
+                {tab.name}
+              </Tab>
+            ))}
           </div>
-        )}
-      </div>
+        </>
+      )}
+      {withButton && (
+        <div style={{ marginLeft: "auto" }}>
+          <Button type="primary" size="medium">
+            DEFAULT
+            <IconChevronDown size={16} />
+          </Button>
+        </div>
+      )}
     </TopNavDefault>
   );
 }
