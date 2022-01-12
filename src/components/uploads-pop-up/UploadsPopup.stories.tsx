@@ -95,7 +95,7 @@ export const UploadsPopup: ComponentStory<typeof UploadsPopUp> = () => {
 export const UploadsPopup_Default: ComponentStory<typeof UploadsPopUp> = () => {
   const [showUploadsPopup, toogleUploadsPopup] = useState(false);
 
-  const handleShowUploadsPopup: any = () => {
+  const handleShowUploadsPopup: () => void = () => {
     toogleUploadsPopup(!showUploadsPopup);
   } 
   

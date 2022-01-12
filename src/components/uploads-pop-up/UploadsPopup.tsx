@@ -10,14 +10,14 @@ import { EBadgePosition } from "../badge/EBadgePosition";
 
 interface IUploadsPopUp {
   poupTitle: string;
-  onClose?: () => any;
+  onClose: () => any;
   badgeValue?: string | number;
 }
 
 const UploadsPopUp: FC<IUploadsPopUp> = ({children, poupTitle, badgeValue, onClose}) => (
   <SUploadsPopup>
     <SUploadsPopupHeader>
-      <PrimaryModalHeader withCloseIcon={true} breadcrumbs={[{title: poupTitle, icon: <IconUpload size={24}/> }]} onClose={onClose} >
+      <PrimaryModalHeader breadcrumbs={[{title: poupTitle, icon: <IconUpload size={24}/> }]}>
         <BadgeWrapper>
           {badgeValue && <Badge type="regular" value={badgeValue.toString()} size="small" position={EBadgePosition.Center}/>}
         </BadgeWrapper>
