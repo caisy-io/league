@@ -13,6 +13,7 @@ const Bronze = css<ISEmpty>`
   align-items: flex-start;
   justify-content: flex-start;
   overflow: hidden;
+  min-height: calc(100% - 40px);
 
   background-color: ${(props) => (props.type === "schema" ? "#FDFDFD" : "var(--ui-03)")};
 
