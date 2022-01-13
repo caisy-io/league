@@ -36,6 +36,16 @@ export default {
         category: 'Configurations'
       }
     },
+    inline: {
+      description: "inline datepicker",
+      control: {type: "boolean"},
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+        category: 'Configurations'
+      }
+    },
     quickSelectionButtons: {
       description: "Show quick selection buttons",
       control: {type: "boolean"},
@@ -170,6 +180,7 @@ function DatePickerDemo(args) {
     withSaveButton={args.saveButton}
     withBottomButtons={args.bottomButtons}
     withQuickSelectionButtons={args.quickSelectionButtons}
+    inline={args.inline}
   />;
 }
 
@@ -186,5 +197,6 @@ Default.args = {
   saveButton: false,
   selectedDisplay: true,
   initialDate: [new Date()],
-  locale: "en"
+  locale: "en",
+  inline: false,
 };

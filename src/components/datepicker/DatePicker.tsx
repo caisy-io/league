@@ -54,7 +54,8 @@ interface IDatePicker {
   withTime?: boolean;
   withSelectedDisplay?: boolean;
   withQuickSelectionButtons?: boolean;
-  withRange?: boolean
+  withRange?: boolean;
+  inline?: boolean;
 }
 
 export interface IDatePickerI18n {
@@ -86,6 +87,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
                                                     minDate,
                                                     maxDate,
                                                     children,
+                                                    inline
                                                   }) => {
   const {
     setShowMinutes,
@@ -193,9 +195,142 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   const clickOutsideMenuYear = useClickOutside((e) => {
     !YearRefCont.current?.contains(e.target) && setShowYearMenu(false);
   })
+  
+  const DatePickerContainer = () => (
+    <SDatePickerContainer>
+      <SDatePickerCalendarWrapper>
+        <SDatePickerWrapperHeader>
+          <SDatePickerNavigationButton>
+            <IconAngleLeft/>
+          </SDatePickerNavigationButton>
+          <SDatePickerMonthAndYear>
+            <SDatePickerMonthContainer ref={monthRefCont}>
+              <SDatePickerButton onClick={(e) => {
+                e.stopPropagation();
+                setShowMonthMenu(!showMonthMenu);
+              }}>
+                {calendarMonth}
+                <IconAngleDown/>
+              </SDatePickerButton>
+              {showMonthMenu && (
+                <SDatePickerMenuContainer onMouseDownCapture={clickOutsideMenuMonth}>
+                  <Scrollbar>
+                    {dayjs.months().map((month, index) => <SDatePickerMenuItem key={month} onClick={() => {
+                      (flatRef.current as Flatpickr)?.flatpickr?.changeMonth(index, false)
+                      setShowMonthMenu(false);
+                    }}>{month}</SDatePickerMenuItem>)}
+                  </Scrollbar>
+                </SDatePickerMenuContainer>
+              )}
+            </SDatePickerMonthContainer>
+            <SDatePickerYearContainer>
+              <SDatePickerButton onClick={() => {
+                setShowYearMenu(!showYearMenu);
+              }}>
+                {calendarYear}
+                <IconAngleDown/>
+              </SDatePickerButton>
+              {showYearMenu && (
+                <SDatePickerMenuContainer onMouseDownCapture={clickOutsideMenuYear}>
+                  <Scrollbar>
+                    {[...new Array(16)].map((_, index) => {
+                      const year = dayjs().add(-5 + index, "year").year();
+                      return (
+                        <SDatePickerMenuItem key={year} onClick={() => {
+                          (flatRef.current as Flatpickr)?.flatpickr?.changeYear(year);
+                          setShowYearMenu(false);
+                        }}>{year}</SDatePickerMenuItem>
+                      )
+                    })}
+                  </Scrollbar>
+                </SDatePickerMenuContainer>
+              )}
+            </SDatePickerYearContainer>
+          </SDatePickerMonthAndYear>
+          <SDatePickerNavigationButton>
+            <IconAngleRight/>
+          </SDatePickerNavigationButton>
+        </SDatePickerWrapperHeader>
+        <Flatpickr
+          ref={flatRef}
+          value={date}
+          onMonthChange={(_, __, flatPicker) => {
+            onMonthChanged(flatPicker);
+          }}
+          onYearChange={([currentDate], __, flatPicker) => {
+            onYearChange(currentDate, flatPicker);
+          }}
+          onChange={([startDate, endDate]) => {
+            const dateStart = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), isAm ? hours : hours + 12, minutes);
+            const dates: TDates = endDate ?
+              [dateStart, new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), isAm ? hours : hours + 12, minutes)]
+              :
+              [dateStart]
+            setDate(dates)
+            onChange?.(dates);
+          }}
+          onDayCreate={(_, __, ___, data) => onDayCreate?.(data)}
+          options={{
+            inline: true,
+            minDate: minDate,
+            maxDate: maxDate,
+            mode: `${withRange && isRange ? "range" : "single"}`,
+            locale: {
+              firstDayOfWeek: 1,
+              weekdays: {
+                shorthand: dayjs.weekdaysMin()
+              }
+            }
+          }}
+        />
+      </SDatePickerCalendarWrapper>
+      {withQuickSelectionButtons && (
+        <DatePickerButtonContainer>
+          <Button onClick={() => increaseDate(0)}>
+            <IconCalendar/>
+            {i18n?.today ?? "Today"}
+          </Button>
+        </DatePickerButtonContainer>
+      )}
+      {date && (
+        <>
+          {withTime && !withRange && !isRange && (
+            <>
+              <DatePickerTimeSelect/>
+              {withQuickSelectionButtons && (
+                <SDatePickerCurrentTime>
+                  <Button onClick={getCurrentTime}>
+                    <IconClock/>
+                    {i18n?.currentTime ?? "current Time"}
+                  </Button>
+                </SDatePickerCurrentTime>
+              )}
+            </>
+          )}
+          {withBottomButtons && (
+            <DatePickerButtonContainer>
+              {withCloseButton && (
+                <Button onClick={closePicker}>{i18n?.cancelButtonText ?? "Cancel"}</Button>
+              )}
+              {withSaveButton && (
+                <Button
+                  onClick={() => {
+                    onSave?.(date);
+                  }}
+                >
+                  {i18n?.saveButtonText ?? "Save"}
+                </Button>
+              )}
+            </DatePickerButtonContainer>
+          )}
+          {children}
+        </>
+      )}
+    </SDatePickerContainer>
+  )
   return (
     <SDatePicker ref={reference} onMouseDownCapture={handleOnMouseDownCapture} onClick={closeSelectors}>
-      {withSelectedDisplay && (
+      {withSelectedDisplay && !inline && (
         <DatePickerCard>
           <DatePickerInput
             withTime={withTime}
@@ -206,138 +341,12 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
           />
         </DatePickerCard>
       )}
-      {(withDefaultActive || active) && !loadingRef && (
+      {inline && !loadingRef && (
+        <DatePickerContainer/>
+      )}
+      {(withDefaultActive || active) && !loadingRef && !inline && (
         <Popover zIndex={popoverZIndex} reference={reference} placement="top" disableTriangle>
-          <SDatePickerContainer>
-            <SDatePickerCalendarWrapper>
-              <SDatePickerWrapperHeader>
-                <SDatePickerNavigationButton>
-                  <IconAngleLeft/>
-                </SDatePickerNavigationButton>
-                <SDatePickerMonthAndYear>
-                  <SDatePickerMonthContainer ref={monthRefCont}>
-                    <SDatePickerButton onClick={(e) => {
-                      e.stopPropagation();
-                      setShowMonthMenu(!showMonthMenu);
-                    }}>
-                      {calendarMonth}
-                      <IconAngleDown/>
-                    </SDatePickerButton>
-                    {showMonthMenu && (
-                      <SDatePickerMenuContainer onMouseDownCapture={clickOutsideMenuMonth}>
-                        <Scrollbar>
-                          {dayjs.months().map((month, index) => <SDatePickerMenuItem key={month} onClick={() => {
-                            (flatRef.current as Flatpickr)?.flatpickr?.changeMonth(index, false)
-                            setShowMonthMenu(false);
-                          }}>{month}</SDatePickerMenuItem>)}
-                        </Scrollbar>
-                      </SDatePickerMenuContainer>
-                    )}
-                  </SDatePickerMonthContainer>
-                  <SDatePickerYearContainer>
-                    <SDatePickerButton onClick={() => {
-                      setShowYearMenu(!showYearMenu);
-                    }}>
-                      {calendarYear}
-                      <IconAngleDown/>
-                    </SDatePickerButton>
-                    {showYearMenu && (
-                      <SDatePickerMenuContainer onMouseDownCapture={clickOutsideMenuYear}>
-                        <Scrollbar>
-                          {[...new Array(16)].map((_, index) => {
-                            const year = dayjs().add(-5 + index, "year").year();
-                            return (
-                              <SDatePickerMenuItem key={year} onClick={() => {
-                                (flatRef.current as Flatpickr)?.flatpickr?.changeYear(year);
-                                setShowYearMenu(false);
-                              }}>{year}</SDatePickerMenuItem>
-                            )
-                          })}
-                        </Scrollbar>
-                      </SDatePickerMenuContainer>
-                    )}
-                  </SDatePickerYearContainer>
-                </SDatePickerMonthAndYear>
-                <SDatePickerNavigationButton>
-                  <IconAngleRight/>
-                </SDatePickerNavigationButton>
-              </SDatePickerWrapperHeader>
-              <Flatpickr
-                ref={flatRef}
-                value={date}
-                onMonthChange={(_, __, flatPicker) => {
-                  onMonthChanged(flatPicker);
-                }}
-                onYearChange={([currentDate], __, flatPicker) => {
-                  onYearChange(currentDate, flatPicker);
-                }}
-                onChange={([startDate, endDate]) => {
-                  const dateStart = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), isAm ? hours : hours + 12, minutes);
-                  const dates: TDates = endDate ?
-                    [dateStart, new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), isAm ? hours : hours + 12, minutes)]
-                    :
-                    [dateStart]
-                  setDate(dates)
-                  onChange?.(dates);
-                }}
-                onDayCreate={(_, __, ___, data) => onDayCreate?.(data)}
-                options={{
-                  inline: true,
-                  minDate: minDate,
-                  maxDate: maxDate,
-                  mode: `${withRange && isRange ? "range" : "single"}`,
-                  locale: {
-                    firstDayOfWeek: 1,
-                    weekdays: {
-                      shorthand: dayjs.weekdaysMin()
-                    }
-                  }
-                }}
-              />
-            </SDatePickerCalendarWrapper>
-            {withQuickSelectionButtons && (
-              <DatePickerButtonContainer>
-                <Button onClick={() => increaseDate(0)}>
-                  <IconCalendar/>
-                  {i18n?.today ?? "Today"}
-                </Button>
-              </DatePickerButtonContainer>
-            )}
-            {date && (
-              <>
-                {withTime && !withRange && !isRange && (
-                  <>
-                    <DatePickerTimeSelect/>
-                    {withQuickSelectionButtons && (
-                      <SDatePickerCurrentTime>
-                        <Button onClick={getCurrentTime}>
-                          <IconClock/>
-                          {i18n?.currentTime ?? "current Time"}
-                        </Button>
-                      </SDatePickerCurrentTime>
-                    )}
-                  </>
-                )}
-                {withBottomButtons && (
-                  <DatePickerButtonContainer>
-                    {withCloseButton && (
-                      <Button onClick={closePicker}>{i18n?.cancelButtonText ?? "Cancel"}</Button>
-                    )}
-                    {withSaveButton && (
-                      <Button
-                        onClick={() => {
-                          onSave?.(date);
-                        }}
-                      >
-                        {i18n?.saveButtonText ?? "Save"}
-                      </Button>
-                    )}
-                  </DatePickerButtonContainer>
-                )}
-                {children}
-              </>
-            )}
-          </SDatePickerContainer>
+          <DatePickerContainer/>
         </Popover>
       )}
     </SDatePicker>
