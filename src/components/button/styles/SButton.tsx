@@ -328,7 +328,7 @@ const Bronze = css<IButtonProps>`
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
   ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
   
-  line-height: 1;
+  line-height: normal;
 
   &:active {
     &:after {

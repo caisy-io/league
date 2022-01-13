@@ -10,7 +10,9 @@ function TableDemo() {
       name: "testName",
       lastName: "testLastNameas,mdnasmdnas,mdnas,mdn,masdn,masdajhsdasdgasd",
       id: 0,
-      actions: { id: 0 },
+      actions: {
+        id: 0,
+      },
     },
     {
       name: "testName 1",
@@ -104,7 +106,6 @@ function TableDemo() {
 
   const loadNextPage = () => {
     setIsNextPageLoading(true);
-    console.log("loading");
     return new Promise((resolve) =>
       setTimeout(() => {
         // setHasNextPage(dataSource.length < 100);
