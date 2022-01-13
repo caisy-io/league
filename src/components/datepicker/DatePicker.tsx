@@ -34,7 +34,7 @@ interface IDatePickerHTMLElement extends HTMLElement {
 }
 
 interface IDatePicker {
-  initialDate: TDates;
+  initialDate?: TDates;
   onChange?: (payload: TDates) => void;
   onSave?: (payload: TDates) => void;
   onMonthChange?: (payload: Date) => void;
@@ -109,9 +109,8 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   
   const [isRange, setIsRange] = useState(withRange);
   useEffect(() => {
-    setDate(initialDate);
-    initialDate.length === 2 && setIsRange(true);
-  }, [initialDate]);
+    date?.filter(Boolean).length === 2 && setIsRange(true)
+  }, []);
   
   const dayjs = useDayjs();
   dayjs.locale(locale);
@@ -145,7 +144,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   };
   
   const closePicker = () => {
-    setDate(initialDate);
+    setDate(initialDate || [new Date()]);
     setHours(0);
     setMinutes(0);
     setIsAm(true);
@@ -154,6 +153,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   };
   
   const onMonthChanged = (flatPicker) => {
+    console.log(flatPicker);
     const newDate = new Date(flatPicker.currentYear, flatPicker.currentMonth);
     const newDayjsWithoutDays = dayjs(newDate);
     setCalendarMonth(newDayjsWithoutDays.format("MMMM"));
@@ -196,7 +196,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
     !YearRefCont.current?.contains(e.target) && setShowYearMenu(false);
   })
   
-  const DatePickerContainer = () => (
+  const DatePickerContainer = !loadingRef && (
     <SDatePickerContainer>
       <SDatePickerCalendarWrapper>
         <SDatePickerWrapperHeader>
@@ -262,10 +262,9 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
           }}
           onChange={([startDate, endDate]) => {
             const dateStart = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), isAm ? hours : hours + 12, minutes);
-            const dates: TDates = endDate ?
-              [dateStart, new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), isAm ? hours : hours + 12, minutes)]
-              :
-              [dateStart]
+            const dates: TDates = endDate
+              ? [dateStart, new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), isAm ? hours : hours + 12, minutes)]
+              : [dateStart]
             setDate(dates)
             onChange?.(dates);
           }}
@@ -341,12 +340,10 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
           />
         </DatePickerCard>
       )}
-      {inline && !loadingRef && (
-        <DatePickerContainer/>
-      )}
-      {(withDefaultActive || active) && !loadingRef && !inline && (
+      {inline && DatePickerContainer}
+      {(withDefaultActive || active) && !inline && (
         <Popover zIndex={popoverZIndex} reference={reference} placement="top" disableTriangle>
-          <DatePickerContainer/>
+          {DatePickerContainer}
         </Popover>
       )}
     </SDatePicker>

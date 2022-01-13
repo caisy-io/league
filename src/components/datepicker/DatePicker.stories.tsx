@@ -1,4 +1,5 @@
 import React from "react";
+import {TDates} from "./context/DatePickerContext";
 import {DatePicker} from "./DatePicker";
 
 // Default Date Picker Demo
@@ -163,40 +164,39 @@ export default {
   },
 }
 
-function DatePickerDemo(args) {
+function DatePickerDemo({
+                          active = false,
+                          bottomButtons = false,
+                          closeButton = false,
+                          initialDate = [new Date()] as TDates,
+                          inline = false,
+                          locale = "en",
+                          quickSelectionButtons = false,
+                          range = false,
+                          saveButton = false,
+                          selectedDisplay = false,
+                          time = false
+                        }) {
   
   return <DatePicker
-    initialDate={args.initialDate}
+    initialDate={initialDate}
     onDayCreate={(dayElem) => {
       if (Math.random() > 0.2) return;
       dayElem.classList.add("has-badge");
     }}
-    locale={args.locale}
-    withDefaultActive={args.active}
-    withRange={args.range}
-    withTime={args.time}
-    withSelectedDisplay={args.selectedDisplay}
-    withCloseButton={args.closeButton}
-    withSaveButton={args.saveButton}
-    withBottomButtons={args.bottomButtons}
-    withQuickSelectionButtons={args.quickSelectionButtons}
-    inline={args.inline}
+    locale={locale}
+    withDefaultActive={active}
+    withRange={range}
+    withTime={time}
+    withSelectedDisplay={selectedDisplay}
+    withCloseButton={closeButton}
+    withSaveButton={saveButton}
+    withBottomButtons={bottomButtons}
+    withQuickSelectionButtons={quickSelectionButtons}
+    inline={inline}
   />;
 }
 
 const Template = (args) => <DatePickerDemo {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  active: false,
-  range: false,
-  time: false,
-  quickSelectionButtons: false,
-  bottomButtons: false,
-  closeButton: false,
-  saveButton: false,
-  selectedDisplay: true,
-  initialDate: [new Date()],
-  locale: "en",
-  inline: false,
-};

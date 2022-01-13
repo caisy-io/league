@@ -8,7 +8,7 @@ type TMinutesOptions = 0 | 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55;
 
 interface IDatePickerProvider {
   onChange?: (payload: TDates) => void;
-  initialDate: TDates;
+  initialDate?: TDates;
   onSave?: (payload: TDates) => void;
   onMonthChange?: (payload: Date) => void;
   onCancel?: () => void;
@@ -24,7 +24,7 @@ const DatePickerState: React.FC<IDatePickerProvider> = ({...props}) => {
     isAm: true,
     showHours: false,
     showMinutes: false,
-    date: props.initialDate,
+    date: props.initialDate || [new Date()],
     active: props.defaultActive,
   };
   
