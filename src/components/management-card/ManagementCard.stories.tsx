@@ -1,5 +1,5 @@
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import { ManagementCard } from "./ManagementCard";
 
@@ -27,13 +27,13 @@ const Template = (args) => <ManagementCard {...args} />;
 export const Default = Template.bind({});
 
 const Wrapper = styled.div`
-  margin-top: 10px;
-`
+  ${(props) => props.padded && " margin-top: 10px"};
+`;
 
 Default.args = {
   icon: <IconStarOutlined size={16} />,
   label: "Label",
-  children: <Wrapper>Hello world!</Wrapper>
+  children: <Wrapper padded>Hello world!</Wrapper>,
 };
 
 export const NoIcon = Template.bind({});
@@ -44,4 +44,6 @@ NoIcon.args = {
 
 export const NoIconAndLabel = Template.bind({});
 
-NoIconAndLabel.args = {};
+NoIconAndLabel.args = {
+  children: <Wrapper>Hello world!</Wrapper>,
+};
