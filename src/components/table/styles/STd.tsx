@@ -4,15 +4,9 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 interface ISTd {}
 
 const Bronze = css<ISTd>`
-  padding: 8px 0;
   vertical-align: middle;
-  font-size: 12px;
   display: flex;
   flex: 1;
-
-  span {
-    max-width: calc((100vw - 360px) / 6 - 20px);
-  }
 `;
 
 const Silver = css<ISTd>``;
