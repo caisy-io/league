@@ -4,7 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../consta
 const Bronze = css`
   filter: drop-shadow(-8px 0px 12px rgba(0, 0, 0, 0.04));
   width: 100%;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   border-left: 1px solid #E8F0F3;
   background-color: #FFFF;
   padding-top: 1.25rem;
