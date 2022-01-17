@@ -81,3 +81,4 @@ export * from "./component-list-item";
 export * from "./icon-button";
 export * from "./checkbox";
 export * from "./top-nav-default";
+export * from "./line-input";
