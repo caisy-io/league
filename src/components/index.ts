@@ -83,3 +83,4 @@ export * from "./checkbox";
 export * from "./blueprint-editor-sidebar";
 export * from "./top-nav-default";
 export * from "./field-card";
+export * from "./line-input";
