@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { LineInput } from "./LineInput";
 
 export default {
-  title: `Components/LineInput`,
+  title: `Components/Forms/LineInput`,
   component: LineInputDemo,
   argTypes: {
     state: {
