@@ -19,11 +19,12 @@ interface IProfileDetailsListItem {
   label?: string;
   previewProps?: IPreview;
   status?: IProfileDetailsListItemStatus;
+  onClick: () => void;
 }
 
-export const ProfileDetailsListItem: React.FC<IProfileDetailsListItem> = ({ title, label, previewProps, status }) => {
+export const ProfileDetailsListItem: React.FC<IProfileDetailsListItem> = ({ title, label, previewProps, status, onClick }) => {
   return (
-    <SProfileDetailsListItem>
+    <SProfileDetailsListItem onClick={onClick}>
       <SProfileDetailsListItemPreviewWrapper>
         <Preview size={48} {...previewProps} />
         {status && <SProfileDetailsListItemPreviewStatus status={status} />}

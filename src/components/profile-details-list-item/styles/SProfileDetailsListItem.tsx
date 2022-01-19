@@ -11,11 +11,13 @@ const Bronze = css`
   background-color: var(--ui-01);
   border-bottom: 1px solid var(--ui-03);
 
-  &: hover {
+  cursor: pointer;
+
+  &:hover {
     background-color: var(--hover-ui-01);
   }
 
-  &: active {
+  &:active {
     background-color: var(--active-ui-01-1);
   }
 `;
