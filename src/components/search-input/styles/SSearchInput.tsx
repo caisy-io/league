@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
-import { ProgressiveBody03 } from "../../../constants/styles/fonts";
+import { CSSProgressiveBody03 } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
   all: unset;
-  ${ProgressiveBody03}
+  ${CSSProgressiveBody03}
   background-color: transparent;
   color: var(--text-01);
   flex-grow: 1;

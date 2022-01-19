@@ -9,7 +9,7 @@ import {
   CSSProgressiveBody03,
   CSSProgressiveBody03Semibold,
 } from "../../constants/styles/design-tokens/fonts/CSSTypographies";
-import { CSSProgressiveCaption01 } from "../../constants/styles/fonts";
+import { CSSProgressiveCaption01 } from "../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { IconDotsHorizontal, IconPublish } from "../../icons";
 
 function TableRowDemo({ children, ...args }) {
