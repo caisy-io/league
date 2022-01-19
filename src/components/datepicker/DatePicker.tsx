@@ -223,7 +223,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
                 </SDatePickerMenuContainer>
               )}
             </SDatePickerMonthContainer>
-            <SDatePickerYearContainer>
+            <SDatePickerYearContainer ref={YearRefCont}>
               <SDatePickerButton onClick={() => {
                 setShowYearMenu(!showYearMenu);
               }}>

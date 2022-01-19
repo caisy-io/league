@@ -2,10 +2,42 @@ import React from "react";
 import {TDates} from "./context/DatePickerContext";
 import {DatePicker} from "./DatePicker";
 
+
+const Template = ({
+                    active = false,
+                    bottomButtons = false,
+                    closeButton = false,
+                    initialDate = [new Date()] as TDates,
+                    inline = true,
+                    locale = "en",
+                    quickSelectionButtons = false,
+                    range = false,
+                    saveButton = false,
+                    selectedDisplay = false,
+                    time = false
+                  }) =>
+  <DatePicker
+  initialDate={initialDate}
+  onDayCreate={(dayElem) => {
+    if (Math.random() > 0.2) return;
+    dayElem.classList.add("has-badge");
+  }}
+  locale={locale}
+  withDefaultActive={active}
+  withRange={range}
+  withTime={time}
+  withSelectedDisplay={selectedDisplay}
+  withCloseButton={closeButton}
+  withSaveButton={saveButton}
+  withBottomButtons={bottomButtons}
+  withQuickSelectionButtons={quickSelectionButtons}
+  inline={inline}
+/>;
+
 // Default Date Picker Demo
 export default {
   title: "Components/DatePicker",
-  component: DatePickerDemo,
+  component: Template,
   argTypes: {
     active: {
       description: "Changes the state of the component to active",
@@ -164,39 +196,6 @@ export default {
   },
 }
 
-function DatePickerDemo({
-                          active = false,
-                          bottomButtons = false,
-                          closeButton = false,
-                          initialDate = [new Date()] as TDates,
-                          inline = false,
-                          locale = "en",
-                          quickSelectionButtons = false,
-                          range = false,
-                          saveButton = false,
-                          selectedDisplay = false,
-                          time = false
-                        }) {
-  
-  return <DatePicker
-    initialDate={initialDate}
-    onDayCreate={(dayElem) => {
-      if (Math.random() > 0.2) return;
-      dayElem.classList.add("has-badge");
-    }}
-    locale={locale}
-    withDefaultActive={active}
-    withRange={range}
-    withTime={time}
-    withSelectedDisplay={selectedDisplay}
-    withCloseButton={closeButton}
-    withSaveButton={saveButton}
-    withBottomButtons={bottomButtons}
-    withQuickSelectionButtons={quickSelectionButtons}
-    inline={inline}
-  />;
-}
 
-const Template = (args) => <DatePickerDemo {...args} />;
 
 export const Default = Template.bind({});
