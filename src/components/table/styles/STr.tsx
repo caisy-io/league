@@ -7,6 +7,12 @@ const Bronze = css<ISTr>`
   display: flex;
   align-items: center;
   width: 100%;
+
+  &:hover {
+    & [data-role=table-cell] {
+      background-color: var(--hover-ui-01-1);
+    }
+  }
 `;
 
 const Silver = css<ISTr>``;
