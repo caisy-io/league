@@ -183,17 +183,17 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   }
   const reference = React.useRef(null);
   const flatRef = React.useRef(null);
-  const monthRefCont = React.useRef<HTMLDivElement>(null)
-  const YearRefCont = React.useRef<HTMLDivElement>(null)
+  const monthRefContainer = React.useRef<HTMLDivElement>(null)
+  const yearRefContainer = React.useRef<HTMLDivElement>(null)
   
   const [showMonthMenu, setShowMonthMenu] = React.useState(false);
   const [showYearMenu, setShowYearMenu] = React.useState(false);
   
   const clickOutsideMenuMonth = useClickOutside((e) => {
-    !monthRefCont.current?.contains(e.target) && setShowMonthMenu(false);
+    !monthRefContainer.current?.contains(e.target) && setShowMonthMenu(false);
   })
   const clickOutsideMenuYear = useClickOutside((e) => {
-    !YearRefCont.current?.contains(e.target) && setShowYearMenu(false);
+    !yearRefContainer.current?.contains(e.target) && setShowYearMenu(false);
   })
   
   const DatePickerContainer = !loadingRef && (
@@ -204,7 +204,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
             <IconAngleLeft/>
           </SDatePickerNavigationButton>
           <SDatePickerMonthAndYear>
-            <SDatePickerMonthContainer ref={monthRefCont}>
+            <SDatePickerMonthContainer ref={monthRefContainer}>
               <SDatePickerButton onClick={(e) => {
                 e.stopPropagation();
                 setShowMonthMenu(!showMonthMenu);
@@ -223,7 +223,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
                 </SDatePickerMenuContainer>
               )}
             </SDatePickerMonthContainer>
-            <SDatePickerYearContainer ref={YearRefCont}>
+            <SDatePickerYearContainer ref={yearRefContainer}>
               <SDatePickerButton onClick={() => {
                 setShowYearMenu(!showYearMenu);
               }}>
