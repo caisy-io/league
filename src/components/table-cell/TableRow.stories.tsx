@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 import { TableCell } from "./TableCell";
 import PreviewComponent from "../preview";
-import { Badge, EBadgePosition } from "../badge";
 import { SolidLabel } from "../solidLabel";
 import { Img } from "../../base-components/img/Img";
 import { useState } from "react";
@@ -10,7 +9,8 @@ import {
   CSSProgressiveBody03Semibold,
 } from "../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { CSSProgressiveCaption01 } from "../../constants/styles/fonts";
-import { IconDotsHorizontal, IconPublish } from "../../icons";
+import { IconDotsHorizontal } from "../../icons";
+import { STr } from "../table/styles/STr";
 
 function TableCellDemo({ activated, onClick, children }) {
   return (
@@ -24,10 +24,6 @@ export default {
   title: "Components/Table/TableRow",
   component: TableCellDemo,
 };
-
-const SRowWrapper = styled.div`
-  display: flex;
-`;
 
 const SGhostWrapper = styled.div`
   background-color: var(--ui-01);
@@ -88,10 +84,9 @@ const STagBadge = styled.div`
 
 const DocumentRowTemplate = (args) => {
   const [activated, setActivated] = useState(false);
-  const [hover, setHover] = useState(false);
 
   return (
-    <SRowWrapper>
+    <STr>
       <TableCellDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
         {args.ghost ? (
           <SGhostWrapper padding="20px">
@@ -212,7 +207,7 @@ const DocumentRowTemplate = (args) => {
           </span>
         )}
       </TableCellDemo>
-    </SRowWrapper>
+    </STr>
   );
 };
 

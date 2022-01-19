@@ -8,7 +8,7 @@ interface ITableCell {
 
 export const TableCell: FC<ITableCell> = ({ children, activated, onClick }) => {
   return (
-    <STableCell activated={activated} onClick={() => onClick?.(!activated)}>
+    <STableCell activated={activated} onClick={() => onClick?.(!activated)} data-role="table-cell">
       {children}
     </STableCell>
   );
