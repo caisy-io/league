@@ -6,7 +6,7 @@ import { ManagementCard } from "./ManagementCard";
 import { IconStarOutlined } from "../../icons/IconStarOutlined";
 
 export default {
-  title: `Components/ManagementCard`,
+  title: `Components/Cards/ManagementCard`,
   component: ManagementCard,
   argTypes: {
     icon: {
