@@ -4,15 +4,9 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 interface ISTh {}
 
 const Bronze = css<ISTh>`
-  text-align: left;
-  padding: 16px 0;
-  font-size: 14px;
   flex: 1;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  min-height: 46px;
-  line-height: 1.8;
   user-select: none;
 `;
 

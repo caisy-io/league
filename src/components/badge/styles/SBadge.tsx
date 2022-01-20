@@ -8,6 +8,7 @@ const Bronze = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
 
 const Silver = css``;

@@ -8,6 +8,7 @@ dist-ssr
 *.local
 out
 .vercel
+.idea
 sb-out.txt
 storybook-static
 yarn-error.log

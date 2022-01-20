@@ -1,15 +1,15 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import { LineTabs } from "../line-tabs";
-import { STabPanel } from "./styles/STabPanel";
-import { STabs } from "./styles/STabs";
-
+import { STabBar } from "./styles/STabBar";
+import { Tab } from "../tab/Tab";
+import { ISizesWithDefault } from "../../interfaces";
 interface ITabs {
   initialValue: number;
   onChange?: (newValue: number) => void;
-  children?: ReactNode;
+  children?: any;
   loading?: boolean;
   loadingComponent?: ReactNode;
   reference?: any;
+  size?: ISizesWithDefault;
   style?: React.CSSProperties;
 }
 
@@ -22,24 +22,26 @@ export const Tabs: React.FC<ITabs> = (props) => {
   }, [props.initialValue]);
 
   return (
-    <STabs style={props.style} ref={props.reference}>
-      <ul>
+    <div style={props.style} ref={props.reference}>
+      <STabBar>
         {React.Children.map(props.children, (child: any, index: number) => {
           return (
-            <LineTabs
-              activated={index === selected}
+            <Tab
+              value={index}
               key={index}
               onClick={() => {
                 setSelected(index);
                 props.onChange && props.onChange(index);
               }}
+              icon={child?.props?.icon}
+              size={props?.size}
+              activated={index === selected}
             >
               {child && child.props.title ? child.props.title : null}
-              {child.props.icon}
-            </LineTabs>
+            </Tab>
           );
         })}
-      </ul>
+      </STabBar>
       {props.loading ? (
         props.loadingComponent ? (
           props.loadingComponent
@@ -49,17 +51,16 @@ export const Tabs: React.FC<ITabs> = (props) => {
       ) : (
         <div>{React.Children.map(props.children, (child, i) => (i === selected ? child : null))}</div>
       )}
-    </STabs>
+    </div>
   );
 };
 
 interface ITabPanel {
   title?: any;
+  icon?: any;
   children?: any;
-  style?: React.CSSProperties;
-  icon?: ReactNode;
 }
 
 export const TabPanel = (props: ITabPanel) => {
-  return <STabPanel {...props}>{props.children}</STabPanel>;
+  return <div {...props}>{props.children}</div>;
 };

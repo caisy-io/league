@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveHighLight } from "../../../constants/styles/fonts";
+import { CSSProgressiveHighlight } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
@@ -7,7 +7,7 @@ const Bronze = css`
   align-items: center;
   gap: 8px;
 
-  ${CSSProgressiveHighLight};
+  ${CSSProgressiveHighlight};
   line-height: unset;
   color: var(--text-04);
   text-transform: uppercase;

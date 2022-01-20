@@ -2,13 +2,8 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  height: 14px;
-  width: 14px;
-
-  svg {
-    height: 14px;
-    width: 14px;
-  }
+  height: 20px;
+  width: 20px;
 `;
 
 const Silver = css``;

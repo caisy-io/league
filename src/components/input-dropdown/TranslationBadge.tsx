@@ -1,5 +1,5 @@
 import React from 'react';
-import Flag from '../flag';
+import { Flag } from '../flag';
 import { STranslationBadge } from './styles/STranslationBadge';
 
 export interface ITranslationBadgeProps {
