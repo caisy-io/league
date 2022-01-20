@@ -29,7 +29,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const STableRow = styled.div`
+export const STableCell = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

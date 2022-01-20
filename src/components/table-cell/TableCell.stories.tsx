@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { TableRow } from "./TableRow";
-import PreviewComponent from "../preview/Preview";
+import { TableCell } from "./TableCell";
+import PreviewComponent from "../preview";
 import { Badge, EBadgePosition } from "../badge";
 import { SolidLabel } from "../solidLabel";
 import { Img } from "../../base-components/img/Img";
@@ -12,17 +12,17 @@ import {
 import { CSSProgressiveCaption01 } from "../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { IconDotsHorizontal, IconPublish } from "../../icons";
 
-function TableRowDemo({ children, ...args }) {
+function TableCellDemo({ children, ...args }) {
   return (
-    <TableRow activated={args.activated} onClick={args.onClick}>
+    <TableCell activated={args.activated} onClick={args.onClick}>
       {children}
-    </TableRow>
+    </TableCell>
   );
 }
 
 export default {
-  title: "Components/Table/TableRow",
-  component: TableRowDemo,
+  title: "Components/Table/TableCell",
+  component: TableCellDemo,
 };
 
 const SGhostWrapper = styled.div`
@@ -44,7 +44,7 @@ const PreviewTemplate = (args) => {
   const [hover, setHover] = useState(false);
 
   return (
-    <TableRowDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
+    <TableCellDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
       {args.ghost ? (
         <SGhostWrapper padding="20px">
           <SGhostSquare height={48} width={48} />
@@ -76,7 +76,7 @@ const PreviewTemplate = (args) => {
           />
         </span>
       )}
-    </TableRowDemo>
+    </TableCellDemo>
   );
 };
 
@@ -110,7 +110,7 @@ const StringTemplate = (args) => {
   const [activated, setActivated] = useState(false);
 
   return (
-    <TableRowDemo onClick={!args.ghost && setActivated} activated={activated}>
+    <TableCellDemo onClick={!args.ghost && setActivated} activated={activated}>
       {args.ghost ? (
         <SGhostWrapper padding="34px 50px 34px 16px">
           <SGhostSquare height={20} width={64} />
@@ -132,7 +132,7 @@ const StringTemplate = (args) => {
           </SString>
         </span>
       )}
-    </TableRowDemo>
+    </TableCellDemo>
   );
 };
 
@@ -177,7 +177,7 @@ const TagsTemplate = (args) => {
   const [activated, setActivated] = useState(false);
 
   return (
-    <TableRowDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
+    <TableCellDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
       {args.ghost ? (
         <SGhostWrapper>
           <STags>
@@ -204,7 +204,7 @@ const TagsTemplate = (args) => {
           <STag>3</STag>
         </STags>
       )}
-    </TableRowDemo>
+    </TableCellDemo>
   );
 };
 
@@ -217,7 +217,7 @@ const StatusTemplate = (args) => {
   const [activated, setActivated] = useState(false);
 
   return (
-    <TableRowDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
+    <TableCellDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
       {args.ghost ? (
         <SGhostWrapper
           style={{ height: 88, width: 86, display: "flex", alignItems: "center", justifyContent: "center" }}
@@ -229,7 +229,7 @@ const StatusTemplate = (args) => {
           <SolidLabel type="green">Status</SolidLabel>
         </span>
       )}
-    </TableRowDemo>
+    </TableCellDemo>
   );
 };
 
@@ -244,7 +244,7 @@ const ActionIconButtonTemplate = (args) => {
   const [activated, setActivated] = useState(false);
 
   return (
-    <TableRowDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
+    <TableCellDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
       {args.ghost ? (
         <SGhostWrapper padding="32px 20px">
           <SGhostSquare height={24} width={24} />
@@ -268,7 +268,7 @@ const ActionIconButtonTemplate = (args) => {
           </div>
         </span>
       )}
-    </TableRowDemo>
+    </TableCellDemo>
   );
 };
 
@@ -304,7 +304,7 @@ const ActionFlatButtonTemplate = (args) => {
   const [activated, setActivated] = useState(false);
 
   return (
-    <TableRowDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
+    <TableCellDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
       {args.ghost ? (
         <SGhostWrapper padding="32px 16px">
           <SGhostSquare width={78} height={24} />
@@ -314,7 +314,7 @@ const ActionFlatButtonTemplate = (args) => {
           <IconPublish size={20} /> Publish
         </SFlatButton>
       )}
-    </TableRowDemo>
+    </TableCellDemo>
   );
 };
 
@@ -349,7 +349,7 @@ const UserTemplate = (args) => {
   const [activated, setActivated] = useState(false);
 
   return (
-    <TableRowDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
+    <TableCellDemo onClick={!args.ghost && setActivated} activated={activated} {...args}>
       {args.ghost ? (
         <SGhostWrapper padding="24px 16px">
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -395,7 +395,7 @@ const UserTemplate = (args) => {
           </>
         </span>
       )}
-    </TableRowDemo>
+    </TableCellDemo>
   );
 };
 
