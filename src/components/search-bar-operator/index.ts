@@ -1,1 +1,1 @@
-export {SearchBarOperator, ISearchBarOperatorProps} from './SearchBarOperator';
+export * from './SearchBarOperator';
