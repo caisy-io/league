@@ -13,6 +13,10 @@ const Bronze = css`
   cursor: pointer;
 
   ${CSSProgressiveBody03Medium};
+  
+  *{
+    flex: 0 0 auto;
+  }
 `;
 
 const Silver = css``;
