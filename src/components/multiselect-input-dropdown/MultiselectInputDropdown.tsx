@@ -89,21 +89,22 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
           <Popover disableTriangle placement="bottom" reference={ref}>
             <SMultiselectInputDropdownSelect style={{ width }}>
               <SearchInput placeholder="Search tags" onChange={onSearch} />
-              {dataSource.map((option) =>
+              {dataSource && dataSource.map((option) =>
                 renderDataItem ? (
                   <div key={option.id} onClick={() => onChange(option)}>
                     {renderDataItem(option)}
                   </div>
                 ) : (
-                  <TagListItem
-                    key={option.id}
-                    onClick={() => onChange(option)}
-                    outlineLabel={
-                      <OutLineLabel size="medium" colorLabel={<ColorLabel color={option.color} />}>
-                        {option.label}
-                      </OutLineLabel>
-                    }
-                  />
+                  <div key={option.id}>
+                    <TagListItem
+                      onClick={() => onChange(option)}
+                      outlineLabel={
+                        <OutLineLabel size="medium" colorLabel={<ColorLabel color={option.color} />}>
+                          {option.label}
+                        </OutLineLabel>
+                      }
+                    />
+                  </div>
                 ),
               )}
             </SMultiselectInputDropdownSelect>
