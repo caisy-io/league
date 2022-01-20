@@ -7,6 +7,7 @@ export const SButtonOverwrite = css`
   width: 2rem;
   height: 2rem;
   padding: 0;
+  color: #172C55;
   &:after{
     background-color:var(--interactional-secondary-08);
   }
