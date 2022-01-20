@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IconStarOutlined } from "../../icons/IconStarOutlined";
+import {ListItemContent} from "../list-item-content";
 import { RadioButtonListItem } from "./RadioButtonListItem";
 
 // Default RadioButtonListItem Demo
@@ -25,7 +26,7 @@ return (
     {withIcon && (
       <IconStarOutlined size={20} />
     )}
-    <p data-main>{content}</p>
+    <ListItemContent>{content}</ListItemContent>
   </RadioButtonListItem>
 )};
 
