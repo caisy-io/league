@@ -13,6 +13,18 @@ const Bronze = css`
   cursor: pointer;
 
   ${CSSProgressiveBody03Medium};
+  
+  *{
+    flex: 0 0 auto;
+  }
+  
+  [data-main]{
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: auto;
+  }
 `;
 
 const Silver = css``;

@@ -18,9 +18,15 @@ const CSSActivated = css`
   color: var(--active-icon-01);
 `;
 
+
+const CSSLeft = css`
+  order: -1000;
+  margin-left: unset;
+`;
+
 const Bronze = css`
   margin-left: auto;
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,6 +37,7 @@ const Bronze = css`
   ${(props) => props.hover && CSSHover}
   ${(props) => props.activated && CSSActivated}
   ${(props) => props.disabled && CSSDisabled}
+  ${(props) => props.left && CSSLeft}
 `;
 
 const Silver = css``;
