@@ -60,7 +60,7 @@ export * from "./translation-menu";
 export * from "./translation-menu-legacy";
 export * from "./tree";
 export * from "./search-bar-operand";
-export * from "./searchbar-operator";
+export * from "./search-bar-operator";
 export * from "./close-button";
 export * from "./sidebar-card";
 export * from "./line-tab";
