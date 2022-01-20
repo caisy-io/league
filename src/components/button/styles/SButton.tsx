@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { CSSProgressivePrimaryButtons } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 import { IButtonProps, IButtonType } from "../Button";
-import { ISizesWithDefault } from "../../..";
+import { ISizesWithDefault } from "../../../interfaces";
 
 const getSize = (size?: ISizesWithDefault) => {
   switch (size) {
@@ -12,6 +12,14 @@ const getSize = (size?: ISizesWithDefault) => {
         padding: 0 5px;
         font-size: 11px;
         gap: 5px;
+        border-radius: 4px;
+        svg {
+          height: 8px;
+          width: 8px;
+        }
+        :after {
+          border-radius: 4px;
+        }
       `;
     case "medium":
       return css`
@@ -20,14 +28,13 @@ const getSize = (size?: ISizesWithDefault) => {
     case "small":
       return css`
         height: 32px;
-        svg {
-          height: 20px;
-          width: 20px;
-        }
         > span {
           &:not(:first-child) {
             padding-left: 0;
           }
+        }
+        :after {
+          border-radius: 6px;
         }
       `;
     default:
@@ -162,9 +169,7 @@ const CSSTertiary = css`
   border: solid 1px var(--interactional-tertiary-01);
   &:hover {
     color: var(--hover-text-04);
-    &:after {
-      border: solid 1px var(--hover-interactional-tertiary-01);
-    }
+    border: solid 1px var(--hover-interactional-tertiary-01);
   }
   &:active {
     color: var(--text-02);
@@ -183,6 +188,7 @@ const CSSTertiary = css`
 
 const CSSTertiaryPressed = css`
   color: var(--text-02);
+  border: solid 1px var(--active-interactional-tertiary-01);
   &:after {
     background-color: var(--active-interactional-tertiary-01);
   }
@@ -300,7 +306,11 @@ const Bronze = css<IButtonProps>`
   gap: 9px;
   padding: 0 12px;
   border: none;
-  ${(props) => getSize(props.size)};
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
 
   /* this after is there to split the background animation from the button content */
   /* after is the background */
@@ -309,15 +319,16 @@ const Bronze = css<IButtonProps>`
     position: absolute;
     transition: all 0.3s ease;
     z-index: 1;
-    top: 0;
-    left: 0;
     height: 100%;
     width: 100%;
-    border-radius: 6px;
+    border-radius: 8px;
   }
-
+  
+  ${(props) => getSize(props.size)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
   ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
+  
+  line-height: normal;
 
   &:active {
     &:after {
@@ -330,17 +341,18 @@ const Bronze = css<IButtonProps>`
     position: relative;
   }
   span {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    text-transform: uppercase;
   }
   .icon {
     display: flex;
+    flex: 1;
     justify-content: center;
     align-items: center;
-    height: 10px;
-    width: 10px;
   }
   ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;

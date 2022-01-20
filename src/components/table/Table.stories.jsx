@@ -1,5 +1,8 @@
 import React from "react";
-import { Button, IconEdit, IconTrashDelete, Input, Table } from "../..";
+import { Table } from "../table";
+import { Input } from "../input";
+import { IconEdit, IconTrashDelete } from "../../icons";
+import { Button } from "../button";
 
 function TableDemo() {
   const [dataSource, setDataSource] = React.useState([
@@ -7,7 +10,9 @@ function TableDemo() {
       name: "testName",
       lastName: "testLastNameas,mdnasmdnas,mdnas,mdn,masdn,masdajhsdasdgasd",
       id: 0,
-      actions: { id: 0 },
+      actions: {
+        id: 0,
+      },
     },
     {
       name: "testName 1",
@@ -101,7 +106,6 @@ function TableDemo() {
 
   const loadNextPage = () => {
     setIsNextPageLoading(true);
-    console.log("loading");
     return new Promise((resolve) =>
       setTimeout(() => {
         // setHasNextPage(dataSource.length < 100);

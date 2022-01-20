@@ -1,7 +1,8 @@
 import React from "react";
+import { css } from "styled-components";
 import { Button } from "./Button";
-import { IconLink } from "../..";
-import { Badge, EBadgePosition } from "..";
+import { IconStarOutlined } from "../../icons";
+import { Badge, EBadgePosition } from "../badge";
 
 // Default Button Demo
 export default {
@@ -76,12 +77,13 @@ Default.args = {
 };
 
 // With Icon
-export const WithIcon = ({ content, ...args }) => (
+export const WithIcon = ({ content, ...args }) => {
+  return(
   <Button {...args}>
-    <IconLink />
+    <IconStarOutlined />
     {content}
   </Button>
-);
+)};
 
 WithIcon.args = {
   type: "primary",
@@ -93,9 +95,15 @@ WithIcon.args = {
   sticked: false,
 };
 
+const CSSBadgeWithButton = css`
+  >div {
+    border: 2px solid #FFFF;
+  }
+`;
+
 // With Badge
 export const WithBadge = ({ content, ...args }) => (
-  <Badge position={EBadgePosition.TopRight} value={args.badgeContent}>
+  <Badge position={EBadgePosition.TopRight} value={args.badgeContent} size="small" type="important" styleOverwrite={CSSBadgeWithButton} >
     <Button {...args}>{content}</Button>
   </Badge>
 );

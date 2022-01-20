@@ -1,5 +1,5 @@
 import React from "react";
-import { IconAssetsImage, IconTypeface } from "../..";
+import { IconAssetsImage, IconTypeface } from "../../icons";
 import { IconLink } from "../../icons/IconLink";
 import { SidebarCard } from "../sidebar-card";
 import { Tabs } from '../tabs';

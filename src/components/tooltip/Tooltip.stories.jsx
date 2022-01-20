@@ -1,5 +1,7 @@
 import React from "react";
-import { Tooltip, Button, FlatActionButton } from "../..";
+import { Button } from "../button";
+import { Tooltip } from "../tooltip";
+import { FlatActionButton } from "../flat-action-button";
 import CheckMarkIcon from "./CheckMarkIcon";
 import CheckMarkIconFilled from "./CheckMarkIconFilled";
 
@@ -26,7 +28,11 @@ function TooltipDemo({ color, placement, ...args }) {
       >
         {args.description}
       </p>
-      {args.withButton && <FlatActionButton type={color === "white" ? "default" : "white"}>Got it</FlatActionButton>}
+      {args.withButton && (
+        <FlatActionButton type={color === "white" ? "default" : "white"}>
+          <span style={{ opacity: 0.64 }}>Got it</span>
+        </FlatActionButton>
+      )}
     </span>
   );
 

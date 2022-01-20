@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import { Card, SCardHeaderTitle, SCardBody, Button } from "../..";
+import { Button } from "../button";
+import { Card, SCardHeaderTitle, SCardBody } from "../card";
 import { Collapsible } from './Collapsible';
 
 

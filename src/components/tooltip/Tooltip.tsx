@@ -1,4 +1,5 @@
 import React, { ReactNode, FC, useState, useRef } from "react";
+import { css } from "styled-components";
 import { STooltip } from "./styles/STooltip";
 import { STooltipWrapper } from "./styles/STooltipWrapper";
 import { Popover, TPlacement } from "../../components/popover";
@@ -12,7 +13,6 @@ export interface ITooltip {
 }
 
 export const Tooltip: FC<ITooltip> = ({ content, placement, color, children }) => {
-  // console.log(`Tooltip props: `, props);
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   let closeTooltipTimeout;
@@ -54,12 +54,39 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children }) =
     }
   };
 
+  const openCloseAnimation = css`
+    animation: ${closing ? "close" : "open"} 100ms ease-in-out;
+
+    @keyframes open {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes close {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  `;
+
   return (
     <STooltipWrapper ref={ref} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       {children}
       {open && (
-        <Popover trianglecolor={getBackgroundColor()} placement={placement || "top"} reference={ref}>
-          <STooltip closing={closing} color={color}>
+        <Popover
+          triangleExtraCSS={openCloseAnimation}
+          trianglecolor={getBackgroundColor()}
+          placement={placement || "top"}
+          reference={ref}
+        >
+          <STooltip animation={openCloseAnimation} color={color}>
             {content}
           </STooltip>
         </Popover>

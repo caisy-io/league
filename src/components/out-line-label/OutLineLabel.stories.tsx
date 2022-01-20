@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import { Img } from '../../base-components/img/Img';
 import { IconClose } from '../../icons';
-import OutLineLabel from './OutLineLabel';
+import { OutLineLabel } from './OutLineLabel';
 import ColorLabel from './ColorLabel';
 import BadgeLabel from './BadgeLabel';
 
