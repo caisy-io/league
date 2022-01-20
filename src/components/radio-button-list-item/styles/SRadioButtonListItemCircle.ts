@@ -21,12 +21,9 @@ const CSSActivated = css`
 
 const CSSLeft = css`
   order: -1000;
-  margin-left: unset;
 `;
 
 const Bronze = css`
-  margin-left: auto;
-  
   display: flex;
   align-items: center;
   justify-content: center;
