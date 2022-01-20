@@ -1,12 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  IconColorPalette,
-  IconDelete,
-  IconEdit,
-  IconPlusBox,
-  IconStarOutlined,
-} from "../../icons";
+import { IconColorPalette, IconDelete, IconEdit, IconPlusBox, IconStarOutlined } from "../../icons";
+import { Checkbox } from "../checkbox/Checkbox";
 import { FlatActionButton } from "../flat-action-button";
 import { MenuListItem } from "../menu-list-item/MenuListItem";
 import { OutLineLabel } from "../out-line-label";
@@ -52,6 +47,34 @@ export const WithLeftIcon = Template.bind({});
 
 WithLeftIcon.args = {
   leftIcon: <IconStarOutlined size={20} />,
+  outlineLabel: (
+    <OutLineLabel size="medium" colorLabel={<ColorLabel color="var(--ui-04)" />}>
+      Default
+    </OutLineLabel>
+  ),
+};
+
+export const WithLeftCheckbox = (args) => {
+  const [isChecked, setIsChecked] = React.useState(false);
+
+  return (
+    <Wrapper>
+      <TagListItem
+        leftIcon={
+          <Checkbox
+            onChange={(e) => {
+              setIsChecked(!isChecked);
+            }}
+            checked={isChecked}
+          />
+        }
+        {...args}
+      />
+    </Wrapper>
+  );
+};
+
+WithLeftCheckbox.args = {
   outlineLabel: (
     <OutLineLabel size="medium" colorLabel={<ColorLabel color="var(--ui-04)" />}>
       Default
