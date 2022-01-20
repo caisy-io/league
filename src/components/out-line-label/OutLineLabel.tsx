@@ -15,7 +15,7 @@ interface IOutLineLabel {
   size?: 'medium' | 'large';
 }
 
-const OutLineLabel: FC<IOutLineLabel> = ({icon, image, colorLabel, badgeLabel, activated, size, children }) => {
+export const OutLineLabel: FC<IOutLineLabel> = ({icon, image, colorLabel, badgeLabel, activated, size, children }) => {
   return (
     <SOutLineLabel isActivated={activated} size={size} >
       {colorLabel && <SColorLabelWrapper isActivated={activated} size={size}>{colorLabel}</SColorLabelWrapper>}
@@ -27,4 +27,3 @@ const OutLineLabel: FC<IOutLineLabel> = ({icon, image, colorLabel, badgeLabel, a
   )
 }
 
-export default OutLineLabel;

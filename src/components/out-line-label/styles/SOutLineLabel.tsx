@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
-import { CSSProgressiveCaption01 } from '../../../constants/styles/fonts';
+import { CSSProgressiveCaption01 } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 
 interface ISOutLineLabel {
   size?: 'medium' | 'large';
@@ -17,7 +17,6 @@ const Bronze = css<ISOutLineLabel>`
   flex-direction: row;
   align-items: center;
   padding: ${({ size }) => size === 'medium' ? '4px 8px' : '8px 12px'};
-  position: absolute;
   background-color: ${({ isActivated }) => isActivated ? 'var(--interactional-primary-01)' : 'var(--ui-01)'};
   border: 1px solid var(--ui-03);
   box-sizing: border-box;
