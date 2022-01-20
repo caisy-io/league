@@ -12,3 +12,4 @@ out
 sb-out.txt
 storybook-static
 yarn-error.log
+.idea

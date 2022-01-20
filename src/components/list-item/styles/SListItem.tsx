@@ -24,6 +24,18 @@ const Bronze = css`
 
   display: flex;
   align-items: center;
+  gap: 8px;
+  *{
+    flex: 0 0 auto;
+  }
+  
+  [data-main]{
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: auto;
+  }
 
   &:hover {
     ${CSSHover}
