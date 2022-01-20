@@ -14,74 +14,47 @@ import { SMultiselectInputDropdownSelect } from "./styles/SMultiselectInputDropd
 import { SMultiselectInputDropdownTitle } from "./styles/SMultiselectInputDropdownTitle";
 import { SMultiSelectInputWrapper } from "./styles/SMultiSelectInputWrapper";
 
-interface IMultiselectInputDropdown {
-  children?;
-}
-
-type Tag = {
+type TDataSourceItem = {
   id: number;
-  title: string;
+  label: string;
   color: string;
 };
 
-const TAGS_MOCK: Tag[] = [
-  {
-    id: 1,
-    title: "Default 1",
-    color: "red",
-  },
-  {
-    id: 2,
-    title: "Default 2",
-    color: "green",
-  },
-  {
-    id: 3,
-    title: "Default 3",
-    color: "blue",
-  },
-  {
-    id: 4,
-    title: "Default 4",
-    color: "grey",
-  },
-];
+interface IMultiselectInputDropdown {
+  value?: TDataSourceItem[];
+  placeholder?: string;
+  dataSource: TDataSourceItem[];
+  onSelectValue?: (option: TDataSourceItem) => void;
+  renderDataItem?: (option: TDataSourceItem) => React.ReactNode;
+  renderInputItem?: (option: TDataSourceItem) => React.ReactNode;
+  onSearch?: (e: Event) => void;
+}
 
-const removeById = (id: number, arr: Tag[]) => {
-  const removeIndex = arr.map((i) => i.id).indexOf(id);
-  // remove object
-  arr.splice(removeIndex, 1);
-};
-
-export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = () => {
+export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
+  value,
+  placeholder,
+  dataSource,
+  renderDataItem,
+  renderInputItem,
+  onSelectValue,
+  onSearch,
+}) => {
   const [opened, setOpened] = React.useState(false);
-  const [tags, setTags] = React.useState<Tag[]>([]);
+  const [selectedValues, setSelectedValues] = React.useState<TDataSourceItem[] | undefined>(value || undefined);
 
   const ref = React.useRef(null);
 
   const { width } = useDimensions(ref);
 
   const toggleDropdown = () => {
-    // if (e.currentTarget !== e.target) return;
     setOpened(!opened);
   };
 
-  const removeTag = (id: number) => {
-    const newTags = tags;
-    removeById(id, newTags);
-
-    setTags(newTags);
+  const onChange = (option: TDataSourceItem) => {
+    onSelectValue?.(option);
+    setSelectedValues([option]);
+    setOpened(false);
   };
-
-  const addTag = () => {
-    setTags([{
-      id: 1,
-      title: "Default 1",
-      color: "red",
-    }]);
-
-    toggleDropdown();
-  }
 
   return (
     <ClickOutside onClickOutside={() => setOpened(false)}>
@@ -89,18 +62,23 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = () 
         <SMultiselectInputDropdown active={opened} ref={ref} onClick={toggleDropdown}>
           <SMultiSelectInputWrapper>
             <SMultiselectInputDropdownTitle>
-              {tags.length !== 0 &&
-                tags.map((tag: Tag) => (
-                  <OutLineLabel
-                    key={tag.id}
-                    size="medium"
-                    colorLabel={<ColorLabel color={tag.color} />}
-                    icon={<IconClose />}
-                  >
-                    {tag.title}
-                  </OutLineLabel>
-                ))}
-              {tags.length === 0 && "Select or create tags"}
+              {selectedValues &&
+                selectedValues.length !== 0 &&
+                selectedValues.map((item: TDataSourceItem) =>
+                  renderInputItem ? (
+                    <div key={item.id}>{renderInputItem(item)}</div>
+                  ) : (
+                    <OutLineLabel
+                      key={item.id}
+                      size="medium"
+                      colorLabel={<ColorLabel color={item.color} />}
+                      icon={<IconClose />}
+                    >
+                      {item.label}
+                    </OutLineLabel>
+                  ),
+                )}
+              {!selectedValues && placeholder}
             </SMultiselectInputDropdownTitle>
             <SDropdownArrow opened={opened}>
               <IconChevronDown size={24}></IconChevronDown>
@@ -110,15 +88,24 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = () 
         {opened && (
           <Popover disableTriangle placement="bottom" reference={ref}>
             <SMultiselectInputDropdownSelect style={{ width }}>
-              <SearchInput placeholder="Search tags" />
-              <TagListItem
-                onClick={addTag}
-                outlineLabel={
-                  <OutLineLabel size="medium" colorLabel={<ColorLabel color="red" />}>
-                    Default
-                  </OutLineLabel>
-                }
-              />
+              <SearchInput placeholder="Search tags" onChange={onSearch} />
+              {dataSource.map((option) =>
+                renderDataItem ? (
+                  <div key={option.id} onClick={() => onChange(option)}>
+                    {renderDataItem(option)}
+                  </div>
+                ) : (
+                  <TagListItem
+                    key={option.id}
+                    onClick={() => onChange(option)}
+                    outlineLabel={
+                      <OutLineLabel size="medium" colorLabel={<ColorLabel color={option.color} />}>
+                        {option.label}
+                      </OutLineLabel>
+                    }
+                  />
+                ),
+              )}
             </SMultiselectInputDropdownSelect>
           </Popover>
         )}
