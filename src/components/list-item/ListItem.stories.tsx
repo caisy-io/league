@@ -1,3 +1,4 @@
+import {ListItemContent} from "../list-item-content";
 import {ListItem} from "./ListItem";
 import {IconChevronRight, IconDragable, IconGearSettings, IconPin, IconStarOutlined} from "../../icons";
 import {useState} from "react";
@@ -23,7 +24,7 @@ const SmallListItemTemplate = ({showLeftIcon, showRightIcon, content}) => {
   return (
     <ListItem onClick={toggleActivated} activated={activated}>
       {showLeftIcon && <IconStarOutlined size={16}/>}
-      <p data-main>{content}</p>
+      <ListItemContent>{content}</ListItemContent>
       {showRightIcon && (
         <IconChevronRight size={16}/>
       )}
@@ -55,7 +56,7 @@ const ListSpoilerTemplate = ({showLeftIcon, showRightIcon, content}) => {
         <IconChevronRight size={16}/>
       </div>
       {showLeftIcon && <IconStarOutlined size={16}/>}
-      <p data-main>{content}</p>
+      <ListItemContent>{content}</ListItemContent>
       {showRightIcon && (
         <IconStarOutlined size={16}/>
       )}
@@ -87,7 +88,7 @@ const ViewSectionTemplate = ({content}) => {
         <IconChevronRight size={16}/>
       </div>
       🤘
-      <p data-main>{content}</p>
+      <ListItemContent>{content}</ListItemContent>
       <IconGearSettings size={16}/>
       <IconDragable size={16}/>
     </ListItem>
@@ -109,7 +110,7 @@ const ViewListItemTemplate = ({content}) => {
       onMouseLeave={() => setHover(false)}
       activated={activated}
     >
-      <p data-main>{content}</p>{" "}
+      <ListItemContent>{content}</ListItemContent>{" "}
       {(hover || activated) && (<IconPin size={16}/>)}
     </ListItem>
   );

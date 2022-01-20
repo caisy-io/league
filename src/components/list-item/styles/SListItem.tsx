@@ -29,14 +29,6 @@ const Bronze = css`
     flex: 0 0 auto;
   }
   
-  [data-main]{
-    flex-shrink: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-right: auto;
-  }
-
   &:hover {
     ${CSSHover}
     ${(props) => props.activated && CSSActivated}
