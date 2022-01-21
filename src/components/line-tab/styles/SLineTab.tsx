@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody03Semibold } from "../../../constants/styles/fonts";
+import { CSSProgressiveBody03Semibold } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 import { ILineTabProps } from "../LineTab";
 
