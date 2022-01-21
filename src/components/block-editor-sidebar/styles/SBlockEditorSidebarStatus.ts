@@ -4,12 +4,12 @@ import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../consta
 
 const Bronze = css`
   ${CSSProgressiveHighlight};
-  line-height: 16px;
+  line-height: unset;
   color: var(--text-04);
 
   display: flex;
   align-items: center;
-  padding: 16px 12px;
+  padding: 12px 16px;
   gap: 4px;
 `;
 
