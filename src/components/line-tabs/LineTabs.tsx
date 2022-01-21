@@ -46,9 +46,8 @@ export const LineTabs: React.FC<ILineTabs> = (props) => {
         ) : (
           <div>Loading...</div>
         )
-      ) : (
-        <div>{React.Children.map(props.children, (child, i) => (i === selected ? child : null))}</div>
-      )}
+      ) :
+        React.Children.map(props.children, (child, i) => (i === selected ? child : null))}
     </SLineTabs>
   );
 };
