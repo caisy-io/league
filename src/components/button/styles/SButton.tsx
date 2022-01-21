@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { CSSProgressivePrimaryButtons } from "../../../constants/styles/fonts";
+import { CSSProgressivePrimaryButtons } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 import { IButtonProps, IButtonType } from "../Button";
 import { ISizesWithDefault } from "../../../interfaces";
@@ -328,7 +328,7 @@ const Bronze = css<IButtonProps>`
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
   ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
   
-  line-height: 1;
+  line-height: normal;
 
   &:active {
     &:after {

@@ -1,14 +1,13 @@
-import React, { FC } from "react";
+import React, { FC, AllHTMLAttributes } from "react";
 import { SListItem } from "./styles/SListItem";
 
 interface IListItem {
   activated?: boolean;
-  onClick?: () => void;
 }
 
-export const ListItem: FC<IListItem> = ({ children, activated, onClick }) => {
+export const ListItem: FC<IListItem & AllHTMLAttributes<HTMLElement>> = ({ children, activated, ...props }) => {
   return (
-    <SListItem onClick={onClick} activated={activated}>
+    <SListItem activated={activated} {...props}>
       {children}
     </SListItem>
   );

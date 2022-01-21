@@ -4,15 +4,14 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 interface ISTr {}
 
 const Bronze = css<ISTr>`
-  transition: background-color 200ms;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #f0f0f0;
-  padding: 0 16px;
+  width: 100%;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.01);
+    & [data-role=table-cell] {
+      background-color: var(--hover-ui-01-1);
+    }
   }
 `;
 

@@ -1,13 +1,14 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveHighLight } from "../../../constants/styles/fonts";
+import { CSSProgressiveHighlight } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  ${CSSProgressiveHighLight};
+  ${CSSProgressiveHighlight};
+  line-height: 11px;
   background-color: var(--ui-02);
   border-bottom: 1px solid var(--ui-03);
   color: var(--text-04);
-  width: fit-content;
+  width: 100%;
   height: 48px;
 
   display: flex;

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { IconStarOutlined } from "../../icons/IconStarOutlined";
+import {ListItemContent} from "../list-item-content";
 import { RadioButtonListItem } from "./RadioButtonListItem";
 
 // Default RadioButtonListItem Demo
 export default {
   title: "Components/Interactional/RadioButtonListItem",
-  component: RadioButtonListItemDemo,
+  component: RadioButtonListItem,
   parameters: {
     design: {
       type: "figma",
@@ -15,29 +16,25 @@ export default {
   argTypes: {},
 };
 
-function RadioButtonListItemDemo({ disabled, content, withIcon }) {
-  const [activated, setActivated] = useState(false);
-  return (
-    <div style={{ width: 320 }}>
-      <RadioButtonListItem onChange={setActivated} activated={activated} disabled={disabled}>
-        {withIcon && (
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <IconStarOutlined size={20} />
-          </div>
-        )}
-        <p style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{content}</p>
-      </RadioButtonListItem>
-    </div>
-  );
-}
-
-const Template = ({ disabled, content, withIcon }) => (
-  <RadioButtonListItemDemo withIcon={withIcon} content={content} disabled={disabled} />
-);
+const Template = ({ disabled, content, withIcon, left, activated: propsActive }) => {
+const [activated, setActivated] = useState(false);
+  React.useEffect(() => {
+    setActivated(propsActive)
+  }, [propsActive]);
+return (
+  <RadioButtonListItem onChange={setActivated} activated={activated} disabled={disabled} left={left}>
+    {withIcon && (
+      <IconStarOutlined size={20} />
+    )}
+    <ListItemContent>{content}</ListItemContent>
+  </RadioButtonListItem>
+)};
 
 export const Default = Template.bind({});
 Default.args = {
   disabled: false,
   withIcon: false,
+  left: false,
+  activated: false,
   content: "Default",
 };

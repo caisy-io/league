@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Tab } from "./Tab";
+import { Tabs, TabPanel } from "../tabs/Tabs";
 import { IconStarOutlined } from "../../icons";
 
 const iconSize = {
@@ -7,11 +8,11 @@ const iconSize = {
   small: 16,
   medium: 20,
   default: 24,
-} 
+};
 
 // Default Tab Demo
 export default {
-  title: "Components/Tab",
+  title: `Components/Navigation/Tabs/Tab`,
   component: TabDemo,
   parameters: {
     design: {
@@ -25,9 +26,7 @@ export default {
       options: ["micro", "small", "medium", "default"],
       control: { type: "select" },
       table: {
-        defaultValue: {
-          summary: "Default",
-        },
+        defaultValue: "default",
       },
     },
     selected: {
@@ -81,10 +80,22 @@ function TabDemoWithIcon({ content, selected, ...args }) {
 
   return (
     <div style={{ display: "flex", gap: 8 }}>
-      <Tab value="1" onClick={handleSelect} activated={currSelected === "1"} icon={<IconStarOutlined size={iconSize[args.size]}/>} {...args}>
+      <Tab
+        value="1"
+        onClick={handleSelect}
+        activated={currSelected === "1"}
+        icon={<IconStarOutlined size={iconSize[args.size]} />}
+        {...args}
+      >
         Tab 1
       </Tab>
-      <Tab value="2" onClick={handleSelect} activated={currSelected === "2"} icon={<IconStarOutlined size={iconSize[args.size]}/>} {...args}>
+      <Tab
+        value="2"
+        onClick={handleSelect}
+        activated={currSelected === "2"}
+        icon={<IconStarOutlined size={iconSize[args.size]} />}
+        {...args}
+      >
         Tab 2
       </Tab>
     </div>
