@@ -51,8 +51,8 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   };
 
   const onChange = (option: TDataSourceItem) => {
-    onSelectValue?.(option);
     setSelectedValues([option]);
+    onSelectValue?.(option);
     setOpened(false);
   };
 
