@@ -10,6 +10,7 @@ import { STagListItemOutlineLabelWrapper } from "./styles/STagListItemOutlineLab
 
 export interface ITagListItem {
   disabled?: boolean;
+  activated?: boolean;
   label?: string;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
@@ -21,6 +22,7 @@ export interface ITagListItem {
 
 export const TagListItem: React.FC<ITagListItem> = ({
   disabled,
+  activated,
   label,
   leftIcon,
   rightIcon,
@@ -38,7 +40,7 @@ export const TagListItem: React.FC<ITagListItem> = ({
   return (
     <ClickOutside onClickOutside={() => setOpened(false)}>
       <>
-        <STagListItem ref={ref} disabled={disabled} onClick={onClick}>
+        <STagListItem ref={ref} disabled={disabled} activated={activated} onClick={onClick}>
           {label && <STagListItemLabel>{label}</STagListItemLabel>}
           <SFlex>
             {leftIcon}
