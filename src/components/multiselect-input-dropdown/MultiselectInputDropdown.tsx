@@ -40,6 +40,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   onSearch,
 }) => {
   const [opened, setOpened] = React.useState(false);
+  const [selectedValues, setSelectedValues] = React.useState<TDataSourceItem[] | undefined>(value || undefined);
 
   const ref = React.useRef(null);
 
@@ -50,6 +51,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   };
 
   const onChange = (option: TDataSourceItem) => {
+    setSelectedValues([option]);
     onSelectValue?.(option);
     setOpened(false);
   };
@@ -60,9 +62,9 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
         <SMultiselectInputDropdown active={opened} ref={ref} onClick={toggleDropdown}>
           <SMultiSelectInputWrapper>
             <SMultiselectInputDropdownTitle>
-              {value &&
-                value.length !== 0 &&
-                value.map((item: TDataSourceItem) =>
+              {selectedValues &&
+                selectedValues.length !== 0 &&
+                selectedValues.map((item: TDataSourceItem) =>
                   renderInputItem ? (
                     <div key={item.id}>{renderInputItem(item)}</div>
                   ) : (
@@ -76,7 +78,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
                     </OutLineLabel>
                   ),
                 )}
-              {!value && placeholder}
+              {!selectedValues && placeholder}
             </SMultiselectInputDropdownTitle>
             <SDropdownArrow opened={opened}>
               <IconChevronDown size={24}></IconChevronDown>
@@ -87,25 +89,24 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
           <Popover disableTriangle placement="bottom" reference={ref}>
             <SMultiselectInputDropdownSelect style={{ width }}>
               <SearchInput placeholder="Search tags" onChange={onSearch} />
-              {dataSource &&
-                dataSource.map((option) =>
-                  renderDataItem ? (
-                    <div key={option.id} onClick={() => onChange(option)}>
-                      {renderDataItem(option)}
-                    </div>
-                  ) : (
-                    <div key={option.id}>
-                      <TagListItem
-                        onClick={() => onChange(option)}
-                        outlineLabel={
-                          <OutLineLabel size="medium" colorLabel={<ColorLabel color={option.color} />}>
-                            {option.label}
-                          </OutLineLabel>
-                        }
-                      />
-                    </div>
-                  ),
-                )}
+              {dataSource && dataSource.map((option) =>
+                renderDataItem ? (
+                  <div key={option.id} onClick={() => onChange(option)}>
+                    {renderDataItem(option)}
+                  </div>
+                ) : (
+                  <div key={option.id}>
+                    <TagListItem
+                      onClick={() => onChange(option)}
+                      outlineLabel={
+                        <OutLineLabel size="medium" colorLabel={<ColorLabel color={option.color} />}>
+                          {option.label}
+                        </OutLineLabel>
+                      }
+                    />
+                  </div>
+                ),
+              )}
             </SMultiselectInputDropdownSelect>
           </Popover>
         )}
