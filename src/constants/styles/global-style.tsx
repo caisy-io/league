@@ -17,7 +17,7 @@ export const GSBase = createGlobalStyle`
   ${CSSBoxShadows}
   ${Bronze}
   body{ 
-      background-color: var(--white-2);
+      background-color: var(--ui-background);
       color: var(--neutral-700);
   }
   :root{
