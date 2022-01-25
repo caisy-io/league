@@ -3,7 +3,7 @@ import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../consta
 import { ISearchBarOperandProps } from '../SearchBarOperand';
 
 const CSSHover = css`
-  border: 1px solid var(--neutral-300);  
+  border: 1px solid var(--hover-interactional-secondary-03);
   background-color: var(--hover-ui-01); 
 `;
 
