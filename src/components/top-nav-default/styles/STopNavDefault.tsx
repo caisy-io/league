@@ -2,7 +2,12 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  padding: 20px 0;
+  height: 60px;
+  box-sizing: border-box;
+  display: flex;
+  background-color: var(--ui-01);
+  border-bottom: 1px solid var(--ui-03);
+  align-items: center;
 `;
 
 const Silver = css``;
@@ -13,7 +18,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const STabPanel = styled.div`
+export const STopNavDefault = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
