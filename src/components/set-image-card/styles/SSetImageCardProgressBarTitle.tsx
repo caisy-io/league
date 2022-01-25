@@ -1,22 +1,13 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveBody03Medium } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  width: 282px;
-  height: 148px;
+  margin-bottom: 16px;
 
-  border-radius: 4px;
-  box-shadow: var(--box-shadow-strong-pop-elavation);
-  object-fit: cover;
+  ${CSSProgressiveBody03Medium};
 
-  overflow: hidden;
-
-  transform: translateY(-22px);
-
-  > div {
-    width: inherit;
-    height: inherit;
-  }
+  color: var(--text-01);
 `;
 
 const Silver = css``;
@@ -27,7 +18,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSetImageCardPreview = styled.div`
+export const SSetImageCardProgressBarTitle = styled.p`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

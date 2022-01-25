@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-
-import { FlatActionButton } from "../flat-action-button";
 import { Button } from "../button";
-import { Divider } from "../divider";
 import { IconDelete, IconEdit } from "../../icons";
 import { Img } from "../../base-components";
+import ButtonsBar from "../buttons-bar";
 
 import { SSetImageCard } from "./styles/SSetImageCard";
 import { SSetImageCardBody } from "./styles/SSetImageCardBody";
@@ -12,7 +10,10 @@ import { SSetImageCardButtonsBar } from "./styles/SSetImageCardButtonsBar";
 import { SSetImageCardPreview } from "./styles/SSetImageCardPreview";
 import { SSetImageCardTitle } from "./styles/SSetImageCardTitle";
 import { SSetImageCardSubTitle } from "./styles/SSetImageCardSubTitle";
-import ButtonsBar from "../buttons-bar";
+import { SSetImageCardProgressBar } from "./styles/SSetImageCardProgressBar";
+import { SSetImageCardProgressBarTitle } from "./styles/SSetImageCardProgressBarTitle";
+import { SSetImageCardProgressBarWrapper } from "./styles/SSetImageCardProgressBarWrapper";
+import { SSetImageCardProgressBarLabel } from "./styles/SSetImageCardProgressBarLabel";
 
 interface ISetImageCard {
   onChange: (url: string) => void;
@@ -23,6 +24,8 @@ interface ISetImageCard {
 export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, initalValue }) => {
   const [image, setImage] = useState<string | null>(initalValue || null);
   const [isLoading, setLoading] = useState<boolean>(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadName, setUploadName] = useState("");
 
   const imageRef = useRef<HTMLInputElement>(null);
 
@@ -41,12 +44,29 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
 
     if (files && files.length > 0) {
       try {
-        const image = await processImage(files[0]);
+        const file = files[0];
 
-        setImage(image);
+        setUploadName(file.name);
+
+        const image = await processImage(file);
+
+        setTimeout(() => {
+          setUploadProgress(24);
+        }, 500);
+        setTimeout(() => {
+          setUploadProgress(57);
+        }, 700);
+
+        if (image) {
+          setImage(image);
+
+          setTimeout(() => {
+            setUploadProgress(100);
+            setLoading(false);
+          }, 800);
+        }
       } catch (error) {
         console.log(error);
-      } finally {
         setLoading(false);
       }
     }
@@ -56,16 +76,28 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
     setImage(null);
   };
 
+
   useEffect(() => {
     if (image) {
       onChange(image);
     }
   }, [image]);
 
+
+
   return (
     <SSetImageCard>
       <SSetImageCardBody>
-        {isLoading && <SSetImageCardTitle>Loading...</SSetImageCardTitle>}
+        {isLoading && (
+          <SSetImageCardProgressBarWrapper>
+            <SSetImageCardProgressBarTitle>{uploadName}</SSetImageCardProgressBarTitle>
+            <SSetImageCardProgressBarLabel>{uploadProgress}%</SSetImageCardProgressBarLabel>
+            <SSetImageCardProgressBar progress={uploadProgress} />
+            <Button onClick={() => {}} type="secondary">
+              CANCEL
+            </Button>
+          </SSetImageCardProgressBarWrapper>
+        )}
         {!isLoading && !image && (
           <>
             <SSetImageCardTitle>Drag and drop file to upload</SSetImageCardTitle>
@@ -84,7 +116,7 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
         )}
         <input hidden type="file" ref={imageRef} onChange={uploadImage} />
       </SSetImageCardBody>
-      {image && (
+      {!isLoading && image && (
         <SSetImageCardButtonsBar>
           <ButtonsBar>
             <Button onClick={openImagePicker} type="primary" sticked={true}>
