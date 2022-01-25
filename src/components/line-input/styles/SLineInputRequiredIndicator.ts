@@ -1,12 +1,15 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody03Semibold } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  ${CSSProgressiveBody03Semibold}
-  margin-top: 24px;
-  margin-bottom: 8px;
-  color: var(--text-01);
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background-color: var(--ui-supportive-01);
+
+  position: absolute;
+  top: 0;
+  right: -6px;
 `;
 
 const Silver = css``;
@@ -17,7 +20,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SEmptyImageTitle = styled.div`
+export const SLineInputRequiredIndicator = styled.span`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
