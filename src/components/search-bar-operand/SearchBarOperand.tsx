@@ -1,6 +1,5 @@
 import React from 'react';
 import { SSearchBarOperand } from './styles/SSearchBarOperand';
-import { SSearchBarOperandLabel } from './styles/SSearchBarOperandLabel';
 
 export interface ISearchBarOperandProps {
   hover?: boolean;
