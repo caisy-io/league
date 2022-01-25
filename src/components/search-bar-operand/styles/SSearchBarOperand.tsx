@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { CSSProgressiveCaption01Semibold } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISearchBarOperandProps } from '../SearchBarOperand';
 
@@ -23,10 +24,13 @@ const Bronze = css<ISearchBarOperandProps>`
   position: relative;
   z-index: 0;
   transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
-  padding: 0.25rem;
+  padding: 0.375rem 0.5rem;
   box-sizing: border-box;
   background-color: #FFFF;
   border: 1px solid var(--hover-interactional-secondary-03);
+  ${CSSProgressiveCaption01Semibold};
+  color: var(--active-ui-01);
+  white-space: nowrap;
   ${(props) => props.hover ? CSSHover : ''};
   :hover{
     ${CSSHover}
