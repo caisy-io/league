@@ -20,7 +20,7 @@ const Bronze = css<ISearchBarOperatorProps>`
   ${CSSProgressiveHighlightMicro};
   color: var(--text-04);
   text-transform: uppercase;
-  height: 1.3 rem;
+  height: 21px;
   box-sizing: border-box;
   background-color: var(--ui-03);
   border-radius: 68px;
