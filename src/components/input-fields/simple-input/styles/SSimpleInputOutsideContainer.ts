@@ -1,29 +1,10 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../../constants/styles/mediaquerys";
 
-const CSSLocked = css`
-  color: var(--text-04);
-
-  &:disabled {
-    color: var(--text-04);
-  }
-`;
-
 const Bronze = css`
-  all: unset;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  color: var(--text-01);
-
-  width: ${(props) => `${props.width}px`};
-  max-width: 320px;
-
-  ${(props) => props.locked && CSSLocked}
-
-  &::placeholder {
-    color: var(--text-03);
-  }
+  display: flex;
+  align-items: center;
+  gap: 6px;
 `;
 
 const Silver = css``;
@@ -34,7 +15,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSimpleInput = styled.input`
+export const SSimpleInputOutsideContainer = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

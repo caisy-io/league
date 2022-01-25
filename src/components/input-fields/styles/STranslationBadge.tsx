@@ -17,6 +17,8 @@ const Bronze = css`
   display: flex;
   align-items: center;
   gap: 4px;
+
+  z-index: 2;
 `;
 
 const Silver = css``;
