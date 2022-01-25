@@ -14,7 +14,7 @@ const Bronze = css<ISearchBarOperatorProps>`
   max-width: min-content;
   padding: 0 8px;
   position: relative;
-  height: 100%;
+  height: 1.3rem;
   :after {
     content: '';
     width: 100%;
