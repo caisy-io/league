@@ -1,8 +1,11 @@
-import styled, { css } from 'styled-components';
-import { CSSProgressiveBody02Medium, CSSProgressiveCaption01Medium } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
-import { CSSProgressiveBody03Medium } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
-import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
-import { IMenuListItemProps } from '../MenuListItem';
+import styled, { css } from "styled-components";
+import {
+  CSSProgressiveBody02Medium,
+  CSSProgressiveCaption01Medium,
+} from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
+import { CSSProgressiveBody03Medium } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
+import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
+import { IMenuListItemProps } from "../MenuListItem";
 
 const CSSSmall = css`
   height: 44px;
@@ -18,10 +21,21 @@ const CSSDisabled = css`
   background-color: var(--ui-02);
   color: var(--disabled-text);
   cursor: auto;
-  div, div:nth-of-type(2) {
+  div,
+  div:nth-of-type(2) {
     color: var(--disabled-text);
-    svg{
+    svg {
       color: var(--disabled-text);
+    }
+  }
+`;
+
+const CSSActivated = css`
+  color: var(--active-text-01);
+
+  div:nth-of-type(2) {
+    svg {
+      color: var(--active-text-01);
     }
   }
 `;
@@ -43,10 +57,10 @@ const Bronze = css<IMenuListItemProps>`
   text-overflow: ellipsis;
   div {
     display: flex;
-    align-items: center; 
+    align-items: center;
     gap: 15px;
     overflow: hidden;
-    span{
+    span {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -58,26 +72,27 @@ const Bronze = css<IMenuListItemProps>`
       max-height: 18px;
     }
   }
-  div:nth-of-type(2){
+  div:nth-of-type(2) {
     ${CSSProgressiveCaption01Medium};
     line-height: 12px;
     color: var(--text-04);
-    svg{
+    svg {
       color: var(--text-01);
     }
   }
-  ${(props) => props.size == "small" ? CSSSmall : ''};
-  ${(props) => props.size == "medium" ? CSSMedium : ''};
+  ${(props) => (props.size == "small" ? CSSSmall : "")};
+  ${(props) => (props.size == "medium" ? CSSMedium : "")};
   &:hover {
     background-color: var(--hover-ui-01);
     cursor: pointer;
-    ${(props) => props.disabled ? CSSDisabled : ''};
+    ${(props) => (props.disabled ? CSSDisabled : "")};
   }
   &:active {
     background-color: var(--active-ui-01-1);
-    ${(props) => props.disabled ? CSSDisabled : ''};
+    ${(props) => (props.disabled ? CSSDisabled : "")};
   }
-  ${(props) => props.disabled ? CSSDisabled : ''};
+  ${(props) => props.activated && CSSActivated}
+  ${(props) => (props.disabled ? CSSDisabled : "")};
 `;
 
 const Silver = css``;
@@ -91,8 +106,7 @@ const Diamond = css``;
 export const SMenuListItem = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
-  ${MIN_GOLD`${Gold}`}; 
+  ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
 `;
-
