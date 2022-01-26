@@ -21,20 +21,15 @@ export const LineInput: FC<ILineInput> = ({ state, errorMessage, placeholder, la
   const inputRef = useRef<HTMLInputElement>();
 
   return (
-    <SLineInputWrapper
-      onClick={() => inputRef.current?.focus()}
-      value={value}
-      onChange={onChange}
-      state={state}
-      active={active}
-      required={required}
-    >
+    <SLineInputWrapper onClick={() => inputRef.current?.focus()} state={state} active={active} required={required}>
       <SLineInputLabel>
         {required && <SLineInputRequiredIndicator />}
         {state === "error" && errorMessage ? errorMessage : label}
       </SLineInputLabel>
       <SLineInput
         ref={inputRef}
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
         onFocus={() => setActive(true)}
         onBlur={() => setActive(false)}
