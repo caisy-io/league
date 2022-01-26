@@ -1,16 +1,13 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveCaption01Semibold } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-interface ISResizableWrapper {
-    width: string;
-    height: string;
-    left?: boolean;
-    styleOverwrite?: any;
-}
-
-const Bronze = css<ISResizableWrapper>`
+const Bronze = css`
+  ${CSSProgressiveCaption01Semibold};
   position: relative;
-  // overflow: auto;
+  opacity: 0;
+  transition: opacity 200ms, color 200ms;
+  width: fit-content;
 `;
 
 const Silver = css``;
@@ -21,15 +18,10 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SResizableWrapper = styled.div.attrs(({ width, height }) => ({
-  style: {
-    width, height
-  }
-}))`
+export const SLineInputLabel = styled.label`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
-  ${({styleOverwrite}: ISResizableWrapper) => styleOverwrite ?? ''};
 `;
