@@ -7,7 +7,7 @@ const Bronze = css`
   overflow: hidden;
   width: fit-content;
   height: fit-content;
-  border-radius: 6px;
+  border-radius: 12px;
   box-shadow: 0 10px 35px 0 rgba(89, 106, 122, 0.12);
 `;
 

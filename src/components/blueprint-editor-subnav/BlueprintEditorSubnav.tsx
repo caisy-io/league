@@ -14,12 +14,13 @@ import { SBlueprintEditorSubnavTabs } from "./styles/SBlueprintEditorSubnavTabs"
 
 interface IBlueprintEditorSubnavGroup {
   name: string;
+  id: number;
 }
 
 interface IBlueprintEditorSubnav {
   groups: IBlueprintEditorSubnavGroup[];
-  onSelectGroup: (group: string) => void;
-  selectedGroup: string;
+  onSelectGroup: (group: IBlueprintEditorSubnavGroup) => void;
+  selectedGroup: IBlueprintEditorSubnavGroup;
   onGroupAdd: () => void;
   onClickConfig?: () => void;
   configBadgeValue?: string;
@@ -52,8 +53,8 @@ export const BlueprintEditorSubnav: FC<IBlueprintEditorSubnav> = ({
 
       <SBlueprintEditorSubnavTabs>
         {groups.map((group) => (
-          <SBlueprintEditorSubnavTab>
-            <LineTab activated={selectedGroup === group.name} onClick={() => onSelectGroup(group.name)}>
+          <SBlueprintEditorSubnavTab key={group.id}>
+            <LineTab activated={selectedGroup.id === group.id} onClick={() => onSelectGroup(group)}>
               {group.name}
               {!!onEditGroup && (
                 <SBlueprintEditorSubnavEditIconWrapper onClick={(e) => handleEditTab(e, group)}>

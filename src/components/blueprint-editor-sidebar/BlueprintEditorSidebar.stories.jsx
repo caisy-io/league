@@ -4,12 +4,12 @@ import { IconLink } from "../../icons/IconLink";
 import { SidebarCard } from "../sidebar-card";
 import { Tabs } from '../tabs';
 import { TabPanel } from '../tabs/Tabs';
-import { SchemaEditorSidebar } from './SchemaEditorSidebar';
+import { BlueprintEditorSidebar } from './BlueprintEditorSidebar';
 import { SidebarCategory } from "./SidebarCategory";
 
 export default {
-  title: `Components/Navigation/SchemaEditorSidebar`,
-  component: SchemaEditorSidebarDemo,
+  title: `Components/Navigation/BlueprintEditorSidebar`,
+  component: BlueprintEditorSidebarDemo,
   parameters: {
     design: {
       type: "figma",
@@ -18,9 +18,9 @@ export default {
   },
 };
 
-function SchemaEditorSidebarDemo({ content, ...args }) {
+function BlueprintEditorSidebarDemo({ content, ...args }) {
   return <div style={{ width: "320px" }}>
-    <SchemaEditorSidebar>
+    <BlueprintEditorSidebar>
       <Tabs initialValue={0}>
         <TabPanel title="All Fields" style={{ padding: "1.25rem 1rem" }}>
           <SidebarCategory title="Link context" icon={<IconLink></IconLink>}>
@@ -33,11 +33,11 @@ function SchemaEditorSidebarDemo({ content, ...args }) {
           </SidebarCategory>
         </TabPanel>
       </Tabs>
-    </SchemaEditorSidebar>
+    </BlueprintEditorSidebar>
   </div>
 }
 
-const Template = (args) => < SchemaEditorSidebarDemo {...args} />;
+const Template = (args) => < BlueprintEditorSidebarDemo {...args} />;
 
 export const Default = Template.bind({});
 
