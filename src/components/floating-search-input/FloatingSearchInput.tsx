@@ -1,21 +1,23 @@
-import React, { FC, useRef, useState } from "react";
+import React, { FC, forwardRef, useRef, useState } from "react";
 import { SFloatingSearchInput } from "./styles/SFloatingSearchInput";
 import { SFloatingSearchInputWrapper } from "./styles/SFLoatingSearchInputWrapper";
 
 interface IFloatingSearchInput {
   placeholder?: string;
-  onClose?: () => void;
   onChange?: (e) => void;
-  withFilter?: boolean;
-  onClickFilter?: () => void;
+  onClick?: () => void;
 }
 
-export const FloatingSearchInput: FC<IFloatingSearchInput> = ({ placeholder, onChange }) => {
+export const FloatingSearchInput = forwardRef<HTMLInputElement, IFloatingSearchInput>(({ onClick, placeholder, onChange }, inputRef) => {
   const [active, setActive] = useState(false);
-  const inputRef = useRef<HTMLInputElement>();
 
-  const handleClick = () => {
-    inputRef.current?.focus();
+  const handleClick = (e) => {
+    if(inputRef && (inputRef as any ).current){
+      (inputRef as any ).current.focus();
+    }
+    if(onClick){
+      onClick(e)
+    }
   };
 
   const handleFocus = () => {
@@ -32,4 +34,4 @@ export const FloatingSearchInput: FC<IFloatingSearchInput> = ({ placeholder, onC
       />
     </SFloatingSearchInputWrapper>
   );
-};
+});

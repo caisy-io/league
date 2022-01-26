@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FloatingSearchInput } from "./FloatingSearchInput";
 
 const Template = ({ ...args }) => {
+  const ref = useRef<HTMLInputElement>();
   return <div style={{ width: 250 }}>
-    <FloatingSearchInput {...args} />
+    <FloatingSearchInput ref={ref} {...args} />
   </div>
 }
 
