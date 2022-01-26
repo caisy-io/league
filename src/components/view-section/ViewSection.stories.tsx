@@ -1,5 +1,10 @@
 import React from "react";
 import { ViewSection } from './ViewSection';
+import { SViewSectionWrapper } from './styles/SViewSectionWrapper';
+import { IconChevronRight } from '../../icons/IconChevronRight';
+import { IconEmojis } from '../../icons/IconEmojis';
+import { IconCog } from '../../icons/IconCog';
+import { IconDragable } from '../../icons/IconDragable';
 
 export default {
   title: `Components/ViewSection`,
@@ -32,11 +37,20 @@ export default {
 };
 
 function ViewSectionDemo({ boolean, text, select }) {
-  return <ViewSection>
+  return <SViewSectionWrapper>
+    <ViewSection>
+      <div>  <IconChevronRight size={20}></IconChevronRight>
+        <IconEmojis size={16}></IconEmojis>
+        Hover</div>
+      <div>
+        <IconCog size={16}></IconCog>
+        <IconDragable size={16} />
+      </div>
     </ViewSection>
+  </SViewSectionWrapper>
 }
 
-const Template = (args) => < ViewSectionDemo {...args } />;
+const Template = (args) => < ViewSectionDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
