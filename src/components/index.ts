@@ -90,3 +90,4 @@ export * from "./field-card";
 export * from "./line-input";
 export * from "./search-dropdown-section-table";
 export * from "./floating-search-input";
+export * from "./search-dropdown-section-title";
