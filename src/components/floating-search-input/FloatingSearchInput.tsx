@@ -4,11 +4,12 @@ import { SFloatingSearchInputWrapper } from "./styles/SFLoatingSearchInputWrappe
 
 interface IFloatingSearchInput {
   placeholder?: string;
+  value?: string;
   onChange?: (e) => void;
   onClick?: () => void;
 }
 
-export const FloatingSearchInput = forwardRef<HTMLInputElement, IFloatingSearchInput>(({ onClick, placeholder, onChange }, inputRef) => {
+export const FloatingSearchInput = forwardRef<HTMLInputElement, IFloatingSearchInput>(({ value, onClick, placeholder, onChange }, inputRef) => {
   const [active, setActive] = useState(false);
 
   const handleClick = (e) => {
@@ -28,6 +29,8 @@ export const FloatingSearchInput = forwardRef<HTMLInputElement, IFloatingSearchI
     <SFloatingSearchInputWrapper active={active} onClick={handleClick}>
       <SFloatingSearchInput
         ref={inputRef}
+        type="text"
+        value={value}
         onFocus={handleFocus}
         onChange={onChange}
         placeholder={placeholder}
