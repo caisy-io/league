@@ -6,14 +6,7 @@ import { SearchDropdownSectionTableHeader } from './SearchDropdownSectionTableHe
 import { SearchDropdownSectionTableRow } from './SearchDropdownSectionTableRow';
 import { SFlex } from "../../base-components/flex/styles/SFlex";
 
-export default {
-  title: `Components/SearchDropdownSectionTable`,
-  component: SearchDropdownSectionTableDemo,
-  argTypes: {
-  },
-};
-
-function SearchDropdownSectionTableDemo() {
+const Template = () => {
   return <SearchDropdownSectionTable>
     <SearchDropdownSectionTableHeader>
       <div>Title</div>
@@ -30,13 +23,15 @@ function SearchDropdownSectionTableDemo() {
   </SearchDropdownSectionTable>
 }
 
-const Template = (args) => < SearchDropdownSectionTableDemo {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-
+export default {
+  title: `Components/SearchDropdownSectionTable`,
+  component: Template,
+  argTypes: {
+  },
 };
 
+export const Default = Template.bind({});
+Default.args = {};
 
 export const ThreeColumns = ({ content, ...args }) => (
   <SearchDropdownSectionTable>
@@ -54,5 +49,4 @@ export const ThreeColumns = ({ content, ...args }) => (
   </SearchDropdownSectionTable>);
 
 ThreeColumns.args = {
-
 };

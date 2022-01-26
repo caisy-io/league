@@ -1,9 +1,15 @@
 import React from "react";
 import { FloatingSearchInput } from "./FloatingSearchInput";
 
+const Template = ({ ...args }) => {
+  return <div style={{ width: 250 }}>
+    <FloatingSearchInput {...args} />
+  </div>
+}
+
 export default {
   title: "Components/FloatingSearchInput",
-  component: FloatingSearchInputDemo,
+  component: Template,
   parameters: {
     design: {
       type: "figma",
@@ -12,16 +18,6 @@ export default {
   },
   argTypes: {},
 };
-
-function FloatingSearchInputDemo({ ...args }) {
-  return (
-    <div style={{ width: 250 }}>
-      <FloatingSearchInput {...args} />
-    </div>
-  );
-}
-
-const Template = (args) => <FloatingSearchInputDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
