@@ -32,16 +32,16 @@ const CSSLocked = css`
 const Bronze = css`
   position: relative;
   overflow: hidden;
-  width: 320px;
   padding: 10px 12px;
   background-color: var(--ui-01);
   border: 1px solid var(--ui-03);
   border-radius: 8px;
   display: flex;
+  gap: 2px;
   flex-direction: column;
   justify-content: flex-start;
   transition: border 200ms;
-  gap: 2px;
+  box-sizing: border-box;
 
   ${(props) => props.active && CSSActive};
   ${(props) => props.state && props.state === "error" && CSSError}

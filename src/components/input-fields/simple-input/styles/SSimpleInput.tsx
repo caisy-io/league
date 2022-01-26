@@ -17,7 +17,7 @@ const Bronze = css`
   color: var(--text-01);
 
   width: ${(props) => `${props.width}px`};
-  max-width: 320px;
+  height: 20px;
 
   ${(props) => props.locked && CSSLocked}
 
