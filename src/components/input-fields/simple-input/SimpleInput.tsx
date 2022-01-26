@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from "react";
+import React, { FC, KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";
 import { SErrorMessage } from "../styles/SErrorMessage";
 import { SLabel } from "../styles/SLabel";
 import { SSimpleInput } from "./styles/SSimpleInput";
@@ -27,7 +27,7 @@ interface ISimpleInput {
   disabled?: boolean;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
-  onKeyUp?: () => void;
+  onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
