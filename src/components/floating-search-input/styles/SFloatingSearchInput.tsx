@@ -12,6 +12,7 @@ const Bronze = css`
   &::placeholder {
     color: var(--text-03);
   }
+  text-align: left;
 `;
 
 const Silver = css``;

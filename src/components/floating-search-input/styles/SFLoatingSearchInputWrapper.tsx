@@ -17,7 +17,6 @@ const Bronze = css`
   &:active {
     ${CSSActive}
   }
-
   ${(props) => props.active && CSSActive}
 `;
 
