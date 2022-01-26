@@ -13,13 +13,10 @@ const Bronze = css`
   &:hover{
     background-color:var(--active-ui-01-1);
   }
-  >div{
+  *{
     display: flex;
     align-items: center;
     gap: 0.5rem;
-  }
-  div:nth-of-type(2){
-    color: #567A98;
   }
 `;
 
