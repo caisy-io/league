@@ -7,6 +7,8 @@ const Bronze = css`
   text-transform: uppercase;
   color: var(--text-01);
   margin-bottom: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Silver = css``;

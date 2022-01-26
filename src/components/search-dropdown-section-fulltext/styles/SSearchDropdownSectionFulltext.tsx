@@ -9,7 +9,7 @@ const Bronze = css`
   padding: 1rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100px;
+  white-space: nowrap;
 `;
 
 const Silver = css``;
