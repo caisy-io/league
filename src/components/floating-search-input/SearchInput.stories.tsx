@@ -1,10 +1,9 @@
 import React from "react";
-import { SearchInput } from "./SearchInput";
+import { FloatingSearchInput } from "./FloatingSearchInput";
 
-// Default SearchInput Demo
 export default {
-  title: "Components/SearchInput",
-  component: SearchInputDemo,
+  title: "Components/FloatingSearchInput",
+  component: FloatingSearchInputDemo,
   parameters: {
     design: {
       type: "figma",
@@ -14,15 +13,15 @@ export default {
   argTypes: {},
 };
 
-function SearchInputDemo({ ...args }) {
+function FloatingSearchInputDemo({ ...args }) {
   return (
     <div style={{ width: 250 }}>
-      <SearchInput {...args} />
+      <FloatingSearchInput {...args} />
     </div>
   );
 }
 
-const Template = (args) => <SearchInputDemo {...args} />;
+const Template = (args) => <FloatingSearchInputDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
