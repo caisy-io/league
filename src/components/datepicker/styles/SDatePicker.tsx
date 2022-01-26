@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 const SDatePicker = styled.div`
-  min-width: 341.88px;
   width: max-content;
+  max-width: 100%;
+  
   > div:first-child:not(:last-child) {
     margin-bottom: 16px;
   }
+  
   height: fit-content;
 `;
 

@@ -16,8 +16,6 @@ interface IPrimaryModalHeaderLabel {
 
 interface IPrimaryModalHeader {
   breadcrumbs: IPrimaryModalHeaderLabel[];
-  withCloseIcon: boolean;
-  onClose?: () => void;
 }
 
 export const PrimaryModalHeader: React.FC<IPrimaryModalHeader> = ({ breadcrumbs, children }) => {

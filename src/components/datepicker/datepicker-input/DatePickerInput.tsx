@@ -1,46 +1,55 @@
 import React from "react";
-import { IconCalendar } from "../../../icons/IconCalendar";
+import {IconCalendar} from "../../../icons";
 import usePicker from "../context/DatePickerContext";
 import SDatePickerInput from "./styles/SDatePickerInput";
 import SDatePickerInputDate from "./styles/SDatePickerInputDate";
+import SDatePickerInputDateText from "./styles/SDatePickerInputDateText";
 import SIconCalendar from "./styles/SIconCalendar";
 
 interface IDatePickerInput {
   withTime?: boolean;
+  withRange?: boolean;
   placeholder?: any;
+  weekDays: string[];
+  months: string[]
 }
 
-const WeekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const Months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-const DatePickerInput: React.FC<IDatePickerInput> = ({ ...props }) => {
-  const { active, setActive, date, hours, minutes, isAm, getCurrentDate } = usePicker();
+const DatePickerInput: React.FC<IDatePickerInput> = ({withRange, withTime, weekDays, months, placeholder}) => {
+  const {active, setActive, date, hours, minutes, isAm} = usePicker();
   return (
     <SDatePickerInput active={active || !!date} onClick={() => setActive(!active)}>
-      <SDatePickerInputDate rightMarginAuto={!getCurrentDate() || !active}>
+      <SDatePickerInputDate rightMarginAuto={!date || !active}>
         <SIconCalendar>
-          <IconCalendar />
+          <IconCalendar/>
         </SIconCalendar>
-        {getCurrentDate()
-          ? `${WeekDays[new Date(getCurrentDate()).getDay()]}, ${new Date(getCurrentDate()).getDate()} ${
-              Months[new Date(getCurrentDate()).getMonth()]
-            } ${new Date(getCurrentDate()).getFullYear()} `
-          : props.placeholder}
+        {date
+          ? (
+            <SDatePickerInputDateText>
+              {
+                date.map?.((el, index) => {
+                    if (el) {
+                      return date[1] ? (
+                        <p key={index}>
+                          {`${index ? 'To : ' : 'From : '} ${weekDays[new Date(el).getDay()]}, ${new Date(el).getDate()} ${
+                            months[new Date(el).getMonth()]
+                          } ${new Date(el).getFullYear()}`}
+                        </p>
+                      ) : (
+                        <p key={index}>
+                          {`${weekDays[new Date(el).getDay()]}, ${new Date(el).getDate()} ${
+                            months[new Date(el).getMonth()]
+                          } ${new Date(el).getFullYear()}`}
+                        </p>
+                      )
+                    }
+                  }
+                )
+              }
+            </SDatePickerInputDateText>
+          )
+          : placeholder}
       </SDatePickerInputDate>
-      {date && props.withTime && (
+      {date && withTime && !withRange && (
         <SDatePickerInputDate leftMarginAuto>
           {`${hours.toString().length === 1 ? `0${hours}` : hours}:${
             minutes.toString().length === 1 ? `0${minutes}` : minutes
