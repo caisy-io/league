@@ -10,23 +10,10 @@ export default {
   title: `Components/SearchDropdownSectionTable`,
   component: SearchDropdownSectionTableDemo,
   argTypes: {
-    boolean: {
-      description: "An example boolean argument type",
-      control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
-    },
-    text: {
-      description: "An example text argument type",
-      control: { type: "text" },
-    },
   },
 };
 
-function SearchDropdownSectionTableDemo({ boolean, text, select }) {
+function SearchDropdownSectionTableDemo() {
   return <SearchDropdownSectionTable>
     <SearchDropdownSectionTableHeader>
       <div>Title</div>
@@ -67,5 +54,5 @@ export const ThreeColumns = ({ content, ...args }) => (
   </SearchDropdownSectionTable>);
 
 ThreeColumns.args = {
-  
+
 };
