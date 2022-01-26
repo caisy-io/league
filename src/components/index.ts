@@ -72,6 +72,7 @@ export * from "./toggle";
 export * from "./view-item";
 export * from "./out-line-label";
 export * from "./menu-list-item";
+export * from "./dropdown-card";
 export * from "./organization-menu-list-item";
 export * from "./search-input";
 export * from "./organization-select-list-item";
