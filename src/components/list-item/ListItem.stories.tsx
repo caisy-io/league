@@ -71,7 +71,7 @@ ListSpoiler.args = {
   content: "Default",
 };
 
-const ViewSectionTemplate = ({content}) => {
+const ViewItemTemplate = ({content}) => {
   const [activated, setActivated] = useState(false);
   
   const toggleActivated = () => {
@@ -95,8 +95,8 @@ const ViewSectionTemplate = ({content}) => {
   );
 };
 
-export const ViewSection = ViewSectionTemplate.bind({});
-ViewSection.args = {
+export const ViewItem = ViewItemTemplate.bind({});
+ViewItem.args = {
   content: "Default",
 };
 

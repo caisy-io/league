@@ -28,7 +28,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SViewSection = styled.div`
+export const SViewItem = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
