@@ -66,8 +66,10 @@ const EmptyImageComponent = ({ title, description, children }) => {
   );
 };
 
+export type IEmptyType = "grid" | "blueprint";
+
 interface IEmpty {
-  type: "grid" | "schema";
+  type: IEmptyType;
   title: string;
   description: string;
 }
@@ -75,8 +77,8 @@ interface IEmpty {
 export const Empty: FC<IEmpty> = ({ type, title, description }) => {
   return (
     <SEmpty type={type}>
-      {type === "schema" ? <SchemaLayout /> : <GridLayout />}
-      {type === "schema" ? (
+      {type === "blueprint" ? <SchemaLayout /> : <GridLayout />}
+      {type === "blueprint" ? (
         <EmptyImageComponent title={title} description={description}>
           <EmptySchemaImage />
         </EmptyImageComponent>

@@ -10,7 +10,7 @@ function EmptyDemo({ ...args }) {
 }
 
 export default {
-  title: 'Components/Legacy/Empty',
+  title: "Components/Legacy/Empty",
   component: EmptyDemo,
   parameters: {
     design: {
@@ -21,11 +21,11 @@ export default {
   argTypes: {
     type: {
       description: "Changes the layout of the Empty component",
-      options: ["grid", "schema"],
+      options: ["grid", "blueprint"],
       control: { type: "select" },
       table: {
         defaultValue: {
-          summary: "schema",
+          summary: "grid",
         },
       },
     },
