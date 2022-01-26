@@ -26,6 +26,7 @@ export * from "./input";
 export * from "./language-flag-toggle-list-item";
 export * from "./layout";
 export * from "./list";
+export * from "./list-placeholder";
 export * from "./list-item";
 export * from "./list-item-legacy";
 export * from "./menu-dnd";
