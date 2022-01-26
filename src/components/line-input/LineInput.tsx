@@ -27,9 +27,9 @@ export const LineInput: FC<ILineInput> = ({ state, errorMessage, placeholder, la
         {state === "error" && errorMessage ? errorMessage : label}
       </SLineInputLabel>
       <SLineInput
-        ref={inputRef}
         value={value}
         onChange={onChange}
+        ref={inputRef}
         placeholder={placeholder}
         onFocus={() => setActive(true)}
         onBlur={() => setActive(false)}
