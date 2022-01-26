@@ -12,6 +12,7 @@ const InActive = css`
 `;
 
 const Bronze = css<{active?: boolean}>`
+  width: 100%;
   border: none;
   cursor: pointer;
   ${CSSProgressivePrimaryButtons}
