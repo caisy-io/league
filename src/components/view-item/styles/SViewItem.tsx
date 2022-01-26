@@ -3,7 +3,6 @@ import { CSSProgressiveBody03Semibold } from '../../../constants/styles/design-t
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  width: 100%;
   height: 44px;
   display: flex;
   justify-content: space-between;
