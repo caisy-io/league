@@ -19,14 +19,15 @@ interface ISimpleInput {
   state?: TSimpleInputState;
   translationBadge?: JSX.Element;
   required?: boolean;
-  onChange: any;
-  value: any;
+  onChange?: (e: any) => void;
+  value?: string;
   placeholder?: string;
   onFocus?: (e: InputEvent) => void;
   onBlur?: (e: InputEvent) => void;
   disabled?: boolean;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
+  onKeyUp?: () => void;
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
@@ -43,6 +44,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
   disabled,
   leftIcon,
   rightIcon,
+  onKeyUp,
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -126,7 +128,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
               locked={state === "locked"}
               onChange={(e) => {
                 resizeInput();
-                onChange(e);
+                onChange?.(e);
               }}
               width={inputLength}
               required={required}
@@ -136,6 +138,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
               value={value || ""}
               placeholder={placeholder}
               disabled={disabled}
+              onKeyUp={onKeyUp}
             />
           </SSimpleInputRequiredIndicatorContainer>
         </SSimpleInputInsideContainer>
