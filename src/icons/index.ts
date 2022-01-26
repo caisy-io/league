@@ -264,4 +264,3 @@ export { IconArrowReversed } from "./IconArrowReversed";
 export { IconArrowDiamond } from "./IconArrowDiamond";
 export { IconRotateImage } from "./IconRotateImage";
 export { IconCaisyLogo } from "./IconCaisyLogo";
-export { IconListPlaceholder } from "./IconListPlaceholder";
