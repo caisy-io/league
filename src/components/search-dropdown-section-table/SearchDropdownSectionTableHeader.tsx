@@ -1,14 +1,14 @@
-import React from 'react';
-import { SSearchDropdownSectionTableHeader } from './styles/SSearchDropdownSectionTableHeader';
+import React, { MouseEventHandler } from "react";
+import { SSearchDropdownSectionTableHeader } from "./styles/SSearchDropdownSectionTableHeader";
 
-interface ISearchDropdownSectionTableHeader{
-  children?
+interface ISearchDropdownSectionTableHeader {
+  onClick?: MouseEventHandler<HTMLDivElement> | undefined;
+  children?;
 }
 
-export const SearchDropdownSectionTableHeader: React.FC<ISearchDropdownSectionTableHeader> = ({children}) => {
-  return (
-    <SSearchDropdownSectionTableHeader>
-      {children}
-    </SSearchDropdownSectionTableHeader>
-  )
-}
+export const SearchDropdownSectionTableHeader: React.FC<ISearchDropdownSectionTableHeader> = ({
+  onClick,
+  children,
+}) => {
+  return <SSearchDropdownSectionTableHeader onClick={onClick}>{children}</SSearchDropdownSectionTableHeader>;
+};

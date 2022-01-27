@@ -1,11 +1,11 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { SCard } from "./styles/SCard";
 import { SCardHeader } from "./styles/SCardHeader";
 
 interface ICard {
   header?: React.ReactNode;
   style?: React.CSSProperties;
-  onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
+  onClick?: MouseEventHandler<HTMLDivElement> | undefined;
 }
 
 export const Card: React.FC<ICard> = ({ ...props }) => {
