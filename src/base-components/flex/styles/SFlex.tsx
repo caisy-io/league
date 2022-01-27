@@ -24,7 +24,7 @@ const Bronze = css`
   align-items: ${(props: IFlex) => props.bronze?.alignItems || props.alignItems || "center"};
   justify-content: ${(props: IFlex) => props.bronze?.justify || props.justify || "flex-start"};
   align-content: ${(props: IFlex) => props.bronze?.alignContent || props.alignContent || "stretch"};
-  ${(props: IFlex) => (props.bronze?.gap ? `gap: ${props.bronze?.gap}` : "")};
+  ${(props: IFlex) => (props.bronze?.gap || props.gap ? `gap: ${props.bronze?.gap || props.gap}` : "")};
 `;
 
 const Silver = css`
