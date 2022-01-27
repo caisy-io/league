@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, MouseEventHandler, useRef, useState } from "react";
+import React, {  forwardRef, MouseEventHandler,  useState } from "react";
 import { SFloatingSearchInput } from "./styles/SFloatingSearchInput";
 import { SFloatingSearchInputWrapper } from "./styles/SFLoatingSearchInputWrapper";
 
