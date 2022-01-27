@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
 
 interface IFlexDefinition {
+  gap?: string;
   direction?: "row" | "column" | "row-reverse" | "column-reverse";
   justify?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-even" | "stretch";
   alignContent?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-even" | "stretch";
@@ -23,6 +24,7 @@ const Bronze = css`
   align-items: ${(props: IFlex) => props.bronze?.alignItems || props.alignItems || "center"};
   justify-content: ${(props: IFlex) => props.bronze?.justify || props.justify || "flex-start"};
   align-content: ${(props: IFlex) => props.bronze?.alignContent || props.alignContent || "stretch"};
+  ${(props: IFlex) => (props.bronze?.gap ? `gap: ${props.bronze?.gap}` : "")};
 `;
 
 const Silver = css`
@@ -30,6 +32,7 @@ const Silver = css`
   ${(props: IFlex) => (props.silver?.alignItems ? `align-items: ${props.silver?.alignItems}` : "")};
   ${(props: IFlex) => (props.silver?.justify ? `justify-content: ${props.silver?.justify}` : "")};
   ${(props: IFlex) => (props.silver?.alignContent ? `align-content: ${props.silver?.alignContent}` : "")};
+  ${(props: IFlex) => (props.silver?.gap ? `gap: ${props.silver?.gap}` : "")};
 `;
 
 const Gold = css`
@@ -37,6 +40,7 @@ const Gold = css`
   ${(props: IFlex) => (props.gold?.alignItems ? `align-items: ${props.gold?.alignItems}` : "")};
   ${(props: IFlex) => (props.gold?.justify ? `justify-content: ${props.gold?.justify}` : "")};
   ${(props: IFlex) => (props.gold?.alignContent ? `align-content: ${props.gold?.alignContent}` : "")};
+  ${(props: IFlex) => (props.gold?.gap ? `gap: ${props.gold?.gap}` : "")};
 `;
 
 const Platinum = css`
@@ -44,6 +48,7 @@ const Platinum = css`
   ${(props: IFlex) => (props.platinum?.alignItems ? `align-items: ${props.platinum?.alignItems}` : "")};
   ${(props: IFlex) => (props.platinum?.justify ? `justify-content: ${props.platinum?.justify}` : "")};
   ${(props: IFlex) => (props.platinum?.alignContent ? `align-content: ${props.platinum?.alignContent}` : "")};
+  ${(props: IFlex) => (props.platinum?.gap ? `gap: ${props.platinum?.gap}` : "")};
 `;
 
 const Diamond = css`
@@ -51,6 +56,7 @@ const Diamond = css`
   ${(props: IFlex) => (props.diamond?.alignItems ? `align-items: ${props.diamond?.alignItems}` : "")};
   ${(props: IFlex) => (props.diamond?.justify ? `justify-content: ${props.diamond?.justify}` : "")};
   ${(props: IFlex) => (props.diamond?.alignContent ? `align-content: ${props.diamond?.alignContent}` : "")};
+  ${(props: IFlex) => (props.diamond?.gap ? `gap: ${props.diamond?.gap}` : "")};
 `;
 
 export const SFlex = styled.div`
