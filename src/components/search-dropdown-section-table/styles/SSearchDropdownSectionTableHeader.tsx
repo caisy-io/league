@@ -11,6 +11,7 @@ const Bronze = css`
   display: table-row;
   border-bottom: 1px solid var(--ui-03);
   border-top: 1px solid var(--ui-03);
+  cursor: pointer;
   > * {
     display: table-cell;
     padding: 0.75rem 1rem;
