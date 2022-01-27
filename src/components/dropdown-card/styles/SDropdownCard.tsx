@@ -17,11 +17,12 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SDropdownCard = styled.div`
+export const SDropdownCard = styled.div<{styleOverwrite?: string}>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
 
