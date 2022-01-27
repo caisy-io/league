@@ -264,3 +264,5 @@ export { IconArrowReversed } from "./IconArrowReversed";
 export { IconArrowDiamond } from "./IconArrowDiamond";
 export { IconRotateImage } from "./IconRotateImage";
 export { IconCaisyLogo } from "./IconCaisyLogo";
+export { IconClockTime } from "./IconClockTime";
+export { IconTravelPlane } from "./IconTravelPlane";
