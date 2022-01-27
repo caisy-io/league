@@ -53,8 +53,6 @@ export const EmojiPicker: React.FC = () => {
     console.log("ALLE KATEGORIEN" + allCategories)
   };
 
-
-
   return (
     <SEmojiPicker>
       <SCustomCategoryBar>
