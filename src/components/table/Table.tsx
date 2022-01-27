@@ -195,7 +195,7 @@ export const Table: FC<ITable> = ({
             {RenderRow}
           </FixedSizeList>
         ) : (
-          <Empty type="schema" title="" description={emptyMessage ? emptyMessage : "No data found."} />
+          <Empty type="blueprint" title="" description={emptyMessage ? emptyMessage : "No data found."} />
         )}
       </STbody>
     </STable>
