@@ -22,10 +22,8 @@ export const ColorPicker: React.FC<IColorPicker> = ({ initColor, onChange }) => 
 
   const onColorChange = (color) => {
     onChange?.(hexColor);
-    setColor(color);  
+    setColor(color);
   };
-
-
 
   return (
     <SColorPickerWrapper>

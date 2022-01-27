@@ -38,7 +38,7 @@ export const TagListItem: React.FC<ITagListItem> = ({
   const { width } = useDimensions(ref);
 
   return (
-    <ClickOutside onClickOutside={() => setOpened(false)}>
+    // <ClickOutside onClickOutside={() => setOpened(false)}>
       <>
         <STagListItem ref={ref} disabled={disabled} activated={activated} onClick={onClick}>
           {label && <STagListItemLabel>{label}</STagListItemLabel>}
@@ -65,6 +65,6 @@ export const TagListItem: React.FC<ITagListItem> = ({
           </Popover>
         )}
       </>
-    </ClickOutside>
+    // </ClickOutside>
   );
 };

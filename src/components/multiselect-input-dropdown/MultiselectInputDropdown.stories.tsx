@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { IconColorPalette, IconEdit, IconDelete, IconClose, IconPlusBox } from "../../icons";
+import {
+  IconColorPalette,
+  IconEdit,
+  IconDelete,
+  IconClose,
+  IconPlusBox,
+  IconStarOutlined,
+  IconCheckmarkOutlined,
+} from "../../icons";
 import { MenuListItem } from "../menu-list-item/MenuListItem";
 import { OutLineLabel } from "../out-line-label";
 import { Checkbox } from "../checkbox";
 import ColorLabel from "../out-line-label/ColorLabel";
 import { TagListItem } from "../tag-list-item";
-import uniq from "lodash/uniq";
-import remove from "lodash/remove";
-import cloneDeep from "lodash/cloneDeep";
 
 import { MultiselectInputDropdown } from "./MultiselectInputDropdown";
 import { SearchInput } from "../search-input";
 import { FlatActionButton } from "../flat-action-button";
+import { ColorPicker } from "../color-picker";
+import { Button } from "../button/Button";
 
 export default {
   title: `Components/Forms/MultiselectInputDropdown`,
@@ -44,6 +51,8 @@ const TAGS_MOCK = [
 const Template = () => {
   const [tags, setTags] = React.useState([]);
   const [dataSource, setDataSource] = React.useState(TAGS_MOCK);
+
+  const [showColorPicker, setShowColorPicker] = useState(false);
 
   const onSelectValue = (v) => {
     const isDublicate = tags.find((t) => t.id === v.id);
@@ -84,6 +93,10 @@ const Template = () => {
   const renderDataItem = (i) => {
     const isChecked = tags.length !== 0 && tags.find((t) => t.id === i.id);
 
+    const onChangeTagColor = (color) => {
+      console.log({ color });
+    };
+
     return (
       <TagListItem
         activated={!!isChecked}
@@ -101,26 +114,42 @@ const Template = () => {
           </OutLineLabel>
         }
         popover={
-          <PopoverWrapper>
-            <MenuListItem size="medium">
-              <div>
-                <IconColorPalette />
-                Change color
-              </div>
-            </MenuListItem>
-            <MenuListItem size="medium">
-              <div>
-                <IconEdit />
-                Rename
-              </div>
-            </MenuListItem>
-            <MenuListItem size="medium">
-              <div>
-                <IconDelete />
-                Delete
-              </div>
-            </MenuListItem>
-          </PopoverWrapper>
+          showColorPicker ? (
+            <ColorPickerWrapper>
+              <ColorPicker onChange={onChangeTagColor} />
+              <Button type="primary">
+                <IconCheckmarkOutlined />
+                Save
+              </Button>
+            </ColorPickerWrapper>
+          ) : (
+            <PopoverWrapper>
+              <MenuListItem
+                size="medium"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowColorPicker(true);
+                }}
+              >
+                <div>
+                  <IconColorPalette />
+                  Change color
+                </div>
+              </MenuListItem>
+              <MenuListItem size="medium">
+                <div>
+                  <IconEdit />
+                  Rename
+                </div>
+              </MenuListItem>
+              <MenuListItem size="medium">
+                <div>
+                  <IconDelete />
+                  Delete
+                </div>
+              </MenuListItem>
+            </PopoverWrapper>
+          )
         }
       />
     );
@@ -175,4 +204,21 @@ const PopoverWrapper: any = styled.div`
   width: 216px;
   background-color: white;
   border-radius: 8px;
+`;
+
+const ColorPickerWrapper: any = styled.div`
+  width: 320px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 12px;
+
+  button {
+    margin-top: 20px;
+    width: 100%;
+
+    .icon {
+      flex: 0;
+    }
+  }
 `;
