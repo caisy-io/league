@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React, { forwardRef, MouseEventHandler } from 'react';
 import { SSearchBarOperator } from './styles/SSearchBarOperator';
 import { SSearchBarOperatorWrapper } from './styles/SSearchBarOperatorWrapper';
 
@@ -8,12 +8,12 @@ export interface ISearchBarOperatorProps {
   onClick?: MouseEventHandler<HTMLDivElement> | undefined;
 }
 
-export const SearchBarOperator: React.FC<ISearchBarOperatorProps> = ({onClick,  ...props }) => {
+export const SearchBarOperator = forwardRef<HTMLDivElement,ISearchBarOperatorProps>( ({onClick,  ...props }, ref) => {
   return (
-    <SSearchBarOperatorWrapper { ...props } onClick={onClick}>
+    <SSearchBarOperatorWrapper { ...props } onClick={onClick} ref={ref}>
       <SSearchBarOperator { ...props }>
         {props.children}
       </SSearchBarOperator>
     </SSearchBarOperatorWrapper>
   )
-}
+});
