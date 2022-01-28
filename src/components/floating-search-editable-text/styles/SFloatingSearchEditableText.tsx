@@ -15,7 +15,6 @@ const Bronze = css`
   }
   text-align: left;
   padding: 6px 8px;
-
 `;
 
 const Silver = css``;
