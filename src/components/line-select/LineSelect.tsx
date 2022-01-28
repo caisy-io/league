@@ -22,6 +22,7 @@ interface ILineSelect {
   dropdownStyle?: React.CSSProperties;
   optionsStyle?: React.CSSProperties;
   children?;
+  state: "default" | "success" | "error";
 }
 
 export const LineSelect: React.FC<ILineSelect> = ({ error, onSelectValue, children, label }) => {

@@ -8,13 +8,15 @@ export default {
   title: "Components/Forms/LineSelect",
   component: SimpleInputDropdownDemo,
   argTypes: {
-    required: {
-      description: "An example boolean argument type",
-      control: { type: "boolean" },
-    },
-    error: {
-      description: "An example boolean argument type",
-      control: { type: "boolean" },
+    state: {
+      description: "Changes the state of the input",
+      options: ["default", "success", "error"],
+      control: { type: "select" },
+      table: {
+        defaultValue: {
+          summary: "default",
+        },
+      },
     },
     label: {
       description: "An example boolean argument type",
@@ -23,12 +25,12 @@ export default {
   },
 };
 
-function SimpleInputDropdownDemo({ error, required, label }) {
+function SimpleInputDropdownDemo({ state, label }) {
   const [selectValue, setSelectValue] = React.useState(null);
-  return <><LineSelectLabel>{label}</LineSelectLabel>
+  return <><LineSelectLabel errorMessage="Error message"
+    state={state}>{label}</LineSelectLabel>
     <LineSelect
-      error={error}
-      required={required}
+      state={state}
       value={selectValue}
       onSelectValue={(e) => setSelectValue(e)}
       label={label}

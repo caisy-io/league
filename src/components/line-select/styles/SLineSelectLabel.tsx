@@ -2,8 +2,14 @@ import styled, { css } from "styled-components";
 import { CSSProgressiveCaption01Semibold } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
 
+const CSSError = css`
+  opacity: 1;
+  color: var(--text-06);
+`;
+
 const Bronze = css`
   ${CSSProgressiveCaption01Semibold}
+  ${(props) => props.state === "error" && CSSError}
 `;
 
 const Silver = css`
