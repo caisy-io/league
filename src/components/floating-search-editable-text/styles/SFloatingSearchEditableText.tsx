@@ -13,6 +13,8 @@ const Bronze = css`
     color: var(--text-03);
   }
   text-align: left;
+  padding: 16px;
+
 `;
 
 const Silver = css``;
