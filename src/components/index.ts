@@ -63,7 +63,7 @@ export * from "./tree";
 export * from "./search-bar-operand";
 export * from "./search-bar-operator";
 export * from "./search-bar-operator-badge-select";
-export * from "./select-search-operator-popup";
+export * from "./select-search-operator-dropdown";
 export * from "./close-button";
 export * from "./line-tab";
 export * from "./sidebar-card";
