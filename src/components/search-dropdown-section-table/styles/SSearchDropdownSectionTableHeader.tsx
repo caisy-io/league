@@ -6,11 +6,12 @@ const Bronze = css`
   ${CSSProgressiveHighlight}
   color: var(--text-04);
   text-transform: uppercase;
-  background-color: var(--ui-02);
+  background-corlor: var(--ui-02);
   padding: 0.75rem 1rem;
   display: table-row;
   border-bottom: 1px solid var(--ui-03);
   border-top: 1px solid var(--ui-03);
+  cursor: pointer;
   > * {
     display: table-cell;
     padding: 0.75rem 1rem;

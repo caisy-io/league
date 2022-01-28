@@ -8,6 +8,7 @@ const Bronze = css`
   background-color: #FFFF;
   padding: 0.75rem 1rem;
   display: table-row;
+  cursor: pointer;
   border-bottom: 1px solid var(--ui-03);
   > * {
     display: table-cell;
