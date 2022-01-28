@@ -14,7 +14,7 @@ const Bronze = css`
     color: var(--text-03);
   }
   text-align: left;
-  padding: 16px;
+  padding: 6px 8px;
 
 `;
 
