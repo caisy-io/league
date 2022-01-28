@@ -3,7 +3,8 @@ import { CSSProgressiveBody03 } from "../../../constants/styles/design-tokens/fo
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  all: unset;
+  outline: none;
+  border: none;
   ${CSSProgressiveBody03}
   background-color: transparent;
   color: var(--text-01);
