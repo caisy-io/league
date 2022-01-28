@@ -66,6 +66,7 @@
     "react-dnd-html5-backend": "14.0.2"
   },
   "dependencies": {
+    "@rollup/plugin-json": "^4.1.0",
     "babel-eslint": "^10.1.0",
     "dayjs": "1.10.5",
     "emoji-mart": "^3.0.1",
