@@ -30,9 +30,11 @@ export default {
 
 function SearchBarOperatorDemo({ content, ...args }) {
   return (
-    <SearchBarOperator activated={args.state == "activated"} hover={args.state == "hover"}>
-      {content}
-    </SearchBarOperator>
+    <div style={{ display: "flex" }}>
+      <SearchBarOperator activated={args.state == "activated"} hover={args.state == "hover"}>
+        {content}
+      </SearchBarOperator>
+    </div>
   );
 }
 
