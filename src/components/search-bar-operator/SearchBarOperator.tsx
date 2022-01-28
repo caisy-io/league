@@ -6,6 +6,7 @@ export interface ISearchBarOperatorProps {
   hover?: boolean;
   activated?: boolean;
   onClick?: MouseEventHandler<HTMLDivElement> | undefined;
+  children?
 }
 
 export const SearchBarOperator = forwardRef<HTMLDivElement,ISearchBarOperatorProps>( ({onClick,  ...props }, ref) => {
