@@ -1,15 +1,15 @@
 import React, { useRef } from "react";
-import { FloatingSearchInput } from "./FloatingSearchInput";
+import { FloatingSearchEditableText } from "./FloatingSearchEditableText";
 
 const Template = ({ ...args }) => {
   const ref = useRef<HTMLInputElement>();
   return <div style={{ width: 250 }}>
-    <FloatingSearchInput ref={ref} {...args} />
+    <FloatingSearchEditableText ref={ref} {...args} />
   </div>
 }
 
 export default {
-  title: "Components/FloatingSearchInput",
+  title: "Components/FloatingSearchEditableText",
   component: Template,
   parameters: {
     design: {

@@ -2,14 +2,14 @@ import React, {  forwardRef, MouseEventHandler,  useState } from "react";
 import { SFloatingSearchEditableText } from "./styles/SFloatingSearchEditableText";
 import { SFloatingSearchEditableTextWrapper } from "./styles/SFloatingSearchEditableTextWrapper";
 
-interface IFloatingSearchInput {
+interface IFloatingSearchEditableText {
   placeholder?: string;
   value?: string;
   onChange?: (e) => void;
   onClick?: (e: MouseEventHandler<HTMLDivElement>) => void;
 }
 
-export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloatingSearchInput>(({ value, onClick, onChange }, inputRef) => {
+export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloatingSearchEditableText>(({ value, onClick, onChange }, inputRef) => {
   const [active, setActive] = useState(false);
 
   const handleClick = (e) => {
