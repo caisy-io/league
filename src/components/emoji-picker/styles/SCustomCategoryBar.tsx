@@ -6,9 +6,10 @@ const Bronze = css`
   width: 100%;
   display: flex;
   align-items: center;
-  overflow-x: scroll;
-  justify-content: space-between;
+  justify-content: space-around;
   box-sizing: border-box;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--ui-03);
 `;
 
 const Silver = css``;

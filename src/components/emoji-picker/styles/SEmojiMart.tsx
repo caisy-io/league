@@ -88,7 +88,7 @@ export const GlobalStyle = createGlobalStyle`
 .emoji-mart-scroll {
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 270px;
+  height: 200px;
   padding: 0 0 6px 6px;
   will-change: transform; /* avoids "repaints on scroll" in mobile Chrome */
   ::-webkit-scrollbar {

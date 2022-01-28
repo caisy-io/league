@@ -1,6 +1,7 @@
 import { Picker } from 'emoji-mart';
 import React, { useState } from 'react';
-import { IconAnimalsDog, IconClockTime, IconFlag, IconHeartLike, IconLightBulb, IconSmileEmojiSelector, IconSportBasketball, IconTravelPlane, Tab } from '../..';
+import { IconAnimalsDog, IconClock, IconFlag, IconHeartLike, IconLightBulb, IconPlane, IconSmileEmojiSelector, IconSportBasketball } from '../../icons';
+import { Tab } from '../tab/Tab';
 import { SCustomCategoryBar } from './styles/SCustomCategoryBar';
 import { GlobalStyle } from './styles/SEmojiMart';
 import { SEmojiPicker } from './styles/SEmojiPicker';
@@ -8,49 +9,52 @@ import { SEmojiPicker } from './styles/SEmojiPicker';
 const tabs = [
   {
     name: "recent",
-    icon: <IconClockTime />,
+    icon: <IconClock size={20} />,
   },
   {
     name: "people",
-    icon: <IconSmileEmojiSelector />,
+    icon: <IconSmileEmojiSelector size={20} />,
   },
   {
     name: "nature",
-    icon: <IconAnimalsDog />,
+    icon: <IconAnimalsDog size={20} />,
   },
   {
     name: "activity",
-    icon: <IconSportBasketball />,
+    icon: <IconSportBasketball size={20} />,
   },
   {
     name: "places",
-    icon: <IconTravelPlane />,
+    icon: <IconPlane size={20} />,
   },
   {
     name: "objects",
-    icon: <IconLightBulb />,
+    icon: <IconLightBulb size={20} />,
   },
   {
     name: "symbols",
-    icon: <IconHeartLike />,
+    icon: <IconHeartLike size={20} />,
   },
   {
     name: "flags",
-    icon: <IconFlag />,
+    icon: <IconFlag size={20} />,
   },
 ];
 let allCategories: Array<string> = [];
-export const EmojiPicker: React.FC = () => {
+
+interface IEmojiPicker {
+  onSelect?: (emojiCode: string) => void;
+}
+
+export const EmojiPicker: React.FC<IEmojiPicker> = () => {
   const [currSelected, setSelected] = useState(0);
+
+  for (let k in tabs) {
+    allCategories.push(tabs[k].name)
+  }
 
   const handleSelect = (index) => {
     setSelected(index);
-    console.log(currSelected + tabs[index].name);
-
-    for (let k in tabs) {
-      allCategories.push(tabs[k].name)
-    }
-    console.log("ALLE KATEGORIEN" + allCategories)
   };
 
   return (
@@ -62,15 +66,16 @@ export const EmojiPicker: React.FC = () => {
             activated={currSelected === index}
             value={index}
             onClick={() => handleSelect(index)}
-            size="small"
+            size="micro"
           >
             {tab.icon}
           </Tab>
         ))}
       </SCustomCategoryBar>
       <GlobalStyle />
-      <Picker set='apple' style={{ width: '308px' }} key={currSelected} include={['search', `${tabs[currSelected].name}`
-      ]} />
+      <Picker set='apple' style={{ width: '308px' }} key={currSelected} include={
+        ['search', ...(currSelected == 0 ? allCategories : [tabs[currSelected].name])]
+      } />
     </SEmojiPicker>
   )
 }
