@@ -9,32 +9,20 @@ const CSSError = css`
   border-color: var(--ui-supportive-01);
 `;
 
-const CSSOpened = css`
-  border-bottom: 1px solid var(--active-text-03);
-`;
-
-const CSSNormal = css`
-  &:after{
-    display: none;
-  }
-`;
-
 const Bronze = css`
   position: relative;
   overflow: hidden;
   width: 280px;
-  display: flex;
-  align-items: center;
   cursor: pointer;
-  justify-content: space-between;
   padding: 0.625rem 0.75rem;
   background-color: var(--ui-01);
   border-bottom: 1px solid var(--ui-03);
   transition: border 200ms;
+  display: flex;
+  justify-content: space-between;
   gap: 2px;
   ${(props) => props.active && CSSActive};
   ${(props) => props.error && CSSError};
-  ${(props) => props.opened ? CSSOpened : ''};  
   >svg{
     flex-shrink: 0;
   }

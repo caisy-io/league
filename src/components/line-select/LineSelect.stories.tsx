@@ -1,8 +1,8 @@
 import React from "react";
-import { IconStarOutlined } from "../../icons/IconStarOutlined";
+import { IconEmojis } from "../../icons/IconEmojis";
 import { LineSelect } from "./LineSelect";
 import { LineSelectItem } from "./LineSelectItem";
-import { IconEmojis } from "../../icons/IconEmojis";
+import { LineSelectLabel } from "./LineSelectILabel";
 
 export default {
   title: "Components/Forms/LineSelect",
@@ -16,46 +16,28 @@ export default {
       description: "An example boolean argument type",
       control: { type: "boolean" },
     },
-    translationBadge: {
+    label: {
       description: "An example boolean argument type",
-      control: { type: "boolean" },
+      control: { type: "text" },
     },
   },
 };
 
-const dataSource = [
-  {
-    key: "title_label",
-    title: "Default",
-    label: "Label"
-  },
-  {
-    key: "icon_title",
-    title: "Title and Icon",
-    icon: <IconStarOutlined size={20}></IconStarOutlined>,
-  },
-  {
-    key: "icon_title_label",
-    title: "Label, Title and Icon",
-    label: "Label",
-    icon: <IconStarOutlined size={20}></IconStarOutlined>,
-  },
-];
-
-function SimpleInputDropdownDemo({ error, required }) {
+function SimpleInputDropdownDemo({ error, required, label }) {
   const [selectValue, setSelectValue] = React.useState(null);
-  return <LineSelect
-    error={error}
-    required={required}
-    dataSource={dataSource}
-    placeholder="Select an option.."
-    value={selectValue}
-    onSelectValue={(e) => setSelectValue(e)}
-  >
-    <LineSelectItem value={10}><IconEmojis />Ten</LineSelectItem>
-    <LineSelectItem value={20}><IconEmojis />Twenty</LineSelectItem>
-    <LineSelectItem value={30}><IconEmojis />Thirty</LineSelectItem>
-  </LineSelect>
+  return <><LineSelectLabel>{label}</LineSelectLabel>
+    <LineSelect
+      error={error}
+      required={required}
+      value={selectValue}
+      onSelectValue={(e) => setSelectValue(e)}
+      label={label}
+    >
+      <LineSelectItem value={10}><IconEmojis />Ten</LineSelectItem>
+      <LineSelectItem value={20}><IconEmojis />Twenty</LineSelectItem>
+      <LineSelectItem value={30}><IconEmojis />Thirty</LineSelectItem>
+    </LineSelect>
+  </>
 }
 
 const Template = (args) => <SimpleInputDropdownDemo {...args} />;
@@ -64,4 +46,5 @@ export const Default = Template.bind({});
 Default.args = {
   error: false,
   required: false,
+  label: "Label",
 };
