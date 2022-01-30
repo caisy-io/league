@@ -9,7 +9,6 @@ const Bronze = css`
   flex-direction: column;
   gap: 8px;
   border-radius: 8px;
-
   box-shadow: var(--box-shadow-strong-pop-elavation);
 `;
 
@@ -21,7 +20,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSelectSearchOperatorPopup = styled.div`
+export const SSelectSearchOperatorDropdown = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
