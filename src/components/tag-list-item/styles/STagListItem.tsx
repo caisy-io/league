@@ -59,7 +59,7 @@ const Bronze = css<ITagListItem>`
     gap: 12px;
   }
 
-  justify-content: space-between;
+  /* justify-content: space-between; */
 
   background-color: var(--ui-01);
   border-bottom: 1px solid var(--ui-03);
@@ -68,19 +68,15 @@ const Bronze = css<ITagListItem>`
 
   &:hover {
     ${CSSHover};
-    ${STagListItemOutlineLabelWrapper} {
-      > div {
-        ${CSSHover}
-      }
+    > div {
+      ${CSSHover}
     }
   }
 
   &:active {
     ${CSSActivated};
-    ${STagListItemOutlineLabelWrapper} {
-      > div {
-        ${CSSActivated}
-      }
+    > div {
+      ${CSSActivated}
     }
   }
 

@@ -30,41 +30,11 @@ export const TagListItem: React.FC<ITagListItem> = ({
   flatActionButton,
   onClick,
   popover,
+  children,
 }) => {
-  const [opened, setOpened] = React.useState(false);
-
-  const ref = React.useRef(null);
-
-  const { width } = useDimensions(ref);
-
   return (
-    // <ClickOutside onClickOutside={() => setOpened(false)}>
-      <>
-        <STagListItem ref={ref} disabled={disabled} activated={activated} onClick={onClick}>
-          {label && <STagListItemLabel>{label}</STagListItemLabel>}
-          <SFlex>
-            {leftIcon}
-            {outlineLabel && <STagListItemOutlineLabelWrapper>{outlineLabel}</STagListItemOutlineLabelWrapper>}
-          </SFlex>
-          {popover && (
-            <div
-              onClick={(event) => {
-                event.stopPropagation();
-                setOpened(true);
-              }}
-            >
-              <IconMoreMenuHorizontal size={20} />
-            </div>
-          )}
-          {rightIcon}
-          {flatActionButton}
-        </STagListItem>
-        {opened && popover && (
-          <Popover disableTriangle placement="right" reference={ref}>
-            <div style={{ width }}>{popover}</div>
-          </Popover>
-        )}
-      </>
-    // </ClickOutside>
+    <STagListItem disabled={disabled} activated={activated} onClick={onClick}>
+      {children}
+    </STagListItem>
   );
 };
