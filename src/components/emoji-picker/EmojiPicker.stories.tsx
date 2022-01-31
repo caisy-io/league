@@ -3,11 +3,10 @@ import { EmojiPicker } from './EmojiPicker';
 
 export const Default = ({ ...args }) => {
   return (
-    <EmojiPicker>
+    <EmojiPicker onSelect={(e) => console.log("Selected emoji: " + e)}>
     </EmojiPicker>
   );
 };
-
 
 export default {
   title: `Components/EmojiPicker`,

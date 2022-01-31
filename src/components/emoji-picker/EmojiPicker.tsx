@@ -41,14 +41,13 @@ const tabs = [
   },
 ];
 
-
 interface IEmojiPicker {
   onSelect?: (emojiCode: string) => void;
 }
 
 export const EmojiPicker: React.FC<IEmojiPicker> = ({ onSelect }) => {
   const [currSelected, setSelected] = useState(0);
-  let allCategories: Array<string> = [];
+  const allCategories: Array<string> = [];
 
   for (let k in tabs) {
     allCategories.push(tabs[k].name)
@@ -56,6 +55,13 @@ export const EmojiPicker: React.FC<IEmojiPicker> = ({ onSelect }) => {
 
   const handleSelect = (index) => {
     setSelected(index);
+  };
+
+  const onPickerSelect = emoji => {
+    if (typeof onSelect == 'function') {
+      onSelect(emoji.colons)
+
+    }
   };
 
   return (
@@ -74,7 +80,7 @@ export const EmojiPicker: React.FC<IEmojiPicker> = ({ onSelect }) => {
         ))}
       </SCustomCategoryBar>
       <GlobalStyle />
-      <Picker set='apple' style={{ width: '308px' }} key={currSelected} include={
+      <Picker set='apple' onSelect={onPickerSelect} style={{ width: '308px' }} key={currSelected} include={
         ['search', ...(currSelected == 0 ? allCategories : [tabs[currSelected].name])]
       } />
     </SEmojiPicker>
