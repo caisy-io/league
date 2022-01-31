@@ -72,6 +72,7 @@ export * from "./sidebar-bottom-button";
 export * from "./line-tabs";
 export * from "./solidLabel";
 export * from "./toggle";
+export * from "./documents-editor-subtop-nav";
 export * from "./view-item";
 export * from "./out-line-label";
 export * from "./menu-list-item";
