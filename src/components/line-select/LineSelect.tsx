@@ -3,10 +3,8 @@ import { IconChevronDown } from "../..";
 import { ClickOutside, useDimensions } from "../../utils";
 import { Popover } from "../popover/Popover";
 import { SDropdownArrow } from "./styles/SDropdownArrow";
-import { SFlexWrapper } from "./styles/SFlexWrapper";
 import { SInputDropdown } from "./styles/SInputDropdown";
 import { SInputDropdownOption } from "./styles/SInputDropdownOption";
-import { SLineSelectLabel } from "./styles/SLineSelectLabel";
 import { SSelectDropdown } from "./styles/SSelectDropdown";
 
 interface ILineSelect {
