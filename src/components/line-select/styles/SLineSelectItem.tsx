@@ -6,9 +6,6 @@ const Bronze = css`
   ${CSSProgressiveBody02Medium}
   display: flex;
   gap: 0.75rem;
-  &:hover{
-    background-color: var(--hover-ui-01);
-  }
 `;
 
 const Silver = css`

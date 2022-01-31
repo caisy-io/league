@@ -8,22 +8,15 @@ import { SInputDropdownOption } from "./styles/SInputDropdownOption";
 import { SSelectDropdown } from "./styles/SSelectDropdown";
 
 interface ILineSelect {
-  renderItem?: (data: any) => React.ReactNode;
   onSelectValue?: (e: string) => void;
   value?: string;
-  defaultValue?: string;
-  label?: string;
   required?: boolean;
   error?: boolean;
-  onClose?: () => void;
-  inputStyle?: React.CSSProperties;
-  dropdownStyle?: React.CSSProperties;
-  optionsStyle?: React.CSSProperties;
   children?;
   state: "default" | "success" | "error";
 }
 
-export const LineSelect: React.FC<ILineSelect> = ({ error, onSelectValue, children, label }) => {
+export const LineSelect: React.FC<ILineSelect> = ({ error, onSelectValue, children }) => {
   const [opened, setOpened] = React.useState(false);
   const [selectedItem, setSelectedItem] = React.useState<string | null | undefined>(children[0]);
   const ref = React.useRef(null);
@@ -40,7 +33,6 @@ export const LineSelect: React.FC<ILineSelect> = ({ error, onSelectValue, childr
     <ClickOutside onClickOutside={() => setOpened(false)}>
       <div>
         <SInputDropdown onClick={() => setOpened((prev) => !prev)} ref={ref} error={error} opened={opened} >
-
           {selectedItem}
           <SDropdownArrow opened={opened}>
             <IconChevronDown size={24}></IconChevronDown>

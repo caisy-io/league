@@ -4,15 +4,14 @@ import { LineSelect } from "./LineSelect";
 import { LineSelectItem } from "./LineSelectItem";
 import { LineSelectLabel } from "./LineSelectILabel";
 
-export const Default = ({ state, label }) => {
+export const Default = ({ state, label, required }) => {
   const [selectValue, setSelectValue] = React.useState(null);
   return <><LineSelectLabel errorMessage="Error message"
-    state={state}>{label}</LineSelectLabel>
+    state={state} required={required}>{label}</LineSelectLabel>
     <LineSelect
       state={state}
       value={selectValue}
       onSelectValue={(e) => setSelectValue(e)}
-      label={label}
     >
       <LineSelectItem value={10}><IconEmojis />Ten</LineSelectItem>
       <LineSelectItem value={20}><IconEmojis />Twenty</LineSelectItem>
@@ -39,6 +38,14 @@ export default {
       description: "An example boolean argument type",
       control: { type: "text" },
     },
+    errorMessage: {
+      description: "The error message that's displayed incase of an error",
+      control: { type: "text" },
+    },
+    required: {
+      description: "The error message that's displayed incase of an error",
+      control: { type: "boolean" },
+    },
   },
 };
 
@@ -46,4 +53,6 @@ Default.args = {
   error: false,
   required: false,
   label: "Label",
+  errorMessage: "Error Message",
+  state: "default"
 };

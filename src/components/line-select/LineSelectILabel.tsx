@@ -11,7 +11,7 @@ interface ILineSelectLabel {
 
 export const LineSelectLabel: React.FC<ILineSelectLabel> = ({ children, required, errorMessage, state }) => {
   return (
-    <SLineSelectLabel>
+    <SLineSelectLabel state={state}>
       {required && <SLineInputRequiredIndicator />}
       {state === "error" && errorMessage ? errorMessage : children}
     </SLineSelectLabel>

@@ -14,15 +14,13 @@ interface ILineSelectItem {
   renderItem?: (data: any) => React.ReactNode;
   onSelectValue?: (e: string) => void;
   value?: number;
-  defaultValue?: string;
-  placeholder?: string;
-  required?: boolean;
+  opened?: boolean;
   onClose?: () => void;
 }
 
-export const LineSelectItem: React.FC<ILineSelectItem> = ({ children }) => {
+export const LineSelectItem: React.FC<ILineSelectItem> = ({ children, opened }) => {
   return (
-    <SLineSelectItem>
+    <SLineSelectItem opened={opened}>
       {children}
     </SLineSelectItem>
   );

@@ -1,13 +1,6 @@
 import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
-const CSSActive = css`
-  border-color: var(--ui-supportive-03);
-`;
-
-const CSSError = css`
-  border-color: var(--ui-supportive-01);
-`;
 
 const Bronze = css`
   padding: 0.75rem 1rem;

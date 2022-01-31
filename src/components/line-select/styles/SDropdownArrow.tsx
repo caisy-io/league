@@ -6,13 +6,8 @@ const CSSOpened = css`
     transform: rotate(-180deg);
   }
   svg path {
-    stroke: #172C55;
-  }
-`;
-
-const CSSError = css`
-  svg path{
-    stroke: #ED3E3E;
+    stroke: var(--active-ui-03-2);;
+    
   }
 `;
 
@@ -20,8 +15,7 @@ const Bronze = css`
   svg{
     transition: transform 0.25s ease-in-out;
   }
-  ${(props) => props.opened ? CSSOpened : ''};  
-  ${(props) => props.translationBadge && props.error ? CSSError : ''};  
+  ${(props) => props.opened ? CSSOpened : ''};
 `;
 
 const Silver = css`

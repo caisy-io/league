@@ -9,7 +9,10 @@ const CSSError = css`
 
 const Bronze = css`
   ${CSSProgressiveCaption01Semibold}
+  color: var(--text-04);
   ${(props) => props.state === "error" && CSSError}
+  position: relative;
+  width: fit-content;
 `;
 
 const Silver = css`

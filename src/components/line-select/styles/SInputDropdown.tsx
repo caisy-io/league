@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
-const CSSActive = css`
-  border-color: var(--ui-supportive-03);
+const CSSOpened = css`
+  border-color: var(--active-ui-03-2);
 `;
 
 const CSSError = css`
@@ -21,10 +21,13 @@ const Bronze = css`
   display: flex;
   justify-content: space-between;
   gap: 2px;
-  ${(props) => props.active && CSSActive};
+  ${(props) => props.opened && CSSOpened};
   ${(props) => props.error && CSSError};
   >svg{
     flex-shrink: 0;
+  }
+  &:hover{
+    color: var(--hover-text-03);
   }
 `;
 
