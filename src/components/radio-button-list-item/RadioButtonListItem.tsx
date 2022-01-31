@@ -7,9 +7,10 @@ interface IRadioButtonListItem {
   activated?: boolean;
   disabled?: boolean;
   onChange: (newValue: boolean) => void;
+  left?: boolean;
 }
 
-export const RadioButtonListItem: FC<IRadioButtonListItem> = ({ activated, disabled, children, onChange }) => {
+export const RadioButtonListItem: FC<IRadioButtonListItem> = ({ activated, disabled, children, onChange, left }) => {
   const [hover, setHover] = useState(false);
 
   const renderIcon = () => {
@@ -35,7 +36,7 @@ export const RadioButtonListItem: FC<IRadioButtonListItem> = ({ activated, disab
       onMouseLeave={() => setHover(false)}
     >
       {children}
-      <SRadioButtonListItemCircle activated={activated} hover={hover} disabled={disabled}>
+      <SRadioButtonListItemCircle activated={activated} hover={hover} disabled={disabled} left={left}>
         {renderIcon()}
       </SRadioButtonListItemCircle>
     </SRadioButtonListItem>

@@ -4,12 +4,13 @@ export const CSSFonts = css`
   :root {
     --font-families-inter: Inter;
     --font-families-ibm-plex-mono: IBM Plex Mono;
-    --line-heights-0: 1.5rem;
-    --line-heights-1: 1.25rem;
-    --line-heights-2: 1rem;
-    --line-heights-3: 0.875rem;
-    --line-heights-4: 0.75rem;
-    --line-heights-5: 1.125rem;
+    --line-heights-0: 2.25rem;
+    --line-heights-1: 1.5rem;
+    --line-heights-2: 1.25rem;
+    --line-heights-3: 1rem;
+    --line-heights-4: 0.875rem;
+    --line-heights-5: 0.75rem;
+    --line-heights-6: 1.125rem;
     --font-weights-inter-0: 700;
     --font-weights-inter-1: 600;
     --font-weights-inter-2: 500;
@@ -22,8 +23,9 @@ export const CSSFonts = css`
     --font-size-4: 0.875rem;
     --font-size-5: 1rem;
     --font-size-6: 1.125rem;
-    --letter-spacing-0: 0%;
-    --letter-spacing-1: -1%;
+    --font-size-7: 1.5rem;
+    --letter-spacing-0: -1%;
+    --letter-spacing-1: 0%;
     --letter-spacing-2: 6%;
     --letter-spacing-3: 8%;
     --letter-spacing-4: 5%;

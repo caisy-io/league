@@ -107,7 +107,7 @@ StyleDictionary.registerFormat({
     boxShadows += "export const CSSBoxShadows = css`\n";
     boxShadows += "  :root {\n";
     dictionary.allTokens.forEach((token) => {
-      const value = `${token.value["x"]} ${token.value["y"]} ${token.value["blur"]} ${token.value["spread"]} ${token.value["color"]}`;
+      const value = `${token.value["x"]}px ${token.value["y"]}px ${token.value["blur"]}px ${token.value["spread"]}px ${token.value["color"]}`;
 
       const name = kebabCase(`${token.name}`);
       boxShadows += `    --box-shadow-${name}: ${value};\n`;

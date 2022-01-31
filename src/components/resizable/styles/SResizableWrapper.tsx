@@ -10,7 +10,7 @@ interface ISResizableWrapper {
 
 const Bronze = css<ISResizableWrapper>`
   position: relative;
-  overflow: auto;
+  // overflow: auto;
 `;
 
 const Silver = css``;
