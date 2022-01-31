@@ -80,7 +80,7 @@ export const EmojiPicker: React.FC<IEmojiPicker> = ({ onSelect }) => {
         ))}
       </SCustomCategoryBar>
       <GlobalStyle />
-      <Picker set='apple' onSelect={onPickerSelect} style={{ width: '308px' }} key={currSelected} include={
+      <Picker defaultSkin={3} showSkinTones={false} set='apple' onSelect={onPickerSelect} style={{ width: '308px' }} key={currSelected} include={
         ['search', ...(currSelected == 0 ? allCategories : [tabs[currSelected].name])]
       } />
     </SEmojiPicker>
