@@ -13,7 +13,7 @@ export const Default = ({ state, label, required }) => {
       value={selectValue}
       onSelectValue={(e) => setSelectValue(e)}
     >
-      <LineSelectItem value={10}><IconEmojis />Ten</LineSelectItem>
+      <LineSelectItem value={10}><IconEmojis />This is a very long menu item</LineSelectItem>
       <LineSelectItem value={20}><IconEmojis />Twenty</LineSelectItem>
       <LineSelectItem value={30}><IconEmojis />Thirty</LineSelectItem>
     </LineSelect>

@@ -14,7 +14,7 @@ const Bronze = css`
   overflow: hidden;
   width: 280px;
   cursor: pointer;
-  padding: 0.625rem 0.75rem;
+  padding: 0.25rem 0.25rem 0.25rem 0;
   background-color: var(--ui-01);
   border-bottom: 1px solid var(--ui-03);
   transition: border 200ms;
