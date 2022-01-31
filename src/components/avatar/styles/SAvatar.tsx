@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
-import { CSSProgressiveHighLight } from "../../../constants/styles/fonts";
+import { CSSProgressiveHighlight } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 
 interface ISAvatar {
   size?: 16 | 20 | 24 | 28 | 32 | 40;
 }
 
 const Bronze = css<ISAvatar>`
-  ${CSSProgressiveHighLight};
+  ${CSSProgressiveHighlight};
   background-color: var(--ui-03);
   border-radius: 4px;
   color: var(--text-04);

@@ -11,7 +11,6 @@ const SDatePickerCard = styled.div<ISDatePickerCard>`
   border: solid 1px #e8edf5;
   background-color: #ffffff;
 
-  /* margin-top: 8px; */
 
   display: flex;
   align-items: center;

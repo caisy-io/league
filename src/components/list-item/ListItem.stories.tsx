@@ -1,20 +1,11 @@
-import { ListItem } from "./ListItem";
-import { IconChevronRight, IconDragable, IconGearSettings, IconPin, IconStarOutlined } from "../../icons";
-import { useState } from "react";
-
-function ListItemDemo({ children, activated, onClick, ...props }) {
-  return (
-    <div {...props} style={{ width: 320 }}>
-      <ListItem activated={activated} onClick={onClick}>
-        {children}
-      </ListItem>
-    </div>
-  );
-}
+import {ListItemContent} from "../list-item-content";
+import {ListItem} from "./ListItem";
+import {IconChevronRight, IconDragable, IconGearSettings, IconPin, IconStarOutlined} from "../../icons";
+import {useState} from "react";
 
 export default {
   title: "Components/Interactional/ListItem",
-  component: ListItemDemo,
+  component: ListItem,
   parameters: {
     design: {
       type: "figma",
@@ -23,33 +14,21 @@ export default {
   },
 };
 
-const SmallListItemTemplate = ({ showLeftIcon, showRightIcon, content }) => {
+const SmallListItemTemplate = ({showLeftIcon, showRightIcon, content}) => {
   const [activated, setActivated] = useState(false);
-
+  
   const toggleActivated = () => {
     setActivated((prev) => !prev);
   };
-
+  
   return (
-    <ListItemDemo onClick={toggleActivated} activated={activated}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          {showLeftIcon && <IconStarOutlined size={16} />}
-        </div>
-        <p style={{ width: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{content}</p>
-      </div>
+    <ListItem onClick={toggleActivated} activated={activated}>
+      {showLeftIcon && <IconStarOutlined size={16}/>}
+      <ListItemContent>{content}</ListItemContent>
       {showRightIcon && (
-        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <IconChevronRight size={16} />
-        </div>
+        <IconChevronRight size={16}/>
       )}
-    </ListItemDemo>
+    </ListItem>
   );
 };
 
@@ -60,36 +39,28 @@ SmallListItem.args = {
   content: "Default",
 };
 
-const ListSpoilerTemplate = ({ showLeftIcon, showRightIcon, content }) => {
+const ListSpoilerTemplate = ({showLeftIcon, showRightIcon, content}) => {
   const [activated, setActivated] = useState(false);
-
+  
   const toggleActivated = () => {
     setActivated((prev) => !prev);
   };
   return (
-    <ListItemDemo onClick={toggleActivated} activated={activated}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginRight: 8,
-          transform: `rotate(${activated ? "90deg" : "0"})`,
-          transition: "transform 200ms",
-        }}
-      >
-        <IconChevronRight size={16} />
+    <ListItem onClick={toggleActivated} activated={activated}>
+      <div style={{
+        display: "flex",
+        transformOrigin: 'center',
+        transform: `rotate(${activated ? "90deg" : "0"})`,
+        transition: "transform 200ms",
+      }}>
+        <IconChevronRight size={16}/>
       </div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-        {showLeftIcon && <IconStarOutlined size={16} />}
-        <p style={{ width: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{content}</p>
-      </div>
+      {showLeftIcon && <IconStarOutlined size={16}/>}
+      <ListItemContent>{content}</ListItemContent>
       {showRightIcon && (
-        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <IconStarOutlined size={16} />
-        </div>
+        <IconStarOutlined size={16}/>
       )}
-    </ListItemDemo>
+    </ListItem>
   );
 };
 
@@ -100,70 +71,48 @@ ListSpoiler.args = {
   content: "Default",
 };
 
-const ViewSectionTemplate = ({ content }) => {
+const ViewItemTemplate = ({content}) => {
   const [activated, setActivated] = useState(false);
-
+  
   const toggleActivated = () => {
     setActivated((prev) => !prev);
   };
   return (
-    <ListItemDemo onClick={toggleActivated} activated={activated}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginRight: 8,
-          transform: `rotate(${activated ? "90deg" : "0"})`,
-          transition: "transform 200ms",
-        }}
-      >
-        <IconChevronRight size={16} />
+    <ListItem onClick={toggleActivated} activated={activated}>
+      <div style={{
+        display: "flex",
+        transformOrigin: "center",
+        transform: `rotate(${activated ? "90deg" : "0"})`,
+        transition: "transform 200ms",
+      }}>
+        <IconChevronRight size={16}/>
       </div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-        🤘 <p style={{ width: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{content}</p>
-      </div>
-      <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-        <IconGearSettings size={16} />
-        <IconDragable size={16} />
-      </div>
-    </ListItemDemo>
+      🤘
+      <ListItemContent>{content}</ListItemContent>
+      <IconGearSettings size={16}/>
+      <IconDragable size={16}/>
+    </ListItem>
   );
 };
 
-export const ViewSection = ViewSectionTemplate.bind({});
-ViewSection.args = {
+export const ViewItem = ViewItemTemplate.bind({});
+ViewItem.args = {
   content: "Default",
 };
 
-const ViewListItemTemplate = ({ content }) => {
+const ViewListItemTemplate = ({content}) => {
   const [hover, setHover] = useState(false);
   const [activated, setActivated] = useState(false);
   return (
-    <ListItemDemo
+    <ListItem
       onClick={() => setActivated((prev) => !prev)}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       activated={activated}
     >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginLeft: 28,
-          fontWeight: 400,
-          fontSize: 14,
-        }}
-      >
-        <p style={{ width: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{content}</p>{" "}
-      </div>
-      {(hover || activated) && (
-        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <IconPin size={12} />
-        </div>
-      )}
-    </ListItemDemo>
+      <ListItemContent>{content}</ListItemContent>{" "}
+      {(hover || activated) && (<IconPin size={16}/>)}
+    </ListItem>
   );
 };
 

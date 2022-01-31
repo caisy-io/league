@@ -1,21 +1,19 @@
-import React from "react";
+import React, { FC, MouseEventHandler } from "react";
 import { SSearchBarOperatorBadgeSelect } from "./styles/SSearchBarOperatorBadgeSelect";
 
 export interface ISearchBarOperatorBadgeSelectProps {
-  hover?: boolean;
   activated?: boolean;
-  onSelect?: () => void;
+  onClick?: MouseEventHandler<HTMLDivElement> | undefined;
 }
 
-export const SearchBarOperatorBadgeSelect: React.FC<ISearchBarOperatorBadgeSelectProps> = ({
-  onSelect,
-  hover,
+export const SearchBarOperatorBadgeSelect: FC<ISearchBarOperatorBadgeSelectProps> = ({
+  onClick,
   activated,
-  ...props
+  children
 }) => {
   return (
-    <SSearchBarOperatorBadgeSelect onClick={onSelect} hover={hover} activated={activated}>
-      {props.children}
+    <SSearchBarOperatorBadgeSelect onClick={onClick} activated={activated}>
+      {children}
     </SSearchBarOperatorBadgeSelect>
   );
 };

@@ -3,42 +3,50 @@ import { {{ properCase name }} } from './{{ properCase name }}';
 
 export default {
   title: `Components/{{ properCase name }}`,
-  component: {{ properCase name }}Demo,
+  component: {{ properCase name }},
   argTypes: {
     boolean: {
       description: "An example boolean argument type",
       control: { type: "boolean" },
       table: {
         defaultValue: {
-          summary: false,
+          summary: true,
         },
       },
     },
     text: {
       description: "An example text argument type",
       control: { type: "text" },
+      table: {
+        defaultValue: {
+          summary: "Hello World",
+        },
+      },
     },
     select: {
       description: "An example select argument type",
-      options: ["option1", "option2", "option2"],
+      options: ["option1", "option2", "option3"],
       control: { type: "select" },
       table: {
         defaultValue: {
-          summary: "option1",
+          summary: "option2",
         },
       },
     },
   },
 };
 
-function {{properCase name}}Demo({ boolean, text, select }) {
-  return <{{properCase name}}>
+const {{properCase name}}Demo: React.FC<{ boolean, text, select }> = ({ boolean, text, select }) => (
+    <{{properCase name}}>
+      <div>boolean value {"=>"} {boolean.toString()}</div>
+      <div>text value {"=>"} {text}</div>
+      <div>select value {"=>"} {select}</div>
     </{{properCase name}}>
-}
+);
 
-const Template = (args) => < {{ properCase name }}Demo {...args } />;
-
-export const Default = Template.bind({});
+export const Default: any = {{properCase name}}Demo.bind({});
 Default.args = {
-
+  boolean: true,
+  text: 'Hello World',
+  select: 'option2',
 };

@@ -36,7 +36,8 @@ export default {
 
 function SearchBarOperandDemo({ state, label }) {
     return <CloseButton defaultVisible={(state == "hover" || state == "activated") || false}>
-        <SearchBarOperand activated={state == "activated"} hover={state == "hover"} label={label}>
+        <SearchBarOperand activated={state == "activated"} hover={state == "hover"} >
+            {label}
         </SearchBarOperand>
     </CloseButton>
 }
@@ -50,12 +51,13 @@ Default.args = {
 };
 
 // With entity
-export const WithEntity = ({ state, label, entity }) => (
+export const WithEntity = ({ state, entity, label }) => (
     <CloseButton defaultVisible={(state == "hover" || state == "activated") || false}>
-        <SearchBarOperand activated={state == "activated"} hover={state == "hover"} label={label}>
+        <SearchBarOperand activated={state == "activated"} hover={state == "hover"}>
             <SearchBarOperandEntity activated={state == "activated"}>
                 {entity}
             </SearchBarOperandEntity>
+            {label}
         </SearchBarOperand>
     </CloseButton>
 );

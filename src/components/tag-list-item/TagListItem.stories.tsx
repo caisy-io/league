@@ -13,10 +13,35 @@ export default {
     disabled: {
       description: "Show disabled state of component",
       control: { type: "boolean" },
+      table: {
+        defaultValue: {
+          disabled: false,
+        },
+      },
     },
     label: {
       description: "Label for the tag list item",
       control: { type: "text" },
+    },
+    leftIcon: {
+      name: "leftIcon",
+      description: "Changes the left icon content",
+      control: { type: "ReactNode" },
+    },
+    rightIcon: {
+      name: "rightIcon",
+      description: "Changes the right icon content",
+      control: { type: "ReactNode" },
+    },
+    outlineLabel: {
+      name: "outlineLabel",
+      description: "Changes the central content of tag",
+      control: { type: "ReactNode" },
+    },
+    flatActionButton: {
+      name: "flatActionButton",
+      description: "Changes the bottom flat action button",
+      control: { type: "ReactNode" },
     },
   },
 };
