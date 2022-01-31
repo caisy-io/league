@@ -25,7 +25,6 @@ const Bronze = css<ISearchBarOperatorBadgeSelectProps>`
   padding: 4px 8px;
 
   transition: background-color 0.3s ease, color 0.3s ease;
-  ${(props) => (props.hover ? CSSHover : "")};
   ${(props) => props.activated && CSSActivated};
   :hover {
     ${CSSHover}

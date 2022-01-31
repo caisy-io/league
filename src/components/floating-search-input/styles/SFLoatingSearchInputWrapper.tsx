@@ -10,7 +10,7 @@ const Bronze = css`
   display: flex;
   align-items: center;
   ${CSSProgressiveBody03}
-  padding: 16px;
+  padding: 6px 8px;
   transition: background-color 200ms, color 200ms, border 200ms;
   color: var(--text-03);
   caret-color: var(--active-ui-03-2);
