@@ -40,14 +40,15 @@ const tabs = [
     icon: <IconFlag size={20} />,
   },
 ];
-let allCategories: Array<string> = [];
+
 
 interface IEmojiPicker {
   onSelect?: (emojiCode: string) => void;
 }
 
-export const EmojiPicker: React.FC<IEmojiPicker> = () => {
+export const EmojiPicker: React.FC<IEmojiPicker> = ({ onSelect }) => {
   const [currSelected, setSelected] = useState(0);
+  let allCategories: Array<string> = [];
 
   for (let k in tabs) {
     allCategories.push(tabs[k].name)

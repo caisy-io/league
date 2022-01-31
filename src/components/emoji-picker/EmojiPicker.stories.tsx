@@ -1,21 +1,25 @@
 import React from "react";
 import { EmojiPicker } from './EmojiPicker';
 
+export const Default = ({ ...args }) => {
+  return (
+    <EmojiPicker>
+    </EmojiPicker>
+  );
+};
+
+
 export default {
   title: `Components/EmojiPicker`,
-  component: EmojiPickerDemo,
+  component: Default,
   argTypes: {
   },
 };
 
-function EmojiPickerDemo() {
-  return <EmojiPicker>
-  </EmojiPicker>
-}
-
-const Template = (args) => < EmojiPickerDemo {...args} />;
-
-export const Default = Template.bind({});
 Default.args = {
 
+};
+
+Default.parameters = {
+  controls: { hideNoControlsWarning: true },
 };
