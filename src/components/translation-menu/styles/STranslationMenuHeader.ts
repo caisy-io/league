@@ -4,10 +4,6 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const CSSOpened = css`
   background-color: var(--active-ui-01-1);
-
-  svg {
-    transform: rotate(90deg);
-  }
 `;
 
 const CSSHover = css`
@@ -25,11 +21,6 @@ const Bronze = css`
   transition: background-color 150ms;
 
   cursor: pointer;
-
-  svg {
-    transition: transform 150ms;
-    transform: rotate(0);
-  }
 
   &:hover {
     ${CSSHover}
