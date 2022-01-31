@@ -20,6 +20,9 @@ import { SearchInput } from "../search-input";
 import { FlatActionButton } from "../flat-action-button";
 import { ColorPicker } from "../color-picker";
 import { Button } from "../button/Button";
+import { SimpleInput } from "../input-fields";
+import { SFlex } from "../../base-components/flex/styles/SFlex";
+import { CSSProgressiveCaption01 } from "../../constants/styles";
 
 export default {
   title: `Components/Forms/MultiselectInputDropdown`,
@@ -51,6 +54,10 @@ const TAGS_MOCK = [
 const Template = () => {
   const [tags, setTags] = React.useState([]);
   const [dataSource, setDataSource] = React.useState(TAGS_MOCK);
+
+  const [newTag, setNewTag] = useState(undefined);
+
+  const [editableId, setEditableId] = useState(undefined);
 
   const [showColorPicker, setShowColorPicker] = useState(false);
 
@@ -104,14 +111,22 @@ const Template = () => {
           <Checkbox
             onChange={(e) => {
               e.stopPropagation();
+              onSelectValue(i);
             }}
             checked={!!isChecked}
           />
         }
         outlineLabel={
-          <OutLineLabel size="medium" colorLabel={<ColorLabel color={i.color} />}>
-            {i.label}
-          </OutLineLabel>
+          editableId === i.id ? (
+            <InputWrapper>
+              <ColorLabel color={i.color} />
+              <Input value="Tag F" />
+            </InputWrapper>
+          ) : (
+            <OutLineLabel size="medium" colorLabel={<ColorLabel color={i.color} />}>
+              {i.label}
+            </OutLineLabel>
+          )
         }
         popover={
           showColorPicker ? (
@@ -136,7 +151,12 @@ const Template = () => {
                   Change color
                 </div>
               </MenuListItem>
-              <MenuListItem size="medium">
+              <MenuListItem
+                size="medium"
+                onClick={() => {
+                  setEditableId(i.id);
+                }}
+              >
                 <div>
                   <IconEdit />
                   Rename
@@ -156,15 +176,26 @@ const Template = () => {
   };
 
   const onSearch = (e) => {
-    const filteredDataSource = TAGS_MOCK.filter((ds) =>
-      ds.label.toUpperCase().includes(e.target.value.trim().toUpperCase()),
-    );
+    const searchTerm = e.target.value.trim();
+
+    const filteredDataSource = TAGS_MOCK.filter((ds) => ds.label.toUpperCase().includes(searchTerm.toUpperCase()));
+
+    if (filteredDataSource.length === 0) {
+      setNewTag(searchTerm);
+    }
 
     setDataSource(filteredDataSource);
   };
 
+  const onAddNewTag = (e) => {
+    if (e.code === "Enter") {
+      console.log("New tag added -> ", newTag);
+    }
+  };
+
   const dropSearch = () => {
     setDataSource(TAGS_MOCK);
+    setNewTag(undefined);
   };
 
   return (
@@ -172,26 +203,29 @@ const Template = () => {
       <MultiselectInputDropdown
         placeholder="Select or create tags"
         values={tags}
-        onSelectValue={onSelectValue}
         dataSource={dataSource}
         renderInputItem={renderInputItem}
         renderDataItem={renderDataItem}
         onClose={dropSearch}
-        popupHeader={<SearchInput placeholder="Search tags" onChange={onSearch} onClose={dropSearch} />}
+        popupHeader={
+          <SearchInput placeholder="Search tags" onChange={onSearch} onKeyPress={onAddNewTag} onClose={dropSearch} />
+        }
         popupFooter={
-          <TagListItem
-            outlineLabel={
-              <OutLineLabel size="medium" colorLabel={<ColorLabel color="var(--ui-04)" />}>
-                Default
-              </OutLineLabel>
-            }
-            flatActionButton={
-              <FlatActionButton type="blue">
-                <IconPlusBox />
-                Create new tag
-              </FlatActionButton>
-            }
-          />
+          newTag && (
+            <TagListItem
+              outlineLabel={
+                <OutLineLabel size="medium" colorLabel={<ColorLabel color="var(--ui-04)" />}>
+                  {newTag}
+                </OutLineLabel>
+              }
+              flatActionButton={
+                <FlatActionButton type="blue">
+                  <IconPlusBox />
+                  Press enter to create new tag
+                </FlatActionButton>
+              }
+            />
+          )
         }
       />
     </Wrapper>
@@ -221,4 +255,31 @@ const ColorPickerWrapper: any = styled.div`
       flex: 0;
     }
   }
+`;
+
+const InputWrapper: any = styled(SFlex)`
+  padding: 4px 8px;
+
+  gap: 4px;
+
+  border: 1px solid var(--active-ui-03-2);
+  border-radius: 4px;
+`;
+
+const Input: any = styled.input`
+  width: 36px;
+  height: 16px;
+
+  background-color: transparent;
+  border: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+
+  ${CSSProgressiveCaption01};
 `;

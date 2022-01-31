@@ -23,7 +23,7 @@ interface IMultiselectInputDropdown {
   values: TDataSourceItem[];
   placeholder?: string;
   dataSource: TDataSourceItem[];
-  onSelectValue: (option: TDataSourceItem) => void;
+  onSelectValue?: (option: TDataSourceItem) => void;
   renderDataItem?: (option: TDataSourceItem) => React.ReactNode;
   renderInputItem?: (option: TDataSourceItem) => React.ReactNode;
   onClose?: () => void;
@@ -49,7 +49,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   const { width } = useDimensions(ref);
 
   const onChange = (option: TDataSourceItem) => {
-    onSelectValue(option);
+    onSelectValue?.(option);
   };
 
   const onCloseSelect = () => {
