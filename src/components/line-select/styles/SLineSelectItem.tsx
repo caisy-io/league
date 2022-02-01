@@ -4,8 +4,16 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const Bronze = css`
   ${CSSProgressiveBody02Medium}
+  width: 100%;
+  line-height: 1rem;
   display: flex;
-  gap: 0.75rem;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  >*{
+    flex-shrink: 0;
+  }
 `;
 
 const Silver = css`

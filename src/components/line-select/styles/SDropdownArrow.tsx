@@ -6,12 +6,14 @@ const CSSOpened = css`
     transform: rotate(-180deg);
   }
   svg path {
-    stroke: var(--active-ui-03-2);;
-    
+    stroke: var(--active-ui-03-2);
   }
 `;
 
 const Bronze = css`
+display: flex;
+align-items: center;
+justify-content: center;
   svg{
     transition: transform 0.25s ease-in-out;
   }
