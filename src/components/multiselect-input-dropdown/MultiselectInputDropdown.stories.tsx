@@ -57,7 +57,7 @@ const Template = () => {
 
   const [newTag, setNewTag] = useState(undefined);
 
-  const [editableId, setEditableId] = useState(undefined);
+  const [editableTag, setEditableTag] = useState(undefined);
 
   const [showColorPicker, setShowColorPicker] = useState(false);
 
@@ -117,10 +117,10 @@ const Template = () => {
           />
         }
         outlineLabel={
-          editableId === i.id ? (
+          editableTag?.id === i.id ? (
             <InputWrapper>
               <ColorLabel color={i.color} />
-              <Input value="Tag F" />
+              <Input value={editableTag.label} />
             </InputWrapper>
           ) : (
             <OutLineLabel size="medium" colorLabel={<ColorLabel color={i.color} />}>
@@ -154,7 +154,7 @@ const Template = () => {
               <MenuListItem
                 size="medium"
                 onClick={() => {
-                  setEditableId(i.id);
+                  setEditableTag(i);
                 }}
               >
                 <div>
@@ -193,9 +193,10 @@ const Template = () => {
     }
   };
 
-  const dropSearch = () => {
+  const clearMultiSelect = () => {
     setDataSource(TAGS_MOCK);
     setNewTag(undefined);
+    setEditableTag(undefined);
   };
 
   return (
@@ -206,9 +207,9 @@ const Template = () => {
         dataSource={dataSource}
         renderInputItem={renderInputItem}
         renderDataItem={renderDataItem}
-        onClose={dropSearch}
+        onClose={clearMultiSelect}
         popupHeader={
-          <SearchInput placeholder="Search tags" onChange={onSearch} onKeyPress={onAddNewTag} onClose={dropSearch} />
+          <SearchInput placeholder="Search tags" onChange={onSearch} onKeyPress={onAddNewTag} onClose={clearMultiSelect} />
         }
         popupFooter={
           newTag && (
