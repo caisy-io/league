@@ -1,7 +1,7 @@
 import React from "react";
 import { SFlex } from "../../base-components/flex/styles/SFlex";
 import { IconMoreMenuHorizontal } from "../../icons";
-import { ClickOutside, useDimensions } from "../../utils";
+import { useDimensions } from "../../utils";
 import { Popover } from "../popover";
 
 import { STagListItem } from "./styles/STagListItem";
@@ -38,33 +38,31 @@ export const TagListItem: React.FC<ITagListItem> = ({
   const { width } = useDimensions(ref);
 
   return (
-    // <ClickOutside onClickOutside={() => setOpened(false)}>
-      <>
-        <STagListItem ref={ref} disabled={disabled} activated={activated} onClick={onClick}>
-          {label && <STagListItemLabel>{label}</STagListItemLabel>}
-          <SFlex>
-            {leftIcon}
-            {outlineLabel && <STagListItemOutlineLabelWrapper>{outlineLabel}</STagListItemOutlineLabelWrapper>}
-          </SFlex>
-          {popover && (
-            <div
-              onClick={(event) => {
-                event.stopPropagation();
-                setOpened(true);
-              }}
-            >
-              <IconMoreMenuHorizontal size={20} />
-            </div>
-          )}
-          {rightIcon}
-          {flatActionButton}
-        </STagListItem>
-        {opened && popover && (
-          <Popover disableTriangle placement="right" reference={ref}>
-            <div style={{ width }}>{popover}</div>
-          </Popover>
+    <>
+      <STagListItem ref={ref} disabled={disabled} activated={activated} onClick={onClick}>
+        {label && <STagListItemLabel>{label}</STagListItemLabel>}
+        <SFlex>
+          {leftIcon}
+          {outlineLabel && <STagListItemOutlineLabelWrapper>{outlineLabel}</STagListItemOutlineLabelWrapper>}
+        </SFlex>
+        {popover && (
+          <div
+            onClick={(event) => {
+              event.stopPropagation();
+              setOpened(true);
+            }}
+          >
+            <IconMoreMenuHorizontal size={20} />
+          </div>
         )}
-      </>
-    // </ClickOutside>
+        {rightIcon}
+        {flatActionButton}
+      </STagListItem>
+      {opened && popover && (
+        <Popover disableTriangle placement="right" reference={ref}>
+          <div style={{ width }}>{popover}</div>
+        </Popover>
+      )}
+    </>
   );
 };

@@ -23,6 +23,7 @@ const Bronze = css<ISearchBarOperandProps>`
   border-radius: 0.5rem;
   position: relative;
   z-index: 0;
+  cursor: pointer;
   transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
   padding: 0.375rem 0.5rem;
   box-sizing: border-box;
