@@ -84,6 +84,17 @@ const Bronze = css<ITagListItem>`
     }
   }
 
+  ${(props) =>
+    props.activated &&
+    `
+        ${CSSActivated};
+        ${STagListItemOutlineLabelWrapper} {
+          > div {
+            ${CSSActivated}
+          }
+        }
+  `}
+
   ${(props) => props.disabled && CSSAllChildrenDisabled}
 `;
 

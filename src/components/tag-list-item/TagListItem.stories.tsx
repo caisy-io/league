@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { IconPlusBox, IconStarOutlined } from "../../icons";
+import { IconColorPalette, IconDelete, IconEdit, IconPlusBox, IconStarOutlined } from "../../icons";
+import { Checkbox } from "../checkbox/Checkbox";
 import { FlatActionButton } from "../flat-action-button";
+import { MenuListItem } from "../menu-list-item/MenuListItem";
 import { OutLineLabel } from "../out-line-label";
 import ColorLabel from "../out-line-label/ColorLabel";
 import { TagListItem } from "./TagListItem";
@@ -13,35 +15,10 @@ export default {
     disabled: {
       description: "Show disabled state of component",
       control: { type: "boolean" },
-      table: {
-        defaultValue: {
-          disabled: false,
-        },
-      },
     },
     label: {
       description: "Label for the tag list item",
       control: { type: "text" },
-    },
-    leftIcon: {
-      name: "leftIcon",
-      description: "Changes the left icon content",
-      control: { type: "ReactNode" },
-    },
-    rightIcon: {
-      name: "rightIcon",
-      description: "Changes the right icon content",
-      control: { type: "ReactNode" },
-    },
-    outlineLabel: {
-      name: "outlineLabel",
-      description: "Changes the central content of tag",
-      control: { type: "ReactNode" },
-    },
-    flatActionButton: {
-      name: "flatActionButton",
-      description: "Changes the bottom flat action button",
-      control: { type: "ReactNode" },
     },
   },
 };
@@ -77,6 +54,34 @@ WithLeftIcon.args = {
   ),
 };
 
+export const WithLeftCheckbox = (args) => {
+  const [isChecked, setIsChecked] = React.useState(false);
+
+  return (
+    <Wrapper>
+      <TagListItem
+        leftIcon={
+          <Checkbox
+            onChange={(e) => {
+              setIsChecked(!isChecked);
+            }}
+            checked={isChecked}
+          />
+        }
+        {...args}
+      />
+    </Wrapper>
+  );
+};
+
+WithLeftCheckbox.args = {
+  outlineLabel: (
+    <OutLineLabel size="medium" colorLabel={<ColorLabel color="var(--ui-04)" />}>
+      Default
+    </OutLineLabel>
+  ),
+};
+
 export const WithRightIcon = Template.bind({});
 
 WithRightIcon.args = {
@@ -85,6 +90,44 @@ WithRightIcon.args = {
     <OutLineLabel size="medium" colorLabel={<ColorLabel color="var(--ui-04)" />}>
       Default
     </OutLineLabel>
+  ),
+};
+
+export const WithRightIconAndPopover = Template.bind({});
+
+const PopoverWrapper: any = styled.div`
+  width: 216px;
+  background-color: white;
+  border-radius: 8px;
+`;
+
+WithRightIconAndPopover.args = {
+  outlineLabel: (
+    <OutLineLabel size="medium" colorLabel={<ColorLabel color="var(--ui-04)" />}>
+      Default
+    </OutLineLabel>
+  ),
+  popover: (
+    <PopoverWrapper>
+      <MenuListItem size="medium">
+        <div>
+          <IconColorPalette />
+          Change color
+        </div>
+      </MenuListItem>
+      <MenuListItem size="medium">
+        <div>
+          <IconEdit />
+          Rename
+        </div>
+      </MenuListItem>
+      <MenuListItem size="medium">
+        <div>
+          <IconDelete />
+          Delete
+        </div>
+      </MenuListItem>
+    </PopoverWrapper>
   ),
 };
 

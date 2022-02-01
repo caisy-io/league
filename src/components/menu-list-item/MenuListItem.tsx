@@ -6,12 +6,13 @@ export type IMenuListItemSize = "small" | "medium";
 export interface IMenuListItemProps {
   size?: IMenuListItemSize,
   disabled?: boolean,
+  onClick?: (e: Event) => void;
   children?
 }
 
-export const MenuListItem: React.FC<IMenuListItemProps> = ({ size, disabled, children }) => {
+export const MenuListItem: React.FC<IMenuListItemProps> = ({ size, disabled, children, onClick }) => {
   return (
-    <SMenuListItem size={size} disabled={disabled}>
+    <SMenuListItem size={size} disabled={disabled} onClick={onClick}>
       {children}
     </SMenuListItem>
   )

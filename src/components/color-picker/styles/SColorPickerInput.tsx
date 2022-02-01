@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { SimpleInput } from "../../input-fields";
 
 const Bronze = css`
-  height: 24px;
+  cursor: pointer;
 `;
 
 const Silver = css``;
@@ -13,7 +14,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const STagListItemOutlineLabelWrapper = styled.div`
+export const SColorPickerInput = styled(SimpleInput)`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
