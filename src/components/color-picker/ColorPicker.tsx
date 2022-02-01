@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { RgbaColor } from "react-colorful";
-import rgbHex from "rgb-hex";
+import { rgbHex } from "../../utils/color";
 
 import { SColorPicker } from "./styles/SColorPicker";
 import { SColorPickerInput } from "./styles/SColorPickerInput";
