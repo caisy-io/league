@@ -7,7 +7,10 @@ interface IDivider {
   dashed?: true;
   marginBottom?: number;
   marginTop?: number;
+  width?: number;
+  height?: number;
   style?: any;
+  vertical?: boolean;
 }
 
 export const Divider: React.FC<IDivider> = ({ ...props }) => {
@@ -21,6 +24,9 @@ export const Divider: React.FC<IDivider> = ({ ...props }) => {
       marginBottom={props.marginBottom}
       marginTop={props.marginTop}
       hasText={hasText}
+      vertical={props.vertical}
+      width={props.width}
+      height={props.height}
     >
       {hasText && <SDividerInnerText>{props.children}</SDividerInnerText>}
     </SDivider>

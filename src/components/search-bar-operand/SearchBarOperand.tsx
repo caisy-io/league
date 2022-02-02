@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import { SSearchBarOperand } from './styles/SSearchBarOperand';
-import { SSearchBarOperandLabel } from './styles/SSearchBarOperandLabel';
 
 export interface ISearchBarOperandProps {
   hover?: boolean;
   activated?: boolean;
-  label?: string | undefined;
+  onClick?: (e: MouseEventHandler<HTMLDivElement>) => void;
   children?
 }
 
-export const SearchBarOperand: React.FC<ISearchBarOperandProps> = ({ label, hover, activated, children }) => {
+export const SearchBarOperand: React.FC<ISearchBarOperandProps> = ({  onClick, hover, activated, children }) => {
   return (
-    <SSearchBarOperand hover={hover} activated={activated}>
+    <SSearchBarOperand hover={hover} activated={activated} onClick={onClick}>
       {children}
-      <SSearchBarOperandLabel activated={activated}>{label}</SSearchBarOperandLabel>
     </SSearchBarOperand>
   )
 }

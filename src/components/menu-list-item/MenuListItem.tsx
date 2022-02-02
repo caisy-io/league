@@ -7,11 +7,13 @@ export interface IMenuListItemProps {
   size?: IMenuListItemSize,
   disabled?: boolean,
   activated?: boolean,
+  onClick?: (e: Event) => void;
+  children?
 }
 
-export const MenuListItem: React.FC<IMenuListItemProps> = ({ size, disabled, children, activated }) => {
+export const MenuListItem: React.FC<IMenuListItemProps> = ({ size, disabled, children,activated, onClick }) => {
   return (
-    <SMenuListItem activated={activated} size={size} disabled={disabled}>
+    <SMenuListItem size={size} disabled={disabled} onClick={onClick} activated={activated}>
       {children}
     </SMenuListItem>
   )

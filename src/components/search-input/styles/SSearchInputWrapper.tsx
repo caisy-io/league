@@ -22,7 +22,7 @@ const Bronze = css`
   border-bottom: 1px solid var(--ui-03);
   transition: background-color 200ms, color 200ms, border 200ms;
   color: var(--text-03);
-
+  text-align: left;
   &:hover {
     ${CSSHover}
   }
