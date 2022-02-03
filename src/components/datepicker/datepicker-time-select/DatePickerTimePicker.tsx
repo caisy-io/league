@@ -10,9 +10,9 @@ interface IDatePickerTimePicker {
   show: boolean;
 }
 
-const DatePickerTimePicker: React.FC<IDatePickerTimePicker> = ({ ...props }) => {
-  const { setHours, setMinutes, setShowHours, setShowMinutes, onChange, getCurrentDate, hours, minutes } = usePicker();
-
+const DatePickerTimePicker: React.FC<IDatePickerTimePicker> = ({...props}) => {
+  const {setHours, setMinutes, setShowHours, setShowMinutes, onChange, date, hours, minutes} = usePicker();
+  
   const setTime = (e, value) => {
     e.stopPropagation();
     switch (props.value) {
@@ -20,33 +20,29 @@ const DatePickerTimePicker: React.FC<IDatePickerTimePicker> = ({ ...props }) => 
         setMinutes(value);
         setShowHours(false);
         setShowMinutes(false);
-        onChange(
-          new Date(
-            getCurrentDate().getFullYear(),
-            getCurrentDate().getMonth(),
-            getCurrentDate().getDate(),
-            hours,
-            value,
-          ),
-        );
+        date && onChange([new Date(
+          date[0].getFullYear(),
+          date[0].getMonth(),
+          date[0].getDate(),
+          hours,
+          value,
+        )]);
         return;
       case "hours":
         setHours(value);
         setShowHours(false);
         setShowMinutes(false);
-        onChange(
-          new Date(
-            getCurrentDate().getFullYear(),
-            getCurrentDate().getMonth(),
-            getCurrentDate().getDate(),
-            value,
-            minutes,
-          ),
-        );
+        date && onChange([new Date(
+          date[0].getFullYear(),
+          date[0].getMonth(),
+          date[0].getDate(),
+          value,
+          minutes,
+        )]);
         return;
     }
   };
-
+  
   return (
     <>
       {props.show && (

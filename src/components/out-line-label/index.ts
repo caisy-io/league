@@ -1,1 +1,2 @@
-export { default } from './OutLineLabel';
+export { OutLineLabel } from "./OutLineLabel";
+export { default as ColorLabel } from './ColorLabel';

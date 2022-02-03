@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveHighLight } from '../../../constants/styles/fonts';
+import { CSSProgressiveHighlight } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  ${CSSProgressiveHighLight};
+  ${CSSProgressiveHighlight};
   color: var(--text-04);
   text-transform: uppercase;
   display: flex;

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Badge, EBadgePosition } from "../badge";
-import { LineTabs } from "../line-tabs";
+import { LineTab } from "../line-tab";
 import { IconArrowDo, IconArrowUndo, IconEdit, IconGearSettings, IconPlusCircle } from "../../icons";
 import { FlatActionButton } from "../flat-action-button/FlatActionButton";
 import { SBlueprintEditorSubnav } from "./styles/SBlueprintEditorSubnav";
@@ -14,12 +14,13 @@ import { SBlueprintEditorSubnavTabs } from "./styles/SBlueprintEditorSubnavTabs"
 
 interface IBlueprintEditorSubnavGroup {
   name: string;
+  id: number;
 }
 
 interface IBlueprintEditorSubnav {
   groups: IBlueprintEditorSubnavGroup[];
-  onSelectGroup: (group: string) => void;
-  selectedGroup: string;
+  onSelectGroup: (group: IBlueprintEditorSubnavGroup) => void;
+  selectedGroup: IBlueprintEditorSubnavGroup;
   onGroupAdd: () => void;
   onClickConfig?: () => void;
   configBadgeValue?: string;
@@ -52,15 +53,15 @@ export const BlueprintEditorSubnav: FC<IBlueprintEditorSubnav> = ({
 
       <SBlueprintEditorSubnavTabs>
         {groups.map((group) => (
-          <SBlueprintEditorSubnavTab>
-            <LineTabs activated={selectedGroup === group.name} onClick={() => onSelectGroup(group.name)}>
+          <SBlueprintEditorSubnavTab key={group.id}>
+            <LineTab activated={selectedGroup.id === group.id} onClick={() => onSelectGroup(group)}>
               {group.name}
               {!!onEditGroup && (
                 <SBlueprintEditorSubnavEditIconWrapper onClick={(e) => handleEditTab(e, group)}>
                   <IconEdit size={16} />
                 </SBlueprintEditorSubnavEditIconWrapper>
               )}
-            </LineTabs>
+            </LineTab>
           </SBlueprintEditorSubnavTab>
         ))}
       </SBlueprintEditorSubnavTabs>

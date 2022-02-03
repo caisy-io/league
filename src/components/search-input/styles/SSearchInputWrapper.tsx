@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ProgressiveBody03 } from "../../../constants/styles/fonts";
+import { CSSProgressiveBody03 } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const CSSHover = css`
@@ -16,13 +16,13 @@ const Bronze = css`
   display: flex;
   align-items: center;
   gap: 8px;
-  ${ProgressiveBody03}
+  ${CSSProgressiveBody03}
   background-color: var(--ui-01);
   padding: 16px;
   border-bottom: 1px solid var(--ui-03);
   transition: background-color 200ms, color 200ms, border 200ms;
   color: var(--text-03);
-
+  text-align: left;
   &:hover {
     ${CSSHover}
   }
