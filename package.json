@@ -71,6 +71,7 @@
     "dayjs": "1.10.5",
     "emoji-mart": "^3.0.1",
     "fuzzysearch": "^1.0.3",
+    "react-colorful": "^5.5.1",
     "react-flatpickr": "^3.10.7",
     "react-lazyload": "^3.2.0",
     "react-table": "^7.7.0",

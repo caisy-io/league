@@ -19,7 +19,13 @@ const Bronze = css<ISDivider>`
   text-align: center;
   border-top: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
+
   ${(props) => props.dashed && "border-top: 1px dashed rgba(0, 0, 0, 0.06);"}
+
+  ${(props) => props.vertical && "transform: rotate(90deg);"}
+
+  ${(props) => props.height && `height: ${props.height}px;`}
+  ${(props) => props.width && `width: ${props.width}px;`}
 
   line-height: 1.5715;
   white-space: nowrap;
