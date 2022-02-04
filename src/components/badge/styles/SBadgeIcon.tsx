@@ -12,6 +12,8 @@ interface ISBadgeIcon {
   type: IBadgeType;
   size?: ISizes;
   value: string;
+  withPadding: boolean;
+  withBorder: boolean;
 }
 
 const CSSRegular = css`
@@ -54,26 +56,19 @@ const CSSTopLeft = css`
   left: -0.438rem;
 `;
 
-const CSSPadding = css`
-  padding: 2px 6px;
-`;
-
 const CSSMicro = css<{ width: number }>`
   height: 0.75rem;
   min-width: 0.75rem;
-  ${(props) => props.width > 12 ? CSSPadding : ''};
 `;
 
 const CSSSmall = css<{ width: number }>`
   height: 1rem;
   min-width: 1rem;
-  ${(props) => props.width > 16 ? CSSPadding : ''};
 `;
 
 const CSSMedium = css<{ width: number }>`
   height: 1.25rem;
   min-width: 1.25rem;
-  ${(props) => props.width > 20 ? CSSPadding : ''};
 `;
 
 const Bronze = css<ISBadgeIcon>`
@@ -84,7 +79,7 @@ const Bronze = css<ISBadgeIcon>`
   height: 0.75rem;
   color: var(--ui-01);
   text-align: center;
-  padding: 0.125rem;
+  padding: ${({ withPadding }) => withPadding ? "2px 6px" : "0.125rem"};
   align-items: center;
   justify-content: center;
   background-color: var(--ui-supportive-01);
@@ -94,6 +89,8 @@ const Bronze = css<ISBadgeIcon>`
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  border: ${({ withBorder }) => withBorder ? "2px solid #FFFF" : "none"};
+
   /* POSITION OF BADGE */
   ${(props) => (props.position == EBadgePosition.Center ? CSSCenter : " ")};
   ${(props) => (props.position == EBadgePosition.TopLeft ? CSSTopLeft : " ")};
@@ -108,6 +105,7 @@ const Bronze = css<ISBadgeIcon>`
   ${(props) => (props.size == "micro" ? CSSMicro : " ")};
   ${(props) => (props.size == "small" ? CSSSmall : " ")};
   ${(props) => (props.size == "medium" ? CSSMedium : " ")};
+  
 `;
 
 const Silver = css``;
