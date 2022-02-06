@@ -15,6 +15,8 @@ interface IUploadMenuItem {
   onClick: () => void;
   state?: TUploadMenuItemStatus;
   percentageLoaded?: number;
+  itemCount?: number;
+  children?
 }
 
 export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
@@ -27,8 +29,8 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
 
   const renderIcon = () => {
     switch (props.state) {
-      case "dragging":
-        return <LoadingIcon />;
+      case "dragging" && props.itemCount:
+        return props.itemCount;
       case "loading":
         return (
           <SLoadingIconWrapper>

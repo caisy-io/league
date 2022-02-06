@@ -10162,11 +10162,6 @@ reusify@^1.0.4:
   resolved "https://registry.npmjs.org/reusify/-/reusify-1.0.4.tgz"
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
 
-rgb-hex@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/rgb-hex/-/rgb-hex-4.0.0.tgz#02fb1e215e3fe5d070501579a3d2e4fa3c0acec8"
-  integrity sha512-Eg2ev5CiMBnQ9Gpflmqbwbso0CCdISqtVIow7OpYSLN1ULUv2jTB9YieS1DSSn/17AD7KkPWDPzSFzI4GSuu/Q==
-
 rimraf@^2.2.8, rimraf@^2.5.4, rimraf@^2.6.3:
   version "2.7.1"
   resolved "https://registry.npmjs.org/rimraf/-/rimraf-2.7.1.tgz"
