@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import React, { useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import UploadsPopUp, { UploadsPopupContent } from "./index";
+import UploadsPopUp, { UploadsPopUpContent } from "./index";
 import { AssetListItem } from "../asset-list-item";
 import ButtonsBar from "../buttons-bar";
 import { Button } from "../button"
@@ -14,24 +14,24 @@ const ClickMe = styled.h2`
 `
 
 export default {
-  title: "Components/Menus & Popovers/UploadsPopup",
+  title: "Components/Menus & Popovers/UploadsPopUp",
   component: UploadsPopUp,
   argTypes: {}
 } as ComponentMeta<typeof UploadsPopUp>;
 
-export const UploadsPopup: ComponentStory<typeof UploadsPopUp> = () => {
-  const [showUploadsPopup, toogleUploadsPopup] = useState(false);
+export const UploadsPopUp: ComponentStory<typeof UploadsPopUp> = () => {
+  const [showUploadsPopUp, toogleUploadsPopUp] = useState(false);
 
-  const handleShowUploadsPopup: any = () => {
-    toogleUploadsPopup(!showUploadsPopup);
+  const handleShowUploadsPopUp: any = () => {
+    toogleUploadsPopUp(!showUploadsPopUp);
   } 
   
   return (
     <>
-      {showUploadsPopup ? (
-        <UploadsPopUp poupTitle="Uploads" onClose={() => handleShowUploadsPopup()}>
+      {showUploadsPopUp ? (
+        <UploadsPopUp poupTitle="Uploads" onClose={() => handleShowUploadsPopUp()}>
 
-          <UploadsPopupContent>
+          <UploadsPopUpContent>
             <AssetListItem 
                 title="Default"
                 description="Default upload"
@@ -76,7 +76,7 @@ export const UploadsPopup: ComponentStory<typeof UploadsPopUp> = () => {
                 description="Default upload"
                 progressValue={75}
             />
-          </UploadsPopupContent>
+          </UploadsPopUpContent>
           <UloadsPopupButtons>
             <ButtonsBar>
               <Button onClick={() => alert("Clicked Button")} type="primary" sticked={true}>
@@ -86,25 +86,25 @@ export const UploadsPopup: ComponentStory<typeof UploadsPopUp> = () => {
           </UloadsPopupButtons>
         </UploadsPopUp>
       ) : (
-        <ClickMe onClick={() => handleShowUploadsPopup()}>Click me!!</ClickMe>
+        <ClickMe onClick={() => handleShowUploadsPopUp()}>Click me!!</ClickMe>
       )}
     </>
   );
 }
 
-export const UploadsPopup_Default: ComponentStory<typeof UploadsPopUp> = () => {
-  const [showUploadsPopup, toogleUploadsPopup] = useState(false);
+export const UploadsPopUp_Default: ComponentStory<typeof UploadsPopUp> = () => {
+  const [showUploadsPopUp, toogleUploadsPopUp] = useState(false);
 
-  const handleShowUploadsPopup: () => void = () => {
-    toogleUploadsPopup(!showUploadsPopup);
+  const handleShowUploadsPopUp: () => void = () => {
+    toogleUploadsPopUp(!showUploadsPopUp);
   } 
   
   return (
     <>
-      {showUploadsPopup ? (
-        <UploadsPopUp poupTitle="Uploads" badgeValue={6} onClose={() => handleShowUploadsPopup()}>
+      {showUploadsPopUp ? (
+        <UploadsPopUp poupTitle="Uploads" badgeValue={6} onClose={() => handleShowUploadsPopUp()}>
 
-          <UploadsPopupContent>
+          <UploadsPopUpContent>
             <AssetListItem 
                 title="Default"
                 description="Default upload"
@@ -149,7 +149,7 @@ export const UploadsPopup_Default: ComponentStory<typeof UploadsPopUp> = () => {
                 description="Default upload"
                 progressValue={75}
             />
-          </UploadsPopupContent>
+          </UploadsPopUpContent>
           <UloadsPopupButtons>
             <ButtonsBar>
               <Button onClick={() => alert("Clicked Button")} type="primary" sticked={true}>
@@ -163,7 +163,7 @@ export const UploadsPopup_Default: ComponentStory<typeof UploadsPopUp> = () => {
           </UloadsPopupButtons>
         </UploadsPopUp>
       ) : (
-        <ClickMe onClick={() => handleShowUploadsPopup()}>Click me!!</ClickMe>
+        <ClickMe onClick={() => handleShowUploadsPopUp()}>Click me!!</ClickMe>
       )}
     </>
   );

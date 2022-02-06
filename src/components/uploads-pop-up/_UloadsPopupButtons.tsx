@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { SUloadsPopupButtonsWrapper } from "./styles/SUloadsPopupButtonsWrapper"
+import { SUloadsPopupButtonsWrapper } from "./styles/_SUloadsPopupButtonsWrapper"
 
 export const UloadsPopupButtons: FC = ({ children }) => (
   <SUloadsPopupButtonsWrapper>

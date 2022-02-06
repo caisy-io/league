@@ -1,2 +1,2 @@
-export { default } from "./UploadsPopup";
-export { UploadsPopupContent } from "./UploadsPopupContent";
+export { UploadsPopUp } from "./_UploadsPopup";
+export { UploadsPopUpContent } from "./_UploadsPopupContent";

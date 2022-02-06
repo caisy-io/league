@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { SUploadsPopup } from "./styles/SUploadsPopup";
-import { SUploadsPopupHeader, ButtonsWrapper, IconWrapper, BadgeWrapper } from "./styles/SUploadsPopupHeader"
+import { SUploadsPopUp } from "./styles/SUploadsPopUp";
+import { SUploadsPopUpHeader, ButtonsWrapper, IconWrapper, BadgeWrapper } from "./styles/SUploadsPopUpHeader"
 import { PrimaryModalHeader } from "../primary-modal-header"
 import { FlatActionButton } from "../flat-action-button";
 import { IconClose, IconUpload } from "../../icons";
@@ -14,9 +14,9 @@ interface IUploadsPopUp {
   badgeValue?: string | number;
 }
 
-const UploadsPopUp: FC<IUploadsPopUp> = ({children, poupTitle, badgeValue, onClose}) => (
-  <SUploadsPopup>
-    <SUploadsPopupHeader>
+export const UploadsPopUp: FC<IUploadsPopUp> = ({children, poupTitle, badgeValue, onClose}) => (
+  <SUploadsPopUp>
+    <SUploadsPopUpHeader>
       <PrimaryModalHeader breadcrumbs={[{title: poupTitle, icon: <IconUpload size={24}/> }]}>
         <BadgeWrapper>
           {badgeValue && <Badge type="regular" value={badgeValue.toString()} size="small" position={EBadgePosition.Center}/>}
@@ -26,10 +26,9 @@ const UploadsPopUp: FC<IUploadsPopUp> = ({children, poupTitle, badgeValue, onClo
           <IconWrapper onClick={onClose}><IconClose size={24}/></IconWrapper>
         </ButtonsWrapper>
       </PrimaryModalHeader>
-    </SUploadsPopupHeader>
+    </SUploadsPopUpHeader>
 
     {children}
-  </SUploadsPopup>
+  </SUploadsPopUp>
 );
 
-export default UploadsPopUp;

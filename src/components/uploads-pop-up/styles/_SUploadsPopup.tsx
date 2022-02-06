@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-interface ISUploadsPopup {
+interface ISUploadsPopUp {
 }
 
-const Bronze = css<ISUploadsPopup>`
+const Bronze = css<ISUploadsPopUp>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -33,7 +33,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SUploadsPopup = styled.div`
+export const SUploadsPopUp = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
