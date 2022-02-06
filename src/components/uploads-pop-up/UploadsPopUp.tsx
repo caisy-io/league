@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { SUploadsPopUp } from "./styles/SUploadsPopUp";
-import { SUploadsPopUpHeader, ButtonsWrapper, IconWrapper, BadgeWrapper } from "./styles/SUploadsPopUpHeader"
+import { SUploadsPopUpHeader, ButtonsWrapper, IconWrapper, BadgeWrapper } from "./styles/SUploadsPopUpHeader
 import { PrimaryModalHeader } from "../primary-modal-header"
 import { FlatActionButton } from "../flat-action-button";
 import { IconClose, IconUpload } from "../../icons";

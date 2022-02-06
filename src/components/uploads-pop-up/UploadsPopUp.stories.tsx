@@ -1,25 +1,20 @@
 import styled from "styled-components"
 import React, { useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import UploadsPopUp, { UploadsPopUpContent } from "./index";
+import {UploadsPopUp, UploadsPopUpContent } from "./index";
 import { AssetListItem } from "../asset-list-item";
 import ButtonsBar from "../buttons-bar";
 import { Button } from "../button"
-import { UloadsPopupButtons } from "./UloadsPopupButtons";
 import { IconDocuments, IconVideoPlay, IconAssetsImage } from "../../icons";
-
+import {SUploadsPopUpButtonsWrapper}from "./styles/SUploadsPopUpButtonsWrapper"
+./styles/SUploadsPopUpButtonsWrapper
 const ClickMe = styled.h2`
   cursor: pointer;
   margin: 50px 50px;
 `
 
-export default {
-  title: "Components/Menus & Popovers/UploadsPopUp",
-  component: UploadsPopUp,
-  argTypes: {}
-} as ComponentMeta<typeof UploadsPopUp>;
 
-export const UploadsPopUp: ComponentStory<typeof UploadsPopUp> = () => {
+export const UploadsPopUpExample: ComponentStory<typeof UploadsPopUp> = () => {
   const [showUploadsPopUp, toogleUploadsPopUp] = useState(false);
 
   const handleShowUploadsPopUp: any = () => {
@@ -77,13 +72,13 @@ export const UploadsPopUp: ComponentStory<typeof UploadsPopUp> = () => {
                 progressValue={75}
             />
           </UploadsPopUpContent>
-          <UloadsPopupButtons>
+          <SUploadsPopUpButtonsWrapper>
             <ButtonsBar>
               <Button onClick={() => alert("Clicked Button")} type="primary" sticked={true}>
                 {"SEE ALL ASSETS"}
               </Button>
             </ButtonsBar>
-          </UloadsPopupButtons>
+          </SUploadsPopUpButtonsWrapper>
         </UploadsPopUp>
       ) : (
         <ClickMe onClick={() => handleShowUploadsPopUp()}>Click me!!</ClickMe>
@@ -168,3 +163,8 @@ export const UploadsPopUp_Default: ComponentStory<typeof UploadsPopUp> = () => {
     </>
   );
 }
+export default {
+  title: "Components/Menus & Popovers/UploadsPopUp",
+  component: UploadsPopUpExample,
+  argTypes: {}
+} as ComponentMeta<typeof UploadsPopUp>;
