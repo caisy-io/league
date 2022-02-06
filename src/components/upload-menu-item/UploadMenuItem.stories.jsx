@@ -1,10 +1,13 @@
 import React from "react";
 import { UploadMenuItem } from "./UploadMenuItem";
+const Template = (args) => <UploadMenuItem {...args} >
+  {args.children ? args.children : null}
+</UploadMenuItem>;
 
 // Default MainMenuItem Demo
 export default {
   title: "Components/Navigation/UploadMenuItem",
-  component: UploadMenuItemDemo,
+  component: Template,
   parameters: {
     design: {
       type: "figma",
@@ -21,14 +24,13 @@ export default {
       description: "Shows percentage",
       control: { type: "number" },
     },
+    itemCount: {
+      description: "itemCount",
+      control: { type: "number" },
+    },
   },
 };
 
-function UploadMenuItemDemo({ ...args }) {
-  return <UploadMenuItem {...args} />;
-}
-
-const Template = (args) => <UploadMenuItemDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

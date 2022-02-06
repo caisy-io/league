@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SUloadsPopupButtonsWrapper: any = styled.div`
+export const SUploadsPopUpButtonsWrapper: any = styled.div`
   width: 100%;
   border-radius: 12px;
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.04);
