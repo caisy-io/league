@@ -259,6 +259,6 @@ export type ICountryCode =
   | "zw";
 
 export interface IFlag {
-  countryCode: ICountryCode;
+  countryCode: ICountryCode | string;
   size?: 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48;
 }

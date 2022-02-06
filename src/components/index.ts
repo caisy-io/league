@@ -102,5 +102,7 @@ export * from "./tag-list-item";
 export * from "./multiselect-input-dropdown";
 export * from "./color-picker";
 export * from "./profile-details-list-item";
+export * from "./string-single-field";
 export * from "./uploads-pop-up";
 export * from "./asset-list-item";
+

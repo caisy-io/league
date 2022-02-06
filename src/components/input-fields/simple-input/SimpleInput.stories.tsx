@@ -1,7 +1,7 @@
 import React from "react";
 import { SimpleInput } from "./SimpleInput";
 import { STranslationBadge } from "../styles/STranslationBadge";
-import Flag from "../../flag/Flag";
+import {Flag} from "../../flag/Flag";
 
 function SimpleInputDemo({ ...args }) {
   const [value, setValue] = React.useState("");
