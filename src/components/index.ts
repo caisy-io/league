@@ -5,6 +5,7 @@ export * from "./blueprint-editor-subnav";
 export * from "./body-layout";
 export * from "./bulk-selection-snackbar";
 export * from "./button";
+export * from "./buttons-bar";
 export * from "./card";
 export * from "./collapsible";
 export * from "./datepicker";
