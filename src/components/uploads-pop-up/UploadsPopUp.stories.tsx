@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {UploadsPopUp, UploadsPopUpContent } from "./index";
 import { AssetListItem } from "../asset-list-item";
-import ButtonsBar from "../buttons-bar";
+import {ButtonsBar} from "../buttons-bar";
 import { Button } from "../button"
 import { IconDocuments, IconVideoPlay, IconAssetsImage } from "../../icons";
 import {SUploadsPopUpButtonsWrapper}from "./styles/SUploadsPopUpButtonsWrapper"
