@@ -99,6 +99,7 @@ export * from "./floating-search-editable-text";
 export * from "./search-dropdown-section-title";
 export * from "./search-dropdown-section-fulltext";
 export * from "./tag-list-item";
+export * from "./input-dropdown";
 export * from "./multiselect-input-dropdown";
 export * from "./color-picker";
 export * from "./profile-details-list-item";
