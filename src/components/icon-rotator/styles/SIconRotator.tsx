@@ -2,10 +2,14 @@ import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-display: "flex",
-transformOrigin: "center",
-transform: ${props.rotationDegrees}
-transition: "transform 200ms",
+  display: flex;
+  transition: transform 200ms;
+  > * {
+    transform-origin: center;
+    transition: transform 200ms;
+    ${(props) => (props.rotationDegrees ? `transform: rotate(${props.rotationDegrees}deg)` : "")};
+  }
+  ${({ styleOverwrite }) => styleOverwrite ?? ''};
 `;
 
 const Silver = css``;

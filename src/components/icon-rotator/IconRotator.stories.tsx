@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { IconRotator } from './IconRotator';
 import { IconChevron } from '../../icons/IconChevron';
+import { Button } from '../button';
 
 export default {
   title: `Components/IconRotator`,
@@ -9,22 +10,28 @@ export default {
     rotationDegrees: {
       description: "An example boolean argument type",
       control: { type: "number" },
-      table: {
-        defaultValue: {
-          summary: true,
-        },
-      },
     },
   },
 };
 
-const IconRotatorDemo: React.FC<{ rotationDegrees }> = ({ rotationDegrees }) => (
-  <IconRotator rotationDegrees={rotationDegrees}>
+const IconRotatorDemo: React.FC<{ rotationDegrees }> = ({ rotationDegrees }) => {
+  const [degrees, setDegrees] = useState(0);
+  const handleClick = () => {
+    if (!degrees) {
+      setDegrees(rotationDegrees);
+    }
+    else {
+      setDegrees(null);
+    }
+  };
+  return (<><IconRotator rotationDegrees={degrees}>
     <IconChevron />
   </IconRotator>
-);
+    <Button onClick={() => handleClick()}>Rotate me!</Button>
+  </>)
+};
 
 export const Default: any = IconRotatorDemo.bind({});
 Default.args = {
-  rotationDegrees: 0,
+  rotationDegrees: 90,
 };
