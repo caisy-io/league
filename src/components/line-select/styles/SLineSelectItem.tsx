@@ -1,27 +1,23 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveBody02Medium } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  background-color: var(--ui-03);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-01);
-
-  padding: 5px 6px;
-  border-radius: 0 7px;
-
+  ${CSSProgressiveBody02Medium}
+  width: 100%;
+  line-height: 1rem;
   display: flex;
   align-items: center;
-  gap: 4px;
-
-  z-index: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  >*{
+    flex-shrink: 0;
+  }
 `;
 
-const Silver = css``;
+const Silver = css`
+`;
 
 const Gold = css``;
 
@@ -29,7 +25,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const STranslationBadge = styled.div`
+export const SLineSelectItem = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

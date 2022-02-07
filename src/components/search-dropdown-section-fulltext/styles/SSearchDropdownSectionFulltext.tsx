@@ -10,6 +10,7 @@ const Bronze = css`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
 `;
 
 const Silver = css``;

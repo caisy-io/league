@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import { SSearchDropdownSectionFulltext } from './styles/SSearchDropdownSectionFulltext';
 
 interface ISearchDropdownSectionFulltext{
+  onClick?: (e: MouseEventHandler<HTMLDivElement>) => void;
   children?
 }
 
-export const SearchDropdownSectionFulltext: React.FC<ISearchDropdownSectionFulltext> = ({children}) => {
+export const SearchDropdownSectionFulltext: React.FC<ISearchDropdownSectionFulltext> = ({onClick, children}) => {
   return (
-    <SSearchDropdownSectionFulltext>
+    <SSearchDropdownSectionFulltext onClick={onClick}>
       {children}
     </SSearchDropdownSectionFulltext>
   )

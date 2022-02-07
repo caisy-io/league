@@ -1,13 +1,15 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveBody01Medium } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  position: relative;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--text-06);
-  width: fit-content;
+  all: unset;
+  ${CSSProgressiveBody01Medium};
+  transition: color 200ms, background-color 200ms;
+  color: var(--text-01);
+  box-sizing: border-box;
+
+  height: 24px;
 `;
 
 const Silver = css``;
@@ -18,7 +20,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SErrorMessage = styled.div`
+export const SLineInput = styled.input`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
