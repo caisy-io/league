@@ -93,6 +93,7 @@ export * from "./blueprint-editor-sidebar";
 export * from "./top-nav-default";
 export * from "./field-card";
 export * from "./line-input";
+export * from "./line-select";
 export * from "./search-dropdown-section-table";
 export * from "./floating-search-input";
 export * from "./floating-search-editable-text";

@@ -5,8 +5,6 @@ import { LineSelectItem } from "./LineSelectItem";
 import { LineSelectLabel } from "./LineSelectILabel";
 import styled from "styled-components";
 
-const code = "<Display>Display Text Here</Display>";
-
 const STextWrapper = styled.span`
   width: calc(100% - 30px);
   align-items: center;
