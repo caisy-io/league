@@ -2,7 +2,7 @@ import React from "react";
 import { IconEmojis } from "../../icons/IconEmojis";
 import { LineSelect } from "./LineSelect";
 import { LineSelectItem } from "./LineSelectItem";
-import { LineSelectLabel } from "./LineSelectILabel";
+import { LineSelectLabel } from "./LineSelectLabel";
 import styled from "styled-components";
 
 const STextWrapper = styled.span`
