@@ -19,7 +19,7 @@ interface ISimpleInput extends InputHTMLAttributes<HTMLInputElement> {
   value: any;
 }
 
-export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, children, value, onChange, ...props }) => {
+export const SimpleInput: React.FC<ISimpleInput> = ({ state, required, value, onChange, ...props }) => {
   const [active, setActive] = React.useState(false);
   const [inputLength, setInputLength] = React.useState(value?.toString().length);
 

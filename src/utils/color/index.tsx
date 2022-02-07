@@ -1,0 +1,1 @@
+export { rgbHex } from './color';

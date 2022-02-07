@@ -1,13 +1,14 @@
 import React, { FC } from "react";
 import { Collapsible } from "../collapsible";
 import { MenuDnd } from "../menu-dnd";
-import { IconChevron } from "../../icons";
+import { IconChevronRight } from "../../icons";
 import { STranslationMenu } from "./styles/STranslationMenu";
 import { STranslationMenuHeader } from "./styles/STranslationMenuHeader";
 import {
   ILanguageFlagToggleListItemLocale,
   LanguageFlagToggleListItem,
 } from "../language-flag-toggle-list-item/LanguageFlagToggleListItem";
+import { STranslationMenuHeaderIconWrapper } from "./styles/STranslationMenuHeaderIconWrapper";
 
 export interface ITranslationMenu {
   opened: boolean | true;
@@ -36,7 +37,10 @@ export const TranslationMenu: FC<ITranslationMenu> = ({ locales, opened, onToggl
   return (
     <STranslationMenu>
       <STranslationMenuHeader onClick={() => onToggleOpened(!opened)} opened={opened}>
-        <IconChevron /> Translations
+        <STranslationMenuHeaderIconWrapper opened={opened}>
+          <IconChevronRight size={20} />
+        </STranslationMenuHeaderIconWrapper>
+        Translations
       </STranslationMenuHeader>
       <Collapsible expanded={opened}>
         <MenuDnd onDrop={onDrop}>
