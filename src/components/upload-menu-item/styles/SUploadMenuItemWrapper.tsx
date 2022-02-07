@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
+import { SUploadMenuItemLabel } from "./SUploadMenuItemLabel";
 
 interface ISUploadMenuItemWrapper {
   hovering: boolean;
@@ -21,11 +22,17 @@ const Bronze = css<ISUploadMenuItemWrapper>`
 
   position: relative;
 
-  h6 {
-    ${(props) => props.hovering && props.isDefault && "color: var(--hover-text-04);"}
-    ${(props) => props.activated && props.isDefault && "color: var(--text-01);"}
+  &:hover{
+    ${SUploadMenuItemLabel} {
+      color: var(--hover-text-04);
+    }
   }
-  `;
+  &:active{
+    ${SUploadMenuItemLabel} {
+      color: var(--text-01);
+    }
+  }
+`;
 
 const Silver = css``;
 

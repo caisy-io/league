@@ -37,7 +37,6 @@ const Bronze = css<IUploadMenuItemLabel>`
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;
-  margin-top: 0.25rem;
   ${(props) => getStyles(props.state)}
 `;
 
