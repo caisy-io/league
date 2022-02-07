@@ -7,7 +7,7 @@ const CSSMedium = css`
 `;
 
 const Bronze = css`
-  width: 288px;
+  width: 100%;
   height: 64px;
   background-color: #FFFF;
   box-sizing: border-box;

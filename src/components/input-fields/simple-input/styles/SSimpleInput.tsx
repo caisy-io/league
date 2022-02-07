@@ -17,9 +17,10 @@ const Bronze = css`
   color: var(--text-01);
 
   width: ${(props) => `${props.width}px`};
-  height: 20px;
+  /* height: 20px; */
 
   ${(props) => props.locked && CSSLocked}
+  max-width: 100%;
 
   &::placeholder {
     color: var(--text-03);

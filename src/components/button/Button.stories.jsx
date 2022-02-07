@@ -95,15 +95,10 @@ WithIcon.args = {
   sticked: false,
 };
 
-const CSSBadgeWithButton = css`
-  >div {
-    border: 2px solid #FFFF;
-  }
-`;
 
 // With Badge
 export const WithBadge = ({ content, ...args }) => (
-  <Badge position={EBadgePosition.TopRight} value={args.badgeContent} size="small" type="important" styleOverwrite={CSSBadgeWithButton} >
+  <Badge position={EBadgePosition.TopRight} value={args.badgeContent} size="small" type="important" withBorder >
     <Button {...args}>{content}</Button>
   </Badge>
 );

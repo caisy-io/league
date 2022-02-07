@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../button";
 import { IconDelete, IconEdit } from "../../icons";
 import { Img } from "../../base-components";
-import ButtonsBar from "../buttons-bar";
+import {ButtonsBar} from "../buttons-bar";
 
 import { SSetImageCard } from "./styles/SSetImageCard";
 import { SSetImageCardBody } from "./styles/SSetImageCardBody";

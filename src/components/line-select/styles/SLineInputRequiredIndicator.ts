@@ -2,7 +2,14 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  display: flex;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background-color: var(--ui-supportive-01);
+
+  position: absolute;
+  top: 0;
+  right: -6px;
 `;
 
 const Silver = css``;
@@ -13,7 +20,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SMainMenuItemIcon = styled.div<any>`
+export const SLineInputRequiredIndicator = styled.span`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
