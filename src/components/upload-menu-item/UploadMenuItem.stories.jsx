@@ -1,12 +1,11 @@
 import React from "react";
 import { UploadMenuItem } from "./UploadMenuItem";
-import { UploadMenuItemLabel } from "./UploadMenuItemLabel";
 
 export const Default = ({ state, percentageLoaded, itemCount }) => {
   return (<UploadMenuItem state={state} percentageLoaded={percentageLoaded} itemCount={itemCount}>
-    <UploadMenuItemLabel state={state}> {(state == "default" || state == "dragging") && "Upload"}
-      {state == "loading" && (percentageLoaded ? `${percentageLoaded}%` : "Loading...")}
-      {state == "success" && "Done"}</UploadMenuItemLabel>
+    {(state == "default" || state == "dragging") && "Upload"}
+    {state == "loading" && (percentageLoaded ? `${percentageLoaded}%` : "Loading...")}
+    {state == "success" && "Done"}
   </UploadMenuItem>
   )
 };

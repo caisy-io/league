@@ -8,6 +8,7 @@ import LoadingBorderIcon from "./icons/LoadingBorderIcon";
 import { SLoadingBorderWrapper } from "./styles/SLoadingBorderWrapper";
 import { SLoadingIconWrapper } from "./styles/SLoadingIconWrapper";
 import { SUploadMenuItem } from "./styles/SUploadMenuItem";
+import { SUploadMenuItemLabel } from "./styles/SUploadMenuItemLabel";
 import { SUploadMenuItemWrapper } from "./styles/SUploadMenuItemWrapper";
 
 type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "activated";
@@ -60,7 +61,9 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ state, percentageLoa
           </SLoadingIconWrapper>
         )}
       </SUploadMenuItem>
-      {children}
+      <SUploadMenuItemLabel state={state}>
+        {children}
+      </SUploadMenuItemLabel>
     </SUploadMenuItemWrapper>
   );
 };
