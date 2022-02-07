@@ -2,12 +2,14 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  position: relative;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--text-06);
-  width: fit-content;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background-color: var(--ui-supportive-01);
+
+  position: absolute;
+  top: 0;
+  right: -6px;
 `;
 
 const Silver = css``;
@@ -18,7 +20,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SErrorMessage = styled.div`
+export const SLineInputRequiredIndicator = styled.span`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

@@ -1,7 +1,8 @@
 import React from "react";
 import { SimpleInput } from "./SimpleInput";
 import { STranslationBadge } from "../styles/STranslationBadge";
-import {Flag} from "../../flag/Flag";
+import { IconStarOutlined } from "../../../icons";
+import { Flag } from "../../flag/Flag";
 
 function SimpleInputDemo({ ...args }) {
   const [value, setValue] = React.useState("");
@@ -18,20 +19,43 @@ function SimpleInputDemo({ ...args }) {
     );
   };
 
-  return <SimpleInput translationBadge={<TranslationBadge />} required onChange={onChange} value={value} {...args} />;
+  return (
+    <SimpleInput
+      translationBadge={args.withTranslationBadge && <TranslationBadge />}
+      required={args.required}
+      onChange={onChange}
+      value={value}
+      disabled={args.state === "locked"}
+      leftIcon={args.withLeftIcon && <IconStarOutlined size={20} />}
+      rightIcon={args.withRightIcon && <IconStarOutlined size={20} />}
+      errors={args.state === "error" && ["Error message"]}
+      placeholder="Placeholder"
+      label={args.label}
+      state={args.state}
+    />
+  );
 }
 
 export default {
-  title: "Components/InputFields/SimpleInput",
+  title: "Components/Forms/SimpleInput",
   component: SimpleInputDemo,
   argTypes: {
     state: {
       description: "Changes the state of the input",
-      options: ["error", "success"],
+      options: ["error", "success", "default", "locked"],
       control: { type: "select" },
       table: {
         defaultValue: {
-          summary: "success",
+          summary: "default",
+        },
+      },
+    },
+    required: {
+      description: "Marks the input with a required inidicator",
+      control: { type: "boolean" },
+      table: {
+        defaultValue: {
+          summary: false,
         },
       },
     },
@@ -43,8 +67,15 @@ const Template = ({ ...args }) => <SimpleInputDemo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   label: "This is a label",
-  errors: ["This is an error message", "This is another error message"],
-  placeholder: "This is a placeholder",
   state: "error",
   required: true,
+  withLeftIcon: false,
+  withRightIcon: false,
+};
+
+export const WithTranslationBadge = Template.bind({});
+WithTranslationBadge.args = {
+  label: "This is a label",
+  withTranslationBadge: true,
+  required: false,
 };

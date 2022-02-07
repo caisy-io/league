@@ -1,13 +1,25 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../../constants/styles/mediaquerys";
 
+const CSSLocked = css`
+  color: var(--text-04);
+
+  &:disabled {
+    color: var(--text-04);
+  }
+`;
+
 const Bronze = css`
   all: unset;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
   color: var(--text-01);
+
   width: ${(props) => `${props.width}px`};
+  /* height: 20px; */
+
+  ${(props) => props.locked && CSSLocked}
   max-width: 100%;
 
   &::placeholder {

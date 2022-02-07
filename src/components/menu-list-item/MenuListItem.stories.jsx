@@ -26,6 +26,15 @@ export default {
         },
       },
     },
+    activated: {
+      description: "Shows the menu list item is activated",
+      control: { type: "boolean" },
+      table: {
+        defaultValue: {
+          summary: "false",
+        },
+      },
+    },
     content: {
       description: "Disables the menu list item",
       control: { type: "text" },
@@ -34,9 +43,9 @@ export default {
 };
 
 // With every icon/ text possible
-function MenuListItemDemo({ content, size, disabled }) {
+function MenuListItemDemo({ content, size, disabled, activated={activated} }) {
   return <SStoryContainer>
-    <MenuListItem size={size} disabled={disabled}>
+    <MenuListItem size={size} disabled={disabled} activated={activated}>
       <div> <IconStarOutlined /> <span >{content}</span> <IconStarOutlined />  </div>
       <div> <IconStarOutlined /> <span >{content}</span> </div>
     </MenuListItem>
@@ -49,13 +58,14 @@ export const Default = Template.bind({});
 Default.args = {
   size: "small",
   disabled: false,
+  activated: false,
   content: "Default"
 };
 
 // With icon on the left
-export const Simple = ({ size, disabled, content }) => (
+export const Simple = ({ size, disabled, content, activated }) => (
   <div style={{ width: "320px" }}>
-    <MenuListItem size={size} disabled={disabled}>
+    <MenuListItem size={size} disabled={disabled} activated={activated}>
       <span>{content}</span>
     </MenuListItem>
   </div>
@@ -64,13 +74,14 @@ export const Simple = ({ size, disabled, content }) => (
 Simple.args = {
   size: "small",
   disabled: false,
+  activated: false,
   content: "Default"
 };
 
 // With icon on the left
-export const LeftIcon = ({ size, disabled, content }) => (
+export const LeftIcon = ({ size, disabled, content, activated }) => (
   <div style={{ width: "320px" }}>
-    <MenuListItem size={size} disabled={disabled}>
+    <MenuListItem size={size} disabled={disabled} activated={activated}>
       <div> <IconStarOutlined />  <span>{content}</span>  </div>
     </MenuListItem>
   </div>
@@ -79,13 +90,14 @@ export const LeftIcon = ({ size, disabled, content }) => (
 LeftIcon.args = {
   size: "small",
   disabled: false,
+  activated: false,
   content: "Default"
 };
 
 // With icon on the left and text on the right
-export const LeftIconRightText = ({ content, size, disabled }) => (
+export const LeftIconRightText = ({ content, size, disabled, activated }) => (
   <div style={{ width: "320px" }}>
-    <MenuListItem size={size} disabled={disabled}>
+    <MenuListItem size={size} disabled={disabled} activated={activated}>
       <div> <IconStarOutlined />  <span>{content}</span>  </div>
       <div> {content} </div>
     </MenuListItem>
@@ -95,13 +107,14 @@ export const LeftIconRightText = ({ content, size, disabled }) => (
 LeftIconRightText.args = {
   size: "small",
   disabled: false,
+  activated: false,
   content: "Default"
 };
 
 // With icon after text and on the right
-export const LeftIconRightTexRightIcon = ({ content, size, disabled }) => (
+export const LeftIconRightTexRightIcon = ({ content, size, disabled, activated }) => (
   <div style={{ width: "320px" }}>
-    <MenuListItem size={size} disabled={disabled}>
+    <MenuListItem size={size} disabled={disabled} activated={activated}>
       <div>  <span>{content}</span> <IconStarOutlined />   </div>
       <div> <IconStarOutlined />  </div>
     </MenuListItem>
@@ -111,13 +124,14 @@ export const LeftIconRightTexRightIcon = ({ content, size, disabled }) => (
 LeftIconRightTexRightIcon.args = {
   size: "small",
   disabled: false,
+  activated: false,
   content: "Default"
 };
 
 // With icon on the right
-export const RightIcon = ({ disabled, size, content }) => (
+export const RightIcon = ({ disabled, size, content, activated }) => (
   <div style={{ width: "320px" }}>
-    <MenuListItem size={size} disabled={disabled}>
+    <MenuListItem size={size} disabled={disabled} activated={activated}>
       <div>  <span>{content}</span></div>
       <div> <IconStarOutlined />  </div>
     </MenuListItem>
@@ -127,5 +141,6 @@ export const RightIcon = ({ disabled, size, content }) => (
 RightIcon.args = {
   size: "small",
   disabled: false,
+  activated: false,
   content: "Default"
 };
