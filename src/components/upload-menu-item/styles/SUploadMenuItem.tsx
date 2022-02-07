@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { SUploadMenuItemLabel } from "./SUploadMenuItemLabel";
 
 type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "activated";
 
@@ -9,8 +10,8 @@ interface ISUploadMenuItem {
 
 const CSSDrag = css`
   background-color: var(--hover-ui-01);
-  color: var(--ui-supportive-03);
-  border: 1px dashed var(--ui-supportive-03);
+  color: var(--ui-supportive-06);
+  border: 1px dashed var(--ui-supportive-06);
 `;
 
 const CSSSuccess = css`
@@ -35,8 +36,15 @@ const CSSHover = css`
 const CSSActivated = css`
   background-color: var(--active-ui-01);
   color: var(--ui-01);
-  --icon-background-color: var(--active-ui-01);
-  --text-color: var(--text-01);
+  svg{
+    .overwrite{
+      fill: var(--active-ui-01);
+      stroke: var(--active-ui-01);
+    }
+  }
+  ${SUploadMenuItemLabel}{
+    color: var(--text-01);
+  }
 `;
 
 const CSSDefault = css`
@@ -46,6 +54,9 @@ const CSSDefault = css`
 
   &:hover {
     ${CSSHover}
+    
+    
+    
   }
 
   &:active {
