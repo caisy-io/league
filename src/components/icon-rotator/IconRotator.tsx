@@ -2,12 +2,12 @@ import React from 'react';
 import { SIconRotator } from './styles/SIconRotator';
 
 export interface IIconRotator {
-  activated?: boolean,
+  rotationDegrees?: number,
 }
 
-export const IconRotator: React.FC<IIconRotator> = ({ children, activated }) => {
+export const IconRotator: React.FC<IIconRotator> = ({ children, rotationDegrees }) => {
   return (
-    <SIconRotator activated={activated}>
+    <SIconRotator rotationDegrees={rotationDegrees}>
       {children}
     </SIconRotator>
   )

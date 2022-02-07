@@ -6,9 +6,9 @@ export default {
   title: `Components/IconRotator`,
   component: IconRotator,
   argTypes: {
-    activated: {
+    rotationDegrees: {
       description: "An example boolean argument type",
-      control: { type: "boolean" },
+      control: { type: "number" },
       table: {
         defaultValue: {
           summary: true,
@@ -18,15 +18,13 @@ export default {
   },
 };
 
-const IconRotatorDemo: React.FC<{ boolean, text, select }> = ({ boolean, text, select }) => (
-  <IconRotator>
+const IconRotatorDemo: React.FC<{ rotationDegrees }> = ({ rotationDegrees }) => (
+  <IconRotator rotationDegrees={rotationDegrees}>
     <IconChevron />
   </IconRotator>
 );
 
 export const Default: any = IconRotatorDemo.bind({});
 Default.args = {
-  boolean: true,
-  text: 'Hello World',
-  select: 'option2',
+  rotationDegrees: 0,
 };
