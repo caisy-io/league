@@ -11,7 +11,6 @@ export const Default = ({ state, percentageLoaded, itemCount }) => {
       {state == "success" && "Done"}</UploadMenuItemLabel></SUploadMenuItemWrapper>)
 };
 
-// Default MainMenuItem Demo
 export default {
   title: "Components/Navigation/UploadMenuItem",
   component: Default,
