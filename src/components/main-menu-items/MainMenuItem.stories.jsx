@@ -1,6 +1,6 @@
 import React from "react";
 import { MainMenuItem } from "./MainMenuItem";
-import { IconLink } from "../../icons";
+import { IconStarOutlined } from "../../icons";
 import { Badge, EBadgePosition } from "../badge";
 
 // Default MainMenuItem Demo
@@ -22,7 +22,7 @@ export default {
 function MainMenuItemDemo({ content, ...args }) {
   return (
     <MainMenuItem {...args}>
-      <IconLink />
+      <IconStarOutlined size={20} />
     </MainMenuItem>
   );
 }
@@ -37,9 +37,9 @@ Default.args = {
 
 // With Badge
 export const WithBadge = ({ content, ...args }) => (
-  <Badge position={EBadgePosition.TopRight} value={args.badgeContent}>
+  <Badge position={EBadgePosition.TopRight} value={args.badgeContent} size="small">
     <MainMenuItem {...args}>
-      <IconLink />
+      <IconStarOutlined size={20}/>
     </MainMenuItem>
   </Badge>
 );

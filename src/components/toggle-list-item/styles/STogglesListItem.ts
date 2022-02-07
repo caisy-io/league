@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody02Medium, CSSProgressiveBody03Medium } from "../../../constants/styles/fonts";
+import { CSSProgressiveBody02Medium, CSSProgressiveBody03Medium } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const CSSMedium = css`

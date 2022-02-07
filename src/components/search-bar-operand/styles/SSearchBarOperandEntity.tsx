@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressivehighLightMicro } from '../../../constants/styles/fonts';
+import { CSSProgressiveHighlightMicro } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 import { ISearchBarOperandProps } from '../SearchBarOperand';
 
@@ -9,11 +9,11 @@ const CSSActivated = css`
 `;
 
 const Bronze = css<ISearchBarOperandProps>`
-  ${CSSProgressivehighLightMicro};  
+  ${CSSProgressiveHighlightMicro};  
   text-transform: uppercase;
   color: var(--text-02);
   background-color: var(--active-ui-01);
-  height: 100%;
+  height: 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +21,8 @@ const Bronze = css<ISearchBarOperandProps>`
   position: relative;
   z-index: 0;
   padding: 0 4px;
-  margin-right: 0.25rem;
+  margin-right: 0.5rem;
+  margin-left: -0.25rem;
   white-space: nowrap;
   ${(props) => props.activated ? CSSActivated : ''};
 `;

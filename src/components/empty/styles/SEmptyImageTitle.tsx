@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody03Semibold } from "../../../constants/styles/fonts";
+import { CSSProgressiveBody03Semibold } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
   ${CSSProgressiveBody03Semibold}
   margin-top: 24px;
   margin-bottom: 8px;
-  color: var(--text-04);
+  color: var(--text-01);
 `;
 
 const Silver = css``;

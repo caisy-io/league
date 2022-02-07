@@ -1,8 +1,7 @@
 import React from 'react';
 import {S{{ properCase name }} } from './styles/S{{ properCase name }}';
 
-interface I{{ properCase name }}{
-  children?
+export interface I{{ properCase name }}{
 }
 
 export const {{ properCase name }}: React.FC<I{{ properCase name }}> = ({children}) => {

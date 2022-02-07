@@ -24,7 +24,7 @@ export default {
 const dataSource = [
   {
     key: "title_label",
-    title: "Default",
+    title: "Default Title Eshkereeeeeeeeee! Wow! I am veeeeeery long indeed!",
     label: "Label"
   },
   {

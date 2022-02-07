@@ -10,9 +10,10 @@ const CSSError = css`
 `;
 
 const Bronze = css`
+  box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  width: 320px;
+  width: 100%;
   padding: 10px 12px;
   background-color: var(--ui-01);
   border: 1px solid var(--ui-03);
