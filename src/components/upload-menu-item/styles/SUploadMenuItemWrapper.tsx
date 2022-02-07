@@ -8,6 +8,19 @@ interface ISUploadMenuItemWrapper {
   isDefault: boolean;
 }
 
+const CSSDefault = css<ISUploadMenuItemWrapper>`
+&:hover{
+  ${SUploadMenuItemLabel} {
+    color: var(--hover-text-04);
+  }
+}
+&:active{
+  ${SUploadMenuItemLabel} {
+    color: var(--text-01);
+  }
+}
+`;
+
 const Bronze = css<ISUploadMenuItemWrapper>`
   max-width: 32px;
   display: flex;
@@ -15,23 +28,11 @@ const Bronze = css<ISUploadMenuItemWrapper>`
   align-items: center;
   justify-content: center;
   gap: 4px;
-
   font-size: 8px;
   font-weight: bold;
   text-transform: uppercase;
-
   position: relative;
-
-  &:hover{
-    ${SUploadMenuItemLabel} {
-      color: var(--hover-text-04);
-    }
-  }
-  &:active{
-    ${SUploadMenuItemLabel} {
-      color: var(--text-01);
-    }
-  }
+  ${(props) => props.state == "default" ? CSSDefault : ''};
 `;
 
 const Silver = css``;

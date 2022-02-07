@@ -20,7 +20,7 @@ interface IUploadMenuItem {
   children?
 }
 
-export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ state, percentageLoaded, itemCount, onClick }) => {
+export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ state, percentageLoaded, itemCount, onClick, children }) => {
   const loadingPercentage = percentageLoaded ? (percentageLoaded < 100 ? percentageLoaded : 100) : 0;
 
   const handleClick = (e) => {
@@ -60,6 +60,7 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ state, percentageLoa
           </SLoadingIconWrapper>
         )}
       </SUploadMenuItem>
+      {children}
     </SUploadMenuItemWrapper>
   );
 };
