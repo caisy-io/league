@@ -105,4 +105,5 @@ export * from "./profile-details-list-item";
 export * from "./string-single-field";
 export * from "./uploads-pop-up";
 export * from "./asset-list-item";
+export * from "./management-card";
 
