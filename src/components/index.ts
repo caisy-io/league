@@ -106,5 +106,6 @@ export * from "./color-picker";
 export * from "./profile-details-list-item";
 export * from "./string-single-field";
 export * from "./uploads-pop-up";
+export * from "./emoji-picker";
 export * from "./asset-list-item";
 

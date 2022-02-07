@@ -51,7 +51,7 @@ const FooterNavigationContainer = () => {
 };
 
 const UploadContainer = () => {
-  return <UploadMenuItem state="loading" percentageLoaded={57} />;
+  return <UploadMenuItem state="loading" percentageLoaded={57} > 57% </UploadMenuItem>;
 };
 
 // Default MainMenu Demo
