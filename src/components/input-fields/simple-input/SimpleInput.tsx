@@ -28,8 +28,8 @@ interface ISimpleInput {
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
-  autoComplete: string;
-  autoFocus: boolean;
+  autoComplete?: string;
+  autoFocus?: boolean;
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
