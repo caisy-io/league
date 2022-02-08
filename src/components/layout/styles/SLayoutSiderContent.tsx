@@ -18,10 +18,11 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLayoutSiderContent = styled.div`
+export const SLayoutSiderContent = styled.div<{styleOverwrite: any}>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
-  ${MIN_GOLD`${Gold}`};
+  ${MIN_GOLD`${Gold}`}; 
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
