@@ -54,9 +54,6 @@ const CSSDefault = css`
 
   &:hover {
     ${CSSHover}
-    
-    
-    
   }
 
   &:active {
