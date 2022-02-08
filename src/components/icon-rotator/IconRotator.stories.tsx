@@ -1,5 +1,5 @@
 import React from "react";
-import { IconChevron } from '../../icons/IconChevron';
+import { IconChevronUp } from '../../icons/IconChevronUp';
 import { IconRotator } from './IconRotator';
 
 export default {
@@ -7,7 +7,7 @@ export default {
   component: IconRotator,
   argTypes: {
     rotationDegrees: {
-      description: "An example boolean argument type",
+      description: "Number of degrees to rotate the icon by",
       control: { type: "number" },
     },
   },
@@ -15,7 +15,7 @@ export default {
 
 const IconRotatorDemo: React.FC<{ rotationDegrees }> = ({ rotationDegrees }) => {
   return (<><IconRotator rotationDegrees={rotationDegrees}>
-    <IconChevron />
+    <IconChevronUp size={20} />
   </IconRotator>
   </>)
 };
