@@ -109,3 +109,4 @@ export * from "./uploads-pop-up";
 export * from "./emoji-picker";
 export * from "./asset-list-item";
 export * from "./icon-rotator";
+export * from "./management-card";
