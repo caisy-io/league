@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 import { Preview } from "./Preview";
-import { IconStarOutlined }from "../../icons";
+import { IconStarOutlined } from "../../icons";
 import { Img } from "../../base-components/img/Img";
-import Flag from "../flag";
+import { Flag } from "../flag/index";
 
 export default {
   title: "Components/Style Guide/Preview",
@@ -34,7 +34,7 @@ export default {
     text: {
       name: "text",
       description: "Preview of the icon",
-      control: { type: "ReactNode" },
+      control: { type: "text" },
     },
   },
 } as ComponentMeta<typeof Preview>;
@@ -47,7 +47,7 @@ Preview_text_default.args = {
 };
 
 export const Preview_icon_default: ComponentStory<typeof Preview> = (args) => (
-  <Preview {...args} icon={<IconStarOutlined size={args.size}/>} /> 
+  <Preview {...args} icon={<IconStarOutlined size={args.size} />} />
 );
 
 export const Preview_image_default = Template.bind({});
