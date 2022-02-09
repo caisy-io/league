@@ -19,12 +19,12 @@ const Bronze = css`
   border-radius: 0.375rem;
   ${(props) => props.itemSize == "medium" || props.itemSize == "small" ? CSSMedium : ''};
   &: hover {
-    background-color: var(--hover-ui-01);
+    background-color: var(--hover-ui-01-1);
   }
   &: active {
-    background-color: #F3F7F9;
+    background-color: var(--active-ui-01-1);
   }
-  ${({styleOverwrite}) => styleOverwrite ?? ''};
+  ${({ styleOverwrite }) => styleOverwrite ?? ''};
 `;
 
 const Silver = css``;
