@@ -25,6 +25,7 @@ export const PrimaryModalHeader: React.FC<IPrimaryModalHeader> = ({ breadcrumbs,
         {breadcrumbs.map((label, index) => (
           <>
             <PrimaryModalHeaderLabel
+              key={label.value}
               active={index === breadcrumbs.length - 1}
               value={label.value}
               onClick={label.onClick}
