@@ -24,11 +24,11 @@ interface IMultiselectInputDropdown {
   placeholder?: string;
   dataSource: TDataSourceItem[];
   onSelectValue?: (option: TDataSourceItem) => void;
-  renderDataItem?: (option: TDataSourceItem) => React.ReactNode;
-  renderInputItem?: (option: TDataSourceItem) => React.ReactNode;
+  renderDataItem?: (option: TDataSourceItem) => JSX.Element;
+  renderInputItem?: (option: TDataSourceItem) => JSX.Element;
   onClose?: () => void;
-  popupHeader?: React.ReactNode;
-  popupFooter?: React.ReactNode;
+  popupHeader?: JSX.Element;
+  popupFooter?: JSX.Element;
 }
 
 export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
