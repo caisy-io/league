@@ -14,7 +14,7 @@ import { SMultiselectInputDropdownTitle } from "./styles/SMultiselectInputDropdo
 import { SMultiSelectInputWrapper } from "./styles/SMultiSelectInputWrapper";
 
 export type TDataSourceItem = {
-  id: number;
+  id: number | string;
   label: string;
   color: string;
 };
