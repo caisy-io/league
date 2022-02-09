@@ -87,7 +87,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
           </SMultiSelectInputWrapper>
         </SMultiselectInputDropdown>
         {opened && (
-          <Popover disableTriangle placement="bottomLeft" reference={ref}>
+          <Popover disableTriangle placement="bottomRight" reference={ref}>
             <SMultiselectInputDropdownSelect>
               {popupHeader}
               {dataSource &&
