@@ -31,6 +31,7 @@ const Bronze = css`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     svg {
       color: #172C55;
     }
