@@ -55,7 +55,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   const onCloseSelect = () => {
     setOpened(false);
     onClose?.();
-  }
+  };
 
   return (
     <ClickOutside onClickOutside={onCloseSelect}>
@@ -88,7 +88,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
         </SMultiselectInputDropdown>
         {opened && (
           <Popover disableTriangle placement="bottom" reference={ref}>
-            <SMultiselectInputDropdownSelect style={{ width }}>
+            <SMultiselectInputDropdownSelect>
               {popupHeader}
               {dataSource &&
                 dataSource.map((option) =>
@@ -109,7 +109,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
                     </div>
                   ),
                 )}
-                {popupFooter}
+              {popupFooter}
             </SMultiselectInputDropdownSelect>
           </Popover>
         )}
