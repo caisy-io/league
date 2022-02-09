@@ -14,7 +14,7 @@ import { SBlueprintEditorSubnavTabs } from "./styles/SBlueprintEditorSubnavTabs"
 
 interface IBlueprintEditorSubnavGroup {
   name: string;
-  groupId: number;
+  groupId: number | string;
 }
 
 interface IBlueprintEditorSubnav {
