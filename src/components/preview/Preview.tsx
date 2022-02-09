@@ -5,7 +5,7 @@ export interface IPreview {
   flag?: ReactNode;
   icon?: ReactNode;
   image?: ReactNode;
-  text?: string;
+  text?: ReactNode;
   size?: 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48;
   styleOverwrite?: any;
 }
