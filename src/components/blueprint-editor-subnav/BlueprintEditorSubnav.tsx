@@ -14,7 +14,7 @@ import { SBlueprintEditorSubnavTabs } from "./styles/SBlueprintEditorSubnavTabs"
 
 interface IBlueprintEditorSubnavGroup {
   name: string;
-  id: number;
+  groupId: number;
 }
 
 interface IBlueprintEditorSubnav {
@@ -52,9 +52,9 @@ export const BlueprintEditorSubnav: FC<IBlueprintEditorSubnav> = ({
       </SBlueprintEditorSubnavAddButton>
 
       <SBlueprintEditorSubnavTabs>
-        {groups.map((group, index) => (
-          <SBlueprintEditorSubnavTab key={group.id || index}>
-            <LineTab activated={selectedGroup.id === group.id} onClick={() => onSelectGroup(group)}>
+        {groups.map((group) => (
+          <SBlueprintEditorSubnavTab key={group.groupId}>
+            <LineTab activated={selectedGroup.groupId === group.groupId} onClick={() => onSelectGroup(group)}>
               {group.name}
               {!!onEditGroup && (
                 <SBlueprintEditorSubnavEditIconWrapper onClick={(e) => handleEditTab(e, group)}>
