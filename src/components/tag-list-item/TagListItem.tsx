@@ -60,7 +60,7 @@ export const TagListItem: React.FC<ITagListItem> = ({
       </STagListItem>
       {opened && popover && (
         <Popover onClickOutside={() => setOpened(false)} disableTriangle placement="right" reference={ref}>
-          <div style={{ width }}>{popover}</div>
+          <div>{popover}</div>
         </Popover>
       )}
     </>
