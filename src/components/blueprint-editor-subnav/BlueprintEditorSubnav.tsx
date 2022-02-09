@@ -52,8 +52,8 @@ export const BlueprintEditorSubnav: FC<IBlueprintEditorSubnav> = ({
       </SBlueprintEditorSubnavAddButton>
 
       <SBlueprintEditorSubnavTabs>
-        {groups.map((group) => (
-          <SBlueprintEditorSubnavTab key={group.id}>
+        {groups.map((group, index) => (
+          <SBlueprintEditorSubnavTab key={group.id || index}>
             <LineTab activated={selectedGroup.id === group.id} onClick={() => onSelectGroup(group)}>
               {group.name}
               {!!onEditGroup && (
