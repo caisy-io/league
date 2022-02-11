@@ -115,7 +115,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
           {errors &&
             errors.map((error, index) => (
-              <SErrorMessage>
+              <SErrorMessage key={index}>
                 {required && !label && index + 1 === errors.length && <SSimpleInputRequiredIndicator />}
                 {error}
               </SErrorMessage>
