@@ -264,8 +264,8 @@ const CSSDisabled = css`
   }
 `;
 
-const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
-  switch (type) {
+const getTypeStyling = (styleType: IButtonType, isActivated, isSticked) => {
+  switch (styleType) {
     case "primary":
       return isSticked && isActivated
         ? CSSPrimaryStickedActivated
@@ -291,7 +291,7 @@ const getTypeStyling = (type: IButtonType, isActivated, isSticked) => {
   }
 };
 
-const Bronze = css<IButtonProps>`
+const Bronze = css<{styleType: IButtonType} & IButtonProps>`
   ${CSSProgressivePrimaryButtons}
   color: var(--text-02);
   flex-grow: 0;
@@ -326,7 +326,7 @@ const Bronze = css<IButtonProps>`
   
   ${(props) => getSize(props.size)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
-  ${(props) => getTypeStyling(props.type, props.activated, props.sticked)};
+  ${(props) => getTypeStyling(props.styleType, props.activated, props.sticked)};
   
   line-height: normal;
 
