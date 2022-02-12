@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Badge, EBadgePosition } from "../badge";
 import { IconClose } from "../../icons/IconClose";
 import { IconAngleRight } from "../../icons/IconAngleRight";
@@ -23,7 +23,7 @@ export const PrimaryModalHeader: React.FC<IPrimaryModalHeader> = ({ breadcrumbs,
     <SPrimaryModalHeader>
       <SPrimaryModalHeaderBreadcrumb>
         {breadcrumbs.map((label, index) => (
-          <>
+          <Fragment key={`bc-${index}-${label.title}`}>
             <PrimaryModalHeaderLabel
               active={index === breadcrumbs.length - 1}
               value={label.value}
@@ -36,7 +36,7 @@ export const PrimaryModalHeader: React.FC<IPrimaryModalHeader> = ({ breadcrumbs,
               )}
               {index < breadcrumbs.length - 1 && <IconAngleRight />}
             </PrimaryModalHeaderLabel>
-          </>
+          </Fragment>
         ))}
       </SPrimaryModalHeaderBreadcrumb>
       {children}
