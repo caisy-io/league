@@ -1,7 +1,6 @@
 export * from "./avatar";
 export * from "./avatar-legacy";
 export * from "./badge";
-export * from "./blueprint-editor-subnav";
 export * from "./body-layout";
 export * from "./bulk-selection-snackbar";
 export * from "./button";
