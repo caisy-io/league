@@ -3,12 +3,13 @@ import { SSearchDropdownSectionTableRow } from './styles/SSearchDropdownSectionT
 
 interface ISearchDropdownSectionTableRow {
   onClick?: MouseEventHandler<HTMLDivElement> | undefined;
+  active?: boolean;
   children?
 }
 
-export const SearchDropdownSectionTableRow: React.FC<ISearchDropdownSectionTableRow> = ({ onClick, children }) => {
+export const SearchDropdownSectionTableRow: React.FC<ISearchDropdownSectionTableRow> = ({ active, onClick, children }) => {
   return (
-    <SSearchDropdownSectionTableRow onClick={onClick}>
+    <SSearchDropdownSectionTableRow active={active} onClick={onClick}>
       {children}
     </SSearchDropdownSectionTableRow>
   )
