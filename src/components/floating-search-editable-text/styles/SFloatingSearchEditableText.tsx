@@ -13,6 +13,9 @@ const Bronze = css`
   &::placeholder {
     color: var(--text-03);
   }
+  display: flex;
+  overflow: hidden;
+  max-width: 200px;
   text-align: left;
   padding: 6px 8px;
 `;
