@@ -25,7 +25,7 @@ export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloating
     };
 
     useEffect(() => {
-      const el = (inputRef as any).current;
+      const el = (inputRef as any)?.current;
       if (el) {
         const updateValue = (e) => {
           if (e.inputType === "insertText" && e.data == null) {
@@ -42,7 +42,7 @@ export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloating
         };
         el.addEventListener("input", updateValue);
       }
-    }, [inputRef && (inputRef as any).current]);
+    }, [inputRef && (inputRef as any)?.current]);
 
     const handleFocus = () => {
       setActive(true);
