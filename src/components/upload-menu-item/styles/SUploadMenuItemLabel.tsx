@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success";
+type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "activated";
 
 interface IUploadMenuItemLabel {
   state?: TUploadMenuItemStatus;
@@ -19,6 +19,10 @@ const CSSDefault = css`
   color: var(--text-04);
 `;
 
+const CSSActivated = css`
+  color: var(--text-01);
+`;
+
 const getStyles = (state: TUploadMenuItemStatus) => {
   switch (state) {
     case "dragging":
@@ -26,6 +30,8 @@ const getStyles = (state: TUploadMenuItemStatus) => {
     case "success":
     case "loading":
       return CSSSuccess;
+    case "activated":
+      return CSSActivated;
     default:
       return CSSDefault;
   }

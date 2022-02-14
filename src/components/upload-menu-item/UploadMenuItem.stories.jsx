@@ -3,7 +3,7 @@ import { UploadMenuItem } from "./UploadMenuItem";
 
 export const Default = ({ state, percentageLoaded, itemCount }) => {
   return (<UploadMenuItem state={state} percentageLoaded={percentageLoaded} itemCount={itemCount}>
-    {(state == "default" || state == "dragging") && "Upload"}
+    {(state == "default" || state == "dragging" || state == "activated") && "Upload"}
     {state == "loading" && (percentageLoaded ? `${percentageLoaded}%` : "Loading...")}
     {state == "success" && "Done"}
   </UploadMenuItem>
@@ -23,7 +23,7 @@ export default {
     state: {
       description: "Changes the state of the Item",
       control: { type: "select" },
-      options: ["default", "dragging", "loading", "success"],
+      options: ["default", "dragging", "loading", "success", "activated"],
     },
     percentageLoaded: {
       description: "Shows percentage",

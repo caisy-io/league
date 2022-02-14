@@ -12,6 +12,8 @@ const Bronze = css`
     ${(props) => props.error ? CSSError : ''};
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
 `;
 
 const Silver = css``;
