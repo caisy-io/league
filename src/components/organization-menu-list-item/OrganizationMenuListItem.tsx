@@ -57,7 +57,7 @@ export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({
         </SOrganizationMenuListItemTextWrapper>
       </SFlexListItem>
       <SOrganizationMenuListItemIconWrapper disabled={disabled}>
-        {badgeValue != undefined && (
+        {badgeValue != undefined && !disabled && (
           <Badge
             ref={badgeRef}
             value={badgeValue}
