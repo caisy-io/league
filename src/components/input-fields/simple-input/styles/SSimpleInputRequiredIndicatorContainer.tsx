@@ -3,7 +3,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../../con
 
 const Bronze = css`
   position: relative;
-  width: fit-content;
+  width: ${(props) => (props.width ? `${props.width}px` : "100%")};
 `;
 
 const Silver = css``;
