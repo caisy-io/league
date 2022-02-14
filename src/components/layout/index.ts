@@ -1,6 +1,7 @@
 export { Layout } from "./Layout";
 export { LayoutMainNav } from "./LayoutMainNav";
 export { SLayoutWrapper } from "./styles/SLayoutWrapper";
+export { SLayoutSiderContent } from "./styles/SLayoutSiderContent";
 export { LayoutTopNav } from "./LayoutTopNav";
 export { SLayoutContentWrapper } from "./styles/SLayoutContentWrapper";
 export { SLayoutSiderWrapper } from "./styles/SLayoutSiderWrapper";

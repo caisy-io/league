@@ -3,12 +3,13 @@ import { SSearchDropdownSectionFulltext } from './styles/SSearchDropdownSectionF
 
 interface ISearchDropdownSectionFulltext{
   onClick?: (e: MouseEventHandler<HTMLDivElement>) => void;
+  active?: boolean;
   children?
 }
 
-export const SearchDropdownSectionFulltext: React.FC<ISearchDropdownSectionFulltext> = ({onClick, children}) => {
+export const SearchDropdownSectionFulltext: React.FC<ISearchDropdownSectionFulltext> = ({active, onClick, children}) => {
   return (
-    <SSearchDropdownSectionFulltext onClick={onClick}>
+    <SSearchDropdownSectionFulltext active={active} onClick={onClick}>
       {children}
     </SSearchDropdownSectionFulltext>
   )

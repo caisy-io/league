@@ -3,8 +3,8 @@ import { CSSProgressiveBody03 } from "../../../constants/styles/design-tokens/fo
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
   ${CSSProgressiveBody03}
   background-color: transparent;
   color: var(--text-01);
@@ -13,6 +13,9 @@ const Bronze = css`
   &::placeholder {
     color: var(--text-03);
   }
+  display: flex;
+  overflow: hidden;
+  max-width: 200px;
   text-align: left;
   padding: 6px 8px;
 `;

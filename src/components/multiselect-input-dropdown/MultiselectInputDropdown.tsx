@@ -14,7 +14,7 @@ import { SMultiselectInputDropdownTitle } from "./styles/SMultiselectInputDropdo
 import { SMultiSelectInputWrapper } from "./styles/SMultiSelectInputWrapper";
 
 export type TDataSourceItem = {
-  id: number;
+  id: number | string;
   label: string;
   color: string;
 };
@@ -24,11 +24,11 @@ interface IMultiselectInputDropdown {
   placeholder?: string;
   dataSource: TDataSourceItem[];
   onSelectValue?: (option: TDataSourceItem) => void;
-  renderDataItem?: (option: TDataSourceItem) => React.ReactNode;
-  renderInputItem?: (option: TDataSourceItem) => React.ReactNode;
+  renderDataItem?: (option: TDataSourceItem) => JSX.Element;
+  renderInputItem?: (option: TDataSourceItem) => JSX.Element;
   onClose?: () => void;
-  popupHeader?: React.ReactNode;
-  popupFooter?: React.ReactNode;
+  popupHeader?: JSX.Element;
+  popupFooter?: JSX.Element;
 }
 
 export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
@@ -55,7 +55,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   const onCloseSelect = () => {
     setOpened(false);
     onClose?.();
-  }
+  };
 
   return (
     <ClickOutside onClickOutside={onCloseSelect}>
@@ -87,8 +87,8 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
           </SMultiSelectInputWrapper>
         </SMultiselectInputDropdown>
         {opened && (
-          <Popover disableTriangle placement="bottom" reference={ref}>
-            <SMultiselectInputDropdownSelect style={{ width }}>
+          <Popover disableTriangle placement="bottomRight" reference={ref}>
+            <SMultiselectInputDropdownSelect>
               {popupHeader}
               {dataSource &&
                 dataSource.map((option) =>
@@ -109,7 +109,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
                     </div>
                   ),
                 )}
-                {popupFooter}
+              {popupFooter}
             </SMultiselectInputDropdownSelect>
           </Popover>
         )}

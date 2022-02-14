@@ -29,6 +29,10 @@ export default {
       description: "Content of the button",
       control: { type: "text" },
     },
+    htmlType: {
+      description: "htmlType",
+      control: { type: "text" },
+    },
     size: {
       description: "Changes the size of the button",
       options: ["default", "small", "medium", "micro"],
