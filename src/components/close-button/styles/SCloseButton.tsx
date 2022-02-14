@@ -1,16 +1,7 @@
 import styled, { css } from 'styled-components';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
-import { ICloseButtonProps } from '../CloseButton';
 
-const CSSCloseButtonInvisible = css`
-  opacity: 0; 
-`;
-
-const CSSHoverPressed = css`
-  background-color: var(--hover-interactional-secondary-02);
-`;
-
-const Bronze = css<ICloseButtonProps>`
+const Bronze = css`
   opacity: 1; 
   transition: opacity ease 0.3s;
   cursor: pointer;
@@ -24,17 +15,13 @@ const Bronze = css<ICloseButtonProps>`
   position: absolute;
   top: -6px;
   right: -6px;
-  background-color: var(--interactional-secondary-02);
-  ${(props) => !props.defaultVisible && CSSCloseButtonInvisible}
   svg {
     width: 12px;
     height: 12px;
     color: #FFFF;
     stroke-width: 2.5;
   }
-  ${(props) => props.hover || props.pressed ? CSSHoverPressed : ''};
-  :hover, :active{
-    ${CSSHoverPressed}  }
+  background-color: var(--hover-interactional-secondary-02);
   `;
 
 const Silver = css``;
@@ -45,7 +32,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SCloseButton = styled.div<ICloseButtonProps>`
+export const SCloseButton = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
