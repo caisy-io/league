@@ -5,10 +5,6 @@ const CSSError = css`
   background-color: white;
 `;
 
-const CSSRecent = css`
-  background-color: var(--ui-02);
-`;
-
 const Bronze = css`
   width: 100%;
   background-color: #FFFF;
@@ -23,7 +19,6 @@ const Bronze = css`
     height: 16px;
     width: 16px;
   }
-  ${(props) => props.recent ? CSSRecent : ''};
   ${(props) => props.error ? CSSError : ''};
   &: hover {
     background-color: var(--hover-ui-01);

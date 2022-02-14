@@ -22,7 +22,7 @@ export interface IButtonProps {
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(({ children, onClick, ...props }, ref) => (
-  <SButton htmlType={props.htmlType} onClick={!props.disabled && onClick ? onClick : undefined} {...props} ref={ref} styleOverwrite={props.styleOverwrite}>
+  <SButton {...props} onClick={!props.disabled && onClick ? onClick : undefined} type={props.htmlType} styleType={props.type} ref={ref} styleOverwrite={props.styleOverwrite}>
     {React.Children.map(children, (child: any) => {
       if (!child) {
         return null;

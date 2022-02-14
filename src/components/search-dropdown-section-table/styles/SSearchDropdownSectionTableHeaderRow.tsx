@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { CSSProgressiveCaption01 } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
-const Bronze = css`
+const Bronze = css<{active?: boolean}>`
   ${CSSProgressiveCaption01}
   color: var(--text-01);
   background-color: #FFFF;
@@ -14,6 +14,10 @@ const Bronze = css`
     display: table-cell;
     padding: 0.75rem 1rem;
   }
+  :hover{
+    background-color: var(--hover-ui-01-1);
+  }
+  ${({active})  => active ? `background-color: var(--hover-ui-01-1);`: ''};
 `;
 
 const Silver = css``;
@@ -24,7 +28,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSearchDropdownSectionTableRow = styled.div`
+export const SSearchDropdownSectionTableRow = styled.div<{active?: boolean}>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

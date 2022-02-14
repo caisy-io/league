@@ -1,13 +1,10 @@
 import styled, { css } from 'styled-components';
+import { SFlex } from '../../../base-components/flex/styles/SFlex';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  height: 100%;
-  border-radius: 100px;
-  position: relative;
-  background: var(--ui-supportive-06);
-  width: ${({ progressValue }) => progressValue}%;
-  transition: width 0.3s ease-in-out;
+  gap: 0.75rem;
+  width: ${(props) => `calc(100% - ${props.iconWidth}px - 0.5rem)`};
 `;
 
 const Silver = css``;
@@ -18,7 +15,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SProgress = styled.div`
+export const SFlexListItem = styled(SFlex)`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

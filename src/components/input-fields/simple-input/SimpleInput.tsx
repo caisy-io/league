@@ -28,6 +28,8 @@ interface ISimpleInput {
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
+  autoComplete?: string;
+  autoFocus?: boolean;
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
@@ -113,7 +115,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
           {errors &&
             errors.map((error, index) => (
-              <SErrorMessage>
+              <SErrorMessage key={index}>
                 {required && !label && index + 1 === errors.length && <SSimpleInputRequiredIndicator />}
                 {error}
               </SErrorMessage>

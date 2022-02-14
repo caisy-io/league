@@ -49,7 +49,7 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ state, percentageLoa
     >
       <SUploadMenuItem state={state} >
         {(state == "dragging" && itemCount) && <Badge size={"small"} value={`${itemCount}`} styleOverwrite={SDraggingBadge} position={EBadgePosition.Center} type={"important"}></Badge>}
-        {state == "default" && <IconUpload size={20} />}
+        {(state == "default" || state == "activated") && <IconUpload size={20} />}
         {state == "default" || (state == "dragging" && !itemCount) && <IconUpload size={20} />}
         {state == "success" && <IconCheckmarkSolid size={20} />}
         {state == "loading" && (
