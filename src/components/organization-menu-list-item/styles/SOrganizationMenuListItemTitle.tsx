@@ -9,6 +9,7 @@ const Bronze = css`
     text-overflow: ellipsis;
     white-space: nowrap;
     ${(props) => props.itemSize !== "large" ? CSSProgressiveBody02Semibold : ''};
+    ${(props) => props.disabled ? "color: var(--disabled-text)" : ''};
 `;
 
 const Silver = css``;
