@@ -82,7 +82,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
     if (!inputRef?.current?.value && placeholder) {
       (spanRef.current as HTMLSpanElement).innerText = placeholder;
-      width = spanRef.current?.scrollWidth as number;
+      width = (spanRef.current?.scrollWidth as number) + 1;
     }
 
     setInputWidth(width);
@@ -105,7 +105,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
         <SSimpleInputInsideContainer>
           <SSimpleInputTextWidth ref={spanRef} />
           {label && (
-            <SSimpleInputRequiredIndicatorContainer>
+            <SSimpleInputRequiredIndicatorContainer onLabel>
               {required && <SSimpleInputRequiredIndicator />}
               <SLabel locked={state === "locked"} error={state === "error"} active={active} hover={hover}>
                 {label}

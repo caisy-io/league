@@ -1,9 +1,14 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../../constants/styles/mediaquerys";
 
+const CSSOnLabel = css`
+  width: fit-content;
+`;
+
 const Bronze = css`
   position: relative;
   width: ${(props) => (props.width ? `${props.width}px` : "100%")};
+  ${(props) => props.onLabel && CSSOnLabel}
 `;
 
 const Silver = css``;
