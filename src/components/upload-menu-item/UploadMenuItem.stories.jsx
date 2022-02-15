@@ -1,10 +1,18 @@
 import React from "react";
 import { UploadMenuItem } from "./UploadMenuItem";
 
-// Default MainMenuItem Demo
+export const Default = ({ state, percentageLoaded, itemCount }) => {
+  return (<UploadMenuItem state={state} percentageLoaded={percentageLoaded} itemCount={itemCount}>
+    {(state == "default" || state == "dragging" || state == "activated") && "Upload"}
+    {state == "loading" && (percentageLoaded ? `${percentageLoaded}%` : "Loading...")}
+    {state == "success" && "Done"}
+  </UploadMenuItem>
+  )
+};
+
 export default {
   title: "Components/Navigation/UploadMenuItem",
-  component: UploadMenuItemDemo,
+  component: Default,
   parameters: {
     design: {
       type: "figma",
@@ -15,23 +23,21 @@ export default {
     state: {
       description: "Changes the state of the Item",
       control: { type: "select" },
-      options: ["default", "dragging", "loading", "success", "hover", "activated"],
+      options: ["default", "dragging", "loading", "success", "activated"],
     },
     percentageLoaded: {
       description: "Shows percentage",
       control: { type: "number" },
     },
+    itemCount: {
+      description: "itemCount",
+      control: { type: "number" },
+    },
   },
 };
 
-function UploadMenuItemDemo({ ...args }) {
-  return <UploadMenuItem {...args} />;
-}
-
-const Template = (args) => <UploadMenuItemDemo {...args} />;
-
-export const Default = Template.bind({});
 Default.args = {
   state: "default",
   percentageLoaded: 0,
+  itemCount: 1,
 };

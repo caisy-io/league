@@ -1,1 +1,1 @@
-export { default } from "./ButtonsBar";
+export { ButtonsBar } from "./ButtonsBar";

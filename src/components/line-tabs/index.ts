@@ -1,1 +1,1 @@
-export { LineTabs} from "./LineTabs";
+export { LineTabs, LineTabPanel } from "./LineTabs";

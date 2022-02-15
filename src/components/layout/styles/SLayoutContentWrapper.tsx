@@ -15,10 +15,11 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLayoutContentWrapper = styled.div`
+export const SLayoutContentWrapper = styled.div<{styleOverwrite: any}>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;

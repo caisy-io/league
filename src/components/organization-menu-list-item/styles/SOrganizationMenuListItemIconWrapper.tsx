@@ -13,9 +13,10 @@ const Bronze = css`
   display: flex;
   align-items: center; 
   svg{
-    color: #567A98;
+    color: var(--icon-04);
     height: 6px;
     margin-left: 0.5rem;
+    ${(props) => props.disabled ? "color: var(--disabled-icon)" : ''};
   }
 `;
 

@@ -29,6 +29,10 @@ export default {
       description: "Content of the button",
       control: { type: "text" },
     },
+    htmlType: {
+      description: "htmlType",
+      control: { type: "text" },
+    },
     size: {
       description: "Changes the size of the button",
       options: ["default", "small", "medium", "micro"],
@@ -95,15 +99,10 @@ WithIcon.args = {
   sticked: false,
 };
 
-const CSSBadgeWithButton = css`
-  >div {
-    border: 2px solid #FFFF;
-  }
-`;
 
 // With Badge
 export const WithBadge = ({ content, ...args }) => (
-  <Badge position={EBadgePosition.TopRight} value={args.badgeContent} size="small" type="important" styleOverwrite={CSSBadgeWithButton} >
+  <Badge position={EBadgePosition.TopRight} value={args.badgeContent} size="small" type="important" withBorder >
     <Button {...args}>{content}</Button>
   </Badge>
 );

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { CSSProgressiveCaption01Semibold, CSSProgressiveCaption02Medium } from '../../../constants/styles/fonts';
+import { CSSProgressiveCaption01Semibold, CSSProgressiveCaption02Medium } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
@@ -11,6 +11,7 @@ const Bronze = css`
   max-width: 250px;
   margin-bottom: 0.13rem;
   white-space: nowrap;
+  ${(props) => props.disabled ? "display: none" : ''};
 `;
 
 const Silver = css``;

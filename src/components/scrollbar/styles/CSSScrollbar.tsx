@@ -2,9 +2,9 @@ import { css } from 'styled-components';
 
 export const CSSScrollbar = css`
 ::-webkit-scrollbar {
-  background-color: #FFFF;
-  border-right: 1px solid #E8EFF3;
-  border-left: 1px solid #E8EFF3;
+  background-color: var(--ui-01);
+  border-right: 1px solid var(--ui-03);
+  border-left: 1px solid var(--ui-03);
   width: 0.75rem;
   box-sizing: border-box;
 }

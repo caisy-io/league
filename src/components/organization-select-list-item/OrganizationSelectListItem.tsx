@@ -19,13 +19,14 @@ export interface IOrganizationSelectListItemProps {
   badgeText?: string | undefined;
   itemSize?: IListItemSize;
   previewProps?: IPreview;
+  onClick?: any;
 }
 
 interface ISFlex {
   badgeWitdh: number;
 }
 
-const SFlexListItem = styled(SFlex)<ISFlex>`
+const SFlexListItem = styled(SFlex) <ISFlex>`
   gap: 0.75rem;
   height: 100%;
   width: ${(props) => `calc(100% - ${props.width}px - 0.5rem)`};
@@ -37,6 +38,7 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
   itemSize,
   previewProps,
   badgeText,
+  onClick
 }) => {
   const badgeRef = useRef<HTMLElement>(null);
 
@@ -49,7 +51,7 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
   }, [badgeText, badgeRef.current]);
 
   return (
-    <SOrganizationSelectListItem itemSize={itemSize}>
+    <SOrganizationSelectListItem itemSize={itemSize} onClick={onClick}>
       <SFlexListItem badgeText={badgeText} width={width}>
         {itemSize == "large" ? (
           <Preview size={48} {...previewProps}></Preview>

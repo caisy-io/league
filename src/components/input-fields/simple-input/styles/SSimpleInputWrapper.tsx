@@ -2,29 +2,53 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../../constants/styles/mediaquerys";
 
 const CSSActive = css`
-  border-color: var(--ui-supportive-03);
+  border-color: var(--active-ui-03-2);
+  & input::placeholder {
+    color: var(--text-01);
+  }
 `;
 
 const CSSError = css`
   border-color: var(--ui-supportive-01);
+  & input::placeholder {
+    color: var(--text-01);
+  }
+`;
+
+const CSSSuccess = css`
+  & input::placeholder {
+    color: var(--text-01);
+  }
+`;
+
+const CSSLocked = css`
+  background-color: var(--active-ui-01-1);
+  border: 1px solid var(--active-ui-01-1);
+  & input::placeholder {
+    color: var(--text-04);
+  }
 `;
 
 const Bronze = css`
+  box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  width: 320px;
+  width: 100%;
   padding: 10px 12px;
   background-color: var(--ui-01);
   border: 1px solid var(--ui-03);
   border-radius: 8px;
   display: flex;
+  gap: 2px;
   flex-direction: column;
   justify-content: flex-start;
   transition: border 200ms;
-  gap: 2px;
+  box-sizing: border-box;
 
   ${(props) => props.active && CSSActive};
   ${(props) => props.state && props.state === "error" && CSSError}
+  ${(props) => props.state && props.state === "success" && CSSSuccess}
+  ${(props) => props.state && props.state === "locked" && CSSLocked}
 `;
 
 const Silver = css``;

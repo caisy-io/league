@@ -7,7 +7,7 @@ const CSSMedium = css`
 `;
 
 const Bronze = css`
-  width: 288px;
+  width: 100%;
   height: 64px;
   background-color: #FFFF;
   box-sizing: border-box;
@@ -17,14 +17,16 @@ const Bronze = css`
   gap: 0.75rem;
   padding: 0.5rem 1rem 0.5rem 0.5rem;
   border-radius: 0.375rem;
+  cursor: pointer;
+  ${(props) => props.disabled ? "cursor: default" : ''};
   ${(props) => props.itemSize == "medium" || props.itemSize == "small" ? CSSMedium : ''};
   &: hover {
-    background-color: var(--hover-ui-01);
+    ${(props) => !props.disabled ? "background-color: var(--hover-ui-01-1)" : ''};
   }
   &: active {
-    background-color: #F3F7F9;
+    ${(props) => !props.disabled ? "background-color: var(--active-ui-01-1);" : ''};
   }
-  ${({styleOverwrite}) => styleOverwrite ?? ''};
+  ${({ styleOverwrite }) => styleOverwrite ?? ''};
 `;
 
 const Silver = css``;

@@ -8,6 +8,7 @@ import copy from 'rollup-plugin-copy';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import tsPathsResolve from 'rollup-plugin-ts-paths-resolve';
 import cleaner from 'rollup-plugin-cleaner';
+import json from '@rollup/plugin-json';
 
 const CONFIGS = require('./configs');
 const ROOT_PATH = path.resolve(__dirname, '..', '..');
@@ -107,5 +108,6 @@ export default {
                 },
             ],
         }),
+        json(),
     ],
 };

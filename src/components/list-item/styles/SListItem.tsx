@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody03Medium } from "../../../constants/styles/fonts";
+import { CSSProgressiveBody03Medium } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const CSSHover = css`
@@ -24,7 +24,11 @@ const Bronze = css`
 
   display: flex;
   align-items: center;
-
+  gap: 8px;
+  *{
+    flex: 0 0 auto;
+  }
+  
   &:hover {
     ${CSSHover}
     ${(props) => props.activated && CSSActivated}

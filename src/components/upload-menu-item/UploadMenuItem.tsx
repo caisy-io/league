@@ -1,13 +1,15 @@
-import { SUploadMenuItem } from "./styles/SUploadMenuItem";
 import React from "react";
-import UploadIcon from "./icons/UploadIcon";
-import LoadingIcon from "./icons/LoadingIcon";
-import SuccessIcon from "./icons/SuccessIcon";
+import { css } from "styled-components";
+import { IconCheckmarkSolid, IconUpload } from "../..";
+import { Badge } from "../badge/Badge";
+import { EBadgePosition } from "../badge/EBadgePosition";
+import { SBadgeIcon } from "../badge/styles/SBadgeIcon";
+import LoadingBorderIcon from "./icons/LoadingBorderIcon";
+import { SLoadingBorderWrapper } from "./styles/SLoadingBorderWrapper";
+import { SLoadingIconWrapper } from "./styles/SLoadingIconWrapper";
+import { SUploadMenuItem } from "./styles/SUploadMenuItem";
 import { SUploadMenuItemLabel } from "./styles/SUploadMenuItemLabel";
 import { SUploadMenuItemWrapper } from "./styles/SUploadMenuItemWrapper";
-import LoadingBorderIcon from "./icons/LoadingBorderIcon";
-import { SLoadingIconWrapper } from "./styles/SLoadingIconWrapper";
-import { SLoadingBorderWrapper } from "./styles/SLoadingBorderWrapper";
 
 type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "activated";
 
@@ -15,56 +17,53 @@ interface IUploadMenuItem {
   onClick: () => void;
   state?: TUploadMenuItemStatus;
   percentageLoaded?: number;
+  itemCount?: number;
+  children?
 }
 
-export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ ...props }) => {
-  const percentageLoaded = props.percentageLoaded ? (props.percentageLoaded < 100 ? props.percentageLoaded : 100) : 0;
+export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ state, percentageLoaded, itemCount, onClick, children }) => {
+  const loadingPercentage = percentageLoaded ? (percentageLoaded < 100 ? percentageLoaded : 100) : 0;
 
   const handleClick = (e) => {
     e.preventDefault();
-    props.onClick();
+    onClick();
   };
 
-  const renderIcon = () => {
-    switch (props.state) {
-      case "dragging":
-        return <LoadingIcon />;
-      case "loading":
-        return (
-          <SLoadingIconWrapper>
-            <SLoadingBorderWrapper percentageLoaded={percentageLoaded}>
-              <LoadingBorderIcon />
-            </SLoadingBorderWrapper>
-            <LoadingIcon />
-          </SLoadingIconWrapper>
-        );
-      case "success":
-        return <SuccessIcon />;
-      default:
-        return <UploadIcon />;
-    }
-  };
-
-  const renderLabelText = () => {
-    switch (props.state) {
-      case "loading":
-        return percentageLoaded ? `${percentageLoaded}%` : "Loading...";
-      case "success":
-        return "Done";
-      default:
-        return "Upload";
-    }
-  };
+  const SDraggingBadge = css`
+  ${SBadgeIcon}{
+    background-color: var(--ui-supportive-06);
+  }
+`;
+  const SLoadingBadge = css`
+  ${SBadgeIcon}{
+    background-color: var(--icon-07);
+  }
+`;
 
   return (
     <SUploadMenuItemWrapper
-      activated={props.state === "activated"}
-      isDefault={!props.state || props.state === "default"}
+      activated={state === "activated"}
+      isDefault={!state || state === "default"}
+      state={state}
+      onClick={handleClick}
     >
-      <SUploadMenuItem state={props.state} onClick={handleClick}>
-        {renderIcon()}
+      <SUploadMenuItem state={state} >
+        {(state == "dragging" && itemCount) && <Badge size={"small"} value={`${itemCount}`} styleOverwrite={SDraggingBadge} position={EBadgePosition.Center} type={"important"}></Badge>}
+        {(state == "default" || state == "activated") && <IconUpload size={20} />}
+        {state == "default" || (state == "dragging" && !itemCount) && <IconUpload size={20} />}
+        {state == "success" && <IconCheckmarkSolid size={20} />}
+        {state == "loading" && (
+          <SLoadingIconWrapper>
+            <SLoadingBorderWrapper percentageLoaded={loadingPercentage}>
+              <LoadingBorderIcon />
+            </SLoadingBorderWrapper>
+            <Badge size={"small"} value={`${itemCount}`} styleOverwrite={SLoadingBadge} position={EBadgePosition.Center} type={"important"}></Badge>
+          </SLoadingIconWrapper>
+        )}
       </SUploadMenuItem>
-      <SUploadMenuItemLabel state={props.state}>{renderLabelText()}</SUploadMenuItemLabel>
+      <SUploadMenuItemLabel state={state}>
+        {children}
+      </SUploadMenuItemLabel>
     </SUploadMenuItemWrapper>
   );
 };

@@ -8,7 +8,6 @@ const Bronze = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
 
 const Silver = css``;
@@ -19,10 +18,11 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SBadge = styled.div`
+export const SBadge = styled.div<{styleOverwrite: any}>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
