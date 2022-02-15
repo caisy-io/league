@@ -9,9 +9,9 @@ export interface ICloseButtonProps {
 
 export const CloseButton: React.FC<ICloseButtonProps> = ({ onClose, children }) => {
   return (
-    <SCloseButtonWrapper onClick={onClose}>
+    <SCloseButtonWrapper>
       {children}
-      <SCloseButton>
+      <SCloseButton onClick={onClose}>
         <IconCross variant="close" />
       </SCloseButton>
     </SCloseButtonWrapper>
