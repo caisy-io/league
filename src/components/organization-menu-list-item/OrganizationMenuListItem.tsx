@@ -48,7 +48,7 @@ export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({
   }, [badgeValue, badgeRef.current]);
 
   return (
-    <SOrganizationMenuListItem itemSize={itemSize} styleOverwrite={styleOverwrite}>
+    <SOrganizationMenuListItem itemSize={itemSize} disabled={disabled} styleOverwrite={styleOverwrite}>
       <SFlexListItem width={width}>
         {itemSize == "large" ? <Preview size={48} {...previewProps} /> : <Preview size={36} {...previewProps} />}
         <SOrganizationMenuListItemTextWrapper>

@@ -17,6 +17,8 @@ const Bronze = css`
   gap: 0.75rem;
   padding: 0.5rem 1rem 0.5rem 0.5rem;
   border-radius: 0.375rem;
+  cursor: pointer;
+  ${(props) => props.disabled ? "cursor: default" : ''};
   ${(props) => props.itemSize == "medium" || props.itemSize == "small" ? CSSMedium : ''};
   &: hover {
     background-color: var(--hover-ui-01-1);
