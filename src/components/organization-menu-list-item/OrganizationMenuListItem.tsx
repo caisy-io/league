@@ -22,7 +22,7 @@ export interface IOrganizationMenuListItemProps {
   previewProps?: IPreview;
   children?;
   disabled?: boolean;
-  onClick?: any;
+  onClick?: () => void;
 }
 
 const SFlexListItem = styled(SFlex)`
