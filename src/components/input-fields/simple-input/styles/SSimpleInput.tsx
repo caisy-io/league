@@ -10,7 +10,9 @@ const CSSLocked = css`
 `;
 
 const Bronze = css`
-  all: unset;
+  border: unset;
+  outline: unset;
+  box-shadow: unset;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
