@@ -21,10 +21,10 @@ const Bronze = css`
   ${(props) => props.disabled ? "cursor: default" : ''};
   ${(props) => props.itemSize == "medium" || props.itemSize == "small" ? CSSMedium : ''};
   &: hover {
-    background-color: var(--hover-ui-01-1);
+    ${(props) => !props.disabled ? "background-color: var(--hover-ui-01-1)" : ''};
   }
   &: active {
-    background-color: var(--active-ui-01-1);
+    ${(props) => !props.disabled ? "background-color: var(--active-ui-01-1);" : ''};
   }
   ${({ styleOverwrite }) => styleOverwrite ?? ''};
 `;
