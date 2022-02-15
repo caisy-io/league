@@ -1,21 +1,19 @@
-import React from 'react';
-import { IconCross } from '../../icons/IconCross';
-import { SCloseButton } from './styles/SCloseButton';
-import { SCloseButtonWrapper } from './styles/SCloseButtonWrapper';
+import React, { MouseEventHandler } from "react";
+import { IconCross } from "../../icons/IconCross";
+import { SCloseButton } from "./styles/SCloseButton";
+import { SCloseButtonWrapper } from "./styles/SCloseButtonWrapper";
 
 export interface ICloseButtonProps {
-  defaultVisible?: boolean,
-  hover?: boolean,
-  pressed?: boolean
+  onClose?: (e: MouseEventHandler<HTMLDivElement>) => void;
 }
 
-export const CloseButton: React.FC<ICloseButtonProps> = ({ defaultVisible = true, ...props }) => {
+export const CloseButton: React.FC<ICloseButtonProps> = ({ onClose, children }) => {
   return (
-    <SCloseButtonWrapper {...props} defaultVisible={defaultVisible}>
-      {props.children}
-      <SCloseButton {...props} defaultVisible={defaultVisible}>
+    <SCloseButtonWrapper>
+      {children}
+      <SCloseButton onClick={onClose}>
         <IconCross variant="close" />
       </SCloseButton>
     </SCloseButtonWrapper>
-  )
-}
+  );
+};
