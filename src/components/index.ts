@@ -108,5 +108,6 @@ export * from "./uploads-pop-up";
 export * from "./emoji-picker";
 export * from "./asset-list-item";
 export * from "./icon-rotator";
+export * from "./notifications-group-select-list-item";
 export * from "./management-card";
 export * from "./scrollbar";

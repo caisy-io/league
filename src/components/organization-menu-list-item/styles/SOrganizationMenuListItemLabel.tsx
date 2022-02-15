@@ -11,6 +11,7 @@ const Bronze = css`
   max-width: 250px;
   margin-bottom: 0.13rem;
   white-space: nowrap;
+  ${(props) => props.disabled ? "display: none" : ''};
 `;
 
 const Silver = css``;
