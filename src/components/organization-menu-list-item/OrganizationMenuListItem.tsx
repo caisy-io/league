@@ -22,6 +22,7 @@ export interface IOrganizationMenuListItemProps {
   previewProps?: IPreview;
   children?;
   disabled?: boolean;
+  onClick?: () => void;
 }
 
 const SFlexListItem = styled(SFlex)`
@@ -37,7 +38,8 @@ export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({
   itemSize,
   styleOverwrite,
   previewProps,
-  disabled
+  disabled,
+  onClick
 }) => {
   const badgeRef = useRef<HTMLElement>(null);
   const [width, setWidth] = React.useState(0);
@@ -48,7 +50,7 @@ export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({
   }, [badgeValue, badgeRef.current]);
 
   return (
-    <SOrganizationMenuListItem itemSize={itemSize} disabled={disabled} styleOverwrite={styleOverwrite}>
+    <SOrganizationMenuListItem onClick={onClick} itemSize={itemSize} disabled={disabled} styleOverwrite={styleOverwrite}>
       <SFlexListItem width={width}>
         {itemSize == "large" ? <Preview size={48} {...previewProps} /> : <Preview size={36} {...previewProps} />}
         <SOrganizationMenuListItemTextWrapper>
