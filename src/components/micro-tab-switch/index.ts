@@ -1,1 +1,2 @@
-export { MicroTabSwitch } from "./MicroTabSwitch";
+export {MicroTabSwitch} from "./MicroTabSwitch";
+export {MicroTabSwitchItem} from "./MicroTabSwitchItem";
