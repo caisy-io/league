@@ -15,7 +15,9 @@ const Bronze = css<{ value: number; max: number; min: number }>`
     top: 0;
     left: 0;
     pointer-events: none;
-    width: ${({value, max, min}) => `${((value - min) / (max - min)) * 100}%`};
+    width: 100%;
+    transform: scaleX(${({value, max, min}) => `${((value - min) / (max - min)) * 100}%`});
+    transform-origin: left;
     height: 100%;
     background: var(--ui-04);
     border-radius: 59px;
@@ -29,8 +31,9 @@ const Bronze = css<{ value: number; max: number; min: number }>`
     border-radius: 50%;
     position: absolute;
     top: 50%;
-    left: ${({value, max, min}) => `${((value - min) / (max - min)) * 100}%`};
-    transform: translate(-100%, -50%);
+    left: -10px;
+    transform: translate(${({value, max, min}) => `${((((value - min) / (max - min)) * 106) / 10) * 100}%`}, -50%);
+    transform-origin: left;
   }
 `;
 
