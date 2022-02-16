@@ -1,5 +1,4 @@
 import React from 'react';
-import {IconStarOutlined} from "../../icons";
 import {SSlider} from './styles/SSlider';
 import {SSliderCont} from "./styles/SSliderCont";
 import {SSliderInput} from "./styles/SSliderInput";
