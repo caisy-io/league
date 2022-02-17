@@ -111,3 +111,6 @@ export * from "./icon-rotator";
 export * from "./notifications-group-select-list-item";
 export * from "./management-card";
 export * from "./scrollbar";
+export * from "./asset-image-card";
+export * from "./micro-tab-switch";
+export * from "./slider";
