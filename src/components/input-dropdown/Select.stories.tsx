@@ -32,12 +32,12 @@ const dataSource = [
   },
   {
     key: "icon_title",
-    title: "Title and Icon",
+    title: "Title and Icon - Wow! I am veeeeeery long indeed!",
     icon: <IconStarOutlined size={20}></IconStarOutlined>,
   },
   {
     key: "icon_title_label",
-    title: "Label, Title and Icon",
+    title: "Label, Title and Icon - Wow! I am veeeeeery long indeed!",
     icon: <IconStarOutlined size={20}></IconStarOutlined>,
   },
 ];

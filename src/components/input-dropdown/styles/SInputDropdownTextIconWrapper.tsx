@@ -4,7 +4,7 @@ import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../consta
 
 const Bronze = css`
   gap: 0.5rem;
-  width: 90%;
+  width: 100%;
   svg{
     flex-shrink: 0;
   }
@@ -25,4 +25,3 @@ export const SInputDropdownTextIconWrapper = styled(SFlex)`
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
 `;
-

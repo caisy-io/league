@@ -12,12 +12,13 @@ const CSSError = css`
 const Bronze = css`
   position: relative;
   overflow: hidden;
-  width: 320px;
+  height: 48px;
   display: flex;
   align-items: center;
   cursor: pointer;
   justify-content: space-between;
-  padding: 10px 12px;
+  padding: 0 12px;
+  box-sizing: border-box;
   background-color: var(--ui-01);
   border-bottom: 1px solid var(--ui-03);
   transition: border 200ms;
