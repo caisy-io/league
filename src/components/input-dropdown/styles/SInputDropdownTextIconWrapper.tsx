@@ -4,7 +4,7 @@ import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../consta
 
 const Bronze = css`
   gap: 0.5rem;
-  width: 100%;
+  width: 90%;
   svg{
     flex-shrink: 0;
   }
