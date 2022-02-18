@@ -6,16 +6,20 @@ export default {
   title: "Components/Forms/SimpleInputDropdown",
   component: SimpleInputDropdownDemo,
   argTypes: {
+    label: {
+      description: "Label/ title for the dropdown",
+      control: { type: "text" },
+    },
     required: {
-      description: "An example boolean argument type",
+      description: "Changes the input to required",
       control: { type: "boolean" },
     },
     error: {
-      description: "An example boolean argument type",
+      description: "Changes the status to error",
       control: { type: "boolean" },
     },
     translationBadge: {
-      description: "An example boolean argument type",
+      description: "Toggles the existence of the translation badge",
       control: { type: "boolean" },
     },
   },
@@ -25,7 +29,6 @@ const dataSource = [
   {
     key: "title_label",
     title: "Default Title Eshkereeeeeeeeee! Wow! I am veeeeeery long indeed!",
-    label: "Label"
   },
   {
     key: "icon_title",
@@ -35,12 +38,11 @@ const dataSource = [
   {
     key: "icon_title_label",
     title: "Label, Title and Icon",
-    label: "Label",
     icon: <IconStarOutlined size={20}></IconStarOutlined>,
   },
 ];
 
-function SimpleInputDropdownDemo({ error, required, translationBadge }) {
+function SimpleInputDropdownDemo({ error, required, translationBadge, label }) {
   const [selectValue, setSelectValue] = React.useState(null);
   return <SimpleInputDropdown
     error={error}
@@ -50,6 +52,7 @@ function SimpleInputDropdownDemo({ error, required, translationBadge }) {
     placeholder="Select an option.."
     value={selectValue}
     onSelectValue={(e) => setSelectValue(e)}
+    label={label}
   />
 }
 
@@ -60,6 +63,7 @@ Default.args = {
   error: false,
   required: false,
   translationBadge: false,
+  label: "Default label"
 };
 
 export const Required = Template.bind({});
@@ -67,6 +71,7 @@ Required.args = {
   error: false,
   required: true,
   translationBadge: false,
+  label: "Default label"
 };
 
 export const Translation = Template.bind({});
@@ -74,4 +79,5 @@ Translation.args = {
   error: false,
   required: false,
   translationBadge: true,
+  label: "Default label"
 };

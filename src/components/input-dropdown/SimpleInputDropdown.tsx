@@ -15,7 +15,6 @@ import { TranslationBadge } from "./TranslationBadge";
 
 export interface IDataSourceItem {
   title: string;
-  label?: string;
   key: string;
   data?: any;
   icon?: ReactNode;
@@ -28,6 +27,7 @@ interface ISelectSingle {
   value?: string;
   defaultValue?: string;
   placeholder?: string;
+  label?: string;
   required?: boolean;
   error?: boolean;
   translationBadge?: boolean;
@@ -37,17 +37,15 @@ interface ISelectSingle {
   optionsStyle?: React.CSSProperties;
 }
 
-export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onSelectValue, translationBadge }) => {
+export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onSelectValue, translationBadge, label }) => {
   const [opened, setOpened] = React.useState(false);
   const [selectTitle, setSelectTitle] = React.useState<string | null | undefined>(null);
-  const [selectLabel, setSelectLabel] = React.useState<string | null | undefined>(null);
   const [selectIcon, setSelectIcon] = React.useState<ReactNode>(null);
   const ref = React.useRef(null);
 
   const onChange = (e) => {
     onSelectValue?.(e);
     setSelectTitle(dataSource.find((option) => option.key === e)?.title);
-    setSelectLabel(dataSource.find((option) => option.key === e)?.label);
     setSelectIcon(dataSource.find((option) => option.key === e)?.icon);
     setOpened(false);
   };
@@ -61,15 +59,15 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
           <SInputDropdownTextIconWrapper>
             {selectIcon ? selectIcon : ""}
             <SInputDropdownTextWrapper>
-              {selectLabel && <SInputDropdownLabel error={error} required={required} opened={opened}>{selectLabel ? selectLabel : ""}</SInputDropdownLabel>}
+              {label && <SInputDropdownLabel error={error} required={required} opened={opened}>{label ? label : ""}</SInputDropdownLabel>}
               {translationBadge &&
                 <SFlex>
-                  <SInputDropdownTitle selectTitle={selectTitle} label={selectLabel} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+                  <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
                   <SDropdownArrow opened={opened} translationBadge={translationBadge} error={error}>
                     <IconChevronDown size={24}></IconChevronDown>
                   </SDropdownArrow>
                 </SFlex>}
-              {!translationBadge && <SInputDropdownTitle selectTitle={selectTitle} label={selectLabel} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+              {!translationBadge && <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
               }
             </SInputDropdownTextWrapper>
           </SInputDropdownTextIconWrapper>
@@ -90,8 +88,7 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
                       <SInputDropdownTextIconWrapper>
                         {option.icon ? option.icon : ""}
                         <SInputDropdownTextWrapper>
-                          {option.label && <SInputDropdownLabel required={required}>{option.label ? option.label : ""}</SInputDropdownLabel>}
-                          <SInputDropdownTitle selectTitle={selectTitle} label={option.label} required={required}>{option.title}</SInputDropdownTitle>
+                          <SInputDropdownTitle selectTitle={selectTitle} required={required}>{option.title}</SInputDropdownTitle>
                         </SInputDropdownTextWrapper>
                       </SInputDropdownTextIconWrapper>
                     </SInputDropdownOption>
