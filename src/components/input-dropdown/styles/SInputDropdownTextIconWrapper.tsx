@@ -25,4 +25,3 @@ export const SInputDropdownTextIconWrapper = styled(SFlex)`
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
 `;
-
