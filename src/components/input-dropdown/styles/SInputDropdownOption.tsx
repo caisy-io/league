@@ -29,7 +29,10 @@ const Bronze = css`
     flex-shrink: 0;
   }
   &:hover{
-    background-color: var(--ui-02);
+    background-color: var(--hover-ui-01);
+  }
+  &:active{
+    background-color: var(--active-ui-01-1);
   }
 `;
 
