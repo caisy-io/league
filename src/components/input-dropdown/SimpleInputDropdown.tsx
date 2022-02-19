@@ -35,9 +35,10 @@ interface ISelectSingle {
   inputStyle?: React.CSSProperties;
   dropdownStyle?: React.CSSProperties;
   optionsStyle?: React.CSSProperties;
+  styleOverwrite?: string;
 }
 
-export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onSelectValue, translationBadge, label }) => {
+export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onSelectValue, translationBadge,label, styleOverwrite }) => {
   const [opened, setOpened] = React.useState(false);
   const [selectTitle, setSelectTitle] = React.useState<string | null | undefined>(null);
   const [selectIcon, setSelectIcon] = React.useState<ReactNode>(null);
@@ -67,7 +68,7 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
   return (
     <ClickOutside onClickOutside={() => handleDropdown()}>
       <div>
-        <SInputDropdown onClick={() => handleDropdown()} ref={ref} error={error} opened={opened} selectTitle={selectTitle}>
+        <SInputDropdown onClick={() => handleDropdown()} ref={ref} error={error} opened={opened} selectTitle={selectTitle} styleOverwrite={styleOverwrite}>
           <SInputDropdownTextIconWrapper>
             {selectIcon ? selectIcon : ""}
             <SInputDropdownTextWrapper>
