@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
-import { IconChevronDown } from "../..";
+import { IconChevronDown, IconRotator } from "../..";
 import { SFlex } from "../../base-components/flex/styles/SFlex";
 import { ClickOutside, useDimensions } from "../../utils";
 import { Popover } from "../popover/Popover";
-import { SDropdownArrow } from "./styles/SDropdownArrow";
+import { SDropdownArrowWrapper } from "./styles/SDropdownArrowWrapper";
 import { SInputDropdown } from "./styles/SInputDropdown";
 import { SInputDropdownLabel } from "./styles/SInputDropdownLabel";
 import { SInputDropdownOption } from "./styles/SInputDropdownOption";
@@ -15,7 +15,6 @@ import { TranslationBadge } from "./TranslationBadge";
 
 export interface IDataSourceItem {
   title: string;
-  label?: string;
   key: string;
   data?: any;
   icon?: ReactNode;
@@ -28,6 +27,7 @@ interface ISelectSingle {
   value?: string;
   defaultValue?: string;
   placeholder?: string;
+  label?: string;
   required?: boolean;
   error?: boolean;
   translationBadge?: boolean;
@@ -38,45 +38,53 @@ interface ISelectSingle {
   styleOverwrite?: string;
 }
 
-export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onSelectValue, translationBadge, styleOverwrite }) => {
+export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onSelectValue, translationBadge,label, styleOverwrite }) => {
   const [opened, setOpened] = React.useState(false);
   const [selectTitle, setSelectTitle] = React.useState<string | null | undefined>(null);
-  const [selectLabel, setSelectLabel] = React.useState<string | null | undefined>(null);
   const [selectIcon, setSelectIcon] = React.useState<ReactNode>(null);
   const ref = React.useRef(null);
+
+  const [rotationDegrees, setRotationDegrees] = React.useState(0);
 
   const onChange = (e) => {
     onSelectValue?.(e);
     setSelectTitle(dataSource.find((option) => option.key === e)?.title);
-    setSelectLabel(dataSource.find((option) => option.key === e)?.label);
     setSelectIcon(dataSource.find((option) => option.key === e)?.icon);
     setOpened(false);
+    setRotationDegrees(0);
+  };
+
+  const handleDropdown = () => {
+    if (opened == true) {
+      setRotationDegrees(0)
+    } else {
+      setRotationDegrees(-180)
+    }
+    setOpened((prev) => !prev)
   };
 
   const { width } = useDimensions(ref);
 
   return (
-    <ClickOutside onClickOutside={() => setOpened(false)}>
+    <ClickOutside onClickOutside={() => handleDropdown()}>
       <div>
-        <SInputDropdown onClick={() => setOpened((prev) => !prev)} ref={ref} error={error} opened={opened} selectTitle={selectTitle} styleOverwrite={styleOverwrite}>
+        <SInputDropdown onClick={() => handleDropdown()} ref={ref} error={error} opened={opened} selectTitle={selectTitle} styleOverwrite={styleOverwrite}>
           <SInputDropdownTextIconWrapper>
             {selectIcon ? selectIcon : ""}
             <SInputDropdownTextWrapper>
-              {selectLabel && <SInputDropdownLabel error={error} required={required} opened={opened}>{selectLabel ? selectLabel : ""}</SInputDropdownLabel>}
+              {label && <SInputDropdownLabel error={error} required={required} opened={opened}>{label ? label : ""}</SInputDropdownLabel>}
               {translationBadge &&
                 <SFlex>
-                  <SInputDropdownTitle selectTitle={selectTitle} label={selectLabel} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
-                  <SDropdownArrow opened={opened} translationBadge={translationBadge} error={error}>
-                    <IconChevronDown size={24}></IconChevronDown>
-                  </SDropdownArrow>
+                  <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+                  <SDropdownArrowWrapper opened={opened}>                  <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator>
+                  </SDropdownArrowWrapper>
                 </SFlex>}
-              {!translationBadge && <SInputDropdownTitle selectTitle={selectTitle} label={selectLabel} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+              {!translationBadge && <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
               }
             </SInputDropdownTextWrapper>
           </SInputDropdownTextIconWrapper>
-          {!translationBadge && <SDropdownArrow opened={opened}>
-            <IconChevronDown size={24}></IconChevronDown>
-          </SDropdownArrow>}
+          {!translationBadge && <SDropdownArrowWrapper opened={opened}> <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator> </SDropdownArrowWrapper>
+          }
           {translationBadge && <TranslationBadge countryCode="de"></TranslationBadge>}
         </SInputDropdown>
         {opened && (
@@ -91,8 +99,7 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
                       <SInputDropdownTextIconWrapper>
                         {option.icon ? option.icon : ""}
                         <SInputDropdownTextWrapper>
-                          {option.label && <SInputDropdownLabel required={required}>{option.label ? option.label : ""}</SInputDropdownLabel>}
-                          <SInputDropdownTitle selectTitle={selectTitle} label={option.label} required={required}>{option.title}</SInputDropdownTitle>
+                          <SInputDropdownTitle selectTitle={selectTitle} required={required}>{option.title}</SInputDropdownTitle>
                         </SInputDropdownTextWrapper>
                       </SInputDropdownTextIconWrapper>
                     </SInputDropdownOption>
@@ -103,6 +110,6 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
           </Popover>
         )}
       </div>
-    </ClickOutside>
+    </ClickOutside >
   );
 };

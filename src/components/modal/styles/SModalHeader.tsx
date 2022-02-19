@@ -6,7 +6,7 @@ const Bronze = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--neutral-200);
+  border-bottom: 1px solid var(--ui-03);
 `;
 
 const Silver = css``;
