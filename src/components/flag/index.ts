@@ -1,2 +1,3 @@
 export { Flag } from "./Flag";
-export { ICountryCode, ICountryName, CountryCodeToCountryNameMapping } from "./IFlag";
+export * from "./types";
+export { CountryCodeToCountryNameMapping } from "./mapping";
