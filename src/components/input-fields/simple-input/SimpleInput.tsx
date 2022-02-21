@@ -105,7 +105,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
         <SSimpleInputInsideContainer>
           <SSimpleInputTextWidth ref={spanRef} />
           {label && (
-            <SSimpleInputRequiredIndicatorContainer onLabel>
+            <SSimpleInputRequiredIndicatorContainer withLabel={true}>
               {required && <SSimpleInputRequiredIndicator />}
               <SLabel locked={state === "locked"} error={state === "error"} active={active} hover={hover}>
                 {label}
