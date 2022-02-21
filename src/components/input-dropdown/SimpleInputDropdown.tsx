@@ -32,13 +32,14 @@ interface ISelectSingle {
   error?: boolean;
   translationBadge?: boolean;
   onClose?: () => void;
+  onClick?: () => void;
   inputStyle?: React.CSSProperties;
   dropdownStyle?: React.CSSProperties;
   optionsStyle?: React.CSSProperties;
   styleOverwrite?: string;
 }
 
-export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onSelectValue, translationBadge,label, styleOverwrite }) => {
+export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onClick, onSelectValue, translationBadge, label, styleOverwrite }) => {
   const [opened, setOpened] = React.useState(false);
   const [selectTitle, setSelectTitle] = React.useState<string | null | undefined>(null);
   const [selectIcon, setSelectIcon] = React.useState<ReactNode>(null);
@@ -66,50 +67,49 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
   const { width } = useDimensions(ref);
 
   return (
-    <ClickOutside onClickOutside={() => handleDropdown()}>
-      <div>
-        <SInputDropdown onClick={() => handleDropdown()} ref={ref} error={error} opened={opened} selectTitle={selectTitle} styleOverwrite={styleOverwrite}>
-          <SInputDropdownTextIconWrapper>
-            {selectIcon ? selectIcon : ""}
-            <SInputDropdownTextWrapper>
-              {label && <SInputDropdownLabel error={error} required={required} opened={opened}>{label ? label : ""}</SInputDropdownLabel>}
-              {translationBadge &&
-                <SFlex>
-                  <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
-                  <SDropdownArrowWrapper opened={opened}>                  <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator>
-                  </SDropdownArrowWrapper>
-                </SFlex>}
-              {!translationBadge && <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
-              }
-            </SInputDropdownTextWrapper>
-          </SInputDropdownTextIconWrapper>
-          {!translationBadge && <SDropdownArrowWrapper opened={opened}> <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator> </SDropdownArrowWrapper>
-          }
-          {translationBadge && <TranslationBadge countryCode="de"></TranslationBadge>}
-        </SInputDropdown>
-        {opened && (
-          <Popover disableTriangle placement="bottom" reference={ref}>
-            <SSelectDropdown style={{ width, dropdownStyle }}>
-              {dataSource.map((option) => (
-                <div key={option.key} onClick={() => onChange(option.key)}>
-                  {renderItem ? (
-                    renderItem(option)
-                  ) : (
-                    <SInputDropdownOption>
-                      <SInputDropdownTextIconWrapper>
-                        {option.icon ? option.icon : ""}
-                        <SInputDropdownTextWrapper>
-                          <SInputDropdownTitle selectTitle={selectTitle} required={required}>{option.title}</SInputDropdownTitle>
-                        </SInputDropdownTextWrapper>
-                      </SInputDropdownTextIconWrapper>
-                    </SInputDropdownOption>
-                  )}
-                </div>
-              ))}
-            </SSelectDropdown>
-          </Popover>
-        )}
-      </div>
-    </ClickOutside >
+    <div>
+      <SInputDropdown onClick={onClick} ref={ref} error={error} opened={opened} selectTitle={selectTitle} styleOverwrite={styleOverwrite}>
+        <SInputDropdownTextIconWrapper>
+          {selectIcon ? selectIcon : ""}
+          <SInputDropdownTextWrapper>
+            {label && <SInputDropdownLabel error={error} required={required} opened={opened}>{label ? label : ""}</SInputDropdownLabel>}
+            {translationBadge &&
+              <SFlex>
+                <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+                <SDropdownArrowWrapper opened={opened}>                  <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator>
+                </SDropdownArrowWrapper>
+              </SFlex>}
+            {!translationBadge && <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+            }
+          </SInputDropdownTextWrapper>
+        </SInputDropdownTextIconWrapper>
+        {!translationBadge && <SDropdownArrowWrapper opened={opened}> <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator> </SDropdownArrowWrapper>
+        }
+        {translationBadge && <TranslationBadge countryCode="de"></TranslationBadge>}
+      </SInputDropdown>
+      {opened && (
+        <Popover disableTriangle placement="bottom" reference={ref}>
+          <SSelectDropdown style={{ width, dropdownStyle }}>
+            {dataSource.map((option) => (
+              <div key={option.key} onClick={() => onChange(option.key)}>
+                {renderItem ? (
+                  renderItem(option)
+                ) : (
+                  <SInputDropdownOption>
+                    <SInputDropdownTextIconWrapper>
+                      {option.icon ? option.icon : ""}
+                      <SInputDropdownTextWrapper>
+                        <SInputDropdownTitle selectTitle={selectTitle} required={required}>{option.title}</SInputDropdownTitle>
+                      </SInputDropdownTextWrapper>
+                    </SInputDropdownTextIconWrapper>
+                  </SInputDropdownOption>
+                )}
+              </div>
+            ))}
+          </SSelectDropdown>
+        </Popover>
+      )}
+    </div>
+
   );
 };

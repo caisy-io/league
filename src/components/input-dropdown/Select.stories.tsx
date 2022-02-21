@@ -1,6 +1,7 @@
 import React from "react";
 import { IconStarOutlined } from "../../icons/IconStarOutlined";
 import { SimpleInputDropdown } from "./SimpleInputDropdown";
+import { ClickOutside, useDimensions } from "../../utils";
 
 export default {
   title: "Components/Forms/SimpleInputDropdown",
@@ -44,16 +45,51 @@ const dataSource = [
 
 function SimpleInputDropdownDemo({ error, required, translationBadge, label }) {
   const [selectValue, setSelectValue] = React.useState(null);
-  return <SimpleInputDropdown
-    error={error}
-    required={required}
-    translationBadge={translationBadge}
-    dataSource={dataSource}
-    placeholder="Select an option.."
-    value={selectValue}
-    onSelectValue={(e) => setSelectValue(e)}
-    label={label}
-  />
+  const [rotationDegrees, setRotationDegrees] = React.useState(0);
+
+/*   const onChange = (e) => {
+    onSelectValue?.(e);
+    setSelectTitle(dataSource.find((option) => option.key === e)?.title);
+    setSelectIcon(dataSource.find((option) => option.key === e)?.icon);
+    setOpened(false);
+    setRotationDegrees(0);
+  }; */
+
+  const handleDropdown = () => {
+    if (opened == true) {
+      setRotationDegrees(0)
+    } else {
+      setRotationDegrees(-180)
+    }
+    setOpened((prev) => !prev)
+  };
+
+
+
+  return <div style={{ display: "flex" }}>
+    <ClickOutside onClickOutside={() => handleDropdown()}>
+      <SimpleInputDropdown
+        error={error}
+        required={required}
+        translationBadge={translationBadge}
+        dataSource={dataSource}
+        placeholder="Select an option.."
+        value={selectValue}
+        onSelectValue={(e) => setSelectValue(e)}
+        label={label}
+        onClick={() => handleDropdown()}
+      />
+    </ClickOutside>
+    <SimpleInputDropdown
+      error={error}
+      required={required}
+      translationBadge={translationBadge}
+      dataSource={dataSource}
+      placeholder="Select an option.."
+      value={selectValue}
+      onSelectValue={(e) => setSelectValue(e)}
+      label={label}
+    /></div>
 }
 
 const Template = (args) => <SimpleInputDropdownDemo {...args} />;
