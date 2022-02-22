@@ -59,5 +59,6 @@ export const SInputDropdown = styled.div`
   ${MIN_GOLD`${Gold}`}; 
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
 

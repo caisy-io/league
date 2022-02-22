@@ -1,14 +1,15 @@
-import React, { FC, AllHTMLAttributes } from "react";
+import React, {  AllHTMLAttributes, forwardRef } from "react";
 import { SListItem } from "./styles/SListItem";
-
 interface IListItem {
   activated?: boolean;
 }
 
-export const ListItem: FC<IListItem & AllHTMLAttributes<HTMLElement>> = ({ children, activated, ...props }) => {
-  return (
-    <SListItem activated={activated} {...props}>
-      {children}
-    </SListItem>
-  );
-};
+export const ListItem = forwardRef<HTMLDivElement, IListItem & AllHTMLAttributes<HTMLElement>>(
+  ({ children, activated, ...props }, ref) => {
+    return (
+      <SListItem ref={ref} activated={activated} {...props}>
+        {children}
+      </SListItem>
+    );
+  },
+);

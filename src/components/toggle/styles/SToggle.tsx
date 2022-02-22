@@ -6,25 +6,29 @@ const CSSSmall = css`
   height: 16px;
 `;
 
+const CSSActivated = css`
+  background-color: var(--interactional-supporitve-01);
+  &:hover,
+  &:active {
+    background-color: var(--interactional-supporitve-01);
+  }
+`;
+
 const Bronze = css`
-  background-color: ${(props) =>
-    props.activated ? "var(--active-interactional-tertiary-02);" : "var(--interactional-secondary-01);"};
+  background-color: var(--interactional-secondary-01);
   border-radius: 23.1px;
   width: 32px;
   height: 20px;
   position: relative;
   display: flex;
   align-items: center;
-
   transition: background-color 200ms;
-
   cursor: pointer;
-
   &:hover,
   &:active {
     background-color: var(--active-interactional-tertiary-02);
   }
-
+  ${(props) => props.activated ? CSSActivated : ""};
   ${(props) => props.size === "small" && CSSSmall}
 `;
 

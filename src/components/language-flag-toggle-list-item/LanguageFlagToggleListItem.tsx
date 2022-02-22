@@ -3,7 +3,7 @@ import { IconDragable } from "../../icons";
 import { SLanguageFlagToggleListItem } from "./styles/SLanguageFlagToggleListItem";
 import { Flag } from "../flag";
 import { Toggle } from "../toggle";
-import { ICountryCode } from "../flag/IFlag";
+import { ICountryCode } from "../flag/types";
 import { SLanguageFlagToggleListItemDragIcon } from "./styles/SLanguageFlagToggleListItemDragIcon";
 import { SLanguageFlagToggleListItemToggleButton } from "./styles/SLanguageFlagToggleListItemToggleButton";
 
