@@ -1,7 +1,16 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-interface ISOrganizationSelectMenuItem {}
+interface ISOrganizationSelectMenuItem { }
+
+const CSSOrganizationListItemStyle = css`
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  z-index: 1000;
+`;
 
 const Bronze = css`
   border-radius: 4px;
@@ -16,6 +25,7 @@ const Bronze = css`
   font-size: 11px;
 
   cursor: pointer;
+  ${(props) => props.typeOrganization ? CSSOrganizationListItemStyle : ''};
 `;
 
 const Silver = css``;

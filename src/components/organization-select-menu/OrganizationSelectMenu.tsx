@@ -30,7 +30,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({ ...p
 
   return (
     <SOrganizationSelectMenu>
-      {props.organization && <OrganizationSelectMenuItem menuItem={props.organization} />}
+      {props.organization && <OrganizationSelectMenuItem typeOrganization menuItem={props.organization} />}
       {props.group && <OrganizationSelectMenuItem menuItem={props.group} />}
       {props.project && <OrganizationSelectMenuItem menuItem={props.project} />}
       <EnviromentIcon />

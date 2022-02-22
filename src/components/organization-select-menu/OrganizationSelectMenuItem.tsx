@@ -7,14 +7,17 @@ interface IOrganizationSelectMenuItem {
   name: string;
 }
 
-export const OrganizationSelectMenuItem: React.FC<{ menuItem: IOrganizationSelectMenuItem }> = ({ ...props }) => {
+export const OrganizationSelectMenuItem: React.FC<{
+  menuItem: IOrganizationSelectMenuItem,
+  typeOrganization?: boolean;
+}> = ({ ...props }) => {
   return props.menuItem ? (
     props.menuItem.logoAssetUrl ? (
-      <SOrganizationSelectMenuItem>
+      <SOrganizationSelectMenuItem typeOrganization={props.typeOrganization}>
         <Img resolution={1440} src={props.menuItem.logoAssetUrl} />
       </SOrganizationSelectMenuItem>
     ) : typeof props.menuItem.name === "string" ? (
-      <SOrganizationSelectMenuItem>{props.menuItem.name.slice(0, 2).toUpperCase()}</SOrganizationSelectMenuItem>
+      <SOrganizationSelectMenuItem typeOrganization={props.typeOrganization}>{props.menuItem.name.slice(0, 2).toUpperCase()}</SOrganizationSelectMenuItem>
     ) : null
   ) : null;
 };
