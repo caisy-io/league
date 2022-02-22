@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { CSSScrollbarStyles } from "../../../constants/styles";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 interface ISList {}
@@ -7,20 +8,8 @@ const Bronze = css<ISList>`
   background-color: var(--ui-01);
 
   div {
+    ${CSSScrollbarStyles}
     overflow-x: hidden;
-  }
-
-  > div::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  > div::-webkit-scrollbar-thumb {
-    background: var(--text-priority-4);
-    border-radius: 6px;
-  }
-
-  > div::-webkit-scrollbar-track {
-    padding: 20% 0;
   }
 `;
 
