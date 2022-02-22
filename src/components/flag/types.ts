@@ -521,6 +521,6 @@ export type ICountryName =
   | "Shetland Islands";
 
 export interface IFlag {
-  countryCode: ICountryCode | string;
   size?: 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48;
+  children?: any;
 }
