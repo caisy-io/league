@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Badge, EBadgePosition } from '../badge';
 import { SFlex } from '../../base-components/flex/styles/SFlex';
 import { IconChevron } from '../../icons/IconChevron';
@@ -12,6 +12,7 @@ import { SOrganizationMenuListItemTextWrapper } from './styles/SOrganizationMenu
 import { SOrganizationMenuListItemTitle } from './styles/SOrganizationMenuListItemTitle';
 
 export type IListItemSize = "large" | "medium" | "small";
+export type IListItemStyle = "default" | "disabled" | "select";
 
 export interface IOrganizationMenuListItemProps {
   title?: string | undefined;
@@ -21,7 +22,7 @@ export interface IOrganizationMenuListItemProps {
   styleOverwrite?: string;
   previewProps?: IPreview;
   children?;
-  disabled?: boolean;
+  listItemStyle?: IListItemStyle;
   onClick?: () => void;
 }
 
@@ -38,7 +39,7 @@ export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({
   itemSize,
   styleOverwrite,
   previewProps,
-  disabled,
+  listItemStyle,
   onClick
 }) => {
   const badgeRef = useRef<HTMLElement>(null);
@@ -50,16 +51,16 @@ export const OrganizationMenuListItem: FC<IOrganizationMenuListItemProps> = ({
   }, [badgeValue, badgeRef.current]);
 
   return (
-    <SOrganizationMenuListItem onClick={onClick} itemSize={itemSize} disabled={disabled} styleOverwrite={styleOverwrite}>
+    <SOrganizationMenuListItem onClick={onClick} itemSize={itemSize} listItemStyle={listItemStyle} styleOverwrite={styleOverwrite}>
       <SFlexListItem width={width}>
-        {itemSize == "large" ? <Preview size={48} {...previewProps} /> : <Preview size={36} {...previewProps} />}
+        {itemSize == "large" ? <Preview size={48}  {...previewProps} /> : <Preview size={36} {...previewProps} />}
         <SOrganizationMenuListItemTextWrapper>
-          <SOrganizationMenuListItemLabel disabled={disabled} itemSize={itemSize}>{label}</SOrganizationMenuListItemLabel>
-          <SOrganizationMenuListItemTitle disabled={disabled} itemSize={itemSize}>{title}</SOrganizationMenuListItemTitle>
+          <SOrganizationMenuListItemLabel listItemStyle={listItemStyle} itemSize={itemSize}>{label}</SOrganizationMenuListItemLabel>
+          <SOrganizationMenuListItemTitle listItemStyle={listItemStyle} itemSize={itemSize}>{title}</SOrganizationMenuListItemTitle>
         </SOrganizationMenuListItemTextWrapper>
       </SFlexListItem>
-      <SOrganizationMenuListItemIconWrapper disabled={disabled}>
-        {badgeValue != undefined && !disabled && (
+      <SOrganizationMenuListItemIconWrapper listItemStyle={listItemStyle}>
+        {badgeValue != undefined && listItemStyle != "disabled" && (
           <Badge
             ref={badgeRef}
             value={badgeValue}

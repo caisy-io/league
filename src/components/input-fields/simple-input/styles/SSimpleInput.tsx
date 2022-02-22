@@ -10,17 +10,17 @@ const CSSLocked = css`
 `;
 
 const Bronze = css`
-  all: unset;
+  border: unset;
+  outline: unset;
+  box-shadow: unset;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
   color: var(--text-01);
 
-  width: ${(props) => `${props.width}px`};
-  /* height: 20px; */
+  width: ${(props) => (props.width ? `${props.width}px` : "100%")};
 
   ${(props) => props.locked && CSSLocked}
-  max-width: 100%;
 
   &::placeholder {
     color: var(--text-03);

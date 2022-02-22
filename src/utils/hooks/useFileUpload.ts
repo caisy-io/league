@@ -7,7 +7,7 @@ interface IUseFileUpload {
 }
 
 export const useFileUpload = ({ imageUrl, processImage, onChange }: IUseFileUpload) => {
-  const [image, setImage] = useState<string | null>(imageUrl || null);
+  const [image, setImage] = useState<string | null>(null);
   const [isLoading, setLoading] = useState<boolean>(false);
 
   const imageRef = useRef<HTMLInputElement>(null);
@@ -48,12 +48,18 @@ export const useFileUpload = ({ imageUrl, processImage, onChange }: IUseFileUplo
     }
   }, [image]);
 
+  useEffect(() => {
+    if (imageUrl) {
+      setImage(imageUrl);
+    }
+  }, [imageUrl]);
+
   return {
     isLoading,
     image,
     imageRef,
     openImagePicker,
     removeImage,
-    uploadImage
+    uploadImage,
   };
 };

@@ -16,7 +16,7 @@ const Bronze = css`
     color: var(--icon-04);
     height: 6px;
     margin-left: 0.5rem;
-    ${(props) => props.disabled ? "color: var(--disabled-icon)" : ''};
+    ${(props) => props.listItemStyle == "disabled"  ? "color: var(--disabled-icon)" : ''};
   }
 `;
 

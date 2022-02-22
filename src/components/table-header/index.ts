@@ -1,1 +1,2 @@
-export { TableHeader } from "./TableHeader";
+export {TableHeader} from "./TableHeader";
+export {STableHeader} from "./styles/STableHeader";

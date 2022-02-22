@@ -18,13 +18,13 @@ const Bronze = css`
   padding: 0.5rem 1rem 0.5rem 0.5rem;
   border-radius: 0.375rem;
   cursor: pointer;
-  ${(props) => props.disabled ? "cursor: default" : ''};
+  ${(props) => props.listItemStyle == "disabled" ? "cursor: default" : ''};
   ${(props) => props.itemSize == "medium" || props.itemSize == "small" ? CSSMedium : ''};
   &: hover {
-    ${(props) => !props.disabled ? "background-color: var(--hover-ui-01-1)" : ''};
+    ${(props) => props.listItemStyle != "disabled"  ? "background-color: var(--hover-ui-01-1)" : ''};
   }
   &: active {
-    ${(props) => !props.disabled ? "background-color: var(--active-ui-01-1);" : ''};
+    ${(props) => props.listItemStyle != "disabled"  ? "background-color: var(--active-ui-01-1);" : ''};
   }
   ${({ styleOverwrite }) => styleOverwrite ?? ''};
 `;

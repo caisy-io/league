@@ -52,14 +52,12 @@ Default.args = {
 
 // With entity
 export const WithEntity = ({ state, entity, label }) => (
-    <CloseButton defaultVisible={(state == "hover" || state == "activated") || false}>
         <SearchBarOperand activated={state == "activated"} hover={state == "hover"}>
             <SearchBarOperandEntity activated={state == "activated"}>
                 {entity}
             </SearchBarOperandEntity>
             {label}
         </SearchBarOperand>
-    </CloseButton>
 );
 
 WithEntity.args = {

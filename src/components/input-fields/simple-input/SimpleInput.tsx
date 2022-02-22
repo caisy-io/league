@@ -1,4 +1,5 @@
-import React, { FC, KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";
+import React, { FC, KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useDimensions } from "../../..";
 import { SErrorMessage } from "../styles/SErrorMessage";
 import { SLabel } from "../styles/SLabel";
 import { SSimpleInput } from "./styles/SSimpleInput";
@@ -50,7 +51,6 @@ export const SimpleInput: FC<ISimpleInput> = ({
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
-  const [inputLength, setInputLength] = useState(value?.toString().length);
 
   const inputRef = useRef<HTMLInputElement>();
   const spanRef = useRef<HTMLSpanElement>();
@@ -58,23 +58,6 @@ export const SimpleInput: FC<ISimpleInput> = ({
   const handleClick = useCallback(() => {
     inputRef.current?.focus();
   }, [inputRef.current?.focus]);
-
-  const resizeInput = useCallback(() => {
-    if (!inputRef.current?.value && placeholder) {
-      (spanRef.current as HTMLSpanElement).innerText = placeholder;
-    } else {
-      (spanRef.current as HTMLSpanElement).innerText = inputRef.current?.value as string;
-    }
-    let width: number = spanRef.current?.scrollWidth as number;
-    if (inputRef.current?.value[inputRef.current.value.toString().length - 1] === " ") {
-      width += 3;
-    }
-    setInputLength(width + 1);
-  }, [setInputLength, placeholder]);
-
-  useEffect(() => {
-    resizeInput();
-  }, [value, placeholder]);
 
   const handleFocus = useCallback(
     (e) => {
@@ -92,6 +75,23 @@ export const SimpleInput: FC<ISimpleInput> = ({
     [setActive, onBlur],
   );
 
+  const [inputWidth, setInputWidth] = useState<number | undefined>(undefined);
+
+  const resizeInput = useCallback(() => {
+    let width: number | undefined = undefined;
+
+    if (!inputRef?.current?.value && placeholder) {
+      (spanRef.current as HTMLSpanElement).innerText = placeholder;
+      width = (spanRef.current?.scrollWidth as number) + 1;
+    }
+
+    setInputWidth(width);
+  }, [setInputWidth, placeholder, inputRef?.current?.value]);
+
+  useEffect(() => {
+    resizeInput();
+  }, [value, placeholder]);
+
   return (
     <SSimpleInputWrapper
       onMouseEnter={() => setHover(true)}
@@ -105,7 +105,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
         <SSimpleInputInsideContainer>
           <SSimpleInputTextWidth ref={spanRef} />
           {label && (
-            <SSimpleInputRequiredIndicatorContainer>
+            <SSimpleInputRequiredIndicatorContainer withLabel={true}>
               {required && <SSimpleInputRequiredIndicator />}
               <SLabel locked={state === "locked"} error={state === "error"} active={active} hover={hover}>
                 {label}
@@ -123,16 +123,17 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
           {translationBadge}
 
-          <SSimpleInputRequiredIndicatorContainer>
-            {required && !label && (!errors || errors.length === 0) && <SSimpleInputRequiredIndicator />}
+          <SSimpleInputRequiredIndicatorContainer width={inputWidth}>
+            {required && !inputRef?.current?.value && !label && (!errors || errors.length === 0) && (
+              <SSimpleInputRequiredIndicator />
+            )}
             <SSimpleInput
+              width={inputWidth}
               error={state === "error"}
               locked={state === "locked"}
               onChange={(e) => {
-                resizeInput();
                 onChange?.(e);
               }}
-              width={inputLength}
               required={required}
               ref={inputRef}
               onFocus={handleFocus}
