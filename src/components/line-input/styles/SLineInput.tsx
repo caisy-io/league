@@ -3,7 +3,8 @@ import { CSSProgressiveBody01Medium } from "../../../constants/styles/design-tok
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  all: unset;
+  outline: none;
+  border: none;
   ${CSSProgressiveBody01Medium};
   transition: color 200ms, background-color 200ms;
   color: var(--text-01);
