@@ -1,7 +1,7 @@
 import React from "react";
 import { IconStarOutlined } from "../../icons/IconStarOutlined";
+import { ClickOutside } from "../../utils";
 import { SimpleInputDropdown } from "./SimpleInputDropdown";
-import { ClickOutside, useDimensions } from "../../utils";
 
 export default {
   title: "Components/Forms/SimpleInputDropdown",
@@ -45,29 +45,44 @@ const dataSource = [
 
 function SimpleInputDropdownDemo({ error, required, translationBadge, label }) {
   const [selectValue, setSelectValue] = React.useState(null);
-  const [rotationDegrees, setRotationDegrees] = React.useState(0);
+  const [firstRotationDegrees, setFirstRotationDegrees] = React.useState(0);
+  const [secondRotationDegrees, seSecondRotationDegrees] = React.useState(0);
 
-/*   const onChange = (e) => {
-    onSelectValue?.(e);
-    setSelectTitle(dataSource.find((option) => option.key === e)?.title);
-    setSelectIcon(dataSource.find((option) => option.key === e)?.icon);
-    setOpened(false);
-    setRotationDegrees(0);
-  }; */
+  const [firstOpened, setFirstOpened] = React.useState(false);
+  const [secondOpened, setSecondOpened] = React.useState(false);
 
-  const handleDropdown = () => {
-    if (opened == true) {
-      setRotationDegrees(0)
+  const handleFirstDropdown = () => {
+    if (firstOpened == true) {
+      setFirstRotationDegrees(0)
     } else {
-      setRotationDegrees(-180)
+      setFirstRotationDegrees(-180)
     }
-    setOpened((prev) => !prev)
+    setFirstOpened((prev) => !prev)
   };
 
+  const handleSecondDropdown = () => {
+    if (secondOpened == true) {
+      seSecondRotationDegrees(0)
+    } else {
+      seSecondRotationDegrees(-180)
+    }
+    setSecondOpened((prev) => !prev)
+  };
 
+  const onSelectValue = (e) => {
+    setSelectValue(e)
+    if (firstOpened == true) {
+      setFirstOpened((prev) => !prev)
+      setFirstRotationDegrees(0)
+    }
+    if (secondOpened == true) {
+      setSecondOpened((prev) => !prev)
+      seSecondRotationDegrees(0)
+    }
+  };
 
   return <div style={{ display: "flex" }}>
-    <ClickOutside onClickOutside={() => handleDropdown()}>
+    <ClickOutside onClickOutside={console.log("hi")}>
       <SimpleInputDropdown
         error={error}
         required={required}
@@ -75,21 +90,29 @@ function SimpleInputDropdownDemo({ error, required, translationBadge, label }) {
         dataSource={dataSource}
         placeholder="Select an option.."
         value={selectValue}
-        onSelectValue={(e) => setSelectValue(e)}
+        onSelectValue={(e) => onSelectValue(e)}
         label={label}
-        onClick={() => handleDropdown()}
+        opened={firstOpened}
+        rotationDegrees={firstRotationDegrees}
+        onClick={() => handleFirstDropdown()}
       />
     </ClickOutside>
-    <SimpleInputDropdown
-      error={error}
-      required={required}
-      translationBadge={translationBadge}
-      dataSource={dataSource}
-      placeholder="Select an option.."
-      value={selectValue}
-      onSelectValue={(e) => setSelectValue(e)}
-      label={label}
-    /></div>
+    <ClickOutside onClickOutside={console.log("hi")}>
+      <SimpleInputDropdown
+        error={error}
+        required={required}
+        translationBadge={translationBadge}
+        dataSource={dataSource}
+        placeholder="Select an option.."
+        value={selectValue}
+        onSelectValue={(e) => onSelectValue(e)}
+        label={label}
+        opened={secondOpened}
+        rotationDegrees={secondRotationDegrees}
+        onClick={() => handleSecondDropdown()}
+      />
+    </ClickOutside>
+  </div>
 }
 
 const Template = (args) => <SimpleInputDropdownDemo {...args} />;

@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { IconChevronDown, IconRotator } from "../..";
 import { SFlex } from "../../base-components/flex/styles/SFlex";
-import { ClickOutside, useDimensions } from "../../utils";
+import { useDimensions } from "../../utils";
 import { Popover } from "../popover/Popover";
 import { SDropdownArrowWrapper } from "./styles/SDropdownArrowWrapper";
 import { SInputDropdown } from "./styles/SInputDropdown";
@@ -37,31 +37,19 @@ interface ISelectSingle {
   dropdownStyle?: React.CSSProperties;
   optionsStyle?: React.CSSProperties;
   styleOverwrite?: string;
+  opened?: boolean;
+  rotationDegrees?: number;
 }
 
-export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onClick, onSelectValue, translationBadge, label, styleOverwrite }) => {
-  const [opened, setOpened] = React.useState(false);
+export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, rotationDegrees, renderItem, onClick, onSelectValue, translationBadge, label, styleOverwrite, opened }) => {
   const [selectTitle, setSelectTitle] = React.useState<string | null | undefined>(null);
   const [selectIcon, setSelectIcon] = React.useState<ReactNode>(null);
   const ref = React.useRef(null);
-
-  const [rotationDegrees, setRotationDegrees] = React.useState(0);
 
   const onChange = (e) => {
     onSelectValue?.(e);
     setSelectTitle(dataSource.find((option) => option.key === e)?.title);
     setSelectIcon(dataSource.find((option) => option.key === e)?.icon);
-    setOpened(false);
-    setRotationDegrees(0);
-  };
-
-  const handleDropdown = () => {
-    if (opened == true) {
-      setRotationDegrees(0)
-    } else {
-      setRotationDegrees(-180)
-    }
-    setOpened((prev) => !prev)
   };
 
   const { width } = useDimensions(ref);
