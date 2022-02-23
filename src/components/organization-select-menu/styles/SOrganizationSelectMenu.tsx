@@ -13,7 +13,7 @@ const Bronze = css`
   gap: 5px;
   padding: 5px;
   width: fit-content;
-  overflow: hidden;
+  position: relative;
 `;
 
 const Silver = css``;
