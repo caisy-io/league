@@ -33,9 +33,9 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({ ...p
 
   return (
     <SOrganizationSelectMenu>
-      {props.organization ? <OrganizationSelectMenuItem menuItem={props.organization} /> : <OrganizationSelectMenuItemEmpty typeOrganization><IconBriefcase size={12}></IconBriefcase></OrganizationSelectMenuItemEmpty>}
-      {props.group ? <OrganizationSelectMenuItem menuItem={props.group} /> : <OrganizationSelectMenuItemEmpty><IconItemsGroup size={16}></IconItemsGroup></OrganizationSelectMenuItemEmpty>}
-      {props.project ? <OrganizationSelectMenuItem menuItem={props.project} /> : <OrganizationSelectMenuItemEmpty><IconProjectsFolder size={16}></IconProjectsFolder></OrganizationSelectMenuItemEmpty>}
+      {props.organization?.name ? <OrganizationSelectMenuItem menuItem={props.organization} /> : <OrganizationSelectMenuItemEmpty typeOrganization><IconBriefcase size={12}></IconBriefcase></OrganizationSelectMenuItemEmpty>}
+      {props.group?.name ? <OrganizationSelectMenuItem menuItem={props.group} /> : <OrganizationSelectMenuItemEmpty><IconItemsGroup size={16}></IconItemsGroup></OrganizationSelectMenuItemEmpty>}
+      {props.project?.name ? <OrganizationSelectMenuItem menuItem={props.project} /> : <OrganizationSelectMenuItemEmpty><IconProjectsFolder size={16}></IconProjectsFolder></OrganizationSelectMenuItemEmpty>}
       <EnviromentIcon />
     </SOrganizationSelectMenu>
   );
