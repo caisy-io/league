@@ -7,7 +7,7 @@ import { SOrganizationSelectMenuEnviroment } from "./styles/SOrganizationSelectM
 
 interface IOrganizationSelectMenuItem {
   logoAssetUrl?: string;
-  name: string;
+  name?: string;
   type?: string;
 }
 
