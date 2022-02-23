@@ -10,6 +10,10 @@ const CSSOrganizationListItemStyle = css`
   z-index: 1000;
   color: white;
   background-color: var(--interactional-primary-01);
+  svg{
+    width: 12px;
+    height: 12px;
+  }
 `;
 
 const Bronze = css`
