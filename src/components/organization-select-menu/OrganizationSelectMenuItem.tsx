@@ -5,7 +5,6 @@ import { SOrganizationSelectMenuItem } from "./styles/SOrganizationSelectMenuIte
 interface IOrganizationSelectMenuItem {
   logoAssetUrl?: string;
   name?: string;
-  type?: string;
 }
 
 /* GET PLACEHOLDER LETTERS */
@@ -18,16 +17,17 @@ const getPlaceholderLettersByName = (name: string) => {
 };
 
 export const OrganizationSelectMenuItem: React.FC<{
-  menuItem?: IOrganizationSelectMenuItem
+  menuItem?: IOrganizationSelectMenuItem;
+  typeOrganization?: boolean
 }> = ({ ...props }) => {
   return props.menuItem ? (
     props.menuItem.logoAssetUrl ? (
-      <SOrganizationSelectMenuItem typeOrganization={props.menuItem.type}>
+      <SOrganizationSelectMenuItem typeOrganization={props.typeOrganization}>
         <Img resolution={1440} src={props.menuItem.logoAssetUrl} />
       </SOrganizationSelectMenuItem>
     ) : typeof props.menuItem.name === "string" ? (
-      <SOrganizationSelectMenuItem typeOrganization={props.menuItem.type}>
+      <SOrganizationSelectMenuItem typeOrganization={props.typeOrganization}>
         {getPlaceholderLettersByName(props.menuItem.name)}</SOrganizationSelectMenuItem>
     ) : null
-  ) : <div>HI</div>;
+  ) : null;
 };
