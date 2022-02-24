@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody03 } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { CSSProgressiveBody03 } from "../../../constants/styles";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
 const CSSHover = css`
   background-color: var(--hover-ui-01);
@@ -16,7 +16,7 @@ const Bronze = css`
   display: flex;
   align-items: center;
   gap: 8px;
-  ${CSSProgressiveBody03}
+  ${CSSProgressiveBody03};
   background-color: var(--ui-01);
   padding: 16px;
   border-bottom: 1px solid var(--ui-03);
@@ -29,6 +29,10 @@ const Bronze = css`
 
   &:active {
     ${CSSActive}
+  }
+  
+  svg{
+    flex-shrink: 0;
   }
 
   ${(props) => props.active && CSSActive}
