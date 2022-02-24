@@ -22,14 +22,47 @@ export default {
 } as ComponentMeta<typeof Flag>;
 
 function FlagDemo({ ...args }) {
-  // TODO Default webpack config of Storybook contains a svg loader that does not work as we want for svgs
-  // TODO Disable default behaviour and use svgr instead (see https://github.com/storybookjs/storybook/issues/6188#issuecomment-487705465, https://medium.com/@derek_19900/config-storybook-4-to-use-svgr-webpack-plugin-22cb1152f004)
-  //const CountryFlag = require(`./flags/round/${args.countryCode}.svg`).default;
-  // we can modify the final webpack config of storybook in .storybook/main.js (see https://storybook.js.org/docs/react/configure/webpack)
-
+  let svg = null;
+  if (args.countryCode === "de-DE"){
+    svg = <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clipPath="url(#clip0_4_7162)">
+        <path d="M15.9229 345.044C52.0939 442.528 145.929 512.001 256 512.001C366.071 512.001 459.906 442.528 496.077 345.044L256 322.784L15.9229 345.044Z" fill="#FFDA44"/>
+        <path d="M256 0.000976562C145.929 0.000976562 52.0939 69.473 15.9229 166.958L256 189.218L496.077 166.957C459.906 69.473 366.071 0.000976562 256 0.000976562Z" fill="black"/>
+        <path d="M15.923 166.958C5.633 194.691 0 224.687 0 256.001C0 287.315 5.633 317.311 15.923 345.044H496.078C506.368 317.311 512 287.315 512 256.001C512 224.687 506.368 194.691 496.077 166.958H15.923Z" fill="#D80027"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_4_7162">
+        <rect width="512" height="512" fill="white" transform="translate(0 0.000976562)"/>
+        </clipPath>
+        </defs>
+      </svg>;
+  } else if (args.countryCode === "en-GB"){
+    svg = <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M256 512C397.385 512 512 397.385 512 256C512 114.615 397.385 0 256 0C114.615 0 0 114.615 0 256C0 397.385 114.615 512 256 512Z" fill="#F0F0F0"/>
+      <path d="M52.92 100.142C32.811 126.305 17.648 156.46 8.81897 189.219H141.997L52.92 100.142Z" fill="#0052B4"/>
+      <path d="M503.181 189.219C494.352 156.461 479.188 126.306 459.08 100.143L370.005 189.219H503.181Z" fill="#0052B4"/>
+      <path d="M8.81897 322.784C17.649 355.542 32.812 385.697 52.92 411.859L141.994 322.784H8.81897Z" fill="#0052B4"/>
+      <path d="M411.858 52.9211C385.695 32.8121 355.541 17.6491 322.782 8.81909V141.996L411.858 52.9211Z" fill="#0052B4"/>
+      <path d="M100.142 459.079C126.305 479.188 156.46 494.351 189.218 503.181V370.005L100.142 459.079Z" fill="#0052B4"/>
+      <path d="M189.217 8.81909C156.459 17.6491 126.304 32.8121 100.142 52.9201L189.217 141.995V8.81909Z" fill="#0052B4"/>
+      <path d="M322.783 503.181C355.541 494.351 385.696 479.188 411.858 459.08L322.783 370.005V503.181Z" fill="#0052B4"/>
+      <path d="M370.005 322.784L459.08 411.86C479.188 385.698 494.352 355.542 503.181 322.784H370.005Z" fill="#0052B4"/>
+      <path d="M509.833 222.609H289.393H289.392V2.167C278.461 0.744 267.317 0 256 0C244.681 0 233.539 0.744 222.609 2.167V222.607V222.608H2.167C0.744 233.539 0 244.683 0 256C0 267.319 0.744 278.461 2.167 289.391H222.607H222.608V509.833C233.539 511.256 244.681 512 256 512C267.317 512 278.461 511.257 289.391 509.833V289.393V289.392H509.833C511.256 278.461 512 267.319 512 256C512 244.683 511.256 233.539 509.833 222.609Z" fill="#D80027"/>
+      <path d="M322.783 322.784L437.019 437.02C442.273 431.768 447.285 426.277 452.067 420.585L354.265 322.783H322.783V322.784Z" fill="#D80027"/>
+      <path d="M189.217 322.784H189.215L74.98 437.019C80.232 442.273 85.723 447.285 91.415 452.067L189.217 354.263V322.784Z" fill="#D80027"/>
+      <path d="M189.217 189.219V189.217L74.981 74.98C69.727 80.232 64.715 85.723 59.933 91.415L157.736 189.218H189.217V189.219Z" fill="#D80027"/>
+      <path d="M322.783 189.219L437.02 74.9811C431.768 69.7271 426.277 64.7151 420.585 59.9341L322.783 157.737V189.219Z" fill="#D80027"/>
+    </svg>;
+  } else if(args.countryCode === "fr-FR"){
+    svg = <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M256 512C397.385 512 512 397.385 512 256C512 114.615 397.385 0 256 0C114.615 0 0 114.615 0 256C0 397.385 114.615 512 256 512Z" fill="#F0F0F0"/>
+      <path d="M512 256C512 145.929 442.528 52.094 345.043 15.923V496.078C442.528 459.906 512 366.071 512 256Z" fill="#D80027"/>
+      <path d="M0 256C0 366.071 69.473 459.906 166.957 496.077V15.923C69.473 52.094 0 145.929 0 256Z" fill="#0052B4"/>
+    </svg>;
+  }
   return (
     <Flag {...args}>
-      
+      {svg}
     </Flag>
   );
 }
@@ -38,5 +71,6 @@ const Template: ComponentStory<typeof Flag> = (args) => <FlagDemo  {...args} />;
 
 export const Flag_default = Template.bind({});
 Flag_default.args = {
-  countryCode: "en-GB",
+  countryCode: "de-DE",
+  size: 20,
 };
