@@ -25,7 +25,7 @@ const Bronze = css`
   font-size: 11px;
 
   cursor: pointer;
-  ${(props) => props.typeOrganization == "organization" ? CSSOrganizationListItemStyle : ''};
+  ${(props) => props.typeOrganization ? CSSOrganizationListItemStyle : ''};
 `;
 
 const Silver = css``;
