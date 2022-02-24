@@ -1,4 +1,4 @@
-import { ICountryCode, ICountryName } from "./types";
+import { ICountryCodeDynamic, ICountryName } from "./types";
 
 export const CountryCodeToCountryNameMapping = new Map<string, string>([
     // updated
@@ -1036,4 +1036,4 @@ export const CountryCodeToCountryNameMapping = new Map<string, string>([
     //   "gbzet",
     //   "Shetland Islands"
     // ],
-  ]) as Map<ICountryCode, ICountryName>;
+  ]) as Map<ICountryCodeDynamic, ICountryName>;
