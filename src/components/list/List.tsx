@@ -1,15 +1,12 @@
 import React from "react";
 import { FixedSizeList } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
-import { SListItemLoading } from "../list-item-legacy/styles/SListItemLoading";
 import { SList } from "./styles/SList";
-import { SListHeaderContainer } from "./styles/SListHeaderContainer";
-import { SListWrapper } from "./styles/SListWrapper";
 
-interface IList {
-  header?: React.ReactNode;
-  dataSource: any[];
-  renderItem: (payload: any) => React.ReactNode;
+interface IList<T> {
+  dataSource: T[];
+  renderItem: (payload: T) => React.ReactNode;
+  renderLoadingItem: () => React.ReactNode;
   itemSize: number;
   hasNextPage?: boolean;
   isNextPageLoading?: boolean;
@@ -18,7 +15,7 @@ interface IList {
   loadNextPage?: (payload: any) => Promise<void>;
 }
 
-export const List: React.FC<IList> = ({ ...props }) => {
+export const List = <T,>({ ...props }:IList<T>) => {
   // If there are more items to be loaded then add an extra row to hold a loading indicator.
   const itemCount = props.hasNextPage ? props.dataSource.length + 1 : props.dataSource.length;
   // Only load 1 page of items at a time.
@@ -31,7 +28,7 @@ export const List: React.FC<IList> = ({ ...props }) => {
   const Item = ({ index, style }) => {
     let content;
     if (!isItemLoaded(index)) {
-      content = <SListItemLoading>Loading...</SListItemLoading>;
+      content = props.renderLoadingItem();
     } else {
       content = props.renderItem(props.dataSource[index]);
     }
@@ -40,8 +37,6 @@ export const List: React.FC<IList> = ({ ...props }) => {
   };
 
   return (
-    <SListWrapper>
-      {props.header && <SListHeaderContainer>{props.header}</SListHeaderContainer>}
       <SList className="scroll-container">
         <InfiniteLoader isItemLoaded={isItemLoaded} itemCount={itemCount} loadMoreItems={loadMoreItems}>
           {({ onItemsRendered, ref }) => (
@@ -58,6 +53,5 @@ export const List: React.FC<IList> = ({ ...props }) => {
           )}
         </InfiniteLoader>
       </SList>
-    </SListWrapper>
   );
 };

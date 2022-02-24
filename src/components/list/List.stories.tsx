@@ -1,45 +1,21 @@
 import React from "react";
-import styled from "styled-components";
-import { Button } from "../button";
-import { ListItemLegacy, SelectableListItemLegacy } from "../list-item-legacy";
-import { List } from "../list";
-import { IconTrashDelete } from "../../icons";
+import { List } from ".";
+import { ListItem } from "../list-item";
+import { RadioButtonListItem } from "../radio-button-list-item";
+import { ListItemContent } from "../list-item-content";
+import { IconChevronRight, IconStarOutlined } from "../../icons";
 
-const ListFooter = styled.div`
-  padding: 16px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--ui-01);
-`;
-
-const ListFooterSelectedCounter = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4px 8px;
-  border-radius: 4px;
-  background-color: var(--primary-500-opacity-8);
-  font-family: Inter;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.45;
-  color: var(--interactional-primary-01);
-`;
-
-const ListFooterButtonsContainer = styled.div`
-  display: flex;
-  gap: 16px;
-`;
-
-const initialDate = new Array(10).fill(true).map((__, idx) => ({
+const initialDate = new Array(1000).fill(true).map((__, idx) => ({
   avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
   title: "List Item " + idx,
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in venenatis orci condimentum amet.",
   id: idx,
 }));
-function ListDemo() {
-  const header = "List Header";
+
+const Template = (args) => {
+  // Are there more items to load?
+  // (This information comes from the most recent API request.)
+  const [hasNextPage, setHasNextPage] = React.useState(true);
   const [selectedItems, setSelectedItems] = React.useState([]);
 
   const onSelect = (id) => {
@@ -58,11 +34,6 @@ function ListDemo() {
       setSelectedItems(newSelectedItems);
     }
   };
-
-  // Are there more items to load?
-  // (This information comes from the most recent API request.)
-  const [hasNextPage, setHasNextPage] = React.useState(true);
-
   // Are we currently loading a page of items?
   // (This may be an in-flight flag in your Redux store for example.)
   const [isNextPageLoading, setIsNextPageLoading] = React.useState(false);
@@ -73,13 +44,13 @@ function ListDemo() {
   const loadNextPage = (...args) => {
     console.log(args);
     setIsNextPageLoading(true);
-    return new Promise((resolve) =>
+    return new Promise<void>((resolve) =>
       setTimeout(() => {
-        setHasNextPage(data.length < 100);
+        setHasNextPage(data.length < 10000);
         setIsNextPageLoading(false);
         setData(
           [...data].concat(
-            new Array(10).fill(true).map((__, idx) => ({
+            new Array(100).fill(true).map((__, idx) => ({
               avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
               title: "List Item " + (data.length + idx),
               description:
@@ -89,7 +60,7 @@ function ListDemo() {
           ),
         );
         resolve();
-      }, 2500),
+      }, 500),
     );
   };
 
@@ -102,9 +73,15 @@ function ListDemo() {
           hasNextPage={hasNextPage}
           isNextPageLoading={isNextPageLoading}
           loadNextPage={loadNextPage}
-          itemSize={66}
-          renderItem={(item) => <ListItemLegacy key={item.id} title={item.title} description={item.description} />}
-          header={header}
+          renderLoadingItem={() => <div>{"loading ..."}</div>}
+          itemSize={45}
+          renderItem={(item) => (
+            <ListItem onClick={() => {}}>
+              <IconStarOutlined size={16} />
+              <ListItemContent>{item.title}</ListItemContent>
+              <IconChevronRight size={16} />
+            </ListItem>
+          )}
         />
       </div>
       <div style={{ width: 702 }}>
@@ -112,43 +89,31 @@ function ListDemo() {
           height={389}
           dataSource={data}
           hasNextPage={hasNextPage}
+          renderLoadingItem={() => <div>{"loading ..."}</div>}
           isNextPageLoading={isNextPageLoading}
           loadNextPage={loadNextPage}
-          itemSize={66}
+          itemSize={45}
           renderItem={(item) => (
-            <SelectableListItemLegacy
-              selected={selectedItems.some((itm) => itm === item.id)}
-              onSelect={() => onSelect(item.id)}
-              onUnselect={() => onUnselect(item.id)}
-              key={item.id}
-              avatar={item.avatar}
-              title={item.title}
-              description={item.description}
-            />
+            <RadioButtonListItem
+              activated={selectedItems.includes(item.id)}
+              onChange={() => {
+                selectedItems.includes(item.id) ? onUnselect(item.id) : onSelect(item.id);
+              }}
+            >
+              <ListItemContent>{item.title}</ListItemContent>
+            </RadioButtonListItem>
           )}
-          header={header}
         />
-        <ListFooter>
-          <ListFooterSelectedCounter>{selectedItems.length} items selected</ListFooterSelectedCounter>
-          <ListFooterButtonsContainer>
-            <Button size="small">
-              <IconTrashDelete /> Share
-            </Button>
-            <Button size="small">
-              <IconTrashDelete /> Delete
-            </Button>
-          </ListFooterButtonsContainer>
-        </ListFooter>
+        <div style={{ padding: "24px 0px" }}>{`You got ${selectedItems.length} items selected`}</div>
       </div>
     </div>
   );
-}
+};
 
 export default {
-  title: "Components/Legacy/List",
-  component: ListDemo,
+  title: "Components/List",
+  component: Template,
 };
-const Template = (args) => <ListDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};

@@ -4,17 +4,30 @@ import { SOrganizationSelectMenuItem } from "./styles/SOrganizationSelectMenuIte
 
 interface IOrganizationSelectMenuItem {
   logoAssetUrl?: string;
-  name: string;
+  name?: string;
+  type?: string;
 }
 
-export const OrganizationSelectMenuItem: React.FC<{ menuItem: IOrganizationSelectMenuItem }> = ({ ...props }) => {
+/* GET PLACEHOLDER LETTERS */
+const getPlaceholderLettersByName = (name: string) => {
+  const singleWords = name.split(" ");
+  if (singleWords.length == 1) {
+    return singleWords[0].charAt(0).toUpperCase();
+  }
+  return singleWords[0].charAt(0).toUpperCase() + singleWords[1].charAt(0).toUpperCase();
+};
+
+export const OrganizationSelectMenuItem: React.FC<{
+  menuItem?: IOrganizationSelectMenuItem
+}> = ({ ...props }) => {
   return props.menuItem ? (
     props.menuItem.logoAssetUrl ? (
-      <SOrganizationSelectMenuItem>
+      <SOrganizationSelectMenuItem typeOrganization={props.menuItem.type}>
         <Img resolution={1440} src={props.menuItem.logoAssetUrl} />
       </SOrganizationSelectMenuItem>
     ) : typeof props.menuItem.name === "string" ? (
-      <SOrganizationSelectMenuItem>{props.menuItem.name.slice(0, 2).toUpperCase()}</SOrganizationSelectMenuItem>
+      <SOrganizationSelectMenuItem typeOrganization={props.menuItem.type}>
+        {getPlaceholderLettersByName(props.menuItem.name)}</SOrganizationSelectMenuItem>
     ) : null
-  ) : null;
+  ) : <div>HI</div>;
 };

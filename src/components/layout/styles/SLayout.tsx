@@ -8,7 +8,6 @@ const Bronze = css`
   display: flex;
   padding: 0;
   margin: 0;
-  text-align: center;
 `;
 
 const Silver = css``;
