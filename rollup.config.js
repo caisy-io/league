@@ -17,8 +17,8 @@ export const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 
 
-console.log(` glob.sync('src/components/*/index.ts')`, glob.sync('src/components/*/index.ts'));
-console.log(` glob.sync('src/components/*')`, glob.sync('src/components/*'));
+// console.log(` glob.sync('src/components/*/index.ts')`, glob.sync('src/components/*/index.ts'));
+// console.log(` glob.sync('src/components/*')`, glob.sync('src/components/*'));
 
 /**
  * Compile index & compile separately every elements exported by it.
@@ -28,15 +28,15 @@ const input = Object.fromEntries([
     ['components', 'src/components/index.ts'],
     ...glob.sync('src/components/*/index.ts').map((componentPath) => {
         const [, componentName] = componentPath.match(/.*components\/(.*?)\/.*/) || [];
-        console.log(` componentName`, componentName);
-        console.log(` componentPath`, componentPath);
+        // console.log(` componentName`, componentName);
+        // console.log(` componentPath`, componentPath);
         return [componentName, componentPath];
     }),
     ['base-components', 'src/base-components/index.ts'],
     ...glob.sync('src/base-components/*/index.ts').map((componentPath) => {
         const [, componentName] = componentPath.match(/.*base-components\/(.*?)\/.*/) || [];
-        console.log(` base-componentstName`, componentName);
-        console.log(` base-componentsPath`, componentPath);
+        // console.log(` base-componentstName`, componentName);
+        // console.log(` base-componentsPath`, componentPath);
         return [componentName, componentPath];
     }),
     ['icons', 'src/icons/index.ts'],

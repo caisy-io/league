@@ -22,6 +22,7 @@ const Bronze = css`
   &: active {
     background-color: #F3F7F9;
   }
+  cursor: pointer;
 `;
 
 const Silver = css``;

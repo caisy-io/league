@@ -1,11 +1,14 @@
 import React from "react";
+import { IconBriefcase, IconItemsGroup, IconProjectsFolder } from "../..";
 import { OrganizationSelectMenuItem } from "./OrganizationSelectMenuItem";
+import { OrganizationSelectMenuItemEmpty } from "./OrganizationSelectMenuItemEmpty";
 import { SOrganizationSelectMenu } from "./styles/SOrganizationSelectMenu";
 import { SOrganizationSelectMenuEnviroment } from "./styles/SOrganizationSelectMenuEnviroment";
 
 interface IOrganizationSelectMenuItem {
   logoAssetUrl?: string;
-  name: string;
+  name?: string;
+  type?: string;
 }
 
 interface IOrganizationSelectMenuEnviroment {
@@ -30,9 +33,9 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({ ...p
 
   return (
     <SOrganizationSelectMenu>
-      {props.organization && <OrganizationSelectMenuItem menuItem={props.organization} />}
-      {props.group && <OrganizationSelectMenuItem menuItem={props.group} />}
-      {props.project && <OrganizationSelectMenuItem menuItem={props.project} />}
+      {props.organization?.name ? <OrganizationSelectMenuItem menuItem={props.organization} typeOrganization /> : <OrganizationSelectMenuItemEmpty typeOrganization><IconBriefcase size={12}></IconBriefcase></OrganizationSelectMenuItemEmpty>}
+      {props.group?.name ? <OrganizationSelectMenuItem menuItem={props.group} /> : <OrganizationSelectMenuItemEmpty><IconItemsGroup size={16}></IconItemsGroup></OrganizationSelectMenuItemEmpty>}
+      {props.project?.name ? <OrganizationSelectMenuItem menuItem={props.project} /> : <OrganizationSelectMenuItemEmpty><IconProjectsFolder size={16}></IconProjectsFolder></OrganizationSelectMenuItemEmpty>}
       <EnviromentIcon />
     </SOrganizationSelectMenu>
   );

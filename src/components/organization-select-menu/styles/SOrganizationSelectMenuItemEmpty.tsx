@@ -1,7 +1,5 @@
 import styled, { css } from "styled-components";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
-
-interface ISOrganizationSelectMenuItem { }
+import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
 
 const CSSOrganizationListItemStyle = css`
   position: absolute;
@@ -10,18 +8,20 @@ const CSSOrganizationListItemStyle = css`
   width: 20px;
   height: 20px;
   z-index: 1000;
+  color: white;
+  background-color: var(--interactional-primary-01);
 `;
 
 const Bronze = css`
   border-radius: 4px;
   width: 26px;
   height: 26px;
-  background-color: var(--ui-03);
+  background-color: var(--ui-01);
   display: flex;
   align-items: center;
   justify-content: center;
 
-  color: var(--text-04);
+  color: var(--hover-icon-01);
   font-size: 11px;
 
   cursor: pointer;
@@ -36,7 +36,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SOrganizationSelectMenuItem = styled.div<ISOrganizationSelectMenuItem>`
+export const SOrganizationSelectMenuItemEmpty = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
