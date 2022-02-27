@@ -42,7 +42,13 @@ export const TagListItem: React.FC<ITagListItem> = ({
       <STagListItem ref={ref} disabled={disabled} activated={activated} onClick={onClick}>
         {label && <STagListItemLabel>{label}</STagListItemLabel>}
         <SFlex>
-          {leftIcon}
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            {leftIcon}
+          </div>
           {outlineLabel && <STagListItemOutlineLabelWrapper>{outlineLabel}</STagListItemOutlineLabelWrapper>}
         </SFlex>
         {popover && (
