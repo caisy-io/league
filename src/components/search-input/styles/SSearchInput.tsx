@@ -1,16 +1,15 @@
-import styled, { css } from "styled-components";
-import { CSSProgressiveBody03 } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import styled, {css} from "styled-components";
+import {CSSProgressiveBody03} from "../../../constants/styles";
+import {MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND} from "../../../constants/styles";
 
 const Bronze = css`
   outline: none;
   border: none;
-  ${CSSProgressiveBody03}
+  ${CSSProgressiveBody03};
   background-color: transparent;
   color: var(--text-01);
-  flex-grow: 1;
-  max-width: 50%;
-
+  width: calc(100% - 40px);
+  
   &::placeholder {
     color: var(--text-03);
   }
