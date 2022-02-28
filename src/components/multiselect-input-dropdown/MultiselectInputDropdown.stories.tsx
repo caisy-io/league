@@ -208,8 +208,14 @@ const Template = () => {
         renderInputItem={renderInputItem}
         renderDataItem={renderDataItem}
         onClose={clearMultiSelect}
+        onSelectValue={onSelectValue}
         popupHeader={
-          <SearchInput placeholder="Search tags" onChange={onSearch} onKeyPress={onAddNewTag} onClose={clearMultiSelect} />
+          <SearchInput
+            placeholder="Search tags"
+            onChange={onSearch}
+            onKeyPress={onAddNewTag}
+            onClose={clearMultiSelect}
+          />
         }
         popupFooter={
           newTag && (
