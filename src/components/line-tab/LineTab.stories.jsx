@@ -30,13 +30,11 @@ export default {
 };
 
 function LineTabDemo({ content, ...args }) {
-  return <LineTab {...args} title={content} activated={args.state == "activated" } hover={args.state == "hover" }>
-  </LineTab>
+  return <LineTab {...args} title={content} activated={args.state === "activated"} hover={args.state === "hover"}/>
 }
 
-const Template = (args) => < LineTabDemo {...args} />;
 
-export const Default = Template.bind({});
+export const Default = LineTabDemo.bind({});
 Default.args = {
   state: "default",
   content: "Default",
@@ -44,8 +42,8 @@ Default.args = {
 
 // With entity
 export const WithLeftIcon = ({ content, ...args }) => (
-  <LineTab {...args} title={content} activated={args.state == "activated" } hover={args.state == "hover" }>
-    <IconStarOutlined></IconStarOutlined>
+  <LineTab {...args} title={content} activated={args.state === "activated" } hover={args.state === "hover" }>
+    <IconStarOutlined/>
   </LineTab>
 );
 

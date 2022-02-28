@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {IconStarOutlined} from "../../icons";
 import { Button } from "../button";
-import { LineTabs, LineTabPanel } from "./LineTabs";
+import { LineTabs, LineTabPanel, ILineTabs } from "./LineTabs";
 
 export default {
   title: "Components/Navigation/LineTabs",
@@ -13,9 +13,21 @@ export default {
     },
   },
 };
-
-const Template = (args) => {
-  const [currentTab, setCurrentTab] = useState(0);
+/**
+ *
+ * @param {Object} args
+ * @param {number} args.initialValue
+ * @param [args.onChange]
+ * @param [args.loading]
+ * @param [args.loadingComponent]
+ * @param [args.reference]
+ * @param [args.style]
+ * @param [args.tabsStyle]
+ * @returns {JSX.Element}
+ * @constructor
+ */
+const Template = ({initialValue,...args}) => {
+  const [currentTab, setCurrentTab] = useState(initialValue);
   
   return (
       <div
@@ -30,15 +42,17 @@ const Template = (args) => {
       >
         <div style={{ width: "100%" }}>
           <LineTabs
+              {...args}
               initialValue={currentTab}
               onChange={(newValue) => setCurrentTab(newValue)}
+              
           >
-            <LineTabPanel title="Tab 1" icon={<IconStarOutlined/>}>
+            <LineTabPanel tabTitle="Tab 1" icon={<IconStarOutlined/>}>
               This is the first panelThis is the first panelThis is the first panelThis is the first panelThis is the
               first panel
             </LineTabPanel>
-            <LineTabPanel title="Tab 2">This is the second panel</LineTabPanel>
-            <LineTabPanel title="Tab 3">This is the third panel</LineTabPanel>
+            <LineTabPanel tabTitle="Tab 2">This is the second panel</LineTabPanel>
+            <LineTabPanel tabTitle="Tab 3">This is the third panel</LineTabPanel>
           </LineTabs>
           <br />
           <p>Current tab: {currentTab}</p>

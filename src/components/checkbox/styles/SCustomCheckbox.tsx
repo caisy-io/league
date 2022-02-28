@@ -1,13 +1,13 @@
-import styled, { css } from 'styled-components';
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
+import styled, { css } from "styled-components";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const CSSChecked = css`
   border-color: var(--active-icon-04);
   background: var(--active-icon-04);
-    svg path {
-      stroke-dasharray: -60;
-      stroke-dashoffset: 0;  
-    }
+  svg path {
+    stroke-dasharray: -60;
+    stroke-dashoffset: 0;
+  }
 `;
 
 const CSSLoading = css`
@@ -24,25 +24,26 @@ const CSSLoading = css`
 const Bronze = css`
   display: inline-flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   height: 12px;
   width: 12px;
   background: #fff;
-  border: 1px #567A98 solid;
+  border: 1px #567a98 solid;
   border-radius: 50%;
   box-sizing: border-box;
   transition: all 0.2s linear;
-  svg{
-    color: #FFFF;
+  cursor: pointer;
+  svg {
+    color: #ffff;
     fill: none;
     width: 8px;
   }
   svg path {
     stroke-dasharray: 100% 200%;
-	  stroke-dashoffset: 100%;
-    transition: all .15s ease-in-out;
+    stroke-dashoffset: 100%;
+    transition: all 0.15s ease-in-out;
   }
-  &:hover{
+  &:hover {
     border: 1px solid var(--active-icon-04);
     ${(props) => (props.loading ? CSSLoading : "")}
   }
@@ -61,8 +62,7 @@ const Diamond = css``;
 export const SCustomCheckbox = styled.label`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
-  ${MIN_GOLD`${Gold}`}; 
+  ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
 `;
-

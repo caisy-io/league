@@ -1,19 +1,20 @@
-import styled, { css } from 'styled-components';
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
+import styled, { css } from "styled-components";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
 interface ISIconWrapper {
-  size?: 'medium' | 'large';
+  size?: "medium" | "large";
   isActivated?: boolean;
 }
 
 const Bronze = css<ISIconWrapper>`
-  color: ${({ isActivated }) => isActivated ? 'var(--text-02)' : 'var(--text-04)'};
+  color: ${({ isActivated }) => (isActivated ? "var(--text-02)" : "var(--text-04)")};
   display: flex;
   margin-right: -4px;
   margin-left: 4px;
+  height: ${({ size }) => (size === "medium" ? 16 : 20)}px;
   svg {
-    width: ${({ size }) => size === 'medium' ? 16 : 20 }px;
-    height: ${({ size }) => size === 'medium' ? 16 : 20 }px;
+    width: ${({ size }) => (size === "medium" ? 16 : 20)}px;
+    height: ${({ size }) => (size === "medium" ? 16 : 20)}px;
     path {
       stroke-width: 2.5;
     }
