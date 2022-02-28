@@ -38,10 +38,9 @@ interface ISelectSingle {
   optionsStyle?: React.CSSProperties;
   styleOverwrite?: string;
   opened?: boolean;
-  rotationDegrees?: number;
 }
 
-export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, rotationDegrees, renderItem, onClick, onSelectValue, translationBadge, label, styleOverwrite, opened }) => {
+export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onClick, onSelectValue, translationBadge, label, styleOverwrite, opened }) => {
   const [selectTitle, setSelectTitle] = React.useState<string | null | undefined>(null);
   const [selectIcon, setSelectIcon] = React.useState<ReactNode>(null);
   const ref = React.useRef(null);
@@ -52,14 +51,14 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
     setSelectIcon(dataSource.find((option) => option.key === e)?.icon);
   };
 
-  const [firstRotationDegrees, setFirstRotationDegrees] = React.useState(0);
+  const [rotationDegrees, setRotationDegrees] = React.useState(0);
 
   const handleDropdown = () => {
     onClick && onClick()
     if (opened == true) {
-      setFirstRotationDegrees(0)
+      setRotationDegrees(0)
     } else {
-      setFirstRotationDegrees(-180)
+      setRotationDegrees(-180)
     }
   }
 
@@ -75,14 +74,14 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
             {translationBadge &&
               <SFlex>
                 <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
-                <SDropdownArrowWrapper opened={opened}>                  <IconRotator rotationDegrees={firstRotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator>
+                <SDropdownArrowWrapper opened={opened}>                  <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator>
                 </SDropdownArrowWrapper>
               </SFlex>}
             {!translationBadge && <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
             }
           </SInputDropdownTextWrapper>
         </SInputDropdownTextIconWrapper>
-        {!translationBadge && <SDropdownArrowWrapper opened={opened}> <IconRotator rotationDegrees={firstRotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator> </SDropdownArrowWrapper>
+        {!translationBadge && <SDropdownArrowWrapper opened={opened}> <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator> </SDropdownArrowWrapper>
         }
         {translationBadge && <TranslationBadge countryCode="de"></TranslationBadge>}
       </SInputDropdown>
@@ -109,6 +108,5 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
         </Popover>
       )}
     </div>
-
   );
 };

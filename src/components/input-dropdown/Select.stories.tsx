@@ -45,27 +45,15 @@ const dataSource = [
 
 function SimpleInputDropdownDemo({ error, required, translationBadge, label }) {
   const [selectValue, setSelectValue] = React.useState(null);
-  const [firstRotationDegrees, setFirstRotationDegrees] = React.useState(0);
-  const [secondRotationDegrees, seSecondRotationDegrees] = React.useState(0);
 
   const [firstOpened, setFirstOpened] = React.useState(false);
   const [secondOpened, setSecondOpened] = React.useState(false);
 
   const handleFirstDropdown = () => {
-    if (firstOpened == true) {
-      setFirstRotationDegrees(0)
-    } else {
-      setFirstRotationDegrees(-180)
-    }
     setFirstOpened((prev) => !prev)
   };
 
   const handleSecondDropdown = () => {
-    if (secondOpened == true) {
-      seSecondRotationDegrees(0)
-    } else {
-      seSecondRotationDegrees(-180)
-    }
     setSecondOpened((prev) => !prev)
   };
 
@@ -73,11 +61,9 @@ function SimpleInputDropdownDemo({ error, required, translationBadge, label }) {
     setSelectValue(e)
     if (firstOpened == true) {
       setFirstOpened((prev) => !prev)
-      setFirstRotationDegrees(0)
     }
     if (secondOpened == true) {
       setSecondOpened((prev) => !prev)
-      seSecondRotationDegrees(0)
     }
   };
 
@@ -93,7 +79,6 @@ function SimpleInputDropdownDemo({ error, required, translationBadge, label }) {
         onSelectValue={(e) => onSelectValue(e)}
         label={label}
         opened={firstOpened}
-        rotationDegrees={firstRotationDegrees}
         onClick={() => handleFirstDropdown()}
       />
     </ClickOutside>
@@ -108,7 +93,6 @@ function SimpleInputDropdownDemo({ error, required, translationBadge, label }) {
         onSelectValue={(e) => onSelectValue(e)}
         label={label}
         opened={secondOpened}
-        rotationDegrees={secondRotationDegrees}
         onClick={() => handleSecondDropdown()}
       />
     </ClickOutside>
