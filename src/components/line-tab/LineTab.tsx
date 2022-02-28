@@ -2,7 +2,7 @@ import React from "react";
 import { SLineTab } from "./styles/SLineTab";
 import { SLineTabLine } from "./styles/SLineTabLine";
 
-export interface ILineTabProps {
+interface ILineTabProps {
   hover?: boolean;
   activated?: boolean;
   title?: string | undefined;

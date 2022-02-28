@@ -52,11 +52,22 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
     setSelectIcon(dataSource.find((option) => option.key === e)?.icon);
   };
 
+  const [firstRotationDegrees, setFirstRotationDegrees] = React.useState(0);
+
+  const handleDropdown = () => {
+    onClick && onClick()
+    if (opened == true) {
+      setFirstRotationDegrees(0)
+    } else {
+      setFirstRotationDegrees(-180)
+    }
+  }
+
   const { width } = useDimensions(ref);
 
   return (
     <div>
-      <SInputDropdown onClick={onClick} ref={ref} error={error} opened={opened} selectTitle={selectTitle} styleOverwrite={styleOverwrite}>
+      <SInputDropdown onClick={handleDropdown} ref={ref} error={error} opened={opened} selectTitle={selectTitle} styleOverwrite={styleOverwrite}>
         <SInputDropdownTextIconWrapper>
           {selectIcon ? selectIcon : ""}
           <SInputDropdownTextWrapper>
@@ -64,14 +75,14 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
             {translationBadge &&
               <SFlex>
                 <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
-                <SDropdownArrowWrapper opened={opened}>                  <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator>
+                <SDropdownArrowWrapper opened={opened}>                  <IconRotator rotationDegrees={firstRotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator>
                 </SDropdownArrowWrapper>
               </SFlex>}
             {!translationBadge && <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
             }
           </SInputDropdownTextWrapper>
         </SInputDropdownTextIconWrapper>
-        {!translationBadge && <SDropdownArrowWrapper opened={opened}> <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator> </SDropdownArrowWrapper>
+        {!translationBadge && <SDropdownArrowWrapper opened={opened}> <IconRotator rotationDegrees={firstRotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator> </SDropdownArrowWrapper>
         }
         {translationBadge && <TranslationBadge countryCode="de"></TranslationBadge>}
       </SInputDropdown>

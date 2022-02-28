@@ -13,6 +13,7 @@ const Bronze = css`
   border: unset;
   outline: unset;
   box-shadow: unset;
+  padding: 0;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;

@@ -1,64 +1,72 @@
-import React, { ReactNode, useEffect, useState } from "react";
-import { LineTab } from "../line-tab";
-import { SLineTabPanel } from "./styles/SLineTabPanel";
-import { SLineTabs } from "./styles/SLineTabs";
+import React, {ReactNode, useEffect, useState} from "react";
+import {LineTab} from "../line-tab";
+import {SLineTabPanel} from "./styles/SLineTabPanel";
+import {SLineTabs} from "./styles/SLineTabs";
 
 interface ILineTabs {
   initialValue: number;
   onChange?: (newValue: number) => void;
-  children?: ReactNode;
   loading?: boolean;
   loadingComponent?: ReactNode;
   reference?: any;
   style?: React.CSSProperties;
+  tabsStyle?: React.CSSProperties;
 }
 
-export const LineTabs: React.FC<ILineTabs> = (props) => {
-  const [selected, setSelected] = useState(props.initialValue);
-
+export const LineTabs: React.FC<ILineTabs> = ({
+                                                children,
+                                                initialValue,
+                                                loading,
+                                                loadingComponent,
+                                                onChange,
+                                                reference,
+                                                style,
+                                                tabsStyle
+                                              }) => {
+  const [selected, setSelected] = useState(initialValue);
+  
   useEffect(() => {
-    setSelected(props.initialValue);
-    props.onChange && props.onChange(props.initialValue);
-  }, [props.initialValue]);
-
+    setSelected(initialValue);
+    onChange?.(initialValue);
+  }, [initialValue]);
+  
   return (
-    <SLineTabs style={props.style} ref={props.reference}>
-      <ul>
-        {React.Children.map(props.children, (child: any, index: number) => {
+    <SLineTabs style={style} ref={reference}>
+      <ul style={tabsStyle}>
+        {React.Children.map(children as React.ReactElement<ILineTabPanel>[], (child, index) => {
           return (
             <LineTab
               activated={index === selected}
               key={index}
               onClick={() => {
                 setSelected(index);
-                props.onChange && props.onChange(index);
+                onChange?.(index);
               }}
             >
-              {child && child.props.title ? child.props.title : null}
-              {child.props.icon}
+              {child?.props?.tabTitle}
+              {child?.props?.icon}
             </LineTab>
           );
         })}
       </ul>
-      {props.loading ? (
-        props.loadingComponent ? (
-          props.loadingComponent
-        ) : (
-          <div>Loading...</div>
-        )
-      ) :
-        React.Children.map(props.children, (child, i) => (i === selected ? child : null))}
+      {loading ? (
+          loadingComponent ? (
+            loadingComponent
+          ) : (
+            <div>Loading...</div>
+          )
+        ) :
+        React.Children.map(children, (child, i) => (i === selected ? child : null))}
     </SLineTabs>
   );
 };
 
 interface ILineTabPanel {
-  title?: any;
-  children?: any;
+  tabTitle: string;
   style?: React.CSSProperties;
   icon?: ReactNode;
 }
 
-export const LineTabPanel = (props: ILineTabPanel) => {
+export const LineTabPanel: React.FC<ILineTabPanel> = (props) => {
   return <SLineTabPanel {...props}>{props.children}</SLineTabPanel>;
 };
