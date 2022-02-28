@@ -49,6 +49,11 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
     onSelectValue?.(e);
     setSelectTitle(dataSource.find((option) => option.key === e)?.title);
     setSelectIcon(dataSource.find((option) => option.key === e)?.icon);
+    if (opened == true) {
+      setRotationDegrees(0)
+    } else {
+      setRotationDegrees(-180)
+    }
   };
 
   const [rotationDegrees, setRotationDegrees] = React.useState(0);
