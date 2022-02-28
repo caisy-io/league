@@ -23,7 +23,7 @@ const Bronze = css<ITooltip>`
 
   border-radius: 4px;
   ${(props) => (props.color === "black" ? CSSBlack : CSSWhite)}
-  padding: 16px;
+  padding: 8px;
 
   box-shadow: var(--box-shadow-sticked-top-ui);
 
