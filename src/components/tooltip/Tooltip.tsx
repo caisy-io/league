@@ -10,9 +10,10 @@ export interface ITooltip {
   content: ReactNode | (() => ReactNode);
   placement?: TPlacement | undefined;
   color?: TTooltipColor;
+  disableTriangle?: boolean;
 }
 
-export const Tooltip: FC<ITooltip> = ({ content, placement, color, children }) => {
+export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, disableTriangle }) => {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   let closeTooltipTimeout;
@@ -81,6 +82,7 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children }) =
       {children}
       {open && (
         <Popover
+          disableTriangle={disableTriangle}
           triangleExtraCSS={openCloseAnimation}
           trianglecolor={getBackgroundColor()}
           placement={placement || "top"}
