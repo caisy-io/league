@@ -19,6 +19,7 @@ export * from "./dropdown-results-list";
 export * from "./dropdown-search";
 export * from "./empty";
 export * from "./flag";
+export * from "./flag-dynamic";
 export * from "./flat-action-button";
 export * from "./form";
 export * from "./form-item";
