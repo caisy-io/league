@@ -13,6 +13,7 @@ const InActive = css`
 
 const Bronze = css<{active?: boolean}>`
   width: 100%;
+  border: none;
   border-top: 1px solid var(--ui-03);
   cursor: pointer;
   ${CSSProgressivePrimaryButtons};
