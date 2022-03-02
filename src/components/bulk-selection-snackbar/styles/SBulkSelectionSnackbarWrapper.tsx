@@ -4,6 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 const Bronze = css`
   display: flex;
   gap: 8px;
+  filter: drop-shadow(0px 8px 12px rgba(86, 122, 152, 0.12));
 `;
 
 const Silver = css``;
