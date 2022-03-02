@@ -3,14 +3,15 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 import { Z_INDEX } from "../../../constants/styles/z-index-numbers";
 
 interface ISLayoutSiderWrapper {
-    left: boolean;
+  left: boolean;
 }
 
 const Bronze = css<ISLayoutSiderWrapper>`
-    position: relative;
-    display: flex;
-    order: ${(props) => props.left ? 1 : 3};
-    z-index: ${Z_INDEX.LAYOUT_SIDER};
+  position: relative;
+  display: flex;
+  order: ${(props) => (props.left ? 1 : 3)};
+  z-index: ${Z_INDEX.LAYOUT_SIDER};
+  filter: drop-shadow(8px 0px 12px rgba(0, 0, 0, 0.04));
 `;
 
 const Silver = css``;
