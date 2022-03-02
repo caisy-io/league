@@ -21,7 +21,7 @@ const Bronze = css<{active?: boolean}>`
   gap: 8px;
   align-items: center;
   padding: 12px 16px;
-  min-height: 40px;
+  min-height: 50px;
   background-color: var(--ui-01);
   color: var(--text-04);
   box-shadow: var(--box-shadow-sticked-bottom-ui);
