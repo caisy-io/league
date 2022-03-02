@@ -8,55 +8,55 @@ const CSSSolidLabelBase = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 8px;
+  padding: 4px 8px;
   border-radius: 4px;
   border: none;
-  
+
   > * {
-    ${CSSProgressiveCaption01Semibold}
+    ${CSSProgressiveCaption01Semibold};
     line-height: normal;
     text-align: center;
   }
 `;
 
 const CSSDefault = css`
-  ${CSSSolidLabelBase}
+  ${CSSSolidLabelBase};
   background: var(--ui-02);
   color: var(--text-suppportive-02);
 `;
 
 const CSSImportant = css`
-  ${CSSSolidLabelBase}
+  ${CSSSolidLabelBase};
   background: var(--ui-supportive-01);
   color: var(--text-02);
 `;
 
 const CSSGreen = css`
-  ${CSSSolidLabelBase}
+  ${CSSSolidLabelBase};
   background: var(--ui-supportive-04);
   color: var(--text-07);
 `;
 
 const CSSRed = css`
-  ${CSSSolidLabelBase}
+  ${CSSSolidLabelBase};
   background: var(--ui-supportive-02);
   color: var(--text-06);
 `;
 
 const CSSYellow = css`
-  ${CSSSolidLabelBase}
-  background: var(--ui-supportive-03);
+  ${CSSSolidLabelBase};
+  background: var(--ui-supportive-04);
   color: var(--text-08);
 `;
 
 const CSSGrey = css`
-  ${CSSSolidLabelBase}
+  ${CSSSolidLabelBase};
   background: var(--ui-03);
   color: var(--text-03);
 `;
 
 const CSSGreyOutline = css`
-  ${CSSSolidLabelBase}
+  ${CSSSolidLabelBase};
   box-sizing: border-box;
   background: var(--ui-01);
   border: 1px solid var(--ui-03);
