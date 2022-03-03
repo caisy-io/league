@@ -9,5 +9,5 @@ export const SDatePickerWrapperHeader = styled.div`
   left: 0;
   width: 100%;
   margin-bottom: 4px;
-
+  z-index: 1;
 `;
