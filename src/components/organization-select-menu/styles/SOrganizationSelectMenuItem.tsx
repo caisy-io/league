@@ -26,6 +26,8 @@ const Bronze = css`
   font-size: 11px;
 
   cursor: pointer;
+
+  overflow: hidden;
   ${(props) => props.typeOrganization ? CSSOrganizationListItemStyle : ''};
 `;
 
