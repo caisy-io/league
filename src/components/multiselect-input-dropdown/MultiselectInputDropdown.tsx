@@ -1,6 +1,6 @@
 import React from "react";
 import { IconChevronDown, IconClose } from "../../icons";
-import { ClickOutside, useDimensions } from "../../utils";
+import { ClickOutside } from "../../utils";
 import { OutLineLabel } from "../out-line-label";
 import ColorLabel from "../out-line-label/ColorLabel";
 
@@ -46,21 +46,24 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
 
   const ref = React.useRef(null);
 
-  const { width } = useDimensions(ref);
+  const toggleDropdown = () => {
+    setOpened(!opened);
+  };
 
   const onChange = (option: TDataSourceItem) => {
     onSelectValue?.(option);
+    toggleDropdown();
   };
 
   const onCloseSelect = () => {
-    setOpened(false);
+    toggleDropdown();
     onClose?.();
   };
 
   return (
     <ClickOutside onClickOutside={onCloseSelect}>
       <div>
-        <SMultiselectInputDropdown active={opened} ref={ref} onClick={() => setOpened(true)}>
+        <SMultiselectInputDropdown active={opened} ref={ref} onClick={toggleDropdown}>
           <SMultiSelectInputWrapper>
             <SMultiselectInputDropdownTitle>
               {values &&
