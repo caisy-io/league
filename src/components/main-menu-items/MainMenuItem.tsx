@@ -18,7 +18,7 @@ export const MainMenuItem: React.FC<IMainMenuItem> = ({ ...props }) => {
   };
   return (
     <>
-      <SMainMenuItemWrapper>
+      <SMainMenuItemWrapper ref={props.ref}>
         <SMainMenuItem activated={props.activated} onClick={handleClick}>
           <SMainMenuItemIcon>{props.children}</SMainMenuItemIcon>
         </SMainMenuItem>
