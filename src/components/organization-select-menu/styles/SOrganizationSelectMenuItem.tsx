@@ -10,6 +10,7 @@ const CSSOrganizationListItemStyle = css`
   width: 20px;
   height: 20px;
   z-index: 1000;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 const Bronze = css`
@@ -25,6 +26,8 @@ const Bronze = css`
   font-size: 11px;
 
   cursor: pointer;
+
+  overflow: hidden;
   ${(props) => props.typeOrganization ? CSSOrganizationListItemStyle : ''};
 `;
 

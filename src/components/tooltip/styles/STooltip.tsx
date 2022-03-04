@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveCaption01Semibold } from "../../..";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 interface ITooltip {
@@ -17,13 +18,14 @@ const CSSWhite = css`
 `;
 
 const Bronze = css<ITooltip>`
+  ${CSSProgressiveCaption01Semibold}
   display: flex;
   z-index: 120;
   width: max-content;
 
   border-radius: 4px;
   ${(props) => (props.color === "black" ? CSSBlack : CSSWhite)}
-  padding: 16px;
+  padding: 8px;
 
   box-shadow: var(--box-shadow-sticked-top-ui);
 

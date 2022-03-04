@@ -73,7 +73,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
                       key={item.id}
                       size="medium"
                       colorLabel={<ColorLabel color={item.color} />}
-                      icon={<IconClose />}
+                      icon={<IconClose size={16} />}
                     >
                       {item.label}
                     </OutLineLabel>

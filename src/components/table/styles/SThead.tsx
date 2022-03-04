@@ -3,7 +3,11 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 interface ISThead {}
 
-const Bronze = css<ISThead>``;
+const Bronze = css<ISThead>`
+  box-shadow: var(--box-shadow-sticked-table-header);
+  position: relative;
+  z-index: 1;
+`;
 
 const Silver = css<ISThead>``;
 
