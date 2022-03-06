@@ -20,7 +20,7 @@ const Template = (args) => {
       />
 
       <SimpleInput
-        translationBadge={<TranslationBadge countryCode="ar" />}
+        translationBadge={<TranslationBadge countryCode="es-ar" />}
         label="This is a label"
         value={value}
         onChange={({ target: { value } }) => setValue(value)}
@@ -40,6 +40,7 @@ Required.args = {
   title: "Single Line String",
   required: true,
   tooltip: <p>Test react element tooltip</p>,
+  description: "This is a required string input"
 };
 
 export const Error = Template.bind({});
