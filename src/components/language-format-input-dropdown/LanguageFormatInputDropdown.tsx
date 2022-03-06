@@ -66,21 +66,31 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
   };
 
   const handleDropdown = () => {
-    if (opened) {
-      setRotationDegrees(0);
-    } else {
-      setRotationDegrees(-180);
-    }
     setOpened((prev) => !prev);
   };
+
+  React.useEffect(() => {
+    if (opened) {
+      setRotationDegrees(-180);
+    } else {
+      setRotationDegrees(0);
+    }
+  }, [opened]);
 
   const { width } = useDimensions(ref);
 
   return (
-    <ClickOutside onClickOutside={() => handleDropdown()}>
+    <ClickOutside
+      onClickOutside={() => {
+        setOpened(false);
+      }}
+    >
       <div>
         <SLanguageFormatInputDropdown
-          onClick={() => handleDropdown()}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleDropdown();
+          }}
           ref={ref}
           error={error}
           opened={opened}
@@ -125,7 +135,7 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
             </SLanguageFormatDropdownArrowWrapper>
           )}
         </SLanguageFormatInputDropdown>
-        {opened && !disabled && (
+        {opened && !disabled && dataSource.length && (
           <Popover disableTriangle placement="bottom" reference={ref}>
             <SLanguageFormatSelectDropdown style={{ width }}>
               <SLanguageFormatSelectDropdownCont>

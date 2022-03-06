@@ -3,7 +3,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 import { CSSScrollbarStyles } from "../../../constants/styles";
 
 const Bronze = css`
-  height: 240px;
+  max-height: 240px;
   overflow: hidden auto;
   ${CSSScrollbarStyles};
 `;
