@@ -20,10 +20,6 @@ const CSSError = css`
   color: var(--text-06);
 `;
 
-const CSSOpened = css`
-  color: var(--active-text-04);
-`;
-
 const Bronze = css`
   ${CSSProgressiveCaption01Semibold};
   color: var(--text-04);
@@ -35,7 +31,6 @@ const Bronze = css`
   width: fit-content;
   padding-right: 8px;
   ${({ required, selected }) => required && !selected && CSSRequired};
-  ${(props) => props.opened && CSSOpened};
   ${(props) => props.error && CSSError};
 `;
 
