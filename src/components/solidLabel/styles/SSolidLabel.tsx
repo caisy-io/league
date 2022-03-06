@@ -8,7 +8,7 @@ const CSSSolidLabelBase = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 8px;
+  padding: 4px 6px;
   border-radius: 4px;
   border: none;
 
