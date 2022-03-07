@@ -5,7 +5,6 @@ import Poppable from "../../poppable";
 interface ISPopover {
   trianglecolor: string;
   triangleExtraCSS?: CSSProp;
-  styleOverwrite?: string;
 }
 
 const Bronze = css<ISPopover>`
@@ -23,11 +22,10 @@ const Platinum = css<ISPopover>``;
 
 const Diamond = css<ISPopover>``;
 
-export const SPopover = styled(Poppable)<ISPopover>`
+export const SPopover = styled(Poppable) <ISPopover>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
-  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
