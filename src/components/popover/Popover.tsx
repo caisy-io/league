@@ -113,7 +113,7 @@ export const Popover: React.FC<IPopover> = ({
       { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Bottom
       { top: vcenter(rbr, tbr).top - (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Top
       { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Bottom
-      { ...hafter(rbr, tbr), ...vafter(rbr, tbr, -34) }, // Bottom aligned right
+      { ...hafter(rbr, tbr, -80), ...vafter(rbr, tbr, 16) }, // Bottom aligned right
     ];
   }, []);
   return (
