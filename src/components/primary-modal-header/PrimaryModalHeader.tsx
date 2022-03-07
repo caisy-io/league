@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, ReactNode } from "react";
 import { Badge, EBadgePosition } from "../badge";
 import { IconClose } from "../../icons/IconClose";
 import { IconAngleRight } from "../../icons/IconAngleRight";
@@ -7,11 +7,11 @@ import { SPrimaryModalHeader } from "./styles/SPrimaryModalHeader";
 import { SPrimaryModalHeaderBreadcrumb } from "./styles/SPrimaryModalHeaderBreadcrumb";
 
 interface IPrimaryModalHeaderLabel {
-  title: string;
+  title: string | ReactNode;
   value?: string | number;
   onClick?: (value: string | number | undefined) => void;
   icon?: JSX.Element;
-  badgeContent?: string;
+  badgeContent?: string | ReactNode;
 }
 
 interface IPrimaryModalHeader {
