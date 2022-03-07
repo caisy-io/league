@@ -11,7 +11,7 @@ interface ISearchInput {
   placeholder?: string;
   onClose?: () => void;
   onChange?: (e) => void;
-  onKeyPress?: (e, onCLose) => void;
+  onKeyPress?: (e, onClose) => void;
   withFilter?: boolean;
   onClickFilter?: () => void;
 }
@@ -53,7 +53,7 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
   };
 
   const handleKeyPress = (e) => {
-    onKeyPress(e, handleClose);
+    onKeyPress?.(e, handleClose);
   }
 
   return (
