@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { IconChevronDown, IconRotator } from "../..";
 import { SFlex } from "../../base-components/flex/styles/SFlex";
 import { useDimensions } from "../../utils";
@@ -25,7 +25,7 @@ interface ISelectSingle {
   renderItem?: (data: any) => React.ReactNode;
   onSelectValue?: (e: string) => void;
   value?: IDataSourceItem;
-  defaultValue?: string;
+  defaultValue?: IDataSourceItem;
   placeholder?: string;
   label?: string;
   required?: boolean;
@@ -40,9 +40,10 @@ interface ISelectSingle {
   opened?: boolean;
 }
 
-export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onClick, onSelectValue, translationBadge, label, styleOverwrite, opened, value }) => {
+export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onClick, onSelectValue, translationBadge, label, styleOverwrite, opened, defaultValue }) => {
   const [selectTitle, setSelectTitle] = React.useState<string | null | undefined>(null);
   const [selectIcon, setSelectIcon] = React.useState<ReactNode>(null);
+  const [initialized, setInitialized] = useState(false)
   const ref = React.useRef(null);
 
   const onChange = (e) => {
@@ -57,10 +58,11 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
   };
 
   useEffect(() => {
-    if (!value) return;
-    setSelectTitle(value.title);
-    setSelectIcon(value.icon);
-  }, [value])
+    if (!defaultValue || initialized) return;
+    setSelectTitle(defaultValue.title);
+    setSelectIcon(defaultValue.icon);
+    setInitialized(true)
+  }, [defaultValue])
 
   const [rotationDegrees, setRotationDegrees] = React.useState(0);
 
