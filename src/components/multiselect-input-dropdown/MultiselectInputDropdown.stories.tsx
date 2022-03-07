@@ -187,9 +187,10 @@ const Template = () => {
     setDataSource(filteredDataSource);
   };
 
-  const onAddNewTag = (e) => {
+  const onAddNewTag = (e, onClose) => {
     if (e.code === "Enter") {
       console.log("New tag added -> ", newTag);
+      onClose?.();
     }
   };
 
