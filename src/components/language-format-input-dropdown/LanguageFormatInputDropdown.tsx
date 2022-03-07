@@ -27,8 +27,8 @@ export interface ILanguageFormatInputDropdown {
   dataSource: IDataSourceLanguageItem[];
   onSelectValue?: (e: string) => void;
   initialValueKey?: string;
-  placeholder?: string;
-  label?: string;
+  placeholder?: ReactNode | string;
+  label?: ReactNode | string;
   required?: boolean;
   error?: boolean;
   styleOverwrite?: string;
@@ -78,6 +78,10 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
   }, [opened]);
 
   const { width } = useDimensions(ref);
+
+  React.useEffect(() => {
+    setSelectedOptionKey(initialValueKey || "");
+  }, [initialValueKey]);
 
   return (
     <ClickOutside
