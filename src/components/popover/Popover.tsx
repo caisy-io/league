@@ -74,6 +74,7 @@ interface IPopover {
   onClickOutside?: () => void;
   container?: React.MutableRefObject<null>;
   zIndex?: number;
+  styleOverwrite?: string;
 }
 
 export const Popover: React.FC<IPopover> = ({
@@ -86,6 +87,7 @@ export const Popover: React.FC<IPopover> = ({
   container,
   zIndex,
   triangleExtraCSS,
+  styleOverwrite
 }) => {
   if (!reference || !reference.current) {
     return null;
@@ -110,7 +112,7 @@ export const Popover: React.FC<IPopover> = ({
     ];
   }, []);
   return (
-    <ClickOutside onClickOutside={onClickOutside || (() => {})}>
+    <ClickOutside onClickOutside={onClickOutside || (() => { })}>
       {reference && (
         <Stackable zIndex={zIndex}>
           <SPopover
@@ -120,6 +122,7 @@ export const Popover: React.FC<IPopover> = ({
             trianglecolor={trianglecolor}
             triangleExtraCSS={triangleExtraCSS}
             container={container}
+            styleOverwrite={styleOverwrite}
           >
             <>
               {!disableTriangle ? <Triangle size={9} /> : null}
