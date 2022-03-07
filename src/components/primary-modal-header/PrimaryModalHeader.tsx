@@ -11,7 +11,7 @@ interface IPrimaryModalHeaderLabel {
   value?: string | number;
   onClick?: (value: string | number | undefined) => void;
   icon?: JSX.Element;
-  badgeContent?: string | ReactNode;
+  badgeContent?: string;
 }
 
 interface IPrimaryModalHeader {
