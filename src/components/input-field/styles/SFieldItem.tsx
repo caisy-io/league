@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const SStringFieldItem = styled.div<{ error: boolean }>`
+export const SFieldItem = styled.div<{ error: boolean }>`
   background-color: var(--ui-01);
   border: 1px solid var(--ui-03);
   border-left-width: 3px;
