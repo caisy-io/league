@@ -26,9 +26,14 @@ const Bronze = css`
   font-size: 11px;
 
   cursor: pointer;
-
+  > div {
+    height: 100%;
+    width: 100%;
+  }
   overflow: hidden;
   ${(props) => props.typeOrganization ? CSSOrganizationListItemStyle : ''};
+
+
 `;
 
 const Silver = css``;

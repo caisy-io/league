@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { CSSProgressiveBody02Semibold } from "../../../constants/styles";
-export const SStringTitle = styled.div<{ required: boolean; isOpen: boolean }>`
+import { CSSProgressiveBody02Semibold, CSSProgressiveBody03Medium } from "../../../constants/styles";
+export const SFieldTitle = styled.div<{ required: boolean; isOpen: boolean }>`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
 

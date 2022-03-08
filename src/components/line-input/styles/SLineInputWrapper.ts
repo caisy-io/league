@@ -63,6 +63,8 @@ const Bronze = css`
   transition: border 200ms;
   padding-bottom: 3px;
 
+  width: 100%;
+
   div:last-of-type {
     opacity: 0;
   }

@@ -6,8 +6,7 @@ const Bronze = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 32px;
-  width: 32px;
+  color: var(--icon-03);
   border-radius: 6px;
   cursor: pointer;
 `;

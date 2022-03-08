@@ -16,7 +16,7 @@ export interface ITagListItem {
   rightIcon?: React.ReactNode;
   outlineLabel?: React.ReactNode;
   flatActionButton?: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
   popover?: React.ReactNode;
 }
 
