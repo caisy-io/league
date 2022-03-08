@@ -9,14 +9,9 @@ import { SFieldTitle } from "./styles/SFieldTitle";
 import { SFieldDisplayButton } from "./styles/SFieldDisplayButton";
 import { SFieldDescription } from "./styles/SFieldDescription";
 import { SFieldErrors } from "./styles/SFieldErrors";
+import { IInputFieldProps } from "./types";
 
-export interface IInputFieldProps {
-  title: string;
-  description?: string;
-  required: boolean;
-  tooltip?: ReactNode | (() => ReactNode);
-  errors?: ReactNode[];
-}
+
 
 export const InputField: FC<IInputFieldProps> = ({ title, description, required, tooltip, errors, children }) => {
   const [isOpen, setOpen] = useState(false);

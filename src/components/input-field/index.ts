@@ -1,1 +1,2 @@
-export { InputField, IInputFieldProps } from "./InputField";
+export { InputField } from "./InputField";
+export type { IInputFieldProps } from "./types";

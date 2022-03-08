@@ -54,7 +54,7 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
 
   const handleKeyPress = (e) => {
     handleClose();
-    onKeyPress(e);
+    onKeyPress && onKeyPress(e);
   }
 
   return (
