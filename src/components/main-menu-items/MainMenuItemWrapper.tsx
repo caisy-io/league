@@ -6,7 +6,7 @@ interface IMainMenuItem {
   ref?: any;
 }
 
-export const MainMenuItem: FC<IMainMenuItem> = forwardRef(({ children }, ref) => {
+export const MainMenuItemWrapper: FC<IMainMenuItem> = forwardRef(({ children }, ref) => {
   return (
     <>
       <SMainMenuItemWrapper ref={ref}>
