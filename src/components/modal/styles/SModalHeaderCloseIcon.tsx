@@ -2,10 +2,11 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  background-color: var(--icon-03);
+  background-color: var(--neutral-100);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--icon-03);
   border-radius: 6px;
   cursor: pointer;
 `;
