@@ -27,11 +27,14 @@ interface IMultiselectInputDropdown {
   renderDataItem?: (option: TDataSourceItem) => JSX.Element;
   renderInputItem?: (option: TDataSourceItem) => JSX.Element;
   onClose?: () => void;
+  onClick?: () => void;
   popupHeader?: JSX.Element;
   popupFooter?: JSX.Element;
+  opened: boolean;
 }
 
 export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
+  opened,
   values,
   placeholder,
   dataSource,
@@ -41,29 +44,22 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   popupHeader,
   popupFooter,
   onClose,
+  onClick,
 }) => {
-  const [opened, setOpened] = React.useState(false);
-
   const ref = React.useRef(null);
-
-  const toggleDropdown = () => {
-    setOpened(!opened);
-  };
 
   const onChange = (option: TDataSourceItem) => {
     onSelectValue?.(option);
-    toggleDropdown();
   };
 
   const onCloseSelect = () => {
-    toggleDropdown();
     onClose?.();
   };
 
   return (
     <ClickOutside onClickOutside={onCloseSelect}>
       <div>
-        <SMultiselectInputDropdown active={opened} ref={ref} onClick={toggleDropdown}>
+        <SMultiselectInputDropdown active={opened} ref={ref} onClick={onClick}>
           <SMultiSelectInputWrapper>
             <SMultiselectInputDropdownTitle>
               {values &&
@@ -96,13 +92,20 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
               {dataSource &&
                 dataSource.map((option) =>
                   renderDataItem ? (
-                    <div key={option.id} onClick={() => onChange(option)}>
+                    <div
+                      key={option.id}
+                      onClick={() => {
+                        onChange(option);
+                      }}
+                    >
                       {renderDataItem(option)}
                     </div>
                   ) : (
                     <div key={option.id}>
                       <TagListItem
-                        onClick={() => onChange(option)}
+                        onClick={() => {
+                          onChange(option);
+                        }}
                         outlineLabel={
                           <OutLineLabel size="medium" colorLabel={<ColorLabel color={option.color} />}>
                             {option.label}

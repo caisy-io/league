@@ -1,7 +1,7 @@
-import React, { FC, KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { FC, KeyboardEvent, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useDimensions } from "../../..";
-import { SErrorMessage } from "../styles/SErrorMessage";
-import { SLabel } from "../styles/SLabel";
+import { SErrorMessage } from "../styles";
+import { SLabel } from "../styles";
 import { SSimpleInput } from "./styles/SSimpleInput";
 import { SSimpleInputIconWrapper } from "./styles/SSimpleInputIconWrapper";
 import { SSimpleInputInsideContainer } from "./styles/SSimpleInputInsideContainer";
@@ -15,7 +15,7 @@ import { SSimpleInputWrapper } from "./styles/SSimpleInputWrapper";
 type TSimpleInputState = "success" | "error" | "default" | "locked";
 
 interface ISimpleInput {
-  label?: string;
+  label?: string | ReactNode;
   errors?: string[];
   state?: TSimpleInputState;
   translationBadge?: JSX.Element;
