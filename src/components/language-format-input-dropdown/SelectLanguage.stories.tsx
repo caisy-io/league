@@ -20,7 +20,6 @@ export default {
   argTypes: {
     label: {
       description: "Label/ title for the dropdown",
-      control: { type: "text" },
     },
     required: {
       description: "Changes the input to required",
@@ -73,8 +72,8 @@ export const Default = Template.bind({});
 Default.args = {
   error: false,
   required: false,
-  label: "Language format (ID)",
+  label: <span>Language format (ID)</span>,
   initialValueKey: "",
-  placeholder: "Select language",
+  placeholder: <span>Select language</span>,
   disabled: false,
 };
