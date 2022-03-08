@@ -12,7 +12,7 @@ export const ModalHeader: React.FC<IModalHeader> = ({ ...props }) => {
     <SModalHeader>
       {props.children}
       <SModalHeaderCloseIcon onClick={props.onClose}>
-        <IconClose />
+        <IconClose size={32} />
       </SModalHeaderCloseIcon>
     </SModalHeader>
   );
