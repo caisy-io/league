@@ -12,9 +12,10 @@ interface IAvatarInput {
   imageUrl?: string;
   onChange: (url: string) => void;
   processImage: (file: File) => Promise<string>;
+  avatarResolution?: number
 }
 
-export const AvatarInput: React.FC<IAvatarInput> = ({ imageUrl, processImage, onChange, children }) => {
+export const AvatarInput: React.FC<IAvatarInput> = ({ imageUrl, processImage, onChange, children, avatarResolution = 48 }) => {
   const { isLoading, image, imageRef, openImagePicker, removeImage, uploadImage } = useFileUpload({
     imageUrl,
     processImage,
@@ -25,7 +26,7 @@ export const AvatarInput: React.FC<IAvatarInput> = ({ imageUrl, processImage, on
     <SAvatarInput>
       <SAvatarInputPreview>
         {!image && !isLoading && children}
-        {!isLoading && image && <Img lazyload={false} src={image!} resolution={48} />}
+        {!isLoading && image && <Img lazyload={false} src={image!} resolution={avatarResolution} />}
       </SAvatarInputPreview>
       <SAvatarInputButtonsWrapper>
         {!isLoading && !image && (
