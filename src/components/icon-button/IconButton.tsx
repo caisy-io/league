@@ -4,7 +4,7 @@ import { SIconButton } from "./styles/SIconButton";
 
 interface IIconButton {
   size?: ISizesSmallMedium;
-  type?: "primary" | "secondary" | "danger";
+  type?: "primary" | "secondary" | "danger" | "default";
   activated?: boolean;
   onClick?: (e: MouseEventHandler<HTMLDivElement>) => void;
 }

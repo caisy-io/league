@@ -18,7 +18,11 @@ const CSSPrimaryActivated = css`
 
 const CSSPrimary = css`
   color: var(--icon-01);
-  background-color: var(--interactional-secondary-08);
+  ${(props) =>
+    props.type !== "default" &&
+    css`
+      background-color: var(--interactional-secondary-08);
+    `}
 
   ${(props) => props.activated && CSSPrimaryActivated}
 
@@ -85,6 +89,9 @@ const CSSDanger = css`
   }
 `;
 
+const CSSDefault = css`
+  ${CSSPrimary},/* background-color: red !important; */
+`;
 const Bronze = css`
   border-radius: 8px;
   height: 40px;
@@ -103,6 +110,7 @@ const Bronze = css`
   ${(props) => props.size === "medium" && CSSMedium}
   ${(props) => props.type === "danger" && CSSDanger}
   ${(props) => props.type === "secondary" && CSSSecondary}
+  ${(props) => props.type === "default" && CSSDefault}
 `;
 
 const Silver = css``;
