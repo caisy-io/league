@@ -23,6 +23,11 @@ const Bronze = css`
   }
   &.isChild {
     ${CSSProgressiveBody03}
+    &:not(:hover) {
+      & div:last-child {
+        display: none;
+      }
+    }
   }
 `;
 
