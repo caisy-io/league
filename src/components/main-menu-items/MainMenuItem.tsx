@@ -8,7 +8,6 @@ interface IMainMenuItem {
   onClick: () => void;
   activated?: boolean;
   label?: string;
-  ref?: any;
 }
 
 export const MainMenuItem: React.FC<IMainMenuItem> = forwardRef(({ ...props }, ref) => {
