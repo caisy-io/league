@@ -13,7 +13,7 @@ const Template = () => {
         <div>
           <IconChevronRight size={20}></IconChevronRight>
           <IconEmojis size={16}></IconEmojis>
-          Hover
+          <span className="title">Hero</span>
         </div>
         <div>
           <IconButton type="default">

@@ -21,6 +21,9 @@ const Bronze = css`
     display: flex;
     align-items: center;
   }
+  & .title {
+    margin-left: 5px;
+  }
   &.isChild {
     ${CSSProgressiveBody03}
     &:not(:hover) {
