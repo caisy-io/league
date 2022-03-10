@@ -13,8 +13,7 @@ const Bronze = css`
   padding: 0.75rem 1rem;
   ${CSSProgressiveBody03Semibold}
   color: var(--text-01);
-  &:hover,
-  &.active {
+  &:hover {
     background-color: var(--active-ui-01-1);
   }
   * {
@@ -24,14 +23,22 @@ const Bronze = css`
   & .title {
     margin-left: 5px;
   }
-  &.isChild {
-    ${CSSProgressiveBody03}
-    &:not(:hover) {
-      & div:last-child {
-        display: none;
+  ${(props) =>
+    props.active &&
+    css`
+      background-color: var(--active-ui-01-1);
+    `}
+
+  ${(props) =>
+    props.isChild &&
+    css`
+      ${CSSProgressiveBody03}
+      &:not(:hover) {
+        & div:last-child {
+          display: none;
+        }
       }
-    }
-  }
+    `}
 `;
 
 const Silver = css``;

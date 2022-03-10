@@ -9,6 +9,9 @@ interface IViewItem {
 }
 
 export const ViewItem: React.FC<IViewItem> = ({ children, isChild, active }) => {
-  const className = classNames({ isChild, active });
-  return <SViewItem className={className}>{children}</SViewItem>;
+  return (
+    <SViewItem isChild={isChild} active={active}>
+      {children}
+    </SViewItem>
+  );
 };
