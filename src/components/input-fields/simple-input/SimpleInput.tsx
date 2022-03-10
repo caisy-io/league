@@ -12,9 +12,7 @@ import { SSimpleInputRightWrapper } from "./styles/SSimpleInputRightIcon";
 import { SSimpleInputTextWidth } from "./styles/SSimpleInputTextWidth";
 import { SSimpleInputWrapper } from "./styles/SSimpleInputWrapper";
 
-type TSimpleInputState = "success" | "error" | "default" | "locked";
-
-interface ISimpleInput {
+interface ISimpleInputBase {
   label?: string | ReactNode;
   errors?: string[];
   state?: TSimpleInputState;
@@ -33,6 +31,20 @@ interface ISimpleInput {
   autoFocus?: boolean;
 }
 
+type TSimpleInputState = "success" | "error" | "default" | "locked";
+
+interface ISimpleInputString extends ISimpleInputBase {
+  isNumberInput?: false;
+  allowFloat?: never;
+}
+
+interface ISimpleInputNumber extends ISimpleInputBase {
+  isNumberInput?: true;
+  allowFloat?: boolean;
+}
+
+type ISimpleInput = ISimpleInputString | ISimpleInputNumber;
+
 export const SimpleInput: FC<ISimpleInput> = ({
   state,
   required,
@@ -48,6 +60,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
   leftIcon,
   rightIcon,
   onKeyUp,
+  isNumberInput,
+  allowFloat,
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -91,6 +105,28 @@ export const SimpleInput: FC<ISimpleInput> = ({
   useEffect(() => {
     resizeInput();
   }, [value, placeholder]);
+
+  const handleChange = (e) => {
+    if (isNumberInput) {
+      // we check if the value is not empty and if is not already a number
+      if (
+        e.target.value === undefined ||
+        e.target.value === "" ||
+        e.target.value === null ||
+        typeof e.target.value === "number"
+      ) {
+        onChange?.(e.target.value);
+      } else {
+        if (allowFloat) {
+          onChange?.(parseFloat(e.target.value));
+        } else {
+          onChange?.(parseInt(e.target.value));
+        }
+      }
+    } else {
+      onChange?.(e.target.value);
+    }
+  };
 
   return (
     <SSimpleInputWrapper
