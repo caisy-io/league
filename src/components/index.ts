@@ -116,3 +116,5 @@ export * from "./micro-tab-switch";
 export * from "./slider";
 export * from "./language-format-input-dropdown";
 export * from "./input-field";
+export * from "./block-editor-sidebar";
+export * from "./language-toggle-list-item";
