@@ -4,16 +4,16 @@ import { SLanguageFlagToggleListItem } from "./styles/SLanguageFlagToggleListIte
 import { Toggle } from "../toggle";
 import { SLanguageFlagToggleListItemDragIcon } from "./styles/SLanguageFlagToggleListItemDragIcon";
 import { SLanguageFlagToggleListItemToggleButton } from "./styles/SLanguageFlagToggleListItemToggleButton";
-import { TranslationBadge } from "../input-fields";
 
 export interface ILanguageToggleListItemLocale {
   id: string;
-  apiName: string;
+  localeCode: string;
+  name: string;
+  active: boolean;
 }
 
 interface ILanguageToggleListItem {
   locale: ILanguageToggleListItemLocale;
-  active: boolean;
   onToggle: (newValue: boolean) => void;
   onDrag?: (event: DragEvent) => void;
   onDragStart?: (event: DragEvent) => void;
@@ -22,7 +22,6 @@ interface ILanguageToggleListItem {
 
 export const LanguageToggleListItem: FC<ILanguageToggleListItem> = ({
   locale,
-  active,
   onToggle,
   onDrag,
   onDragStart,
@@ -33,9 +32,9 @@ export const LanguageToggleListItem: FC<ILanguageToggleListItem> = ({
       <SLanguageFlagToggleListItemDragIcon>
         <IconDragable size={16} />
       </SLanguageFlagToggleListItemDragIcon>
-      {locale?.apiName?.toUpperCase()}
+      {locale?.localeCode?.toUpperCase()}{" "} {locale.name}
       <SLanguageFlagToggleListItemToggleButton>
-        <Toggle onChange={() => onToggle(!active)} activated={active} />
+        <Toggle onChange={() => onToggle(!locale.active)} activated={locale.active} />
       </SLanguageFlagToggleListItemToggleButton>
     </SLanguageFlagToggleListItem>
   );

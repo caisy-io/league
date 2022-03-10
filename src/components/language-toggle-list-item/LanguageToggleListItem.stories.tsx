@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { LanguageToggleListItem } from "./LanguageToggleListItem";
 
-function LanguageToggleListItemDemo({ apiName, id, dragging }) {
+function LanguageToggleListItemDemo({ localeCode, id, dragging }) {
   const [locale, setLocale] = useState({
-    apiName,
+    localeCode,
     id,
     active: false,
   });
 
   useEffect(() => {
     setLocale({
-      apiName,
+      localeCode,
       id,
       active: locale.active,
     });
-  }, [apiName, id]);
+  }, [localeCode, id]);
 
   const handleLocaleToggle = (newValue: boolean) => {
     setLocale({
@@ -42,12 +42,12 @@ export default {
   argTypes: {},
 };
 
-const Template = ({ apiName, id, dragging }) => (
-  <LanguageToggleListItemDemo apiName={apiName} id={id} dragging={dragging} />
+const Template = ({ localeCode, id, dragging }) => (
+  <LanguageToggleListItemDemo localeCode={localeCode} id={id} dragging={dragging} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  apiName: "de-de",
+  localeCode: "de-de",
   localeId: "de-locale-id",
 };
