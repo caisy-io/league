@@ -167,9 +167,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
               width={inputWidth}
               error={state === "error"}
               locked={state === "locked"}
-              onChange={(e) => {
-                onChange?.(e);
-              }}
+              onChange={handleChange}
               required={required}
               ref={inputRef}
               onFocus={handleFocus}
