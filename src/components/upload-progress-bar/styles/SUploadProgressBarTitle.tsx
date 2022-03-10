@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveCaption01Medium } from "../../../constants/styles/fonts";
+import { CSSProgressiveBody03Medium } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  margin-bottom: 8px;
-  
-  ${CSSProgressiveCaption01Medium};
+  margin-bottom: 16px;
 
-  color: var(--text-suppportive-02);
+  ${CSSProgressiveBody03Medium};
+
+  color: var(--text-01);
 `;
 
 const Silver = css``;
@@ -18,7 +18,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSetImageCardProgressBarLabel = styled.div`
+export const SUploadProgressBarTitle = styled.p`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
