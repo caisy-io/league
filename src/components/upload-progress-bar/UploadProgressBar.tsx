@@ -8,15 +8,16 @@ import { SUploadProgressBarTitle } from "./styles/SUploadProgressBarTitle";
 export interface IUploadProgressBar {
   progress: number;
   uploadName: string;
+  onCancel?: () => void;
 }
 
-export const UploadProgressBar: React.FC<IUploadProgressBar> = ({ progress, uploadName }) => {
+export const UploadProgressBar: React.FC<IUploadProgressBar> = ({ progress, uploadName, onCancel = () => {} }) => {
   return (
     <SUploadProgressBar>
       <SUploadProgressBarTitle>{uploadName}</SUploadProgressBarTitle>
       <SUploadProgressBarLabel>{progress}%</SUploadProgressBarLabel>
       <SProgressBar progress={progress} />
-      <Button onClick={() => {}} type="secondary">
+      <Button onClick={onCancel} type="secondary">
         CANCEL
       </Button>
     </SUploadProgressBar>

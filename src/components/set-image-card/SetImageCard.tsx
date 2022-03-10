@@ -47,20 +47,26 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
 
         const image = await processImage(file);
 
-        setTimeout(() => {
-          setUploadProgress(24);
-        }, 500);
-        setTimeout(() => {
-          setUploadProgress(57);
-        }, 700);
+        let uploadProgress = 24;
+
+        setUploadProgress(uploadProgress);
+
+        const timer = setInterval(() => {
+          const randTimeIncrease = Math.ceil(20 - Math.random() * 10);
+
+          if (uploadProgress + randTimeIncrease <= 100) {
+            uploadProgress += randTimeIncrease;
+            setUploadProgress(uploadProgress);
+          }
+        }, 300);
 
         if (image) {
-          setImage(image);
+          clearInterval(timer);
 
           setTimeout(() => {
-            setUploadProgress(100);
             setLoading(false);
-          }, 800);
+            setImage(image);
+          }, 1000);
         }
       } catch (error) {
         console.log(error);

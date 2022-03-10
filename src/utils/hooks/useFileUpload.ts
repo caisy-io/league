@@ -9,6 +9,8 @@ interface IUseFileUpload {
 export const useFileUpload = ({ imageUrl, processImage, onChange }: IUseFileUpload) => {
   const [image, setImage] = useState<string | null>(null);
   const [isLoading, setLoading] = useState<boolean>(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadName, setUploadName] = useState("");
 
   const imageRef = useRef<HTMLInputElement>(null);
 
@@ -27,12 +29,35 @@ export const useFileUpload = ({ imageUrl, processImage, onChange }: IUseFileUplo
 
     if (files && files.length > 0) {
       try {
-        const image = await processImage(files[0]);
+        const file = files[0];
 
-        setImage(image);
+        setUploadName(file.name);
+
+        const image = await processImage(file);
+
+        let uploadProgress = 24;
+
+        setUploadProgress(uploadProgress);
+
+        const timer = setInterval(() => {
+          const randTimeIncrease = Math.ceil(20 - Math.random() * 10);
+
+          if (uploadProgress + randTimeIncrease <= 100) {
+            uploadProgress += randTimeIncrease;
+            setUploadProgress(uploadProgress);
+          }
+        }, 300);
+
+        if (image) {
+          clearInterval(timer);
+
+          setTimeout(() => {
+            setLoading(false);
+            setImage(image);
+          }, 1000);
+        }
       } catch (error) {
         console.log(error);
-      } finally {
         setLoading(false);
       }
     }
@@ -40,6 +65,8 @@ export const useFileUpload = ({ imageUrl, processImage, onChange }: IUseFileUplo
 
   const removeImage = () => {
     setImage(null);
+    setUploadProgress(0);
+    setUploadName('');
   };
 
   useEffect(() => {
@@ -61,5 +88,7 @@ export const useFileUpload = ({ imageUrl, processImage, onChange }: IUseFileUplo
     openImagePicker,
     removeImage,
     uploadImage,
+    uploadName,
+    uploadProgress,
   };
 };

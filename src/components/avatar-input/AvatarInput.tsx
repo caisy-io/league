@@ -3,6 +3,7 @@ import { Img } from "../../base-components";
 import { IconDelete, IconEditImageAsset } from "../../icons";
 import { useFileUpload } from "../../utils/hooks/useFileUpload";
 import { Button } from "../button";
+import { UploadProgressBar } from "../upload-progress-bar";
 
 import { SAvatarInput } from "./styles/SAvatarInput";
 import { SAvatarInputButtonsWrapper } from "./styles/SAvatarInputButtonsWrapper";
@@ -12,41 +13,53 @@ interface IAvatarInput {
   imageUrl?: string;
   onChange: (url: string) => void;
   processImage: (file: File) => Promise<string>;
-  avatarResolution?: number
+  avatarResolution?: number;
 }
 
-export const AvatarInput: React.FC<IAvatarInput> = ({ imageUrl, processImage, onChange, children, avatarResolution = 48 }) => {
-  const { isLoading, image, imageRef, openImagePicker, removeImage, uploadImage } = useFileUpload({
-    imageUrl,
-    processImage,
-    onChange,
-  });
+export const AvatarInput: React.FC<IAvatarInput> = ({
+  imageUrl,
+  processImage,
+  onChange,
+  children,
+  avatarResolution = 48,
+}) => {
+  const { isLoading, image, imageRef, openImagePicker, removeImage, uploadImage, uploadName, uploadProgress } =
+    useFileUpload({
+      imageUrl,
+      processImage,
+      onChange,
+    });
 
   return (
     <SAvatarInput>
-      <SAvatarInputPreview>
-        {!image && !isLoading && children}
-        {!isLoading && image && <Img lazyload={false} src={image!} resolution={avatarResolution} />}
-      </SAvatarInputPreview>
-      <SAvatarInputButtonsWrapper>
-        {!isLoading && !image && (
-          <Button onClick={openImagePicker} type="primary" size="small">
-            {"upload image"}
-          </Button>
-        )}
-        {!isLoading && image && (
-          <>
-            <Button onClick={openImagePicker} type="secondary" size="small">
-              <IconEditImageAsset />
-              {"change"}
+      {isLoading && <UploadProgressBar progress={uploadProgress} uploadName={uploadName} />}
+      {!isLoading && (
+        <SAvatarInputPreview>
+          {!image && children}
+          {image && <Img lazyload={false} src={image!} resolution={avatarResolution} />}
+        </SAvatarInputPreview>
+      )}
+      {!isLoading && (
+        <SAvatarInputButtonsWrapper>
+          {!image && (
+            <Button onClick={openImagePicker} type="primary" size="small">
+              {"upload image"}
             </Button>
-            <Button onClick={removeImage} type="danger" size="small">
-              <IconDelete />
-              {"delete"}
-            </Button>
-          </>
-        )}
-      </SAvatarInputButtonsWrapper>
+          )}
+          {image && (
+            <>
+              <Button onClick={openImagePicker} type="secondary" size="small">
+                <IconEditImageAsset />
+                {"change"}
+              </Button>
+              <Button onClick={removeImage} type="danger" size="small">
+                <IconDelete />
+                {"delete"}
+              </Button>
+            </>
+          )}
+        </SAvatarInputButtonsWrapper>
+      )}
       <input key="avatar-input" hidden type="file" ref={imageRef} onChange={uploadImage} />
     </SAvatarInput>
   );
