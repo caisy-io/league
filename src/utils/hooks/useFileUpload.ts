@@ -1,16 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { getRandomArbitrary } from "../number";
 
 interface IUseFileUpload {
   imageUrl?: string;
   onChange: (url: string) => void;
   processImage: (file: File) => Promise<string>;
+  onCancelUpload?: () => void;
 }
 
-export const useFileUpload = ({ imageUrl, processImage, onChange }: IUseFileUpload) => {
+export const useFileUpload = ({ imageUrl, processImage, onChange, onCancelUpload }: IUseFileUpload) => {
   const [image, setImage] = useState<string | null>(null);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadName, setUploadName] = useState("");
+
+  const uploadTimer = undefined;
 
   const imageRef = useRef<HTMLInputElement>(null);
 
@@ -22,8 +26,11 @@ export const useFileUpload = ({ imageUrl, processImage, onChange }: IUseFileUplo
     setLoading(true);
 
     if (image) {
-      removeImage();
+      setImage(null);
     }
+
+    let uploadProgress = getRandomArbitrary(10, 50);
+    setUploadProgress(uploadProgress);
 
     const { files = [] } = e.target;
 
@@ -33,28 +40,22 @@ export const useFileUpload = ({ imageUrl, processImage, onChange }: IUseFileUplo
 
         setUploadName(file.name);
 
-        const image = await processImage(file);
-
-        let uploadProgress = 24;
-
-        setUploadProgress(uploadProgress);
-
-        const timer = setInterval(() => {
-          const randTimeIncrease = Math.ceil(20 - Math.random() * 10);
+        const uploadTimer = setInterval(() => {
+          const randTimeIncrease = getRandomArbitrary(5, 15);
 
           if (uploadProgress + randTimeIncrease <= 100) {
             uploadProgress += randTimeIncrease;
             setUploadProgress(uploadProgress);
           }
-        }, 300);
+        }, 700);
+
+        const image = await processImage(file);
 
         if (image) {
-          clearInterval(timer);
-
-          setTimeout(() => {
-            setLoading(false);
-            setImage(image);
-          }, 1000);
+          clearInterval(uploadTimer);
+          setUploadProgress(100);
+          setLoading(false);
+          setImage(image);
         }
       } catch (error) {
         console.log(error);
@@ -64,9 +65,16 @@ export const useFileUpload = ({ imageUrl, processImage, onChange }: IUseFileUplo
   };
 
   const removeImage = () => {
+    clearInterval(uploadTimer);
+    setLoading(false);
     setImage(null);
     setUploadProgress(0);
-    setUploadName('');
+    setUploadName("");
+  };
+
+  const onCancel = () => {
+    removeImage();
+    onCancelUpload?.();
   };
 
   useEffect(() => {
@@ -90,5 +98,6 @@ export const useFileUpload = ({ imageUrl, processImage, onChange }: IUseFileUplo
     uploadImage,
     uploadName,
     uploadProgress,
+    onCancel,
   };
 };

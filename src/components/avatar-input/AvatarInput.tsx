@@ -1,4 +1,3 @@
-import React, { useEffect, useRef, useState } from "react";
 import { Img } from "../../base-components";
 import { IconDelete, IconEditImageAsset } from "../../icons";
 import { useFileUpload } from "../../utils/hooks/useFileUpload";
@@ -14,6 +13,7 @@ interface IAvatarInput {
   onChange: (url: string) => void;
   processImage: (file: File) => Promise<string>;
   avatarResolution?: number;
+  onCancelUpload?: () => void;
 }
 
 export const AvatarInput: React.FC<IAvatarInput> = ({
@@ -22,17 +22,28 @@ export const AvatarInput: React.FC<IAvatarInput> = ({
   onChange,
   children,
   avatarResolution = 48,
+  onCancelUpload,
 }) => {
-  const { isLoading, image, imageRef, openImagePicker, removeImage, uploadImage, uploadName, uploadProgress } =
-    useFileUpload({
-      imageUrl,
-      processImage,
-      onChange,
-    });
+  const {
+    isLoading,
+    image,
+    imageRef,
+    openImagePicker,
+    removeImage,
+    uploadImage,
+    uploadName,
+    uploadProgress,
+    onCancel,
+  } = useFileUpload({
+    imageUrl,
+    processImage,
+    onChange,
+    onCancelUpload,
+  });
 
   return (
     <SAvatarInput>
-      {isLoading && <UploadProgressBar progress={uploadProgress} uploadName={uploadName} />}
+      {isLoading && <UploadProgressBar progress={uploadProgress} uploadName={uploadName} onCancel={onCancel} />}
       {!isLoading && (
         <SAvatarInputPreview>
           {!image && children}

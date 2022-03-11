@@ -34,16 +34,16 @@
  *
  * @returns {Number}
  */
- export const clamp = (num, min, max, cyclic = false) => {
-    if (cyclic) {
-        if (num > max) {
-            return min;
-        }
-        if (num < min) {
-            return max;
-        }
+export const clamp = (num, min, max, cyclic = false) => {
+  if (cyclic) {
+    if (num > max) {
+      return min;
     }
-    return Math.min(Math.max(num, min), max);
+    if (num < min) {
+      return max;
+    }
+  }
+  return Math.min(Math.max(num, min), max);
 };
 
 /**
@@ -56,9 +56,7 @@
  * @param omax {number} The output range maximum
  * @returns {number}
  */
-export const map = (value, imin, imax, omin, omax) => (
-    (value - imin) / (imax - imin) * (omax - omin) + omin
-);
+export const map = (value, imin, imax, omin, omax) => ((value - imin) / (imax - imin)) * (omax - omin) + omin;
 
 /**
  * Round the given number to the given interval.
@@ -77,3 +75,11 @@ export const interval = (v, i) => Math.round(v / i) * i;
  * @returns {number}
  */
 export const decimals = (v, p) => Math.round(v * Math.pow(10, p)) / Math.pow(10, p);
+
+/**
+ * Get random number between max and min range
+ * @param {number} min Minimum range
+ * @param {number} max Maximum range
+ * @returns {number}
+ */
+export const getRandomArbitrary = (min, max) => Math.round(Math.random() * (max - min) + min);
