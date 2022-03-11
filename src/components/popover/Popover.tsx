@@ -19,6 +19,7 @@ enum EPlacements {
   LeftBottom = "leftBottom",
   RightTop = "rightTop",
   RightBottom = "rightBottom",
+  BottomAlignedRight = "bottomAlignedRight",
 }
 
 export type TPlacement =
@@ -33,7 +34,8 @@ export type TPlacement =
   | "leftTop"
   | "leftBottom"
   | "rightTop"
-  | "rightBottom";
+  | "rightBottom"
+  | "bottomAlignedRight";
 
 const getPlacement = (placement: TPlacement | undefined): number => {
   switch (placement) {
@@ -61,6 +63,8 @@ const getPlacement = (placement: TPlacement | undefined): number => {
       return 10;
     case EPlacements.RightBottom:
       return 11;
+    case EPlacements.BottomAlignedRight:
+      return 12;
     default:
       return 1;
   }
@@ -74,6 +78,7 @@ interface IPopover {
   onClickOutside?: () => void;
   container?: React.MutableRefObject<null>;
   zIndex?: number;
+  styleOverwrite?: string;
 }
 
 export const Popover: React.FC<IPopover> = ({
@@ -86,6 +91,7 @@ export const Popover: React.FC<IPopover> = ({
   container,
   zIndex,
   triangleExtraCSS,
+  styleOverwrite
 }) => {
   if (!reference || !reference.current) {
     return null;
@@ -107,10 +113,11 @@ export const Popover: React.FC<IPopover> = ({
       { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Bottom
       { top: vcenter(rbr, tbr).top - (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Top
       { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Bottom
+      { ...hafter(rbr, tbr, -80), ...vafter(rbr, tbr, 16) }, // Bottom aligned right
     ];
   }, []);
   return (
-    <ClickOutside onClickOutside={onClickOutside || (() => {})}>
+    <ClickOutside onClickOutside={onClickOutside || (() => { })}>
       {reference && (
         <Stackable zIndex={zIndex}>
           <SPopover
@@ -120,6 +127,7 @@ export const Popover: React.FC<IPopover> = ({
             trianglecolor={trianglecolor}
             triangleExtraCSS={triangleExtraCSS}
             container={container}
+            styleOverwrite={styleOverwrite}
           >
             <>
               {!disableTriangle ? <Triangle size={9} /> : null}

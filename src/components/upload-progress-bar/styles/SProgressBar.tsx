@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody03Medium } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 interface IProgressBar {
@@ -29,7 +28,7 @@ const Bronze = css<IProgressBar>`
     width: ${(props) => (props.progress ? `${props.progress}%` : "0")};
     height: inherit;
 
-    transition: width .3s ease-in-out;
+    transition: width 0.3s ease-in-out;
   }
 `;
 
@@ -41,7 +40,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSetImageCardProgressBar = styled.div`
+export const SProgressBar = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

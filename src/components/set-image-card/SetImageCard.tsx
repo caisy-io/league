@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../button";
 import { IconDelete, IconEdit } from "../../icons";
 import { Img } from "../../base-components";
-import {ButtonsBar} from "../buttons-bar";
+import { ButtonsBar } from "../buttons-bar";
 
 import { SSetImageCard } from "./styles/SSetImageCard";
 import { SSetImageCardBody } from "./styles/SSetImageCardBody";
@@ -10,10 +10,7 @@ import { SSetImageCardButtonsBar } from "./styles/SSetImageCardButtonsBar";
 import { SSetImageCardPreview } from "./styles/SSetImageCardPreview";
 import { SSetImageCardTitle } from "./styles/SSetImageCardTitle";
 import { SSetImageCardSubTitle } from "./styles/SSetImageCardSubTitle";
-import { SSetImageCardProgressBar } from "./styles/SSetImageCardProgressBar";
-import { SSetImageCardProgressBarTitle } from "./styles/SSetImageCardProgressBarTitle";
-import { SSetImageCardProgressBarWrapper } from "./styles/SSetImageCardProgressBarWrapper";
-import { SSetImageCardProgressBarLabel } from "./styles/SSetImageCardProgressBarLabel";
+import { UploadProgressBar } from "../upload-progress-bar";
 
 interface ISetImageCard {
   onChange: (url: string) => void;
@@ -50,20 +47,26 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
 
         const image = await processImage(file);
 
-        setTimeout(() => {
-          setUploadProgress(24);
-        }, 500);
-        setTimeout(() => {
-          setUploadProgress(57);
-        }, 700);
+        let uploadProgress = 24;
+
+        setUploadProgress(uploadProgress);
+
+        const timer = setInterval(() => {
+          const randTimeIncrease = Math.ceil(20 - Math.random() * 10);
+
+          if (uploadProgress + randTimeIncrease <= 100) {
+            uploadProgress += randTimeIncrease;
+            setUploadProgress(uploadProgress);
+          }
+        }, 300);
 
         if (image) {
-          setImage(image);
+          clearInterval(timer);
 
           setTimeout(() => {
-            setUploadProgress(100);
             setLoading(false);
-          }, 800);
+            setImage(image);
+          }, 1000);
         }
       } catch (error) {
         console.log(error);
@@ -76,28 +79,16 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
     setImage(null);
   };
 
-
   useEffect(() => {
     if (image) {
       onChange(image);
     }
   }, [image]);
 
-
-
   return (
     <SSetImageCard>
       <SSetImageCardBody>
-        {isLoading && (
-          <SSetImageCardProgressBarWrapper>
-            <SSetImageCardProgressBarTitle>{uploadName}</SSetImageCardProgressBarTitle>
-            <SSetImageCardProgressBarLabel>{uploadProgress}%</SSetImageCardProgressBarLabel>
-            <SSetImageCardProgressBar progress={uploadProgress} />
-            <Button onClick={() => {}} type="secondary">
-              CANCEL
-            </Button>
-          </SSetImageCardProgressBarWrapper>
-        )}
+        {isLoading && <UploadProgressBar progress={uploadProgress} uploadName={uploadName} />}
         {!isLoading && !image && (
           <>
             <SSetImageCardTitle>Drag and drop file to upload</SSetImageCardTitle>

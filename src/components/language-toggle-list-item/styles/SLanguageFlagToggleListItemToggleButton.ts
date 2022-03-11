@@ -1,14 +1,12 @@
 import styled, { css } from "styled-components";
-import { SFlex } from "../../../base-components/flex/styles/SFlex";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  flex-direction: column;
-  justify-content: center;
+  display: flex;
   align-items: center;
+  justify-content: center;
 
-  width: 100%;
-  height: 244px;
+  margin-left: auto;
 `;
 
 const Silver = css``;
@@ -19,7 +17,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SAvatarInput = styled(SFlex)`
+export const SLanguageFlagToggleListItemToggleButton = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
