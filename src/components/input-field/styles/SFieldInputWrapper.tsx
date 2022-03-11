@@ -1,6 +1,7 @@
 import styled from "styled-components";
 export const SFieldInputWrapper = styled.div<{ isOpen: boolean }>`
-  display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+  // display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+  display: flex;
   flex-direction: column;
   align-items: center;
   ${({ isOpen }) =>
