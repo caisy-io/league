@@ -32,12 +32,7 @@ export const initialSize = {
   top: 0,
 };
 
-export const LayoutSider: React.FC<ILayoutSider> = ({
-  left = true,
-  onSizeChanged,
-  children,
-  styleOverwrite
-}) => {
+export const LayoutSider: React.FC<ILayoutSider> = ({ left = true, onSizeChanged, children, styleOverwrite }) => {
   const sider = useRef<any>();
   const [size, setSize] = useState({ width: initialWidth, height: 0, left: 0, top: 0 });
   const setSizeHandler = (size: ILayoutSiderSize) => {
@@ -62,14 +57,20 @@ export const LayoutSider: React.FC<ILayoutSider> = ({
   }, [sider.current, left]);
 
   return (
-    <SResizableWrapper ref={sider} width={size.width + "px"} height={"100%"} left={!left} styleOverwrite={styleOverwrite}>
+    <SResizableWrapper
+      ref={sider}
+      width={size.width + "px"}
+      height={"100%"}
+      left={!left}
+      styleOverwrite={styleOverwrite}
+    >
       {sider.current && (
         <Resizable {...rProps}>
           {!left && <Left />}
           {left && <Right />}
         </Resizable>
       )}
-      <SLayoutSiderContent>{children}</SLayoutSiderContent>
+      <SLayoutSiderContent left={left}>{children}</SLayoutSiderContent>
     </SResizableWrapper>
   );
 };

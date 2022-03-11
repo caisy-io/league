@@ -4,7 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 import { ISidebarTag } from "../SidebarTag";
 
 const CSSSidebarTagBase = css`
-  width: 16px;  // also change in SVG
+  width: 16px; // also change in SVG
   height: 40px; // also change in SVG
   position: absolute;
   bottom: 40px;
@@ -16,7 +16,7 @@ const CSSSidebarTagBase = css`
 `;
 
 const CSSSidebarTagLeftBase = css`
-  right: -16px; // also change in SVG
+  right: -17px; // also change in SVG
   z-index: 15;
 
   > svg {
@@ -28,7 +28,7 @@ const CSSSidebarTagLeftBase = css`
 const CSSSidebarTagRightBase = css`
   left: -16px; // also change in SVG
   z-index: 15;
-  
+
   > svg {
     -webkit-filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
     filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.04));
@@ -42,7 +42,6 @@ const CSSSidebarTagClosedBase = css`
     transform-origin: center;
   }
 `;
-
 
 const CSSSidebarTagLeftOpen = css`
   ${CSSSidebarTagBase}
@@ -74,18 +73,24 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-
 const Bronze = css<ISidebarTag>`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-    background-color: transparent;
-    border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border-radius: 20px;
 
-    ${(props) => props.left ? (props.open? CSSSidebarTagLeftOpen : CSSSidebarTagLeftClosed) : (props.open? CSSSidebarTagRightOpen : CSSSidebarTagRightClosed)};
-    cursor: pointer;
-  `;
+  ${(props) =>
+    props.left
+      ? props.open
+        ? CSSSidebarTagLeftOpen
+        : CSSSidebarTagLeftClosed
+      : props.open
+      ? CSSSidebarTagRightOpen
+      : CSSSidebarTagRightClosed};
+  cursor: pointer;
+`;
 
 export const SSidebarTag: any = styled.div<any>`
   ${Bronze}
