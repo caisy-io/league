@@ -12,7 +12,7 @@ import { SFieldErrors } from "./styles/SFieldErrors";
 import { IInputFieldProps } from "./types";
 
 export const InputField: FC<IInputFieldProps> = ({ title, description, required, tooltip, errors, children }) => {
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
   const toggleOpen = useCallback(() => {
     setOpen(!isOpen);
   }, [isOpen, setOpen]);
@@ -39,7 +39,7 @@ export const InputField: FC<IInputFieldProps> = ({ title, description, required,
           </IconButton>
         </SFieldDisplayButton>
       </SFieldHeader>
-      {isOpen && <SFieldInputWrapper isOpen={isOpen}>{children}</SFieldInputWrapper>}
+      {isOpen && <SFieldInputWrapper>{children}</SFieldInputWrapper>}
 
       {errors && (
         <SFieldErrors>
