@@ -29,12 +29,12 @@ export const useFileUpload = ({ imageUrl, processImage, onChange, onCancelUpload
       setImage(null);
     }
 
-    let uploadProgress = getRandomArbitrary(10, 50);
-    setUploadProgress(uploadProgress);
-
     const { files = [] } = e.target;
 
     if (files && files.length > 0) {
+      let uploadProgress = getRandomArbitrary(10, 50);
+      setUploadProgress(uploadProgress);
+
       try {
         const file = files[0];
 
