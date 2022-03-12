@@ -12,7 +12,7 @@ import { SFieldErrors } from "./styles/SFieldErrors";
 import { IInputFieldProps } from "./types";
 
 export const InputField: FC<IInputFieldProps> = ({ title, description, required, tooltip, errors, children }) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(true);
   const toggleOpen = useCallback(() => {
     setOpen(!isOpen);
   }, [isOpen, setOpen]);
