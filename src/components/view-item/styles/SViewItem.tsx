@@ -33,6 +33,7 @@ const Bronze = css`
     props.isChild &&
     css`
       ${CSSProgressiveBody03}
+      padding-left: 30px;
       &:not(:hover) {
         & div:last-child {
           display: none;
