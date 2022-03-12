@@ -18,7 +18,6 @@ const CSSRequired = css`
 
 const Bronze = css`
   ${CSSProgressiveBody03Medium};
-  line-height: 0.75rem;
   color: var(--text-03);
   position: relative;
   overflow: hidden;

@@ -3,7 +3,7 @@ import { SFlex } from '../../../base-components/flex/styles/SFlex';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
 const Bronze = css`
-  gap: 0.25rem;
+  gap: 2px;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;

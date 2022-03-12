@@ -22,7 +22,7 @@ const processImageMock = (file: File) => {
         resolve(
           "https://images.pexels.com/photos/775201/pexels-photo-775201.jpeg?cs=srgb&dl=pexels-kaique-rocha-775201.jpg&fm=jpg",
         );
-      }, 1000);
+      }, 3000);
     });
   }
 };

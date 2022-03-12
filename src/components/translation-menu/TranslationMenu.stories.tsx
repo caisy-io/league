@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { TranslationMenu } from "../translation-menu/TranslationMenu";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { ILanguageFlagToggleListItemLocale } from "../language-flag-toggle-list-item/LanguageFlagToggleListItem";
+import { ILanguageToggleListItemLocale } from "../language-toggle-list-item/LanguageToggleListItem";
 
 function TranslationMenuDemo() {
   const [opened, setOpened] = useState<boolean>(false);
-  const [locales, setLocales] = useState<ILanguageFlagToggleListItemLocale[]>([
-    { id: "de", name: "Deutsch", active: true },
-    { id: "es", name: "Spanish", active: true },
-    { id: "fr", name: "French", active: false },
-    { id: "ru", name: "Russisch", active: true },
+  const [locales, setLocales] = useState<ILanguageToggleListItemLocale[]>([
+    { id: "de", localeCode: "de-de", name: "Deutsch", active: true },
+    { id: "es", localeCode: "es-sp", name: "Spanish", active: true },
+    { id: "fr", localeCode: "fr-fr", name: "French", active: false },
+    { id: "ru", localeCode: "ru-ru", name: "Russisch", active: true },
   ]);
 
   return (

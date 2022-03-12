@@ -31,8 +31,8 @@ export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({ status, tabs
       </SBlockEditorSidebarListItem>
       <SBlockEditorSidebarListItem>
         <SBlockEditorSidebarTabs>
-          {tabs.map((tab) => (
-            <LineTab activated={selectedTab?.tab === tab.tab} onClick={() => onTabClick(tab)}>
+          {tabs.map((tab, i) => (
+            <LineTab key={`tab-${i}-${tab.tab}`} activated={selectedTab?.tab === tab.tab} onClick={() => onTabClick(tab)}>
               {tab.tab}
             </LineTab>
           ))}

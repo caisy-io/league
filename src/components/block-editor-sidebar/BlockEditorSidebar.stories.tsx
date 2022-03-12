@@ -3,7 +3,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Layout, LayoutSider } from "../layout";
 import { SidebarTag } from "../sidebar-tag";
-import { ILanguageFlagToggleListItemLocale } from "../language-flag-toggle-list-item";
+import { ILanguageToggleListItemLocale } from "../language-toggle-list-item";
 import { TranslationMenu } from "../translation-menu";
 import { BlockEditorSidebar } from "./BlockEditorSidebar";
 import { BlockEditorSidebarListItem } from "./BlockEditorSidebarListItem";
@@ -23,11 +23,11 @@ export default {
 
 const TranslationsComponent = () => {
   const [opened, setOpened] = useState(false);
-  const [locales, setLocales] = useState<ILanguageFlagToggleListItemLocale[]>([
-    { id: "de", name: "Deutsch", active: true },
-    { id: "es", name: "Spanisch", active: true },
-    { id: "fr", name: "French", active: false },
-    { id: "ru", name: "Russisch", active: true },
+  const [locales, setLocales] = useState<ILanguageToggleListItemLocale[]>([
+    { id: "de", localeCode: "de-de", name: "Deutsch", active: true },
+    { id: "es", localeCode: "es-sp", name: "Spanisch", active: true },
+    { id: "fr", localeCode: "fr-fr", name: "French", active: false },
+    { id: "ru", localeCode: "ru-ru", name: "Russisch", active: true },
   ]);
 
   return (

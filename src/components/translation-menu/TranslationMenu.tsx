@@ -5,16 +5,16 @@ import { IconChevronRight } from "../../icons";
 import { STranslationMenu } from "./styles/STranslationMenu";
 import { STranslationMenuHeader } from "./styles/STranslationMenuHeader";
 import {
-  ILanguageFlagToggleListItemLocale,
-  LanguageFlagToggleListItem,
-} from "../language-flag-toggle-list-item/LanguageFlagToggleListItem";
+  ILanguageToggleListItemLocale,
+  LanguageToggleListItem,
+} from "../language-toggle-list-item";
 import { STranslationMenuHeaderIconWrapper } from "./styles/STranslationMenuHeaderIconWrapper";
 
 export interface ITranslationMenu {
   opened: boolean | true;
-  locales: ILanguageFlagToggleListItemLocale[];
+  locales: ILanguageToggleListItemLocale[];
   onToggleOpened: (newOpened: boolean) => void;
-  onLocalesChange: (newLocales: ILanguageFlagToggleListItemLocale[]) => void;
+  onLocalesChange: (newLocales: ILanguageToggleListItemLocale[]) => void;
 }
 
 export const TranslationMenu: FC<ITranslationMenu> = ({ locales, opened, onToggleOpened, onLocalesChange }) => {
@@ -24,11 +24,10 @@ export const TranslationMenu: FC<ITranslationMenu> = ({ locales, opened, onToggl
     onLocalesChange(newLocales);
   };
 
-  const onLocaleToggle = (localeId: string) => {
-    const isCurrentlyActive = !!(locales as ILanguageFlagToggleListItemLocale[]).find(
-      (locale) => locale.id === localeId,
-    )?.active;
-    const newLocales = locales.map((locale: ILanguageFlagToggleListItemLocale) =>
+  const onToggle = (localeId: string) => {
+    const isCurrentlyActive = !!(locales as ILanguageToggleListItemLocale[]).find((locale) => locale.id === localeId)
+      ?.active;
+    const newLocales = locales.map((locale: ILanguageToggleListItemLocale) =>
       locale.id === localeId ? { ...locale, active: !isCurrentlyActive } : locale,
     );
     onLocalesChange(newLocales);
@@ -45,13 +44,7 @@ export const TranslationMenu: FC<ITranslationMenu> = ({ locales, opened, onToggl
       <Collapsible expanded={opened}>
         <MenuDnd onDrop={onDrop}>
           {locales?.map((locale) => {
-            return (
-              <LanguageFlagToggleListItem
-                key={locale.id}
-                onLocaleToggle={() => onLocaleToggle(locale.id)}
-                locale={locale}
-              />
-            );
+            return <LanguageToggleListItem key={locale.id} onToggle={() => onToggle(locale.id)} locale={locale} />;
           })}
         </MenuDnd>
       </Collapsible>

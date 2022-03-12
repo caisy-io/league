@@ -1,5 +1,6 @@
 import React from "react";
 import { IconStarOutlined } from "../../icons/IconStarOutlined";
+import { ClickOutside } from "../../utils";
 import { SimpleInputDropdown } from "./SimpleInputDropdown";
 
 export default {
@@ -44,16 +45,58 @@ const dataSource = [
 
 function SimpleInputDropdownDemo({ error, required, translationBadge, label }) {
   const [selectValue, setSelectValue] = React.useState(null);
-  return <SimpleInputDropdown
-    error={error}
-    required={required}
-    translationBadge={translationBadge}
-    dataSource={dataSource}
-    placeholder="Select an option.."
-    value={selectValue}
-    onSelectValue={(e) => setSelectValue(e)}
-    label={label}
-  />
+
+  const [firstOpened, setFirstOpened] = React.useState(false);
+  const [secondOpened, setSecondOpened] = React.useState(false);
+
+  const handleFirstDropdown = () => {
+    setFirstOpened((prev) => !prev)
+  };
+
+  const handleSecondDropdown = () => {
+    setSecondOpened((prev) => !prev)
+  };
+
+  const onSelectValue = (e) => {
+    setSelectValue(e)
+    if (firstOpened == true) {
+      setFirstOpened((prev) => !prev)
+    }
+    if (secondOpened == true) {
+      setSecondOpened((prev) => !prev)
+    }
+  };
+
+  return <div style={{ display: "flex" }}>
+    <ClickOutside onClickOutside={console.log("hi")}>
+      <SimpleInputDropdown
+        error={error}
+        required={required}
+        translationBadge={translationBadge}
+        dataSource={dataSource}
+        placeholder="Select an option.."
+        value={selectValue}
+        onSelectValue={(e) => onSelectValue(e)}
+        label={label}
+        opened={firstOpened}
+        onClick={() => handleFirstDropdown()}
+      />
+    </ClickOutside>
+    <ClickOutside onClickOutside={console.log("hi")}>
+      <SimpleInputDropdown
+        error={error}
+        required={required}
+        translationBadge={translationBadge}
+        dataSource={dataSource}
+        placeholder="Select an option.."
+        value={selectValue}
+        onSelectValue={(e) => onSelectValue(e)}
+        label={label}
+        opened={secondOpened}
+        onClick={() => handleSecondDropdown()}
+      />
+    </ClickOutside>
+  </div>
 }
 
 const Template = (args) => <SimpleInputDropdownDemo {...args} />;

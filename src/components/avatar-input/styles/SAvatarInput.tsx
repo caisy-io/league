@@ -6,6 +6,9 @@ const Bronze = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  width: 100%;
+  height: 244px;
 `;
 
 const Silver = css``;
