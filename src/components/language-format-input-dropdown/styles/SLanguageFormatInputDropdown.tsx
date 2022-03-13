@@ -26,7 +26,7 @@ const Bronze = css`
   background-color: var(--ui-01);
   border: 1px solid var(--ui-03);
   border-radius: 8px;
-  transition: border 200ms;
+  transition: border 300ms;
   user-select: none;
   gap: 8px;
   font-family: var(--font-families-inter);
