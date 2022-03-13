@@ -117,7 +117,7 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
             handleDropdown();
           }}
           ref={ref}
-          error={error}
+          error={error && !selectedOptionKey.current}
           opened={opened}
           styleOverwrite={styleOverwrite}
           disabled={disabled}
@@ -129,8 +129,8 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
             <SLanguageFormatInputDropdownTextWrapper>
               {label && (
                 <SLanguageFormatInputDropdownLabel
-                  error={error}
-                  selected={selectedOptionKey}
+                  error={error && !selectedOptionKey.current}
+                  selected={selectedOptionKey.current}
                   required={required}
                   opened={opened}
                 >
