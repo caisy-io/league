@@ -19,11 +19,16 @@ export const InputField: FC<IInputFieldProps> = ({
   errors,
   children,
   onExpand,
+  onCollapse,
 }) => {
   const [isOpen, setOpen] = useState(true);
   const toggleOpen = useCallback(() => {
+    if (isOpen) {
+      onCollapse?.();
+    } else {
+      onExpand?.();
+    }
     setOpen(!isOpen);
-    onExpand?.();
   }, [isOpen, setOpen]);
 
   return (

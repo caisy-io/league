@@ -7,4 +7,5 @@ export interface IInputFieldProps {
     tooltip?: ReactNode | (() => ReactNode);
     errors?: ReactNode[];
     onExpand?: () => void;
+    onCollapse?: () => void;
   }
