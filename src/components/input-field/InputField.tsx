@@ -11,11 +11,23 @@ import { SFieldDescription } from "./styles/SFieldDescription";
 import { SFieldErrors } from "./styles/SFieldErrors";
 import { IInputFieldProps } from "./types";
 
-
-
-export const InputField: FC<IInputFieldProps> = ({ title, description, required, tooltip, errors, children }) => {
+export const InputField: FC<IInputFieldProps> = ({
+  title,
+  description,
+  required,
+  tooltip,
+  errors,
+  children,
+  onExpand,
+  onCollapse,
+}) => {
   const [isOpen, setOpen] = useState(true);
   const toggleOpen = useCallback(() => {
+    if (isOpen) {
+      onCollapse?.();
+    } else {
+      onExpand?.();
+    }
     setOpen(!isOpen);
   }, [isOpen, setOpen]);
 
