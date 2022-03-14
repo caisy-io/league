@@ -35,34 +35,33 @@ export default {
 const dataSource = [
   {
     key: "title_label",
-    title:
-      "Default Title Eshkereeeeeeeeee! Wow! I am veeeeeery long indeed! Default Title Eshkereeeeeeeeee! Wow! I am veeeeeery long indeed!",
+    title: "Germany",
     solidLabelText: "en-US",
   },
   {
     key: "icon_title",
-    title: "Title and Icon - Wow! I am veeeeeery long indeed! Title and Icon - Wow! I am veeeeeery long indeed!",
+    title: "France",
     solidLabelText: "en-US",
   },
   {
     key: "icon_title_label",
-    title: "Label, Title and Icon - Wow! I am veeeeeery long indeed!",
+    title: "England",
     solidLabelText: "en-UK",
     flag: <IconStarOutlined size={20} />,
   },
   {
     key: "title_label1",
-    title: "Default Title Eshkereeeeeeeeee! Wow! I am veeeeeery long indeed!",
+    title: "Egypt",
     solidLabelText: "en-US",
   },
   {
     key: "icon_title1",
-    title: "Title and Icon - Wow! I am veeeeeery long indeed!",
+    title: "Italy",
     solidLabelText: "en-US",
   },
   {
     key: "icon_title_label1",
-    title: "Label, Title and Icon - Wow! I am veeeeeery long indeed!",
+    title: "Portugal",
     solidLabelText: "en-UK",
     flag: <IconStarOutlined size={20} />,
   },
@@ -74,6 +73,6 @@ Default.args = {
   required: false,
   label: <span>Language format (ID)</span>,
   initialValueKey: "",
-  placeholder: <span>Select language</span>,
+  placeholder: "Select language",
   disabled: false,
 };

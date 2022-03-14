@@ -6,3 +6,4 @@ export * from "./icons";
 export * from "./utils";
 export * from "./interfaces";
 export * from "./constants/styles";
+export * from "./constants/languages";

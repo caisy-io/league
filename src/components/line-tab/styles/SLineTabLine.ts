@@ -5,7 +5,7 @@ const Bronze = css`
   height: 1px;
   width: 100%;
   position: absolute;
-  bottom: 0.5px;
+  bottom: 0;
   z-index: 1;
 `;
 
