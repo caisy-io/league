@@ -6,4 +6,5 @@ export interface IInputFieldProps {
     required: boolean;
     tooltip?: ReactNode | (() => ReactNode);
     errors?: ReactNode[];
+    onExpand?: () => void;
   }
