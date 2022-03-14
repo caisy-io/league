@@ -187,9 +187,10 @@ const Template = () => {
     setDataSource(filteredDataSource);
   };
 
-  const onAddNewTag = (e) => {
+  const onAddNewTag = (e, onClose) => {
     if (e.code === "Enter") {
       console.log("New tag added -> ", newTag);
+      onClose?.();
     }
   };
 
@@ -208,8 +209,14 @@ const Template = () => {
         renderInputItem={renderInputItem}
         renderDataItem={renderDataItem}
         onClose={clearMultiSelect}
+        onSelectValue={onSelectValue}
         popupHeader={
-          <SearchInput placeholder="Search tags" onChange={onSearch} onKeyPress={onAddNewTag} onClose={clearMultiSelect} />
+          <SearchInput
+            placeholder="Search tags"
+            onChange={onSearch}
+            onKeyPress={onAddNewTag}
+            onClose={clearMultiSelect}
+          />
         }
         popupFooter={
           newTag && (

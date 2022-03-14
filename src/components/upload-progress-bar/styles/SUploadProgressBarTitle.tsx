@@ -18,7 +18,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSetImageCardProgressBarTitle = styled.p`
+export const SUploadProgressBarTitle = styled.p`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const SStringHeader = styled.div<{ required: boolean; isOpen: boolean }>`
+export const SFieldHeader = styled.div<{ required: boolean; isOpen: boolean }>`
   display: flex;
   flex: 1;
   align-items: center;

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ManagementCard } from "./ManagementCard";
 
 import { IconStarOutlined } from "../../icons/IconStarOutlined";
+import { Button } from "../button/Button";
 
 export default {
   title: `Components/Cards/ManagementCard`,
@@ -18,6 +19,11 @@ export default {
       name: "label",
       description: "Label in the management block title",
       control: { type: "text" },
+    },
+    button: {
+      name: "button",
+      description: "Button in the management block title",
+      control: { type: "ReactNode" },
     },
   },
 };
@@ -46,4 +52,12 @@ export const NoIconAndLabel = Template.bind({});
 
 NoIconAndLabel.args = {
   children: <Wrapper>Hello world!</Wrapper>,
+};
+
+export const WithButton = Template.bind({});
+
+WithButton.args = {
+  icon: <IconStarOutlined size={16} />,
+  label: "Label",
+  button: <Button size="small">Button</Button>
 };

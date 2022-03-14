@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { SMainMenuItem } from "./styles/SMainMenuItem";
 import { SMainMenuItemIcon } from "./styles/SMainMenuItemIcon";
 import { SMainMenuItemLabel } from "./styles/SMainMenuItemLabel";
@@ -10,14 +10,14 @@ interface IMainMenuItem {
   label?: string;
 }
 
-export const MainMenuItem: React.FC<IMainMenuItem> = ({ ...props }) => {
+export const MainMenuItem: React.FC<IMainMenuItem> = forwardRef(({ ...props }, ref) => {
   const handleClick = (e) => {
     e.preventDefault();
     props.onClick();
   };
   return (
     <>
-      <SMainMenuItemWrapper>
+      <SMainMenuItemWrapper ref={ref}>
         <SMainMenuItem activated={props.activated} onClick={handleClick}>
           <SMainMenuItemIcon>{props.children}</SMainMenuItemIcon>
         </SMainMenuItem>
@@ -25,4 +25,4 @@ export const MainMenuItem: React.FC<IMainMenuItem> = ({ ...props }) => {
       </SMainMenuItemWrapper>
     </>
   );
-};
+});

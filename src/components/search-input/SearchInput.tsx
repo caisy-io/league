@@ -11,7 +11,7 @@ interface ISearchInput {
   placeholder?: string;
   onClose?: () => void;
   onChange?: (e) => void;
-  onKeyPress?: (e) => void;
+  onKeyPress?: (e, onClose) => void;
   withFilter?: boolean;
   onClickFilter?: () => void;
 }
@@ -52,6 +52,10 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
     setClickingFilter(false);
   };
 
+  const handleKeyPress = (e) => {
+    onKeyPress?.(e, handleClose);
+  }
+
   return (
     <SSearchInputWrapper active={active} onClick={handleClick}>
       <SearchIcon />
@@ -60,7 +64,7 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
         onBlur={handleBlur}
         onFocus={handleFocus}
         onChange={onChange}
-        onKeyPress={onKeyPress}
+        onKeyPress={handleKeyPress}
         placeholder={placeholder}
       />
       <SSearchIconContainer>

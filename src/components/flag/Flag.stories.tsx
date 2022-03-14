@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import Flag from "./Flag";
+import {Flag} from "./Flag";
 
 export default {
   title: "Components/Style Guide/Flag",

@@ -11,6 +11,7 @@ const Bronze = css`
   box-sizing: border-box;
 
   height: 24px;
+  width: 100%;
 `;
 
 const Silver = css``;

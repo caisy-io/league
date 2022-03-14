@@ -59,10 +59,11 @@ const Bronze = css`
   flex-direction: column;
   position: relative;
   gap: 4px;
-  width: fit-content;
   border-bottom: 1px solid var(--ui-03);
   transition: border 200ms;
   padding-bottom: 3px;
+
+  width: 100%;
 
   div:last-of-type {
     opacity: 0;
