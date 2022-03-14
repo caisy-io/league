@@ -5,9 +5,14 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 const Bronze = css`
   ${CSSProgressiveCaption01Semibold};
   position: relative;
-  opacity: 0;
-  transition: opacity 200ms, color 200ms;
+  ${(props) =>
+    !props.isLabelVisible &&
+    css`
+      opacity: 0;
+      transition: opacity 200ms, color 200ms;
+    `}
   width: fit-content;
+  color: var(--hover-text-03);
 `;
 
 const Silver = css``;
