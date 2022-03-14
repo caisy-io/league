@@ -1,5 +1,5 @@
 import React, { ReactNode, useMemo } from "react";
-import { IconChevronDown, IconRotator, SolidLabel } from "../..";
+import { IconChevronDown, IconRotator, Input, SolidLabel } from "../..";
 import { ClickOutside, useDimensions } from "../../utils";
 import { Popover } from "../popover";
 import { SLanguageFormatDropdownArrowWrapper } from "./styles/SLanguageFormatDropdownArrowWrapper";
@@ -11,14 +11,13 @@ import { SLanguageFormatInputDropdownOption } from "./styles/SLanguageFormatInpu
 import { SLanguageFormatInputDropdownContent } from "./styles/SLanguageFormatInputDropdownContent";
 import { SLanguageFormatInputDropdownOptionTitle } from "./styles/SLanguageFormatInputDropdownOptionTitle";
 import { SLanguageFormatInputDropdownTextWrapper } from "./styles/SLanguageFormatInputDropdownTextWrapper";
-import { SLanguageFormatInputDropdownTitle } from "./styles/SLanguageFormatInputDropdownTitle";
 import { SLanguageFormatSelectDropdown } from "./styles/SLanguageFormatSelectDropdown";
 import { SLanguageFormatSelectDropdownCont } from "./styles/SLanguageFormatSelectDropdownCont";
+import fuzzysearch from "fuzzysearch";
 
 export interface IDataSourceLanguageItem {
   title: string;
   key: string;
-  data?: any;
   flag?: ReactNode;
   solidLabelText?: string;
 }
@@ -27,12 +26,13 @@ export interface ILanguageFormatInputDropdown {
   dataSource: IDataSourceLanguageItem[];
   onSelectValue?: (e: string) => void;
   initialValueKey?: string;
-  placeholder?: ReactNode | string;
+  placeholder?: string;
   label?: ReactNode | string;
   required?: boolean;
   error?: boolean;
   styleOverwrite?: string;
   disabled?: boolean;
+  renderItem?: (option: any) => ReactNode;
 }
 
 export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown> = ({
@@ -45,11 +45,14 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
   styleOverwrite,
   initialValueKey,
   disabled,
+  renderItem,
 }) => {
   const [opened, setOpened] = React.useState(false);
-  const [selectedOptionKey, setSelectedOptionKey] = React.useState(initialValueKey || "");
+  const selectedOptionKey = React.useRef(initialValueKey || "");
+
   const ref = React.useRef(null);
   const [rotationDegrees, setRotationDegrees] = React.useState(0);
+  const [dropdownDataSource, setDropdownDataSource] = React.useState(dataSource);
 
   const options = useMemo(() => {
     return dataSource.reduce((acc, option) => {
@@ -58,11 +61,28 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
     }, {});
   }, [dataSource]);
 
-  const onChange = (key) => {
+  const [inputValue, setInputValue] = React.useState(initialValueKey ? options[initialValueKey]?.title : "");
+
+  const onSelect = (key) => {
     onSelectValue?.(key);
-    setSelectedOptionKey(key);
+    selectedOptionKey.current = key;
+    setInputValue(options[key]?.title);
     setOpened(false);
     setRotationDegrees(0);
+  };
+
+  const onChange = (e) => {
+    const value = e.target.value;
+    selectedOptionKey.current = "";
+    setDropdownDataSource(
+      dataSource.filter(
+        (el) =>
+          fuzzysearch(value.toLowerCase(), el.title.toLowerCase()) ||
+          fuzzysearch(value.toLowerCase(), el.solidLabelText?.toLowerCase()),
+      ),
+    );
+    setInputValue(value);
+    setOpened(true);
   };
 
   const handleDropdown = () => {
@@ -80,7 +100,8 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
   const { width } = useDimensions(ref);
 
   React.useEffect(() => {
-    setSelectedOptionKey(initialValueKey || "");
+    selectedOptionKey.current = initialValueKey || "";
+    setInputValue(initialValueKey ? options[initialValueKey]?.title : "");
   }, [initialValueKey]);
 
   return (
@@ -96,38 +117,39 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
             handleDropdown();
           }}
           ref={ref}
-          error={error}
+          error={error && !selectedOptionKey.current}
           opened={opened}
           styleOverwrite={styleOverwrite}
           disabled={disabled}
         >
           <SLanguageFormatInputDropdownContent>
             <SLanguageFormatInputDropdownContentFlag>
-              {options[selectedOptionKey]?.flag || ""}
+              {options[selectedOptionKey.current]?.flag || ""}
             </SLanguageFormatInputDropdownContentFlag>
             <SLanguageFormatInputDropdownTextWrapper>
               {label && (
                 <SLanguageFormatInputDropdownLabel
-                  error={error}
-                  selected={selectedOptionKey}
+                  error={error && !selectedOptionKey.current}
+                  selected={selectedOptionKey.current}
                   required={required}
                   opened={opened}
                 >
                   {label}
                 </SLanguageFormatInputDropdownLabel>
               )}
-              <SLanguageFormatInputDropdownTitle
-                label={label}
-                required={required}
-                opened={opened}
-                selected={selectedOptionKey}
-              >
-                {options[selectedOptionKey]?.title || placeholder}
-              </SLanguageFormatInputDropdownTitle>
+              <Input
+                value={inputValue}
+                onFocus={() => setOpened(true)}
+                onBlur={() => {
+                  selectedOptionKey.current;
+                }}
+                onChange={onChange}
+                placeholder={placeholder}
+              />
             </SLanguageFormatInputDropdownTextWrapper>
-            {options[selectedOptionKey]?.solidLabelText && (
+            {options[selectedOptionKey.current]?.solidLabelText && (
               <SLanguageFormatInputDropdownApiName>
-                <SolidLabel type="grey">{options[selectedOptionKey]?.solidLabelText}</SolidLabel>
+                <SolidLabel type="grey">{options[selectedOptionKey.current]?.solidLabelText}</SolidLabel>
               </SLanguageFormatInputDropdownApiName>
             )}
           </SLanguageFormatInputDropdownContent>
@@ -139,22 +161,32 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
             </SLanguageFormatDropdownArrowWrapper>
           )}
         </SLanguageFormatInputDropdown>
-        {opened && !disabled && dataSource.length && (
+        {opened && !disabled && (
           <Popover disableTriangle placement="bottom" reference={ref}>
             <SLanguageFormatSelectDropdown style={{ width }}>
               <SLanguageFormatSelectDropdownCont>
-                {dataSource.map((option) => (
+                {dropdownDataSource.map((option) => (
                   <SLanguageFormatInputDropdownOption
                     key={option.key}
-                    active={option.key === selectedOptionKey}
-                    onClick={() => onChange(option.key)}
+                    onClick={() => onSelect(option.key)}
+                    active={option.key === selectedOptionKey.current}
                   >
-                    {option.flag && (
-                      <SLanguageFormatInputDropdownContentFlag>{option.flag}</SLanguageFormatInputDropdownContentFlag>
+                    {renderItem ? (
+                      renderItem(option)
+                    ) : (
+                      <>
+                        {option.flag && (
+                          <SLanguageFormatInputDropdownContentFlag>
+                            {option.flag}
+                          </SLanguageFormatInputDropdownContentFlag>
+                        )}
+                        <SLanguageFormatInputDropdownOptionTitle
+                          selectTitle={options[selectedOptionKey.current]?.title}
+                        >
+                          {option.title}
+                        </SLanguageFormatInputDropdownOptionTitle>
+                      </>
                     )}
-                    <SLanguageFormatInputDropdownOptionTitle selectTitle={options[selectedOptionKey]?.title}>
-                      {option.title}
-                    </SLanguageFormatInputDropdownOptionTitle>
                   </SLanguageFormatInputDropdownOption>
                 ))}
               </SLanguageFormatSelectDropdownCont>

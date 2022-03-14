@@ -8,7 +8,6 @@ const CSSActive = css`
 const Bronze = css`
   position: relative;
   overflow: hidden;
-  height: 48px;
   display: flex;
   align-items: center;
   cursor: pointer;
