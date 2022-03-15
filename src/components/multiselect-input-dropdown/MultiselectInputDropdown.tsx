@@ -9,6 +9,7 @@ import { TagListItem } from "../tag-list-item";
 
 import { SDropdownArrow } from "./styles/SDropdownArrow";
 import { SMultiselectInputDropdown } from "./styles/SMultiselectInputDropdown";
+import { SMultiSelectInputDropdownLabel } from "./styles/SMultiSelectInputDropdownLabel";
 import { SMultiselectInputDropdownSelect } from "./styles/SMultiselectInputDropdownSelect";
 import { SMultiselectInputDropdownTitle } from "./styles/SMultiselectInputDropdownTitle";
 import { SMultiSelectInputWrapper } from "./styles/SMultiSelectInputWrapper";
@@ -62,8 +63,8 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
     <ClickOutside onClickOutside={onCloseSelect}>
       <div>
         <SMultiselectInputDropdown active={opened} ref={ref} onClick={onClick}>
+          {label && <SMultiSelectInputDropdownLabel>{label}</SMultiSelectInputDropdownLabel>}
           <SMultiSelectInputWrapper>
-            {label && label}
             <SMultiselectInputDropdownTitle>
               {values &&
                 values.length !== 0 &&
