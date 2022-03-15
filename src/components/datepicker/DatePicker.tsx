@@ -115,8 +115,8 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   const dayjs = useDayjs();
   dayjs.locale(locale);
 
-  const [calendarMonth, setCalendarMonth] = React.useState(dayjs().format("MMMM"));
-  const [calendarYear, setCalendarYear] = React.useState(dayjs().format("YYYY"));
+  const [calendarMonth, setCalendarMonth] = React.useState(dayjs(date[0]).format("MMMM"));
+  const [calendarYear, setCalendarYear] = React.useState(dayjs(date[0]).format("YYYY"));
 
   const handleOnClickOutside = React.useCallback(() => {
     if (typeof onClickOutside === "function") {
@@ -201,6 +201,10 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   const clickOutsideMenuYear = useClickOutside((e) => {
     !yearRefContainer.current?.contains(e.target) && setShowYearMenu(false);
   });
+
+  // React.useEffect(() => {
+  //   setDate([initialDate || new Date()] as TDates);
+  // }, [initialDate]);
 
   const DatePickerContainer = !loadingRef && (
     <SDatePickerContainer>
