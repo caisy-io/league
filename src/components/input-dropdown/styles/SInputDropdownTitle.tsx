@@ -31,7 +31,7 @@ const Bronze = css`
   width: fit-content;
   padding-right: 0.5rem;
   ${(props) => props.required && !props.label ? CSSRequired : ''};
-  ${props => props.selecred && CSSSelected}
+  ${(props) => props.selected && CSSSelected}
 `;
 
 const Silver = css``;
