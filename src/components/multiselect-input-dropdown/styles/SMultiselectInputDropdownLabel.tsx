@@ -1,18 +1,10 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody03Medium } from "../../../constants/styles/fonts";
+import { CSSProgressiveCaption01Semibold } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  ${CSSProgressiveBody03Medium};
-  line-height: 0.75rem;
-  color: var(--text-03);
-  position: relative;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 90%;
-  width: fit-content;
-  padding-right: 0.5rem;
+  ${CSSProgressiveCaption01Semibold};
+  color: var(--text-01);
 `;
 
 const Silver = css``;
