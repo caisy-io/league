@@ -188,7 +188,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
     onChange?.([newDate]);
   };
   const reference = React.useRef(null);
-  const flatRef = React.useRef(null);
+  const flatRef = React.useRef<Flatpickr>();
   const monthRefContainer = React.useRef<HTMLDivElement>(null);
   const yearRefContainer = React.useRef<HTMLDivElement>(null);
 
@@ -201,10 +201,6 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   const clickOutsideMenuYear = useClickOutside((e) => {
     !yearRefContainer.current?.contains(e.target) && setShowYearMenu(false);
   });
-
-  // React.useEffect(() => {
-  //   setDate([initialDate || new Date()] as TDates);
-  // }, [initialDate]);
 
   const DatePickerContainer = !loadingRef && (
     <SDatePickerContainer>
@@ -304,7 +300,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
           </IconButton>
         </SDatePickerWrapperHeader>
         <Flatpickr
-          ref={flatRef}
+          ref={flatRef as any}
           value={date as Date[]}
           onMonthChange={(_, __, flatPicker) => {
             onMonthChanged(flatPicker);
@@ -345,6 +341,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
               firstDayOfWeek: 1,
               weekdays: {
                 shorthand: dayjs.weekdaysMin(),
+                longhand: dayjs.weekdaysMin(),
               },
             },
           }}
