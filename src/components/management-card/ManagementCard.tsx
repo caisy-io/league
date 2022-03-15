@@ -9,11 +9,12 @@ interface IManagementCard {
   icon?: React.ReactNode;
   button?: React.ReactNode;
   children?: React.ReactNode;
+  styleOverwrite?: React.CSSProperties;
 }
 
-export const ManagementCard: React.FC<IManagementCard> = ({ icon, label, button, children }) => {
+export const ManagementCard: React.FC<IManagementCard> = ({ icon, label, button, children, styleOverwrite }) => {
   return (
-    <SManagementCard>
+    <SManagementCard style={styleOverwrite}>
       {(icon || label || button) && (
         <SManagementBlockTitle>
           <SManagementIconLabelWrapper>
