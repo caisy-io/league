@@ -29,16 +29,19 @@ const Bronze = css`
       background-color: var(--active-ui-01-1);
     `}
 
-  ${(props) =>
-    props.isChild &&
+  ${({ isChild, active }) =>
+    isChild &&
     css`
       ${CSSProgressiveBody03}
       padding-left: 30px;
-      &:not(:hover) {
-        & div:last-child {
-          display: none;
+      ${!active &&
+      css`
+        &:not(:hover) {
+          & div:last-child {
+            display: none;
+          }
         }
-      }
+      `}
     `}
 `;
 
