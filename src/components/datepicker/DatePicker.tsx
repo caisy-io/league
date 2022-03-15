@@ -301,7 +301,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
         </SDatePickerWrapperHeader>
         <Flatpickr
           ref={flatRef}
-          value={date}
+          value={date as Date[]}
           onMonthChange={(_, __, flatPicker) => {
             onMonthChanged(flatPicker);
           }}
