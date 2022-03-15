@@ -8,7 +8,7 @@ const Bronze = css`
   border-radius: 50%;
   position: absolute;
   top: 0;
-  right: -4px;
+  right: -6px;
 `;
 
 const Silver = css``;
