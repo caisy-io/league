@@ -2,6 +2,10 @@ import styled, { css } from 'styled-components';
 import { CSSProgressiveBody03Medium } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
 
+const CSSSelected = css`
+  color: var(--text-01);
+`
+
 const CSSRequired = css`
   &:after{
     content: "";
@@ -27,6 +31,7 @@ const Bronze = css`
   width: fit-content;
   padding-right: 0.5rem;
   ${(props) => props.required && !props.label ? CSSRequired : ''};
+  ${props => props.selecred && CSSSelected}
 `;
 
 const Silver = css``;
