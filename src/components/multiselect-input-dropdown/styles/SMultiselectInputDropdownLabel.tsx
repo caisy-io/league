@@ -6,6 +6,7 @@ const Bronze = css`
   ${CSSProgressiveCaption01Semibold};
   color: var(--text-04);
   position: relative;
+  width: fit-content;
 `;
 
 const Silver = css``;
