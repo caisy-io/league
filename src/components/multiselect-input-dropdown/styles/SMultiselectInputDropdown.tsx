@@ -8,6 +8,7 @@ const CSSActivated = css`
 
 const Bronze = css`
   display: flex;
+  flex-direction: column;
   width: 100%;
 
   padding: 0.75rem;
@@ -15,7 +16,7 @@ const Bronze = css`
   border: 1px solid var(--ui-03);
   border-radius: 0.5rem;
   transition: border 200ms;
-  gap: 2px;
+  gap: 4px;
 
   cursor: pointer;
 

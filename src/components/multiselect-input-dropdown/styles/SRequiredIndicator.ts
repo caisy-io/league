@@ -1,11 +1,14 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveCaption01Semibold } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  ${CSSProgressiveCaption01Semibold};
-  color: var(--text-04);
-  position: relative;
+  background-color: var(--ui-supportive-01);
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: -4px;
 `;
 
 const Silver = css``;
@@ -16,7 +19,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SMultiselectInputDropdownLabel = styled.p`
+export const SRequiredIndicator = styled.p`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
