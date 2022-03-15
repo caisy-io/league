@@ -31,6 +31,7 @@ interface IMultiselectInputDropdown {
   popupHeader?: JSX.Element;
   popupFooter?: JSX.Element;
   opened: boolean;
+  label?: string;
 }
 
 export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
@@ -45,6 +46,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   popupFooter,
   onClose,
   onClick,
+  label,
 }) => {
   const ref = React.useRef(null);
 
@@ -61,6 +63,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
       <div>
         <SMultiselectInputDropdown active={opened} ref={ref} onClick={onClick}>
           <SMultiSelectInputWrapper>
+            {label && label}
             <SMultiselectInputDropdownTitle>
               {values &&
                 values.length !== 0 &&
