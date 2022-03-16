@@ -4,7 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 interface ISFormError {}
 
 const Bronze = css<ISFormError>`
-  color: var(--states-error);
+  color: var(--text-06);
   font-size: 12px;
 `;
 

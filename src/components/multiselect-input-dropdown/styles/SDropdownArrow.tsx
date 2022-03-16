@@ -2,30 +2,29 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const CSSOpened = css`
-  svg{
+  svg {
     transform: rotate(-180deg);
   }
-  svg path {
-    stroke: #172C55;
-  }
+
+  color: var(--active-icon-03);
 `;
 
 const CSSError = css`
-  svg path{
-    stroke: #ED3E3E;
-  }
+  color: var(--icon-06);
 `;
 
 const Bronze = css`
-  svg{
+  color: var(--icon-03);
+
+  svg {
     transition: transform 0.25s ease-in-out;
   }
-  ${(props) => props.opened ? CSSOpened : ''};  
-  ${(props) => props.translationBadge && props.error ? CSSError : ''};  
+
+  ${(props) => (props.opened ? CSSOpened : "")};
+  ${(props) => (props.translationBadge && props.error ? CSSError : "")};
 `;
 
-const Silver = css`
-`;
+const Silver = css``;
 
 const Gold = css``;
 
