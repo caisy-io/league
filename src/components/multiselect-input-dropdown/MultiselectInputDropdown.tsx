@@ -65,7 +65,12 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
 
   const OutlineLabelIcon = ({ item }: { item: TDataSourceItem }) => {
     return (
-      <SIconCloseWrapper onClick={() => onSelectValue?.(item)}>
+      <SIconCloseWrapper
+        onClick={(e) => {
+          e.stopPropagation();
+          onSelectValue?.(item);
+        }}
+      >
         <IconClose size={16} />
       </SIconCloseWrapper>
     );
