@@ -67,7 +67,6 @@
   },
   "dependencies": {
     "@rollup/plugin-json": "^4.1.0",
-    "@types/react-flatpickr": "^3.8.6",
     "babel-eslint": "^10.1.0",
     "dayjs": "1.10.5",
     "emoji-mart": "^3.0.1",
