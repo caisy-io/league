@@ -8,6 +8,7 @@ import { Popover } from "../popover";
 import { TagListItem } from "../tag-list-item";
 
 import { SDropdownArrow } from "./styles/SDropdownArrow";
+import { SIconCloseWrapper } from "./styles/SIconCloseWrapper";
 import { SMultiselectInputDropdown } from "./styles/SMultiselectInputDropdown";
 import { SMultiselectInputDropdownLabel } from "./styles/SMultiselectInputDropdownLabel";
 import { SMultiselectInputDropdownSelect } from "./styles/SMultiselectInputDropdownSelect";
@@ -62,6 +63,14 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
     onClose?.();
   };
 
+  const OutlineLabelIcon = ({ item }: { item: TDataSourceItem }) => {
+    return (
+      <SIconCloseWrapper onClick={() => onSelectValue?.(item)}>
+        <IconClose size={16} />
+      </SIconCloseWrapper>
+    );
+  };
+
   return (
     <ClickOutside onClickOutside={onCloseSelect}>
       <div>
@@ -83,7 +92,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
                       key={item.id}
                       size="medium"
                       colorLabel={<ColorLabel color={item.color} />}
-                      icon={<IconClose size={16} />}
+                      icon={<OutlineLabelIcon item={item} />}
                     >
                       {item.label}
                     </OutLineLabel>
