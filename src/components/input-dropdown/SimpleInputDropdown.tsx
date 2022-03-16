@@ -86,11 +86,11 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
             {label && <SInputDropdownLabel error={error} required={required} opened={opened}>{label ? label : ""}</SInputDropdownLabel>}
             {translationBadge &&
               <SFlex>
-                <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+                <SInputDropdownTitle selected={!!selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
                 <SDropdownArrowWrapper opened={opened}>                  <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator>
                 </SDropdownArrowWrapper>
               </SFlex>}
-            {!translationBadge && <SInputDropdownTitle selectTitle={selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
+            {!translationBadge && <SInputDropdownTitle selected={!!selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
             }
           </SInputDropdownTextWrapper>
         </SInputDropdownTextIconWrapper>
