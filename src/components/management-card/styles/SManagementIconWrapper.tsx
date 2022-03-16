@@ -5,6 +5,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 const Bronze = css`
   background-color: var(--ui-02);
   border-radius: 4px;
+  color: var(--icon-09);
 
   width: 24px;
   height: 24px;
