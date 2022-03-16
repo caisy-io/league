@@ -1,12 +1,15 @@
 import styled, { css } from "styled-components";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
+import { SLineTab } from "../../line-tab/styles/SLineTab";
 
 const Bronze = css`
   height: 48px;
 
   display: flex;
   align-items: flex-end;
-  margin: 0 -8px;
+  ${SLineTab}:first-child {
+    margin-left: 1rem;
+  }
 `;
 
 const Silver = css``;
