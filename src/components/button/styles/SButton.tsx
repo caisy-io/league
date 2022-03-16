@@ -356,11 +356,6 @@ const Bronze = css<{ styleType: IButtonType } & IButtonProps>`
     justify-content: center;
     align-items: center;
   }
-  ${(props) =>
-    props.fullWidth &&
-    css`
-      width: 100%;
-    `};
   ${({ styleOverwrite }) => styleOverwrite ?? ""};
 `;
 

@@ -19,7 +19,6 @@ export interface IButtonProps {
   activated?: boolean;
   sticked?: boolean;
   styleOverwrite?: string;
-  fullWidth?: boolean;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(({ children, onClick, ...props }, ref) => (
