@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  padding: ${(props) => `${props.padding || 20}px`};
+  padding: 20px;
 `;
 
 const Silver = css``;
