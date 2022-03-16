@@ -9,9 +9,11 @@ import { TagListItem } from "../tag-list-item";
 
 import { SDropdownArrow } from "./styles/SDropdownArrow";
 import { SMultiselectInputDropdown } from "./styles/SMultiselectInputDropdown";
+import { SMultiselectInputDropdownLabel } from "./styles/SMultiselectInputDropdownLabel";
 import { SMultiselectInputDropdownSelect } from "./styles/SMultiselectInputDropdownSelect";
 import { SMultiselectInputDropdownTitle } from "./styles/SMultiselectInputDropdownTitle";
 import { SMultiSelectInputWrapper } from "./styles/SMultiSelectInputWrapper";
+import { SRequiredIndicator } from "./styles/SRequiredIndicator";
 
 export type TDataSourceItem = {
   id: number | string;
@@ -31,6 +33,8 @@ interface IMultiselectInputDropdown {
   popupHeader?: JSX.Element;
   popupFooter?: JSX.Element;
   opened: boolean;
+  label?: string;
+  required?: boolean;
 }
 
 export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
@@ -45,6 +49,8 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   popupFooter,
   onClose,
   onClick,
+  label,
+  required,
 }) => {
   const ref = React.useRef(null);
 
@@ -60,6 +66,11 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
     <ClickOutside onClickOutside={onCloseSelect}>
       <div>
         <SMultiselectInputDropdown active={opened} ref={ref} onClick={onClick}>
+          {label && (
+            <SMultiselectInputDropdownLabel>
+              {label} {required && <SRequiredIndicator />}
+            </SMultiselectInputDropdownLabel>
+          )}
           <SMultiSelectInputWrapper>
             <SMultiselectInputDropdownTitle>
               {values &&
