@@ -35,6 +35,7 @@ interface IDatePickerHTMLElement extends HTMLElement {
 
 interface IDatePicker {
   initialDate?: TDates;
+  value?: TDates;
   onChange?: (payload: TDates) => void;
   onSave?: (payload: TDates) => void;
   onMonthChange?: (payload: Date) => void;
@@ -55,6 +56,7 @@ interface IDatePicker {
   withSelectedDisplay?: boolean;
   withQuickSelectionButtons?: boolean;
   withRange?: boolean;
+  withoutMonthsNavigation?: boolean;
   inline?: boolean;
 }
 
@@ -76,6 +78,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   withTime,
   withSelectedDisplay,
   withQuickSelectionButtons,
+  withoutMonthsNavigation,
   withRange,
   locale = "en",
   initialDate,
@@ -88,6 +91,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   maxDate,
   children,
   inline,
+  value,
 }) => {
   const {
     setShowMinutes,
@@ -171,6 +175,14 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
     setLoadingRef(false);
   }, []);
 
+  React.useEffect(() => {
+    if (value) {
+      setDate(value);
+      setCalendarMonth(dayjs(value[0]).format("MMMM"));
+      setCalendarYear(dayjs(value[0]).format("YYYY"));
+    }
+  }, [value]);
+
   const getCurrentTime = () => {
     const date = new Date();
     setHours(+date.getHours() >= 12 ? ((+date.getHours() - 12) as THourOptions) : (+date.getHours() as THourOptions));
@@ -203,24 +215,26 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   });
 
   const DatePickerContainer = !loadingRef && (
-    <SDatePickerContainer>
-      <SDatePickerCalendarWrapper>
-        <SDatePickerWrapperHeader>
-          <IconButton
-            size="small"
-            type="secondary"
-            onClick={() => {
-              const currentMonth = (flatRef.current as Flatpickr)?.flatpickr?.currentMonth;
-              (flatRef.current as Flatpickr)?.flatpickr?.jumpToDate(
-                dayjs(new Date(+calendarYear, currentMonth))
-                  .subtract(1, "month")
-                  .valueOf(),
-                true,
-              );
-            }}
-          >
-            <IconChevronLeft size={20} />
-          </IconButton>
+    <SDatePickerContainer withoutMonthsNavigation={withoutMonthsNavigation}>
+      <SDatePickerCalendarWrapper withoutMonthsNavigation={withoutMonthsNavigation}>
+        <SDatePickerWrapperHeader withoutMonthsNavigation={withoutMonthsNavigation}>
+          {!withoutMonthsNavigation && (
+            <IconButton
+              size="small"
+              type="secondary"
+              onClick={() => {
+                const currentMonth = (flatRef.current as Flatpickr)?.flatpickr?.currentMonth;
+                (flatRef.current as Flatpickr)?.flatpickr?.jumpToDate(
+                  dayjs(new Date(+calendarYear, currentMonth))
+                    .subtract(1, "month")
+                    .valueOf(),
+                  true,
+                );
+              }}
+            >
+              <IconChevronLeft size={20} />
+            </IconButton>
+          )}
           <SDatePickerMonthAndYear>
             <SDatePickerMonthContainer ref={monthRefContainer}>
               <SDatePickerButton
@@ -283,21 +297,23 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
               )}
             </SDatePickerYearContainer>
           </SDatePickerMonthAndYear>
-          <IconButton
-            size="small"
-            type="secondary"
-            onClick={() => {
-              const currentMonth = (flatRef.current as Flatpickr)?.flatpickr?.currentMonth;
-              (flatRef.current as Flatpickr)?.flatpickr?.jumpToDate(
-                dayjs(new Date(+calendarYear, currentMonth))
-                  .add(1, "month")
-                  .valueOf(),
-                true,
-              );
-            }}
-          >
-            <IconChevronRight size={20} />
-          </IconButton>
+          {!withoutMonthsNavigation && (
+            <IconButton
+              size="small"
+              type="secondary"
+              onClick={() => {
+                const currentMonth = (flatRef.current as Flatpickr)?.flatpickr?.currentMonth;
+                (flatRef.current as Flatpickr)?.flatpickr?.jumpToDate(
+                  dayjs(new Date(+calendarYear, currentMonth))
+                    .add(1, "month")
+                    .valueOf(),
+                  true,
+                );
+              }}
+            >
+              <IconChevronRight size={20} />
+            </IconButton>
+          )}
         </SDatePickerWrapperHeader>
         <Flatpickr
           ref={flatRef as any}

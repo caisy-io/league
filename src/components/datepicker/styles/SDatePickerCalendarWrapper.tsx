@@ -1,12 +1,37 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface ISDatePickerCalendarWrapper {
+  withoutMonthsNavigation: boolean;
 }
+
+const CSSWithoutMonthsNavigation = css`
+  .flatpickr-months {
+    height: 20px;
+  }
+
+  .flatpickr-weekdays {
+    margin-bottom: 4px;
+  }
+
+  .flatpickr-calendar {
+    width: 248px;
+    min-width: 248px;
+  }
+
+  .dayContainer {
+    padding: 0 2px;
+    margin: -2px -4px;
+  }
+
+  span.flatpickr-day {
+    margin: 2px 4px;
+  }
+`;
 
 export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper>`
   user-select: none;
   position: relative;
-  
+
   span.flatpickr-day {
     display: flex;
     align-items: center;
@@ -25,55 +50,59 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     flex-basis: 28px;
     border-radius: 60px;
     background-color: var(--interactional-tertiary-03);
-    
+
     &.prevMonthDay,
     &.nextMonthDay,
     &.flatpickr-disabled {
       color: var(--text-03);
     }
-    
+
     &.today {
       font-weight: 500;
       color: var(--text-suppportive-02);
     }
-    
+
     &:hover {
       background-color: var(--hover-interactional-tertiary-03);
     }
-    
+
     &.selected,
     &.selected.today {
       color: var(--text-02);
       background-color: var(--active-interactional-tertiary-03-1);
     }
-    
+
     &.selected.has-badge {
       :after {
         box-shadow: 0 0 0 1px #fff;
       }
     }
-    
-    &.inRange, &.endRange, &.startRange, &.selected.today.startRange, &.selected.today.endRange {
+
+    &.inRange,
+    &.endRange,
+    &.startRange,
+    &.selected.today.startRange,
+    &.selected.today.endRange {
       background-color: var(--interactional-secondary-03);
       color: var(--text-04);
-      
+
       &.today {
         color: var(--text-suppportive-02);
       }
     }
   }
-  
+
   .flatpickr-weekday {
     color: #8b94a7;
     font-size: 11px;
   }
-  
+
   .flatpickr-months {
     height: 32px;
     position: relative;
     margin-bottom: 4px;
   }
-  
+
   .flatpickr-months .flatpickr-prev-month.flatpickr-prev-month,
   .flatpickr-months .flatpickr-next-month.flatpickr-prev-month {
     margin: auto 0;
@@ -81,14 +110,14 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     position: absolute;
     left: 0;
   }
-  
+
   .flatpickr-months .flatpickr-prev-month.flatpickr-next-month,
   .flatpickr-months .flatpickr-next-month.flatpickr-next-month {
     cursor: pointer;
     position: absolute;
     right: 0;
   }
-  
+
   .flatpickr-prev-month,
   .flatpickr-next-month {
     display: flex;
@@ -101,31 +130,31 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     border-radius: 6px;
     border: solid 1px var(--interactional-secondary-08);
     opacity: 0;
-    
+
     svg {
       height: 8px;
       stroke: var(--icon-01);
     }
-    
+
     &:hover {
       border: solid 1px var(--interactional-primary-01);
-      
+
       path {
         stroke: var(--interactional-primary-01);
       }
     }
   }
-  
+
   .flatpickr-month {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   .flatpickr-current-month {
     display: none;
   }
-  
+
   .flatpickr-calendar {
     text-align: center;
     padding: 0;
@@ -140,7 +169,7 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     display: block !important;
     box-shadow: none !important;
   }
-  
+
   .flatpickr-weekdays {
     background: transparent;
     text-align: center;
@@ -149,7 +178,7 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     display: flex;
     align-items: center;
   }
-  
+
   .flatpickr-weekdays .flatpickr-weekdaycontainer {
     display: flex;
     flex: 1;
@@ -161,7 +190,7 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     text-align: center;
     color: var(--text-03);
   }
-  
+
   span.flatpickr-weekday {
     cursor: default;
     background: transparent;
@@ -172,23 +201,23 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     align-items: center;
     justify-content: center;
   }
-  
+
   .dayContainer,
   .flatpickr-weeks {
     padding: 1px 0 0 0;
   }
-  
+
   .flatpickr-days {
     position: relative;
     overflow: visible;
     display: flex;
     align-items: flex-start;
   }
-  
+
   .flatpickr-days:focus {
     outline: 0;
   }
-  
+
   .dayContainer {
     outline: 0;
     text-align: left;
@@ -199,11 +228,11 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     margin: -2px -5.915px;
     padding: 0 2px;
   }
-  
+
   .flatpickr-day {
     &.has-badge {
       position: relative;
-      
+
       &:after {
         content: attr(data-badge-content);
         position: absolute;
@@ -220,30 +249,30 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
       }
     }
   }
-  
+
   .flatpickr-day.flatpickr-disabled,
   .flatpickr-day.flatpickr-disabled:hover {
     cursor: not-allowed;
   }
-  
+
   .rangeMode .flatpickr-day {
     margin-top: 1px;
   }
-  
+
   .flatpickr-weekwrapper {
     float: left;
   }
-  
+
   .flatpickr-weekwrapper .flatpickr-weeks {
     padding: 0 12px;
   }
-  
+
   .flatpickr-weekwrapper .flatpickr-weekday {
     float: none;
     width: 100%;
     line-height: 28px;
   }
-  
+
   .flatpickr-weekwrapper span.flatpickr-day,
   .flatpickr-weekwrapper span.flatpickr-day:hover {
     display: block;
@@ -252,20 +281,22 @@ export const SDatePickerCalendarWrapper = styled.div<ISDatePickerCalendarWrapper
     cursor: default;
     border: none;
   }
-  
+
   .flatpickr-innerContainer {
     display: flex;
     box-sizing: border-box;
     overflow: visible;
   }
-  
+
   .flatpickr-rContainer {
     display: inline-block;
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   .dayContainer {
     border-right: 0;
   }
+
+  ${({ withoutMonthsNavigation }) => withoutMonthsNavigation && CSSWithoutMonthsNavigation};
 `;
