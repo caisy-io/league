@@ -26,7 +26,8 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
 
   const imageRef = useRef<HTMLInputElement>(null);
 
-  const openImagePicker = () => {
+  const openImagePicker = (e) => {
+    e.preventDefault();
     imageRef?.current?.click();
   };
 
@@ -85,10 +86,17 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
     }
   }, [image]);
 
+  const handleCancel = () => {
+    removeImage();
+    setLoading(false);
+    setUploadProgress(0);
+    setUploadName("");
+  };
+
   return (
     <SSetImageCard>
       <SSetImageCardBody>
-        {isLoading && <UploadProgressBar progress={uploadProgress} uploadName={uploadName} />}
+        {isLoading && <UploadProgressBar onCancel={handleCancel} progress={uploadProgress} uploadName={uploadName} />}
         {!isLoading && !image && (
           <>
             <SSetImageCardTitle>Drag and drop file to upload</SSetImageCardTitle>
@@ -97,7 +105,7 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
         )}
         {!isLoading && image && (
           <SSetImageCardPreview>
-            <Img resolution={48} src={image} />
+            <Img resolution={960} src={image} />
           </SSetImageCardPreview>
         )}
         {!isLoading && !image && (

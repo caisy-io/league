@@ -12,12 +12,17 @@ export interface IUploadProgressBar {
 }
 
 export const UploadProgressBar: React.FC<IUploadProgressBar> = ({ progress, uploadName, onCancel = () => {} }) => {
+  const handleCancel = (e) => {
+    e.preventDefault();
+    onCancel?.();
+  };
+
   return (
     <SUploadProgressBar>
       <SUploadProgressBarTitle>{uploadName}</SUploadProgressBarTitle>
       <SUploadProgressBarLabel>{progress}%</SUploadProgressBarLabel>
       <SProgressBar progress={progress} />
-      <Button onClick={onCancel} type="secondary">
+      <Button onClick={handleCancel} type="secondary">
         CANCEL
       </Button>
     </SUploadProgressBar>
