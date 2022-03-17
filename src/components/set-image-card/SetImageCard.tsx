@@ -89,7 +89,7 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
   return (
     <SSetImageCard>
       <SSetImageCardBody>
-        {isLoading && <UploadProgressBar progress={uploadProgress} uploadName={uploadName} />}
+        {isLoading && <UploadProgressBar onCancel={removeImage} progress={uploadProgress} uploadName={uploadName} />}
         {!isLoading && !image && (
           <>
             <SSetImageCardTitle>Drag and drop file to upload</SSetImageCardTitle>
