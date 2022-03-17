@@ -2,7 +2,11 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 import { CSSProgressiveCaption01 } from "../../../constants/styles/fonts";
 
-const Bronze = css<{ renderItem: boolean }>`
+const CSSActiveOption = css`
+  color: var(--text-02);
+  background-color: var(--ui-supportive-06);
+`;
+const Bronze = css<{ renderItem: boolean; activeOption: boolean }>`
   ${CSSProgressiveCaption01};
   color: var(--text-01);
   border-bottom: 1px solid var(--ui-02);
@@ -19,9 +23,10 @@ const Bronze = css<{ renderItem: boolean }>`
   }
 
   :hover {
-    color: var(--text-02);
-    background-color: var(--ui-supportive-06);
+    ${CSSActiveOption};
   }
+
+  ${({ activeOption }) => activeOption && CSSActiveOption};
 `;
 
 const Silver = css``;

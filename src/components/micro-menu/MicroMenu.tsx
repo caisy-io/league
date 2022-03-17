@@ -13,9 +13,10 @@ export interface IMicroMenu {
   options: IMicroMenuOptions[];
   renderItem?: (option) => ReactNode;
   onOptionClick?: (option) => void;
+  activeOption?: boolean;
 }
 
-export const MicroMenu: React.FC<IMicroMenu> = ({ menuHeight, options, onOptionClick, renderItem }) => {
+export const MicroMenu: React.FC<IMicroMenu> = ({ menuHeight, options, onOptionClick, renderItem, activeOption }) => {
   return (
     <SMicroMenu menuHeight={menuHeight}>
       <Scrollbar>
@@ -23,6 +24,7 @@ export const MicroMenu: React.FC<IMicroMenu> = ({ menuHeight, options, onOptionC
           <SMicroMenuOption
             renderItem={!!renderItem}
             key={option.key}
+            activeOption={!!activeOption}
             onClick={() => {
               onOptionClick?.(option);
             }}
