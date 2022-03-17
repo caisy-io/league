@@ -178,8 +178,13 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   React.useEffect(() => {
     if (value) {
       setDate(value);
-      setCalendarMonth(dayjs(value[0]).format("MMMM"));
-      setCalendarYear(dayjs(value[0]).format("YYYY"));
+      if (value?.filter((el) => el).length) {
+        setCalendarMonth(dayjs(value[0]).format("MMMM"));
+        setCalendarYear(dayjs(value[0]).format("YYYY"));
+      } else {
+        setCalendarMonth(dayjs(new Date()).format("MMMM"));
+        setCalendarYear(dayjs(new Date()).format("YYYY"));
+      }
     }
   }, [value]);
 
