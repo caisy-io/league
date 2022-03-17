@@ -9,9 +9,9 @@ interface IIconButton {
   onClick?: (e: MouseEvent<HTMLDivElement>) => void;
 }
 
-export const IconButton: FC<IIconButton> = forwardRef(({ children, size, type, activated, onClick }) => {
+export const IconButton: FC<IIconButton> = forwardRef(({ children, size, type, activated, onClick }, ref: any) => {
   return (
-    <SIconButton onClick={onClick} activated={activated} size={size} type={type}>
+    <SIconButton ref={ref} onClick={onClick} activated={activated} size={size} type={type}>
       {children}
     </SIconButton>
   );
