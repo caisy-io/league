@@ -1,15 +1,10 @@
 import styled, { css } from "styled-components";
-import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
-import { SLineTab } from "../../line-tab/styles/SLineTab";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  height: 48px;
-
   display: flex;
-  align-items: flex-end;
-  ${SLineTab}:first-child {
-    margin-left: 1rem;
-  }
+  align-items: center;
+  justify-content: center;
 `;
 
 const Silver = css``;
@@ -20,7 +15,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SBlockEditorSidebarTabs = styled.div`
+export const SIconCloseWrapper = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
