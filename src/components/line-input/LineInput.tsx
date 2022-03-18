@@ -12,7 +12,6 @@ interface ILineInput {
   label: string;
   placeholder: string;
   required?: boolean;
-  labelVisible?: boolean;
   value: string;
   onChange: (e: any) => void;
 }
@@ -25,14 +24,13 @@ export const LineInput: FC<ILineInput> = ({
   required,
   value,
   onChange,
-  labelVisible,
 }) => {
   const [active, setActive] = useState(false);
   const inputRef = useRef<HTMLInputElement>();
 
   return (
     <SLineInputWrapper onClick={() => inputRef.current?.focus()} state={state} active={active} required={required}>
-      <SLineInputLabel isLabelVisible={labelVisible}>
+      <SLineInputLabel>
         {required && <SLineInputRequiredIndicator />}
         {state === "error" && errorMessage ? errorMessage : label}
       </SLineInputLabel>
