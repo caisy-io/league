@@ -120,3 +120,4 @@ export * from "./upload-progress-bar";
 export * from "./block-editor-sidebar";
 export * from "./language-toggle-list-item";
 export * from "./micro-menu";
+export * from "./set-image-card";
