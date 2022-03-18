@@ -16,7 +16,15 @@ interface ILineInput {
   onChange: (e: any) => void;
 }
 
-export const LineInput: FC<ILineInput> = ({ state, errorMessage, placeholder, label, required, value, onChange }) => {
+export const LineInput: FC<ILineInput> = ({
+  state,
+  errorMessage,
+  placeholder,
+  label,
+  required,
+  value,
+  onChange,
+}) => {
   const [active, setActive] = useState(false);
   const inputRef = useRef<HTMLInputElement>();
 

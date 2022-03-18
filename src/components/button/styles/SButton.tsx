@@ -270,10 +270,10 @@ const getTypeStyling = (styleType: IButtonType, isActivated, isSticked) => {
       return isSticked && isActivated
         ? CSSPrimaryStickedActivated
         : isSticked
-          ? CSSPrimarySticked
-          : isActivated
-            ? CSSPrimaryPressed
-            : CSSPrimary;
+        ? CSSPrimarySticked
+        : isActivated
+        ? CSSPrimaryPressed
+        : CSSPrimary;
     case "secondary":
       return isActivated ? CSSSecondaryPressed : CSSSecondary;
     case "tertiary":
@@ -282,10 +282,10 @@ const getTypeStyling = (styleType: IButtonType, isActivated, isSticked) => {
       return isSticked && isActivated
         ? CSSDangerStickedActivated
         : isSticked
-          ? CSSDangerSticked
-          : isActivated
-            ? CSSDangerPressed
-            : CSSDanger;
+        ? CSSDangerSticked
+        : isActivated
+        ? CSSDangerPressed
+        : CSSDanger;
     default:
       return isActivated ? CSSNeutralPressed : CSSNeutral;
   }
@@ -325,11 +325,11 @@ const Bronze = css<{ styleType: IButtonType } & IButtonProps>`
     top: 0;
     left: 0;
   }
-  
+
   ${(props) => getSize(props.size)};
   ${(props) => (props.disabled ? CSSDisabled : "cursor: pointer")};
   ${(props) => getTypeStyling(props.styleType, props.activated, props.sticked)};
-  
+
   line-height: normal;
 
   &:active {
@@ -356,7 +356,7 @@ const Bronze = css<{ styleType: IButtonType } & IButtonProps>`
     justify-content: center;
     align-items: center;
   }
-  ${({ styleOverwrite }) => styleOverwrite ?? ''};
+  ${({ styleOverwrite }) => styleOverwrite ?? ""};
 `;
 
 const Silver = css``;
