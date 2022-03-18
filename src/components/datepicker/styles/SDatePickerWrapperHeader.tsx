@@ -1,6 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const SDatePickerWrapperHeader = styled.div`
+const CSSWithoutMonthsNavigation = css`
+  margin-bottom: 8px;
+  margin-left: 4px;
+`;
+
+export const SDatePickerWrapperHeader = styled.div<{ withoutMonthsNavigation: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,4 +15,5 @@ export const SDatePickerWrapperHeader = styled.div`
   width: 100%;
   margin-bottom: 4px;
   z-index: 1;
+  ${({ withoutMonthsNavigation }) => withoutMonthsNavigation && CSSWithoutMonthsNavigation};
 `;
