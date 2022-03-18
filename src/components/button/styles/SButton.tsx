@@ -356,7 +356,6 @@ const Bronze = css<{ styleType: IButtonType } & IButtonProps>`
     justify-content: center;
     align-items: center;
   }
-  ${({ styleOverwrite }) => styleOverwrite ?? ""};
 `;
 
 const Silver = css``;
@@ -373,4 +372,5 @@ export const SButton: any = styled.button<any>`
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({ styleOverwrite }) => styleOverwrite ?? ""};
 `;
