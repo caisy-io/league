@@ -12,9 +12,10 @@ interface IUploadsPopUp {
   poupTitle: string;
   onClose: () => any;
   badgeValue?: string | number;
+  onClear?: () => void;
 }
 
-export const UploadsPopUp: FC<IUploadsPopUp> = ({children, poupTitle, badgeValue, onClose}) => (
+export const UploadsPopUp: FC<IUploadsPopUp> = ({children, poupTitle, badgeValue, onClose, onClear}) => (
   <SUploadsPopUp>
     <SUploadsPopUpHeader>
       <PrimaryModalHeader breadcrumbs={[{title: poupTitle, icon: <IconUpload size={24}/> }]}>
@@ -22,7 +23,7 @@ export const UploadsPopUp: FC<IUploadsPopUp> = ({children, poupTitle, badgeValue
           {badgeValue && <Badge type="regular" value={badgeValue.toString()} size="small" position={EBadgePosition.Center}/>}
         </BadgeWrapper>
         <ButtonsWrapper>
-          <FlatActionButton type="grey" onClick={() => alert("Clear button clicked")}>Clear</FlatActionButton>
+          <FlatActionButton type="grey" onClick={onClear}>Clear</FlatActionButton>
           <IconWrapper onClick={onClose}><IconClose size={24}/></IconWrapper>
         </ButtonsWrapper>
       </PrimaryModalHeader>
