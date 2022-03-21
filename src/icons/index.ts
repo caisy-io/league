@@ -265,3 +265,4 @@ export { IconArrowDiamond } from "./IconArrowDiamond";
 export { IconRotateImage } from "./IconRotateImage";
 export { IconCaisyLogo } from "./IconCaisyLogo";
 export { IconLogout } from "./IconLogout";
+export { IconProjectsFoldersUngrouped } from "./IconProjectsFoldersUngrouped";
