@@ -1,15 +1,13 @@
-import styled, { css } from 'styled-components';
-import { CSSProgressiveCaption01 } from '../../../constants/styles/design-tokens/fonts/CSSTypographies';
-import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from '../../../constants/styles/mediaquerys';
+import styled, { css } from "styled-components";
+import { CSSProgressiveCaption01, CSSProgressiveCaption02Medium } from "../../../constants/styles";
+import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles";
 
 const Bronze = css`
-  ${CSSProgressiveCaption01};
   color: var(--text-04);
-  ${(props) => props.itemSize !== "large" ? "display: none;" : ''};
+  ${({ itemSize }) => (itemSize === "large" ? CSSProgressiveCaption01 : CSSProgressiveCaption02Medium)};
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 250px;
-  margin-bottom: 0.13rem;
   white-space: nowrap;
 `;
 
@@ -24,8 +22,7 @@ const Diamond = css``;
 export const SOrganizationSelectListItemLabel = styled.p`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
-  ${MIN_GOLD`${Gold}`}; 
+  ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
 `;
-

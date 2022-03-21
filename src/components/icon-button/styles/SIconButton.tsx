@@ -18,14 +18,13 @@ const CSSPrimaryActivated = css`
 
 const CSSPrimary = css`
   color: var(--icon-01);
+
   ${(props) =>
     props.type !== "default" &&
     css`
       background-color: var(--interactional-secondary-08);
     `}
-
   ${(props) => props.activated && CSSPrimaryActivated}
-
   &:hover {
     color: var(--hover-icon-01);
     background-color: var(--hover-interactional-secondary-08);
@@ -48,8 +47,8 @@ const CSSSecondary = css`
   color: var(--icon-01);
   background-color: transparent;
   border: 1px solid var(--interactional-secondary-08);
-  ${(props) => props.activated && CSSSecondaryActivated}
 
+  ${(props) => props.activated && CSSSecondaryActivated}
   &:hover {
     color: var(--hover-icon-01);
     background-color: var(--hover-interactional-secondary-08);
@@ -74,8 +73,8 @@ const CSSDanger = css`
   color: var(--icon-02);
   background-color: var(--interactional-secondary-02);
   border-radius: 6px;
-  ${(props) => props.activated && CSSDangerActivated}
 
+  ${(props) => props.activated && CSSDangerActivated}
   &:hover {
     color: var(--hover-icon-02);
     background-color: var(--hover-interactional-secondary-02);
@@ -92,6 +91,12 @@ const CSSDanger = css`
 const CSSDefault = css`
   ${CSSPrimary},/* background-color: red !important; */
 `;
+
+const CSSDisabled = css`
+  color: var(--disabled-icon);
+  border-color: var(--disabled-interactional-01);
+`;
+
 const Bronze = css`
   border-radius: 8px;
   height: 40px;
@@ -106,11 +111,12 @@ const Bronze = css`
 
   ${CSSPrimary}
 
-  ${(props) => props.size === "small" && CSSSmall}
-  ${(props) => props.size === "medium" && CSSMedium}
-  ${(props) => props.type === "danger" && CSSDanger}
-  ${(props) => props.type === "secondary" && CSSSecondary}
-  ${(props) => props.type === "default" && CSSDefault}
+  ${({ size }) => size === "small" && CSSSmall}
+  ${({ size }) => size === "medium" && CSSMedium}
+  ${({ type }) => type === "danger" && CSSDanger}
+  ${({ type }) => type === "secondary" && CSSSecondary}
+  ${({ type }) => type === "default" && CSSDefault}
+  ${({ disabled }) => disabled && CSSDisabled}
 `;
 
 const Silver = css``;
