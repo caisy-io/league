@@ -95,6 +95,7 @@ const CSSDefault = css`
 const CSSDisabled = css`
   color: var(--disabled-icon);
   border-color: var(--disabled-interactional-01);
+  pointer-events: none;
 `;
 
 const Bronze = css`
