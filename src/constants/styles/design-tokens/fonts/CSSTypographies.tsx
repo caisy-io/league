@@ -1,14 +1,15 @@
 import { css } from "styled-components";
 
-export const CSSProgressiveHeading01 = css`
+export const CSSProgressiveBadgesSmall = css`
   font-weight: var(--font-weights-inter-0);
-  line-height: var(--line-heights-0);
-  font-size: var(--font-size-7);
+  line-height: var(--line-heights-3);
+  font-size: var(--font-size-1);
+  letter-spacing: var(--letter-spacing-1);
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveBody01Semibold = css`
-  font-weight: var(--font-weights-inter-1);
+export const CSSProgressiveBody01 = css`
+  font-weight: var(--font-weights-inter-3);
   line-height: var(--line-heights-1);
   font-size: var(--font-size-6);
   letter-spacing: var(--letter-spacing-1);
@@ -23,16 +24,16 @@ export const CSSProgressiveBody01Medium = css`
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveBody01 = css`
-  font-weight: var(--font-weights-inter-3);
+export const CSSProgressiveBody01Semibold = css`
+  font-weight: var(--font-weights-inter-1);
   line-height: var(--line-heights-1);
   font-size: var(--font-size-6);
   letter-spacing: var(--letter-spacing-1);
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveBody02Semibold = css`
-  font-weight: var(--font-weights-inter-1);
+export const CSSProgressiveBody02 = css`
+  font-weight: var(--font-weights-inter-3);
   line-height: var(--line-heights-1);
   font-size: var(--font-size-5);
   letter-spacing: var(--letter-spacing-1);
@@ -46,16 +47,16 @@ export const CSSProgressiveBody02Medium = css`
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveBody02 = css`
-  font-weight: var(--font-weights-inter-3);
+export const CSSProgressiveBody02Semibold = css`
+  font-weight: var(--font-weights-inter-1);
   line-height: var(--line-heights-1);
   font-size: var(--font-size-5);
   letter-spacing: var(--letter-spacing-1);
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveBody03Semibold = css`
-  font-weight: var(--font-weights-inter-1);
+export const CSSProgressiveBody03 = css`
+  font-weight: var(--font-weights-inter-3);
   line-height: var(--line-heights-2);
   font-size: var(--font-size-4);
   letter-spacing: var(--letter-spacing-1);
@@ -69,16 +70,16 @@ export const CSSProgressiveBody03Medium = css`
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveBody03 = css`
-  font-weight: var(--font-weights-inter-3);
+export const CSSProgressiveBody03Semibold = css`
+  font-weight: var(--font-weights-inter-1);
   line-height: var(--line-heights-2);
   font-size: var(--font-size-4);
   letter-spacing: var(--letter-spacing-1);
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveCaption01Semibold = css`
-  font-weight: var(--font-weights-inter-1);
+export const CSSProgressiveCaption01 = css`
+  font-weight: var(--font-weights-inter-3);
   line-height: var(--line-heights-3);
   font-size: var(--font-size-3);
   letter-spacing: var(--letter-spacing-1);
@@ -93,16 +94,16 @@ export const CSSProgressiveCaption01Medium = css`
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveCaption01 = css`
-  font-weight: var(--font-weights-inter-3);
+export const CSSProgressiveCaption01Semibold = css`
+  font-weight: var(--font-weights-inter-1);
   line-height: var(--line-heights-3);
   font-size: var(--font-size-3);
   letter-spacing: var(--letter-spacing-1);
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveCaption02Semibold = css`
-  font-weight: var(--font-weights-inter-1);
+export const CSSProgressiveCaption02 = css`
+  font-weight: var(--font-weights-inter-3);
   line-height: var(--line-heights-4);
   font-size: var(--font-size-2);
   letter-spacing: var(--letter-spacing-1);
@@ -117,10 +118,25 @@ export const CSSProgressiveCaption02Medium = css`
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveCaption02 = css`
-  font-weight: var(--font-weights-inter-3);
+export const CSSProgressiveCaption02Semibold = css`
+  font-weight: var(--font-weights-inter-1);
   line-height: var(--line-heights-4);
   font-size: var(--font-size-2);
+  letter-spacing: var(--letter-spacing-1);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
+`;
+export const CSSProgressiveHeading01 = css`
+  font-weight: var(--font-weights-inter-0);
+  line-height: var(--line-heights-0);
+  font-size: var(--font-size-7);
+  text-case: var(--text-case-none);
+  text-decoration: var(--text-decoration-none);
+`;
+export const CSSProgressiveHeading02 = css`
+  font-weight: var(--font-weights-inter-0);
+  line-height: var(--line-heights-1);
+  font-size: var(--font-size-6);
   letter-spacing: var(--letter-spacing-1);
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
@@ -141,20 +157,12 @@ export const CSSProgressiveHighlightMicro = css`
   text-case: var(--text-case-uppercase);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressivePrimaryButtons = css`
+export const CSSProgressiveHighlightSmallBadges = css`
   font-weight: var(--font-weights-inter-0);
   line-height: var(--line-heights-3);
   font-size: var(--font-size-2);
-  letter-spacing: var(--letter-spacing-2);
-  text-case: var(--text-case-uppercase);
-  text-decoration: var(--text-decoration-none);
-`;
-export const CSSProgressiveBadgesSmall = css`
-  font-weight: var(--font-weights-inter-0);
-  line-height: var(--line-heights-3);
-  font-size: var(--font-size-1);
   letter-spacing: var(--letter-spacing-1);
-  text-case: var(--text-case-none);
+  text-case: var(--text-case-uppercase);
   text-decoration: var(--text-decoration-none);
 `;
 export const CSSProgressiveMonospaceCaption = css`
@@ -183,19 +191,11 @@ export const CSSProgressiveMonospaceCount = css`
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveHeading02 = css`
-  font-weight: var(--font-weights-inter-0);
-  line-height: var(--line-heights-1);
-  font-size: var(--font-size-6);
-  letter-spacing: var(--letter-spacing-1);
-  text-case: var(--text-case-none);
-  text-decoration: var(--text-decoration-none);
-`;
-export const CSSProgressiveHighlightSmallBadges = css`
+export const CSSProgressivePrimaryButtons = css`
   font-weight: var(--font-weights-inter-0);
   line-height: var(--line-heights-3);
   font-size: var(--font-size-2);
-  letter-spacing: var(--letter-spacing-1);
+  letter-spacing: var(--letter-spacing-2);
   text-case: var(--text-case-uppercase);
   text-decoration: var(--text-decoration-none);
 `;
