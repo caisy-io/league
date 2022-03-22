@@ -33,7 +33,7 @@ const CSSImportant = css`
 
 const CSSGreen = css`
   ${CSSSolidLabelBase};
-  background: var(--ui-supportive-04);
+  background: var(--ui-supportive-05);
   color: var(--text-07);
 `;
 
