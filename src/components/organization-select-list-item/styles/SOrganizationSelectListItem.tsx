@@ -14,6 +14,8 @@ const Bronze = css`
   padding: 16px 16px 15px;
   gap: 0.75rem;
   ${({ active }) => active && CSSActive};
+  width: 100%;
+  overflow: hidden;
 
   &:hover {
     background-color: var(--hover-ui-01);
