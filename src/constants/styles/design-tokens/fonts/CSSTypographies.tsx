@@ -174,14 +174,6 @@ export const CSSProgressiveMonospaceCaption = css`
   text-case: var(--text-case-none);
   text-decoration: var(--text-decoration-none);
 `;
-export const CSSProgressiveMonospaceCode = css`
-  font-family: var(--font-families-ibm-plex-mono);
-  font-weight: var(--font-weights-ibm-plex-mono-4);
-  line-height: var(--line-heights-5);
-  font-size: var(--font-size-3);
-  text-case: var(--text-case-none);
-  text-decoration: var(--text-decoration-none);
-`;
 export const CSSProgressiveMonospaceCount = css`
   font-family: var(--font-families-ibm-plex-mono);
   font-weight: var(--font-weights-ibm-plex-mono-5);
