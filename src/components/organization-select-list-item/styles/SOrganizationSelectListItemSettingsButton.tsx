@@ -5,6 +5,10 @@ const Bronze = css`
   color: var(--icon-04);
   line-height: 0;
   cursor: pointer;
+
+  :hover {
+    color: var(--hover-text-01);
+  }
 `;
 
 const Silver = css``;
