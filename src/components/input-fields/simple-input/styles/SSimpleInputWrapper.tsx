@@ -22,8 +22,8 @@ const CSSSuccess = css`
 `;
 
 const CSSLocked = css`
-  background-color: var(--active-ui-01-1);
-  border: 1px solid var(--active-ui-01-1);
+  background-color: var(--ui-supportive-10);
+  border: 1px solid var(--ui-supportive-10);
   & input::placeholder {
     color: var(--text-04);
   }
@@ -43,7 +43,6 @@ const Bronze = css`
   flex-direction: column;
   justify-content: flex-start;
   transition: border 200ms;
-  box-sizing: border-box;
 
   ${(props) => props.active && CSSActive};
   ${(props) => props.state && props.state === "error" && CSSError}
