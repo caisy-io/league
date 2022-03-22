@@ -137,8 +137,8 @@ const Bronze = css`
 
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px;
+  gap: 4px;
+  padding: 4px;
   border-radius: 4px;
 
   font-size: 12px;
@@ -162,8 +162,8 @@ const Bronze = css`
   ${(props) => getStyles(props.type)}
 
   svg {
-    height: 12px;
-    width: 12px;
+    height: 16px;
+    width: 16px;
   }
 `;
 

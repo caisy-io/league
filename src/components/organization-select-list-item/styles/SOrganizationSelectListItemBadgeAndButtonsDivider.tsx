@@ -1,14 +1,10 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody02Semibold } from "../../../constants/styles";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles";
 
 const Bronze = css`
-  ${CSSProgressiveBody02Semibold};
-  color: var(--text-01);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
+  width: 1px;
+  height: 12px;
+  background: var(--ui-03);
 `;
 
 const Silver = css``;
@@ -19,7 +15,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SOrganizationSelectListItemTitle = styled.p`
+export const SOrganizationSelectListItemBadgeAndButtonsDivider = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

@@ -7,12 +7,15 @@ interface IIconButton {
   type?: "primary" | "secondary" | "danger" | "default";
   activated?: boolean;
   onClick?: (e: MouseEvent<HTMLDivElement>) => void;
+  disabled?: boolean;
 }
 
-export const IconButton: FC<IIconButton> = forwardRef(({ children, size, type, activated, onClick }, ref: any) => {
-  return (
-    <SIconButton ref={ref} onClick={onClick} activated={activated} size={size} type={type}>
-      {children}
-    </SIconButton>
-  );
-});
+export const IconButton: FC<IIconButton> = forwardRef(
+  ({ children, size, type, activated, onClick, disabled = false }, ref: any) => {
+    return (
+      <SIconButton ref={ref} onClick={onClick} activated={activated} disabled={disabled} size={size} type={type}>
+        {children}
+      </SIconButton>
+    );
+  },
+);
