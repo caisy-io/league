@@ -1,6 +1,6 @@
 import React from "react";
-import {IconScaleBigger, IconScaleSmaller, IconStarOutlined} from "../../icons";
-import {Slider} from './Slider';
+import { IconScaleBigger, IconScaleSmaller, IconStarOutlined } from "../../icons";
+import { Slider } from "./Slider";
 
 export default {
   title: `Components/Slider`,
@@ -8,7 +8,7 @@ export default {
   argTypes: {
     initialValue: {
       description: "Set initial value of slider",
-      control: {type: "number"},
+      control: { type: "number" },
       table: {
         defaultValue: {
           summary: 0,
@@ -26,17 +26,19 @@ export default {
     },
     rightIcon: {
       description: "icon",
-    }
+    },
   },
 };
 
-const SliderDemo = ({leftIcon, rightIcon, initialValue}) => (
-  <Slider leftIcon={leftIcon} rightIcon={rightIcon} initialValue={initialValue}/>
+const SliderDemo = ({ leftIcon, rightIcon, initialValue, min, max }) => (
+  <Slider leftIcon={leftIcon} rightIcon={rightIcon} initialValue={initialValue} min={min} max={max} />
 );
 
 export const Default: any = SliderDemo.bind({});
 Default.args = {
   initialValue: 3,
-  leftIcon: <IconStarOutlined/>,
-  rightIcon: <IconStarOutlined/>,
+  leftIcon: <IconStarOutlined />,
+  rightIcon: <IconStarOutlined />,
+  min: 2,
+  max: 5,
 };
