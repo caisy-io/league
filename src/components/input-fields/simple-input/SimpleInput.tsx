@@ -1,5 +1,4 @@
 import React, { FC, KeyboardEvent, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useDimensions } from "../../..";
 import { SErrorMessage } from "../styles";
 import { SLabel } from "../styles";
 import { SSimpleInput } from "./styles/SSimpleInput";

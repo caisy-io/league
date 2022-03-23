@@ -1,13 +1,13 @@
 import React, { FC, KeyboardEvent, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { SErrorMessage } from "../styles";
 import { SLabel } from "../styles";
-import { SSimpleInputIconWrapper } from "./styles/SSimpleInputIconWrapper";
-import { SSimpleInputInsideContainer } from "./styles/SSimpleInputInsideContainer";
-import { SSimpleInputOutsideContainer } from "./styles/SSimpleInputOutsideContainer";
-import { SSimpleInputRequiredIndicator } from "./styles/SSimpleInputRequiredIndicator";
-import { SSimpleInputRequiredIndicatorContainer } from "./styles/SSimpleInputRequiredIndicatorContainer";
-import { SSimpleInputRightWrapper } from "./styles/SSimpleInputRightIcon";
-import { SSimpleInputWrapper } from "./styles/SSimpleInputWrapper";
+import { SSimpleInputIconWrapper } from "../simple-input/styles/SSimpleInputIconWrapper";
+import { SSimpleInputInsideContainer } from "../simple-input/styles/SSimpleInputInsideContainer";
+import { SSimpleInputOutsideContainer } from "../simple-input/styles/SSimpleInputOutsideContainer";
+import { SSimpleInputRequiredIndicator } from "../simple-input/styles/SSimpleInputRequiredIndicator";
+import { SSimpleInputRequiredIndicatorContainer } from "../simple-input/styles/SSimpleInputRequiredIndicatorContainer";
+import { SSimpleInputRightWrapper } from "../simple-input/styles/SSimpleInputRightIcon";
+import { SSimpleInputWrapper } from "../simple-input/styles/SSimpleInputWrapper";
 
 type TSimpleInputState = "success" | "error" | "default" | "locked";
 
