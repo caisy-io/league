@@ -1,3 +1,4 @@
+import React from "react";
 import { Img } from "../../base-components";
 import { IconDelete, IconEditImageAsset } from "../../icons";
 import { useFileUpload } from "../../utils/hooks/useFileUpload";
@@ -8,9 +9,9 @@ import { SAvatarInput } from "./styles/SAvatarInput";
 import { SAvatarInputButtonsWrapper } from "./styles/SAvatarInputButtonsWrapper";
 import { SAvatarInputPreview } from "./styles/SAvatarInputPreview";
 
-interface IAvatarInput {
+export interface IAvatarInput {
   imageUrl?: string;
-  onChange: (url: string) => void;
+  onChange: (url: string | null) => void;
   processImage: (file: File) => Promise<string>;
   avatarResolution?: number;
   onCancelUpload?: () => void;
