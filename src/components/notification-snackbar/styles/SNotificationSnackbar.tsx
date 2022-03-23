@@ -15,7 +15,7 @@ const Bronze = css`
   width: 28.375rem;
   padding: 0.75rem;
   box-sizing: border-box;
-  margin: 1.25rem auto;
+  margin-top: 1.25rem;
   z-index: 2;
   box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.14);
   svg{
