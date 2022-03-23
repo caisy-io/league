@@ -15,7 +15,7 @@ const Bronze = css<{ value: number }>`
     left: 0;
     pointer-events: none;
     width: 100%;
-    transform: scaleX(${({ value }) => `${(value * 96) / 100}%`});
+    transform: scaleX(${({ value }) => `${(value * 96) / 100 || 0}%`});
     transform-origin: left;
     height: 100%;
     background: var(--ui-04);
@@ -34,7 +34,7 @@ const Bronze = css<{ value: number }>`
     pointer-events: none;
     top: 50%;
     left: 0;
-    transform: translate(${({ value }) => `${(value * 96) / 100}px`}, -50%);
+    transform: translate(${({ value }) => `${(value * 96) / 100 || 0}px`}, -50%);
   }
 `;
 

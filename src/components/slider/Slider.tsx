@@ -13,6 +13,16 @@ export interface ISlider {
   onValueChange?: () => void;
 }
 
+const checkValue = (value, min, max) => {
+  if (value < min) {
+    return min;
+  } else if (value > max) {
+    return max;
+  } else {
+    return value;
+  }
+};
+
 export const Slider: React.FC<ISlider & React.InputHTMLAttributes<HTMLInputElement>> = ({
   initialValue,
   min = 0,
@@ -32,7 +42,7 @@ export const Slider: React.FC<ISlider & React.InputHTMLAttributes<HTMLInputEleme
 
   React.useEffect(() => {
     if (initialValue) {
-      setValue(Math.ceil(((initialValue - min) / (max - min)) * 100));
+      setValue(Math.ceil(((checkValue(initialValue, min, max) - min) / (max - min)) * 100));
     }
   }, [initialValue]);
 
