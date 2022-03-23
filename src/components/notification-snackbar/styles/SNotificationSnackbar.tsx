@@ -29,7 +29,7 @@ const Bronze = css`
  
   @keyframes SlideTop {
     0% {
-      transform: translateY(-110%);
+      transform: translateY(110%);
     }
 
     100% {
