@@ -17,8 +17,10 @@ export interface ITooltip {
 export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, disableTriangle, delay = 0 }) => {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
+
   let closeTooltipTimeout;
   let tooltipDelayTimeout;
+  let openDelayTimeout;
   const closeTooltip = () => {
     closeTooltipTimeout = setTimeout(() => {
       setClosing(false);
@@ -34,11 +36,12 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, dis
   };
 
   const handleMouseLeave = () => {
+    clearTimeout(openDelayTimeout);
     closeTooltipDelay();
   };
 
   const handleMouseEnter = () => {
-    setTimeout(() => {
+    openDelayTimeout = setTimeout(() => {
       setOpen(true);
       setClosing(false);
       clearTimeout(tooltipDelayTimeout);
