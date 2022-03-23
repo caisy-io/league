@@ -1,1 +1,1 @@
-export { SimpleInputWrapper as default } from './SimpleInputWrapper';
+export { SimpleInputWrapper } from './SimpleInputWrapper';
