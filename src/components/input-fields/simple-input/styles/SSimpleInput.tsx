@@ -27,6 +27,17 @@ const Bronze = css`
   &::placeholder {
     color: var(--text-03);
   }
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
 `;
 
 const Silver = css``;
