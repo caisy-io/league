@@ -1,4 +1,13 @@
-import React, { FC, KeyboardEvent, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  FC,
+  HTMLInputTypeAttribute,
+  KeyboardEvent,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 import { SErrorMessage } from "../styles";
 import { SLabel } from "../styles";
 import { SSimpleInput } from "./styles/SSimpleInput";
@@ -30,7 +39,7 @@ interface ISimpleInput {
   onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
   autoComplete?: string;
   autoFocus?: boolean;
-  type?: Pick<HTMLInputElement, 'type'>
+  type?: HTMLInputTypeAttribute
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
