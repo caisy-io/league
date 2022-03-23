@@ -1,5 +1,5 @@
-import styled, {css} from 'styled-components';
-import {MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND} from '../../../constants/styles';
+import styled, { css } from "styled-components";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
 const Bronze = css`
   position: absolute;
@@ -9,6 +9,26 @@ const Bronze = css`
   height: 100%;
   width: 100%;
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  border-radius: 59px;
+
+  ::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  ::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 `;
 
 const Silver = css``;
@@ -26,4 +46,3 @@ export const SSliderInput = styled.input`
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
 `;
-
