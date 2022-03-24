@@ -14,7 +14,7 @@ interface ISearchInput {
   onKeyPress?: (e, onClose) => void;
   withFilter?: boolean;
   onClickFilter?: () => void;
-  autofocus?: boolean;
+  autoFocus?: boolean;
 }
 
 export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, onKeyPress, withFilter, onClickFilter, autofocus }) => {
@@ -67,7 +67,7 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
         onChange={onChange}
         onKeyPress={handleKeyPress}
         placeholder={placeholder}
-        autoFocus={autofocus}
+        autoFocus={autoFocus}
       />
       <SSearchIconContainer>
         {withFilter && (
