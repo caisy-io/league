@@ -17,7 +17,7 @@ interface ISearchInput {
   autoFocus?: boolean;
 }
 
-export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, onKeyPress, withFilter, onClickFilter, autofocus }) => {
+export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, onKeyPress, withFilter, onClickFilter, autoFocus }) => {
   const [active, setActive] = useState(false);
   const [clickingFilter, setClickingFilter] = useState(false);
   const inputRef = useRef<HTMLInputElement>();
