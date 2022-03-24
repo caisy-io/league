@@ -1,10 +1,11 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody03Semibold } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { CSSProgressiveBody03Semibold } from "../../../constants/styles";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
 const CSSHover = css`
   color: var(--hover-text-04);
   cursor: pointer;
+
   div:last-of-type {
     background-color: var(--hover-text-04);
   }
@@ -12,9 +13,14 @@ const CSSHover = css`
 
 const CSSActivated = css`
   color: var(--text-01);
+
   div:last-of-type {
-    background-color: var(--text-01);
+    background-color: ${({ hasError }) => (hasError ? "var(--ui-supportive-01)" : "var(--text-01)")};
   }
+`;
+
+const CSSError = css`
+  color: var(--text-06);
 `;
 
 const Bronze = css`
@@ -29,14 +35,19 @@ const Bronze = css`
   height: 48px;
   box-sizing: border-box;
   cursor: pointer;
+
   div:last-of-type {
     background-color: transparent;
   }
-  ${(props) => (props.hover ? CSSHover : "")};
-  ${(props) => (props.activated ? CSSActivated : "")};
+
+  ${({ hover }) => (hover ? CSSHover : "")};
+  ${({ activated }) => (activated ? CSSActivated : "")};
+  ${({ hasError }) => hasError && CSSError};
+
   :hover {
     ${CSSHover}
   }
+
   :active {
     ${CSSActivated}
   }

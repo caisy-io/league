@@ -5,7 +5,7 @@ import { FlatActionButton } from "../flat-action-button";
 import CheckMarkIcon from "./CheckMarkIcon";
 import CheckMarkIconFilled from "./CheckMarkIconFilled";
 
-function TooltipDemo({ color, placement, ...args }) {
+function TooltipDemo({ color, placement, delay, ...args }) {
   const tooltipContent = (
     <span
       style={{
@@ -47,7 +47,7 @@ function TooltipDemo({ color, placement, ...args }) {
         height: "70vh",
       }}
     >
-      <Tooltip content={tooltipContent} color={color} placement={placement}>
+      <Tooltip content={tooltipContent} delay={delay} color={color} placement={placement}>
         <Button>Hover me!</Button>
       </Tooltip>
     </div>
@@ -73,6 +73,9 @@ export default {
           summary: "white",
         },
       },
+    },
+    delay: {
+      description: "Sets a delay for the tooltip",
     },
     placement: {
       description: "Changes the placement of the Tooltip",
@@ -109,4 +112,5 @@ Default.args = {
   description: "You can save your search view and come back to it later just in one click",
   withIcon: true,
   withButton: true,
+  delay: 0,
 };

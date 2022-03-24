@@ -10,9 +10,11 @@ const Bronze = css`
   ${CSSProgressiveBody03Medium};
   color: var(--text-03);
 
-  overflow: hidden;
+  flex-wrap: wrap;
+
+  /* overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: nowrap; */
 `;
 
 const Silver = css``;

@@ -1,5 +1,13 @@
-import React, { FC, KeyboardEvent, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useDimensions } from "../../..";
+import React, {
+  FC,
+  HTMLInputTypeAttribute,
+  KeyboardEvent,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 import { SErrorMessage } from "../styles";
 import { SLabel } from "../styles";
 import { SSimpleInput } from "./styles/SSimpleInput";
@@ -31,6 +39,7 @@ interface ISimpleInput {
   onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
   autoComplete?: string;
   autoFocus?: boolean;
+  type?: HTMLInputTypeAttribute
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
@@ -48,6 +57,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
   leftIcon,
   rightIcon,
   onKeyUp,
+  type='text'
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -142,6 +152,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
               placeholder={placeholder}
               disabled={disabled}
               onKeyUp={onKeyUp}
+              type={type}
             />
           </SSimpleInputRequiredIndicatorContainer>
         </SSimpleInputInsideContainer>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Img } from "../../base-components/img/Img";
-import { OrganizationSelectListItem } from './OrganizationSelectListItem';
+import { OrganizationSelectListItem } from "./OrganizationSelectListItem";
 
 export default {
   title: `Components/Navigation/OrganizationSelectListItem`,
@@ -37,18 +37,39 @@ export default {
   },
 };
 
-function OrganizationSelectListItemDemo({ content, ...args }) {
-  return <OrganizationSelectListItem title={args.title} label={args.label} itemSize={args.size} badgeText={args.badgeText} previewProps={{ image: <Img lazyload={false} src={"https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!} resolution={48} /> }}>
-  </OrganizationSelectListItem>
+function OrganizationSelectListItemDemo({ content, onClickSettingButton, onClickSwitchButton, ...args }) {
+  return (
+    <OrganizationSelectListItem
+      title={args.title}
+      label={args.label}
+      itemSize={args.size}
+      badgeText={args.badgeText}
+      onClickSettingButton={onClickSettingButton}
+      onClickSwitchButton={onClickSwitchButton}
+      previewProps={{
+        image: (
+          <Img
+            lazyload={false}
+            src={
+              "https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="!
+            }
+            resolution={48}
+          />
+        ),
+      }}
+    />
+  );
 }
 
-const Template = (args) => < OrganizationSelectListItemDemo {...args} />;
+const Template = (args) => <OrganizationSelectListItemDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   title: "Default",
   label: "Label",
   size: "large",
+  onClickSettingButton: () => {},
+  onClickSwitchButton: () => {},
 };
 
 export const WithBadge = Template.bind({});

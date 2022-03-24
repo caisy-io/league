@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getRandomArbitrary } from "../number";
 
 interface IUseFileUpload {
   imageUrl?: string;
-  onChange: (url: string) => void;
+  onChange: (url: string | null) => void;
   processImage: (file: File) => Promise<string>;
   onCancelUpload?: () => void;
 }
@@ -78,15 +78,11 @@ export const useFileUpload = ({ imageUrl, processImage, onChange, onCancelUpload
   };
 
   useEffect(() => {
-    if (image) {
-      onChange(image);
-    }
+    onChange(image);
   }, [image]);
 
   useEffect(() => {
-    if (imageUrl) {
-      setImage(imageUrl);
-    }
+    setImage(imageUrl || null);
   }, [imageUrl]);
 
   return {

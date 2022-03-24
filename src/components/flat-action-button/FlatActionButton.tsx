@@ -6,11 +6,19 @@ export type IFlatActionButtonType = "white" | "blue" | "success" | "danger" | "g
 interface IFlatActionButton {
   type: IFlatActionButtonType;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
-export const FlatActionButton: React.FC<IFlatActionButton> = ({ type, onClick, children }) => {
+export const FlatActionButton: React.FC<IFlatActionButton> = ({ type, onClick, children, disabled = false }) => {
   return (
-    <SFlatActionButton type={type} onClick={onClick}>
+    <SFlatActionButton
+      type={type}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick?.();
+      }}
+      disabled={disabled}
+    >
       {children}
     </SFlatActionButton>
   );

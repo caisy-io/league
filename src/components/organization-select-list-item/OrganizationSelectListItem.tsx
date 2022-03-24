@@ -1,14 +1,20 @@
-import React, { FC, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { Badge, EBadgePosition } from '../badge';
-import { SFlex } from '../../base-components/flex/styles/SFlex';
-import { Preview } from '../preview';
-import { IPreview } from '../preview/Preview';
-import { SFlexBadgeWrapper } from './styles/SFlexBadgeWrapper';
-import { SOrganizationSelectListItem } from './styles/SOrganizationSelectListItem';
-import { SOrganizationSelectListItemLabel } from './styles/SOrganizationSelectListItemLabel';
-import { SOrganizationSelectListItemTextWrapper } from './styles/SOrganizationSelectListItemTextWrapper';
-import { SOrganizationSelectListItemTitle } from './styles/SOrganizationSelectListItemTitle';
+import React, { FC } from "react";
+import styled from "styled-components";
+import { IconCog, IconSwitchArrows } from "../../icons";
+import { Badge, EBadgePosition } from "../badge";
+import { SFlex } from "../../base-components/flex/styles/SFlex";
+import { FlatActionButton } from "../flat-action-button";
+import { Preview } from "../preview";
+import { IPreview } from "../preview";
+import { SFlexBadgeWrapper } from "./styles/SFlexBadgeWrapper";
+import { SOrganizationSelectListItem } from "./styles/SOrganizationSelectListItem";
+import { SOrganizationSelectListItemBadgeAndButtons } from "./styles/SOrganizationSelectListItemBadgeAndButtons";
+import { SOrganizationSelectListItemBadgeAndButtonsDivider } from "./styles/SOrganizationSelectListItemBadgeAndButtonsDivider";
+import { SOrganizationSelectListItemBadgeAndSettings } from "./styles/SOrganizationSelectListItemBadgeAndSettings";
+import { SOrganizationSelectListItemLabel } from "./styles/SOrganizationSelectListItemLabel";
+import { SOrganizationSelectListItemSettingsButton } from "./styles/SOrganizationSelectListItemSettingsButton";
+import { SOrganizationSelectListItemTextWrapper } from "./styles/SOrganizationSelectListItemTextWrapper";
+import { SOrganizationSelectListItemTitle } from "./styles/SOrganizationSelectListItemTitle";
 
 export type IListItemSize = "large" | "medium";
 
@@ -20,16 +26,16 @@ export interface IOrganizationSelectListItemProps {
   itemSize?: IListItemSize;
   previewProps?: IPreview;
   onClick?: any;
+  onClickSettingButton?: () => void;
+  onClickSwitchButton?: () => void;
+  disabledSwitchButton?: boolean;
+  active?: boolean;
 }
 
-interface ISFlex {
-  badgeWitdh: number;
-}
-
-const SFlexListItem = styled(SFlex) <ISFlex>`
+const SFlexListItem = styled(SFlex)`
   gap: 0.75rem;
   height: 100%;
-  width: ${(props) => `calc(100% - ${props.width}px - 0.5rem)`};
+  overflow: hidden;
 `;
 
 export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = ({
@@ -38,36 +44,55 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
   itemSize,
   previewProps,
   badgeText,
-  onClick
+  onClick,
+  onClickSettingButton,
+  onClickSwitchButton,
+  disabledSwitchButton,
+  active,
 }) => {
-  const badgeRef = useRef<HTMLElement>(null);
-
-  const [width, setWidth] = React.useState(0);
-
-  // calculate width of the badge
-  useEffect(() => {
-    const badgeWidth = badgeRef.current ? badgeRef.current.offsetWidth : 0;
-    setWidth(badgeWidth);
-  }, [badgeText, badgeRef.current]);
-
   return (
-    <SOrganizationSelectListItem itemSize={itemSize} onClick={onClick}>
-      <SFlexListItem badgeText={badgeText} width={width}>
-        {itemSize == "large" ? (
-          <Preview size={48} {...previewProps}></Preview>
-        ) : (
-          <Preview size={36} {...previewProps}></Preview>
-        )}
+    <SOrganizationSelectListItem onClick={onClick} active={active}>
+      <SFlexListItem>
+        <Preview size={itemSize === "large" ? 48 : 36} {...previewProps} />
         <SOrganizationSelectListItemTextWrapper>
-          <SOrganizationSelectListItemTitle itemSize={itemSize}>{title}</SOrganizationSelectListItemTitle>
+          <SOrganizationSelectListItemTitle>{title}</SOrganizationSelectListItemTitle>
           <SOrganizationSelectListItemLabel itemSize={itemSize}>{label}</SOrganizationSelectListItemLabel>
         </SOrganizationSelectListItemTextWrapper>
       </SFlexListItem>
-      {badgeText && (
-        <SFlexBadgeWrapper>
-          <Badge ref={badgeRef} value={badgeText} type="regular" size="small" position={EBadgePosition.Center} />
-        </SFlexBadgeWrapper>
-      )}
+      <SOrganizationSelectListItemBadgeAndButtons>
+        <SOrganizationSelectListItemBadgeAndSettings>
+          {badgeText && (
+            <SFlexBadgeWrapper>
+              <Badge value={badgeText} type="regular" size="medium" position={EBadgePosition.Center} />
+            </SFlexBadgeWrapper>
+          )}
+          {onClickSettingButton && (
+            <SOrganizationSelectListItemSettingsButton
+              onClick={(e) => {
+                e.stopPropagation();
+                onClickSettingButton?.();
+              }}
+            >
+              <IconCog size={16} />
+            </SOrganizationSelectListItemSettingsButton>
+          )}
+        </SOrganizationSelectListItemBadgeAndSettings>
+        {onClickSwitchButton && (
+          <>
+            <SOrganizationSelectListItemBadgeAndButtonsDivider />
+            <FlatActionButton
+              type="default"
+              disabled={disabledSwitchButton}
+              onClick={() => {
+                onClickSwitchButton?.();
+              }}
+            >
+              <IconSwitchArrows size={16} />
+              Switch
+            </FlatActionButton>
+          </>
+        )}
+      </SOrganizationSelectListItemBadgeAndButtons>
     </SOrganizationSelectListItem>
-  )
-}
+  );
+};

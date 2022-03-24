@@ -1,10 +1,11 @@
 import styled, { css } from "styled-components";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../../constants/styles/mediaquerys";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../../constants/styles";
 
 const CSSLocked = css`
   color: var(--text-04);
 
   &:disabled {
+    background: none;
     color: var(--text-04);
   }
 `;
@@ -25,6 +26,17 @@ const Bronze = css`
 
   &::placeholder {
     color: var(--text-03);
+  }
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance: textfield;
   }
 `;
 
