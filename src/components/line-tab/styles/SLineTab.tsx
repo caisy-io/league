@@ -15,16 +15,12 @@ const CSSActivated = css`
   color: var(--text-01);
 
   div:last-of-type {
-    background-color: var(--text-01);
+    background-color: ${({ hasError }) => (hasError ? "var(--ui-supportive-01)" : "var(--text-01)")};
   }
 `;
 
 const CSSError = css`
   color: var(--text-06);
-
-  div:last-of-type {
-    background-color: var(--ui-supportive-01);
-  }
 `;
 
 const Bronze = css`
