@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import {
-  IconColorPalette,
-  IconEdit,
-  IconDelete,
-  IconClose,
-  IconPlusBox,
-  IconStarOutlined,
-  IconCheckmarkOutlined,
-} from "../../icons";
+import { IconColorPalette, IconEdit, IconDelete, IconClose, IconPlusBox, IconCheckmarkOutlined } from "../../icons";
 import { MenuListItem } from "../menu-list-item/MenuListItem";
 import { OutLineLabel } from "../out-line-label";
 import { Checkbox } from "../checkbox";
@@ -20,7 +12,6 @@ import { SearchInput } from "../search-input";
 import { FlatActionButton } from "../flat-action-button";
 import { ColorPicker } from "../color-picker";
 import { Button } from "../button/Button";
-import { SimpleInput } from "../input-fields";
 import { SFlex } from "../../base-components/flex/styles/SFlex";
 import { CSSProgressiveCaption01 } from "../../constants/styles";
 
@@ -49,6 +40,16 @@ const TAGS_MOCK = [
     label: "Default 3",
     color: "blue",
   },
+  {
+    id: 4,
+    label: "Def 4",
+    color: "cyan",
+  },
+  {
+    id: 5,
+    label: "DefaultVeryLooooooongWOOOOOOOW 5",
+    color: "yellow",
+  },
 ];
 
 const Template = () => {
@@ -60,6 +61,7 @@ const Template = () => {
   const [editableTag, setEditableTag] = useState(undefined);
 
   const [showColorPicker, setShowColorPicker] = useState(false);
+  const [opened, setOpened] = useState(false);
 
   const onSelectValue = (v) => {
     const isDublicate = tags.find((t) => t.id === v.id);
@@ -73,6 +75,10 @@ const Template = () => {
 
   const onRemoveValue = (v) => {
     setTags(tags.filter((t) => t.id !== v.id));
+  };
+
+  const toggleDropdown = () => {
+    setOpened(!opened);
   };
 
   const renderInputItem = (i) => {
@@ -124,7 +130,7 @@ const Template = () => {
             </InputWrapper>
           ) : (
             <OutLineLabel size="medium" colorLabel={<ColorLabel color={i.color} />}>
-              {i.label}
+              <OutlineLabelTextWrapper>{i.label}</OutlineLabelTextWrapper>
             </OutLineLabel>
           )
         }
@@ -203,6 +209,8 @@ const Template = () => {
   return (
     <Wrapper>
       <MultiselectInputDropdown
+        opened={opened}
+        onClick={toggleDropdown}
         placeholder="Select or create tags"
         values={tags}
         dataSource={dataSource}
@@ -290,4 +298,11 @@ const Input: any = styled.input`
   }
 
   ${CSSProgressiveCaption01};
+`;
+
+const OutlineLabelTextWrapper: any = styled.div`
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
