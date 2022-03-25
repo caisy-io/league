@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { CSSProgressivePrimaryButtons } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { CSSProgressivePrimaryButtons } from "../../../constants/styles";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 import { IButtonProps, IButtonType } from "../Button";
 import { ISizesWithDefault } from "../../../interfaces";
 
@@ -13,10 +13,12 @@ const getSize = (size?: ISizesWithDefault) => {
         font-size: 11px;
         gap: 5px;
         border-radius: 4px;
+
         svg {
           height: 8px;
           width: 8px;
         }
+
         :after {
           border-radius: 4px;
         }
@@ -28,11 +30,13 @@ const getSize = (size?: ISizesWithDefault) => {
     case "small":
       return css`
         height: 32px;
+
         > span {
           &:not(:first-child) {
             padding-left: 0;
           }
         }
+
         :after {
           border-radius: 6px;
         }
@@ -52,14 +56,17 @@ const CSSSticked = css`
 
 const CSSPrimary = css`
   border: none;
+
   &:after {
     background-color: var(--interactional-primary-01);
   }
+
   &:hover {
     &:after {
       background-color: var(--hover-interactional-primary-01);
     }
   }
+
   &:active {
     &:after {
       background-color: var(--active-interactional-primary-01);
@@ -74,8 +81,9 @@ const CSSPrimaryPressed = css`
 `;
 
 const CSSPrimaryStickedActivated = css`
-  ${CSSSticked}
+  ${CSSSticked};
   color: var(--active-text-01);
+
   &:after {
     border-radius: 0;
     background-color: var(--active-interactional-tertiary-04);
@@ -83,6 +91,7 @@ const CSSPrimaryStickedActivated = css`
 
   &:disabled {
     color: var(--disabled-text);
+
     &:after {
       background-color: var(--disabled-interactional-03);
     }
@@ -90,40 +99,48 @@ const CSSPrimaryStickedActivated = css`
 `;
 
 const CSSPrimarySticked = css`
-  ${CSSSticked}
+  ${CSSSticked};
   color: var(--text-01);
 
   &:after {
     border-radius: 0;
     background-color: transparent;
   }
+
   &:hover {
     color: var(--hover-text-01);
+
     &:after {
       background-color: var(--hover-interactional-tertiary-04);
     }
   }
+
   &:active {
     ${CSSPrimaryStickedActivated}
   }
+
   &:disabled {
     color: var(--disabled-text);
+
     &:after {
       background-color: var(--disabled-interactional-03);
     }
   }
 `;
 
-const CSSSecondary = css`
+const CSSNeutral = css`
   border: none;
+
   &:after {
     background-color: var(--interactional-secondary-01);
   }
+
   &:hover {
     &:after {
       background-color: var(--hover-interactional-secondary-01);
     }
   }
+
   &:active {
     &:after {
       background-color: var(--active-interactional-secondary-01);
@@ -131,23 +148,26 @@ const CSSSecondary = css`
   }
 `;
 
-const CSSSecondaryPressed = css`
+const CSSNeutralPressed = css`
   &:after {
     background-color: var(--active-interactional-secondary-01);
   }
 `;
 
-const CSSNeutral = css`
+const CSSSecondary = css`
   color: var(--text-01);
   border: none;
+
   &:after {
     background-color: var(--interactional-secondary-03);
   }
+
   &:hover {
     &:after {
       background-color: var(--hover-interactional-secondary-03);
     }
   }
+
   &:active {
     &:after {
       color: var(--active-text-01);
@@ -156,9 +176,10 @@ const CSSNeutral = css`
   }
 `;
 
-const CSSNeutralPressed = css`
+const CSSSecondaryPressed = css`
   color: var(--active-icon-01);
   border: none;
+
   &:after {
     background-color: var(--interactional-secondary-03);
   }
@@ -167,19 +188,24 @@ const CSSNeutralPressed = css`
 const CSSTertiary = css`
   color: var(--text-04);
   border: solid 1px var(--interactional-tertiary-01);
+
   &:hover {
     color: var(--hover-text-04);
     border: solid 1px var(--hover-interactional-tertiary-01);
   }
+
   &:active {
     color: var(--text-02);
+
     &:after {
       background-color: var(--active-interactional-tertiary-01);
     }
   }
+
   &:disabled {
     border: solid 1px var(--disabled-interactional-01);
     color: var(--disabled-interactional-01);
+
     &:after {
       background-color: transparent !important;
     }
@@ -189,6 +215,7 @@ const CSSTertiary = css`
 const CSSTertiaryPressed = css`
   color: var(--text-02);
   border: solid 1px var(--active-interactional-tertiary-01);
+
   &:after {
     background-color: var(--active-interactional-tertiary-01);
   }
@@ -196,14 +223,17 @@ const CSSTertiaryPressed = css`
 
 const CSSDanger = css`
   border: none;
+
   &:after {
     background-color: var(--interactional-secondary-02);
   }
+
   &:hover {
     &:after {
       background-color: var(--hover-interactional-secondary-02);
     }
   }
+
   &:active {
     &:after {
       background-color: var(--active-interactional-secondary-02);
@@ -213,6 +243,7 @@ const CSSDanger = css`
 
 const CSSDangerPressed = css`
   color: var(--icon-06);
+
   &:after {
     background-color: var(--active-interactional-secondary-06);
   }
@@ -226,20 +257,26 @@ const CSSDangerSticked = css`
     border-radius: 0;
     background-color: transparent;
   }
+
   &:hover {
     color: var(--hover-text-06);
+
     &:after {
       background-color: var(--hover-interactional-secondary-06);
     }
   }
+
   &:active {
     color: var(--active-text-06);
+
     &:after {
       background-color: var(--active-interactional-secondary-06);
     }
   }
+
   &:disabled {
     color: var(--disabled-text);
+
     &:after {
       background-color: var(--disabled-interactional-02);
     }
@@ -249,6 +286,7 @@ const CSSDangerSticked = css`
 const CSSDangerStickedActivated = css`
   ${CSSSticked}
   color: var(--active-text-06);
+
   &:after {
     border-radius: 0;
     background-color: var(--active-interactional-secondary-06);
@@ -258,6 +296,7 @@ const CSSDangerStickedActivated = css`
 const CSSDisabled = css`
   &:disabled {
     cursor: not-allowed;
+
     &:after {
       background-color: var(--disabled-interactional-01);
     }
@@ -276,6 +315,8 @@ const getTypeStyling = (styleType: IButtonType, isActivated, isSticked) => {
         : CSSPrimary;
     case "secondary":
       return isActivated ? CSSSecondaryPressed : CSSSecondary;
+    case "neutral":
+      return isActivated ? CSSNeutralPressed : CSSNeutral;
     case "tertiary":
       return isActivated ? CSSTertiaryPressed : CSSTertiary;
     case "danger":
@@ -292,7 +333,7 @@ const getTypeStyling = (styleType: IButtonType, isActivated, isSticked) => {
 };
 
 const Bronze = css<{ styleType: IButtonType } & IButtonProps>`
-  ${CSSProgressivePrimaryButtons}
+  ${CSSProgressivePrimaryButtons};
   color: var(--text-02);
   flex-grow: 0;
   display: flex;
@@ -314,6 +355,7 @@ const Bronze = css<{ styleType: IButtonType } & IButtonProps>`
 
   /* this after is there to split the background animation from the button content */
   /* after is the background */
+
   &:after {
     content: "";
     position: absolute;
@@ -338,10 +380,12 @@ const Bronze = css<{ styleType: IButtonType } & IButtonProps>`
       transform: scale(1.01);
     }
   }
+
   > * {
     z-index: 10;
     position: relative;
   }
+
   span {
     white-space: nowrap;
     font-family: Inter;
@@ -350,6 +394,7 @@ const Bronze = css<{ styleType: IButtonType } & IButtonProps>`
     font-size: 11px;
     text-transform: uppercase;
   }
+
   .icon {
     display: flex;
     flex: 1;
