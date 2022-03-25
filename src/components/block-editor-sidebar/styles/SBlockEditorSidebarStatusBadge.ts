@@ -8,6 +8,7 @@ const Bronze = css`
   letter-spacing: normal;
   padding: 4px 8px;
   background-color: var(--ui-03);
+  color: var(--text-03);
   border-radius: 4px;
 
   display: flex;
