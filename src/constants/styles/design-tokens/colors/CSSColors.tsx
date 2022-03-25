@@ -3,8 +3,8 @@ import { css } from "styled-components";
 export const CSSColors = css`
   :root {
     --activated-icon-02: #ffffff;
-    --activated-icon-02-1: #ed3e3e;
     --activated-icon-02-description: #ffffff;
+    --activated-icon-02-1: #ed3e3e;
     --activated-icon-02-1-description: #ffffff;
     --active-icon-01: #008cff;
     --active-icon-01-1: #567a98;
@@ -16,7 +16,6 @@ export const CSSColors = css`
     --active-icon-04: #008cff;
     --active-icon-04-1: #ffffff;
     --active-icon-06: #cb2d3b;
-    --active-icon-07: #196541;
     --active-icon-07: #0f7100;
     --active-icon-08: #008cff;
     --active-icon-09: #0077d9;
@@ -40,6 +39,7 @@ export const CSSColors = css`
     --active-interactional-tertiary-04: #f3f7f9;
     --active-interactional-tertiary-04-1: #008cff;
     --active-interactional-tertiary-05: #c3d1d9;
+    --active-interactional-tertiary-06: #4c677d;
     --active-text-01: #008cff;
     --active-text-01-1: #567a98;
     --active-text-03: #008cff;
@@ -58,7 +58,6 @@ export const CSSColors = css`
     --active-ui-03: #ffffff;
     --active-ui-03-1: #c3d1d9;
     --active-ui-03-2: #008cff;
-    --disabled-icon: #d9dbdf;
     --disabled-icon: #c7cad1;
     --disabled-interactional-01: #e1e1e1;
     --disabled-interactional-02: #ebeaea;
@@ -71,7 +70,6 @@ export const CSSColors = css`
     --hover-icon-03: #567a98;
     --hover-icon-04: #007ee6;
     --hover-icon-06: #cb2d3b;
-    --hover-icon-07: #218354;
     --hover-icon-07: #1c8c00;
     --hover-icon-08: #829db4;
     --hover-icon-09: #007ee6;
@@ -91,6 +89,7 @@ export const CSSColors = css`
     --hover-interactional-tertiary-03: #f3f8fb;
     --hover-interactional-tertiary-04: #e8eff3;
     --hover-interactional-tertiary-05: #e8eff3;
+    --hover-interactional-tertiary-06: #53728c;
     --hover-text-01: #008cff;
     --hover-text-01-1: #567a98;
     --hover-text-03: #567a98;
@@ -107,12 +106,10 @@ export const CSSColors = css`
     --icon-01: #172c55;
     --icon-02: #ffffff;
     --icon-02-description: #ffffff;
-    --icon-02-description: #ffffff;
     --icon-03: #829db4;
     --icon-04: #567a98;
     --icon-05: #f7f9fa;
     --icon-06: #ed3e3e;
-    --icon-07: #00a958;
     --icon-07: #41c300;
     --icon-08: #b4c9d7;
     --icon-09: #008cff;
@@ -136,6 +133,7 @@ export const CSSColors = css`
     --interactional-tertiary-03: #ffffff;
     --interactional-tertiary-04: #ffffff00;
     --interactional-tertiary-05: #f7f9fa;
+    --interactional-tertiary-06: #567a98;
     --tag-01: #ff008a;
     --tag-02: #6100ff;
     --tag-03: #ffae03;

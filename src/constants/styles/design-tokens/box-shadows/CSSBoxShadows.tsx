@@ -3,7 +3,6 @@ import { css } from "styled-components";
 export const CSSBoxShadows = css`
   :root {
     --box-shadow-action-menus: 0px 8px 12px 0px #567a981f;
-    --box-shadow-bulk-action-menu: 0pxpx 8pxpx 12pxpx 0pxpx rgba(86, 122, 152, 0.12);;
     --box-shadow-dragging-items: 0px 12px 20px 0px #4e729014;
     --box-shadow-left-sidebar: 8px 0px 12px 0px #0000000a;
     --box-shadow-left-sticked-row: 4px 0px 8px 0px #0000000a;
