@@ -1,12 +1,15 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveCaption01Medium } from "../../../constants/styles/fonts";
+import { CSSProgressiveCaption01Semibold} from "../../../constants/styles/fonts";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
   margin-left: auto;
-  ${CSSProgressiveCaption01Medium};
+  ${CSSProgressiveCaption01Semibold};
+  letter-spacing: normal;
+  text-transform: capitalize;
   padding: 4px 8px;
   background-color: var(--ui-03);
+  color: var(--text-03);
   border-radius: 4px;
 
   display: flex;
