@@ -328,7 +328,7 @@ const getTypeStyling = (styleType: IButtonType, isActivated, isSticked) => {
         ? CSSDangerPressed
         : CSSDanger;
     default:
-      return isActivated ? CSSNeutralPressed : CSSNeutral;
+      return isActivated ? CSSSecondaryPressed : CSSSecondary;
   }
 };
 
