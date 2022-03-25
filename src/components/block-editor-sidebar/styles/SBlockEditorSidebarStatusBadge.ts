@@ -6,6 +6,7 @@ const Bronze = css`
   margin-left: auto;
   ${CSSProgressiveCaption01Semibold};
   letter-spacing: normal;
+  text-transform: capitalize;
   padding: 4px 8px;
   background-color: var(--ui-03);
   color: var(--text-03);
