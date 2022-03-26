@@ -17,6 +17,7 @@ export * from "./drawer";
 export * from "./dropdown";
 export * from "./dropdown-results-list";
 export * from "./dropdown-search";
+export * from "./component-card";
 export * from "./empty";
 export * from "./flag";
 export * from "./flag-dynamic";
