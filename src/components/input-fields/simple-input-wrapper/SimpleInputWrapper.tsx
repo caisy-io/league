@@ -24,6 +24,7 @@ export interface ISimpleInput {
   onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
   autoComplete?: string;
   autoFocus?: boolean;
+  id?:string;
 }
 
 export const SimpleInputWrapper: FC<ISimpleInput> = ({
@@ -36,13 +37,15 @@ export const SimpleInputWrapper: FC<ISimpleInput> = ({
   translationBadge,
   leftIcon,
   rightIcon,
-  children
+  children,
+  id,
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
 
   return (
     <SSimpleInputWrapper
+      id={id}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onFocus={(e) => {
