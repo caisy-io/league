@@ -7,6 +7,7 @@ const Bronze = css`
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: 1rem;
   box-sizing: border-box;
   cursor: pointer;
