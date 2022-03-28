@@ -1,7 +1,6 @@
 import {FC, ReactNode, useCallback, useState} from "react";
 import {Tooltip} from "../tooltip";
 import {IconQuestionCircle, IconChevronDown} from "../../icons";
-import {SFieldIcon} from "./styles/SFieldIcon";
 import {SFieldInputWrapper} from "./styles/SFieldInputWrapper";
 import {SFieldItem} from "./styles/SFieldItem";
 import {SFieldHeader} from "./styles/SFieldHeader";
@@ -37,9 +36,7 @@ export const InputField: FC<IInputFieldProps> = ({
   return (
     <SFieldItem id={id} error={!!errors}>
       <SFieldHeader isOpen={isOpen}>
-        {icon && <SFieldIcon>
-          {icon}
-        </SFieldIcon>}
+        {icon}
         <div style={{flex: '1 1 auto'}}>
           <SFieldTitle required={required}>
             <h3>{title}</h3>
