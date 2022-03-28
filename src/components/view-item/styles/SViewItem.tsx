@@ -10,6 +10,7 @@ const Bronze = css`
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
+  cursor: pointer;
   ${CSSProgressiveBody03Semibold}
   color: var(--text-01);
   &:hover {
