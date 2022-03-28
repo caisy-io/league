@@ -23,6 +23,7 @@ export const ColorPicker: React.FC<IColorPicker> = ({ initColor, onChange }) => 
   const onColorChange = (color) => {
     setColor(color);
     // setColor has a small delay and doesn't get to change before doing the onChange
+    // that's why we use a useEffect instead.
     // onChange?.(hexColor);
   };
 
