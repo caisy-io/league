@@ -20,7 +20,7 @@ const Bronze = css`
     align-items: center;
   }
   & .title {
-    margin-left: 5px;
+    margin-left: 8px;
   }
   ${(props) =>
     props.active &&
@@ -28,11 +28,14 @@ const Bronze = css`
       background-color: var(--active-ui-01-1);
     `}
 
+  & div:last-child {
+    color: var(--text-04);
+  }
   ${({ isChild, active }) =>
     isChild &&
     css`
       ${CSSProgressiveBody03}
-      padding-left: 30px;
+      padding-left: 40px;
       ${!active &&
       css`
         &:not(:hover) {
