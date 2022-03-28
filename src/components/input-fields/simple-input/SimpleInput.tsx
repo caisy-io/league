@@ -104,7 +104,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
     if (multiline) {
       (inputRef.current as HTMLInputElement).style.cssText = "height: auto";
-      setTextAreaHeight(spanRef.current?.scrollHeight || 20);
+      (inputRef.current as HTMLInputElement).style.cssText = `height: ${spanRef.current?.scrollHeight || 20}px`;
+      // setTextAreaHeight(spanRef.current?.scrollHeight || 20);
     }
   }, [setInputWidth, placeholder, inputRef?.current?.value]);
 
@@ -112,7 +113,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
     resizeInput();
   }, [value, placeholder]);
 
-  const [textareaHeight, setTextAreaHeight] = useState(20);
+  // const [textareaHeight, setTextAreaHeight] = useState(20);
 
   return (
     <SSimpleInputWrapper
@@ -154,7 +155,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
             {multiline ? (
               <SSimpleInputMultiline
                 width={inputWidth}
-                height={textareaHeight}
+                // height={textareaHeight}
                 error={state === "error"}
                 locked={state === "locked"}
                 onChange={(e) => {
