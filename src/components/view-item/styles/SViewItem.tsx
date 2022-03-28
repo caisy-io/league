@@ -6,11 +6,10 @@ import {
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  height: 44px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
+  padding: 12px 20px;
   ${CSSProgressiveBody03Semibold}
   color: var(--text-01);
   &:hover {
