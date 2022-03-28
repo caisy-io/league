@@ -72,11 +72,12 @@ interface IEmpty {
   type: IEmptyType;
   title: string;
   description: string;
+  styleOverwrite?: any;
 }
 
-export const Empty: FC<IEmpty> = ({ type, title, description }) => {
+export const Empty: FC<IEmpty> = ({ type, title, description, styleOverwrite }) => {
   return (
-    <SEmpty type={type}>
+    <SEmpty type={type} styleOverwrite={styleOverwrite}>
       {type === "blueprint" ? <SchemaLayout /> : <GridLayout />}
       {type === "blueprint" ? (
         <EmptyImageComponent title={title} description={description}>
