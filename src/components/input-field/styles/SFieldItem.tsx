@@ -11,7 +11,9 @@ export const SFieldItem = styled.div<{ error: boolean }>`
   &:focus-within {
     border-left-color: var(--active-ui-03-2);
   }
-
+  &:focus {
+    border-left-color: var(--active-ui-03-2);
+  }
   ${({ error }) =>
     error &&
     `
