@@ -22,11 +22,13 @@ export const ComponentCard: React.FC<IComponentCard> = ({ title, description, ta
         <SComponentCardTitle>{title}</SComponentCardTitle>
         <SComponentCardDescription>{description}</SComponentCardDescription>
       </div>
-      <ComponentImage type="grid" image={image}></ComponentImage>
-      <STagContainer>
-        {tags ? <IconTags size={20}></IconTags> : null}
-        <STagText>{tags}</STagText>
-      </STagContainer>
+      <div>
+        <ComponentImage type="grid" image={image}></ComponentImage>
+        <STagContainer>
+          {tags ? <IconTags size={20}></IconTags> : null}
+          <STagText>{tags}</STagText>
+        </STagContainer>
+      </div>
     </SComponentCard>
   );
 };

@@ -22,6 +22,7 @@ const Bronze = css`
   border-radius: 0.5rem;
   ${(props) => props.type == "grid" ? CSSTypeGrid : ""};
   ${(props) => props.type == "list-item" ? CSSTypeListItem : ""};
+  margin-bottom: 1rem;
 `;
 
 const Silver = css``;
