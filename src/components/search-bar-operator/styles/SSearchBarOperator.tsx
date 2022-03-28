@@ -42,6 +42,7 @@ const Bronze = css<ISearchBarOperatorProps>`
   :active {
     ${CSSActive}
   }
+  white-space: nowrap;
 `;
 
 const Silver = css``;

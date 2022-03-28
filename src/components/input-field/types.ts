@@ -9,4 +9,5 @@ export interface IInputFieldProps {
     onExpand?: () => void;
     onCollapse?: () => void;
     id?: string;
+    icon?: ReactNode;
   }
