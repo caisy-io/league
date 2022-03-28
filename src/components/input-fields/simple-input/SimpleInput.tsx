@@ -6,13 +6,14 @@ import React, {
   useCallback,
   useEffect,
   useRef,
-  useState
+  useState,
 } from "react";
 import { SErrorMessage } from "../styles";
 import { SLabel } from "../styles";
 import { SSimpleInput } from "./styles/SSimpleInput";
 import { SSimpleInputIconWrapper } from "./styles/SSimpleInputIconWrapper";
 import { SSimpleInputInsideContainer } from "./styles/SSimpleInputInsideContainer";
+import { SSimpleInputMultiline } from "./styles/SSimpleInputMultiline";
 import { SSimpleInputOutsideContainer } from "./styles/SSimpleInputOutsideContainer";
 import { SSimpleInputRequiredIndicator } from "./styles/SSimpleInputRequiredIndicator";
 import { SSimpleInputRequiredIndicatorContainer } from "./styles/SSimpleInputRequiredIndicatorContainer";
@@ -40,7 +41,8 @@ interface ISimpleInput {
   onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
   autoComplete?: string;
   autoFocus?: boolean;
-  type?: HTMLInputTypeAttribute
+  type?: HTMLInputTypeAttribute;
+  multiline?: boolean;
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
@@ -59,7 +61,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
   rightIcon,
   onKeyUp,
   id,
-  type='text'
+  type = "text",
+  multiline,
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -141,23 +144,43 @@ export const SimpleInput: FC<ISimpleInput> = ({
             {required && !inputRef?.current?.value && !label && (!errors || errors.length === 0) && (
               <SSimpleInputRequiredIndicator />
             )}
-            <SSimpleInput
-              width={inputWidth}
-              error={state === "error"}
-              locked={state === "locked"}
-              onChange={(e) => {
-                onChange?.(e);
-              }}
-              required={required}
-              ref={inputRef}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              value={value || ""}
-              placeholder={placeholder}
-              disabled={disabled}
-              onKeyUp={onKeyUp}
-              type={type}
-            />
+            {multiline ? (
+              <SSimpleInputMultiline
+                width={inputWidth}
+                error={state === "error"}
+                locked={state === "locked"}
+                onChange={(e) => {
+                  onChange?.(e);
+                }}
+                required={required}
+                ref={inputRef}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                value={value || ""}
+                placeholder={placeholder}
+                disabled={disabled}
+                onKeyUp={onKeyUp}
+                type={type}
+              ></SSimpleInputMultiline>
+            ) : (
+              <SSimpleInput
+                width={inputWidth}
+                error={state === "error"}
+                locked={state === "locked"}
+                onChange={(e) => {
+                  onChange?.(e);
+                }}
+                required={required}
+                ref={inputRef}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                value={value || ""}
+                placeholder={placeholder}
+                disabled={disabled}
+                onKeyUp={onKeyUp}
+                type={type}
+              />
+            )}
           </SSimpleInputRequiredIndicatorContainer>
         </SSimpleInputInsideContainer>
         <SSimpleInputRightWrapper>
