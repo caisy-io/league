@@ -22,7 +22,6 @@ const Bronze = css`
   overflow: hidden;
 
   width: ${(props) => (props.width ? `${props.width}px` : "100%")};
-  // height: ${(props) => (props.height ? `${props.height}px` : "20px")};
   resize: none;
 
   ${(props) => props.locked && CSSLocked}
