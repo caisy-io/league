@@ -103,7 +103,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
     setInputWidth(width);
 
     if (multiline) {
-      setTextAreaHeight(inputRef.current?.scrollHeight || 20);
+      // (inputRef.current as HTMLInputElement).style.cssText = "height: auto";
+      setTextAreaHeight(() => spanRef.current?.scrollHeight || 20);
     }
   }, [setInputWidth, placeholder, inputRef?.current?.value]);
 
