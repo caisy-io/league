@@ -41,6 +41,8 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, dis
   };
 
   const handleMouseEnter = () => {
+    clearTimeout(openDelayTimeout);
+    clearTimeout(closeTooltipTimeout);
     openDelayTimeout = setTimeout(() => {
       setOpen(true);
       setClosing(false);
