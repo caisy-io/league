@@ -5,4 +5,5 @@ export const SFieldHeader = styled.div<{ required: boolean; isOpen: boolean }>`
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+  gap: 12px;
 `;

@@ -8,4 +8,6 @@ export interface IInputFieldProps {
     errors?: ReactNode[];
     onExpand?: () => void;
     onCollapse?: () => void;
+    id?: string;
+    icon?: ReactNode;
   }

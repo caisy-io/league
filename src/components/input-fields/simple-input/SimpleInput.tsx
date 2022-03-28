@@ -30,6 +30,7 @@ interface ISimpleInput {
   required?: boolean;
   onChange?: (e: any) => void;
   value?: string;
+  id?: string;
   placeholder?: string;
   onFocus?: (e: InputEvent) => void;
   onBlur?: (e: InputEvent) => void;
@@ -57,6 +58,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
   leftIcon,
   rightIcon,
   onKeyUp,
+  id,
   type='text'
 }) => {
   const [active, setActive] = useState(false);
@@ -109,6 +111,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
       active={active}
       state={state}
       onClick={handleClick}
+      id={id}
     >
       <SSimpleInputOutsideContainer>
         <SSimpleInputIconWrapper>{leftIcon}</SSimpleInputIconWrapper>
