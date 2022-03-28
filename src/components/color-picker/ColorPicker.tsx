@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { RgbaColor } from "react-colorful";
 import { rgbHex } from "../../utils/color";
 
@@ -21,9 +21,14 @@ export const ColorPicker: React.FC<IColorPicker> = ({ initColor, onChange }) => 
   const hexColor = useMemo(() => (a === 1 ? `#${rgbHex(r, g, b)}` : `#${rgbHex(r, g, b, a)}`), [r, g, b, a]);
 
   const onColorChange = (color) => {
-    onChange?.(hexColor);
     setColor(color);
+    // setColor has a small delay and doesn't get to change before doing the onChange
+    // onChange?.(hexColor);
   };
+
+  useEffect(() => {
+    onChange?.(hexColor);
+  }, [hexColor]);
 
   return (
     <SColorPickerWrapper>
