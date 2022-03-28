@@ -11,7 +11,7 @@ const Bronze = css`
   gap: 1rem;
   box-sizing: border-box;
   cursor: pointer;
-  height: 100%;
+  height: fit-content;
   &:hover{
     background-color: var(--ui-01);
     box-shadow: 0px 8px 24px rgba(184, 184, 184, 0.24);
