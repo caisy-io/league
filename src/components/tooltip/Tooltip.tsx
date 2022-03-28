@@ -84,13 +84,15 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, dis
   `;
 
   return (
-    <STooltipWrapper
-      onClick={() => clearTimeout(openDelayTimeout)}
-      ref={ref}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {children}
+    <>
+      <STooltipWrapper
+        onClick={() => clearTimeout(openDelayTimeout)}
+        ref={ref}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {children}
+      </STooltipWrapper>
       {open && (
         <Popover
           disableTriangle={disableTriangle}
@@ -99,11 +101,16 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, dis
           placement={placement || "top"}
           reference={ref}
         >
-          <STooltip animation={openCloseAnimation} color={color}>
+          <STooltip
+            onMouseEnter={() => clearInterval(tooltipDelayTimeout)}
+            onMouseLeave={closeTooltip}
+            animation={openCloseAnimation}
+            color={color}
+          >
             {content}
           </STooltip>
         </Popover>
       )}
-    </STooltipWrapper>
+    </>
   );
 };
