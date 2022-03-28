@@ -20,6 +20,7 @@ export const InputField: FC<IInputFieldProps> = ({
   children,
   onExpand,
   onCollapse,
+  id
 }) => {
   const [isOpen, setOpen] = useState(true);
   const toggleOpen = useCallback(() => {
@@ -32,7 +33,7 @@ export const InputField: FC<IInputFieldProps> = ({
   }, [isOpen, setOpen]);
 
   return (
-    <SFieldItem error={!!errors}>
+    <SFieldItem id={id} error={!!errors}>
       <SFieldHeader isOpen={isOpen}>
         <div>
           <SFieldTitle required={required}>
