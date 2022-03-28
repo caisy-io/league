@@ -28,7 +28,7 @@ const Bronze = css`
       background-color: var(--active-ui-01-1);
     `}
 
-  & div:last-child {
+  & div:last-child > * {
     color: var(--text-04);
   }
   ${({ isChild, active }) =>
