@@ -26,13 +26,17 @@ export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({ status, tabs
         <SBlockEditorSidebarStatus>
           <IconDocuments size={16} />
           CURRENT STATUS
-          <SBlockEditorSidebarStatusBadge>{status}</SBlockEditorSidebarStatusBadge>
+          <SBlockEditorSidebarStatusBadge status={status.toUpperCase()}>{status}</SBlockEditorSidebarStatusBadge>
         </SBlockEditorSidebarStatus>
       </SBlockEditorSidebarListItem>
       <SBlockEditorSidebarListItem>
         <SBlockEditorSidebarTabs>
           {tabs.map((tab, i) => (
-            <LineTab key={`tab-${i}-${tab.tab}`} activated={selectedTab?.tab === tab.tab} onClick={() => onTabClick(tab)}>
+            <LineTab
+              key={`tab-${i}-${tab.tab}`}
+              activated={selectedTab?.tab === tab.tab}
+              onClick={() => onTabClick(tab)}
+            >
               {tab.tab}
             </LineTab>
           ))}
