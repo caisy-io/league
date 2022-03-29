@@ -13,30 +13,26 @@ export interface IColorPicker {
   onChange?: (color: string) => void;
 }
 
+const getHexFromColor = (color: RgbaColor) => {
+  const { r, g, b, a = 1 } = color;
+  const hexColor = a === 1 ? `#${rgbHex(r, g, b)}` : `#${rgbHex(r, g, b, a)}`;
+  return hexColor;
+};
+
 export const ColorPicker: React.FC<IColorPicker> = ({ initColor, onChange }) => {
   const [color, setColor] = useState<RgbaColor>(initColor || { r: 200, g: 150, b: 35, a: 0.5 });
 
-  const { r, g, b, a = 1 } = color;
-
-  const hexColor = useMemo(() => (a === 1 ? `#${rgbHex(r, g, b)}` : `#${rgbHex(r, g, b, a)}`), [r, g, b, a]);
-
   const onColorChange = (color) => {
     setColor(color);
-    // setColor has a small delay and doesn't get to change before doing the onChange
-    // that's why we use a useEffect instead.
-    // onChange?.(hexColor);
+    onChange?.(getHexFromColor(color));
   };
-
-  useEffect(() => {
-    onChange?.(hexColor);
-  }, [hexColor]);
 
   return (
     <SColorPickerWrapper>
       <SColorPicker color={color} onChange={onColorChange} />
       <SColorPickerInputWrapper>
         <SColorPickerInputlabel>HEX</SColorPickerInputlabel>
-        <SColorPickerInput disabled value={hexColor} />
+        <SColorPickerInput disabled value={getHexFromColor(color)} />
       </SColorPickerInputWrapper>
     </SColorPickerWrapper>
   );
