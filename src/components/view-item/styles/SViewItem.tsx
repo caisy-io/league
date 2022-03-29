@@ -13,8 +13,6 @@ const Bronze = css`
   cursor: pointer;
   ${CSSProgressiveBody03Semibold}
   color: var(--text-01);
-  border: "1px solid";
-  border-color: var(--hover-ui-01);
 
   &:hover {
     background-color: var(--active-ui-01-1);
@@ -42,6 +40,9 @@ const Bronze = css`
     css`
       ${CSSProgressiveBody03}
       padding-left: 40px;
+      border-bottom: 1px solid;
+      border-color: var(--hover-ui-01);
+
       ${!active &&
       css`
         &:not(:hover) {
