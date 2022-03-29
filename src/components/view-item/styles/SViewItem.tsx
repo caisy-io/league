@@ -13,6 +13,9 @@ const Bronze = css`
   cursor: pointer;
   ${CSSProgressiveBody03Semibold}
   color: var(--text-01);
+  border: "1px solid";
+  border-color: var(--hover-ui-01);
+
   &:hover {
     background-color: var(--active-ui-01-1);
   }
@@ -34,20 +37,21 @@ const Bronze = css`
     width: 20px;
     height: 20px;
   }
-  ${({ isChild, active }) =>
-    isChild &&
-    css`
-      ${CSSProgressiveBody03}
-      padding-left: 40px;
-      ${!active &&
+  border: "1px solid #E8EFF3",
+    ${({ isChild, active }) =>
+      isChild &&
       css`
-        &:not(:hover) {
-          & div:last-child {
-            display: none;
+        ${CSSProgressiveBody03}
+        padding-left: 40px;
+        ${!active &&
+        css`
+          &:not(:hover) {
+            & div:last-child {
+              display: none;
+            }
           }
-        }
-      `}
-    `}
+        `}
+      `};
 `;
 
 const Silver = css``;
