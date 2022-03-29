@@ -37,21 +37,20 @@ const Bronze = css`
     width: 20px;
     height: 20px;
   }
-  border: "1px solid #E8EFF3",
-    ${({ isChild, active }) =>
-      isChild &&
+  ${({ isChild, active }) =>
+    isChild &&
+    css`
+      ${CSSProgressiveBody03}
+      padding-left: 40px;
+      ${!active &&
       css`
-        ${CSSProgressiveBody03}
-        padding-left: 40px;
-        ${!active &&
-        css`
-          &:not(:hover) {
-            & div:last-child {
-              display: none;
-            }
+        &:not(:hover) {
+          & div:last-child {
+            display: none;
           }
-        `}
-      `};
+        }
+      `}
+    `};
 `;
 
 const Silver = css``;
