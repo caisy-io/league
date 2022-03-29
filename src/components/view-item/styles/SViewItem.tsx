@@ -31,6 +31,8 @@ const Bronze = css`
 
   & div:last-child > * {
     color: var(--text-04);
+    width: 20px;
+    height: 20px;
   }
   ${({ isChild, active }) =>
     isChild &&
