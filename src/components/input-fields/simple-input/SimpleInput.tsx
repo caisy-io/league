@@ -10,10 +10,9 @@ import React, {
 } from "react";
 import { SErrorMessage } from "../styles";
 import { SLabel } from "../styles";
-import { SSimpleInput } from "./styles/SSimpleInput";
+import { SSimpleInput, SSimpleInputMultiline } from "./styles/SSimpleInput";
 import { SSimpleInputIconWrapper } from "./styles/SSimpleInputIconWrapper";
 import { SSimpleInputInsideContainer } from "./styles/SSimpleInputInsideContainer";
-import { SSimpleInputMultiline } from "./styles/SSimpleInputMultiline";
 import { SSimpleInputOutsideContainer } from "./styles/SSimpleInputOutsideContainer";
 import { SSimpleInputRequiredIndicator } from "./styles/SSimpleInputRequiredIndicator";
 import { SSimpleInputRequiredIndicatorContainer } from "./styles/SSimpleInputRequiredIndicatorContainer";
