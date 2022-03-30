@@ -34,7 +34,7 @@ export const InputField: FC<IInputFieldProps> = ({
   }, [isOpen, setOpen]);
   
   return (
-    <SFieldItem tabindex={-1} id={id} error={!!errors}>
+    <SFieldItem id={id} error={!!errors}>
       <SFieldHeader isOpen={isOpen}>
         {icon}
         <div style={{flex: '1 1 auto'}}>
