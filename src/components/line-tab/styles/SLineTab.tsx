@@ -31,7 +31,7 @@ const Bronze = css`
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
-  margin-left: 1.5rem;
+  margin-left: 1rem;
   height: 48px;
   box-sizing: border-box;
   cursor: pointer;
