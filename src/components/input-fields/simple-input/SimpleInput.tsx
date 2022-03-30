@@ -112,6 +112,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
     resizeInput();
   }, [value, placeholder]);
 
+  const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
+
   return (
     <SSimpleInputWrapper
       tabindex={-1}
@@ -149,43 +151,23 @@ export const SimpleInput: FC<ISimpleInput> = ({
             {required && !inputRef?.current?.value && !label && (!errors || errors.length === 0) && (
               <SSimpleInputRequiredIndicator />
             )}
-            {multiline ? (
-              <SSimpleInputMultiline
-                width={inputWidth}
-                error={state === "error"}
-                locked={state === "locked"}
-                onChange={(e) => {
-                  onChange?.(e);
-                }}
-                required={required}
-                ref={inputRef}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                value={value || ""}
-                placeholder={placeholder}
-                disabled={disabled}
-                onKeyUp={onKeyUp}
-                type={type}
-              ></SSimpleInputMultiline>
-            ) : (
-              <SSimpleInput
-                width={inputWidth}
-                error={state === "error"}
-                locked={state === "locked"}
-                onChange={(e) => {
-                  onChange?.(e);
-                }}
-                required={required}
-                ref={inputRef}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                value={value || ""}
-                placeholder={placeholder}
-                disabled={disabled}
-                onKeyUp={onKeyUp}
-                type={type}
-              />
-            )}
+            <InputComponent
+              width={inputWidth}
+              error={state === "error"}
+              locked={state === "locked"}
+              onChange={(e) => {
+                onChange?.(e);
+              }}
+              required={required}
+              ref={inputRef}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              value={value || ""}
+              placeholder={placeholder}
+              disabled={disabled}
+              onKeyUp={onKeyUp}
+              type={type}
+            ></InputComponent>
           </SSimpleInputRequiredIndicatorContainer>
         </SSimpleInputInsideContainer>
         <SSimpleInputRightWrapper>

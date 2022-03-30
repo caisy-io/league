@@ -24,6 +24,7 @@ function SimpleInputDemo({ ...args }) {
       label={args.label}
       state={args.state}
       type={args.type}
+      multiline={args.multiline}
     />
   );
 }
@@ -51,6 +52,15 @@ export default {
         },
       },
     },
+    multiline: {
+      description: "The text wraps instead of sliding.",
+      control: { type: "boolean" },
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
+    },
   },
 };
 
@@ -64,6 +74,7 @@ Default.args = {
   required: true,
   withLeftIcon: false,
   withRightIcon: false,
+  multiline: false
 };
 
 export const WithTranslationBadge = Template.bind({});
@@ -71,4 +82,5 @@ WithTranslationBadge.args = {
   label: "This is a label",
   withTranslationBadge: true,
   required: false,
+  multiline: false,
 };
