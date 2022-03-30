@@ -1,5 +1,4 @@
 import React from "react";
-import { css } from "styled-components";
 import { Button } from "./Button";
 import { IconStarOutlined } from "../../icons";
 import { Badge, EBadgePosition } from "../badge";
@@ -102,8 +101,10 @@ WithIcon.args = {
 
 // With Badge
 export const WithBadge = ({ content, ...args }) => (
-  <Badge position={EBadgePosition.TopRight} value={args.badgeContent} size="small" type="important" withBorder >
-    <Button {...args}>{content}</Button>
+  <Badge position={EBadgePosition.TopRight} value={args.badgeContent} size="small" type="important" withBorder>
+    <Button {...args}>
+      <>{content}</>
+    </Button>
   </Badge>
 );
 

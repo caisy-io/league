@@ -11,6 +11,11 @@ interface IFloatingSearchEditableText {
 
 export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloatingSearchEditableText>(
   ({ value, onClick, onChange }, inputRef) => {
+
+    if (!inputRef){
+      throw new Error(`for FloatingSearchEditableText ref is required`);
+    }
+
     const [active, setActive] = useState(false);
 
     const handleClick = (e) => {
@@ -23,7 +28,7 @@ export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloating
     };
 
     useEffect(() => {
-      const el = (inputRef as any)?.current;
+      const el = (inputRef as any).current;
       if (el) {
         const updateValue = (e) => {
           // this will handle a enter key press inside the editable content container
@@ -39,28 +44,39 @@ export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloating
         el.addEventListener("input", updateValue);
         return () => el && el.removeEventListener("input", updateValue)
       }
-    }, [inputRef && (inputRef as any)?.current]);
+    }, [inputRef && (inputRef as any).current]);
 
     const handleFocus = () => {
       setActive(true);
     };
 
-    const onBlur = (e) => {
-      if (onChange) {
-        onChange(e.currentTarget.textContent.replace(/\n/g, ''));
-      }
-    };
+    // const onBlur = (e) => {
+    //   if (onChange) {
+    //     console.log(` onBlur`, );
+    //     onChange(e.currentTarget.textContent.replace(/\n/g, ''));
+    //   }
+    // };
+
+    // const handleKeyPress = (e: KeyboardEvent) => {
+    //   console.log(` onBlur`, );
+    //   // @ts-ignore
+    //   if(onChange && e.key == "Enter" && inputRef?.current?.textContent){
+    //     // @ts-ignore
+    //     onChange(inputRef.current.textContent.replace(/\n/g, ''));
+    //   }
+    // };
 
     return (
       <SFloatingSearchEditableTextWrapper active={active} onClick={handleClick}>
         <SFloatingSearchEditableText
           ref={inputRef}
           role="textbox"
+          // onKeyPress={handleKeyPress}
           contenteditable
           suppressContentEditableWarning={true}
           contentEditable
           onFocus={handleFocus}
-          onBlur={onBlur}
+          // onBlur={onBlur}
           wrap={"off"}
         >
           {value}

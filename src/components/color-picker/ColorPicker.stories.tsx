@@ -6,7 +6,7 @@ export default {
   component: ColorPicker,
 };
 
-const ColorPickerDemo = (args) => <ColorPicker {...args} />;
+const ColorPickerDemo = (args) => <ColorPicker {...args} onChange={(color) => console.log(color)} />;
 
 export const Default: any = ColorPickerDemo.bind({});
 
