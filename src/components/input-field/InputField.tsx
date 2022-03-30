@@ -34,8 +34,8 @@ export const InputField: FC<IInputFieldProps> = ({
   }, [isOpen, setOpen]);
   
   return (
-    <SFieldItem tabIndex={-1} id={id} error={!!errors}>
-      <SFieldHeader isOpen={isOpen}>
+    <SFieldItem id={id} error={!!errors}>
+      <SFieldHeader tabIndex={'-1'} isOpen={isOpen}>
         {icon}
         <div style={{flex: '1 1 auto'}}>
           <SFieldTitle required={required}>
