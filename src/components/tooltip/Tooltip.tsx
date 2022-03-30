@@ -44,7 +44,12 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, dis
 
   return (
     <>
-      <STooltipWrapper ref={ref} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <STooltipWrapper
+        onClick={() => clearTimeout(openDelayTimeout)}
+        ref={ref}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         {children}
         {open && (
           <Popover
