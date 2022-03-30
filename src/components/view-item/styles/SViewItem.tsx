@@ -6,13 +6,14 @@ import {
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  height: 44px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
+  padding: 12px 20px;
+  cursor: pointer;
   ${CSSProgressiveBody03Semibold}
   color: var(--text-01);
+
   &:hover {
     background-color: var(--active-ui-01-1);
   }
@@ -21,7 +22,7 @@ const Bronze = css`
     align-items: center;
   }
   & .title {
-    margin-left: 5px;
+    margin-left: 8px;
   }
   ${(props) =>
     props.active &&
@@ -29,11 +30,19 @@ const Bronze = css`
       background-color: var(--active-ui-01-1);
     `}
 
+  & div:last-child > * {
+    color: var(--text-04);
+    width: 20px;
+    height: 20px;
+  }
   ${({ isChild, active }) =>
     isChild &&
     css`
       ${CSSProgressiveBody03}
-      padding-left: 30px;
+      padding-left: 40px;
+      border-bottom: 1px solid;
+      border-color: var(--hover-ui-01);
+
       ${!active &&
       css`
         &:not(:hover) {
@@ -42,7 +51,7 @@ const Bronze = css`
           }
         }
       `}
-    `}
+    `};
 `;
 
 const Silver = css``;

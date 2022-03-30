@@ -18,6 +18,7 @@ const Bronze = css`
   max-width: 200px;
   text-align: left;
   padding: 6px 8px;
+  white-space: nowrap;
 `;
 
 const Silver = css``;

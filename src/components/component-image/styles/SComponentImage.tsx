@@ -2,13 +2,13 @@ import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 export const CSSTypeGrid = css`
-  padding: 1.75rem 2.125rem;
+  padding: 1rem;
   width: 13.75rem;
   height: 9.5rem;
 `;
 
 export const CSSTypeListItem = css`
-  padding: 1.5rem 1rem;
+  padding: 1rem;
   width: 5.75rem;
   height: 5.75rem;
 `;
@@ -22,6 +22,7 @@ const Bronze = css`
   border-radius: 0.5rem;
   ${(props) => props.type == "grid" ? CSSTypeGrid : ""};
   ${(props) => props.type == "list-item" ? CSSTypeListItem : ""};
+  margin-bottom: 1rem;
 `;
 
 const Silver = css``;

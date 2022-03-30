@@ -39,10 +39,11 @@ const Platinum = css<ISEmpty>``;
 
 const Diamond = css<ISEmpty>``;
 
-export const SEmpty = styled.div`
+export const SEmpty = styled.div<{styleOverwrite?: string}>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
-  ${MIN_GOLD`${Gold}`};
+  ${MIN_GOLD`${Gold}`}; 
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
