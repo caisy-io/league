@@ -53,7 +53,7 @@ export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloating
 
     const handleKeyPress = (e: KeyboardEvent) => {
       // @ts-ignore
-      if(onChange && e.key == "Enter" && inputRef.current?.textContent){
+      if(onChange && e.key == "Enter" && inputRef?.current?.textContent){
         // @ts-ignore
         onChange(inputRef.current.textContent.replace(/\n/g, ''));
       }
