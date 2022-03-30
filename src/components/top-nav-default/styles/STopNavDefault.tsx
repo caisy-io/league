@@ -1,13 +1,15 @@
+import { CSSProperties } from "react";
 import styled, { css } from "styled-components";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
-const Bronze = css`
+const Bronze = css<{ styleOverwrite?: CSSProperties }>`
   height: 60px;
   box-sizing: border-box;
   display: flex;
   background-color: var(--ui-01);
   border-bottom: 1px solid var(--ui-03);
   align-items: center;
+  ${({ styleOverwrite }) => (styleOverwrite ? styleOverwrite : "")};
 `;
 
 const Silver = css``;
