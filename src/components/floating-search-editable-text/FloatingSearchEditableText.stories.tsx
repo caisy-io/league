@@ -3,8 +3,11 @@ import { FloatingSearchEditableText } from "./FloatingSearchEditableText";
 
 const Template = ({ ...args }) => {
   const ref = useRef<HTMLInputElement>();
+  const onChange = (e) => {
+      console.log(` onChange`, e);
+  };
   return <div style={{ width: 250 }}>
-    <FloatingSearchEditableText ref={ref} {...args} />
+    <FloatingSearchEditableText onChange={onChange} ref={ref} {...args} />
   </div>
 }
 
