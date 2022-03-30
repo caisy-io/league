@@ -22,7 +22,7 @@ export const UploadProgressBar: React.FC<IUploadProgressBar> = ({ progress, uplo
       <SUploadProgressBarTitle>{uploadName}</SUploadProgressBarTitle>
       <SUploadProgressBarLabel>{progress}%</SUploadProgressBarLabel>
       <SProgressBar progress={progress} />
-      <Button onClick={handleCancel} type="secondary">
+      <Button onClick={handleCancel} type="neutral">
         CANCEL
       </Button>
     </SUploadProgressBar>

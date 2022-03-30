@@ -60,7 +60,7 @@ export const AvatarInput: React.FC<IAvatarInput> = ({
           )}
           {image && (
             <>
-              <Button onClick={openImagePicker} type="secondary" size="small">
+              <Button onClick={openImagePicker} type="neutral" size="small">
                 <IconEditImageAsset />
                 {"change"}
               </Button>
