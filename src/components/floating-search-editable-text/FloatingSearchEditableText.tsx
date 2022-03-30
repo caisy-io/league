@@ -11,6 +11,11 @@ interface IFloatingSearchEditableText {
 
 export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloatingSearchEditableText>(
   ({ value, onClick, onChange }, inputRef) => {
+
+    if (!inputRef){
+      throw new Error(`for FloatingSearchEditableText ref is required`);
+    }
+
     const [active, setActive] = useState(false);
 
     const handleClick = (e) => {
