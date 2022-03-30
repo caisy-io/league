@@ -53,7 +53,7 @@ export default {
       },
     },
     multiline: {
-      description: "The text wraps instead of sliding.",
+      description: "Overflowing text wraps instead of sliding.",
       control: { type: "boolean" },
       table: {
         defaultValue: {
