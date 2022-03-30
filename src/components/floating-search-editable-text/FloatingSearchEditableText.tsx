@@ -28,7 +28,7 @@ export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloating
     };
 
     useEffect(() => {
-      const el = (inputRef as any)?.current;
+      const el = (inputRef as any).current;
       if (el) {
         const updateValue = (e) => {
           // this will handle a enter key press inside the editable content container
@@ -44,7 +44,7 @@ export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloating
         el.addEventListener("input", updateValue);
         return () => el && el.removeEventListener("input", updateValue)
       }
-    }, [inputRef && (inputRef as any)?.current]);
+    }, [inputRef && (inputRef as any).current]);
 
     const handleFocus = () => {
       setActive(true);
