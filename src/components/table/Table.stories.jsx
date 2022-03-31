@@ -136,6 +136,7 @@ function TableDemo() {
         onChange={(e) => setGlobalFilter(e.target.value)}
       />
       <Table
+        renderAsFirstRow={<>Use this to render a custom component on the first row</>}
         loadNextPage={loadNextPage}
         isNextPageLoading={isNextPageLoading}
         hasNextPage={hasNextPage}

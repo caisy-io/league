@@ -1,4 +1,14 @@
-import React, { CSSProperties, FC, forwardRef, ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  CSSProperties,
+  FC,
+  forwardRef,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { STable } from "./styles/STable";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
@@ -123,7 +133,6 @@ export const Table: FC<ITable> = forwardRef(
           prepareRow(row);
           return (
             <>
-              {index === 0 && <>{renderAsFirstRow}</>}
               <STr
                 onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
                 key={index}
@@ -153,12 +162,36 @@ export const Table: FC<ITable> = forwardRef(
 
     const triggerLoadMoreItems = () => {
       const table = bodyRef?.current;
+
       if (!!table && table.scrollTop / (table.scrollHeight - table.clientHeight) > 0.8) {
         hasNextPage && (loadMoreItems as any)();
       }
     };
 
-    const onScroll = debounce(() => triggerLoadMoreItems(), 160);
+    const firstRowRef = useRef<HTMLDivElement>(null);
+
+    const onScroll = ({ scrollOffset }) => {
+      if (!!firstRowRef?.current) {
+        firstRowRef.current.style.transform = `translateY(-${scrollOffset}px)`;
+      }
+      debounce(() => triggerLoadMoreItems(), 160);
+    };
+
+    const TableWithRows = () => {
+      return (
+        <FixedSizeList
+          onScroll={onScroll}
+          outerRef={bodyRef}
+          className="league-table"
+          height={height}
+          itemSize={itemSize}
+          itemCount={dataSource?.length || 0}
+          ref={ref}
+        >
+          {RenderRow}
+        </FixedSizeList>
+      );
+    };
 
     return (
       <STable ref={containerRef} style={style} {...getTableProps()}>
@@ -194,17 +227,8 @@ export const Table: FC<ITable> = forwardRef(
             </STableLoading>
           ) : dataSource?.length ? (
             <>
-              <FixedSizeList
-                onScroll={onScroll}
-                outerRef={bodyRef}
-                className="league-table"
-                height={height}
-                itemSize={itemSize}
-                itemCount={dataSource?.length || 0}
-                ref={ref}
-              >
-                {RenderRow}
-              </FixedSizeList>
+              {!!renderAsFirstRow && <div ref={firstRowRef}>{renderAsFirstRow}</div>}
+              <TableWithRows />
             </>
           ) : (
             <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
