@@ -37,9 +37,10 @@ interface ITable {
   onRowClick?: (payload: any) => void;
   tableOptions?: any;
   onHeaderClick?: (column: any) => Promise<void>;
+  renderAsFirstRow: JSX.Element;
 }
 
-export const Table: FC<any> = forwardRef(
+export const Table: FC<ITable> = forwardRef(
   (
     {
       dataSource,
@@ -56,6 +57,7 @@ export const Table: FC<any> = forwardRef(
       onRowClick,
       onHeaderClick,
       columns,
+      renderAsFirstRow,
     },
     ref,
   ) => {
@@ -188,17 +190,20 @@ export const Table: FC<any> = forwardRef(
               <Spinner />
             </STableLoading>
           ) : dataSource?.length ? (
-            <FixedSizeList
-              onScroll={onScroll}
-              outerRef={bodyRef}
-              className="league-table"
-              height={height}
-              itemSize={itemSize}
-              itemCount={dataSource?.length || 0}
-              ref={ref}
-            >
-              {RenderRow}
-            </FixedSizeList>
+            <>
+              {renderAsFirstRow}
+              <FixedSizeList
+                onScroll={onScroll}
+                outerRef={bodyRef}
+                className="league-table"
+                height={height}
+                itemSize={itemSize}
+                itemCount={dataSource?.length || 0}
+                ref={ref}
+              >
+                {RenderRow}
+              </FixedSizeList>
+            </>
           ) : (
             <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
           )}
