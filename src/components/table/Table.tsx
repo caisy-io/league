@@ -173,6 +173,7 @@ export const Table: FC<ITable> = forwardRef(
     const onScroll = ({ scrollOffset }) => {
       if (!!firstRowRef?.current) {
         firstRowRef.current.style.transform = `translateY(-${scrollOffset}px)`;
+        firstRowRef.current.style.height = firstRowRef.current.scrollHeight - scrollOffset + "px";
       }
       debounce(() => triggerLoadMoreItems(), 160);
     };
