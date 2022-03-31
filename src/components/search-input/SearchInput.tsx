@@ -17,6 +17,7 @@ interface ISearchInput {
   autoFocus?: boolean;
   onKeyUp: (e: KeyboardEvent) => void;
   onKeyDown: (e: KeyboardEvent) => void;
+  onBlur: (e: FocusEvent) => void;
 }
 
 export const SearchInput: FC<ISearchInput> = ({
@@ -29,6 +30,7 @@ export const SearchInput: FC<ISearchInput> = ({
   autoFocus,
   onKeyDown,
   onKeyUp,
+  onBlur,
 }) => {
   const [active, setActive] = useState(false);
   const [clickingFilter, setClickingFilter] = useState(false);
@@ -42,8 +44,9 @@ export const SearchInput: FC<ISearchInput> = ({
     setActive(true);
   };
 
-  const handleBlur = () => {
+  const handleBlur = (e) => {
     if (!clickingFilter) setActive(false);
+    onBlur?.(e);
   };
 
   const handleClose = () => {
