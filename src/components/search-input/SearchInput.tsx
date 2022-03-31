@@ -15,9 +15,21 @@ interface ISearchInput {
   withFilter?: boolean;
   onClickFilter?: () => void;
   autoFocus?: boolean;
+  onKeyUp: (e: KeyboardEvent) => void;
+  onKeyDown: (e: KeyboardEvent) => void;
 }
 
-export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, onKeyPress, withFilter, onClickFilter, autoFocus }) => {
+export const SearchInput: FC<ISearchInput> = ({
+  placeholder,
+  onClose,
+  onChange,
+  onKeyPress,
+  withFilter,
+  onClickFilter,
+  autoFocus,
+  onKeyDown,
+  onKeyUp,
+}) => {
   const [active, setActive] = useState(false);
   const [clickingFilter, setClickingFilter] = useState(false);
   const inputRef = useRef<HTMLInputElement>();
@@ -55,7 +67,7 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
 
   const handleKeyPress = (e) => {
     onKeyPress?.(e, handleClose);
-  }
+  };
 
   return (
     <SSearchInputWrapper active={active} onClick={handleClick}>
@@ -68,6 +80,8 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
         onKeyPress={handleKeyPress}
         placeholder={placeholder}
         autoFocus={autoFocus}
+        onKeyDown={onKeyDown}
+        onKeyUp={onKeyUp}
       />
       <SSearchIconContainer>
         {withFilter && (
