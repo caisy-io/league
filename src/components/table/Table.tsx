@@ -122,25 +122,28 @@ export const Table: FC<ITable> = forwardRef(
         if (row) {
           prepareRow(row);
           return (
-            <STr
-              onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
-              key={index}
-              {...row.getRowProps({
-                style: { ...style, rowStyle },
-              })}
-            >
-              {row.cells.map((cell, cellIndex) => {
-                return (
-                  <STd
-                    key={cellIndex}
-                    style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
-                    {...cell.getCellProps()}
-                  >
-                    {cell.render("Cell")}
-                  </STd>
-                );
-              })}
-            </STr>
+            <>
+              {index === 0 && <>{renderAsFirstRow}</>}
+              <STr
+                onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
+                key={index}
+                {...row.getRowProps({
+                  style: { ...style, rowStyle },
+                })}
+              >
+                {row.cells.map((cell, cellIndex) => {
+                  return (
+                    <STd
+                      key={cellIndex}
+                      style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
+                      {...cell.getCellProps()}
+                    >
+                      {cell.render("Cell")}
+                    </STd>
+                  );
+                })}
+              </STr>
+            </>
           );
         }
         return null;
@@ -191,7 +194,6 @@ export const Table: FC<ITable> = forwardRef(
             </STableLoading>
           ) : dataSource?.length ? (
             <>
-              {renderAsFirstRow}
               <FixedSizeList
                 onScroll={onScroll}
                 outerRef={bodyRef}
