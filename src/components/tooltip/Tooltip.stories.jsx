@@ -50,6 +50,9 @@ function TooltipDemo({ color, placement, delay, ...args }) {
       <Tooltip content={tooltipContent} delay={delay} color={color} placement={placement}>
         <Button>Hover me!</Button>
       </Tooltip>
+      <Tooltip content={tooltipContent} delay={delay} color={color} placement={placement}>
+        <Button>Hover me!</Button>
+      </Tooltip>
     </div>
   );
 }
