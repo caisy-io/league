@@ -1,4 +1,14 @@
-import React, { CSSProperties, FC, forwardRef, ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  CSSProperties,
+  FC,
+  forwardRef,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { STable } from "./styles/STable";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
@@ -37,9 +47,10 @@ interface ITable {
   onRowClick?: (payload: any) => void;
   tableOptions?: any;
   onHeaderClick?: (column: any) => Promise<void>;
+  renderAsFirstRow?: JSX.Element;
 }
 
-export const Table: FC<any> = forwardRef(
+export const Table: FC<ITable> = forwardRef(
   (
     {
       dataSource,
@@ -56,6 +67,7 @@ export const Table: FC<any> = forwardRef(
       onRowClick,
       onHeaderClick,
       columns,
+      renderAsFirstRow,
     },
     ref,
   ) => {
@@ -120,25 +132,27 @@ export const Table: FC<any> = forwardRef(
         if (row) {
           prepareRow(row);
           return (
-            <STr
-              onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
-              key={index}
-              {...row.getRowProps({
-                style: { ...style, rowStyle },
-              })}
-            >
-              {row.cells.map((cell, cellIndex) => {
-                return (
-                  <STd
-                    key={cellIndex}
-                    style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
-                    {...cell.getCellProps()}
-                  >
-                    {cell.render("Cell")}
-                  </STd>
-                );
-              })}
-            </STr>
+            <>
+              <STr
+                onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
+                key={index}
+                {...row.getRowProps({
+                  style: { ...style, rowStyle },
+                })}
+              >
+                {row.cells.map((cell, cellIndex) => {
+                  return (
+                    <STd
+                      key={cellIndex}
+                      style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
+                      {...cell.getCellProps()}
+                    >
+                      {cell.render("Cell")}
+                    </STd>
+                  );
+                })}
+              </STr>
+            </>
           );
         }
         return null;
@@ -148,12 +162,40 @@ export const Table: FC<any> = forwardRef(
 
     const triggerLoadMoreItems = () => {
       const table = bodyRef?.current;
+
       if (!!table && table.scrollTop / (table.scrollHeight - table.clientHeight) > 0.8) {
         hasNextPage && (loadMoreItems as any)();
       }
     };
 
-    const onScroll = debounce(() => triggerLoadMoreItems(), 160);
+    const firstRowRef = useRef<HTMLDivElement>(null);
+
+    const onScroll = ({ scrollOffset }) => {
+      if (!!firstRowRef?.current) {
+        firstRowRef.current.style.transform = `translateY(-${scrollOffset * 2}px)`;
+        let height =
+          scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
+
+        firstRowRef.current.style.height = height + "px";
+      }
+      debounce(() => triggerLoadMoreItems(), 160);
+    };
+
+    const TableWithRows = () => {
+      return (
+        <FixedSizeList
+          onScroll={onScroll}
+          outerRef={bodyRef}
+          className="league-table"
+          height={height}
+          itemSize={itemSize}
+          itemCount={dataSource?.length || 0}
+          ref={ref}
+        >
+          {RenderRow}
+        </FixedSizeList>
+      );
+    };
 
     return (
       <STable ref={containerRef} style={style} {...getTableProps()}>
@@ -188,17 +230,10 @@ export const Table: FC<any> = forwardRef(
               <Spinner />
             </STableLoading>
           ) : dataSource?.length ? (
-            <FixedSizeList
-              onScroll={onScroll}
-              outerRef={bodyRef}
-              className="league-table"
-              height={height}
-              itemSize={itemSize}
-              itemCount={dataSource?.length || 0}
-              ref={ref}
-            >
-              {RenderRow}
-            </FixedSizeList>
+            <>
+              {!!renderAsFirstRow && <div ref={firstRowRef}>{renderAsFirstRow}</div>}
+              <TableWithRows />
+            </>
           ) : (
             <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
           )}
