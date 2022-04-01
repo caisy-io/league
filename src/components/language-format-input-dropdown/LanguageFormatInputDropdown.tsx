@@ -1,5 +1,8 @@
 import React, { ReactNode, useMemo } from "react";
-import { IconChevronDown, IconRotator, Input, SolidLabel } from "../..";
+import { IconChevronDown } from "../../icons/IconChevronDown";
+import { Input } from "../../components/input";
+import { IconRotator } from "../../components/icon-rotator";
+import { SolidLabel } from "../solid-label";
 import { ClickOutside, useDimensions } from "../../utils";
 import { Popover } from "../popover";
 import { SLanguageFormatDropdownArrowWrapper } from "./styles/SLanguageFormatDropdownArrowWrapper";

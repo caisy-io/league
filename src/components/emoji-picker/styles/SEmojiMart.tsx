@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { CSSProgressiveBody03 } from '../../..'
+import { CSSProgressiveBody03 } from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 
 export const GlobalStyle = createGlobalStyle`
 .emoji-mart,

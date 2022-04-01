@@ -71,7 +71,7 @@ export * from "./sidebar-card";
 export * from "./sidebar-tag";
 export * from "./sidebar-bottom-button";
 export * from "./line-tabs";
-export * from "./solidLabel";
+export * from "./solid-label";
 export * from "./toggle";
 export * from "./documents-editor-subtop-nav";
 export * from "./view-item";
