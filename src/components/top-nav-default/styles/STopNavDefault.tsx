@@ -9,7 +9,6 @@ const Bronze = css<{ styleOverwrite?: CSSProperties }>`
   background-color: var(--ui-01);
   border-bottom: 1px solid var(--ui-03);
   align-items: center;
-  ${({ styleOverwrite }) => (styleOverwrite ? styleOverwrite : "")};
 `;
 
 const Silver = css``;
@@ -26,4 +25,5 @@ export const STopNavDefault = styled.div`
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({ styleOverwrite }) => (styleOverwrite ? styleOverwrite : "")};
 `;
