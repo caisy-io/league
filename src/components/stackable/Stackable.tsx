@@ -32,7 +32,7 @@ interface IStackable {
   ref?: any;
   children?: any;
   onContextMenu?: (e: any) => any;
-  placement: IPlacement;
+  placement?: IPlacement;
 }
 
 const Stackable = forwardRef(
