@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../../constants/styles";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND, CSSProgressiveBody03Medium } from "../../../../constants/styles";
 
 const CSSLocked = css`
   color: var(--text-04);
@@ -59,6 +59,8 @@ export const SSimpleInput = styled.input`
 const CSSMultiline = css`
   overflow: hidden;
   resize: none;
+  ${CSSProgressiveBody03Medium};
+  font-family: Inter;
 `
 
 export const SSimpleInputMultiline = styled.textarea`
