@@ -2,7 +2,7 @@ import { CSSProperties } from "react";
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
-const Bronze = css<{ styleOverwrite?: CSSProperties }>`
+const Bronze = css`
   height: 60px;
   box-sizing: border-box;
   display: flex;
@@ -19,7 +19,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const STopNavDefault = styled.div`
+export const STopNavDefault = styled.div<{ styleOverwrite?: CSSProperties }>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
