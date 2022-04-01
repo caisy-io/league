@@ -1,12 +1,15 @@
-import React, { FC } from "react";
+import React, { CSSProperties, FC } from "react";
 import { STopNavDefault } from "./styles/STopNavDefault";
 import { STopNavDefaultContent } from "./styles/STopNavDefaultContent";
 
-interface ITopNavDefault {}
+interface ITopNavDefault {
+  styleOverwrite?: CSSProperties;
+  children: any;
+}
 
-export const TopNavDefault: FC<ITopNavDefault> = ({ children }) => {
+export const TopNavDefault: FC<ITopNavDefault> = ({ children, styleOverwrite }) => {
   return (
-    <STopNavDefault>
+    <STopNavDefault styleOverwrite={styleOverwrite}>
       <STopNavDefaultContent>{children}</STopNavDefaultContent>
     </STopNavDefault>
   );
