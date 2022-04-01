@@ -48,6 +48,7 @@ interface ITable {
   tableOptions?: any;
   onHeaderClick?: (column: any) => Promise<void>;
   renderAsFirstRow?: JSX.Element;
+  ref?: any;
 }
 
 export const Table: FC<ITable> = forwardRef(
