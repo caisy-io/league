@@ -6,11 +6,11 @@ import React, {
   useCallback,
   useEffect,
   useRef,
-  useState
+  useState,
 } from "react";
 import { SErrorMessage } from "../styles";
 import { SLabel } from "../styles";
-import { SSimpleInput } from "./styles/SSimpleInput";
+import { SSimpleInput, SSimpleInputMultiline } from "./styles/SSimpleInput";
 import { SSimpleInputIconWrapper } from "./styles/SSimpleInputIconWrapper";
 import { SSimpleInputInsideContainer } from "./styles/SSimpleInputInsideContainer";
 import { SSimpleInputOutsideContainer } from "./styles/SSimpleInputOutsideContainer";
@@ -40,7 +40,8 @@ interface ISimpleInput {
   onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
   autoComplete?: string;
   autoFocus?: boolean;
-  type?: HTMLInputTypeAttribute
+  type?: HTMLInputTypeAttribute;
+  multiline?: boolean;
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
@@ -59,7 +60,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
   rightIcon,
   onKeyUp,
   id,
-  type='text'
+  type = "text",
+  multiline,
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -98,11 +100,18 @@ export const SimpleInput: FC<ISimpleInput> = ({
     }
 
     setInputWidth(width);
+
+    if (multiline) {
+      (inputRef.current as HTMLInputElement).style.height = "20px";
+      (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
+    }
   }, [setInputWidth, placeholder, inputRef?.current?.value]);
 
   useEffect(() => {
     resizeInput();
   }, [value, placeholder]);
+
+  const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
 
   return (
     <SSimpleInputWrapper
@@ -140,7 +149,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
             {required && !inputRef?.current?.value && !label && (!errors || errors.length === 0) && (
               <SSimpleInputRequiredIndicator />
             )}
-            <SSimpleInput
+            <InputComponent
               width={inputWidth}
               error={state === "error"}
               locked={state === "locked"}
@@ -156,7 +165,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
               disabled={disabled}
               onKeyUp={onKeyUp}
               type={type}
-            />
+            ></InputComponent>
           </SSimpleInputRequiredIndicatorContainer>
         </SSimpleInputInsideContainer>
         <SSimpleInputRightWrapper>

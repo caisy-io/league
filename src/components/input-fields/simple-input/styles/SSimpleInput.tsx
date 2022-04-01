@@ -55,3 +55,17 @@ export const SSimpleInput = styled.input`
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
 `;
+
+const CSSMultiline = css`
+  overflow: hidden;
+  resize: none;
+`
+
+export const SSimpleInputMultiline = styled.textarea`
+  ${CSSMultiline}
+  ${Bronze}
+  ${MIN_SILVER`${Silver}`};
+  ${MIN_GOLD`${Gold}`};
+  ${MIN_PLATINUM`${Platinum}`};
+  ${MIN_DIAMOND`${Diamond}`};
+`;
