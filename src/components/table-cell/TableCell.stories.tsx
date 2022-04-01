@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { TableCell } from "./TableCell";
 import PreviewComponent from "../preview";
 import { Badge, EBadgePosition } from "../badge";
-import { SolidLabel } from "../solidLabel";
+import { SolidLabel } from "../solid-label";
 import { Img } from "../../base-components/img/Img";
 import { useState } from "react";
 import {
