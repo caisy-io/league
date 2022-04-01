@@ -14,70 +14,84 @@
  * limitations under the License.
  */
 
-import React, {useRef, forwardRef, memo, useCallback} from 'react';
-import Stackable from '../stackable';
-import { copyComponentRef } from '../../utils/react';
-import { SPoppable } from './styles/SPoppable';
-import strategy from './strategies';
-import { HIDDEN_PLACEMENT } from './Poppable.constants';
-import { usePosition } from './Poppable.hooks';
-import PoppableContext from './Poppable.context';
-import { getBoundingRects, getClassNames } from './Poppable.utils';
+import React, { useRef, forwardRef, memo, useCallback } from "react";
+import Stackable from "../stackable";
+import { copyComponentRef } from "../../utils/react";
+import { SPoppable } from "./styles/SPoppable";
+import strategy from "./strategies";
+import { HIDDEN_PLACEMENT } from "./Poppable.constants";
+import { usePosition } from "./Poppable.hooks";
+import PoppableContext from "./Poppable.context";
+import { getBoundingRects, getClassNames } from "./Poppable.utils";
+
+export type IPlacement = {
+  name: string;
+  top: number;
+  left: number;
+};
 
 interface IPoppable {
-    container: any;
-    reference: React.MutableRefObject<null> | HTMLElement;
-    placements: () => void;
-    placement: {
-        name: string,
-        top: number,
-        left: number,
-    };
-    overflow: (rects: any, props: any) => { top: number; left: number; name: string; } | DOMRect;
-    onPlacement: () => void;
-    default: number;
-    children: any;
-    className: string;
-    style: object;
+  container: any;
+  reference: React.MutableRefObject<null> | HTMLElement;
+  placements: () => void;
+  placement: IPlacement;
+  overflow: (rects: any, props: any) => { top: number; left: number; name: string } | DOMRect;
+  onPlacement: () => void;
+  default: number;
+  children: any;
+  className: string;
+  style: object;
 }
 
-const Poppable = forwardRef(({
-    children = null, 
-    container = window, 
-    reference = document.body, 
-    placements = () => [{top: 0, left: 0}],
-    onPlacement = () => null, 
-    placement = HIDDEN_PLACEMENT, 
-    overflow = strategy, 
-    className = '', 
-    style = {}, 
-    ...props
-}: IPoppable, ref) => {
-
+const Poppable = forwardRef(
+  (
+    {
+      children = null,
+      container = window,
+      reference = document.body,
+      placements = () => [{ top: 0, left: 0 }],
+      onPlacement = () => null,
+      placement = HIDDEN_PLACEMENT,
+      overflow = strategy,
+      className = "",
+      style = {},
+      ...props
+    }: IPoppable,
+    ref,
+  ) => {
     const target = useRef();
-    const handleOnContextMenu = useCallback(e => e.stopPropagation(), []); // prevent onContextMenu event bubbling from the react portal to the react tree
+    const handleOnContextMenu = useCallback((e) => e.stopPropagation(), []); // prevent onContextMenu event bubbling from the react portal to the react tree
     const rects = getBoundingRects(target, reference, container, placement);
-    usePosition({target, container, reference, placements, default: props.default ?? 0, onPlacement, strategy: overflow});
+    usePosition({
+      target,
+      container,
+      reference,
+      placements,
+      default: props.default ?? 0,
+      onPlacement,
+      strategy: overflow,
+    });
 
-    const placementName =  placement.name !== undefined ? {[`placement-${placement.name}`]: placement.name} + " " : "";
-    
+    const placementName = placement.name !== undefined ? { [`placement-${placement.name}`]: placement.name } + " " : "";
+
     return (
-        <Stackable
-            {...props} 
-            className={'poppable ' +  placementName + className + " " + getClassNames(rects.tbr, rects.rbr)} 
-            style={{...style, ...placement}}
-            ref={copyComponentRef(ref, target)}
-            parent={reference} 
-            onContextMenu={handleOnContextMenu}>
-            <PoppableContext.Provider value={rects}>
-                <SPoppable>
-                    {children}
-                </SPoppable>
-            </PoppableContext.Provider>
-        </Stackable>
+      <Stackable
+        {...props}
+        className={"poppable " + placementName + className + " " + getClassNames(rects.tbr, rects.rbr)}
+        style={{ ...style, ...placement }}
+        placement={placement}
+        ref={copyComponentRef(ref, target)}
+        parent={reference}
+        onContextMenu={handleOnContextMenu}
+      >
+        <PoppableContext.Provider value={rects}>
+          <SPoppable>{children}</SPoppable>
+        </PoppableContext.Provider>
+      </Stackable>
     );
-});
+  },
+);
 
-Poppable.displayName = 'Poppable.Manual';
+Poppable.displayName = "Poppable.Manual";
 
 export default memo(Poppable);
