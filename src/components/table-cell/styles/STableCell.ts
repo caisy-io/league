@@ -10,8 +10,7 @@ const Bronze = css`
   cursor: pointer;
 
   &:hover {
-    background-color: var(--hover-ui-01-1);
-    ${(props) => props.activated && "background-color: var(--active-ui-01-1);"}
+    background-color: var(--active-ui-01-1);
   }
 
   ${(props) => props.activated && "background-color: var(--active-ui-01-1);"}
