@@ -5,7 +5,7 @@ import { SList } from "./styles/SList";
 
 interface IList<T> {
   dataSource: T[];
-  renderItem: (payload: T) => React.ReactNode;
+  renderItem: (payload: T, index?: number) => React.ReactNode;
   renderLoadingItem: () => React.ReactNode;
   itemSize: number;
   hasNextPage?: boolean;
@@ -30,7 +30,7 @@ export const List = forwardRef<any, IList<any>>(({ ...props }, forRef) => {
     if (!isItemLoaded(index)) {
       content = props.renderLoadingItem();
     } else {
-      content = props.renderItem(props.dataSource[index]);
+      content = props.renderItem(props.dataSource[index], index);
     }
 
     return <div style={style}>{content}</div>;
