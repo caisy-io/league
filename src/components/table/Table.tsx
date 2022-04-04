@@ -49,6 +49,7 @@ interface ITable {
   onHeaderClick?: (column: any) => Promise<void>;
   renderAsFirstRow?: JSX.Element;
   ref?: any;
+  empty?: ReactNode;
 }
 
 export const Table: FC<ITable> = forwardRef(
@@ -69,6 +70,7 @@ export const Table: FC<ITable> = forwardRef(
       onHeaderClick,
       columns,
       renderAsFirstRow,
+      empty,
     },
     ref,
   ) => {
@@ -174,7 +176,7 @@ export const Table: FC<ITable> = forwardRef(
     const onScroll = ({ scrollOffset }) => {
       if (!!firstRowRef?.current) {
         firstRowRef.current.style.transform = `translateY(-${scrollOffset * 2}px)`;
-        let height =
+        const height =
           scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
 
         firstRowRef.current.style.height = height + "px";
@@ -235,6 +237,8 @@ export const Table: FC<ITable> = forwardRef(
               {!!renderAsFirstRow && <div ref={firstRowRef}>{renderAsFirstRow}</div>}
               <TableWithRows />
             </>
+          ) : empty ? (
+            empty
           ) : (
             <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
           )}
