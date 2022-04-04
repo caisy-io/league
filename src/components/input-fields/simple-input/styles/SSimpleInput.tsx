@@ -1,5 +1,11 @@
 import styled, { css } from "styled-components";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND, CSSProgressiveBody03Medium } from "../../../../constants/styles";
+import {
+  MIN_SILVER,
+  MIN_GOLD,
+  MIN_PLATINUM,
+  MIN_DIAMOND,
+  CSSProgressiveBody03Medium,
+} from "../../../../constants/styles";
 
 const CSSLocked = css`
   color: var(--text-04);
@@ -33,9 +39,9 @@ const Bronze = css`
     -webkit-appearance: none;
     margin: 0;
   }
-  
+
   /* Firefox */
-  &[type=number] {
+  &[type="number"] {
     -moz-appearance: textfield;
   }
 `;
@@ -61,7 +67,7 @@ const CSSMultiline = css`
   resize: none;
   ${CSSProgressiveBody03Medium};
   font-family: Inter;
-`
+`;
 
 export const SSimpleInputMultiline = styled.textarea`
   ${CSSMultiline}

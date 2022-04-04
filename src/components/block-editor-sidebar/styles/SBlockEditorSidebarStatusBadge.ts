@@ -13,8 +13,8 @@ const CSSPublished = css`
 `;
 
 const CSSChanged = css`
-  background-color: var(--ui-02);
-  color: var(--text-09);
+  background-color: var(--ui-supportive-12);
+  color: var(--active-text-04);
 `;
 
 const Bronze = css`

@@ -1,5 +1,5 @@
 import React from "react";
-import { IconBriefcase, IconItemsGroup, IconProjectsFolder } from "../..";
+import { IconBriefcase, IconItemsGroup, IconProjectsFolder } from "../../icons";
 import { OrganizationSelectMenuItem } from "./OrganizationSelectMenuItem";
 import { OrganizationSelectMenuItemEmpty } from "./OrganizationSelectMenuItemEmpty";
 import { SOrganizationSelectMenu } from "./styles/SOrganizationSelectMenu";

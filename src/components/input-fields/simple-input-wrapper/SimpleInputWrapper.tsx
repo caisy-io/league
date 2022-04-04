@@ -46,7 +46,6 @@ export const SimpleInputWrapper: FC<ISimpleInput> = ({
   return (
     <SSimpleInputWrapper
       id={id}
-      tabindex={-1}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onFocus={(e) => {

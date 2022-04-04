@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 import { SFlex } from "../../../base-components/flex/styles/SFlex";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
 const Bronze = css`
-  margin-top: 2.75em;
+  margin-top: 36px;
   align-items: center;
   justify-content: center;
 

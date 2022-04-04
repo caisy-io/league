@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { SolidLabel } from '../solidLabel';
+import { SolidLabel } from '../solid-label';
 import { SListStatusItem } from './styles/SListStatusItem';
 import { SListStatusItemFlex } from './styles/SListStatusItemFlex';
 import { SListStatusItemText } from './styles/SListStatusItemText';

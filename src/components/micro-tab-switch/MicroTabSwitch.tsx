@@ -1,22 +1,21 @@
-import React, {ReactElement} from 'react';
-import {SMicroTabSwitch} from './styles/SMicroTabSwitch';
+import React, { ReactElement } from "react";
+import { SMicroTabSwitch } from "./styles/SMicroTabSwitch";
 
 export interface IMicroTabSwitch {
   initialTabIndex?: number;
   getCurrentIndex?: (index) => void;
   children: ReactElement[] | ReactElement;
-  onTabClick?: () => void;
+  onTabClick?: (index) => void;
 }
 
 export const MicroTabSwitch: React.FC<IMicroTabSwitch> = ({
-                                                            initialTabIndex = 0,
-                                                            children,
-                                                            onTabClick,
-                                                            getCurrentIndex
-                                                          }) => {
-  
+  initialTabIndex = 0,
+  children,
+  onTabClick,
+  getCurrentIndex,
+}) => {
   const [currentTab, setCurrentTab] = React.useState(initialTabIndex);
-  
+
   return (
     <SMicroTabSwitch>
       {React.Children.map(children, (child: ReactElement, index) =>
@@ -25,11 +24,11 @@ export const MicroTabSwitch: React.FC<IMicroTabSwitch> = ({
           active: currentTab === index,
           onClick: () => {
             setCurrentTab(index);
-            onTabClick?.();
+            onTabClick?.(index);
             getCurrentIndex?.(index);
           },
-        })
+        }),
       )}
     </SMicroTabSwitch>
-  )
-}
+  );
+};

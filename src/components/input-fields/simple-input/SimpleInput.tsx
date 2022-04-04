@@ -115,7 +115,6 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
   return (
     <SSimpleInputWrapper
-      tabindex={-1}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       active={active}

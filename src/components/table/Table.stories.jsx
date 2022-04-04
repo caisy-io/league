@@ -136,6 +136,11 @@ function TableDemo() {
         onChange={(e) => setGlobalFilter(e.target.value)}
       />
       <Table
+        renderAsFirstRow={
+          <div style={{ height: 40, backgroundColor: "white" }}>
+            Use this to render a custom component on the first row
+          </div>
+        }
         loadNextPage={loadNextPage}
         isNextPageLoading={isNextPageLoading}
         hasNextPage={hasNextPage}

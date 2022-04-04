@@ -1,11 +1,11 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { FixedSizeList } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
 import { SList } from "./styles/SList";
 
 interface IList<T> {
   dataSource: T[];
-  renderItem: (payload: T) => React.ReactNode;
+  renderItem: (payload: T, index?: number) => React.ReactNode;
   renderLoadingItem: () => React.ReactNode;
   itemSize: number;
   hasNextPage?: boolean;
@@ -15,7 +15,7 @@ interface IList<T> {
   loadNextPage?: (payload: any) => Promise<void>;
 }
 
-export const List = <T,>({ ...props }:IList<T>) => {
+export const List = forwardRef<any, IList<any>>(({ ...props }, forRef) => {
   // If there are more items to be loaded then add an extra row to hold a loading indicator.
   const itemCount = props.hasNextPage ? props.dataSource.length + 1 : props.dataSource.length;
   // Only load 1 page of items at a time.
@@ -30,28 +30,28 @@ export const List = <T,>({ ...props }:IList<T>) => {
     if (!isItemLoaded(index)) {
       content = props.renderLoadingItem();
     } else {
-      content = props.renderItem(props.dataSource[index]);
+      content = props.renderItem(props.dataSource[index], index);
     }
 
     return <div style={style}>{content}</div>;
   };
 
   return (
-      <SList className="scroll-container">
-        <InfiniteLoader isItemLoaded={isItemLoaded} itemCount={itemCount} loadMoreItems={loadMoreItems}>
-          {({ onItemsRendered, ref }) => (
-            <FixedSizeList
-              height={props.height}
-              itemCount={itemCount}
-              itemSize={props.itemSize}
-              onItemsRendered={onItemsRendered}
-              ref={ref}
-              width={props.width}
-            >
-              {Item}
-            </FixedSizeList>
-          )}
-        </InfiniteLoader>
-      </SList>
+    <SList className="scroll-container">
+      <InfiniteLoader isItemLoaded={isItemLoaded} itemCount={itemCount} loadMoreItems={loadMoreItems} ref={forRef}>
+        {({ onItemsRendered, ref }) => (
+          <FixedSizeList
+            height={props.height}
+            itemCount={itemCount}
+            itemSize={props.itemSize}
+            onItemsRendered={onItemsRendered}
+            ref={ref}
+            width={props.width}
+          >
+            {Item}
+          </FixedSizeList>
+        )}
+      </InfiniteLoader>
+    </SList>
   );
-};
+});

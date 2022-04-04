@@ -1,5 +1,5 @@
 import React from "react";
-import { IconChevronDown } from "../..";
+import { IconChevronDown } from "../../icons";
 import { ClickOutside, useDimensions } from "../../utils";
 import { Popover } from "../popover/Popover";
 import { SDropdownArrow } from "./styles/SDropdownArrow";

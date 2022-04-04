@@ -35,8 +35,7 @@ const Bronze = css`
     width: 20px;
     height: 20px;
   }
-  ${({ isChild, active }) =>
-    isChild &&
+  ${({ active }) =>
     css`
       ${CSSProgressiveBody03}
       padding-left: 40px;

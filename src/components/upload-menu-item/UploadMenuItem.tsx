@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "styled-components";
-import { IconCheckmarkSolid, IconUpload } from "../..";
+import { IconCheckmarkSolid, IconUpload } from "../../icons";
 import { Badge } from "../badge/Badge";
 import { EBadgePosition } from "../badge/EBadgePosition";
 import { SBadgeIcon } from "../badge/styles/SBadgeIcon";

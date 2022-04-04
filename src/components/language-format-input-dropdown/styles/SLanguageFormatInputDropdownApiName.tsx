@@ -6,7 +6,7 @@ import {
   MIN_PLATINUM,
   MIN_SILVER,
 } from "../../../constants/styles";
-import { SSolidLabel } from "../../solidLabel/styles/SSolidLabel";
+import { SSolidLabel } from "../../solid-label/styles/SSolidLabel";
 
 const Bronze = css`
   margin-left: auto;

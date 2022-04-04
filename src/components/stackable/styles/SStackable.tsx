@@ -1,25 +1,28 @@
 import styled, { css } from "styled-components";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
+import { IPlacement } from "../../poppable/Poppable";
 
-interface ISStackable {}
+interface ISStackable {
+  placement: IPlacement;
+}
 
 const Bronze = css<ISStackable>`
   position: absolute;
-
+  ${({ placement }) => placement?.name === "hidden" && "display: none"};
   &.vafter .poppable-triangle {
-      border-bottom-color: var(--triangle-color, black);
+    border-bottom-color: var(--triangle-color, black);
   }
 
   &.vbefore .poppable-triangle {
-      border-top-color: var(--triangle-color, black);
+    border-top-color: var(--triangle-color, black);
   }
 
   &.hbefore .poppable-triangle {
-      border-left-color: var(--triangle-color, black);
+    border-left-color: var(--triangle-color, black);
   }
 
   &.hafter .poppable-triangle {
-      border-right-color: var(--triangle-color, black);
+    border-right-color: var(--triangle-color, black);
   }
 `;
 

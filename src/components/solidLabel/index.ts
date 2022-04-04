@@ -1,1 +1,0 @@
-export { SolidLabel } from "./SolidLabel";
