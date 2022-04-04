@@ -96,8 +96,10 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
     if (!inputRef?.current?.value && placeholder) {
       (spanRef.current as HTMLSpanElement).innerText = placeholder;
-      width = (spanRef.current?.scrollWidth as number) + 1;
+      width = (spanRef.current?.scrollWidth as number) + 2;
     }
+
+    (inputRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
 
     setInputWidth(width);
 
@@ -150,7 +152,6 @@ export const SimpleInput: FC<ISimpleInput> = ({
               <SSimpleInputRequiredIndicator />
             )}
             <InputComponent
-              width={inputWidth}
               error={state === "error"}
               locked={state === "locked"}
               onChange={(e) => {
