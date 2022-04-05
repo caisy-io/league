@@ -197,7 +197,7 @@ export const Table: FC<ITable> = forwardRef(
           {RenderRow}
         </FixedSizeList>
       );
-    }, [rows, dataSource]);
+    }, [rows, dataSource, height, itemSize]);
 
     return (
       <STable ref={containerRef} style={style} {...getTableProps()}>
