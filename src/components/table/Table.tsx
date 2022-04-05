@@ -73,6 +73,7 @@ export const Table: FC<ITable> = forwardRef(
     const { height: headerHeight } = useDimensions(headerRef);
     const height = containerHeight - headerHeight;
 
+    console.log("table rendered");
     useEffect(() => {
       columns &&
         setColumns(
@@ -172,7 +173,7 @@ export const Table: FC<ITable> = forwardRef(
       debounce(() => triggerLoadMoreItems(), 160);
     };
 
-    const TableWithRows = memo(() => {
+    const TableWithRows = memo(({ rows, dataSource }: any) => {
       console.log("FixedSizeList");
       return (
         <FixedSizeList
@@ -225,7 +226,7 @@ export const Table: FC<ITable> = forwardRef(
           ) : dataSource?.length ? (
             <>
               {!!renderAsFirstRow && <div ref={firstRowRef}>{renderAsFirstRow}</div>}
-              <TableWithRows />
+              <TableWithRows rows={rows} dataSource={dataSource} />
             </>
           ) : empty ? (
             empty
