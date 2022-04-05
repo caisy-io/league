@@ -1,19 +1,26 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from "styled-components";
 import {
   MIN_SILVER,
   MIN_GOLD,
   MIN_PLATINUM,
   MIN_DIAMOND,
-  CSSProgressiveCaption01Semibold
-} from '../../../constants/styles';
+  CSSProgressiveCaption01Semibold,
+} from "../../../constants/styles";
 
 const CSSActiveState = css`
   background-color: var(--active-ui-01-1);
   border-radius: 6px;
   color: var(--icon-04);
-`
+`;
 
-const Bronze = css<{ active: boolean }>`
+const CSSDisabledState = css`
+  pointer-events: none;
+  background: none;
+  border-radius: 0;
+  color: var(--disabled-icon);
+`;
+
+const Bronze = css<{ active: boolean; disabled: boolean }>`
   height: 24px;
   padding: 0 4px;
   display: flex;
@@ -25,15 +32,16 @@ const Bronze = css<{ active: boolean }>`
   transition-duration: 300ms;
   transition-property: color, background-color;
   text-transform: capitalize;
-  
+
   svg {
     width: 16px;
     height: 16px;
   }
-  
+
   ${CSSProgressiveCaption01Semibold};
-  ${({active}) => active && CSSActiveState};
-  
+  ${({ active }) => active && CSSActiveState};
+  ${({ disabled }) => disabled && CSSDisabledState};
+
   :hover {
     ${CSSActiveState};
   }
@@ -54,4 +62,3 @@ export const SMicroTabSwitchItem = styled.div`
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
 `;
-
