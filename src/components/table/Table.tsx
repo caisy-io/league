@@ -120,6 +120,10 @@ export const Table: FC<ITable> = forwardRef(
       setGlobalFilter(globalFilter);
     }, [globalFilter]);
 
+    React.useEffect(() => {
+      console.log("rows");
+    }, [rows]);
+
     const RenderRow = memo(({ data, index, style }: any) => {
       console.log("rendered row");
       const row = data[index];
