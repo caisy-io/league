@@ -36,10 +36,10 @@ const Bronze = css<ITooltip>`
   &:after {
     content: "";
     position: absolute;
-    bottom: -18px;
-    left: -18px;
-    right: -18px;
-    top: -18px;
+    bottom: -8px;
+    left: -8px;
+    right: -8px;
+    top: -8px;
     z-index: -1;
   }
 
