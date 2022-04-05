@@ -1,4 +1,15 @@
-import React, { CSSProperties, FC, forwardRef, memo, ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  CSSProperties,
+  FC,
+  forwardRef,
+  memo,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { STable } from "./styles/STable";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
@@ -180,17 +191,8 @@ export const Table: FC<ITable> = memo(
         debounce(() => triggerLoadMoreItems(), 160);
       };
 
-      const TableWithRows = memo(({ rows, dataSource }: any) => {
-        console.log("FixedSizeList");
-
-        React.useEffect(() => {
-          console.log("TableWithRows ===> rows");
-        }, [rows]);
-
-        React.useEffect(() => {
-          console.log("TableWithRows ===> dataSource");
-        }, [rows]);
-
+      const TableWithRows = useMemo(() => {
+        console.log("%cTableWithRows", "color:red; font-size:20px");
         return (
           <FixedSizeList
             onScroll={onScroll}
@@ -205,7 +207,7 @@ export const Table: FC<ITable> = memo(
             {RenderRow}
           </FixedSizeList>
         );
-      });
+      }, [rows, dataSource]);
 
       return (
         <STable ref={containerRef} style={style} {...getTableProps()}>
@@ -242,7 +244,7 @@ export const Table: FC<ITable> = memo(
             ) : dataSource?.length ? (
               <>
                 {!!renderAsFirstRow && <div ref={firstRowRef}>{renderAsFirstRow}</div>}
-                <TableWithRows rows={rows} dataSource={dataSource} />
+                {TableWithRows}
               </>
             ) : empty ? (
               empty
