@@ -1,14 +1,4 @@
-import React, {
-  CSSProperties,
-  FC,
-  forwardRef,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { CSSProperties, FC, forwardRef, memo, ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { STable } from "./styles/STable";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
@@ -18,8 +8,8 @@ import { STbody } from "./styles/STbody";
 import { SThead } from "./styles/SThead";
 import { STableLoading } from "./styles/STableLoading";
 import { IconAngleDown, IconAngleUp } from "../../icons";
-import { FixedSizeList } from "react-window";
-import { Empty } from "../empty/Empty";
+import { FixedSizeList, areEqual } from "react-window";
+import { Empty } from "../empty";
 import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
 import { Spinner } from "../spinner";
@@ -129,39 +119,37 @@ export const Table: FC<ITable> = forwardRef(
       setGlobalFilter(globalFilter);
     }, [globalFilter]);
 
-    const RenderRow = useCallback(
-      ({ index, style }) => {
-        const row = rows[index];
-        if (row) {
-          prepareRow(row);
-          return (
-            <>
-              <STr
-                onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
-                key={index}
-                {...row.getRowProps({
-                  style: { ...style, rowStyle },
-                })}
-              >
-                {row.cells.map((cell, cellIndex) => {
-                  return (
-                    <STd
-                      key={cellIndex}
-                      style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
-                      {...cell.getCellProps()}
-                    >
-                      {cell.render("Cell")}
-                    </STd>
-                  );
-                })}
-              </STr>
-            </>
-          );
-        }
-        return null;
-      },
-      [prepareRow, rows],
-    );
+    const RenderRow = memo(({ data, index, style }: any) => {
+      console.log("rendered row");
+      const row = data[index];
+      if (row) {
+        prepareRow(row);
+        return (
+          <>
+            <STr
+              onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
+              key={index}
+              {...row.getRowProps({
+                style: { ...style, rowStyle },
+              })}
+            >
+              {row.cells.map((cell, cellIndex) => {
+                return (
+                  <STd
+                    key={cellIndex}
+                    style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
+                    {...cell.getCellProps()}
+                  >
+                    {cell.render("Cell")}
+                  </STd>
+                );
+              })}
+            </STr>
+          </>
+        );
+      }
+      return null;
+    }, areEqual);
 
     const triggerLoadMoreItems = () => {
       const table = bodyRef?.current;
@@ -184,7 +172,8 @@ export const Table: FC<ITable> = forwardRef(
       debounce(() => triggerLoadMoreItems(), 160);
     };
 
-    const TableWithRows = () => {
+    const TableWithRows = memo(() => {
+      console.log("FixedSizeList");
       return (
         <FixedSizeList
           onScroll={onScroll}
@@ -192,13 +181,14 @@ export const Table: FC<ITable> = forwardRef(
           className="league-table"
           height={height}
           itemSize={itemSize}
+          itemData={rows}
           itemCount={dataSource?.length || 0}
           ref={ref}
         >
           {RenderRow}
         </FixedSizeList>
       );
-    };
+    });
 
     return (
       <STable ref={containerRef} style={style} {...getTableProps()}>
