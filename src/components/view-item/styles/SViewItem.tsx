@@ -35,14 +35,14 @@ const Bronze = css`
     width: 20px;
     height: 20px;
   }
-  ${({ active }) =>
+  ${({ isChild, active }) =>
     css`
       ${CSSProgressiveBody03}
       padding-left: 40px;
       border-bottom: 1px solid;
       border-color: var(--hover-ui-01);
 
-      ${!active &&
+      ${((!active && isChild) || !isChild) &&
       css`
         &:not(:hover) {
           & div:last-child {
