@@ -138,7 +138,7 @@ export const Table: FC<ITable> = forwardRef(
           <>
             <STr
               onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
-              key={row.id}
+              key={`row-${row.id}`}
               {...row.getRowProps({
                 style: { ...style, rowStyle },
               })}
@@ -146,7 +146,7 @@ export const Table: FC<ITable> = forwardRef(
               {row.cells.map((cell, cellIndex) => {
                 return (
                   <STd
-                    key={cellIndex}
+                    key={`cell-${row.id}-${cellIndex}`}
                     style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
                     {...cell.getCellProps()}
                   >
