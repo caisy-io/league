@@ -93,7 +93,7 @@ export const SimpleDropdown: React.FC<ISimpleDropdown> = ({
           <Popover disableTriangle placement="bottom" reference={ref}>
             <SSimpleDropdownPopup popupWidth={width}>
               <div>
-                {dataSource.map((option) => (
+                {dataSource.map((option, index) => (
                   <div
                     key={option.key}
                     onClick={() => {
@@ -103,7 +103,7 @@ export const SimpleDropdown: React.FC<ISimpleDropdown> = ({
                     {renderItem ? (
                       renderItem(option)
                     ) : (
-                      <MenuListItem size="small">
+                      <MenuListItem size="small" isLast={index + 1 === dataSource.length}>
                         {option.iconOrFlag && <SSimpleDropdownPopupIcon>{option.iconOrFlag}</SSimpleDropdownPopupIcon>}
                         <p>{option.title}</p>
                       </MenuListItem>

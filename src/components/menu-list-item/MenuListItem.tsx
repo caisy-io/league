@@ -1,20 +1,28 @@
-import React from 'react';
-import { SMenuListItem } from './styles/SMenuListItem';
+import React from "react";
+import { SMenuListItem } from "./styles/SMenuListItem";
 
 export type IMenuListItemSize = "small" | "medium";
 
 export interface IMenuListItemProps {
-  size?: IMenuListItemSize,
-  disabled?: boolean,
-  activated?: boolean,
+  size?: IMenuListItemSize;
+  disabled?: boolean;
+  activated?: boolean;
   onClick?: (e: Event) => void;
-  children?
+  children?;
+  isLast?: boolean;
 }
 
-export const MenuListItem: React.FC<IMenuListItemProps> = ({ size, disabled, children,activated, onClick }) => {
+export const MenuListItem: React.FC<IMenuListItemProps> = ({
+  size,
+  disabled,
+  children,
+  activated,
+  onClick,
+  isLast,
+}) => {
   return (
-    <SMenuListItem size={size} disabled={disabled} onClick={onClick} activated={activated}>
+    <SMenuListItem size={size} disabled={disabled} onClick={onClick} activated={activated} isLast={isLast}>
       {children}
     </SMenuListItem>
-  )
-}
+  );
+};

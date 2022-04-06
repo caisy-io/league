@@ -17,7 +17,6 @@ const Bronze = css<{ active: boolean }>`
   user-select: none;
   display: flex;
   align-items: center;
-  width: fit-content;
   max-width: 100%;
   gap: 4px;
 
