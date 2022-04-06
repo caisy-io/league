@@ -1,5 +1,5 @@
-import React, { ReactNode, FC, useState, useRef } from "react";
-import { CSSOpenAnimation, STooltip } from "./styles/STooltip";
+import React, { ReactNode, FC, useState, useRef, useEffect } from "react";
+import { STooltip } from "./styles/STooltip";
 import { STooltipWrapper } from "./styles/STooltipWrapper";
 import { Popover, TPlacement } from "../../components/popover";
 
@@ -13,23 +13,7 @@ export interface ITooltip {
   delay?: number;
 }
 
-export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, disableTriangle, delay = 0 }) => {
-  const [open, setOpen] = useState(false);
-
-  let openDelayTimeout;
-
-  const handleMouseLeave = () => {
-    clearTimeout(openDelayTimeout);
-    setOpen(false);
-  };
-
-  const handleMouseEnter = () => {
-    clearTimeout(openDelayTimeout);
-    openDelayTimeout = setTimeout(() => {
-      setOpen(true);
-    }, delay);
-  };
-
+export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, delay = 0 }) => {
   const ref = useRef(null);
 
   const getBackgroundColor = () => {
@@ -42,27 +26,55 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, dis
     }
   };
 
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setShow(true);
+  }, [typeof window]);
+
+  const tooltipRef = useRef<HTMLDivElement>();
+
+  const setTooltipStyling = (opacity: string, pointerEvents: string, delay: string) => {
+    if (tooltipRef.current) {
+      tooltipRef.current.style.opacity = opacity;
+      tooltipRef.current.style.pointerEvents = pointerEvents;
+      tooltipRef.current.style.transitionDelay = delay;
+    }
+  };
+
+  const handleMouseEnter = () => {
+    setTooltipStyling("1", "auto", `${delay}ms`);
+  };
+
+  const handleMouseLeave = () => {
+    setTooltipStyling("0", "none", "0ms");
+  };
+
   return (
     <>
-      <STooltipWrapper
-        onClick={() => clearTimeout(openDelayTimeout)}
-        ref={ref}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      <STooltipWrapper onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={ref}>
         {children}
-        {open && (
-          <Popover
-            disableTriangle={disableTriangle}
-            triangleExtraCSS={CSSOpenAnimation}
-            trianglecolor={getBackgroundColor()}
-            placement={placement || "top"}
-            reference={ref}
-          >
-            <STooltip color={color}>{content}</STooltip>
-          </Popover>
-        )}
       </STooltipWrapper>
+      {show && (
+        <Popover
+          styleOverwrite={{ pointerEvents: "none" }}
+          disableTriangle
+          trianglecolor={getBackgroundColor()}
+          placement={placement || "top"}
+          reference={ref}
+        >
+          <STooltip
+            delay={delay}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            ref={tooltipRef}
+            color={color}
+          >
+            {content}
+          </STooltip>
+        </Popover>
+      )}
     </>
   );
 };

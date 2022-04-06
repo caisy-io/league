@@ -1,24 +1,12 @@
 import styled, { css } from "styled-components";
 import { CSSProgressiveCaption01Semibold } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { STooltipWrapper } from "./STooltipWrapper";
 
 interface ITooltip {
   animation: any;
   color: string;
 }
-
-export const CSSOpenAnimation = css`
-  animation: open 100ms ease-in-out;
-
-  @keyframes open {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-`;
 
 export const CSSTooltipBlack = css`
   background-color: var(--ui-overlay-02);
@@ -43,17 +31,20 @@ const Bronze = css<ITooltip>`
 
   box-shadow: var(--box-shadow-sticked-top-ui);
 
-  ${CSSOpenAnimation}
+  transition: opacity 150ms ease-in-out;
 
   &:after {
     content: "";
     position: absolute;
-    bottom: -18px;
-    left: -18px;
-    right: -18px;
-    top: -18px;
+    bottom: -8px;
+    left: -8px;
+    right: -8px;
+    top: -8px;
     z-index: -1;
   }
+
+  opacity: 0;
+  pointer-events: none;
 `;
 
 const Silver = css``;
