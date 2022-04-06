@@ -2,6 +2,7 @@ import React, {
   CSSProperties,
   FC,
   forwardRef,
+  memo,
   ReactNode,
   useCallback,
   useEffect,
@@ -18,8 +19,8 @@ import { STbody } from "./styles/STbody";
 import { SThead } from "./styles/SThead";
 import { STableLoading } from "./styles/STableLoading";
 import { IconAngleDown, IconAngleUp } from "../../icons";
-import { FixedSizeList } from "react-window";
-import { Empty } from "../empty/Empty";
+import { FixedSizeList, areEqual } from "react-window";
+import { Empty } from "../empty";
 import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
 import { Spinner } from "../spinner";
@@ -49,6 +50,7 @@ interface ITable {
   onHeaderClick?: (column: any) => Promise<void>;
   renderAsFirstRow?: JSX.Element;
   ref?: any;
+  empty?: ReactNode;
 }
 
 export const Table: FC<ITable> = forwardRef(
@@ -69,6 +71,7 @@ export const Table: FC<ITable> = forwardRef(
       onHeaderClick,
       columns,
       renderAsFirstRow,
+      empty,
     },
     ref,
   ) => {
@@ -127,39 +130,36 @@ export const Table: FC<ITable> = forwardRef(
       setGlobalFilter(globalFilter);
     }, [globalFilter]);
 
-    const RenderRow = useCallback(
-      ({ index, style }) => {
-        const row = rows[index];
-        if (row) {
-          prepareRow(row);
-          return (
-            <>
-              <STr
-                onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
-                key={index}
-                {...row.getRowProps({
-                  style: { ...style, rowStyle },
-                })}
-              >
-                {row.cells.map((cell, cellIndex) => {
-                  return (
-                    <STd
-                      key={cellIndex}
-                      style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
-                      {...cell.getCellProps()}
-                    >
-                      {cell.render("Cell")}
-                    </STd>
-                  );
-                })}
-              </STr>
-            </>
-          );
-        }
-        return null;
-      },
-      [prepareRow, rows],
-    );
+    const RenderRow = memo(({ data, index, style }: any) => {
+      const row = data[index];
+      if (row) {
+        prepareRow(row);
+        return (
+          <>
+            <STr
+              onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
+              key={index}
+              {...row.getRowProps({
+                style: { ...style, rowStyle },
+              })}
+            >
+              {row.cells.map((cell, cellIndex) => {
+                return (
+                  <STd
+                    key={cellIndex}
+                    style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
+                    {...cell.getCellProps()}
+                  >
+                    {cell.render("Cell")}
+                  </STd>
+                );
+              })}
+            </STr>
+          </>
+        );
+      }
+      return null;
+    }, areEqual);
 
     const triggerLoadMoreItems = () => {
       const table = bodyRef?.current;
@@ -174,7 +174,7 @@ export const Table: FC<ITable> = forwardRef(
     const onScroll = ({ scrollOffset }) => {
       if (!!firstRowRef?.current) {
         firstRowRef.current.style.transform = `translateY(-${scrollOffset * 2}px)`;
-        let height =
+        const height =
           scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
 
         firstRowRef.current.style.height = height + "px";
@@ -182,7 +182,7 @@ export const Table: FC<ITable> = forwardRef(
       debounce(() => triggerLoadMoreItems(), 160);
     };
 
-    const TableWithRows = () => {
+    const TableWithRows = useMemo(() => {
       return (
         <FixedSizeList
           onScroll={onScroll}
@@ -190,13 +190,14 @@ export const Table: FC<ITable> = forwardRef(
           className="league-table"
           height={height}
           itemSize={itemSize}
+          itemData={rows}
           itemCount={dataSource?.length || 0}
           ref={ref}
         >
           {RenderRow}
         </FixedSizeList>
       );
-    };
+    }, [rows, dataSource, height, itemSize]);
 
     return (
       <STable ref={containerRef} style={style} {...getTableProps()}>
@@ -233,8 +234,10 @@ export const Table: FC<ITable> = forwardRef(
           ) : dataSource?.length ? (
             <>
               {!!renderAsFirstRow && <div ref={firstRowRef}>{renderAsFirstRow}</div>}
-              <TableWithRows />
+              {TableWithRows}
             </>
+          ) : empty ? (
+            empty
           ) : (
             <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
           )}

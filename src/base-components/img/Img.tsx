@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import LazyLoad from "react-lazyload";
 import { SImg } from "./styles/SImg";
 
@@ -67,7 +67,7 @@ const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad, onEr
   );
 };
 
-export const Img = ({ lazyload = true, cover = true, ...props }: IImg) => {
+export const Img = memo(({ lazyload = true, cover = true, ...props }: IImg) => {
   if (lazyload) {
     return (
       <LazyLoad
@@ -81,4 +81,4 @@ export const Img = ({ lazyload = true, cover = true, ...props }: IImg) => {
   }
 
   return <ImgInner {...props} cover={cover} />;
-};
+});
