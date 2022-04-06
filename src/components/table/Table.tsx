@@ -138,7 +138,7 @@ export const Table: FC<ITable> = forwardRef(
           <>
             <STr
               onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
-              key={index}
+              key={row.id}
               {...row.getRowProps({
                 style: { ...style, rowStyle },
               })}
