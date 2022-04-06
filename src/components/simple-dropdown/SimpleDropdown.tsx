@@ -65,6 +65,7 @@ export const SimpleDropdown: React.FC<ISimpleDropdown> = ({
   const handleOnOptionClick = (option) => {
     onSelectValue?.(option);
     setSelectedOption(option);
+    closeDropDown();
   };
 
   const closeDropDown = () => {
