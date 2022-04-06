@@ -89,29 +89,30 @@ export const SimpleInput: FC<ISimpleInput> = ({
     [setActive, onBlur],
   );
 
-  const [inputWidth, setInputWidth] = useState<number | undefined>(undefined);
-
   const resizeInput = useCallback(() => {
     let width: number | undefined = undefined;
 
     if (!inputRef?.current?.value && placeholder) {
       (spanRef.current as HTMLSpanElement).innerText = placeholder;
-      width = (spanRef.current?.scrollWidth as number) + 1;
+      width = (spanRef.current?.scrollWidth as number) + 2;
     }
 
-    setInputWidth(width);
+    (inputRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
+    (requiredIndicatorRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
 
     if (multiline) {
       (inputRef.current as HTMLInputElement).style.height = "20px";
       (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
     }
-  }, [setInputWidth, placeholder, inputRef?.current?.value]);
+  }, [placeholder, inputRef?.current?.value]);
 
   useEffect(() => {
     resizeInput();
   }, [value, placeholder]);
 
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
+
+  const requiredIndicatorRef = useRef<HTMLDivElement>(null);
 
   return (
     <SSimpleInputWrapper
@@ -145,12 +146,11 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
           {translationBadge}
 
-          <SSimpleInputRequiredIndicatorContainer width={inputWidth}>
+          <SSimpleInputRequiredIndicatorContainer ref={requiredIndicatorRef}>
             {required && !inputRef?.current?.value && !label && (!errors || errors.length === 0) && (
               <SSimpleInputRequiredIndicator />
             )}
             <InputComponent
-              width={inputWidth}
               error={state === "error"}
               locked={state === "locked"}
               onChange={(e) => {
