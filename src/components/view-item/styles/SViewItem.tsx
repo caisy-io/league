@@ -38,7 +38,7 @@ const Bronze = css`
   ${({ isChild, active }) =>
     css`
       ${CSSProgressiveBody03}
-      padding-left: 40px;
+      padding-left: 20px;
       border-bottom: 1px solid;
       border-color: var(--hover-ui-01);
 
