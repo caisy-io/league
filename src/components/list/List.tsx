@@ -25,7 +25,7 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
 
   // Every row is loaded except for our loading indicator row.
   const isItemLoaded = (index) => !props.hasNextPage || index < props.dataSource.length;
-
+  // console.log(isItemLoaded());
   const Item = ({ index, style }) => {
     let content;
     if (!isItemLoaded(index)) {
@@ -36,10 +36,11 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
 
     return <div style={style}>{content}</div>;
   };
-  const [initialized, setInitialized] = React.useState(false);
+  const [loaded, setLoaded] = React.useState<number>(0);
   React.useEffect(() => {
-    initialized && (forRef as React.MutableRefObject<any>)?.current?._listRef.scrollToItem(scrollToIndex, "smart");
-  }, [forRef, scrollToIndex, initialized]);
+    isItemLoaded(loaded) &&
+      (forRef as React.MutableRefObject<any>)?.current?._listRef.scrollToItem(scrollToIndex, "smart");
+  }, [forRef, scrollToIndex, loaded]);
 
   return (
     <SList className="scroll-container">
@@ -51,7 +52,7 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
             itemSize={props.itemSize}
             onItemsRendered={(props) => {
               onItemsRendered(props);
-              setInitialized(true);
+              setLoaded(props.overscanStopIndex);
             }}
             ref={ref}
             width={props.width}
