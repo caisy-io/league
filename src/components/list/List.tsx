@@ -13,9 +13,10 @@ interface IList<T> {
   height: number;
   width?: number;
   loadNextPage?: (payload: any) => Promise<void>;
+  scrollToIndex?: number;
 }
 
-export const List = forwardRef<any, IList<any>>(({ ...props }, forRef) => {
+export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, forRef) => {
   // If there are more items to be loaded then add an extra row to hold a loading indicator.
   const itemCount = props.hasNextPage ? props.dataSource.length + 1 : props.dataSource.length;
   // Only load 1 page of items at a time.
@@ -35,6 +36,9 @@ export const List = forwardRef<any, IList<any>>(({ ...props }, forRef) => {
 
     return <div style={style}>{content}</div>;
   };
+  React.useEffect(() => {
+    (forRef as React.MutableRefObject<any>)?.current?._listRef.scrollToItem(scrollToIndex, "smart");
+  }, [forRef, scrollToIndex]);
 
   return (
     <SList className="scroll-container">
