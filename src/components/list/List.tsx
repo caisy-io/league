@@ -36,9 +36,10 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
 
     return <div style={style}>{content}</div>;
   };
+  const [initialized, setInitialized] = React.useState(false);
   React.useEffect(() => {
-    (forRef as React.MutableRefObject<any>)?.current?._listRef.scrollToItem(scrollToIndex, "smart");
-  }, [forRef, scrollToIndex]);
+    initialized && (forRef as React.MutableRefObject<any>)?.current?._listRef.scrollToItem(scrollToIndex, "smart");
+  }, [forRef, scrollToIndex, initialized]);
 
   return (
     <SList className="scroll-container">
@@ -48,7 +49,10 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
             height={props.height}
             itemCount={itemCount}
             itemSize={props.itemSize}
-            onItemsRendered={onItemsRendered}
+            onItemsRendered={(props) => {
+              onItemsRendered(props);
+              setInitialized(true);
+            }}
             ref={ref}
             width={props.width}
           >
