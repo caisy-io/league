@@ -46,7 +46,7 @@ const Bronze = css`
       css`
         &:not(:hover) {
           & div:last-child {
-            display: none;
+            visibility: hidden;
           }
         }
       `}
