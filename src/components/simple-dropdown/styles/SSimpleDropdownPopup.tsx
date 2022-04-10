@@ -15,7 +15,9 @@ const Bronze = css<{ popupWidth: number }>`
   ${SMenuListItem} {
     width: 100%;
 
+    padding: 0.75rem;
     p {
+      padding: 0.25rem 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
