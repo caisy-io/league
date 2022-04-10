@@ -123,3 +123,4 @@ export * from "./language-toggle-list-item";
 export * from "./micro-menu";
 export * from "./set-image-card";
 export * from "./avatar-input";
+export * from "./simple-dropdown";

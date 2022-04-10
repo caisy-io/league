@@ -21,9 +21,11 @@ const CSSDisabled = css`
   background-color: var(--ui-02);
   color: var(--disabled-text);
   cursor: auto;
+
   div,
   div:nth-of-type(2) {
     color: var(--disabled-text);
+
     svg {
       color: var(--disabled-text);
     }
@@ -55,16 +57,19 @@ const Bronze = css<IMenuListItemProps>`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+
   div {
     display: flex;
     align-items: center;
     gap: 15px;
     overflow: hidden;
+
     span {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     svg {
       min-width: 18px;
       min-height: 18px;
@@ -72,27 +77,35 @@ const Bronze = css<IMenuListItemProps>`
       max-height: 18px;
     }
   }
+
   div:nth-of-type(2) {
     ${CSSProgressiveCaption01Medium};
     line-height: 12px;
     color: var(--text-04);
+
     svg {
       color: var(--text-01);
     }
   }
+
   ${(props) => (props.size == "small" ? CSSSmall : "")};
   ${(props) => (props.size == "medium" ? CSSMedium : "")};
+
   &:hover {
     background-color: var(--hover-ui-01);
     cursor: pointer;
     ${(props) => (props.disabled ? CSSDisabled : "")};
   }
+
   &:active {
     background-color: var(--active-ui-01-1);
     ${(props) => (props.disabled ? CSSDisabled : "")};
   }
+
   ${(props) => props.activated && CSSActivated}
   ${(props) => (props.disabled ? CSSDisabled : "")};
+
+  ${({ isLast }) => isLast && "border-bottom: 0"};
 `;
 
 const Silver = css``;
