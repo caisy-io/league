@@ -21,7 +21,7 @@ export default {
   argTypes: {
     type: {
       description: "Changes the layout of the Empty component",
-      options: ["grid", "blueprint"],
+      options: ["grid", "blueprint", "tableSkeleton"],
       control: { type: "select" },
       table: {
         defaultValue: {
