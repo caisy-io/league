@@ -9,6 +9,7 @@ export const WithUseForm = <P extends IUseFormProps>(Wrapped: ComponentType<P> |
   const WithUseForm: FC<P & IUseFormProps> = (props) => {
     const formProps = useForm();
 
+    // @ts-ignore
     return <Wrapped {...(props as P)} formProps={formProps} />;
   };
 
