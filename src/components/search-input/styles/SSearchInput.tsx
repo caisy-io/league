@@ -1,6 +1,6 @@
-import styled, {css} from "styled-components";
-import {CSSProgressiveBody03} from "../../../constants/styles";
-import {MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND} from "../../../constants/styles";
+import styled, { css } from "styled-components";
+import { CSSProgressiveBody03 } from "../../../constants/styles";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
 const Bronze = css`
   outline: none;
@@ -9,7 +9,8 @@ const Bronze = css`
   background-color: transparent;
   color: var(--text-01);
   width: calc(100% - 40px);
-  
+  padding: 0;
+
   &::placeholder {
     color: var(--text-03);
   }
