@@ -46,7 +46,7 @@ const Bronze = css<ISEmpty>`
 
   ${({ type }) => type === "blueprint" && CSSBlueprint};
   ${({ type }) => type === "grid" && CSSGrid};
-  ${({ type }) => type === "table" && CSSTable};
+  ${({ type }) => type === "tableSkeleton" && CSSTable};
 `;
 
 const Silver = css<ISEmpty>``;

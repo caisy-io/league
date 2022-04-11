@@ -2,7 +2,14 @@ import React from "react";
 
 function EmptyTableRowsImage() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="916" height="640" fill="none" viewBox="0 0 916 640">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="916"
+      height="640"
+      fill="none"
+      viewBox="0 0 916 640"
+      preserveAspectRatio="xMidYMin meet"
+    >
       <path fill="#fff" d="M0 0H84V88H0z" transform="translate(48)"></path>
       <path fill="#E8EFF3" d="M48 87H132V88H48z"></path>
       <path fill="#E8EFF3" d="M68 28a8 8 0 018-8h32a8 8 0 018 8v32a8 8 0 01-8 8H76a8 8 0 01-8-8V28z"></path>
