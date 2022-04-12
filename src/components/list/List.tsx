@@ -53,8 +53,8 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
             height={props.height}
             itemCount={itemCount}
             itemSize={props.itemSize}
-            onItemsRendered={(props) => {
-              onItemsRendered(props);
+            onItemsRendered={(onItemsRenderedProps) => {
+              onItemsRendered(onItemsRenderedProps);
             }}
             ref={ref}
             width={props.width}
