@@ -4,6 +4,7 @@ import { Z_INDEX } from "../../../constants/styles/z-index-numbers";
 
 interface ISLayoutSiderWrapper {
   left: boolean;
+  styleOverwrite?: any;
 }
 
 const Bronze = css<ISLayoutSiderWrapper>`
@@ -11,7 +12,7 @@ const Bronze = css<ISLayoutSiderWrapper>`
   display: flex;
   order: ${(props) => (props.left ? 1 : 3)};
   z-index: ${Z_INDEX.LAYOUT_SIDER};
-  filter: drop-shadow(8px 0px 12px rgba(0, 0, 0, 0.04));
+  box-shadow: var(--box-shadow-left-sidebar);
 `;
 
 const Silver = css``;
@@ -22,10 +23,11 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLayoutSiderWrapper = styled.div`
+export const SLayoutSiderWrapper = styled.div<ISLayoutSiderWrapper>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({ styleOverwrite }) => styleOverwrite ?? ""};
 `;
