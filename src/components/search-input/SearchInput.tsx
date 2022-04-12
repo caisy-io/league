@@ -1,4 +1,4 @@
-import React, { useState, useRef, FC, useEffect } from "react";
+import React, { useState, useRef, FC, useEffect, CSSProperties } from "react";
 import SearchCloseIcon from "./SearchCloseIcon";
 import SearchFilterIcon from "./SearchFilterIcon";
 import SearchIcon from "./SearchIcon";
@@ -15,9 +15,19 @@ interface ISearchInput {
   withFilter?: boolean;
   onClickFilter?: () => void;
   autoFocus?: boolean;
+  styleOverwrite?: CSSProperties;
 }
 
-export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, onKeyPress, withFilter, onClickFilter, autoFocus }) => {
+export const SearchInput: FC<ISearchInput> = ({
+  placeholder,
+  onClose,
+  onChange,
+  onKeyPress,
+  withFilter,
+  onClickFilter,
+  autoFocus,
+  styleOverwrite,
+}) => {
   const [active, setActive] = useState(false);
   const [clickingFilter, setClickingFilter] = useState(false);
   const inputRef = useRef<HTMLInputElement>();
@@ -55,10 +65,10 @@ export const SearchInput: FC<ISearchInput> = ({ placeholder, onClose, onChange, 
 
   const handleKeyPress = (e) => {
     onKeyPress?.(e, handleClose);
-  }
+  };
 
   return (
-    <SSearchInputWrapper active={active} onClick={handleClick}>
+    <SSearchInputWrapper active={active} onClick={handleClick} styleOverwrite={styleOverwrite}>
       <SearchIcon />
       <SSearchInput
         ref={inputRef}

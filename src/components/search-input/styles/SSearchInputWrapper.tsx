@@ -23,6 +23,7 @@ const Bronze = css`
   transition: background-color 200ms, color 200ms, border 200ms;
   color: var(--text-03);
   text-align: left;
+
   &:hover {
     ${CSSHover}
   }
@@ -30,12 +31,13 @@ const Bronze = css`
   &:active {
     ${CSSActive}
   }
-  
-  svg{
+
+  svg {
     flex-shrink: 0;
   }
 
-  ${(props) => props.active && CSSActive}
+  ${({ active }) => active && CSSActive};
+  ${({ styleOverwrite }) => styleOverwrite && styleOverwrite};
 `;
 
 const Silver = css``;
