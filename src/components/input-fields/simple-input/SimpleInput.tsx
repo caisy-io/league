@@ -156,7 +156,6 @@ export const SimpleInput: FC<ISimpleInput> = ({
               onChange={(e) => {
                 onChange?.(e);
               }}
-              required={required}
               ref={inputRef}
               onFocus={handleFocus}
               onBlur={handleBlur}
