@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
 const loaded = css`
   opacity: 1;
@@ -17,6 +17,8 @@ const Bronze = css`
   height: 100%;
   opacity: 0;
   transition: opacity 0.8s ease;
+  line-height: 0;
+
   img {
     height: 100%;
     ${({ cover, contain }: ISImg) => (!contain && cover ? _cover : "")};
@@ -32,6 +34,7 @@ const Gold = css``;
 const Platinum = css``;
 
 const Diamond = css``;
+
 interface ISImg {
   loaded?: boolean;
   cover?: boolean;
