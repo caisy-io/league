@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import styled, { css } from "styled-components";
 import { ISizesWithDefault } from "../../../interfaces";
 import {
@@ -11,11 +12,13 @@ interface ISTab {
   size: ISizesWithDefault;
   activated: boolean;
   onlyIcon: boolean;
+  styleOverwrite: CSSProperties;
 }
 
 const CSSActivated = css`
   color: var(--text-01);
   background-color: var(--active-ui-01-1);
+
   path {
     stroke: var(--text-01);
   }
@@ -65,9 +68,11 @@ const Bronze = css<ISTab>`
   display: flex;
   align-items: center;
   gap: 8px;
+
   path {
     stroke: var(--text-04);
   }
+
   ${CSSProgressiveBody03Semibold};
 
   &:hover {
@@ -84,6 +89,8 @@ const Bronze = css<ISTab>`
   ${(props: ISTab) => getSizeStyling(props.size)};
 
   ${(props: ISTab) => props.onlyIcon && "padding: 4px;"}
+
+  ${({ styleOverwrite }) => (styleOverwrite ? styleOverwrite : "")};
 `;
 
 const Silver = css``;
