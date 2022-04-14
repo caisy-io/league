@@ -2,12 +2,12 @@ import React, { MouseEventHandler } from "react";
 import { CloseButton } from "../close-button";
 import { SSearchBarOperand } from "./styles/SSearchBarOperand";
 import { SSearchBarOperandWrapper } from "./styles/SSearchBarOperandWrapper";
-
 export interface ISearchBarOperandProps {
   activated?: boolean;
   closeable?: boolean;
   onClose?: (e: MouseEventHandler<HTMLDivElement>) => void;
   onClick?: (e: MouseEventHandler<HTMLDivElement>) => void;
+  styleOverwrite?: any; 
   children?;
 }
 
@@ -17,9 +17,10 @@ export const SearchBarOperand: React.FC<ISearchBarOperandProps> = ({
   activated,
   children,
   closeable = true,
+  styleOverwrite,
 }) => {
   return (
-    <SSearchBarOperandWrapper activated={activated} closeable={closeable}>
+    <SSearchBarOperandWrapper styleOverwrite={styleOverwrite} activated={activated} closeable={closeable}>
       <CloseButton onClose={onClose}>
         <SSearchBarOperand activated={activated} onClick={onClick}>
           {children}
