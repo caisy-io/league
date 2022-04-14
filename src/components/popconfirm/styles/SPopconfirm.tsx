@@ -3,6 +3,10 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 interface ISPopconfirm {}
 
+const CSSClosed = css`
+  display: none;
+`;
+
 const Bronze = css<ISPopconfirm>`
   background-color: var(--ui-01);
   padding: 16px;
@@ -10,6 +14,7 @@ const Bronze = css<ISPopconfirm>`
   width: max-content;
   z-index: 120;
   box-shadow: 0 10px 30px 0 rgba(89, 106, 122, 0.2);
+  ${({ opened }) => !opened && CSSClosed}
 `;
 
 const Silver = css``;
