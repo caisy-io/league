@@ -14,9 +14,6 @@ const Bronze = css`
   ${CSSProgressiveBody03Semibold}
   color: var(--text-01);
 
-  &:hover {
-    background-color: var(--active-ui-01-1);
-  }
   * {
     display: flex;
     align-items: center;
@@ -35,19 +32,22 @@ const Bronze = css`
     width: 20px;
     height: 20px;
   }
-  ${({ isChild, active }) =>
+  ${({ isChild, active, hover }) =>
     css`
       ${CSSProgressiveBody03}
       padding-left: 20px;
       border-bottom: 1px solid;
       border-color: var(--hover-ui-01);
 
-      ${((!active && isChild) || !isChild) &&
+      ${hover &&
       css`
-        &:not(:hover) {
-          & div:last-child {
-            visibility: hidden;
-          }
+        background-color: var(--active-ui-01-1);
+      `}
+      ${((!active && isChild) || !isChild) &&
+      !hover &&
+      css`
+        & div:last-child {
+          visibility: hidden;
         }
       `}
     `};

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { ISizesWithDefault } from "../../interfaces";
 import { STab } from "./styles/STab";
 
@@ -8,9 +8,10 @@ interface ITab {
   icon?: JSX.Element;
   value: string | number;
   onClick?: (value: string | number) => void;
+  styleOverwrite?: CSSProperties;
 }
 
-export const Tab: React.FC<ITab> = ({ size, activated, icon, onClick, value, ...props }) => {
+export const Tab: React.FC<ITab> = ({ size, activated, icon, onClick, value, styleOverwrite, ...props }) => {
   const onlyIcon = !!icon && !props.children;
 
   const handleClick = () => {
@@ -18,7 +19,7 @@ export const Tab: React.FC<ITab> = ({ size, activated, icon, onClick, value, ...
   };
 
   return (
-    <STab activated={activated} onlyIcon={onlyIcon} size={size} onClick={handleClick}>
+    <STab activated={activated} onlyIcon={onlyIcon} size={size} onClick={handleClick} styleOverwrite={styleOverwrite}>
       {icon && icon}
       {props.children}
     </STab>
