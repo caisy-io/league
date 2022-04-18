@@ -89,7 +89,7 @@ export const SearchInput: FC<ISearchInput> = ({
             <SearchFilterIcon />
           </SSearchIconWrapper>
         )}
-        {((inputRef.current?.value && inputRef.current?.value.length > 0) || active) && (
+        {inputRef.current?.value && inputRef.current?.value.length > 0 && (
           <SSearchIconWrapper onClick={handleClose}>
             <SearchCloseIcon />
           </SSearchIconWrapper>
