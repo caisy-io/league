@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useCallback } from "react";
 import { FixedSizeList } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
 import { SList } from "./styles/SList";
@@ -26,16 +26,16 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
   // Every row is loaded except for our loading indicator row.
   const isItemLoaded = (index) => !props.hasNextPage || index < props.dataSource.length;
   // console.log(isItemLoaded());
-  const Item = ({ index, style }) => {
+  const Item = useCallback(({ index, style, data }) => {
     let content;
     if (!isItemLoaded(index)) {
       content = props.renderLoadingItem();
     } else {
-      content = props.renderItem(props.dataSource[index], index);
+      content = props.renderItem(data[index], index);
     }
 
     return <div style={style}>{content}</div>;
-  };
+  }, []);
 
   React.useEffect(() => {
     if (Number.isInteger(scrollToIndex)) {
@@ -58,6 +58,7 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
             }}
             ref={ref}
             width={props.width}
+            itemData={props.dataSource}
           >
             {Item}
           </FixedSizeList>
