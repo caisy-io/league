@@ -1,5 +1,5 @@
 import React from "react";
-import {TranslationBadge} from "../TranslationBadge";
+import { TranslationBadge } from "../TranslationBadge";
 import { SimpleInput } from "./SimpleInput";
 import { IconStarOutlined } from "../../../icons";
 
@@ -9,10 +9,12 @@ function SimpleInputDemo({ ...args }) {
     setValue(e.target.value);
   };
 
+  const renderBadge = "Badge";
+  const renderButton = "Button";
 
   return (
     <SimpleInput
-      translationBadge={args.withTranslationBadge && <TranslationBadge countryCode={'de'}/>}
+      translationBadge={args.withTranslationBadge && <TranslationBadge countryCode={"de"} />}
       required={args.required}
       onChange={onChange}
       value={value}
@@ -25,6 +27,8 @@ function SimpleInputDemo({ ...args }) {
       state={args.state}
       type={args.type}
       multiline={args.multiline}
+      renderBadge={renderBadge}
+      renderButton={renderButton}
     />
   );
 }
@@ -74,7 +78,7 @@ Default.args = {
   required: true,
   withLeftIcon: false,
   withRightIcon: false,
-  multiline: false
+  multiline: false,
 };
 
 export const WithTranslationBadge = Template.bind({});

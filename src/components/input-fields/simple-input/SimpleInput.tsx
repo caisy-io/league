@@ -14,6 +14,7 @@ import { SSimpleInput, SSimpleInputMultiline } from "./styles/SSimpleInput";
 import { SSimpleInputIconWrapper } from "./styles/SSimpleInputIconWrapper";
 import { SSimpleInputInsideContainer } from "./styles/SSimpleInputInsideContainer";
 import { SSimpleInputOutsideContainer } from "./styles/SSimpleInputOutsideContainer";
+import { SSimpleInputRenderBadgeWrapper } from "./styles/SSimpleInputRenderBadgeWrapper";
 import { SSimpleInputRequiredIndicator } from "./styles/SSimpleInputRequiredIndicator";
 import { SSimpleInputRequiredIndicatorContainer } from "./styles/SSimpleInputRequiredIndicatorContainer";
 import { SSimpleInputRightWrapper } from "./styles/SSimpleInputRightIcon";
@@ -42,6 +43,8 @@ interface ISimpleInput {
   autoFocus?: boolean;
   type?: HTMLInputTypeAttribute;
   multiline?: boolean;
+  renderBadge?: string | ReactNode;
+  renderButton?: string | ReactNode;
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
@@ -62,9 +65,13 @@ export const SimpleInput: FC<ISimpleInput> = ({
   id,
   type = "text",
   multiline,
+  renderBadge,
+  renderButton,
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
+
+  const [, rerender] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>();
   const spanRef = useRef<HTMLSpanElement>();
@@ -95,6 +102,10 @@ export const SimpleInput: FC<ISimpleInput> = ({
     if (!inputRef?.current?.value && placeholder) {
       (spanRef.current as HTMLSpanElement).innerText = placeholder;
       width = (spanRef.current?.scrollWidth as number) + 2;
+    } else if (inputRef?.current?.value) {
+      (spanRef.current as HTMLSpanElement).innerText = inputRef.current.value;
+    } else {
+      (spanRef.current as HTMLSpanElement).innerText = "";
     }
 
     (inputRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
@@ -104,6 +115,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
       (inputRef.current as HTMLInputElement).style.height = "20px";
       (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
     }
+    rerender((prev) => !prev);
   }, [placeholder, inputRef?.current?.value]);
 
   useEffect(() => {
@@ -113,6 +125,11 @@ export const SimpleInput: FC<ISimpleInput> = ({
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
 
   const requiredIndicatorRef = useRef<HTMLDivElement>(null);
+
+  const testRef = useRef<HTMLDivElement>(null);
+
+  console.log(testRef.current?.scrollWidth);
+  console.log(spanRef.current?.scrollWidth);
 
   return (
     <SSimpleInputWrapper
@@ -135,7 +152,6 @@ export const SimpleInput: FC<ISimpleInput> = ({
               </SLabel>
             </SSimpleInputRequiredIndicatorContainer>
           )}
-
           {errors &&
             errors.map((error, index) => (
               <SErrorMessage key={index}>
@@ -143,10 +159,11 @@ export const SimpleInput: FC<ISimpleInput> = ({
                 {error}
               </SErrorMessage>
             ))}
-
           {translationBadge}
-
-          <SSimpleInputRequiredIndicatorContainer ref={requiredIndicatorRef}>
+          <SSimpleInputRequiredIndicatorContainer
+            style={{ display: "flex", alignItems: "center", gap: 8 }}
+            ref={requiredIndicatorRef}
+          >
             {required && !inputRef?.current?.value && !label && (!errors || errors.length === 0) && (
               <SSimpleInputRequiredIndicator />
             )}
@@ -165,8 +182,14 @@ export const SimpleInput: FC<ISimpleInput> = ({
               onKeyUp={onKeyUp}
               type={type}
             ></InputComponent>
+            {renderBadge && (
+              <SSimpleInputRenderBadgeWrapper left={spanRef.current?.scrollWidth} ref={testRef}>
+                {renderBadge}
+              </SSimpleInputRenderBadgeWrapper>
+            )}
           </SSimpleInputRequiredIndicatorContainer>
         </SSimpleInputInsideContainer>
+        {renderButton}
         <SSimpleInputRightWrapper>
           <SSimpleInputIconWrapper>{rightIcon}</SSimpleInputIconWrapper>
         </SSimpleInputRightWrapper>
