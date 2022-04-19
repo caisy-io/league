@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
 import { IconCog, IconSwitchArrows } from "../../icons";
 import { Badge, EBadgePosition } from "../badge";
@@ -30,6 +30,7 @@ export interface IOrganizationSelectListItemProps {
   onClickSwitchButton?: () => void;
   disabledSwitchButton?: boolean;
   active?: boolean;
+  switchText?: string | ReactNode;
 }
 
 const SFlexListItem = styled(SFlex)`
@@ -49,6 +50,7 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
   onClickSwitchButton,
   disabledSwitchButton,
   active,
+  switchText,
 }) => {
   return (
     <SOrganizationSelectListItem onClick={onClick} active={active}>
@@ -88,7 +90,7 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
               }}
             >
               <IconSwitchArrows size={16} />
-              Switch
+              {switchText || "Switch"}
             </FlatActionButton>
           </>
         )}
