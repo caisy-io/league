@@ -1,35 +1,39 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { SUploadsPopUp } from "./styles/SUploadsPopUp";
 import { SUploadsPopUpHeader, ButtonsWrapper, IconWrapper, BadgeWrapper } from "./styles/SUploadsPopUpHeader";
-import { PrimaryModalHeader } from "../primary-modal-header"
+import { PrimaryModalHeader } from "../primary-modal-header";
 import { FlatActionButton } from "../flat-action-button";
 import { IconClose, IconUpload } from "../../icons";
 import { Badge } from "../badge";
-import { EBadgePosition } from "../badge/EBadgePosition";
-
+import { EBadgePosition } from "../badge";
 
 interface IUploadsPopUp {
-  poupTitle: string;
+  poupTitle: string | ReactNode;
   onClose: () => any;
   badgeValue?: string | number;
+  ClearText?: string | ReactNode;
   onClear?: () => void;
 }
 
-export const UploadsPopUp: FC<IUploadsPopUp> = ({children, poupTitle, badgeValue, onClose, onClear}) => (
+export const UploadsPopUp: FC<IUploadsPopUp> = ({ children, poupTitle, badgeValue, onClose, onClear, ClearText }) => (
   <SUploadsPopUp>
     <SUploadsPopUpHeader>
-      <PrimaryModalHeader breadcrumbs={[{title: poupTitle, icon: <IconUpload size={24}/> }]}>
+      <PrimaryModalHeader breadcrumbs={[{ title: poupTitle, icon: <IconUpload size={24} /> }]}>
         <BadgeWrapper>
-          {badgeValue && <Badge type="regular" value={badgeValue.toString()} size="small" position={EBadgePosition.Center}/>}
+          {badgeValue && (
+            <Badge type="regular" value={badgeValue.toString()} size="small" position={EBadgePosition.Center} />
+          )}
         </BadgeWrapper>
         <ButtonsWrapper>
-          <FlatActionButton type="grey" onClick={onClear}>Clear</FlatActionButton>
-          <IconWrapper onClick={onClose}><IconClose size={24}/></IconWrapper>
+          <FlatActionButton type="grey" onClick={onClear}>
+            {ClearText || "Clear"}
+          </FlatActionButton>
+          <IconWrapper onClick={onClose}>
+            <IconClose size={24} />
+          </IconWrapper>
         </ButtonsWrapper>
       </PrimaryModalHeader>
     </SUploadsPopUpHeader>
-
     {children}
   </SUploadsPopUp>
 );
-
