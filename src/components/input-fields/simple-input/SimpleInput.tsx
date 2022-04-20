@@ -128,9 +128,6 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
   const testRef = useRef<HTMLDivElement>(null);
 
-  console.log(testRef.current?.scrollWidth);
-  console.log(spanRef.current?.scrollWidth);
-
   return (
     <SSimpleInputWrapper
       onMouseEnter={() => setHover(true)}
