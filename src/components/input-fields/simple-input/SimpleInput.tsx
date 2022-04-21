@@ -94,11 +94,14 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
     if (!inputRef?.current?.value && placeholder) {
       (spanRef.current as HTMLSpanElement).innerText = placeholder;
+      console.log("hopa1", spanRef.current);
+      console.log("hopa2", spanRef.current?.scrollWidth);
+
       width = (spanRef.current?.scrollWidth as number) + 2;
     }
 
-    (inputRef.current as HTMLInputElement).style.width = width && width > 2 ? `${width}px` : "100%";
-    (requiredIndicatorRef.current as HTMLInputElement).style.width = width && width > 2 ? `${width}px` : "100%";
+    (inputRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
+    (requiredIndicatorRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
 
     if (multiline) {
       (inputRef.current as HTMLInputElement).style.height = "20px";
@@ -108,7 +111,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
   useEffect(() => {
     resizeInput();
-  }, [value, placeholder]);
+  }, [value, placeholder, spanRef.current?.scrollWidth]);
 
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
 
