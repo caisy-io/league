@@ -97,8 +97,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
       width = (spanRef.current?.scrollWidth as number) + 2;
     }
 
-    (inputRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
-    (requiredIndicatorRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
+    (inputRef.current as HTMLInputElement).style.width = width && width > 2 ? `${width}px` : "100%";
+    (requiredIndicatorRef.current as HTMLInputElement).style.width = width && width > 2 ? `${width}px` : "100%";
 
     if (multiline) {
       (inputRef.current as HTMLInputElement).style.height = "20px";
@@ -164,7 +164,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
               disabled={disabled}
               onKeyUp={onKeyUp}
               type={type}
-            ></InputComponent>
+            />
           </SSimpleInputRequiredIndicatorContainer>
         </SSimpleInputInsideContainer>
         <SSimpleInputRightWrapper>
