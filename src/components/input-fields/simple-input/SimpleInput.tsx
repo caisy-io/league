@@ -8,6 +8,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useDimensions } from "../../../utils";
 import { SErrorMessage } from "../styles";
 import { SLabel } from "../styles";
 import { SSimpleInput, SSimpleInputMultiline } from "./styles/SSimpleInput";
@@ -68,6 +69,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
   const inputRef = useRef<HTMLInputElement>();
   const spanRef = useRef<HTMLSpanElement>();
+  const { width } = useDimensions(spanRef);
 
   const handleClick = useCallback(() => {
     inputRef.current?.focus();
@@ -88,23 +90,14 @@ export const SimpleInput: FC<ISimpleInput> = ({
     },
     [setActive, onBlur],
   );
-  console.log("Width before", spanRef.current?.getBoundingClientRect().width);
-  console.log("scrollWidth before", spanRef.current?.scrollWidth);
 
   const resizeInput = useCallback(() => {
-    let width: number | undefined = undefined;
+    // let width: number | undefined = undefined;
 
     if (!inputRef?.current?.value && placeholder) {
-      // (spanRef.current as HTMLSpanElement).innerText = placeholder;
-      (spanRef.current as HTMLSpanElement).textContent = placeholder;
-      // console.log((spanRef.current as HTMLSpanElement).textContent);
-      console.log("Width", spanRef.current?.getBoundingClientRect().width);
-      console.log("scrollWidth", spanRef.current?.scrollWidth);
-      width = (spanRef.current?.scrollWidth as number) + 2;
+      (spanRef.current as HTMLSpanElement).innerText = placeholder;
+      // width = (spanRef.current?.scrollWidth as number) + 2;
     }
-
-    (inputRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
-    (requiredIndicatorRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
 
     if (multiline) {
       (inputRef.current as HTMLInputElement).style.height = "20px";
@@ -113,7 +106,11 @@ export const SimpleInput: FC<ISimpleInput> = ({
   }, [placeholder, inputRef?.current?.value]);
 
   useEffect(() => {
-    console.log("run");
+    (inputRef.current as HTMLInputElement).style.width = width ? `${width + 2}px` : "100%";
+    (requiredIndicatorRef.current as HTMLInputElement).style.width = width ? `${width + 2}px` : "100%";
+  }, [width]);
+
+  useEffect(() => {
     resizeInput();
   }, [value, placeholder, spanRef.current?.scrollWidth]);
 
