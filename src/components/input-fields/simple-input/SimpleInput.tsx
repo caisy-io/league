@@ -93,7 +93,9 @@ export const SimpleInput: FC<ISimpleInput> = ({
     let width: number | undefined = undefined;
 
     if (!inputRef?.current?.value && placeholder) {
-      (spanRef.current as HTMLSpanElement).innerText = placeholder;
+      // (spanRef.current as HTMLSpanElement).innerText = placeholder;
+      (spanRef.current as HTMLSpanElement).textContent = placeholder;
+      console.log((spanRef.current as HTMLSpanElement).textContent);
       console.log("Width", spanRef.current?.getBoundingClientRect().width);
       console.log("scrollWidth", spanRef.current?.scrollWidth);
       width = (spanRef.current?.getBoundingClientRect().width as number) + 2;
