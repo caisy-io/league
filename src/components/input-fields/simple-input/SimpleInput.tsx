@@ -107,12 +107,15 @@ export const SimpleInput: FC<ISimpleInput> = ({
       (inputRef.current as HTMLInputElement).style.height = "20px";
       (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
     }
-  }, [placeholder, inputRef?.current?.value]);
+  }, [placeholder, inputRef?.current?.value, spanRef.current?.scrollWidth]);
 
   useEffect(() => {
     resizeInput();
   }, [value, placeholder, spanRef.current?.scrollWidth]);
 
+  React.useEffect(() => {
+    console.log("spanRef.current?.scrollWidth", spanRef.current?.scrollWidth);
+  }, [spanRef.current?.scrollWidth]);
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
 
   const requiredIndicatorRef = useRef<HTMLDivElement>(null);
