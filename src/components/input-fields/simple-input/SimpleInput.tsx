@@ -103,13 +103,14 @@ export const SimpleInput: FC<ISimpleInput> = ({
   }, [placeholder, inputRef?.current?.value]);
 
   useEffect(() => {
-    (inputRef.current as HTMLInputElement).style.width = width ? `${width + 2}px` : "100%";
-    (requiredIndicatorRef.current as HTMLInputElement).style.width = width ? `${width + 2}px` : "100%";
-  }, [width]);
+    if (value && (inputRef.current as HTMLInputElement).style.width === "100%") return;
+    (inputRef.current as HTMLInputElement).style.width = width && !value ? `${width + 2}px` : "100%";
+    (requiredIndicatorRef.current as HTMLInputElement).style.width = width && !value ? `${width + 2}px` : "100%";
+  }, [width, value]);
 
   useEffect(() => {
     resizeInput();
-  }, [value, placeholder]);
+  }, [placeholder]);
 
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
 
