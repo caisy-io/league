@@ -94,10 +94,9 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
     if (!inputRef?.current?.value && placeholder) {
       (spanRef.current as HTMLSpanElement).innerText = placeholder;
-      console.log("hopa1", spanRef.current);
-      console.log("hopa2", spanRef.current?.scrollWidth);
-
-      width = (spanRef.current?.scrollWidth as number) + 2;
+      console.log("Width", spanRef.current?.getBoundingClientRect().width);
+      console.log("scrollWidth", spanRef.current?.scrollWidth);
+      width = (spanRef.current?.getBoundingClientRect().width as number) + 2;
     }
 
     (inputRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
@@ -107,15 +106,12 @@ export const SimpleInput: FC<ISimpleInput> = ({
       (inputRef.current as HTMLInputElement).style.height = "20px";
       (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
     }
-  }, [placeholder, inputRef?.current?.value, spanRef.current?.scrollWidth]);
+  }, [placeholder, inputRef?.current?.value]);
 
   useEffect(() => {
     resizeInput();
-  }, [value, placeholder, spanRef.current?.scrollWidth]);
+  }, [value, placeholder]);
 
-  React.useEffect(() => {
-    console.log("spanRef.current?.scrollWidth", spanRef.current?.scrollWidth);
-  }, [spanRef.current?.scrollWidth]);
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
 
   const requiredIndicatorRef = useRef<HTMLDivElement>(null);
