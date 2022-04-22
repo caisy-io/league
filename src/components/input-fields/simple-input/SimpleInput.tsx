@@ -92,11 +92,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
   );
 
   const resizeInput = useCallback(() => {
-    // let width: number | undefined = undefined;
-
     if (!inputRef?.current?.value && placeholder) {
       (spanRef.current as HTMLSpanElement).innerText = placeholder;
-      // width = (spanRef.current?.scrollWidth as number) + 2;
     }
 
     if (multiline) {
@@ -112,7 +109,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
   useEffect(() => {
     resizeInput();
-  }, [value, placeholder, spanRef.current?.scrollWidth]);
+  }, [value, placeholder]);
 
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
 
