@@ -16,13 +16,15 @@ export const GSBase = createGlobalStyle`
   ${CSSFonts}
   ${CSSBoxShadows}
   ${Bronze}
-  body{ 
-      background-color: var(--ui-background);
-      color: var(--neutral-700);
+  body {
+    background-color: var(--ui-background);
+    color: var(--neutral-700);
+    overflow: hidden auto;
   }
-  :root{
+  
+  :root {
     font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 16px; 
+    font-size: 16px;
     font-weight: 400;
   }
 `;
