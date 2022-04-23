@@ -8,7 +8,7 @@ import { SBlockEditorSidebarStatusBadge } from "./styles/SBlockEditorSidebarStat
 import { SBlockEditorSidebarTabs } from "./styles/SBlockEditorSidebarTabs";
 
 interface IBlockEditorSidebarTab {
-  tab: string | ReactNode;
+  tab: string | ReactNode | JSX.Element;
   component: JSX.Element;
 }
 
