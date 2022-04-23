@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { LineTab } from "../line-tab";
 import { IconDocuments } from "../../icons";
 import { SBlockEditorSidebar } from "./styles/SBlockEditorSidebar";
@@ -8,7 +8,7 @@ import { SBlockEditorSidebarStatusBadge } from "./styles/SBlockEditorSidebarStat
 import { SBlockEditorSidebarTabs } from "./styles/SBlockEditorSidebarTabs";
 
 interface IBlockEditorSidebarTab {
-  tab: string;
+  tab: string | ReactNode;
   component: JSX.Element;
 }
 
@@ -17,15 +17,22 @@ interface IBlockEditorSidebar {
   tabs: IBlockEditorSidebarTab[];
   onTabClick: (tab: IBlockEditorSidebarTab) => void;
   selectedTab: IBlockEditorSidebarTab;
+  currentStatusText?: string | ReactNode;
 }
 
-export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({ status, tabs, onTabClick, selectedTab }) => {
+export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({
+  status,
+  tabs,
+  onTabClick,
+  selectedTab,
+  currentStatusText,
+}) => {
   return (
     <SBlockEditorSidebar>
       <SBlockEditorSidebarListItem>
         <SBlockEditorSidebarStatus>
           <IconDocuments size={16} />
-          CURRENT STATUS
+          {currentStatusText || "CURRENT STATUS"}
           <SBlockEditorSidebarStatusBadge status={status.toUpperCase()}>{status}</SBlockEditorSidebarStatusBadge>
         </SBlockEditorSidebarStatus>
       </SBlockEditorSidebarListItem>
