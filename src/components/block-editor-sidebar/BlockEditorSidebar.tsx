@@ -8,6 +8,7 @@ import { SBlockEditorSidebarStatusBadge } from "./styles/SBlockEditorSidebarStat
 import { SBlockEditorSidebarTabs } from "./styles/SBlockEditorSidebarTabs";
 
 interface IBlockEditorSidebarTab {
+  key: string;
   tab: string | ReactNode | JSX.Element;
   component: JSX.Element;
 }
@@ -41,7 +42,7 @@ export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({
           {tabs.map((tab, i) => (
             <LineTab
               key={`tab-${i}-${tab.tab}`}
-              activated={selectedTab?.tab === tab.tab}
+              activated={selectedTab?.key === tab.key}
               onClick={() => onTabClick(tab)}
             >
               {tab.tab}
