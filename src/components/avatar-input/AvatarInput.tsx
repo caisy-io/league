@@ -27,6 +27,9 @@ export const AvatarInput: React.FC<IAvatarInput> = ({
   children,
   avatarResolution = 48,
   onCancelUpload,
+  uploadImageText,
+  changeText,
+  deleteText,
 }) => {
   const {
     isLoading,
@@ -58,18 +61,18 @@ export const AvatarInput: React.FC<IAvatarInput> = ({
         <SAvatarInputButtonsWrapper>
           {!image && (
             <Button onClick={openImagePicker} type="primary" size="small">
-              {"upload image"}
+              {uploadImageText || "upload image"}
             </Button>
           )}
           {image && (
             <>
               <Button onClick={openImagePicker} type="neutral" size="small">
                 <IconEditImageAsset />
-                {"change"}
+                {changeText || "change"}
               </Button>
               <Button onClick={removeImage} type="danger" size="small">
                 <IconDelete />
-                {"delete"}
+                {deleteText || "delete"}
               </Button>
             </>
           )}
