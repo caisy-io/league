@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Img } from "../../base-components";
 import { IconDelete, IconEditImageAsset } from "../../icons";
 import { useFileUpload } from "../../utils/hooks/useFileUpload";
@@ -15,6 +15,9 @@ export interface IAvatarInput {
   processImage: (file: File) => Promise<string>;
   avatarResolution?: number;
   onCancelUpload?: () => void;
+  uploadImageText?: string | ReactNode;
+  changeText?: string | ReactNode;
+  deleteText?: string | ReactNode;
 }
 
 export const AvatarInput: React.FC<IAvatarInput> = ({
