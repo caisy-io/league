@@ -196,20 +196,18 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
     }
   }, [value]);
   const getCurrentTime = () => {
-    const date = new Date();
-    setHours(+date.getHours() >= 12 ? ((+date.getHours() - 12) as THourOptions) : (+date.getHours() as THourOptions));
-    setMinutes((Math.round(+date.getMinutes() / 5) * 5) as TMinutesOptions);
-    setIsAm(+date.getHours() < 12);
-    const currentDate = date;
-    const newDate = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth(),
-      currentDate.getDate(),
-      date.getHours(),
-      date.getMinutes(),
+    const newDate = new Date();
+    setHours(
+      +newDate.getHours() >= 12 ? ((+newDate.getHours() - 12) as THourOptions) : (+newDate.getHours() as THourOptions),
     );
-    setDate([newDate]);
-    onChange?.([newDate]);
+    const existDate = date[0];
+    existDate.setHours(newDate.getHours());
+    setMinutes((Math.round(+newDate.getMinutes() / 5) * 5) as TMinutesOptions);
+    existDate.setMinutes(minutes);
+    setIsAm(+newDate.getHours() < 12);
+
+    setDate([existDate]);
+    onChange?.([existDate]);
   };
   const reference = React.useRef(null);
   const flatRef = React.useRef<Flatpickr>();

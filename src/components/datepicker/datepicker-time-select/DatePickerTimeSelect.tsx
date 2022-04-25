@@ -5,10 +5,9 @@ import SDatePickerTimeIndicator from "./styles/SDatePickerTimeIndicator";
 import DatePickerTimePicker from "./DatePickerTimePicker";
 import usePicker from "../context/DatePickerContext";
 import SDatePickerTimePickerWrapper from "./styles/SDatePickerTimePickerWrapper";
-import {IconClock} from "../../../icons";
+import { IconClock } from "../../../icons";
 
-interface IDatePickerTimeSelect {
-}
+interface IDatePickerTimeSelect {}
 
 const DatePickerTimeSelect: React.FC<IDatePickerTimeSelect> = () => {
   const {
@@ -23,41 +22,41 @@ const DatePickerTimeSelect: React.FC<IDatePickerTimeSelect> = () => {
     minutesOptions,
     hoursOptions,
     onChange,
-    date
+    date,
   } = usePicker();
-  
+
   const openHours = (e) => {
     e.stopPropagation();
     setShowHours(true);
     setShowMinutes(false);
   };
-  
+
   const openMinutes = (e) => {
     e.stopPropagation();
     setShowMinutes(true);
     setShowHours(false);
   };
-  
+
   const onAmPmClick = (isAmNewValue: boolean) => {
     setIsAm(isAmNewValue);
     const newHours = isAmNewValue ? hours : hours + 12;
     const newMinutes = minutes;
-    const newDate = date && new Date(date[0].getFullYear(), date[0].getMonth(), date[0].getDate(), newHours, newMinutes);
+    const newDate =
+      date && new Date(date[0].getFullYear(), date[0].getMonth(), date[0].getDate(), newHours, newMinutes);
     newDate && onChange([newDate]);
   };
-  
-  
+
   return (
     <SDatePickerTimeSelect>
       <SDatePickerTimePickerWrapper>
-        <IconClock/>
+        <IconClock />
         <SDatePickerTimeIndicator onClick={openHours}>
-          <DatePickerTimePicker value="hours" show={showHours} options={hoursOptions}/>
+          <DatePickerTimePicker value="hours" show={showHours} options={hoursOptions} />
           {hours?.toString().length === 1 ? `${hours}` : `${hours}`}
         </SDatePickerTimeIndicator>
-        :
+        <SDatePickerTimeIndicator>:</SDatePickerTimeIndicator>
         <SDatePickerTimeIndicator onClick={openMinutes}>
-          <DatePickerTimePicker value="minutes" show={showMinutes} options={minutesOptions}/>
+          <DatePickerTimePicker value="minutes" show={showMinutes} options={minutesOptions} />
           {minutes?.toString().length === 1 ? `0${minutes}` : `${minutes}`}
         </SDatePickerTimeIndicator>
       </SDatePickerTimePickerWrapper>
