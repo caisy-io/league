@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Button } from "../button/Button";
 import { SProgressBar } from "./styles/SProgressBar";
 import { SUploadProgressBar } from "./styles/SUploadProgressBar";
@@ -9,9 +9,15 @@ export interface IUploadProgressBar {
   progress: number;
   uploadName: string;
   onCancel?: () => void;
+  cancelText?: string | ReactNode;
 }
 
-export const UploadProgressBar: React.FC<IUploadProgressBar> = ({ progress, uploadName, onCancel = () => {} }) => {
+export const UploadProgressBar: React.FC<IUploadProgressBar> = ({
+  progress,
+  uploadName,
+  onCancel = () => {},
+  cancelText,
+}) => {
   const handleCancel = (e) => {
     e.preventDefault();
     onCancel?.();
@@ -23,7 +29,7 @@ export const UploadProgressBar: React.FC<IUploadProgressBar> = ({ progress, uplo
       <SUploadProgressBarLabel>{progress}%</SUploadProgressBarLabel>
       <SProgressBar progress={progress} />
       <Button onClick={handleCancel} type="neutral">
-        CANCEL
+        {cancelText || "CANCEL"}
       </Button>
     </SUploadProgressBar>
   );
