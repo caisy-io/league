@@ -1,7 +1,7 @@
-import React, {ReactNode, useEffect, useState} from "react";
-import {LineTab} from "../line-tab";
-import {SLineTabPanel} from "./styles/SLineTabPanel";
-import {SLineTabs} from "./styles/SLineTabs";
+import React, { ReactNode, useEffect, useState } from "react";
+import { LineTab } from "../line-tab";
+import { SLineTabPanel } from "./styles/SLineTabPanel";
+import { SLineTabs } from "./styles/SLineTabs";
 
 interface ILineTabs {
   initialValue: number;
@@ -14,22 +14,22 @@ interface ILineTabs {
 }
 
 export const LineTabs: React.FC<ILineTabs> = ({
-                                                children,
-                                                initialValue,
-                                                loading,
-                                                loadingComponent,
-                                                onChange,
-                                                reference,
-                                                style,
-                                                tabsStyle
-                                              }) => {
+  children,
+  initialValue,
+  loading,
+  loadingComponent,
+  onChange,
+  reference,
+  style,
+  tabsStyle,
+}) => {
   const [selected, setSelected] = useState(initialValue);
-  
+
   useEffect(() => {
     setSelected(initialValue);
     onChange?.(initialValue);
   }, [initialValue]);
-  
+
   return (
     <SLineTabs style={style} ref={reference}>
       <ul style={tabsStyle}>
@@ -50,19 +50,20 @@ export const LineTabs: React.FC<ILineTabs> = ({
         })}
       </ul>
       {loading ? (
-          loadingComponent ? (
-            loadingComponent
-          ) : (
-            <div>Loading...</div>
-          )
-        ) :
-        React.Children.map(children, (child, i) => (i === selected ? child : null))}
+        loadingComponent ? (
+          loadingComponent
+        ) : (
+          <div>Loading...</div>
+        )
+      ) : (
+        React.Children.map(children, (child, i) => (i === selected ? child : null))
+      )}
     </SLineTabs>
   );
 };
 
 interface ILineTabPanel {
-  tabTitle: string;
+  tabTitle: string | ReactNode;
   style?: React.CSSProperties;
   icon?: ReactNode;
 }

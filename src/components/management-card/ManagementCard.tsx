@@ -1,11 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { SManagementBlockTitle } from "./styles/SManagementBlockTitle";
 import { SManagementCard } from "./styles/SManagementCard";
 import { SManagementIconLabelWrapper } from "./styles/SManagementIconLabelWrapper";
 import { SManagementIconWrapper } from "./styles/SManagementIconWrapper";
 
 interface IManagementCard {
-  label?: string;
+  label?: string | ReactNode;
   icon?: React.ReactNode;
   button?: React.ReactNode;
   children?: React.ReactNode;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { SPopconfirm } from "./styles/SPopconfirm";
 import { SPopconfirmWrapper } from "./styles/SPopconfirmWrapper";
 import { SPopconfirmTitle } from "./styles/SPopconfirmTitle";
@@ -13,8 +13,8 @@ interface IPopconfirm {
   onCancel?: (() => any) | ((e: any) => any);
   placement?: TPlacement | undefined;
   icon?: React.FC;
-  okText?: string;
-  cancelText?: string;
+  okText?: string | ReactNode;
+  cancelText?: string | ReactNode;
   wrapperStyle?: React.CSSProperties;
   container?: React.MutableRefObject<null>;
 }

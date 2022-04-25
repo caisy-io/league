@@ -11,7 +11,7 @@ import { SSimpleDropdownPopupIcon } from "./styles/SSimpleDropdownPopupIcon";
 import { SSimpleDropdownTitleAndIcon } from "./styles/SSimpleDropdownTitleAndIcon";
 
 export interface IDataSourceItem {
-  title: string;
+  title: string | ReactNode;
   key: string;
   data?: any;
   iconOrFlag?: ReactNode;

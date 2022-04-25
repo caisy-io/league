@@ -1,10 +1,12 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
-import { CSSScrollbar } from "./CSSScrollbar";
 
 const Bronze = css`
-  overflow-y: auto;
-  ${CSSScrollbar};
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  z-index: 1000;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.2));
 `;
 
 const Silver = css``;
@@ -15,7 +17,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SScrollbar = styled.div`
+export const SOrganizationSelectMenuItemOrganization = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
