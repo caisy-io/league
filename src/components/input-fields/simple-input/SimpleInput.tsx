@@ -69,7 +69,9 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
   const inputRef = useRef<HTMLInputElement>();
   const spanRef = useRef<HTMLSpanElement>();
-  const { width } = useDimensions(spanRef);
+  const requiredIndicatorRef = useRef<HTMLDivElement>();
+  const { width: spanWidth } = useDimensions(spanRef);
+  const { width: inputContainerWidth } = useDimensions(requiredIndicatorRef);
 
   const handleClick = useCallback(() => {
     inputRef.current?.focus();
@@ -103,8 +105,6 @@ export const SimpleInput: FC<ISimpleInput> = ({
   }, [inputRef?.current?.value]);
 
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
-
-  const requiredIndicatorRef = useRef<HTMLDivElement>(null);
 
   return (
     <SSimpleInputWrapper
@@ -142,7 +142,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
             {required && !inputRef?.current?.value && !label && (!errors || errors.length === 0) && (
               <SSimpleInputRequiredIndicator
                 style={{
-                  left: width ? `${width + 2}px` : "100%",
+                  left: spanWidth < inputContainerWidth ? `${spanWidth + 2}px` : "100%",
                 }}
               />
             )}
