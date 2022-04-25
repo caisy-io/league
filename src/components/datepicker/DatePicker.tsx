@@ -203,7 +203,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
     const existDate = date[0];
     existDate.setHours(newDate.getHours());
     setMinutes((Math.round(+newDate.getMinutes() / 5) * 5) as TMinutesOptions);
-    existDate.setMinutes(minutes);
+    existDate.setMinutes(newDate.getMinutes());
     setIsAm(+newDate.getHours() < 12);
 
     setDate([existDate]);
