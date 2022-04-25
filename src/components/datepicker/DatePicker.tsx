@@ -178,6 +178,14 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   React.useEffect(() => {
     if (value) {
       setDate(value);
+      setHours(
+        +value[0].getHours() >= 12
+          ? ((+value[0].getHours() - 12) as THourOptions)
+          : (+value[0].getHours() as THourOptions),
+      );
+      setMinutes((Math.round(+value[0].getMinutes() / 5) * 5) as TMinutesOptions);
+      setIsAm(+value[0].getHours() < 12);
+
       if (value?.filter((el) => el).length) {
         setCalendarMonth(dayjs(value[0]).format("MMMM"));
         setCalendarYear(dayjs(value[0]).format("YYYY"));
@@ -187,7 +195,6 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
       }
     }
   }, [value]);
-
   const getCurrentTime = () => {
     const date = new Date();
     setHours(+date.getHours() >= 12 ? ((+date.getHours() - 12) as THourOptions) : (+date.getHours() as THourOptions));
