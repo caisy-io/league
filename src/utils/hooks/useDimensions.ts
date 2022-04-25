@@ -14,18 +14,24 @@
  * limitations under the License.
  */
 
- import {useState, useRef, useEffect} from 'react';
-import { readResizeObserverEntry } from '../rect';
- 
- export const useDimensions = ref => {
-     const [dimensions, setDimensions] = useState({width: 0, height: 0});
-     const observer = useRef(new ResizeObserver(entries => {
-         setDimensions(readResizeObserverEntry(entries[0]));
-     }));
-     useEffect(() => {
-         const {current: obs} = observer;
-         obs.observe(ref.current);
-         return () => obs.disconnect();
-     }, [ref]);
-     return dimensions;
- };
+import { useState, useRef, useEffect } from "react";
+import { readResizeObserverEntry } from "../rect";
+
+export const useDimensions = (ref) => {
+  if (typeof window === "undefined") {
+    return { width: 0, height: 0 };
+  }
+
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const observer = useRef(
+    new ResizeObserver((entries) => {
+      setDimensions(readResizeObserverEntry(entries[0]));
+    }),
+  );
+  useEffect(() => {
+    const { current: obs } = observer;
+    obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [ref]);
+  return dimensions;
+};
