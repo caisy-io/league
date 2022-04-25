@@ -69,7 +69,9 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
   const inputRef = useRef<HTMLInputElement>();
   const spanRef = useRef<HTMLSpanElement>();
-  const { width } = useDimensions(spanRef);
+  const requiredIndicatorRef = useRef<HTMLDivElement>();
+  const { width: spanWidth } = useDimensions(spanRef);
+  const { width: inputContainerWidth } = useDimensions(requiredIndicatorRef);
 
   const handleClick = useCallback(() => {
     inputRef.current?.focus();
@@ -92,19 +94,26 @@ export const SimpleInput: FC<ISimpleInput> = ({
   );
 
   const resizeInput = useCallback(() => {
-    if (multiline) {
-      (inputRef.current as HTMLInputElement).style.height = "20px";
-      (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
-    }
+    (inputRef.current as HTMLInputElement).style.height = "20px";
+    (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
   }, [inputRef?.current?.value]);
 
   useEffect(() => {
-    resizeInput();
+    if (multiline) {
+      resizeInput();
+    }
   }, [inputRef?.current?.value]);
 
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
 
-  const requiredIndicatorRef = useRef<HTMLDivElement>(null);
+  const [showPlaceholderIndicator, setShowPlaceholderIndicator] = React.useState(false);
+  React.useEffect(() => {
+    if (required && !inputRef?.current?.value && !label && (!errors || errors.length === 0)) {
+      setShowPlaceholderIndicator(true);
+    } else {
+      setShowPlaceholderIndicator(false);
+    }
+  }, [inputRef?.current?.value, errors]);
 
   return (
     <SSimpleInputWrapper
@@ -139,10 +148,10 @@ export const SimpleInput: FC<ISimpleInput> = ({
           {translationBadge}
 
           <SSimpleInputRequiredIndicatorContainer ref={requiredIndicatorRef}>
-            {required && !inputRef?.current?.value && !label && (!errors || errors.length === 0) && (
+            {showPlaceholderIndicator && (
               <SSimpleInputRequiredIndicator
                 style={{
-                  left: width ? `${width + 2}px` : "100%",
+                  left: spanWidth < inputContainerWidth ? `${spanWidth + 2}px` : "100%",
                 }}
               />
             )}
