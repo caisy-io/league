@@ -25,13 +25,15 @@ const Bronze = css`
   font-weight: 500;
   line-height: 20px;
   color: var(--text-01);
+  width: 100%;
 
   ${(props) => props.locked && CSSLocked}
-
   &::placeholder {
     color: var(--text-03);
   }
+
   /* Chrome, Safari, Edge, Opera */
+
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -39,6 +41,7 @@ const Bronze = css`
   }
 
   /* Firefox */
+
   &[type="number"] {
     -moz-appearance: textfield;
   }

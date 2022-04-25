@@ -8,6 +8,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useDimensions } from "../../../utils";
 import { SErrorMessage } from "../styles";
 import { SLabel } from "../styles";
 import { SSimpleInput, SSimpleInputMultiline } from "./styles/SSimpleInput";
@@ -68,6 +69,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
   const inputRef = useRef<HTMLInputElement>();
   const spanRef = useRef<HTMLSpanElement>();
+  const { width } = useDimensions(spanRef);
 
   const handleClick = useCallback(() => {
     inputRef.current?.focus();
@@ -90,25 +92,15 @@ export const SimpleInput: FC<ISimpleInput> = ({
   );
 
   const resizeInput = useCallback(() => {
-    let width: number | undefined = undefined;
-
-    if (!inputRef?.current?.value && placeholder) {
-      (spanRef.current as HTMLSpanElement).innerText = placeholder;
-      width = (spanRef.current?.scrollWidth as number) + 2;
-    }
-
-    (inputRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
-    (requiredIndicatorRef.current as HTMLInputElement).style.width = width ? `${width}px` : "100%";
-
     if (multiline) {
       (inputRef.current as HTMLInputElement).style.height = "20px";
       (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
     }
-  }, [placeholder, inputRef?.current?.value]);
+  }, [inputRef?.current?.value]);
 
   useEffect(() => {
     resizeInput();
-  }, [value, placeholder]);
+  }, [inputRef?.current?.value]);
 
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
 
@@ -126,7 +118,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
       <SSimpleInputOutsideContainer>
         <SSimpleInputIconWrapper>{leftIcon}</SSimpleInputIconWrapper>
         <SSimpleInputInsideContainer>
-          <SSimpleInputTextWidth ref={spanRef} />
+          <SSimpleInputTextWidth ref={spanRef}>{placeholder ? placeholder : ""}</SSimpleInputTextWidth>
           {label && (
             <SSimpleInputRequiredIndicatorContainer withLabel={true}>
               {required && <SSimpleInputRequiredIndicator />}
@@ -148,7 +140,11 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
           <SSimpleInputRequiredIndicatorContainer ref={requiredIndicatorRef}>
             {required && !inputRef?.current?.value && !label && (!errors || errors.length === 0) && (
-              <SSimpleInputRequiredIndicator />
+              <SSimpleInputRequiredIndicator
+                style={{
+                  left: width ? `${width + 2}px` : "100%",
+                }}
+              />
             )}
             <InputComponent
               error={state === "error"}
@@ -164,7 +160,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
               disabled={disabled}
               onKeyUp={onKeyUp}
               type={type}
-            ></InputComponent>
+            />
           </SSimpleInputRequiredIndicatorContainer>
         </SSimpleInputInsideContainer>
         <SSimpleInputRightWrapper>
