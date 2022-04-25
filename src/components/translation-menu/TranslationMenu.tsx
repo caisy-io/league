@@ -1,13 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { Collapsible } from "../collapsible";
 import { MenuDnd } from "../menu-dnd";
 import { IconChevronRight } from "../../icons";
 import { STranslationMenu } from "./styles/STranslationMenu";
 import { STranslationMenuHeader } from "./styles/STranslationMenuHeader";
-import {
-  ILanguageToggleListItemLocale,
-  LanguageToggleListItem,
-} from "../language-toggle-list-item";
+import { ILanguageToggleListItemLocale, LanguageToggleListItem } from "../language-toggle-list-item";
 import { STranslationMenuHeaderIconWrapper } from "./styles/STranslationMenuHeaderIconWrapper";
 
 export interface ITranslationMenu {
@@ -15,9 +12,16 @@ export interface ITranslationMenu {
   locales: ILanguageToggleListItemLocale[];
   onToggleOpened: (newOpened: boolean) => void;
   onLocalesChange: (newLocales: ILanguageToggleListItemLocale[]) => void;
+  translationsText?: string | ReactNode;
 }
 
-export const TranslationMenu: FC<ITranslationMenu> = ({ locales, opened, onToggleOpened, onLocalesChange }) => {
+export const TranslationMenu: FC<ITranslationMenu> = ({
+  locales,
+  opened,
+  onToggleOpened,
+  onLocalesChange,
+  translationsText,
+}) => {
   const onDrop = (fromIndex: number, toIndex: number) => {
     const newLocales = locales.slice();
     newLocales.splice(toIndex, 0, newLocales.splice(fromIndex, 1)[0]);
@@ -39,7 +43,7 @@ export const TranslationMenu: FC<ITranslationMenu> = ({ locales, opened, onToggl
         <STranslationMenuHeaderIconWrapper opened={opened}>
           <IconChevronRight size={20} />
         </STranslationMenuHeaderIconWrapper>
-        Translations
+        {translationsText || "Translations"}
       </STranslationMenuHeader>
       <Collapsible expanded={opened}>
         <MenuDnd onDrop={onDrop}>
