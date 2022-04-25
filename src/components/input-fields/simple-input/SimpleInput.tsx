@@ -92,25 +92,15 @@ export const SimpleInput: FC<ISimpleInput> = ({
   );
 
   const resizeInput = useCallback(() => {
-    if (!inputRef?.current?.value && placeholder) {
-      (spanRef.current as HTMLSpanElement).innerText = placeholder;
-    }
-
     if (multiline) {
       (inputRef.current as HTMLInputElement).style.height = "20px";
       (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
     }
-  }, [placeholder, inputRef?.current?.value]);
-
-  useEffect(() => {
-    if (value && (inputRef.current as HTMLInputElement).style.width === "100%") return;
-    (inputRef.current as HTMLInputElement).style.width = width && !value ? `${width + 2}px` : "100%";
-    (requiredIndicatorRef.current as HTMLInputElement).style.width = width && !value ? `${width + 2}px` : "100%";
-  }, [width, value]);
+  }, [inputRef?.current?.value]);
 
   useEffect(() => {
     resizeInput();
-  }, [placeholder]);
+  }, [inputRef?.current?.value]);
 
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
 
@@ -128,7 +118,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
       <SSimpleInputOutsideContainer>
         <SSimpleInputIconWrapper>{leftIcon}</SSimpleInputIconWrapper>
         <SSimpleInputInsideContainer>
-          <SSimpleInputTextWidth ref={spanRef} />
+          <SSimpleInputTextWidth ref={spanRef}>{placeholder ? placeholder : ""}</SSimpleInputTextWidth>
           {label && (
             <SSimpleInputRequiredIndicatorContainer withLabel={true}>
               {required && <SSimpleInputRequiredIndicator />}
@@ -150,7 +140,11 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
           <SSimpleInputRequiredIndicatorContainer ref={requiredIndicatorRef}>
             {required && !inputRef?.current?.value && !label && (!errors || errors.length === 0) && (
-              <SSimpleInputRequiredIndicator />
+              <SSimpleInputRequiredIndicator
+                style={{
+                  left: width ? `${width + 2}px` : "100%",
+                }}
+              />
             )}
             <InputComponent
               error={state === "error"}
