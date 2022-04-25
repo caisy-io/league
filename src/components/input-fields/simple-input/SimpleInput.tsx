@@ -94,17 +94,26 @@ export const SimpleInput: FC<ISimpleInput> = ({
   );
 
   const resizeInput = useCallback(() => {
-    if (multiline) {
-      (inputRef.current as HTMLInputElement).style.height = "20px";
-      (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
-    }
+    (inputRef.current as HTMLInputElement).style.height = "20px";
+    (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
   }, [inputRef?.current?.value]);
 
   useEffect(() => {
-    resizeInput();
+    if (multiline) {
+      resizeInput();
+    }
   }, [inputRef?.current?.value]);
 
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
+
+  const [showPlaceholderIndicator, setShowPlaceholderIndicator] = React.useState(false);
+  React.useEffect(() => {
+    if (required && !inputRef?.current?.value && !label && (!errors || errors.length === 0)) {
+      setShowPlaceholderIndicator(true);
+    } else {
+      setShowPlaceholderIndicator(false);
+    }
+  }, [inputRef?.current?.value, errors]);
 
   return (
     <SSimpleInputWrapper
@@ -139,7 +148,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
           {translationBadge}
 
           <SSimpleInputRequiredIndicatorContainer ref={requiredIndicatorRef}>
-            {required && !inputRef?.current?.value && !label && (!errors || errors.length === 0) && (
+            {showPlaceholderIndicator && (
               <SSimpleInputRequiredIndicator
                 style={{
                   left: spanWidth < inputContainerWidth ? `${spanWidth + 2}px` : "100%",
