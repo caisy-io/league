@@ -179,15 +179,14 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
     if (value) {
       console.log(`React.useEffect value`, { value });
       setDate(value);
-      if (value[0] && !isNaN(new Date(value[0]).valueOf())) {
-        console.log(+value[0].getHours());
-        setHours(
-          +value[0].getHours() >= 12
-            ? ((+value[0].getHours() - 12) as THourOptions)
-            : (+value[0].getHours() as THourOptions),
-        );
-        setMinutes((Math.round(+value[0].getMinutes() / 5) * 5) as TMinutesOptions);
-        setIsAm(+value[0].getHours() < 12);
+
+      if (value[0]) {
+        const newDate = new Date(value[0]);
+        const newDateHours = newDate.getHours();
+
+        setHours(+newDateHours >= 12 ? ((+newDateHours - 12) as THourOptions) : (+newDateHours as THourOptions));
+        setMinutes((Math.round(+newDate.getMinutes() / 5) * 5) as TMinutesOptions);
+        setIsAm(+newDateHours < 12);
 
         if (value?.filter((el) => el).length) {
           setCalendarMonth(dayjs(value[0]).format("MMMM"));
@@ -202,18 +201,18 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
 
   const getCurrentTime = () => {
     const newDate = new Date();
-    setHours(
-      +newDate.getHours() >= 12 ? ((+newDate.getHours() - 12) as THourOptions) : (+newDate.getHours() as THourOptions),
-    );
+    const newDateHours = newDate.getHours();
+    setHours(+newDateHours >= 12 ? ((+newDateHours - 12) as THourOptions) : (+newDateHours as THourOptions));
     const existDate = date[0];
-    existDate.setHours(newDate.getHours());
+    existDate.setHours(newDateHours);
     setMinutes((Math.round(+newDate.getMinutes() / 5) * 5) as TMinutesOptions);
     existDate.setMinutes(newDate.getMinutes());
-    setIsAm(+newDate.getHours() < 12);
+    setIsAm(+newDateHours < 12);
 
     setDate([existDate]);
     onChange?.([existDate]);
   };
+
   const reference = React.useRef(null);
   const flatRef = React.useRef<Flatpickr>();
   const monthRefContainer = React.useRef<HTMLDivElement>(null);
