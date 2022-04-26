@@ -114,7 +114,7 @@ export const Popover: React.FC<IPopover> = ({
   }, []);
   return (
     <ClickOutside onClickOutside={onClickOutside || (() => {})}>
-      {reference && (
+      {reference && reference.current && (
         <Stackable zIndex={zIndex}>
           <SPopover
             default={getPlacement(placement)}
