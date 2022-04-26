@@ -177,24 +177,28 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
 
   React.useEffect(() => {
     if (value) {
+      console.log(`React.useEffect value`, {value});
       setDate(value);
-      setHours(
-        +value[0].getHours() >= 12
-          ? ((+value[0].getHours() - 12) as THourOptions)
-          : (+value[0].getHours() as THourOptions),
-      );
-      setMinutes((Math.round(+value[0].getMinutes() / 5) * 5) as TMinutesOptions);
-      setIsAm(+value[0].getHours() < 12);
-
-      if (value?.filter((el) => el).length) {
-        setCalendarMonth(dayjs(value[0]).format("MMMM"));
-        setCalendarYear(dayjs(value[0]).format("YYYY"));
-      } else {
-        setCalendarMonth(dayjs(new Date()).format("MMMM"));
-        setCalendarYear(dayjs(new Date()).format("YYYY"));
+      if(value[0]){
+        setHours(
+          +value[0].getHours() >= 12
+            ? ((+value[0].getHours() - 12) as THourOptions)
+            : (+value[0].getHours() as THourOptions),
+        );
+        setMinutes((Math.round(+value[0].getMinutes() / 5) * 5) as TMinutesOptions);
+        setIsAm(+value[0].getHours() < 12);
+  
+        if (value?.filter((el) => el).length) {
+          setCalendarMonth(dayjs(value[0]).format("MMMM"));
+          setCalendarYear(dayjs(value[0]).format("YYYY"));
+        } else {
+          setCalendarMonth(dayjs(new Date()).format("MMMM"));
+          setCalendarYear(dayjs(new Date()).format("YYYY"));
+        }
       }
     }
   }, [value]);
+
   const getCurrentTime = () => {
     const newDate = new Date();
     setHours(
