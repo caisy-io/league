@@ -93,9 +93,9 @@ export const Popover: React.FC<IPopover> = ({
   triangleExtraCSS,
   styleOverwrite,
 }) => {
-  if (!reference || !reference.current) {
-    return null;
-  }
+  // if (!reference || !reference.current) {
+  //   return null;
+  // }
 
   const placements = useCallback((rbr, tbr) => {
     const GAP = disableTriangle ? 8 : 18;
