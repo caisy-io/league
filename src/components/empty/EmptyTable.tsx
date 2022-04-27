@@ -1,4 +1,5 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, useRef } from "react";
+import { useDimensions } from "../../utils";
 import EmptyBannerImage from "./EmptyBannerImage";
 import { SEmptyTable } from "./styles/SEmptyTable";
 import { SEmptyTableBanner } from "./styles/SEmptyTableBanner";
@@ -15,9 +16,11 @@ interface IEmptyTable {
 }
 
 export const EmptyTable: FC<IEmptyTable> = ({ title, description }) => {
+  const ref = useRef<HTMLDivElement>();
+  const { height } = useDimensions(ref);
   return (
-    <SEmptyTable>
-      {[...Array(5)].map((_, index) => (
+    <SEmptyTable ref={ref}>
+      {[...Array(Math.floor(height / 89))].map((_, index) => (
         <SEmptyTableRow key={`emptyAssets${index}`}>
           <SEmptyTableCell
             styleOverwrite={{
