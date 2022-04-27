@@ -117,7 +117,7 @@ export const Popover: React.FC<IPopover> = ({
       <ClickOutside onClickOutside={onClickOutside || (() => {})}>
         <Stackable zIndex={zIndex}>
           <SPopover
-            default={reference.current ? getPlacement(placement) : 0}
+            default={reference?.current ? getPlacement(placement) : 0}
             placements={placements}
             reference={reference}
             trianglecolor={trianglecolor}
