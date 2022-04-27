@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components";
+import { CSSScrollbarStyles } from "../../../constants/styles";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
   padding: 20px 0;
+  ${CSSScrollbarStyles}
 `;
 
 const Silver = css``;
