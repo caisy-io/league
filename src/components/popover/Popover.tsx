@@ -113,25 +113,27 @@ export const Popover: React.FC<IPopover> = ({
     ];
   }, []);
   return (
-    <ClickOutside onClickOutside={onClickOutside || (() => {})}>
+    <>
       {reference && reference.current && (
-        <Stackable zIndex={zIndex}>
-          <SPopover
-            default={getPlacement(placement)}
-            placements={placements}
-            reference={reference}
-            trianglecolor={trianglecolor}
-            triangleExtraCSS={triangleExtraCSS}
-            container={container}
-            style={styleOverwrite}
-          >
-            <>
-              {!disableTriangle ? <Triangle size={9} /> : null}
-              {children}
-            </>
-          </SPopover>
-        </Stackable>
+        <ClickOutside onClickOutside={onClickOutside || (() => {})}>
+          <Stackable zIndex={zIndex}>
+            <SPopover
+              default={getPlacement(placement)}
+              placements={placements}
+              reference={reference}
+              trianglecolor={trianglecolor}
+              triangleExtraCSS={triangleExtraCSS}
+              container={container}
+              style={styleOverwrite}
+            >
+              <>
+                {!disableTriangle ? <Triangle size={9} /> : null}
+                {children}
+              </>
+            </SPopover>
+          </Stackable>
+        </ClickOutside>
       )}
-    </ClickOutside>
+    </>
   );
 };
