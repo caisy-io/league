@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { Button } from "../button";
 import { IconDelete, IconEdit } from "../../icons";
 import { Img } from "../../base-components";
@@ -16,9 +16,16 @@ interface ISetImageCard {
   onChange: (url: string) => void;
   processImage: (file: File) => Promise<string>;
   initalValue?: string;
+  i18n?: {
+    dragToUpload: string | ReactNode;
+    SupportedFormats: string | ReactNode;
+    selectFile: string | ReactNode;
+    changePreview: string | ReactNode;
+    delete: string | ReactNode;
+  };
 }
 
-export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, initalValue }) => {
+export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, initalValue, i18n }) => {
   const [image, setImage] = useState<string | null>(initalValue || null);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -99,8 +106,10 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
         {isLoading && <UploadProgressBar onCancel={handleCancel} progress={uploadProgress} uploadName={uploadName} />}
         {!isLoading && !image && (
           <>
-            <SSetImageCardTitle>Drag and drop file to upload</SSetImageCardTitle>
-            <SSetImageCardSubTitle>Supported formats: .jpg, .png, .gif, .webp or video file</SSetImageCardSubTitle>
+            <SSetImageCardTitle>{i18n?.dragToUpload ?? "Drag and drop file to upload"}</SSetImageCardTitle>
+            <SSetImageCardSubTitle>
+              {i18n?.SupportedFormats ?? "Supported formats: .jpg, .png, .gif, .webp or video file"}
+            </SSetImageCardSubTitle>
           </>
         )}
         {!isLoading && image && (
@@ -110,7 +119,7 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
         )}
         {!isLoading && !image && (
           <Button type="primary" onClick={openImagePicker}>
-            SELECT FILE
+            {i18n?.selectFile ?? "SELECT FILE"}
           </Button>
         )}
         <input hidden type="file" ref={imageRef} onChange={uploadImage} />
@@ -120,11 +129,11 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
           <ButtonsBar>
             <Button onClick={openImagePicker} type="primary" sticked={true}>
               <IconEdit size={20} />
-              {"CHANGE PREVIEW"}
+              {i18n?.changePreview ?? "CHANGE PREVIEW"}
             </Button>
             <Button onClick={removeImage} type="danger" sticked={true}>
               <IconDelete size={20} />
-              {"DELETE"}
+              {i18n?.delete ?? "DELETE"}
             </Button>
           </ButtonsBar>
         </SSetImageCardButtonsBar>
