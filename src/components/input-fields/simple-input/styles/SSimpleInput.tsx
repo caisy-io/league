@@ -51,8 +51,8 @@ const Bronze = css`
   :-webkit-autofill,
   :-webkit-autofill:hover,
   :-webkit-autofill:focus {
-    background-color: unset !important;
-    color: var(--text-01) !important;
+    -webkit-text-fill-color: var(--text-01);
+    -webkit-background-clip: text;
   }
 `;
 
