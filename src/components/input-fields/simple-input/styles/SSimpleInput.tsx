@@ -48,9 +48,9 @@ const Bronze = css`
 
   /* Change Autocomplete styles in Chrome*/
 
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus {
+  :-webkit-autofill,
+  :-webkit-autofill:hover,
+  :-webkit-autofill:focus {
     background-color: unset !important;
     color: var(--text-01) !important;
   }
