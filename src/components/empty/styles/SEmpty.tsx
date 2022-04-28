@@ -30,7 +30,7 @@ const CSSTable = css`
     height: 100%;
     position: absolute;
     z-index: 5;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 22.39%, #ffffff 52.49%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 15.69%, #ffffff 36.01%);
   }
 `;
 
