@@ -93,10 +93,6 @@ export const Popover: React.FC<IPopover> = ({
   triangleExtraCSS,
   styleOverwrite,
 }) => {
-  if (!reference || !reference.current) {
-    return null;
-  }
-
   const placements = useCallback((rbr, tbr) => {
     const GAP = disableTriangle ? 8 : 18;
 
@@ -117,11 +113,11 @@ export const Popover: React.FC<IPopover> = ({
     ];
   }, []);
   return (
-    <ClickOutside onClickOutside={onClickOutside || (() => {})}>
-      {reference && (
+    <>
+      <ClickOutside onClickOutside={onClickOutside || (() => {})}>
         <Stackable zIndex={zIndex}>
           <SPopover
-            default={getPlacement(placement)}
+            default={reference?.current ? getPlacement(placement) : 0}
             placements={placements}
             reference={reference}
             trianglecolor={trianglecolor}
@@ -135,7 +131,7 @@ export const Popover: React.FC<IPopover> = ({
             </>
           </SPopover>
         </Stackable>
-      )}
-    </ClickOutside>
+      </ClickOutside>
+    </>
   );
 };
