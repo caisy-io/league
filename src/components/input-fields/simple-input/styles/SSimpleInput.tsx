@@ -45,6 +45,15 @@ const Bronze = css`
   &[type="number"] {
     -moz-appearance: textfield;
   }
+
+  /* Change Autocomplete styles in Chrome*/
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    background-color: unset !important;
+    color: var(--text-01) !important;
+  }
 `;
 
 const Silver = css``;
