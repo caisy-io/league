@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { IconChevronDown, IconClose } from "../../icons";
 import { ClickOutside } from "../../utils";
 import { OutLineLabel } from "../out-line-label";
@@ -24,7 +24,7 @@ export type TDataSourceItem = {
 
 interface IMultiselectInputDropdown {
   values: TDataSourceItem[];
-  placeholder?: string;
+  placeholder?: string | ReactNode;
   dataSource: TDataSourceItem[];
   onSelectValue?: (option: TDataSourceItem) => void;
   renderDataItem?: (option: TDataSourceItem) => JSX.Element;
@@ -106,7 +106,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
               {values.length === 0 && placeholder}
             </SMultiselectInputDropdownTitle>
             <SDropdownArrow opened={opened}>
-              <IconChevronDown size={24}></IconChevronDown>
+              <IconChevronDown size={24} />
             </SDropdownArrow>
           </SMultiSelectInputWrapper>
         </SMultiselectInputDropdown>

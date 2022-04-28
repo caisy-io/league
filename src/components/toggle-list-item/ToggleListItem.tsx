@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { Toggle } from "../toggle";
 import { SToggleListItemChildren } from "./styles/SToggleListItemChildren";
 import { SToggleListItemDescription } from "./styles/SToggleListItemDescription";
@@ -10,7 +10,7 @@ interface IToggleListItem {
   size: "medium" | "small";
   active: boolean;
   onChange: (newValue: boolean) => void;
-  description?: string;
+  description?: string | ReactNode;
   icon?: JSX.Element;
 }
 
