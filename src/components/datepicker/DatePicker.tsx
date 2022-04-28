@@ -177,7 +177,6 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
 
   React.useEffect(() => {
     if (value) {
-      console.log(`React.useEffect value`, {value});
       setDate(value);
       if(value[0]){
         setHours(
