@@ -61,13 +61,13 @@ const CSSPrimary = css`
     background-color: var(--interactional-primary-01);
   }
 
-  &:hover {
+  &:hover:enabled {
     &:after {
       background-color: var(--hover-interactional-primary-01);
     }
   }
 
-  &:active {
+  &:active:enabled {
     &:after {
       background-color: var(--active-interactional-primary-01);
     }
@@ -107,7 +107,7 @@ const CSSPrimarySticked = css`
     background-color: transparent;
   }
 
-  &:hover {
+  &:hover:enabled {
     color: var(--hover-text-01);
 
     &:after {
@@ -135,13 +135,13 @@ const CSSNeutral = css`
     background-color: var(--interactional-secondary-01);
   }
 
-  &:hover {
+  &:hover:enabled {
     &:after {
       background-color: var(--hover-interactional-secondary-01);
     }
   }
 
-  &:active {
+  &:active:enabled {
     &:after {
       background-color: var(--active-interactional-secondary-01);
     }
@@ -162,13 +162,13 @@ const CSSSecondary = css`
     background-color: var(--interactional-secondary-03);
   }
 
-  &:hover {
+  &:hover:enabled {
     &:after {
       background-color: var(--hover-interactional-secondary-03);
     }
   }
 
-  &:active {
+  &:active:enabled {
     &:after {
       color: var(--active-text-01);
       background-color: var(--active-interactional-secondary-03);
@@ -189,12 +189,12 @@ const CSSTertiary = css`
   color: var(--text-04);
   border: solid 1px var(--interactional-tertiary-01);
 
-  &:hover {
+  &:hover:enabled {
     color: var(--hover-text-04);
     border: solid 1px var(--hover-interactional-tertiary-01);
   }
 
-  &:active {
+  &:active:enabled {
     color: var(--text-02);
 
     &:after {
@@ -228,13 +228,13 @@ const CSSDanger = css`
     background-color: var(--interactional-secondary-02);
   }
 
-  &:hover {
+  &:hover:enabled {
     &:after {
       background-color: var(--hover-interactional-secondary-02);
     }
   }
 
-  &:active {
+  &:active:enabled {
     &:after {
       background-color: var(--active-interactional-secondary-02);
     }
@@ -258,7 +258,7 @@ const CSSDangerSticked = css`
     background-color: transparent;
   }
 
-  &:hover {
+  &:hover:enabled {
     color: var(--hover-text-06);
 
     &:after {
@@ -266,7 +266,7 @@ const CSSDangerSticked = css`
     }
   }
 
-  &:active {
+  &:active:enabled {
     color: var(--active-text-06);
 
     &:after {
