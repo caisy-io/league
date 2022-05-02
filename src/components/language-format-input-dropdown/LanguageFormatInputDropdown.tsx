@@ -142,7 +142,6 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
               )}
               <Input
                 value={inputValue}
-                onFocus={() => setOpened(true)}
                 onBlur={() => {
                   selectedOptionKey.current;
                 }}
@@ -164,38 +163,38 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
             </SLanguageFormatDropdownArrowWrapper>
           )}
         </SLanguageFormatInputDropdown>
-        {opened && !disabled && (
-          <Popover disableTriangle placement="bottom" reference={ref}>
-            <SLanguageFormatSelectDropdown style={{ width }}>
-              <SLanguageFormatSelectDropdownCont>
-                {dropdownDataSource.map((option) => (
-                  <SLanguageFormatInputDropdownOption
-                    key={option.key}
-                    onClick={() => onSelect(option.key)}
-                    active={option.key === selectedOptionKey.current}
-                  >
-                    {renderItem ? (
-                      renderItem(option)
-                    ) : (
-                      <>
-                        {option.flag && (
-                          <SLanguageFormatInputDropdownContentFlag>
-                            {option.flag}
-                          </SLanguageFormatInputDropdownContentFlag>
-                        )}
-                        <SLanguageFormatInputDropdownOptionTitle
-                          selectTitle={options[selectedOptionKey.current]?.title}
-                        >
-                          {option.title}
-                        </SLanguageFormatInputDropdownOptionTitle>
-                      </>
-                    )}
-                  </SLanguageFormatInputDropdownOption>
-                ))}
-              </SLanguageFormatSelectDropdownCont>
-            </SLanguageFormatSelectDropdown>
-          </Popover>
-        )}
+
+        <Popover
+          disableTriangle
+          placement="bottom"
+          reference={ref}
+          styleOverwrite={{ display: opened && !disabled ? "block" : "none" }}
+        >
+          <SLanguageFormatSelectDropdown style={{ width }}>
+            <SLanguageFormatSelectDropdownCont>
+              {dropdownDataSource.map((option) => (
+                <SLanguageFormatInputDropdownOption
+                  key={option.key}
+                  onClick={() => onSelect(option.key)}
+                  active={option.key === selectedOptionKey.current}
+                >
+                  {renderItem ? (
+                    renderItem(option)
+                  ) : (
+                    <>
+                      {option.flag && (
+                        <SLanguageFormatInputDropdownContentFlag>{option.flag}</SLanguageFormatInputDropdownContentFlag>
+                      )}
+                      <SLanguageFormatInputDropdownOptionTitle selectTitle={options[selectedOptionKey.current]?.title}>
+                        {option.title}
+                      </SLanguageFormatInputDropdownOptionTitle>
+                    </>
+                  )}
+                </SLanguageFormatInputDropdownOption>
+              ))}
+            </SLanguageFormatSelectDropdownCont>
+          </SLanguageFormatSelectDropdown>
+        </Popover>
       </div>
     </ClickOutside>
   );
