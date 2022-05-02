@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from "react";
+import React, { FC, ReactNode, useRef, useState } from "react";
 import { SLineInput } from "./styles/SLineInput";
 import { SLineInputLabel } from "./styles/SLineInputLabel";
 import { SLineInputRequiredIndicator } from "./styles/SLineInputRequiredIndicator";
@@ -8,23 +8,15 @@ import { SLineInputWrapper } from "./styles/SLineInputWrapper";
 
 interface ILineInput {
   state: "default" | "success" | "error";
-  errorMessage?: string;
-  label: string;
+  errorMessage?: string | ReactNode;
+  label: string | ReactNode;
   placeholder: string;
   required?: boolean;
   value: string;
   onChange: (e: any) => void;
 }
 
-export const LineInput: FC<ILineInput> = ({
-  state,
-  errorMessage,
-  placeholder,
-  label,
-  required,
-  value,
-  onChange,
-}) => {
+export const LineInput: FC<ILineInput> = ({ state, errorMessage, placeholder, label, required, value, onChange }) => {
   const [active, setActive] = useState(false);
   const inputRef = useRef<HTMLInputElement>();
 
