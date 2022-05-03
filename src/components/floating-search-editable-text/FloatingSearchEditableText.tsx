@@ -86,7 +86,7 @@ export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloating
       if (e.key === "Enter") {
         e.preventDefault();
         e.stopPropagation();
-        onPressEnter(value);
+        onPressEnter?.(value);
       }
     };
 
