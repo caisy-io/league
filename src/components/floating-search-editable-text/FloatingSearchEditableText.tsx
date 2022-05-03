@@ -1,5 +1,6 @@
 import React, { forwardRef, MouseEventHandler, useEffect, useRef, useState } from "react";
 import { SFloatingSearchEditableText } from "./styles/SFloatingSearchEditableText";
+import { SFloatingSearchEditableTextSpan } from "./styles/SFloatingSearchEditableTextSpan";
 import { SFloatingSearchEditableTextWrapper } from "./styles/SFloatingSearchEditableTextWrapper";
 
 interface IFloatingSearchEditableText {
@@ -106,7 +107,7 @@ export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloating
           value={value}
           onKeyDown={handleKeyDown}
         />
-        <span hidden ref={spanRef}></span>
+        <SFloatingSearchEditableTextSpan ref={spanRef} />
       </SFloatingSearchEditableTextWrapper>
     );
   },
