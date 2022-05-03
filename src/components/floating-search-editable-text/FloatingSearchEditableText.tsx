@@ -7,7 +7,7 @@ interface IFloatingSearchEditableText {
   value: string;
   onChange?: (e) => void;
   onClick?: (e: MouseEventHandler<HTMLDivElement>) => void;
-  onPressEnter: (value: string) => void;
+  onPressEnter?: (value: string) => void;
 }
 
 export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloatingSearchEditableText>(
