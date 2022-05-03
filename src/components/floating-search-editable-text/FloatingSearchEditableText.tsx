@@ -61,8 +61,8 @@ export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloating
 
     const handleChange = (e) => {
       if (!spanRef.current || !(inputRef as any).current) return;
-      spanRef.current.innerHTML.replace(/\s/g, "&nbsp;");
-      spanRef.current.innerHTML = e.target.value;
+      spanRef.current.innerHTML;
+      spanRef.current.innerHTML = e.target.value.replace(/\s/g, "&nbsp;");
       (inputRef as any).current.style.width = `${spanRef.current.offsetWidth}px`;
       onChange?.(e);
     };

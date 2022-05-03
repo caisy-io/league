@@ -10,6 +10,7 @@ const Bronze = css`
   color: var(--text-01);
   flex-grow: 1;
   max-width: 100%;
+  min-width: 2px;
   &::placeholder {
     color: var(--text-03);
   }
