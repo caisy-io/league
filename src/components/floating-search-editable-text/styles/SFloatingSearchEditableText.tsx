@@ -29,7 +29,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SFloatingSearchEditableText = styled.span`
+export const SFloatingSearchEditableText = styled.input`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

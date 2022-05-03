@@ -1,15 +1,25 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { FloatingSearchEditableText } from "./FloatingSearchEditableText";
 
 const Template = ({ ...args }) => {
   const ref = useRef<HTMLInputElement>();
+  const [value, setValue] = useState("");
   const onChange = (e) => {
-      console.log(` onChange`, e);
+    // console.log(` onChange`, e);
+    setValue(e.target.value);
   };
-  return <div style={{ width: 250 }}>
-    <FloatingSearchEditableText onChange={onChange} ref={ref} {...args} />
-  </div>
-}
+  return (
+    <div style={{ width: 250 }}>
+      <FloatingSearchEditableText
+        ref={ref}
+        onPressEnter={(e) => console.log(e)}
+        onChange={onChange}
+        value={value}
+        {...args}
+      />
+    </div>
+  );
+};
 
 export default {
   title: "Components/FloatingSearchEditableText",
