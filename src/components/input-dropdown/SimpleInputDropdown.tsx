@@ -3,6 +3,7 @@ import { IconChevronDown, IconRotator } from "../..";
 import { SFlex } from "../../base-components/flex/styles/SFlex";
 import { useDimensions } from "../../utils";
 import { Popover } from "../popover/Popover";
+import { TPlacement } from "../tooltip/utils/placement";
 import { SDropdownArrowWrapper } from "./styles/SDropdownArrowWrapper";
 import { SInputDropdown } from "./styles/SInputDropdown";
 import { SInputDropdownLabel } from "./styles/SInputDropdownLabel";
@@ -22,6 +23,7 @@ export interface IDataSourceItem {
 
 interface ISelectSingle {
   dataSource: IDataSourceItem[];
+  placement: TPlacement;
   renderItem?: (data: any) => React.ReactNode;
   onSelectValue?: (e: string) => void;
   value?: IDataSourceItem;
@@ -40,10 +42,25 @@ interface ISelectSingle {
   opened?: boolean;
 }
 
-export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholder, dataSource, required, dropdownStyle, renderItem, onClick, onSelectValue, translationBadge, label, styleOverwrite, opened, defaultValue }) => {
+export const SimpleInputDropdown: React.FC<ISelectSingle> = ({
+  error,
+  placeholder,
+  dataSource,
+  required,
+  dropdownStyle,
+  renderItem,
+  onClick,
+  onSelectValue,
+  translationBadge,
+  label,
+  styleOverwrite,
+  opened,
+  defaultValue,
+  placement = "bottom",
+}) => {
   const [selectTitle, setSelectTitle] = React.useState<string | null | undefined>(null);
   const [selectIcon, setSelectIcon] = React.useState<ReactNode>(null);
-  const [initialized, setInitialized] = useState(false)
+  const [initialized, setInitialized] = useState(false);
   const ref = React.useRef(null);
 
   const onChange = (e) => {
@@ -51,9 +68,9 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
     setSelectTitle(dataSource.find((option) => option.key === e)?.title);
     setSelectIcon(dataSource.find((option) => option.key === e)?.icon);
     if (opened == true) {
-      setRotationDegrees(0)
+      setRotationDegrees(0);
     } else {
-      setRotationDegrees(-180)
+      setRotationDegrees(-180);
     }
   };
 
@@ -61,65 +78,99 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({ error, placeholde
     if (!defaultValue || initialized) return;
     setSelectTitle(defaultValue.title);
     setSelectIcon(defaultValue.icon);
-    setInitialized(true)
-  }, [defaultValue])
+    setInitialized(true);
+  }, [defaultValue]);
 
   const [rotationDegrees, setRotationDegrees] = React.useState(0);
 
   const handleDropdown = () => {
-    onClick && onClick()
+    onClick && onClick();
     if (opened == true) {
-      setRotationDegrees(0)
+      setRotationDegrees(0);
     } else {
-      setRotationDegrees(-180)
+      setRotationDegrees(-180);
     }
-  }
+  };
 
   const { width } = useDimensions(ref);
 
   return (
     <div>
-      <SInputDropdown onClick={handleDropdown} ref={ref} error={error} opened={opened} selectTitle={selectTitle} styleOverwrite={styleOverwrite}>
+      <SInputDropdown
+        onClick={handleDropdown}
+        ref={ref}
+        error={error}
+        opened={opened}
+        selectTitle={selectTitle}
+        styleOverwrite={styleOverwrite}
+      >
         <SInputDropdownTextIconWrapper>
           {selectIcon ? selectIcon : ""}
           <SInputDropdownTextWrapper>
-            {label && <SInputDropdownLabel error={error} required={required} opened={opened}>{label ? label : ""}</SInputDropdownLabel>}
-            {translationBadge &&
+            {label && (
+              <SInputDropdownLabel error={error} required={required} opened={opened}>
+                {label ? label : ""}
+              </SInputDropdownLabel>
+            )}
+            {translationBadge && (
               <SFlex>
-                <SInputDropdownTitle selected={!!selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
-                <SDropdownArrowWrapper opened={opened}>                  <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator>
+                <SInputDropdownTitle selected={!!selectTitle} label={label} required={required}>
+                  {selectTitle ? selectTitle : placeholder}
+                </SInputDropdownTitle>
+                <SDropdownArrowWrapper opened={opened}>
+                  {" "}
+                  <IconRotator rotationDegrees={rotationDegrees}>
+                    {" "}
+                    <IconChevronDown size={24}></IconChevronDown>
+                  </IconRotator>
                 </SDropdownArrowWrapper>
-              </SFlex>}
-            {!translationBadge && <SInputDropdownTitle selected={!!selectTitle} label={label} required={required}>{selectTitle ? selectTitle : placeholder}</SInputDropdownTitle>
-            }
+              </SFlex>
+            )}
+            {!translationBadge && (
+              <SInputDropdownTitle selected={!!selectTitle} label={label} required={required}>
+                {selectTitle ? selectTitle : placeholder}
+              </SInputDropdownTitle>
+            )}
           </SInputDropdownTextWrapper>
         </SInputDropdownTextIconWrapper>
-        {!translationBadge && <SDropdownArrowWrapper opened={opened}> <IconRotator rotationDegrees={rotationDegrees}>  <IconChevronDown size={24}></IconChevronDown></IconRotator> </SDropdownArrowWrapper>
-        }
+        {!translationBadge && (
+          <SDropdownArrowWrapper opened={opened}>
+            {" "}
+            <IconRotator rotationDegrees={rotationDegrees}>
+              {" "}
+              <IconChevronDown size={24}></IconChevronDown>
+            </IconRotator>{" "}
+          </SDropdownArrowWrapper>
+        )}
         {translationBadge && <TranslationBadge countryCode="de"></TranslationBadge>}
       </SInputDropdown>
-      {opened && (
-        <Popover disableTriangle placement="bottom" reference={ref}>
-          <SSelectDropdown style={{ width, dropdownStyle }}>
-            {dataSource.map((option) => (
-              <div key={option.key} onClick={() => onChange(option.key)}>
-                {renderItem ? (
-                  renderItem(option)
-                ) : (
-                  <SInputDropdownOption>
-                    <SInputDropdownTextIconWrapper>
-                      {option.icon ? option.icon : ""}
-                      <SInputDropdownTextWrapper>
-                        <SInputDropdownTitle selectTitle={selectTitle} required={required}>{option.title}</SInputDropdownTitle>
-                      </SInputDropdownTextWrapper>
-                    </SInputDropdownTextIconWrapper>
-                  </SInputDropdownOption>
-                )}
-              </div>
-            ))}
-          </SSelectDropdown>
-        </Popover>
-      )}
+      <Popover
+        disableTriangle
+        placement={placement}
+        reference={ref}
+        styleOverwrite={{ display: opened ? "block" : "none" }}
+      >
+        <SSelectDropdown style={{ width, dropdownStyle }}>
+          {dataSource.map((option) => (
+            <div key={option.key} onClick={() => onChange(option.key)}>
+              {renderItem ? (
+                renderItem(option)
+              ) : (
+                <SInputDropdownOption>
+                  <SInputDropdownTextIconWrapper>
+                    {option.icon ? option.icon : ""}
+                    <SInputDropdownTextWrapper>
+                      <SInputDropdownTitle selectTitle={selectTitle} required={required}>
+                        {option.title}
+                      </SInputDropdownTitle>
+                    </SInputDropdownTextWrapper>
+                  </SInputDropdownTextIconWrapper>
+                </SInputDropdownOption>
+              )}
+            </div>
+          ))}
+        </SSelectDropdown>
+      </Popover>
     </div>
   );
 };
