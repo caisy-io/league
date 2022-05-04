@@ -10,6 +10,7 @@ const Bronze = css`
   color: var(--text-01);
   flex-grow: 1;
   max-width: 100%;
+  min-width: 2px;
   &::placeholder {
     color: var(--text-03);
   }
@@ -29,7 +30,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SFloatingSearchEditableText = styled.span`
+export const SFloatingSearchEditableText = styled.input`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
