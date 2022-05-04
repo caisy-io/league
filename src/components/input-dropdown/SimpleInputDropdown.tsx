@@ -23,7 +23,6 @@ export interface IDataSourceItem {
 
 interface ISelectSingle {
   dataSource: IDataSourceItem[];
-  placement: TPlacement;
   renderItem?: (data: any) => React.ReactNode;
   onSelectValue?: (e: string) => void;
   value?: IDataSourceItem;
@@ -40,6 +39,7 @@ interface ISelectSingle {
   optionsStyle?: React.CSSProperties;
   styleOverwrite?: string;
   opened?: boolean;
+  placement?: TPlacement;
 }
 
 export const SimpleInputDropdown: React.FC<ISelectSingle> = ({
