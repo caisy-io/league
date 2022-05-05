@@ -142,7 +142,7 @@ export const Table: FC<ITable> = forwardRef(
       setGlobalFilter(globalFilter);
     }, [globalFilter]);
 
-    const RenderRow = memo(({ data, index, style }: any) => {
+    const RenderRow = memo(({ data, index, style, setSize }: any) => {
       const rowRef = useRef<any>();
       React.useEffect(() => {
         setSize(index, rowRef?.current?.getBoundingClientRect()?.height);
@@ -219,7 +219,7 @@ export const Table: FC<ITable> = forwardRef(
           itemCount={dataSource?.length || 0}
           ref={ref}
         >
-          {RenderRow}
+          {(props) => RenderRow({ ...props, setSize })}
         </VariableSizeList>
       );
     }, [rows, dataSource, height, itemSize]);
