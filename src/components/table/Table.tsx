@@ -194,6 +194,11 @@ export const Table: FC<ITable> = forwardRef(
       debounce(() => triggerLoadMoreItems(), 160);
     };
 
+    const memoItemSize = useMemo(
+      () => (item) => (itemSize as (data: any) => number)(item),
+      [dataSource, rows, useConditionalItemSize],
+    );
+
     const TableWithRows = useMemo(() => {
       return (
         <VariableSizeList
@@ -201,7 +206,7 @@ export const Table: FC<ITable> = forwardRef(
           outerRef={bodyRef}
           className="league-table"
           height={height}
-          itemSize={useConditionalItemSize ? (index) => itemSize(rows[index]) : () => itemSize}
+          itemSize={useConditionalItemSize ? (index) => memoItemSize(rows[index]) : () => itemSize}
           itemData={rows}
           itemCount={dataSource?.length || 0}
           ref={ref}
