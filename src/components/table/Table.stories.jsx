@@ -146,7 +146,6 @@ function TableDemo() {
         isNextPageLoading={isNextPageLoading}
         hasNextPage={hasNextPage}
         itemSize={(item) => {
-          console.log(item);
           return 57;
         }}
         globalFilter={globalFilter}
