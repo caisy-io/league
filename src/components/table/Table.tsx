@@ -219,7 +219,7 @@ export const Table: FC<ITable> = forwardRef(
           itemCount={dataSource?.length || 0}
           ref={ref}
         >
-          {(props) => RenderRow({ ...props, setSize })}
+          {(props) => <RenderRow {...props} setSize={setSize} />}
         </VariableSizeList>
       );
     }, [rows, dataSource, height, itemSize]);
