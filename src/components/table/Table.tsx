@@ -19,7 +19,7 @@ import { STbody } from "./styles/STbody";
 import { SThead } from "./styles/SThead";
 import { STableLoading } from "./styles/STableLoading";
 import { IconAngleDown, IconAngleUp } from "../../icons";
-import { FixedSizeList, areEqual } from "react-window";
+import { FixedSizeList, areEqual, VariableSizeList } from "react-window";
 import { Empty } from "../empty";
 import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
@@ -33,11 +33,10 @@ export interface IColumn {
   style?: CSSProperties;
 }
 
-interface ITable {
+interface ITableBase {
   columns: IColumn[];
   dataSource: any;
   globalFilter?: string;
-  itemSize: number;
   isNextPageLoading?: boolean;
   loadNextPage?: () => Promise<void>;
   hasNextPage?: boolean;
@@ -52,6 +51,18 @@ interface ITable {
   ref?: any;
   empty?: ReactNode;
 }
+
+interface ITableWithItemSize extends ITableBase {
+  itemSize: number;
+  useDynamicItemSize?: never;
+}
+
+interface ITableWithDynamicItemSize extends ITableBase {
+  itemSize?: never;
+  useDynamicItemSize: true;
+}
+
+type ITable = ITableWithItemSize | ITableWithDynamicItemSize;
 
 export const Table: FC<ITable> = forwardRef(
   (
@@ -72,6 +83,7 @@ export const Table: FC<ITable> = forwardRef(
       columns,
       renderAsFirstRow,
       empty,
+      useDynamicItemSize,
     },
     ref,
   ) => {
@@ -131,12 +143,18 @@ export const Table: FC<ITable> = forwardRef(
     }, [globalFilter]);
 
     const RenderRow = memo(({ data, index, style }: any) => {
+      const rowRef = useRef<any>();
+      React.useEffect(() => {
+        setSize(index, rowRef?.current?.getBoundingClientRect()?.height);
+      }, [setSize, index]);
+
       const row = data[index];
       if (row) {
         prepareRow(row);
         return (
           <>
             <STr
+              ref={rowRef}
               onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
               key={`row-${row.id}`}
               {...row.getRowProps({
@@ -182,20 +200,27 @@ export const Table: FC<ITable> = forwardRef(
       debounce(() => triggerLoadMoreItems(), 160);
     };
 
+    const sizeMap = useRef({});
+    const setSize = useCallback((index, size) => {
+      sizeMap.current = { ...sizeMap.current, [index]: size };
+      (ref as any)?.current.resetAfterIndex(index);
+    }, []);
+    const getSize = (index) => sizeMap.current[index] || 50;
+
     const TableWithRows = useMemo(() => {
       return (
-        <FixedSizeList
+        <VariableSizeList
           onScroll={onScroll}
           outerRef={bodyRef}
           className="league-table"
           height={height}
-          itemSize={itemSize}
+          itemSize={useDynamicItemSize ? getSize : itemSize}
           itemData={rows}
           itemCount={dataSource?.length || 0}
           ref={ref}
         >
           {RenderRow}
-        </FixedSizeList>
+        </VariableSizeList>
       );
     }, [rows, dataSource, height, itemSize]);
 
