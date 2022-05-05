@@ -54,12 +54,12 @@ interface ITableBase {
 
 interface ITableWithItemSize extends ITableBase {
   itemSize: number;
-  useDynamicItemSize?: never;
+  useConditionalItemSize?: false;
 }
 
 interface ITableWithDynamicItemSize extends ITableBase {
-  itemSize?: never;
-  useDynamicItemSize: true;
+  itemSize: (data: any) => number;
+  useConditionalItemSize: true;
 }
 
 type ITable = ITableWithItemSize | ITableWithDynamicItemSize;
@@ -83,7 +83,7 @@ export const Table: FC<ITable> = forwardRef(
       columns,
       renderAsFirstRow,
       empty,
-      useDynamicItemSize,
+      useConditionalItemSize,
     },
     ref,
   ) => {
@@ -142,19 +142,13 @@ export const Table: FC<ITable> = forwardRef(
       setGlobalFilter(globalFilter);
     }, [globalFilter]);
 
-    const RenderRow = memo(({ data, index, style, setSize }: any) => {
-      const rowRef = useRef<any>();
-      React.useEffect(() => {
-        setSize(index, rowRef?.current?.getBoundingClientRect()?.height);
-      }, [setSize, index]);
-
+    const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
       if (row) {
         prepareRow(row);
         return (
           <>
             <STr
-              ref={rowRef}
               onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
               key={`row-${row.id}`}
               {...row.getRowProps({
@@ -200,13 +194,6 @@ export const Table: FC<ITable> = forwardRef(
       debounce(() => triggerLoadMoreItems(), 160);
     };
 
-    const sizeMap = useRef({});
-    const setSize = useCallback((index, size) => {
-      sizeMap.current = { ...sizeMap.current, [index]: size };
-      (ref as any)?.current.resetAfterIndex(index);
-    }, []);
-    const getSize = (index) => sizeMap.current[index] || 50;
-
     const TableWithRows = useMemo(() => {
       return (
         <VariableSizeList
@@ -214,12 +201,12 @@ export const Table: FC<ITable> = forwardRef(
           outerRef={bodyRef}
           className="league-table"
           height={height}
-          itemSize={useDynamicItemSize ? getSize : () => itemSize}
+          itemSize={useConditionalItemSize ? (index) => itemSize(rows[index]) : () => itemSize}
           itemData={rows}
           itemCount={dataSource?.length || 0}
           ref={ref}
         >
-          {(props) => <RenderRow {...props} setSize={setSize} />}
+          {(props) => <RenderRow {...props} />}
         </VariableSizeList>
       );
     }, [rows, dataSource, height, itemSize]);
