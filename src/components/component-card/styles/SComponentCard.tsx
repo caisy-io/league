@@ -17,8 +17,8 @@ const Bronze = css`
   }
   &:active {
     background-color: var(--ui-01);
-    border: 1px solid #C3D1D9;
-    box-shadow: none;
+    // border: 1px solid #C3D1D9;
+    box-shadow: inset 0 0 0 1px #C3D1D9;
   }
 `;
 
