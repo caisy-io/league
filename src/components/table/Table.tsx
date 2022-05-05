@@ -214,7 +214,7 @@ export const Table: FC<ITable> = forwardRef(
           outerRef={bodyRef}
           className="league-table"
           height={height}
-          itemSize={useDynamicItemSize ? getSize : itemSize}
+          itemSize={useDynamicItemSize ? getSize : () => itemSize}
           itemData={rows}
           itemCount={dataSource?.length || 0}
           ref={ref}
