@@ -136,6 +136,7 @@ function TableDemo() {
         onChange={(e) => setGlobalFilter(e.target.value)}
       />
       <Table
+        useConditionalItemSize
         renderAsFirstRow={
           <div style={{ height: 40, backgroundColor: "white" }}>
             Use this to render a custom component on the first row
@@ -144,7 +145,9 @@ function TableDemo() {
         loadNextPage={loadNextPage}
         isNextPageLoading={isNextPageLoading}
         hasNextPage={hasNextPage}
-        itemSize={57}
+        itemSize={(item) => {
+          return 57;
+        }}
         globalFilter={globalFilter}
         dataSource={dataSource}
         columns={columns}
