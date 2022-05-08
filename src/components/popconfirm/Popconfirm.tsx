@@ -46,6 +46,7 @@ export const Popconfirm: React.FC<IPopconfirm> = ({ ...props }) => {
         placement={props.placement || "top"}
         reference={ref}
         container={props.container}
+        disableTriangle={!open}
       >
         <SPopconfirm opened={open && !props.disabled} onClick={(e) => e.stopPropagation()}>
           <SPopconfirmTitle>
