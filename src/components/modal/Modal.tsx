@@ -3,11 +3,11 @@ import { createPortal } from "react-dom";
 import Stackable from "../stackable";
 import { SModal } from "./styles/SModal";
 import { SModalBackground } from "./styles/SModalBackground";
-import {ThemedCssFunction} from "styled-components";
+import { ThemedCssFunction } from "styled-components";
 
 interface IModal {
   visible: boolean;
-  onClose: (payload: any) => any;
+  onClose?: (payload: any) => any;
   styleOverwrite?: ThemedCssFunction<any>;
 }
 
@@ -20,8 +20,10 @@ export const Modal: React.FC<IModal> = ({ styleOverwrite, ...props }) => {
   return docBody && props.visible
     ? createPortal(
         <Stackable>
-          <SModalBackground onClick={props.onClose}>
-            <SModal styleOverwrite={styleOverwrite} onClick={(e) => e.stopPropagation()}>{props.children}</SModal>
+          <SModalBackground onClick={props?.onClose}>
+            <SModal styleOverwrite={styleOverwrite} onClick={(e) => e.stopPropagation()}>
+              {props.children}
+            </SModal>
           </SModalBackground>
         </Stackable>,
         docBody,

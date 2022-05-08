@@ -19,7 +19,7 @@ import { STbody } from "./styles/STbody";
 import { SThead } from "./styles/SThead";
 import { STableLoading } from "./styles/STableLoading";
 import { IconAngleDown, IconAngleUp } from "../../icons";
-import { FixedSizeList, areEqual } from "react-window";
+import { FixedSizeList, areEqual, VariableSizeList } from "react-window";
 import { Empty } from "../empty";
 import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
@@ -33,11 +33,10 @@ export interface IColumn {
   style?: CSSProperties;
 }
 
-interface ITable {
+interface ITableBase {
   columns: IColumn[];
   dataSource: any;
   globalFilter?: string;
-  itemSize: number;
   isNextPageLoading?: boolean;
   loadNextPage?: () => Promise<void>;
   hasNextPage?: boolean;
@@ -52,6 +51,18 @@ interface ITable {
   ref?: any;
   empty?: ReactNode;
 }
+
+interface ITableWithItemSize extends ITableBase {
+  itemSize: number;
+  useConditionalItemSize?: false;
+}
+
+interface ITableWithDynamicItemSize extends ITableBase {
+  itemSize: (data: any) => number;
+  useConditionalItemSize: true;
+}
+
+type ITable = ITableWithItemSize | ITableWithDynamicItemSize;
 
 export const Table: FC<ITable> = forwardRef(
   (
@@ -72,6 +83,7 @@ export const Table: FC<ITable> = forwardRef(
       columns,
       renderAsFirstRow,
       empty,
+      useConditionalItemSize,
     },
     ref,
   ) => {
@@ -182,20 +194,25 @@ export const Table: FC<ITable> = forwardRef(
       debounce(() => triggerLoadMoreItems(), 160);
     };
 
+    const memoItemSize = useMemo(
+      () => (item) => (itemSize as (data: any) => number)(item),
+      [dataSource, rows, useConditionalItemSize],
+    );
+
     const TableWithRows = useMemo(() => {
       return (
-        <FixedSizeList
+        <VariableSizeList
           onScroll={onScroll}
           outerRef={bodyRef}
           className="league-table"
           height={height}
-          itemSize={itemSize}
+          itemSize={useConditionalItemSize ? (index) => memoItemSize(rows[index]) : () => itemSize}
           itemData={rows}
           itemCount={dataSource?.length || 0}
           ref={ref}
         >
-          {RenderRow}
-        </FixedSizeList>
+          {(props) => <RenderRow {...props} />}
+        </VariableSizeList>
       );
     }, [rows, dataSource, height, itemSize]);
 

@@ -16,7 +16,10 @@ const Bronze = css`
   &:active {
     ${CSSActive}
   }
-  ${(props) => props.active && CSSActive}
+  ${(props) => props.active && CSSActive};
+
+  position: relative;
+  overflow: hidden;
 `;
 
 const Silver = css``;

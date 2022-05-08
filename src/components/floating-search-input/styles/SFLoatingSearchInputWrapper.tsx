@@ -28,10 +28,11 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SFloatingSearchInputWrapper = styled.div`
+export const SFloatingSearchInputWrapper = styled.div<{ styleOverwrite: any }>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({ styleOverwrite }) => styleOverwrite ?? ""};
 `;

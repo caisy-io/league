@@ -39,6 +39,10 @@ const Bronze = css`
       border-bottom: 1px solid;
       border-color: var(--hover-ui-01);
 
+      ${isChild &&
+      css`
+        padding-left: 65px;
+      `}
       ${hover &&
       css`
         background-color: var(--active-ui-01-1);
