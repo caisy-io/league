@@ -25,9 +25,9 @@ const CSSTable = css`
   :after {
     content: "";
     width: 100%;
-    bottom: 0;
+    top: 0;
     left: 0;
-    height: 100%;
+    height: 445px;
     position: absolute;
     z-index: 5;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 15.69%, #ffffff 36.01%);
