@@ -14,7 +14,7 @@ export const FlatActionButton: React.FC<IFlatActionButton> = ({ type, onClick, c
     <SFlatActionButton
       type={type}
       onClick={(e) => {
-        e.stopPropagation();
+        onClick && e.stopPropagation();
         onClick?.();
       }}
       disabled={disabled}
