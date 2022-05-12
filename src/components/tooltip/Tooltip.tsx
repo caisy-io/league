@@ -1,4 +1,4 @@
-import React, { ReactNode, FC, useState, useRef, useEffect } from "react";
+import React, { ReactNode, FC, useState, useRef, useEffect, memo } from "react";
 import { STooltip } from "./styles/STooltip";
 import { STooltipWrapper } from "./styles/STooltipWrapper";
 import { Popover, TPlacement } from "../../components/popover";
@@ -13,18 +13,18 @@ export interface ITooltip {
   delay?: number;
 }
 
-export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, delay = 0 }) => {
-  const ref = useRef(null);
+const getBackgroundColor = (color?: string) => {
+  switch (color) {
+    case "black":
+      return "var(--ui-overlay-02)";
+    case "white":
+    default:
+      return "var(--ui-01)";
+  }
+};
 
-  const getBackgroundColor = () => {
-    switch (color) {
-      case "black":
-        return "var(--ui-overlay-02)";
-      case "white":
-      default:
-        return "var(--ui-01)";
-    }
-  };
+export const Tooltip: FC<ITooltip> = memo(({ content, placement, color, children, delay = 0 }) => {
+  const ref = useRef(null);
 
   const [show, setShow] = useState(false);
 
@@ -60,7 +60,7 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, del
         <Popover
           styleOverwrite={{ pointerEvents: "none" }}
           disableTriangle
-          trianglecolor={getBackgroundColor()}
+          trianglecolor={getBackgroundColor(color)}
           placement={placement || "top"}
           reference={ref}
         >
@@ -77,4 +77,4 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, del
       )}
     </>
   );
-};
+});

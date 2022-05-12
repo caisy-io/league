@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { useRef, forwardRef, memo, useCallback } from "react";
+import React, { useRef, forwardRef, memo, useCallback, useMemo } from "react";
 import Stackable from "../stackable";
 import { copyComponentRef } from "../../utils/react";
 import { SPoppable } from "./styles/SPoppable";
@@ -43,53 +43,69 @@ interface IPoppable {
   style: object;
 }
 
-const Poppable = forwardRef(
-  (
-    {
-      children = null,
-      container = window,
-      reference = document.body,
-      placements = () => [{ top: 0, left: 0 }],
-      onPlacement = () => null,
-      placement = HIDDEN_PLACEMENT,
-      overflow = strategy,
-      className = "",
-      style = {},
-      ...props
-    }: IPoppable,
-    ref,
-  ) => {
-    const target = useRef();
-    const handleOnContextMenu = useCallback((e) => e.stopPropagation(), []); // prevent onContextMenu event bubbling from the react portal to the react tree
-    const rects = getBoundingRects(target, reference, container, placement);
-    usePosition({
-      target,
-      container,
-      reference,
-      placements,
-      default: props.default ?? 0,
-      onPlacement,
-      strategy: overflow,
-    });
+const Poppable = memo(
+  forwardRef(
+    (
+      {
+        children = null,
+        container = window,
+        reference = document.body,
+        placements = () => [{ top: 0, left: 0 }],
+        onPlacement = () => null,
+        placement = HIDDEN_PLACEMENT,
+        overflow = strategy,
+        className = "",
+        style = {},
+        ...props
+      }: IPoppable,
+      ref,
+    ) => {
+      const target = useRef();
+      const handleOnContextMenu = useCallback((e) => e.stopPropagation(), []); // prevent onContextMenu event bubbling from the react portal to the react tree
+      const rects = useMemo(() => {
+        console.log("rects");
+        return getBoundingRects(target, reference, container, placement);
+      }, [placement]);
 
-    const placementName = placement.name !== undefined ? { [`placement-${placement.name}`]: placement.name } + " " : "";
+      usePosition({
+        target,
+        container,
+        reference,
+        placements,
+        default: props.default ?? 0,
+        onPlacement,
+        strategy: overflow,
+      });
 
-    return (
-      <Stackable
-        {...props}
-        className={"poppable " + placementName + className + " " + getClassNames(rects.tbr, rects.rbr)}
-        style={{ ...style, ...placement }}
-        placement={placement}
-        ref={copyComponentRef(ref, target)}
-        parent={reference}
-        onContextMenu={handleOnContextMenu}
-      >
-        <PoppableContext.Provider value={rects}>
-          <SPoppable>{children}</SPoppable>
-        </PoppableContext.Provider>
-      </Stackable>
-    );
-  },
+      const placementName = useMemo(
+        () => (placement.name !== undefined ? { [`placement-${placement.name}`]: placement.name } + " " : ""),
+        [placement],
+      );
+
+      const cssClassName = useMemo(
+        () => "poppable " + placementName + className + " " + getClassNames(rects.tbr, rects.rbr),
+        [placementName, className, rects],
+      );
+
+      console.log("render", placement);
+
+      return (
+        <Stackable
+          {...props}
+          className={cssClassName}
+          style={{ ...style, ...placement }}
+          placement={placement}
+          ref={copyComponentRef(ref, target)}
+          parent={reference}
+          onContextMenu={handleOnContextMenu}
+        >
+          <PoppableContext.Provider value={rects}>
+            <SPoppable>{children}</SPoppable>
+          </PoppableContext.Provider>
+        </Stackable>
+      );
+    },
+  ),
 );
 
 Poppable.displayName = "Poppable.Manual";
