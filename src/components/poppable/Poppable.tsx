@@ -59,7 +59,6 @@ const Poppable = forwardRef(
     }: IPoppable,
     ref,
   ) => {
-    return null;
     const target = useRef();
     const handleOnContextMenu = useCallback((e) => e.stopPropagation(), []); // prevent onContextMenu event bubbling from the react portal to the react tree
     const rects = useMemo(() => {
