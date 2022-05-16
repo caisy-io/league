@@ -13,7 +13,7 @@ const Bronze = css<ISPopover>`
     ${(props) => props.triangleExtraCSS && props.triangleExtraCSS}
   }
 
-  animation: loadIn 3ms;
+  animation: loadIn 1ms;
 
   @keyframes loadIn {
     from {
