@@ -12,6 +12,17 @@ const Bronze = css<ISPopover>`
     --triangle-color: ${(props) => props.trianglecolor};
     ${(props) => props.triangleExtraCSS && props.triangleExtraCSS}
   }
+
+  animation: loadIn 3ms;
+
+  @keyframes loadIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 const Silver = css<ISPopover>``;
@@ -22,7 +33,7 @@ const Platinum = css<ISPopover>``;
 
 const Diamond = css<ISPopover>``;
 
-export const SPopover = styled(Poppable) <ISPopover>`
+export const SPopover = styled(Poppable)<ISPopover>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
