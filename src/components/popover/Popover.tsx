@@ -34,7 +34,8 @@ export type TPlacement =
   | "leftTop"
   | "leftBottom"
   | "rightTop"
-  | "rightBottom";
+  | "rightBottom"
+  | "bottomAlignedRight";
 
 const getPlacement = (placement: TPlacement | undefined): number => {
   switch (placement) {
@@ -62,6 +63,8 @@ const getPlacement = (placement: TPlacement | undefined): number => {
       return 10;
     case EPlacements.RightBottom:
       return 11;
+    case EPlacements.BottomAlignedRight:
+      return 12;
     default:
       return 1;
   }
@@ -106,6 +109,7 @@ export const Popover: React.FC<IPopover> = ({
       { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Bottom
       { top: vcenter(rbr, tbr).top - (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Top
       { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Bottom
+      { ...hafter(rbr, tbr, -80), ...vafter(rbr, tbr, 16) }, // Bottom aligned right
     ];
   }, []);
   return (
