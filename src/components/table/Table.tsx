@@ -72,7 +72,7 @@ export const Table: FC<ITable> = forwardRef(
       globalFilter,
       itemSize,
       isNextPageLoading,
-      loadNextPage,
+      loadNextPage = () => null,
       hasNextPage,
       loading,
       emptyMessage,
