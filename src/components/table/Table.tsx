@@ -173,11 +173,15 @@ export const Table: FC<ITable> = forwardRef(
       return null;
     }, areEqual);
 
+    const debouncedLoadMoreItems = useMemo(() => debounce(loadMoreItems, 300), [loadMoreItems]);
+
     const triggerLoadMoreItems = () => {
       const table = bodyRef?.current;
 
       if (!!table && table.scrollTop / (table.scrollHeight - table.clientHeight) > 0.8) {
-        hasNextPage && (loadMoreItems as any)();
+        if (hasNextPage) {
+          debouncedLoadMoreItems();
+        }
       }
     };
 
@@ -191,7 +195,7 @@ export const Table: FC<ITable> = forwardRef(
 
         firstRowRef.current.style.height = height + "px";
       }
-      debounce(() => triggerLoadMoreItems(), 160);
+      triggerLoadMoreItems();
     };
 
     const memoItemSize = useMemo(

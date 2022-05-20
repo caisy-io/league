@@ -105,6 +105,7 @@ function TableDemo() {
   const PAGE_SIZE = 10;
 
   const loadNextPage = () => {
+    console.log("loadNextPage");
     setIsNextPageLoading(true);
     return new Promise((resolve) =>
       setTimeout(() => {
