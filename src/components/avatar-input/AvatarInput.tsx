@@ -18,6 +18,7 @@ export interface IAvatarInput {
   uploadImageText?: string | ReactNode;
   changeText?: string | ReactNode;
   deleteText?: string | ReactNode;
+  disabled?: boolean;
 }
 
 export const AvatarInput: React.FC<IAvatarInput> = ({
@@ -30,6 +31,7 @@ export const AvatarInput: React.FC<IAvatarInput> = ({
   uploadImageText,
   changeText,
   deleteText,
+  disabled,
 }) => {
   const {
     isLoading,
@@ -57,7 +59,7 @@ export const AvatarInput: React.FC<IAvatarInput> = ({
           {image && <Img lazyload={false} src={image!} resolution={avatarResolution} />}
         </SAvatarInputPreview>
       )}
-      {!isLoading && (
+      {!isLoading && !disabled && (
         <SAvatarInputButtonsWrapper>
           {!image && (
             <Button onClick={openImagePicker} type="primary" size="small">
@@ -78,7 +80,7 @@ export const AvatarInput: React.FC<IAvatarInput> = ({
           )}
         </SAvatarInputButtonsWrapper>
       )}
-      <input key="avatar-input" hidden type="file" ref={imageRef} onChange={uploadImage} />
+      {!disabled && <input key="avatar-input" hidden type="file" ref={imageRef} onChange={uploadImage} />}
     </SAvatarInput>
   );
 };
