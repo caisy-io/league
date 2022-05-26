@@ -175,7 +175,6 @@ export const Table: FC<ITable> = forwardRef(
 
     const triggerLoadMoreItems = () => {
       const table = bodyRef?.current;
-
       if (!!table && table.scrollTop / (table.scrollHeight - table.clientHeight) > 0.8) {
         hasNextPage && (loadMoreItems as any)();
       }
@@ -191,7 +190,7 @@ export const Table: FC<ITable> = forwardRef(
 
         firstRowRef.current.style.height = height + "px";
       }
-      debounce(() => triggerLoadMoreItems(), 160);
+      debounce(triggerLoadMoreItems, 160)();
     };
 
     const memoItemSize = useMemo(
