@@ -14,9 +14,19 @@ interface ILineInput {
   required?: boolean;
   value: string;
   onChange: (e: any) => void;
+  autoFocus?: boolean;
 }
 
-export const LineInput: FC<ILineInput> = ({ state, errorMessage, placeholder, label, required, value, onChange }) => {
+export const LineInput: FC<ILineInput> = ({
+  state,
+  errorMessage,
+  placeholder,
+  label,
+  required,
+  value,
+  onChange,
+  autoFocus,
+}) => {
   const [active, setActive] = useState(false);
   const inputRef = useRef<HTMLInputElement>();
 
@@ -33,6 +43,7 @@ export const LineInput: FC<ILineInput> = ({ state, errorMessage, placeholder, la
         placeholder={placeholder}
         onFocus={() => setActive(true)}
         onBlur={() => setActive(false)}
+        autoFocus={autoFocus}
       />
       <SLineInputRequiredIndicatorWrapper>
         <SLineInputRequiredIndicatorWidth>{value || placeholder}</SLineInputRequiredIndicatorWidth>
