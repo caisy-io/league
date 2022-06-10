@@ -6,6 +6,7 @@ import DatePickerTimePicker from "./DatePickerTimePicker";
 import usePicker from "../context/DatePickerContext";
 import SDatePickerTimePickerWrapper from "./styles/SDatePickerTimePickerWrapper";
 import { IconClock } from "../../../icons";
+import { ClickOutside } from "../../../utils";
 
 interface IDatePickerTimeSelect {}
 
@@ -51,12 +52,22 @@ const DatePickerTimeSelect: React.FC<IDatePickerTimeSelect> = () => {
       <SDatePickerTimePickerWrapper>
         <IconClock />
         <SDatePickerTimeIndicator onClick={openHours}>
-          <DatePickerTimePicker value="hours" show={showHours} options={hoursOptions} />
+          <DatePickerTimePicker
+            onClickOutside={() => setShowHours(false)}
+            value="hours"
+            show={showHours}
+            options={hoursOptions}
+          />
           {hours?.toString().length === 1 ? `${hours}` : `${hours}`}
         </SDatePickerTimeIndicator>
         <SDatePickerTimeIndicator>:</SDatePickerTimeIndicator>
         <SDatePickerTimeIndicator onClick={openMinutes}>
-          <DatePickerTimePicker value="minutes" show={showMinutes} options={minutesOptions} />
+          <DatePickerTimePicker
+            onClickOutside={() => setShowMinutes(false)}
+            value="minutes"
+            show={showMinutes}
+            options={minutesOptions}
+          />
           {minutes?.toString().length === 1 ? `0${minutes}` : `${minutes}`}
         </SDatePickerTimeIndicator>
       </SDatePickerTimePickerWrapper>

@@ -19,7 +19,7 @@ import { SOrganizationSelectListItemTitle } from "./styles/SOrganizationSelectLi
 export type IListItemSize = "large" | "medium";
 
 export interface IOrganizationSelectListItemProps {
-  title?: string | undefined;
+  title?: JSX.Element | React.ReactNode | undefined;
   label?: string | undefined;
   imageUrl?: string | undefined;
   badgeText?: string | undefined;

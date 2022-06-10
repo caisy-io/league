@@ -12,7 +12,7 @@ const CSSActivated = css`
 
 const Bronze = css`
   width: 256px;
-  height: 59px;
+  height: 60px;
   max-width: 100%;
   background-color: #FFFF;
   box-sizing: border-box;

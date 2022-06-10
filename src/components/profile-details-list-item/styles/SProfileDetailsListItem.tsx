@@ -14,7 +14,7 @@ const Bronze = css`
   cursor: pointer;
 
   &:hover {
-    background-color: var(--hover-ui-01);
+    background-color: var(--hover-ui-01-1);
   }
 
   &:active {
