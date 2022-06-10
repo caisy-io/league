@@ -46,20 +46,23 @@ export const Popconfirm: React.FC<IPopconfirm> = ({ ...props }) => {
         placement={props.placement || "top"}
         reference={ref}
         container={props.container}
-        disableTriangle={!open}
+        display={open}
+        // disableTriangle={false}
       >
-        <SPopconfirm opened={open && !props.disabled} onClick={(e) => e.stopPropagation()}>
-          <SPopconfirmTitle>
-            {props.icon && <SPopconfirmIcon>{props.icon({ ...props })}</SPopconfirmIcon>}
-            {props.title}
-          </SPopconfirmTitle>
-          <SPopconfirmButtons>
-            <Button type="tertiary" onClick={(e) => handleClickCancel(e)}>
-              {props.cancelText || "Cancel"}
-            </Button>
-            <Button onClick={(e) => handleClickOk(e)}>{props.okText || "OK"}</Button>
-          </SPopconfirmButtons>
-        </SPopconfirm>
+        {() => (
+          <SPopconfirm opened={!props.disabled} onClick={(e) => e.stopPropagation()}>
+            <SPopconfirmTitle>
+              {props.icon && <SPopconfirmIcon>{props.icon({ ...props })}</SPopconfirmIcon>}
+              {props.title}
+            </SPopconfirmTitle>
+            <SPopconfirmButtons>
+              <Button type="tertiary" onClick={(e) => handleClickCancel(e)}>
+                {props.cancelText || "Cancel"}
+              </Button>
+              <Button onClick={(e) => handleClickOk(e)}>{props.okText || "OK"}</Button>
+            </SPopconfirmButtons>
+          </SPopconfirm>
+        )}
       </Popover>
     </>
   );

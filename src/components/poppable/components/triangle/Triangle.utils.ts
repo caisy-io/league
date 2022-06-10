@@ -17,20 +17,20 @@
 import { intersection, midpoint } from "../../../../utils/range";
 
 
- export const getTop = (tbr, rbr, size) => {
-     const isn = intersection([tbr.top, tbr.bottom], [rbr.top, rbr.bottom]);
+ export const getTop = (element, trigger, size) => {
+     const isn = intersection([element.top, element.bottom], [trigger.top, trigger.bottom]);
      if (isn.length === 0) {
-         return tbr.top > rbr.bottom ? tbr.top - size * 2 : tbr.bottom;
+         return element.top > trigger.bottom ? element.top - size * 2 : element.bottom;
      }
      return midpoint(isn) - size;
  };
  
- export const getLeft = (tbr, rbr, size) => {
-     const isn = intersection([tbr.left, tbr.right], [rbr.left, rbr.right]);
+ export const getLeft = (element, trigger, size) => {
+     const isn = intersection([element.left, element.right], [trigger.left, trigger.right]);
      if (isn.length === 0) {
-         return tbr.left > rbr.right ? tbr.left - size * 2 : tbr.right;
+         return element.left > trigger.right ? element.left - size * 2 : element.right;
      }
      return midpoint(isn) - size;
  };
  
- export const ready = (tbr, rbr) => tbr.top !== undefined && rbr.top !== undefined;
+ export const ready = (element, trigger) => element?.top !== undefined && trigger?.top !== undefined;

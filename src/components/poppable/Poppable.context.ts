@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
- import {createContext} from 'react';
+import { createContext } from "react";
 
- export default createContext({tbr: {}, rbr: {}, cbr: {}});
+export default createContext<{
+  getBoundingRect: () => {
+    rbr: any;
+    cbr: any;
+    tbr: any;
+  } | null;
+}>({ getBoundingRect: () => null });

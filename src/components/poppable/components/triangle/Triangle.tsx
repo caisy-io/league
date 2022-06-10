@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, {useContext} from 'react';
+import React, {useContext, useLayoutEffect, useState} from 'react';
 import PoppableContext from '../../Poppable.context';
 import {ready, getLeft, getTop} from './Triangle.utils';
 
@@ -22,13 +22,31 @@ interface ITriangleProps {
     size: number;
 }
 
-export const Triangle = ({size = 0}: ITriangleProps) => {
-    const {tbr, rbr} = useContext(PoppableContext);
-    return !ready(tbr, rbr) ? null : (
-        <div className='poppable-triangle' style={{
-            top: getTop(tbr, rbr, size),
-            left: getLeft(tbr, rbr, size),
-            borderWidth: size,
-        }}/>
-    );
+// @deprecated do NOT USE
+export const Triangle = ({ size = 0 }: ITriangleProps) => {
+  const { getBoundingRect } = useContext(PoppableContext);
+  
+  const [boundingRects, setBoundingRects] = useState<{ elementRect?: any; triggerRect?: any; }>({});
+  
+  useLayoutEffect(() => {
+      const { tbr, rbr } = getBoundingRect() || {};
+      setBoundingRects({ elementRect: tbr, triggerRect: rbr });
+
+      setTimeout(() => {
+          const { tbr, rbr } = getBoundingRect() || {};
+          console.log("Triangle effect", { tbr, rbr });
+      }, 300);
+  },[]);
+
+  const { elementRect, triggerRect } = boundingRects;
+  return !ready(elementRect, triggerRect) ? null : (
+    <div
+      className="poppable-triangle"
+      style={{
+        top: getTop(elementRect, triggerRect, size),
+        left: getLeft(elementRect, triggerRect, size),
+        borderWidth: size,
+      }}
+    />
+  );
 };

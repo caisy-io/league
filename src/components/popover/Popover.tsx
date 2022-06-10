@@ -1,9 +1,8 @@
-import React, { useCallback } from "react";
+import React, { useMemo } from "react";
 import { CSSProp } from "styled-components";
 import { SPopover } from "./styles/SPopover";
 import Stackable from "../stackable";
 import { vbefore, vcenter, vafter, hbefore, hcenter, hafter } from "../poppable/Poppable.placements";
-import { Triangle } from "../poppable";
 import { ClickOutside } from "../../utils";
 
 enum EPlacements {
@@ -79,56 +78,57 @@ interface IPopover {
   container?: React.MutableRefObject<null>;
   zIndex?: number;
   styleOverwrite?: React.CSSProperties;
+  display?: boolean;
 }
+
+const getPlacements = (disableTriangle: boolean | undefined, reference: React.MutableRefObject<null>) => (rbr, tbr) => {
+  const GAP = disableTriangle ? 8 : 18;
+
+  return [
+    { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
+    { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
+    { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
+    { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, GAP) }, // Center right
+    { ...vbefore(rbr, tbr, -GAP), left: hbefore(rbr, tbr, -GAP).left + (reference.current as any).offsetWidth }, // Top left
+    { ...vbefore(rbr, tbr, -GAP), left: hafter(rbr, tbr, GAP).left - (reference.current as any).offsetWidth }, // Top right
+    { ...vafter(rbr, tbr, GAP), left: hbefore(rbr, tbr, -GAP).left + (reference.current as any).offsetWidth }, // Bottom left
+    { ...vafter(rbr, tbr, GAP), left: hafter(rbr, tbr, GAP).left - (reference.current as any).offsetWidth }, // Bottom right
+    { top: vcenter(rbr, tbr).top - (reference.current as any).offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Top
+    { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Bottom
+    { top: vcenter(rbr, tbr).top - (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Top
+    { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Bottom
+    { ...hafter(rbr, tbr, -80), ...vafter(rbr, tbr, 16) }, // Bottom aligned right
+  ];
+};
 
 export const Popover: React.FC<IPopover> = ({
   reference,
+  container,
   children,
   disableTriangle,
   placement,
   onClickOutside,
-  trianglecolor,
-  container,
   zIndex,
-  triangleExtraCSS,
   styleOverwrite,
+  display,
 }) => {
-  const placements = useCallback((rbr, tbr) => {
-    const GAP = disableTriangle ? 8 : 18;
-
-    return [
-      { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
-      { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
-      { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
-      { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, GAP) }, // Center right
-      { ...vbefore(rbr, tbr, -GAP), left: hbefore(rbr, tbr, -GAP).left + (reference.current as any).offsetWidth }, // Top left
-      { ...vbefore(rbr, tbr, -GAP), left: hafter(rbr, tbr, GAP).left - (reference.current as any).offsetWidth }, // Top right
-      { ...vafter(rbr, tbr, GAP), left: hbefore(rbr, tbr, -GAP).left + (reference.current as any).offsetWidth }, // Bottom left
-      { ...vafter(rbr, tbr, GAP), left: hafter(rbr, tbr, GAP).left - (reference.current as any).offsetWidth }, // Bottom right
-      { top: vcenter(rbr, tbr).top - (reference.current as any).offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Top
-      { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Bottom
-      { top: vcenter(rbr, tbr).top - (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Top
-      { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Bottom
-      { ...hafter(rbr, tbr, -80), ...vafter(rbr, tbr, 16) }, // Bottom aligned right
-    ];
-  }, []);
+  const getPlacementsMemo = useMemo(() => getPlacements(disableTriangle, reference), []);
   return (
     <>
       <ClickOutside onClickOutside={onClickOutside || (() => {})}>
         <Stackable zIndex={zIndex}>
           <SPopover
             default={reference?.current ? getPlacement(placement) : 0}
-            placements={placements}
+            getPlacements={getPlacementsMemo}
             reference={reference}
-            trianglecolor={trianglecolor}
-            triangleExtraCSS={triangleExtraCSS}
             container={container}
             style={styleOverwrite}
           >
-            <>
-              {!disableTriangle ? <Triangle size={9} /> : null}
-              {children}
-            </>
+            {(display === undefined || display) && (
+              <>
+                {typeof children === "function" ? children() : children}
+              </>
+            )}
           </SPopover>
         </Stackable>
       </ClickOutside>
