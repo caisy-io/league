@@ -18,7 +18,7 @@ import { SRequiredIndicator } from "./styles/SRequiredIndicator";
 
 export type TDataSourceItem = {
   id: number | string;
-  label: string;
+  label: string | ReactNode;
   color: string;
 };
 
@@ -34,7 +34,7 @@ interface IMultiselectInputDropdown {
   popupHeader?: JSX.Element;
   popupFooter?: JSX.Element;
   opened: boolean;
-  label?: string;
+  label?: string | ReactNode;
   required?: boolean;
 }
 

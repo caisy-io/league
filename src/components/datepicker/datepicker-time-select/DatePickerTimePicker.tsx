@@ -3,11 +3,13 @@ import DatePickerCard from "../datepicker-card/DatePickerCard";
 import usePicker from "../context/DatePickerContext";
 import SDatePickerTimePicker from "./styles/SDatePickerTimePicker";
 import SDatePickerTimePickerOption from "./styles/SDatePickerTimePickerOption";
+import { ClickOutside } from "../../../utils";
 
 interface IDatePickerTimePicker {
   value: string;
   options: string[];
   show: boolean;
+  onClickOutside: () => void
 }
 
 const DatePickerTimePicker: React.FC<IDatePickerTimePicker> = ({...props}) => {
@@ -46,15 +48,17 @@ const DatePickerTimePicker: React.FC<IDatePickerTimePicker> = ({...props}) => {
   return (
     <>
       {props.show && (
-        <SDatePickerTimePicker>
-          <DatePickerCard>
-            {props.options.map((option) => (
-              <SDatePickerTimePickerOption onClick={(e) => setTime(e, option)} key={option}>
-                {option.toString().length === 1 ? `0${option}` : `${option}`}
-              </SDatePickerTimePickerOption>
-            ))}
-          </DatePickerCard>
-        </SDatePickerTimePicker>
+        <ClickOutside onClickOutside={props.onClickOutside}>
+          <SDatePickerTimePicker>
+            <DatePickerCard>
+              {props.options.map((option) => (
+                <SDatePickerTimePickerOption onClick={(e) => setTime(e, option)} key={option}>
+                  {option.toString().length === 1 ? `0${option}` : `${option}`}
+                </SDatePickerTimePickerOption>
+              ))}
+            </DatePickerCard>
+          </SDatePickerTimePicker>
+        </ClickOutside>
       )}
     </>
   );

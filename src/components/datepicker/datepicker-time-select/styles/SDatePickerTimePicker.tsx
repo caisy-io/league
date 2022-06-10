@@ -8,6 +8,7 @@ const SDatePickerTimePicker = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 10;
 `;
 
 export default SDatePickerTimePicker;
