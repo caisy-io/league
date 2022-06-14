@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { IIconSize } from "../../utils/types";
-import { SIconBase } from "./SIconBase";
+import { IIconSize } from "../utils/types";
+import { SIconBase } from "./styles/SIconBase";
 
 const IconSize = {
   12: (
