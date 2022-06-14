@@ -141,32 +141,29 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({
         )}
         {translationBadge && <TranslationBadge countryCode="de" />}
       </SInputDropdown>
-      <Popover
-        disableTriangle
-        placement={placement}
-        reference={ref}
-        styleOverwrite={{ display: opened ? "block" : "none" }}
-      >
-        <SSelectDropdown style={{ width, dropdownStyle }}>
-          {dataSource.map((option) => (
-            <div key={option.key} onClick={() => onChange(option.key)}>
-              {renderItem ? (
-                renderItem(option)
-              ) : (
-                <SInputDropdownOption>
-                  <SInputDropdownTextIconWrapper>
-                    {option.icon ? option.icon : ""}
-                    <SInputDropdownTextWrapper>
-                      <SInputDropdownTitle selectTitle={selectedItem?.title} required={required}>
-                        {option.title}
-                      </SInputDropdownTitle>
-                    </SInputDropdownTextWrapper>
-                  </SInputDropdownTextIconWrapper>
-                </SInputDropdownOption>
-              )}
-            </div>
-          ))}
-        </SSelectDropdown>
+      <Popover display={opened} disableTriangle placement={placement} reference={ref}>
+        {() => (
+          <SSelectDropdown style={{ width, dropdownStyle }}>
+            {dataSource.map((option) => (
+              <div key={option.key} onClick={() => onChange(option.key)}>
+                {renderItem ? (
+                  renderItem(option)
+                ) : (
+                  <SInputDropdownOption>
+                    <SInputDropdownTextIconWrapper>
+                      {option.icon ? option.icon : ""}
+                      <SInputDropdownTextWrapper>
+                        <SInputDropdownTitle selectTitle={selectedItem?.title} required={required}>
+                          {option.title}
+                        </SInputDropdownTitle>
+                      </SInputDropdownTextWrapper>
+                    </SInputDropdownTextIconWrapper>
+                  </SInputDropdownOption>
+                )}
+              </div>
+            ))}
+          </SSelectDropdown>
+        )}
       </Popover>
     </div>
   );
