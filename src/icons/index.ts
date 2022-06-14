@@ -269,3 +269,4 @@ export { IconProjectsFoldersUngrouped } from "./IconProjectsFoldersUngrouped";
 export { IconEmail } from "./IconEmail";
 export { IconPenEdit } from "./IconPenEdit";
 export { IconPhotoChangeColor } from "./IconPhotoChangeColor";
+export { IconCreateNewProject } from "./IconCreateNewProject";
