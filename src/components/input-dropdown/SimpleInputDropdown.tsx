@@ -13,6 +13,8 @@ import { SInputDropdownTextWrapper } from "./styles/SInputDropdownTextWrapper";
 import { SInputDropdownTitle } from "./styles/SInputDropdownTitle";
 import { SSelectDropdown } from "./styles/SSelectDropdown";
 import { TranslationBadge } from "./TranslationBadge";
+import { SearchInput } from "../..";
+import fuzzysearch from "fuzzysearch";
 
 export interface IDataSourceItem {
   title: string | ReactNode;
@@ -40,6 +42,8 @@ interface ISelectSingle {
   styleOverwrite?: string;
   opened?: boolean;
   placement?: TPlacement;
+  withSearch?: boolean;
+  searchPlaceholder?: string;
 }
 
 export const SimpleInputDropdown: React.FC<ISelectSingle> = ({
@@ -57,9 +61,12 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({
   opened,
   defaultValue,
   placement = "bottom",
+  withSearch,
+  searchPlaceholder,
 }) => {
   const [selectedItem, setSelectedItem] = useState<IDataSourceItem | null | undefined>();
   const [initialized, setInitialized] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const ref = React.useRef(null);
 
   const onChange = (e) => {
@@ -144,24 +151,34 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({
       <Popover display={opened} disableTriangle placement={placement} reference={ref}>
         {() => (
           <SSelectDropdown style={{ width, dropdownStyle }}>
-            {dataSource.map((option) => (
-              <div key={option.key} onClick={() => onChange(option.key)}>
-                {renderItem ? (
-                  renderItem(option)
-                ) : (
-                  <SInputDropdownOption>
-                    <SInputDropdownTextIconWrapper>
-                      {option.icon ? option.icon : ""}
-                      <SInputDropdownTextWrapper>
-                        <SInputDropdownTitle selectTitle={selectedItem?.title} required={required}>
-                          {option.title}
-                        </SInputDropdownTitle>
-                      </SInputDropdownTextWrapper>
-                    </SInputDropdownTextIconWrapper>
-                  </SInputDropdownOption>
-                )}
-              </div>
-            ))}
+            {withSearch && (
+              <SearchInput
+                placeholder={searchPlaceholder}
+                onClose={() => setSearchValue("")}
+                autoFocus
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+            )}
+            {dataSource
+              .filter((item) => fuzzysearch(searchValue.toLowerCase(), `${item.title}`.toLowerCase()))
+              .map((option) => (
+                <div key={option.key} onClick={() => onChange(option.key)}>
+                  {renderItem ? (
+                    renderItem(option)
+                  ) : (
+                    <SInputDropdownOption>
+                      <SInputDropdownTextIconWrapper>
+                        {option.icon ? option.icon : ""}
+                        <SInputDropdownTextWrapper>
+                          <SInputDropdownTitle selectTitle={selectedItem?.title} required={required}>
+                            {option.title}
+                          </SInputDropdownTitle>
+                        </SInputDropdownTextWrapper>
+                      </SInputDropdownTextIconWrapper>
+                    </SInputDropdownOption>
+                  )}
+                </div>
+              ))}
           </SSelectDropdown>
         )}
       </Popover>
