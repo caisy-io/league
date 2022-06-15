@@ -35,7 +35,7 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
     }
 
     return <div style={style}>{content}</div>;
-  }, []);
+  }, [props.dataSource, props.renderItem]);
 
   React.useEffect(() => {
     if (Number.isInteger(scrollToIndex)) {
