@@ -268,4 +268,5 @@ export { IconLogout } from "./IconLogout";
 export { IconProjectsFoldersUngrouped } from "./IconProjectsFoldersUngrouped";
 export { IconEmail } from "./IconEmail";
 export { IconPenEdit } from "./IconPenEdit";
+export { IconOrganizationSettingsDetails } from "./IconOrganizationSettingsDetails";
 export { IconPhotoChangeColor } from "./IconPhotoChangeColor";
