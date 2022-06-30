@@ -14,7 +14,8 @@ interface IBlockEditorSidebarTab {
 }
 
 interface IBlockEditorSidebar {
-  status: string;
+  status: string | ReactNode;
+  statusId: string;
   tabs: IBlockEditorSidebarTab[];
   onTabClick: (tab: IBlockEditorSidebarTab) => void;
   selectedTab: IBlockEditorSidebarTab;
@@ -22,6 +23,7 @@ interface IBlockEditorSidebar {
 }
 
 export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({
+  statusId,
   status,
   tabs,
   onTabClick,
@@ -34,7 +36,7 @@ export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({
         <SBlockEditorSidebarStatus>
           <IconDocuments size={16} />
           {currentStatusText || "CURRENT STATUS"}
-          <SBlockEditorSidebarStatusBadge status={status.toUpperCase()}>{status}</SBlockEditorSidebarStatusBadge>
+          <SBlockEditorSidebarStatusBadge statusId={statusId}>{status}</SBlockEditorSidebarStatusBadge>
         </SBlockEditorSidebarStatus>
       </SBlockEditorSidebarListItem>
       <SBlockEditorSidebarListItem>

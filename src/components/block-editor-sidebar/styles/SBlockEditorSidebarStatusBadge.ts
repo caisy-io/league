@@ -31,9 +31,9 @@ const Bronze = css`
   align-items: center;
   justify-content: center;
 
-  ${(props) => props.status === "DRAFT" && CSSDraft}
-  ${(props) => props.status === "PUBLISHED" && CSSPublished}
-  ${(props) => props.status === "CHANGED" && CSSChanged}
+  ${(props) => props.statusId == "0" && CSSDraft}
+  ${(props) => props.statusId == "2" && CSSPublished}
+  ${(props) => props.statusId == "1" && CSSChanged}
 `;
 
 const Silver = css``;
