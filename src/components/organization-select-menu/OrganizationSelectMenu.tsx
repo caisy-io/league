@@ -61,7 +61,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
           )}
         </Tooltip>
       </SOrganizationSelectMenuItemOrganization>
-      <Tooltip disableTriangle color="black" content={groupTooltip || "switch group"} placement="right" delay={1000}>
+      <Tooltip disableTriangle color="black" content={groupTooltip || "switch group"} placement="right" delay={300}>
         {group?.name ? (
           <OrganizationSelectMenuItem menuItem={group} />
         ) : (
@@ -70,13 +70,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
           </OrganizationSelectMenuItemEmpty>
         )}
       </Tooltip>
-      <Tooltip
-        disableTriangle
-        color="black"
-        content={projectTooltip || "switch project"}
-        placement="right"
-        delay={1000}
-      >
+      <Tooltip disableTriangle color="black" content={projectTooltip || "switch project"} placement="right" delay={300}>
         {project?.name ? (
           <OrganizationSelectMenuItem menuItem={project} />
         ) : (
