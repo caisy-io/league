@@ -50,7 +50,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
           color="black"
           content={organizationTooltip || "switch organization"}
           placement="right"
-          delay={1000}
+          delay={300}
         >
           {organization?.name ? (
             <OrganizationSelectMenuItem menuItem={organization} typeOrganization />
