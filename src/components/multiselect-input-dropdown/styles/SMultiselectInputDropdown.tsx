@@ -6,6 +6,10 @@ const CSSActivated = css`
   color: var(--text-01);
 `;
 
+const CSSError = css`
+  border: 1px solid var(--ui-supportive-01);
+`;
+
 const Bronze = css`
   display: flex;
   flex-direction: column;
@@ -25,6 +29,8 @@ const Bronze = css`
   &:active {
     ${CSSActivated};
   }
+
+  ${({ error }) => error && CSSError}
 `;
 
 const Silver = css``;
