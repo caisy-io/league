@@ -47,7 +47,6 @@ export const LineInput: FC<ILineInput> = ({
       />
       <SLineInputRequiredIndicatorWrapper>
         <SLineInputRequiredIndicatorWidth>{value || placeholder}</SLineInputRequiredIndicatorWidth>
-        <SLineInputRequiredIndicator />
       </SLineInputRequiredIndicatorWrapper>
     </SLineInputWrapper>
   );
