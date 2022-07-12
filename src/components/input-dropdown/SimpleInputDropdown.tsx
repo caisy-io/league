@@ -15,6 +15,7 @@ import { SSelectDropdown } from "./styles/SSelectDropdown";
 import { TranslationBadge } from "./TranslationBadge";
 import { SearchInput } from "../..";
 import fuzzysearch from "fuzzysearch";
+import { SSelectDropdownList } from "./styles/SSelectDropdownList";
 
 export interface IDataSourceItem {
   title: string | ReactNode;
@@ -149,15 +150,16 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({
         {translationBadge && <TranslationBadge countryCode="de" />}
       </SInputDropdown>
       <Popover display={opened} disableTriangle placement={placement} reference={ref}>
-          <SSelectDropdown style={{ width, dropdownStyle }}>
-            {withSearch && (
-              <SearchInput
-                placeholder={searchPlaceholder}
-                onClose={() => setSearchValue("")}
-                autoFocus
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-            )}
+        <SSelectDropdown style={{ width, dropdownStyle }}>
+          {withSearch && (
+            <SearchInput
+              placeholder={searchPlaceholder}
+              onClose={() => setSearchValue("")}
+              autoFocus
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          )}
+          <SSelectDropdownList>
             {dataSource
               .filter((item) => fuzzysearch(searchValue.toLowerCase(), `${item.title}`.toLowerCase()))
               .map((option) => (
@@ -169,16 +171,15 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({
                       <SInputDropdownTextIconWrapper>
                         {option.icon ? option.icon : ""}
                         <SInputDropdownTextWrapper>
-                          <SInputDropdownTitle selectTitle={selectedItem?.title} required={required}>
-                            {option.title}
-                          </SInputDropdownTitle>
+                          <SInputDropdownTitle selectTitle={selectedItem?.title}>{option.title}</SInputDropdownTitle>
                         </SInputDropdownTextWrapper>
                       </SInputDropdownTextIconWrapper>
                     </SInputDropdownOption>
                   )}
                 </div>
               ))}
-          </SSelectDropdown>
+          </SSelectDropdownList>
+        </SSelectDropdown>
       </Popover>
     </div>
   );
