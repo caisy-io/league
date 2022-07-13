@@ -1,4 +1,4 @@
-yarn global add vercel
+yarn global add vercel@23.1.2
 
 DEPLOYMENT_URL=$(vercel --token=$VERCEL_TOKEN --confirm --scope=caisy --no-clipboard --name="$VERCEL_NAME" ) && echo "BRANCH_NAME=$BRANCH_NAME" &&\
 curl   --header "Authorization: Basic $INTERNAL_AUTOMATION_AUTH_TOKEN" \
