@@ -4,16 +4,10 @@ import { CSSScrollbarStyles } from "../../../constants/styles/scrollbar-styles";
 interface ISSelectDropdown {}
 
 const Bronze = css<ISSelectDropdown>`
-  border: 1px solid #dedede;
-  background-color: var(--ui-01);
-  border-radius: 6px;
   font-size: 14px;
-  overflow: hidden;
-  color: var(--form-item-text-color);
-  transition: box-shadow ease 0.5s, border ease 0.5s;
-  &:hover {
-    box-shadow: 0 2px 7px 0 rgba(89, 106, 122, 0.14);
-  }
+  max-height: 300px;
+  overflow: auto;
+  ${CSSScrollbarStyles};
 `;
 
 const Silver = css<ISSelectDropdown>``;
@@ -24,7 +18,7 @@ const Platinum = css<ISSelectDropdown>``;
 
 const Diamond = css<ISSelectDropdown>``;
 
-export const SSelectDropdown = styled.div`
+export const SSelectDropdownList = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
