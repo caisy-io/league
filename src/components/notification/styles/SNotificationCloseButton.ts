@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody03Medium, CSSProgressiveHighlight } from "../../../constants/styles";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
@@ -9,6 +8,8 @@ const Bronze = css`
   position: absolute;
   top: 16px;
   right: 16px;
+  color: var(--icon-03);
+  cursor: pointer;
 `;
 
 const Silver = css``;
