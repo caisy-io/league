@@ -1,5 +1,5 @@
 import React from "react";
-import { Notification } from "./Notification";
+import { Notification, SNotificationDate, SNotificationBody } from "./";
 
 export default {
   title: `Components/Notifications/Notification`,
@@ -19,7 +19,10 @@ function NotificationDemo({ children }) {
 
 const Template = () => (
   <NotificationDemo>
-    <Notification>Content</Notification>
+    <Notification>
+      <SNotificationDate>TODAY, 3:30PM</SNotificationDate>
+      <SNotificationBody>Notification text</SNotificationBody>
+    </Notification>
   </NotificationDemo>
 );
 

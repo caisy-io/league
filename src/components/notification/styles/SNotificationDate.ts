@@ -1,15 +1,10 @@
 import styled, { css } from "styled-components";
+import { CSSProgressiveHighlight } from "../../../constants/styles";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  position: relative;
-  padding: 16px;
-  background-color: var(--ui-background);
-  border-radius: 8px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  ${CSSProgressiveHighlight};
+  color: var(--text-04);
 `;
 
 const Silver = css``;
@@ -20,7 +15,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SNotification = styled.div`
+export const SNotificationDate = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
