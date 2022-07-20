@@ -1,11 +1,11 @@
 import React from "react";
 import { NotificationBlock } from "./NotificationBlock";
-import { SNotificationBlockHeader } from "./styles/SNotificationBlockHeader";
 import { Notification } from "../notification/Notification";
 import { SNotificationBody } from "../notification/styles/SNotificationBody";
 import { SNotificationDate } from "../notification/styles/SNotificationDate";
 import { FlatActionButton } from "../flat-action-button/FlatActionButton";
-import { IconDownloadArrow } from "../../icons";
+import { NotificationButton } from "../notification-button/NotificationButton";
+import { IconDocuments, IconDownloadArrow } from "../../icons";
 
 export default {
   title: `Components/Notifications/NotificationBlock`,
@@ -28,7 +28,10 @@ const Template = () => (
     <NotificationBlock>
       <Notification>
         <SNotificationDate>TODAY, 3:30PM</SNotificationDate>
-        <SNotificationBody>Notification Text</SNotificationBody>
+        <SNotificationBody>
+          <NotificationButton image={<img src="" />}>John Doe</NotificationButton> created
+          <NotificationButton icon={<IconDocuments size={16} />}>Document A</NotificationButton>
+        </SNotificationBody>
         <div style={{ width: "fit-content" }}>
           <FlatActionButton type="default">
             <IconDownloadArrow size={16} /> Download JSON
