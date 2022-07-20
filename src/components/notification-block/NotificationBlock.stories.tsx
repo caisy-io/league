@@ -1,6 +1,11 @@
 import React from "react";
 import { NotificationBlock } from "./NotificationBlock";
-import { Notification, SNotificationBody, SNotificationDate } from "../";
+import { SNotificationBlockHeader } from "./styles/SNotificationBlockHeader";
+import { Notification } from "../notification/Notification";
+import { SNotificationBody } from "../notification/styles/SNotificationBody";
+import { SNotificationDate } from "../notification/styles/SNotificationDate";
+import { FlatActionButton } from "../flat-action-button/FlatActionButton";
+import { IconDownloadArrow } from "../../icons";
 
 export default {
   title: `Components/Notifications/NotificationBlock`,
@@ -21,10 +26,14 @@ function NotificationBlockDemo({ children }) {
 const Template = () => (
   <NotificationBlockDemo>
     <NotificationBlock>
-      <div>2 new notifications in Brand Name A / Project Name</div>
       <Notification>
         <SNotificationDate>TODAY, 3:30PM</SNotificationDate>
         <SNotificationBody>Notification Text</SNotificationBody>
+        <div style={{ width: "fit-content" }}>
+          <FlatActionButton type="default">
+            <IconDownloadArrow size={16} /> Download JSON
+          </FlatActionButton>
+        </div>
       </Notification>
       <Notification>
         <SNotificationDate>TODAY, 3:30PM</SNotificationDate>
