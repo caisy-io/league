@@ -36,6 +36,7 @@ interface IMultiselectInputDropdown {
   opened: boolean;
   label?: string | ReactNode;
   required?: boolean;
+  error?: boolean;
 }
 
 export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
@@ -52,6 +53,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   onClick,
   label,
   required,
+  error,
 }) => {
   const ref = React.useRef(null);
 
@@ -79,7 +81,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   return (
     <ClickOutside onClickOutside={onCloseSelect}>
       <div>
-        <SMultiselectInputDropdown active={opened} ref={ref} onClick={onClick}>
+        <SMultiselectInputDropdown error={error} active={opened} ref={ref} onClick={onClick}>
           {label && (
             <SMultiselectInputDropdownLabel>
               {label} {required && <SRequiredIndicator />}
