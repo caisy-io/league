@@ -127,4 +127,5 @@ export * from "./simple-dropdown";
 export * from "./notification-snackbar";
 export * from "./delete-confirmation-popup";
 export * from "./notification";
+export * from "./notification-button";
 export * from "./notification-block";
