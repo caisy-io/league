@@ -8,12 +8,5 @@ interface INotification {
 }
 
 export const Notification: FC<INotification> = ({ children }) => {
-  return (
-    <SNotification>
-      {children}
-      <SNotificationCloseButton>
-        <IconCross size={24} />
-      </SNotificationCloseButton>
-    </SNotification>
-  );
+  return <SNotification>{children}</SNotification>;
 };
