@@ -126,7 +126,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
     if (typeof onClickOutside === "function") {
       onClickOutside();
     }
-    setActive(false);
+    if (!inline) setActive(false);
   }, [setActive]);
   const handleOnMouseDownCapture = useClickOutside(handleOnClickOutside);
 
