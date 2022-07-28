@@ -341,7 +341,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
           }}
           onChange={([startDate, endDate]) => {
             if (disableChangingDate) {
-              setDate(new Date());
+              setDate([new Date()]);
               return;
             }
             const dateStart = new Date(
