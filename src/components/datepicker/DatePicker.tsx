@@ -340,7 +340,10 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
             onYearChange(currentDate, flatPicker);
           }}
           onChange={([startDate, endDate]) => {
-            if (disableChangingDate) return;
+            if (disableChangingDate) {
+              setDate(new Date());
+              return;
+            }
             const dateStart = new Date(
               startDate.getFullYear(),
               startDate.getMonth(),
