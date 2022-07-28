@@ -5,6 +5,9 @@ const Bronze = css`
   height: 16.67px;
   width: 16.67px;
   padding: 1.67px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Silver = css``;

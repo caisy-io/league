@@ -446,7 +446,7 @@ export const DatePicker: React.FC<IDatePicker> = ({ ...props }) => {
 
   return (
     <DatePickerState {...props} defaultActive={props.withDefaultActive}>
-      <DayjsProvider>
+      <DayjsProvider localeString={props.locale}>
         <WrappedDatePicker {...props}>{props.children}</WrappedDatePicker>
       </DayjsProvider>
     </DatePickerState>
