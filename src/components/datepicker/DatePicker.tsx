@@ -58,6 +58,7 @@ interface IDatePicker {
   withRange?: boolean;
   withoutMonthsNavigation?: boolean;
   inline?: boolean;
+  disableChangingDate?: boolean;
 }
 
 export interface IDatePickerI18n {
@@ -92,6 +93,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   children,
   inline,
   value,
+  disableChangingDate,
 }) => {
   const {
     setShowMinutes,
@@ -338,6 +340,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
             onYearChange(currentDate, flatPicker);
           }}
           onChange={([startDate, endDate]) => {
+            if (disableChangingDate) return;
             const dateStart = new Date(
               startDate.getFullYear(),
               startDate.getMonth(),
