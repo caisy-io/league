@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
 import { RgbaColor } from "react-colorful";
 import { rgbHex } from "../../utils/color";
 
@@ -11,6 +11,35 @@ import { SColorPickerWrapper } from "./styles/SColorPickerWrapper";
 export interface IColorPicker {
   initColor?: RgbaColor;
   onChange?: (color: string) => void;
+}
+
+function hexToRgbA(hex): RgbaColor | undefined {
+  var c;
+  console.log(` hex`, hex);
+  if (/^#([A-Fa-f0-9]{2}){4}$/.test(hex)) {
+    c = hex.substring(1).split("");
+    console.log(` c1`, c);
+  } else if (/^([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+    c = hex.split("");
+  } else if (/^([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+    c = hex.split("");  
+  } else {
+    return undefined;
+  }
+
+  let alpha = 1;
+
+  if (c.length == 8) {
+    alpha = (parseInt(""+c[6]+c[7], 16) / 255)
+    c = [c[0], c[1], c[2], c[3], c[4], c[5]];
+  }
+
+  if (c.length == 3) {
+    c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+  }
+
+  c = "0x" + c.join("");
+  return { r: (c >> 16) & 255, g: (c >> 8) & 255, b: c & 255, a: alpha };
 }
 
 const getHexFromColor = (color: RgbaColor) => {
@@ -27,12 +56,22 @@ export const ColorPicker: React.FC<IColorPicker> = ({ initColor, onChange }) => 
     onChange?.(getHexFromColor(color));
   };
 
+  const onInputChange = (e) => {
+    if (e.target.value) {
+      const maybeColor = hexToRgbA(e.target.value);
+      if (maybeColor) {
+        setColor(maybeColor);
+        onChange?.(getHexFromColor(maybeColor));
+      }
+    }
+  };
+
   return (
     <SColorPickerWrapper>
       <SColorPicker color={color} onChange={onColorChange} />
       <SColorPickerInputWrapper>
         <SColorPickerInputlabel>HEX</SColorPickerInputlabel>
-        <SColorPickerInput disabled value={getHexFromColor(color)} />
+        <SColorPickerInput value={getHexFromColor(color)} onChange={onInputChange} />
       </SColorPickerInputWrapper>
     </SColorPickerWrapper>
   );
