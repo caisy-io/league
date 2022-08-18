@@ -86,6 +86,7 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
   const removeImage = () => {
     setImage(null);
     setUploadName("");
+    onChange("");
   };
 
   useEffect(() => {
