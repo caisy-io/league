@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import React, { ReactNode, Ref, useEffect, useRef, useState } from "react";
 import { Button } from "../button";
 import { IconDelete, IconEdit } from "../../icons";
 import { Img } from "../../base-components";
@@ -13,7 +13,7 @@ import { SSetImageCardSubTitle } from "./styles/SSetImageCardSubTitle";
 import { UploadProgressBar } from "../upload-progress-bar";
 
 interface ISetImageCard {
-  onChange: (url: string) => void;
+  onChange: (url: string | null) => void;
   processImage: (file: File) => Promise<string>;
   initalValue?: string;
   i18n?: {
@@ -84,21 +84,19 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
   };
 
   const removeImage = () => {
+    (imageRef.current as any).value = null;
     setImage(null);
     setUploadName("");
-    onChange("");
+    setLoading(false);
+    setUploadProgress(0);
   };
 
   useEffect(() => {
-    if (image) {
-      onChange(image);
-    }
+    onChange(image);
   }, [image]);
 
   const handleCancel = () => {
     removeImage();
-    setLoading(false);
-    setUploadProgress(0);
   };
 
   return (
