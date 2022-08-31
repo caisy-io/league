@@ -273,3 +273,4 @@ export { IconPhotoChangeColor } from "./IconPhotoChangeColor";
 export { IconCreateNewProject } from "./IconCreateNewProject";
 export { IconAddProjectDocumentPlus } from "./IconAddProjectDocumentPlus";
 export { IconDuplicateProjectDocument } from "./IconDuplicateProjectDocument";
+export { IconCodeBlock } from "./IconCodeBlock";
