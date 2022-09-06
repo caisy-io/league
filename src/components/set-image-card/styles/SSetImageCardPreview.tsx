@@ -2,9 +2,8 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  width: 282px;
-  height: 148px;
-
+  width: 235px; 
+  height: 150px;  
   border-radius: 4px;
   box-shadow: var(--box-shadow-strong-pop-elavation);
   object-fit: cover;

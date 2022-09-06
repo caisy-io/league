@@ -113,7 +113,7 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
         )}
         {!isLoading && image && (
           <SSetImageCardPreview>
-            <Img resolution={960} src={image} />
+            <Img resolution={600} contain={true} src={image} />
           </SSetImageCardPreview>
         )}
         {!isLoading && !image && (
