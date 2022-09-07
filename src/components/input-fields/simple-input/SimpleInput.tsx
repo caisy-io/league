@@ -164,7 +164,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
               ref={inputRef}
               onFocus={handleFocus}
               onBlur={handleBlur}
-              value={value || ""}
+              value={value === null || value === undefined ? "" : value}
               placeholder={placeholder}
               disabled={disabled}
               onKeyUp={onKeyUp}
