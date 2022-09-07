@@ -35,6 +35,7 @@ export const SetImageCard: React.FC<ISetImageCard> = ({ processImage, onChange, 
 
   const openImagePicker = (e) => {
     e.preventDefault();
+    removeImage();
     imageRef?.current?.click();
   };
 
