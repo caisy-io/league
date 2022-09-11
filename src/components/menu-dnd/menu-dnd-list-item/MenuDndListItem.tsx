@@ -1,6 +1,7 @@
 import React from "react";
 import SMenuDndListItem from "./styles/SMenuDndListItem";
 import { SDropPositionIndicator } from "./styles/SDropPositionIndicator";
+// @ts-ignore
 import { useDrag, useDrop } from "react-dnd";
 
 interface IMenuDndListItem {

@@ -1,5 +1,6 @@
 import React from "react";
 import { STreeItem } from "./styles/STreeItem";
+// @ts-ignore
 import { useDrag, useDrop } from "react-dnd";
 import { SDropPositionIndicator } from "./styles/SDropPositionIndicator";
 

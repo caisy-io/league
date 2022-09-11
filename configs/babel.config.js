@@ -5,9 +5,15 @@ module.exports = {
         [
             "styled-components",
             {
-              "ssr": true,
-              "displayName": true,
-              "preprocess": false
+                "ssr": true,
+                "displayName": true,
+                "preprocess": false
+            }
+        ],
+        [
+            "@babel/plugin-transform-react-jsx",
+            {
+                "runtime": "automatic"
             }
         ]
     ],
@@ -18,11 +24,12 @@ module.exports = {
                 corejs: '3',
                 loose: true,
                 modules: 'auto',
-                targets: ['last 2 versions',"> 2%", "not IE 11"],
+                targets: ['last 2 versions', "> 2%", "not IE 11"],
                 useBuiltIns: 'usage',
             },
         ],
-        '@babel/react',
         '@babel/preset-typescript',
+
+        ["@babel/preset-react", { runtime: "automatic" }],
     ],
 };
