@@ -147,27 +147,25 @@ export const Table: FC<ITable> = forwardRef(
       if (row) {
         prepareRow(row);
         return (
-          <>
-            <STr
-              onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
-              key={`row-${row.id}`}
-              {...row.getRowProps({
-                style: { ...style, rowStyle },
-              })}
-            >
-              {row.cells.map((cell, cellIndex) => {
-                return (
-                  <STd
-                    key={`cell-${row.id}-${cellIndex}`}
-                    style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
-                    {...cell.getCellProps()}
-                  >
-                    {cell.render("Cell")}
-                  </STd>
-                );
-              })}
-            </STr>
-          </>
+          <STr
+            onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
+            key={`row-${row.id}`}
+            {...row.getRowProps({
+              style: { ...style, rowStyle },
+            })}
+          >
+            {row.cells.map((cell, cellIndex) => {
+              return (
+                <STd
+                  key={`cell-${row.id}-${cellIndex}`}
+                  style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
+                  {...cell.getCellProps()}
+                >
+                  {cell.render("Cell")}
+                </STd>
+              );
+            })}
+          </STr>
         );
       }
       return null;
