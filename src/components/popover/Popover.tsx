@@ -112,7 +112,16 @@ export const Popover: React.FC<IPopover> = ({
   styleOverwrite,
   display,
 }) => {
-  const getPlacementsMemo = useMemo(() => getPlacements(disableTriangle, reference), []);
+  
+  const getPlacementsMemo = useMemo(
+    () =>
+      getPlacements(
+        disableTriangle,
+        reference?.current ? reference?.current : ({ current: { offsetWidth: 0, offsetHeight: 0 } } as any),
+      ),
+    [!!reference?.current],
+  );
+
   return (
     <>
       <ClickOutside onClickOutside={onClickOutside || (() => {})}>
@@ -124,11 +133,7 @@ export const Popover: React.FC<IPopover> = ({
             container={container}
             style={styleOverwrite}
           >
-            {(display === undefined || display) && (
-              <>
-                {typeof children === "function" ? children() : children}
-              </>
-            )}
+            {(display === undefined || display) && <>{typeof children === "function" ? children() : children}</>}
           </SPopover>
         </Stackable>
       </ClickOutside>
