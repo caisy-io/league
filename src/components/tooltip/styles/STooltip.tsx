@@ -4,6 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 interface ISTooltip {
   color?: "black" | "white";
+  styleOverwrite?: any;
 }
 
 export const CSSTooltipBlack = css`
@@ -59,4 +60,5 @@ export const STooltip = styled.span<ISTooltip>`
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
