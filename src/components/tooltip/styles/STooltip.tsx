@@ -1,11 +1,9 @@
 import styled, { css } from "styled-components";
 import { CSSProgressiveCaption01Semibold } from "../../../constants/styles/fonts";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
-import { STooltipWrapper } from "./STooltipWrapper";
 
-interface ITooltip {
-  animation: any;
-  color: string;
+interface ISTooltip {
+  color?: "black" | "white";
 }
 
 export const CSSTooltipBlack = css`
@@ -18,7 +16,7 @@ export const CSSTooltipWhite = css`
   color: var(--text-01);
 `;
 
-const Bronze = css<ITooltip>`
+const Bronze = css<ISTooltip>`
   ${CSSProgressiveCaption01Semibold}
   display: flex;
   z-index: 120;
@@ -55,7 +53,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const STooltip = styled.span`
+export const STooltip = styled.span<ISTooltip>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
