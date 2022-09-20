@@ -84,19 +84,22 @@ interface IPopover {
 const getPlacements = (disableTriangle: boolean | undefined, reference: React.MutableRefObject<null>) => (rbr, tbr) => {
   const GAP = disableTriangle ? 8 : 18;
 
+  const offsetWidth = (reference.current as any)?.offsetWidth || 0;
+  const offsetHeight = (reference.current as any)?.offsetHeight || 0;
+
   return [
     { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
     { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
     { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
     { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, GAP) }, // Center right
-    { ...vbefore(rbr, tbr, -GAP), left: hbefore(rbr, tbr, -GAP).left + (reference.current as any).offsetWidth }, // Top left
-    { ...vbefore(rbr, tbr, -GAP), left: hafter(rbr, tbr, GAP).left - (reference.current as any).offsetWidth }, // Top right
-    { ...vafter(rbr, tbr, GAP), left: hbefore(rbr, tbr, -GAP).left + (reference.current as any).offsetWidth }, // Bottom left
-    { ...vafter(rbr, tbr, GAP), left: hafter(rbr, tbr, GAP).left - (reference.current as any).offsetWidth }, // Bottom right
-    { top: vcenter(rbr, tbr).top - (reference.current as any).offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Top
-    { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Bottom
-    { top: vcenter(rbr, tbr).top - (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Top
-    { top: vcenter(rbr, tbr).top + (reference.current as any).offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Bottom
+    { ...vbefore(rbr, tbr, -GAP), left: hbefore(rbr, tbr, -GAP).left + offsetWidth }, // Top left
+    { ...vbefore(rbr, tbr, -GAP), left: hafter(rbr, tbr, GAP).left - offsetWidth }, // Top right
+    { ...vafter(rbr, tbr, GAP), left: hbefore(rbr, tbr, -GAP).left + offsetWidth }, // Bottom left
+    { ...vafter(rbr, tbr, GAP), left: hafter(rbr, tbr, GAP).left - offsetWidth }, // Bottom right
+    { top: vcenter(rbr, tbr).top - offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Top
+    { top: vcenter(rbr, tbr).top + offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Bottom
+    { top: vcenter(rbr, tbr).top - offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Top
+    { top: vcenter(rbr, tbr).top + offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Bottom
     { ...hafter(rbr, tbr, -80), ...vafter(rbr, tbr, 16) }, // Bottom aligned right
   ];
 };

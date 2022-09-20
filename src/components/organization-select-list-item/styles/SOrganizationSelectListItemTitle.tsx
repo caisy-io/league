@@ -19,7 +19,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SOrganizationSelectListItemTitle = styled.p`
+export const SOrganizationSelectListItemTitle = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
