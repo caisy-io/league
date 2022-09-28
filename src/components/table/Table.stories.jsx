@@ -3,6 +3,9 @@ import { Table } from "../table";
 import { Input } from "../input";
 import { IconEdit, IconTrashDelete } from "../../icons";
 import { Button } from "../button";
+import { useMemo } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function TableDemo() {
   const [dataSource, setDataSource] = React.useState([
@@ -69,34 +72,54 @@ function TableDemo() {
       actions: { id: 9 },
     },
   ]);
-  const columns = [
-    {
-      header: "Name",
-      key: "name", // key is the "key" in the data
-    },
-    {
-      header: "Last Name",
-      key: "lastName",
-    },
-    {
-      header: "ID",
-      key: "id",
-    },
-    {
-      header: "Actions",
-      key: "actions",
-      renderItem: (data) => (
-        <div style={{ display: "flex", gap: 8 }}>
-          <Button onClick={() => alert(`Deleted item with ID: ${data.id}`)}>
-            <IconTrashDelete />
-          </Button>
-          <Button onClick={() => alert(`Editing item with ID: ${data.id}`)}>
-            <IconEdit />
-          </Button>
-        </div>
-      ),
-    },
-  ];
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  const columns = useMemo(() => {
+    return [
+      {
+        header: "Name",
+        key: "name", // key is the "key" in the data
+        renderItem: () => {
+          return loading ? <>loading</> : <>!loading</>;
+        },
+      },
+      {
+        header: "Last Name",
+        key: "lastName",
+        renderItem: () => {
+          return loading ? <>loading</> : <>!loading</>;
+        },
+      },
+      {
+        header: "ID",
+        key: "id",
+        renderItem: () => {
+          return loading ? <>loading</> : <>!loading</>;
+        },
+      },
+      {
+        header: "Actions",
+        key: "actions",
+        renderItem: (data) => (
+          <div style={{ display: "flex", gap: 8 }}>
+            <Button onClick={() => alert(`Deleted item with ID: ${data.id}`)}>
+              <IconTrashDelete />
+            </Button>
+            <Button onClick={() => alert(`Editing item with ID: ${data.id}`)}>
+              <IconEdit />
+            </Button>
+          </div>
+        ),
+      },
+    ];
+  }, [loading]);
 
   const [globalFilter, setGlobalFilter] = React.useState("");
   const [isNextPageLoading, setIsNextPageLoading] = React.useState(false);
