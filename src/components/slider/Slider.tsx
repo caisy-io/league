@@ -11,6 +11,7 @@ export interface ISlider {
   rightIcon?: JSX.Element;
   getSliderValue?: (value) => void;
   onValueChange?: () => void;
+  style?: React.CSSProperties;
 }
 
 const checkValue = (value, min, max) => {
@@ -31,6 +32,7 @@ export const Slider: React.FC<ISlider & React.InputHTMLAttributes<HTMLInputEleme
   leftIcon,
   rightIcon,
   onValueChange,
+  style,
   ...props
 }) => {
   const [value, setValue] = React.useState<number>();
@@ -49,7 +51,7 @@ export const Slider: React.FC<ISlider & React.InputHTMLAttributes<HTMLInputEleme
   return (
     <SSliderCont>
       {leftIcon && leftIcon}
-      <SSlider value={value}>
+      <SSlider style={style} value={value}>
         <SSliderInput
           type="range"
           onChange={(e) => {
