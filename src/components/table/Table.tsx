@@ -188,10 +188,9 @@ export const Table: FC<ITable> = forwardRef(
     const onScroll = ({ scrollOffset }) => {
       if (!!firstRowRef?.current) {
         firstRowRef.current.style.transform = `translateY(-${scrollOffset * 2}px)`;
-        const height =
-          scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
-
-        firstRowRef.current.style.height = height + "px";
+        // const height =
+        //   scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
+        // firstRowRef.current.style.height = height + "px";
       }
       triggerLoadMoreItems();
     };
