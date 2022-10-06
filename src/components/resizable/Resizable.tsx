@@ -30,7 +30,7 @@ export const Resizable = ({onBeginResize, onResize, onEndResize, children}: IRes
         {
             React.Children.toArray(children).map(child => {
                 if(React.isValidElement(child)){
-                    return React.cloneElement(child, {onBeginResize, onResize, onEndResize})
+                    return React.cloneElement<any>(child, {onBeginResize, onResize, onEndResize})
                 }
             })
         }
