@@ -54,6 +54,12 @@ export const useForm: (initialFormState?: IInitialFormState) => IUseForm = (init
     // setFormState(produce((prevState) => ({ ...prevState, [fieldName]: { ...prevState[fieldName], value } })));
     setFormState(
       produce((draft) => {
+        if(!draft){
+          draft = {};
+        }
+        if (!draft[fieldName]) {
+          draft[fieldName] = {};
+        }
         draft[fieldName].value = value;
       }),
     );
@@ -152,6 +158,13 @@ export const useForm: (initialFormState?: IInitialFormState) => IUseForm = (init
   const setFieldValue = (fieldName: string, value: any) => {
     setFormState(
       produce((draft) => {
+        if(!draft){
+          draft = {};
+        }
+        if (!draft[fieldName]) {
+          draft[fieldName] = {};
+        }
+
         draft[fieldName].value = value;
       }),
     );
