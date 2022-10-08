@@ -1,1 +1,0 @@
-export { ExtensionCard } from "./ExtensionCard";

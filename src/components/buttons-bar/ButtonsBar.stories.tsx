@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-import ButtonsBar from "./ButtonsBar";
+import {ButtonsBar} from "./ButtonsBar";
 import { Button } from "../button";
 import { IconStarOutlined } from "../../icons"
 

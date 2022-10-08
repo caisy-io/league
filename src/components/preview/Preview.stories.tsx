@@ -3,7 +3,6 @@ import React from "react";
 import { Preview } from "./Preview";
 import { IconStarOutlined }from "../../icons";
 import { Img } from "../../base-components/img/Img";
-import Flag from "../flag";
 
 export default {
   title: "Components/Style Guide/Preview",
@@ -63,6 +62,6 @@ Preview_image_default.args = {
   ),
 };
 
-export const Preview_flag_default: ComponentStory<typeof Preview> = (args) => (
-  <Preview {...args} flag={<Flag countryCode="ar" size={args.size} />} />
-);
+// export const Preview_flag_default: ComponentStory<typeof Preview> = (args) => (
+//   <Preview {...args} flag={<Flag countryCode="ar" size={args.size} />} />
+// );

@@ -9,21 +9,22 @@ export default {
 };
 
 const Template = (args) => {
-  const [value, setValue] = useState("test");
+  const [value1, setValue1] = useState("test");
+  const [value2, setValue2] = useState("test");
   return (
     <StringSingleField {...args}>
       <SimpleInput
         translationBadge={<TranslationBadge countryCode="de" />}
         label="This is a label"
-        value={value}
-        onChange={({ target: { value } }) => setValue(value)}
+        value={value1}
+        onChange={({ target: { value } }) => setValue1(value)}
       />
 
       <SimpleInput
         translationBadge={<TranslationBadge countryCode="es-ar" />}
         label="This is a label"
-        value={value}
-        onChange={({ target: { value } }) => setValue(value)}
+        value={value2}
+        onChange={({ target: { value } }) => setValue2(value)}
       />
     </StringSingleField>
   );

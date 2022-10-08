@@ -1,6 +1,6 @@
 import React from "react";
 import { SSelectSearchOperatorDropdown } from "./styles/SSelectSearchOperatorDropdown";
-
+import {SearchBarOperatorBadgeSelect} from "../search-bar-operator-badge-select"
 // Template card
 export const Default = ({ ...args }) => {
   return (
