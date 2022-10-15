@@ -4,7 +4,6 @@ import React, {
   forwardRef,
   memo,
   ReactNode,
-  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -19,13 +18,12 @@ import { STbody } from "./styles/STbody";
 import { SThead } from "./styles/SThead";
 import { STableLoading } from "./styles/STableLoading";
 import { IconAngleDown, IconAngleUp } from "../../icons";
-import { FixedSizeList, areEqual, VariableSizeList } from "react-window";
+import { areEqual, VariableSizeList } from "react-window";
 import { Empty } from "../empty";
 import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
 import { Spinner } from "../spinner";
 import { STableFirstRow } from "./styles/STableFirstRow";
-import { STableWithRows } from "./styles/STableWithRows";
 
 export interface IColumn {
   header: ReactNode;
@@ -270,7 +268,7 @@ export const Table: FC<ITable> = forwardRef(
               {!!renderAsFirstRow ? (
                 <>
                   <STableFirstRow ref={firstRowRef}>{renderAsFirstRow}</STableFirstRow>
-                  <STableWithRows ref={tableRowsRef}>{TableWithRows}</STableWithRows>
+                  <div ref={tableRowsRef}>{TableWithRows}</div>
                 </>
               ) : (
                 <>{TableWithRows}</>
