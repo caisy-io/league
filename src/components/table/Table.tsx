@@ -24,6 +24,8 @@ import { Empty } from "../empty";
 import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
 import { Spinner } from "../spinner";
+import { STableFirstRow } from "./styles/STableFirstRow";
+import { STableWithRows } from "./styles/STableWithRows";
 
 export interface IColumn {
   header: ReactNode;
@@ -144,10 +146,12 @@ export const Table: FC<ITable> = forwardRef(
     useEffect(() => {
       setGlobalFilter(globalFilter);
     }, [globalFilter]);
-    
+
     useEffect(() => {
-      if (tableRowsRef.current) {
-        tableRowsRef.current.style.transform = `translateY(-0px)`;
+      if (firstRowRef.current) {
+        if (tableRowsRef.current) {
+          tableRowsRef.current.style.transform = `translateY(${firstRowRef.current.offsetHeight}px)`;
+        }
       }
     }, [tableRowsRef.current]);
 
@@ -194,9 +198,11 @@ export const Table: FC<ITable> = forwardRef(
 
     const onScroll = ({ scrollOffset }) => {
       if (firstRowRef.current) {
-        firstRowRef.current.style.transform = `translateY(-${scrollOffset * 2}px)`;
+        firstRowRef.current.style.transform = `translateY(-${scrollOffset * 0.5}px)`;
         if (tableRowsRef.current) {
-          tableRowsRef.current.style.transform = `translateY(-${firstRowRef.current.offsetHeight > scrollOffset ? scrollOffset : firstRowRef.current.offsetHeight}px)`;
+          tableRowsRef.current.style.transform = `translateY(${
+            firstRowRef.current.offsetHeight > scrollOffset ? firstRowRef.current.offsetHeight - scrollOffset : 0
+          }px)`;
         }
         // const height =
         //   scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
@@ -263,8 +269,8 @@ export const Table: FC<ITable> = forwardRef(
             <>
               {!!renderAsFirstRow ? (
                 <>
-                  <div ref={firstRowRef}>{renderAsFirstRow}</div>
-                  <div ref={tableRowsRef}>{TableWithRows}</div>
+                  <STableFirstRow ref={firstRowRef}>{renderAsFirstRow}</STableFirstRow>
+                  <STableWithRows ref={tableRowsRef}>{TableWithRows}</STableWithRows>
                 </>
               ) : (
                 <>{TableWithRows}</>

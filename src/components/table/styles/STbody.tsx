@@ -6,6 +6,7 @@ interface ISTbody {}
 const Bronze = css<ISTbody>`
   overflow-y: hidden;
   height: 100%;
+  position: relative;
 
   & > .league-table {
     &::-webkit-scrollbar {

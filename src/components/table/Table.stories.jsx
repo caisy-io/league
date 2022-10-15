@@ -3,6 +3,7 @@ import { Table } from "../table";
 import { Input } from "../input";
 import { IconEdit, IconTrashDelete } from "../../icons";
 import { Button } from "../button";
+const PAGE_SIZE = 30;
 
 function TableDemo() {
   const [dataSource, setDataSource] = React.useState([
@@ -14,60 +15,12 @@ function TableDemo() {
         id: 0,
       },
     },
-    {
-      name: "testName 1",
-      lastName: "testLastName 1",
-      id: 1,
-      actions: { id: 1 },
-    },
-    {
-      name: "testName 2",
-      lastName: "testLastName 2",
-      id: 2,
-      actions: { id: 2 },
-    },
-    {
-      name: "testName 3",
-      lastName: "testLastName 3",
-      id: 3,
-      actions: { id: 3 },
-    },
-    {
-      name: "testName 4",
-      lastName: "testLastName 4",
-      id: 4,
-      actions: { id: 4 },
-    },
-    {
-      name: "testName 5",
-      lastName: "testLastName 5",
-      id: 5,
-      actions: { id: 5 },
-    },
-    {
-      name: "testName 6",
-      lastName: "testLastName 6",
-      id: 6,
-      actions: { id: 6 },
-    },
-    {
-      name: "testName 7",
-      lastName: "testLastName 7",
-      id: 7,
-      actions: { id: 7 },
-    },
-    {
-      name: "testName 8",
-      lastName: "testLastName 8",
-      id: 8,
-      actions: { id: 8 },
-    },
-    {
-      name: "testName 9",
-      lastName: "testLastName 9",
-      id: 9,
-      actions: { id: 9 },
-    },
+    ...new Array(PAGE_SIZE).fill(true).map((__, idx) => ({
+      name: `testName ${1 + idx}`,
+      lastName: `testLastName ${1 + idx}`,
+      actions: { id: 1 + idx },
+      id: 1 + idx,
+    }))
   ]);
   const columns = [
     {
@@ -102,14 +55,13 @@ function TableDemo() {
   const [isNextPageLoading, setIsNextPageLoading] = React.useState(false);
   const [hasNextPage, setHasNextPage] = React.useState(true);
 
-  const PAGE_SIZE = 10;
 
   const loadNextPage = () => {
     console.log("loadNextPage");
     setIsNextPageLoading(true);
     return new Promise((resolve) =>
       setTimeout(() => {
-        // setHasNextPage(dataSource.length < 100);
+        setHasNextPage(dataSource.length < 100);
         setIsNextPageLoading(false);
         setDataSource((prev) => [
           ...prev,
@@ -122,14 +74,14 @@ function TableDemo() {
         ]);
         console.log(`hasNextPage: ${hasNextPage}`, `isNextPageLoading: ${isNextPageLoading}`);
         resolve();
-      }, 1500),
+      }, 800),
     );
   };
 
   console.log(` dataSource.length`, dataSource.length);
   console.log(` hasNextPage `, hasNextPage);
   return (
-    <div style={{ height: "300px", position: "relative" }}>
+    <div style={{ height: "calc(100vh - 90px)", position: "relative" }}>
       <Input
         placeholder="Filter globally"
         wrapperStyle={{ border: "1px solid #f0f0f0", marginTop: 8, marginBottom: 16 }}
