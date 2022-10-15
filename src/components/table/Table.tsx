@@ -90,6 +90,9 @@ export const Table: FC<ITable> = forwardRef(
     const containerRef = useRef<any>({});
     const headerRef = useRef<any>({});
     const bodyRef = useRef<HTMLDivElement>();
+    const firstRowRef = useRef<HTMLDivElement>(null);
+    const tableRowsRef = useRef<HTMLDivElement>(null);
+
     const [innerColumns, setColumns] = useState<any[]>([]);
 
     const { height: containerHeight } = useDimensions(containerRef);
@@ -141,6 +144,12 @@ export const Table: FC<ITable> = forwardRef(
     useEffect(() => {
       setGlobalFilter(globalFilter);
     }, [globalFilter]);
+    
+    useEffect(() => {
+      if (tableRowsRef.current) {
+        tableRowsRef.current.style.transform = `translateY(-0px)`;
+      }
+    }, [tableRowsRef.current]);
 
     const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
@@ -183,11 +192,12 @@ export const Table: FC<ITable> = forwardRef(
       }
     };
 
-    const firstRowRef = useRef<HTMLDivElement>(null);
-
     const onScroll = ({ scrollOffset }) => {
-      if (!!firstRowRef?.current) {
+      if (firstRowRef.current) {
         firstRowRef.current.style.transform = `translateY(-${scrollOffset * 2}px)`;
+        if (tableRowsRef.current) {
+          tableRowsRef.current.style.transform = `translateY(-${firstRowRef.current.offsetHeight > scrollOffset ? scrollOffset : firstRowRef.current.offsetHeight}px)`;
+        }
         // const height =
         //   scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
         // firstRowRef.current.style.height = height + "px";
@@ -251,8 +261,14 @@ export const Table: FC<ITable> = forwardRef(
             </STableLoading>
           ) : dataSource?.length ? (
             <>
-              {!!renderAsFirstRow && <div ref={firstRowRef}>{renderAsFirstRow}</div>}
-              {TableWithRows}
+              {!!renderAsFirstRow ? (
+                <>
+                  <div ref={firstRowRef}>{renderAsFirstRow}</div>
+                  <div ref={tableRowsRef}>{TableWithRows}</div>
+                </>
+              ) : (
+                <>{TableWithRows}</>
+              )}
             </>
           ) : empty ? (
             empty

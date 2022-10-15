@@ -139,7 +139,7 @@ function TableDemo() {
       <Table
         useConditionalItemSize
         renderAsFirstRow={
-          <div style={{ height: 40, backgroundColor: "white" }}>
+          <div style={{ height: 40, backgroundColor: "white", display: "flex", justifyContent: "center", alignItems: "center", color: "#fff", background: "darkgray" }}>
             Use this to render a custom component on the first row
           </div>
         }
