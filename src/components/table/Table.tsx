@@ -157,7 +157,7 @@ export const Table: FC<ITable> = forwardRef(
         //   scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
         // firstRowRef.current.style.height = height + "px";
       }
-    }, [tableRowsRef.current, firstRowRef.current]);
+    }, [tableRowsRef.current,dataSource, firstRowRef.current]);
 
     const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
