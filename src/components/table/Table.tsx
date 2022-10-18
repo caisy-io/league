@@ -1,14 +1,4 @@
-import React, {
-  CSSProperties,
-  FC,
-  forwardRef,
-  memo,
-  ReactNode,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { CSSProperties, FC, forwardRef, memo, ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { STable } from "./styles/STable";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
@@ -146,7 +136,6 @@ export const Table: FC<ITable> = forwardRef(
     }, [globalFilter]);
 
     useEffect(() => {
-      console.log(` useEffect`, !!firstRowRef.current, !!tableRowsRef.current);
       if (firstRowRef.current) {
         firstRowRef.current.style.transform = `translateY(-${0 * 0.5}px)`;
         if (tableRowsRef.current) {
@@ -154,11 +143,8 @@ export const Table: FC<ITable> = forwardRef(
             firstRowRef.current.offsetHeight > 0 ? firstRowRef.current.offsetHeight - 0 : 0
           }px)`;
         }
-        // const height =
-        //   scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
-        // firstRowRef.current.style.height = height + "px";
       }
-    }, [tableRowsRef.current,renderAsFirstRow, dataSource, firstRowRef.current]);
+    }, [tableRowsRef.current, renderAsFirstRow, dataSource, firstRowRef.current]);
 
     const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
@@ -209,9 +195,6 @@ export const Table: FC<ITable> = forwardRef(
             firstRowRef.current.offsetHeight > scrollOffset ? firstRowRef.current.offsetHeight - scrollOffset : 0
           }px)`;
         }
-        // const height =
-        //   scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
-        // firstRowRef.current.style.height = height + "px";
       }
       triggerLoadMoreItems();
     };
