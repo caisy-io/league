@@ -146,6 +146,7 @@ export const Table: FC<ITable> = forwardRef(
     }, [globalFilter]);
 
     useEffect(() => {
+      console.log(` useEffect`, !!firstRowRef.current, !!tableRowsRef.current);
       if (firstRowRef.current) {
         firstRowRef.current.style.transform = `translateY(-${0 * 0.5}px)`;
         if (tableRowsRef.current) {
@@ -157,7 +158,7 @@ export const Table: FC<ITable> = forwardRef(
         //   scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
         // firstRowRef.current.style.height = height + "px";
       }
-    }, [tableRowsRef.current,dataSource, firstRowRef.current]);
+    }, [tableRowsRef.current,renderAsFirstRow, dataSource, firstRowRef.current]);
 
     const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
