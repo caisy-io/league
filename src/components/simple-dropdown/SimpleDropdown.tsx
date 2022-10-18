@@ -90,8 +90,8 @@ export const SimpleDropdown: React.FC<ISimpleDropdown> = ({
             <IconChevronDown size={16} />
           </IconRotator>
         </SSimpleDropdown>
-        {dropdownOpened && (
-          <Popover disableTriangle placement="bottom" reference={ref}>
+        <Popover display={dropdownOpened} disableTriangle placement="bottom" reference={ref}>
+          {() => (
             <SSimpleDropdownPopup popupWidth={width}>
               <div>
                 {dataSource.map((option, index) => (
@@ -113,8 +113,8 @@ export const SimpleDropdown: React.FC<ISimpleDropdown> = ({
                 ))}
               </div>
             </SSimpleDropdownPopup>
-          </Popover>
-        )}
+          )}
+        </Popover>
       </div>
     </ClickOutside>
   );
