@@ -147,11 +147,17 @@ export const Table: FC<ITable> = forwardRef(
 
     useEffect(() => {
       if (firstRowRef.current) {
+        firstRowRef.current.style.transform = `translateY(-${0 * 0.5}px)`;
         if (tableRowsRef.current) {
-          tableRowsRef.current.style.transform = `translateY(${firstRowRef.current.offsetHeight}px)`;
+          tableRowsRef.current.style.transform = `translateY(${
+            firstRowRef.current.offsetHeight > 0 ? firstRowRef.current.offsetHeight - 0 : 0
+          }px)`;
         }
+        // const height =
+        //   scrollOffset * 2 < firstRowRef.current.scrollHeight ? firstRowRef.current.scrollHeight - scrollOffset * 2 : 0;
+        // firstRowRef.current.style.height = height + "px";
       }
-    }, [tableRowsRef.current]);
+    }, [tableRowsRef.current, firstRowRef.current]);
 
     const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
