@@ -54,7 +54,7 @@ export * from "./theme";
 export * from "./toggle-list-item";
 export * from "./tooltip";
 export * from "./translation-menu";
-export * from "./tree";
+export * from "./tree.legacy";
 export * from "./search-bar-operand";
 export * from "./search-bar-operator";
 export * from "./search-bar-operator-badge-select";
