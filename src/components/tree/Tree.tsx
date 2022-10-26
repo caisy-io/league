@@ -4,40 +4,9 @@ import { STreeItem } from "./styles/STreeItem";
 import { Droppable, Draggable, DragDropContext } from "react-beautiful-dnd";
 import { STreeDroppable } from "./styles/STreeDroppable";
 import { STreeDraggable } from "./styles/STreeDraggable";
+import { ITree, ITreeItem, ITreeItemId, ITreeItemMutation } from "./types";
 
-export type ITreeItemId = string | number;
-
-export interface ITreeItem {
-  id: ITreeItemId;
-  children: ITreeItemId[];
-  hasChildren?: boolean;
-  isExpanded?: boolean;
-  isChildrenLoading?: boolean;
-  data?: any;
-}
-
-export interface ITreeItemSource {
-  parentId: ITreeItemId;
-  index: number;
-}
-
-export interface ITreeItemDestination {
-  parentId: ITreeItemId;
-  index: number;
-}
-
-export type IOnDragEnd = (input: { source: ITreeItemSource; destination?: ITreeItemDestination }) => void;
-
-export type IOnDragStart = (draggableId: ITreeItemId) => void;
-
-export interface ITree {
-  tree: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> };
-  isDragEnabled?: (item: ITreeItem) => boolean;
-  onDragEnd: IOnDragEnd;
-  onDragStart: IOnDragStart;
-}
-
-const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled }) => {
+const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled, onCollapse, onExpand }) => {
   const renderItemChildren = (item: ITreeItem) => {
     if (!item.hasChildren) return null;
 
@@ -47,7 +16,7 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled })
           const nestedItem = tree.items[nestedItemId];
 
           return (
-            <>
+            <Fragment key={nestedItem.id}>
               {!nestedItem.hasChildren ? (
                 <Draggable
                   isDragDisabled={!isDragEnabled ? false : !isDragEnabled?.(nestedItem)}
@@ -66,21 +35,27 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled })
                 <Droppable key={nestedItem.id} droppableId={`${nestedItem.id}`}>
                   {(provided) => (
                     <STreeDroppable {...provided.droppableProps} ref={provided.innerRef}>
-                      <STreeItem>{nestedItem.data.title}</STreeItem>
-                      <>{renderItemChildren(nestedItem)}</>
+                      <STreeItem
+                        onClick={
+                          nestedItem.isExpanded ? () => onCollapse?.(nestedItem.id) : () => onExpand?.(nestedItem.id)
+                        }
+                      >
+                        {nestedItem.data.title}
+                      </STreeItem>
+                      {nestedItem.isExpanded && <>{renderItemChildren(nestedItem)}</>}
                       {provided.placeholder}
                     </STreeDroppable>
                   )}
                 </Droppable>
               )}
-            </>
+            </Fragment>
           );
         })}
       </>
     );
   };
 
-  const root = tree.items[tree.rootId];
+  const root = { ...tree.items[tree.rootId], isExpanded: true };
 
   const handleDragEnd = (e) => {
     onDragEnd({
@@ -106,4 +81,16 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled })
 
 export const Tree: FC<ITree> = (props) => {
   return <WrappedTree {...props} />;
+};
+
+export const mutateTree = (
+  tree: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> },
+  itemId: ITreeItemId,
+  mutation: ITreeItemMutation,
+) => {
+  const newTree = { ...tree };
+
+  newTree.items[itemId] = { ...newTree.items[itemId], ...mutation };
+
+  return newTree;
 };

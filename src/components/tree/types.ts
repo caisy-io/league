@@ -1,0 +1,42 @@
+export type ITreeItemId = string | number;
+
+export interface ITreeItem {
+  id: ITreeItemId;
+  children: ITreeItemId[];
+  hasChildren?: boolean;
+  isExpanded?: boolean;
+  isChildrenLoading?: boolean;
+  data?: any;
+}
+
+export interface ITreeItemSource {
+  parentId: ITreeItemId;
+  index: number;
+}
+
+export interface ITreeItemDestination {
+  parentId: ITreeItemId;
+  index: number;
+}
+
+export type IOnDragEnd = (input: { source: ITreeItemSource; destination?: ITreeItemDestination }) => void;
+
+export type IOnDragStart = (draggableId: ITreeItemId) => void;
+
+export interface ITree {
+  tree: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> };
+  isDragEnabled?: (item: ITreeItem) => boolean;
+  onDragEnd: IOnDragEnd;
+  onDragStart: IOnDragStart;
+  onExpand?: (itemId: ITreeItemId) => void;
+  onCollapse?: (itemId: ITreeItemId) => void;
+}
+
+export interface ITreeItemMutation {
+  id?: ITreeItemId;
+  children?: ITreeItemId[];
+  hasChildren?: boolean;
+  isExpanded?: boolean;
+  isChildrenLoading?: boolean;
+  data?: any;
+}

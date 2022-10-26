@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Tree, ITreeItemId, ITreeItem } from "./Tree";
-import { DragDropContext } from "react-beautiful-dnd";
+import { Tree, ITreeItemId, ITreeItem } from "./";
+import { mutateTree } from "./Tree";
 
 const TREE: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> } = {
   rootId: "rootId",
@@ -31,7 +31,17 @@ const TREE: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> } = {
 export const Default = ({}) => {
   const [tree, setTree] = useState(TREE);
 
-  return <Tree onDragStart={console.log} onDragEnd={console.log} tree={tree} />;
+  const onExpand = (itemId: ITreeItemId) => {
+    setTree(mutateTree(tree, itemId, { isExpanded: true }));
+  };
+
+  const onCollapse = (itemId: ITreeItemId) => {
+    setTree(mutateTree(tree, itemId, { isExpanded: false }));
+  };
+
+  return (
+    <Tree onExpand={onExpand} onCollapse={onCollapse} onDragStart={console.log} onDragEnd={console.log} tree={tree} />
+  );
 };
 
 export default {
