@@ -73,8 +73,8 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled, o
   return (
     <DragDropContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <Droppable droppableId="root" isDropDisabled>
-        {() => (
-          <STree>
+        {(provided) => (
+          <STree {...provided.droppableProps} ref={provided.innerRef}>
             <>{renderItemChildren(root)}</>
           </STree>
         )}
