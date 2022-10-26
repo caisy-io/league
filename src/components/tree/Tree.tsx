@@ -6,7 +6,7 @@ import { STreeDroppable } from "./styles/STreeDroppable";
 import { STreeDraggable } from "./styles/STreeDraggable";
 import { ITree, ITreeItem, ITreeItemId, ITreeItemMutation } from "./types";
 
-const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled, onCollapse, onExpand }) => {
+const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled, onCollapse, onExpand, renderItem }) => {
   const renderItemChildren = (item: ITreeItem) => {
     if (!item.hasChildren) return null;
 
@@ -26,7 +26,7 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled, o
                 >
                   {(provided) => (
                     <STreeDraggable ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                      <STreeItem>{nestedItem.data.title}</STreeItem>
+                      <STreeItem>{renderItem(nestedItem)}</STreeItem>
                       <>{renderItemChildren(nestedItem)}</>
                     </STreeDraggable>
                   )}
@@ -40,7 +40,7 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled, o
                           nestedItem.isExpanded ? () => onCollapse?.(nestedItem.id) : () => onExpand?.(nestedItem.id)
                         }
                       >
-                        {nestedItem.data.title}
+                        {renderItem(nestedItem)}
                       </STreeItem>
                       {nestedItem.isExpanded && <>{renderItemChildren(nestedItem)}</>}
                       {provided.placeholder}

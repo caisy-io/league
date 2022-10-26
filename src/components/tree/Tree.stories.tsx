@@ -39,8 +39,19 @@ export const Default = ({}) => {
     setTree(mutateTree(tree, itemId, { isExpanded: false }));
   };
 
+  const renderItem = (item: ITreeItem) => {
+    return <div style={{ border: "1px solid grey", padding: "4px 2px" }}>{item.data.title}</div>;
+  };
+
   return (
-    <Tree onExpand={onExpand} onCollapse={onCollapse} onDragStart={console.log} onDragEnd={console.log} tree={tree} />
+    <Tree
+      renderItem={renderItem}
+      onExpand={onExpand}
+      onCollapse={onCollapse}
+      onDragStart={console.log}
+      onDragEnd={console.log}
+      tree={tree}
+    />
   );
 };
 

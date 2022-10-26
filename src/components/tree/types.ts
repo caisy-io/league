@@ -1,3 +1,5 @@
+import React from "react";
+
 export type ITreeItemId = string | number;
 
 export interface ITreeItem {
@@ -30,6 +32,7 @@ export interface ITree {
   onDragStart: IOnDragStart;
   onExpand?: (itemId: ITreeItemId) => void;
   onCollapse?: (itemId: ITreeItemId) => void;
+  renderItem: (item: ITreeItem) => React.ReactNode;
 }
 
 export interface ITreeItemMutation {
