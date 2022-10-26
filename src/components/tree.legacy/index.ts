@@ -1,1 +1,1 @@
-export { Tree } from "./Tree.legacy";
+export { Tree as TreeLeacy } from "./Tree.legacy";

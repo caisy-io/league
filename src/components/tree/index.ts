@@ -1,2 +1,2 @@
-export { Tree } from "./Tree";
+export { Tree, moveItemOnTree, mutateTree } from "./Tree";
 export * from "./types";

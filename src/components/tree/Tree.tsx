@@ -4,7 +4,7 @@ import { STreeItem } from "./styles/STreeItem";
 import { Droppable, Draggable, DragDropContext } from "react-beautiful-dnd";
 import { STreeDroppable } from "./styles/STreeDroppable";
 import { STreeDraggable } from "./styles/STreeDraggable";
-import { ITree, ITreeItem, ITreeItemId, ITreeItemMutation } from "./types";
+import { ITree, ITreeItem, ITreeItemDestination, ITreeItemId, ITreeItemMutation, ITreeItemSource } from "./types";
 
 const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled, onCollapse, onExpand, renderItem }) => {
   const renderItemChildren = (item: ITreeItem) => {
@@ -91,6 +91,22 @@ export const mutateTree = (
   const newTree = { ...tree };
 
   newTree.items[itemId] = { ...newTree.items[itemId], ...mutation };
+
+  return newTree;
+};
+
+export const moveItemOnTree = (
+  tree: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> },
+  from: ITreeItemSource,
+  to: ITreeItemDestination,
+) => {
+  const newTree = { ...tree };
+
+  const itemId = newTree.items[from.parentId].children[from.index];
+
+  newTree.items[from.parentId].children.splice(from.index, 1);
+
+  newTree.items[to.parentId].children.splice(to.index, 0, itemId);
 
   return newTree;
 };

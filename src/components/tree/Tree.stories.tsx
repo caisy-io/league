@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Tree, ITreeItemId, ITreeItem } from "./";
-import { mutateTree } from "./Tree";
+import { Tree, ITreeItemId, ITreeItem, IOnDragEnd } from "./";
+import { moveItemOnTree, mutateTree } from "./Tree";
 
 const TREE: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> } = {
   rootId: "rootId",
@@ -43,13 +43,17 @@ export const Default = ({}) => {
     return <div style={{ border: "1px solid grey", padding: "4px 2px" }}>{item.data.title}</div>;
   };
 
+  const onDragEnd = (input) => {
+    setTree(moveItemOnTree(tree, input.source, input.destination));
+  };
+
   return (
     <Tree
       renderItem={renderItem}
       onExpand={onExpand}
       onCollapse={onCollapse}
       onDragStart={console.log}
-      onDragEnd={console.log}
+      onDragEnd={onDragEnd}
       tree={tree}
     />
   );

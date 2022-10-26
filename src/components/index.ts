@@ -123,3 +123,4 @@ export * from "./delete-confirmation-popup";
 export * from "./notification";
 export * from "./notification-button";
 export * from "./notification-block";
+export * from "./tree";
