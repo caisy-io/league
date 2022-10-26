@@ -32,11 +32,12 @@ export type IOnDragStart = (draggableId: ITreeItemId) => void;
 
 export interface ITree {
   tree: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> };
+  isDragEnabled?: (item: ITreeItem) => boolean;
   onDragEnd: IOnDragEnd;
   onDragStart: IOnDragStart;
 }
 
-const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart }) => {
+const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled }) => {
   const renderItemChildren = (item: ITreeItem) => {
     if (!item.hasChildren) return null;
 
@@ -48,7 +49,12 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart }) => {
           return (
             <>
               {!nestedItem.hasChildren ? (
-                <Draggable key={nestedItemId} draggableId={`${nestedItem.id}`} index={nestedItemIndex}>
+                <Draggable
+                  isDragDisabled={!isDragEnabled ? false : !isDragEnabled?.(nestedItem)}
+                  key={nestedItemId}
+                  draggableId={`${nestedItem.id}`}
+                  index={nestedItemIndex}
+                >
                   {(provided) => (
                     <STreeDraggable ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                       <STreeItem>{nestedItem.data.title}</STreeItem>
