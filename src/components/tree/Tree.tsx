@@ -1,7 +1,7 @@
 import { FC, Fragment } from "react";
 import { STree } from "./styles/STree";
 import { STreeItem } from "./styles/STreeItem";
-import { Droppable, Draggable } from "react-beautiful-dnd";
+import { Droppable, Draggable, DragDropContext } from "react-beautiful-dnd";
 import { STreeDroppable } from "./styles/STreeDroppable";
 import { STreeDraggable } from "./styles/STreeDraggable";
 
@@ -16,11 +16,27 @@ export interface ITreeItem {
   data?: any;
 }
 
-export interface ITree {
-  tree: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> };
+export interface ITreeItemSource {
+  parentId: ITreeItemId;
+  index: number;
 }
 
-export const Tree: FC<ITree> = ({ tree }) => {
+export interface ITreeItemDestination {
+  parentId: ITreeItemId;
+  index: number;
+}
+
+export type IOnDragEnd = (input: { source: ITreeItemSource; destination?: ITreeItemDestination }) => void;
+
+export type IOnDragStart = (draggableId: ITreeItemId) => void;
+
+export interface ITree {
+  tree: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> };
+  onDragEnd: IOnDragEnd;
+  onDragStart: IOnDragStart;
+}
+
+const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart }) => {
   const renderItemChildren = (item: ITreeItem) => {
     if (!item.hasChildren) return null;
 
@@ -32,8 +48,8 @@ export const Tree: FC<ITree> = ({ tree }) => {
           return (
             <>
               {!nestedItem.hasChildren ? (
-                <Draggable key={nestedItemId} draggableId={nestedItem.id} index={nestedItemIndex}>
-                  {(provided, snapshot) => (
+                <Draggable key={nestedItemId} draggableId={`${nestedItem.id}`} index={nestedItemIndex}>
+                  {(provided) => (
                     <STreeDraggable ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                       <STreeItem>{nestedItem.data.title}</STreeItem>
                       <>{renderItemChildren(nestedItem)}</>
@@ -41,8 +57,8 @@ export const Tree: FC<ITree> = ({ tree }) => {
                   )}
                 </Draggable>
               ) : (
-                <Droppable key={nestedItem.id} droppableId={nestedItem.id}>
-                  {(provided, snapshot) => (
+                <Droppable key={nestedItem.id} droppableId={`${nestedItem.id}`}>
+                  {(provided) => (
                     <STreeDroppable {...provided.droppableProps} ref={provided.innerRef}>
                       <STreeItem>{nestedItem.data.title}</STreeItem>
                       <>{renderItemChildren(nestedItem)}</>
@@ -60,9 +76,28 @@ export const Tree: FC<ITree> = ({ tree }) => {
 
   const root = tree.items[tree.rootId];
 
+  const handleDragEnd = (e) => {
+    onDragEnd({
+      source: { parentId: e.source.droppableId, index: e.source.index },
+      destination: e?.destination?.droppableId
+        ? { parentId: e.destination.droppableId, index: e.destination.index }
+        : undefined,
+    });
+  };
+
+  const handleDragStart = (e) => {
+    onDragStart(e.draggableId);
+  };
+
   return (
-    <STree>
-      <>{renderItemChildren(root)}</>
-    </STree>
+    <DragDropContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+      <STree>
+        <>{renderItemChildren(root)}</>
+      </STree>
+    </DragDropContext>
   );
+};
+
+export const Tree: FC<ITree> = (props) => {
+  return <WrappedTree {...props} />;
 };

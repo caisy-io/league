@@ -31,11 +31,7 @@ const TREE: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> } = {
 export const Default = ({}) => {
   const [tree, setTree] = useState(TREE);
 
-  return (
-    <DragDropContext onDragEnd={console.log}>
-      <Tree tree={tree} />
-    </DragDropContext>
-  );
+  return <Tree onDragStart={console.log} onDragEnd={console.log} tree={tree} />;
 };
 
 export default {
