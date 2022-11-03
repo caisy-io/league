@@ -16,6 +16,9 @@ export const GSBase = createGlobalStyle`
   ${CSSFonts}
   ${CSSBoxShadows}
   ${Bronze}
+  html {
+  overscroll-behavior: none;
+  }
   body{ 
       background-color: var(--ui-background);
       color: var(--neutral-700);
