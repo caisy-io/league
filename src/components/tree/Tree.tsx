@@ -72,10 +72,11 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled, o
 
   return (
     <DragDropContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-      <Droppable droppableId="root" isDropDisabled>
+      <Droppable droppableId="caisy-tree-root" isDropDisabled>
         {(provided) => (
           <STree {...provided.droppableProps} ref={provided.innerRef}>
             <>{renderItemChildren(root)}</>
+            {provided.placeholder}
           </STree>
         )}
       </Droppable>
