@@ -24,9 +24,9 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, isDragEnabled, o
                   draggableId={`${nestedItem.id}`}
                   index={nestedItemIndex}
                 >
-                  {(provided) => (
-                    <STreeDraggable ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                      <STreeItem>{renderItem(nestedItem)}</STreeItem>
+                  {(provided, provider) => (
+                    <STreeDraggable>
+                      <STreeItem>{renderItem(nestedItem, provided, provider)}</STreeItem>
                       <>{renderItemChildren(nestedItem)}</>
                     </STreeDraggable>
                   )}

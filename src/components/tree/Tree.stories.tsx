@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Tree, ITreeItemId, ITreeItem, IOnDragEnd } from "./";
+import { Tree, ITreeItemId, ITreeItem, ITreeRenderItem } from "./";
 import { moveItemOnTree, mutateTree } from "./Tree";
 
 const TREE: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> } = {
   rootId: "rootId",
   items: {
-    rootId: { id: "rootId", children: ["default", "pinned"], hasChildren: true },
+    rootId: { id: "rootId", children: ["default", "pinned", "empty"], hasChildren: true },
     default: {
       id: "default",
       children: ["1", "2", "3"],
@@ -13,6 +13,7 @@ const TREE: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> } = {
       data: { title: "Default", id: "default" },
     },
     pinned: { id: "pinned", children: ["4", "5"], hasChildren: true, data: { title: "Pinned", id: "pinned" } },
+    empty: { id: "empty", children: [], hasChildren: true, data: { title: "Empty", id: "empty" } },
     // innerDefault: {
     //   id: "innerDefault",
     //   children: ["6"],
@@ -39,8 +40,17 @@ export const Default = ({}) => {
     setTree(mutateTree(tree, itemId, { isExpanded: false }));
   };
 
-  const renderItem = (item: ITreeItem) => {
-    return <div style={{ border: "1px solid grey", padding: "4px 2px" }}>{item.data.title}</div>;
+  const renderItem: ITreeRenderItem = (item, provided) => {
+    return (
+      <div
+        ref={provided?.innerRef}
+        {...provided?.draggableProps}
+        {...provided?.dragHandleProps}
+        style={{ border: "1px solid grey", padding: "4px 2px", ...provided?.draggableProps.style }}
+      >
+        {item.data.title}
+      </div>
+    );
   };
 
   const onDragEnd = (input) => {

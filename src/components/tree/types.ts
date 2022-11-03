@@ -1,4 +1,10 @@
 import React from "react";
+import {
+  DraggableProvided,
+  DraggableStateSnapshot,
+  DroppableProvided,
+  DroppableStateSnapshot,
+} from "react-beautiful-dnd";
 
 export type ITreeItemId = string | number;
 
@@ -25,6 +31,12 @@ export type IOnDragEnd = (input: { source: ITreeItemSource; destination?: ITreeI
 
 export type IOnDragStart = (draggableId: ITreeItemId) => void;
 
+export type ITreeRenderItem = (
+  item: ITreeItem,
+  provider?: DraggableProvided,
+  provided?: DraggableStateSnapshot,
+) => React.ReactNode;
+
 export interface ITree {
   tree: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> };
   isDragEnabled?: (item: ITreeItem) => boolean;
@@ -32,7 +44,7 @@ export interface ITree {
   onDragStart: IOnDragStart;
   onExpand?: (itemId: ITreeItemId) => void;
   onCollapse?: (itemId: ITreeItemId) => void;
-  renderItem: (item: ITreeItem) => React.ReactNode;
+  renderItem: ITreeRenderItem;
 }
 
 export interface ITreeItemMutation {
