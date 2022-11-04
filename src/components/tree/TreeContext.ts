@@ -1,5 +1,5 @@
 import React from "react";
-import { ITreeItemId } from "..";
+import { ITreeItemId, ITreeItem } from "..";
 
 type ITreeContext = {
   isExpanded: (treeItemId: ITreeItemId) => boolean;

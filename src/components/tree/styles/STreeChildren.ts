@@ -4,9 +4,9 @@ const CSSVisible = css`
   height: 100%;
 `;
 
-export const STreeDroppable = styled.div`
+export const STreeItemChildren = styled.div`
   height: 0;
   overflow: hidden;
 
-  ${({ visible }) => visible && CSSVisible};
+  ${({ expanded }) => expanded && CSSVisible};
 `;

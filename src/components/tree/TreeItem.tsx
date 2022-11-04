@@ -1,13 +1,12 @@
-import { Children, FC, isValidElement, useContext } from "react";
+import { Children, FC, isValidElement, useContext, useEffect } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { STreeItem } from "./styles/STreeItem";
 import TreeContext from "./TreeContext";
 import TreeItemContext from "./TreeItemContext";
 import { ITreeData, ITreeItem } from "./types";
 
-const TreeItem: FC<{ item: ITreeItem; tree: ITreeData }> = ({ children, item, tree }) => {
+const TreeItem: FC<{ item: ITreeItem; tree: ITreeData }> = ({ children, item }) => {
   const { id } = item;
-  console.log(item);
   const { isExpanded, getIndex, toggleNode } = useContext(TreeContext)!;
 
   const { level, siblingsLength, index } = useContext(TreeItemContext)!;
@@ -43,6 +42,7 @@ const TreeItem: FC<{ item: ITreeItem; tree: ITreeData }> = ({ children, item, tr
             aria-expanded={expanded}
             aria-level={level}
             aria-setsize={siblingsLength}
+            data-itemId={`${id}`}
           >
             {item.data.title}
           </STreeItem>

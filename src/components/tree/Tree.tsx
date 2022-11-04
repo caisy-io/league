@@ -1,6 +1,6 @@
-import { Children, FC, isValidElement, useCallback, useRef, useState } from "react";
+import { Children, FC, isValidElement, ReactElement, useCallback, useMemo, useRef, useState } from "react";
 import { STree } from "./styles/STree";
-import { Droppable, Draggable, DragDropContext, DragUpdate, DropResult } from "react-beautiful-dnd";
+import { Droppable, DragDropContext, DragUpdate, DropResult } from "react-beautiful-dnd";
 import { ITree, ITreeItem, ITreeItemDestination, ITreeItemId, ITreeItemMutation, ITreeItemSource } from "./types";
 import TreeItemContext from "./TreeItemContext";
 import TreeContext from "./TreeContext";
@@ -10,8 +10,8 @@ import TreeItem from "./TreeItem";
 const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, children, onCollapse }) => {
   const childrenArray = Children.toArray(children);
   const nodeIndexRef = useRef<number>(0);
-
-  console.log(childrenArray);
+  const [dragOverId, setDragOverId] = useState<string | undefined>(undefined);
+  const [draggingId, setDraggingId] = useState(null);
 
   const isExpanded = useCallback(
     (treeItemId: ITreeItemId) => {
@@ -22,8 +22,8 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
 
   const getIndex = useCallback(
     (treeItemId: ITreeItemId) => {
-      const firstNodeElement = childrenArray[0] as React.ReactElement;
-      if (treeItemId === firstNodeElement.props.treeItemId) {
+      const firstNodeElement = childrenArray[0] as ReactElement;
+      if (treeItemId === firstNodeElement.props.item.id) {
         nodeIndexRef.current = 0;
         return 0;
       } else {
@@ -45,15 +45,12 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
     return null;
   });
 
-  const [dragOverId, setDragOverId] = useState<string | undefined>(undefined);
-  const [draggingId, setDraggingId] = useState(null);
-
   const handleCombine = (index, draggableId) => {
-    console.log(index, draggableId);
+    // console.log(index, draggableId);
   };
 
-  const handleDragEnd = ({ source, combine, destination }: DropResult) => {
-    setDraggingId(null);
+  const handleDragEnd = (result: DropResult) => {
+    const { combine, source, destination, draggableId } = result;
     if (combine) {
       const { index } = source;
       const { draggableId } = combine;
@@ -63,22 +60,55 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
       return;
     }
 
+    if (!destination) return;
+    const itemsArray = Object.values(tree.items);
+
+    const root = document.getElementById(`${tree.rootId}`);
+    let destinationItemId = "";
+
+    if (source.index > destination.index) {
+      destinationItemId =
+        root?.children?.item?.(destination.index - 1)?.getAttribute("data-itemId") || `${tree.rootId}`;
+    } else {
+      destinationItemId = root?.children?.item?.(destination.index)?.getAttribute("data-itemId") || "";
+    }
+
+    if (!destinationItemId) return;
+
+    const destinationItem = tree.items[destinationItemId];
+
+    let destinationParentId: ITreeItemId = "";
+    let destinationItemIndex = 0;
+
+    if (destinationItem.hasChildren) {
+      destinationParentId = destinationItemId;
+    } else {
+      destinationParentId = itemsArray.find((item) => item.children.includes(destinationItemId))?.id || "";
+      destinationItemIndex = tree.items[destinationParentId].children.findIndex((id) => id === destinationItemId) + 1;
+    }
+
+    const sourceItemId = draggableId;
+    const sourceParentId = itemsArray.find((item) => item.children.includes(sourceItemId))?.id || "";
+    const sourceItemIndex = tree.items[sourceParentId].children.findIndex((id) => id === sourceItemId);
+
+    console.log(sourceItemIndex);
+
+    setDraggingId(null);
+
     onDragEnd({
-      source: { parentId: source.droppableId, index: source.index },
+      source: { parentId: sourceParentId, index: sourceItemIndex },
       destination: destination?.droppableId
-        ? { parentId: destination.droppableId, index: destination.index }
+        ? { parentId: destinationParentId, index: destinationItemIndex }
         : undefined,
     });
   };
 
   const handleDragStart = (e) => {
-    // if (tree.items[e.draggableId].isExpanded) {
-    //   onCollapse?.(e.draggableId);
-    // }
+    setDraggingId(e.draggableId);
     onDragStart(e.draggableId);
   };
 
-  const handleDragUpdate = ({ combine }: DragUpdate) => {
+  const handleDragUpdate = ({ combine, destination }: DragUpdate) => {
     setDragOverId(combine ? combine.draggableId : combine);
   };
 
@@ -93,6 +123,12 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
     [onExpand, onCollapse, tree],
   );
 
+  const handleBeforeCapture = (e) => {
+    if (isExpanded(e.draggableId)) {
+      onCollapse?.(e.draggableId);
+    }
+  };
+
   const contextValue = {
     isExpanded,
     toggleNode,
@@ -101,10 +137,15 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
 
   return (
     <TreeContext.Provider value={contextValue}>
-      <DragDropContext onDragUpdate={handleDragUpdate} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+      <DragDropContext
+        onBeforeCapture={handleBeforeCapture}
+        onDragUpdate={handleDragUpdate}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+      >
         <Droppable isCombineEnabled droppableId={`${tree.rootId}`}>
           {({ innerRef, droppableProps, placeholder }) => (
-            <STree {...droppableProps} ref={innerRef}>
+            <STree id={`${tree.rootId}`} {...droppableProps} ref={innerRef}>
               <>{childrenIncreased}</>
               {placeholder}
             </STree>
@@ -150,7 +191,10 @@ export const moveItemOnTree = (
   from: ITreeItemSource,
   to: ITreeItemDestination,
 ) => {
-  if (!to) return tree;
+  // if (!to) return tree;
+  console.log(from, to);
+
+  // return tree;
 
   const newTree = { ...tree };
 

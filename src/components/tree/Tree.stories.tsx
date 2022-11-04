@@ -63,7 +63,7 @@ export const Default = ({}) => {
       renderItem={renderItem}
       onExpand={onExpand}
       onCollapse={onCollapse}
-      onDragStart={console.log}
+      onDragStart={() => {}}
       onDragEnd={onDragEnd}
       tree={tree}
     />
