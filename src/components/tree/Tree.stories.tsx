@@ -11,6 +11,7 @@ const TREE: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> } = {
       children: ["1", "2", "3"],
       hasChildren: true,
       data: { title: "Default", id: "default" },
+      isExpanded: true,
     },
     pinned: { id: "pinned", children: ["4", "5"], hasChildren: true, data: { title: "Pinned", id: "pinned" } },
     empty: { id: "empty", children: [], hasChildren: true, data: { title: "Empty", id: "empty" } },

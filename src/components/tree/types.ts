@@ -37,8 +37,13 @@ export type ITreeRenderItem = (
   provided?: DraggableStateSnapshot,
 ) => React.ReactNode;
 
+export interface ITreeData {
+  rootId: ITreeItemId;
+  items: Record<ITreeItemId, ITreeItem>;
+}
+
 export interface ITree {
-  tree: { rootId: ITreeItemId; items: Record<ITreeItemId, ITreeItem> };
+  tree: ITreeData;
   isDragEnabled?: (item: ITreeItem) => boolean;
   onDragEnd: IOnDragEnd;
   onDragStart: IOnDragStart;
