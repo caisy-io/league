@@ -5,7 +5,7 @@ const CSSError = css`
   background-color: var(--ui-supportive-01);
 `;
 
-const Bronze = css`
+const Bronze = css<{styleOverwrite?: any; exit?:boolean; error?: boolean}>`
   background-color: rgba(0, 0, 0, 0.74);
   border-radius: 0.25rem;
   display: flex;
@@ -62,7 +62,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SNotificationSnackbar = styled.div`
+export const SNotificationSnackbar = styled.div<{styleOverwrite?: any; exit?:boolean; error?: boolean}>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

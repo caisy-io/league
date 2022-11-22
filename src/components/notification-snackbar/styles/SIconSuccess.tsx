@@ -9,7 +9,7 @@ const CSSDisplayNone = css`
   display: none;
 `;
 
-const Bronze = css`
+const Bronze = css<{icon?:boolean; error?: boolean; success?: boolean}>`
   display: none;
   ${(props) => props.success ? CSSDIsplayBlock : ''};
   ${(props) => props.error == "true" ? CSSDisplayNone : ''};
@@ -23,7 +23,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SIconSuccess = styled.div`
+export const SIconSuccess = styled.div<{icon?:boolean; error?: boolean; success?: boolean}>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
