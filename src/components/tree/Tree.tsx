@@ -30,7 +30,7 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
         return ++nodeIndexRef.current;
       }
     },
-    [childrenArray],
+    [childrenArray, tree],
   );
 
   const childrenIncreased = childrenArray.map((child, index) => {
@@ -64,34 +64,15 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
     const itemsArray = Object.values(tree.items);
 
     const root = document.getElementById(`${tree.rootId}`);
-    let destinationItemId = "";
+    const destinationItemId =
+      root?.children?.item?.(destination.index)?.getAttribute("data-itemId") || `${tree.rootId}`;
 
-    if (source.index > destination.index) {
-      destinationItemId =
-        root?.children?.item?.(destination.index - 1)?.getAttribute("data-itemId") || `${tree.rootId}`;
-    } else {
-      destinationItemId = root?.children?.item?.(destination.index)?.getAttribute("data-itemId") || "";
-    }
-
-    if (!destinationItemId) return;
-
-    const destinationItem = tree.items[destinationItemId];
-
-    let destinationParentId: ITreeItemId = "";
-    let destinationItemIndex = 0;
-
-    if (destinationItem.hasChildren) {
-      destinationParentId = destinationItemId;
-    } else {
-      destinationParentId = itemsArray.find((item) => item.children.includes(destinationItemId))?.id || "";
-      destinationItemIndex = tree.items[destinationParentId].children.findIndex((id) => id === destinationItemId) + 1;
-    }
+    const destinationParentId = itemsArray.find((item) => item.children.includes(destinationItemId))?.id || "";
+    const destinationItemIndex = tree.items[destinationParentId].children.findIndex((id) => id === destinationItemId);
 
     const sourceItemId = draggableId;
     const sourceParentId = itemsArray.find((item) => item.children.includes(sourceItemId))?.id || "";
     const sourceItemIndex = tree.items[sourceParentId].children.findIndex((id) => id === sourceItemId);
-
-    console.log(sourceItemIndex);
 
     setDraggingId(null);
 
