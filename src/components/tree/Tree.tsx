@@ -66,13 +66,29 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
     const root = document.getElementById(`${tree.rootId}`);
     const destinationItemId =
       root?.children?.item?.(destination.index)?.getAttribute("data-itemId") || `${tree.rootId}`;
-
-    const destinationParentId = itemsArray.find((item) => item.children.includes(destinationItemId))?.id || "";
-    const destinationItemIndex = tree.items[destinationParentId].children.findIndex((id) => id === destinationItemId);
-
     const sourceItemId = draggableId;
+    if (destinationItemId === sourceItemId) return;
+
+    const destinationItem = tree.items[destinationItemId];
+
+    const destinationParentItem = destinationItem.isExpanded
+      ? destinationItem
+      : itemsArray.find((item) => item.children.includes(destinationItemId));
+
+    let destinationParentId = destinationParentItem?.id || "";
     const sourceParentId = itemsArray.find((item) => item.children.includes(sourceItemId))?.id || "";
+
+    let destinationItemIndex = tree.items[destinationParentId].children.findIndex((id) => id === destinationItemId);
     const sourceItemIndex = tree.items[sourceParentId].children.findIndex((id) => id === sourceItemId);
+
+    if (destinationParentId !== sourceParentId && destination.index > source.index) {
+      destinationItemIndex++;
+    }
+
+    if (destinationItemIndex === -1) {
+      destinationParentId = itemsArray.find((item) => item.children.includes(destinationItemId))?.id || "";
+      destinationItemIndex = tree.items[destinationParentId].children.findIndex((id) => id === destinationItemId);
+    }
 
     setDraggingId(null);
 
@@ -148,7 +164,7 @@ export const Tree: FC<ITree> = (props) => {
     <WrappedTree {...props}>
       {root.children.map((itemId) => {
         return (
-          <TreeItem item={tree.items[itemId]} tree={tree}>
+          <TreeItem key={itemId} item={tree.items[itemId]} tree={tree}>
             <OuterTreeItem item={tree.items[itemId]} tree={tree} />
           </TreeItem>
         );
