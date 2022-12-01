@@ -6,7 +6,7 @@ const OuterTreeItem: FC<{ item: ITreeItem; tree: ITreeData }> = ({ item, tree })
   return (
     <>
       {item.children.map((internalItemId) => (
-        <TreeItem item={tree.items[internalItemId]} tree={tree}>
+        <TreeItem key={internalItemId} item={tree.items[internalItemId]} tree={tree}>
           <OuterTreeItem item={tree.items[internalItemId]} tree={tree} />
         </TreeItem>
       ))}

@@ -1,4 +1,4 @@
-import { Children, FC, isValidElement, useContext, useEffect } from "react";
+import { Children, FC, isValidElement, useContext } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { STreeItem } from "./styles/STreeItem";
 import TreeContext from "./TreeContext";
@@ -20,7 +20,11 @@ const TreeItem: FC<{ item: ITreeItem; tree: ITreeData }> = ({ children, item }) 
         level: level + 1,
         siblingsLength: childrenArray.length,
       };
-      return <TreeItemContext.Provider value={contextValue}>{child}</TreeItemContext.Provider>;
+      return (
+        <TreeItemContext.Provider key={child.key} value={contextValue}>
+          {child}
+        </TreeItemContext.Provider>
+      );
     }
     return null;
   });
