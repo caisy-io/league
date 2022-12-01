@@ -140,7 +140,9 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
 export const Tree: FC<ITree> = (props) => {
   const { tree } = props;
 
-  const root = { ...tree.items[tree.rootId], isExpanded: true };
+  const root = useMemo(() => {
+    return { ...tree.items[tree.rootId], isExpanded: true };
+  }, [tree]);
 
   return (
     <WrappedTree {...props}>
@@ -160,7 +162,7 @@ export const mutateTree = (
   itemId: ITreeItemId,
   mutation: ITreeItemMutation,
 ) => {
-  const newTree = { ...tree };
+  const newTree = JSON.parse(JSON.stringify(tree));
 
   newTree.items[itemId] = { ...newTree.items[itemId], ...mutation };
 
@@ -172,12 +174,7 @@ export const moveItemOnTree = (
   from: ITreeItemSource,
   to: ITreeItemDestination,
 ) => {
-  // if (!to) return tree;
-  console.log(from, to);
-
-  // return tree;
-
-  const newTree = { ...tree };
+  const newTree = JSON.parse(JSON.stringify(tree));
 
   const itemId = newTree.items[from.parentId].children[from.index];
 
