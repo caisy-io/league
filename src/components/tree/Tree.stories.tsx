@@ -41,13 +41,13 @@ export const Default = ({}) => {
     setTree(mutateTree(tree, itemId, { isExpanded: false }));
   };
 
-  const renderItem: ITreeRenderItem = (item, provided) => {
+  const renderItem: ITreeRenderItem = (item, provided, provider) => {
     return (
       <div
         ref={provided?.innerRef}
         {...provided?.draggableProps}
         {...provided?.dragHandleProps}
-        style={{ border: "1px solid grey", padding: "4px 2px", ...provided?.draggableProps.style }}
+        style={{ border: "1px solid red", padding: "4px 2px", ...provided?.draggableProps.style }}
       >
         {item.data.title}
       </div>
