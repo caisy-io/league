@@ -6,6 +6,7 @@ import TreeItemContext from "./TreeItemContext";
 import TreeContext from "./TreeContext";
 import OuterTreeItem from "./OuterTreeItem";
 import TreeItem from "./TreeItem";
+import cloneDeep from "lodash/cloneDeep";
 
 const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, children, onCollapse }) => {
   const childrenArray = Children.toArray(children);
@@ -178,7 +179,7 @@ export const mutateTree = (
   itemId: ITreeItemId,
   mutation: ITreeItemMutation,
 ) => {
-  const newTree = JSON.parse(JSON.stringify(tree));
+  const newTree = cloneDeep(tree);
 
   newTree.items[itemId] = { ...newTree.items[itemId], ...mutation };
 
@@ -190,7 +191,7 @@ export const moveItemOnTree = (
   from: ITreeItemSource,
   to: ITreeItemDestination,
 ) => {
-  const newTree = JSON.parse(JSON.stringify(tree));
+  const newTree = cloneDeep(tree);
 
   const itemId = newTree.items[from.parentId].children[from.index];
 
