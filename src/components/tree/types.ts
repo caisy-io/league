@@ -44,7 +44,7 @@ export interface ITreeData {
 
 export interface ITree {
   tree: ITreeData;
-  isDragEnabled?: (item: ITreeItem) => boolean;
+  isDragEnabled: (item: ITreeItem) => boolean;
   onDragEnd: IOnDragEnd;
   onDragStart: IOnDragStart;
   onExpand?: (itemId: ITreeItemId) => void;

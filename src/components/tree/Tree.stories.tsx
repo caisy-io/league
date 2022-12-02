@@ -60,6 +60,7 @@ export const Default = ({}) => {
 
   return (
     <Tree
+      isDragEnabled={() => true}
       renderItem={renderItem}
       onExpand={onExpand}
       onCollapse={onCollapse}

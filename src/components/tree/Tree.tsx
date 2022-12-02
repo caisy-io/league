@@ -183,7 +183,12 @@ export const Tree: FC<ITree> = (props) => {
             item={tree.items[itemId]}
             tree={tree}
           >
-            <OuterTreeItem renderItem={props.renderItem} item={tree.items[itemId]} tree={tree} />
+            <OuterTreeItem
+              isDragEnabled={props.isDragEnabled}
+              renderItem={props.renderItem}
+              item={tree.items[itemId]}
+              tree={tree}
+            />
           </TreeItem>
         );
       })}
