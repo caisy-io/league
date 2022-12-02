@@ -176,7 +176,13 @@ export const Tree: FC<ITree> = (props) => {
     <WrappedTree {...props}>
       {root.children.map((itemId) => {
         return (
-          <TreeItem renderItem={props.renderItem} key={itemId} item={tree.items[itemId]} tree={tree}>
+          <TreeItem
+            isDragEnabled={props.isDragEnabled}
+            renderItem={props.renderItem}
+            key={itemId}
+            item={tree.items[itemId]}
+            tree={tree}
+          >
             <OuterTreeItem renderItem={props.renderItem} item={tree.items[itemId]} tree={tree} />
           </TreeItem>
         );

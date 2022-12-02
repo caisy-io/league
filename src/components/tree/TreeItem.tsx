@@ -5,7 +5,12 @@ import TreeContext from "./TreeContext";
 import TreeItemContext from "./TreeItemContext";
 import { ITreeData, ITreeItem } from "./types";
 
-const TreeItem: FC<{ item: ITreeItem; tree: ITreeData; renderItem: any }> = ({ children, item, renderItem }) => {
+const TreeItem: FC<{ item: ITreeItem; tree: ITreeData; renderItem: any; isDragEnabled: (item: any) => boolean }> = ({
+  children,
+  item,
+  renderItem,
+  isDragEnabled,
+}) => {
   const { id } = item;
   const { isExpanded, getIndex, toggleNode } = useContext(TreeContext)!;
 
@@ -34,7 +39,7 @@ const TreeItem: FC<{ item: ITreeItem; tree: ITreeData; renderItem: any }> = ({ c
   const absoluteIndex = getIndex(id);
 
   return (
-    <Draggable index={absoluteIndex} draggableId={`${id}`}>
+    <Draggable isDragDisabled={!isDragEnabled(item)} index={absoluteIndex} draggableId={`${id}`}>
       {(provided, provider) => (
         <>
           <STreeItem
@@ -46,7 +51,6 @@ const TreeItem: FC<{ item: ITreeItem; tree: ITreeData; renderItem: any }> = ({ c
             data-itemid={`${id}`}
           >
             {renderItem(item, provided, provider)}
-            {/* {item.data.title} */}
           </STreeItem>
           {expanded && childrenIncreased}
         </>
