@@ -43,7 +43,7 @@ const TreeItem: FC<{ item: ITreeItem; tree: ITreeData; renderItem: any }> = ({ c
             aria-expanded={expanded}
             aria-level={level}
             aria-setsize={siblingsLength}
-            data-itemId={`${id}`}
+            data-itemid={`${id}`}
           >
             {renderItem(item, provided, provider)}
             {/* {item.data.title} */}

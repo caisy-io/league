@@ -41,32 +41,43 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
         level: 1,
         siblingsLength: childrenArray.length,
       };
-      return <TreeItemContext.Provider value={childContextValue}>{child}</TreeItemContext.Provider>;
+      return (
+        <TreeItemContext.Provider key={child.props.itemId} value={childContextValue}>
+          {child}
+        </TreeItemContext.Provider>
+      );
     }
     return null;
   });
 
-  const handleCombine = (index, draggableId) => {
-    // console.log(index, draggableId);
+  const handleCombine = (destinationId, sourceId) => {
+    const sourceParentItem = Object.values(tree.items).find((item) => item.children.includes(sourceId));
+    const sourceParentId = sourceParentItem?.id || "";
+    const sourceItemIndex = tree.items[sourceParentId].children.findIndex((id) => id === sourceId);
+
+    onDragEnd({
+      source: { parentId: sourceParentId, index: sourceItemIndex },
+      destination: destinationId ? { parentId: destinationId, index: 0 } : undefined,
+    });
   };
 
   const handleDragEnd = (result: DropResult) => {
     const { combine, source, destination, draggableId } = result;
+
     if (combine) {
-      const { index } = source;
-      const { draggableId } = combine;
+      if (!tree.items[combine.draggableId].hasChildren) return;
 
-      handleCombine(index, draggableId);
+      const destinationId = combine.draggableId;
+      const sourceId = draggableId;
 
-      return;
+      return handleCombine(destinationId, sourceId);
     }
-
     if (!destination) return;
     const itemsArray = Object.values(tree.items);
 
     const root = document.getElementById(`${tree.rootId}`);
     const destinationItemId =
-      root?.children?.item?.(destination.index)?.getAttribute("data-itemId") || `${tree.rootId}`;
+      root?.children?.item?.(destination.index)?.getAttribute("data-itemid") || `${tree.rootId}`;
     const sourceItemId = draggableId;
     if (destinationItemId === sourceItemId) return;
 
