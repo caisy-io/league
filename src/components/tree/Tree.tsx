@@ -1,6 +1,6 @@
-import { Children, FC, isValidElement, ReactElement, useCallback, useMemo, useRef, useState } from "react";
+import { Children, FC, isValidElement, ReactElement, useCallback, useMemo, useRef } from "react";
 import { STree } from "./styles/STree";
-import { Droppable, DragDropContext, DragUpdate, DropResult } from "react-beautiful-dnd";
+import { Droppable, DragDropContext, DropResult } from "react-beautiful-dnd";
 import { ITree, ITreeItem, ITreeItemDestination, ITreeItemId, ITreeItemMutation, ITreeItemSource } from "./types";
 import TreeItemContext from "./TreeItemContext";
 import TreeContext from "./TreeContext";
@@ -11,8 +11,6 @@ import cloneDeep from "lodash/cloneDeep";
 const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, children, onCollapse }) => {
   const childrenArray = Children.toArray(children);
   const nodeIndexRef = useRef<number>(0);
-  const [dragOverId, setDragOverId] = useState<string | undefined>(undefined);
-  const [draggingId, setDraggingId] = useState(null);
 
   const isExpanded = useCallback(
     (treeItemId: ITreeItemId) => {
@@ -102,8 +100,6 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
       destinationItemIndex = tree.items[destinationParentId].children.findIndex((id) => id === destinationItemId);
     }
 
-    setDraggingId(null);
-
     onDragEnd({
       source: { parentId: sourceParentId, index: sourceItemIndex },
       destination: destination?.droppableId
@@ -113,12 +109,7 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
   };
 
   const handleDragStart = (e) => {
-    setDraggingId(e.draggableId);
     onDragStart(e.draggableId);
-  };
-
-  const handleDragUpdate = ({ combine, destination }: DragUpdate) => {
-    setDragOverId(combine ? combine.draggableId : combine);
   };
 
   const toggleNode = useCallback(
@@ -146,12 +137,7 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
 
   return (
     <TreeContext.Provider value={contextValue}>
-      <DragDropContext
-        onBeforeCapture={handleBeforeCapture}
-        onDragUpdate={handleDragUpdate}
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-      >
+      <DragDropContext onBeforeCapture={handleBeforeCapture} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <Droppable isCombineEnabled droppableId={`${tree.rootId}`}>
           {({ innerRef, droppableProps, placeholder }) => (
             <STree id={`${tree.rootId}`} {...droppableProps} ref={innerRef}>
