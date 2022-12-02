@@ -42,7 +42,7 @@ const WrappedTree: FC<ITree> = ({ tree, onDragEnd, onDragStart, onExpand, childr
         siblingsLength: childrenArray.length,
       };
       return (
-        <TreeItemContext.Provider key={child.props.itemId} value={childContextValue}>
+        <TreeItemContext.Provider key={child.props.item.id} value={childContextValue}>
           {child}
         </TreeItemContext.Provider>
       );
