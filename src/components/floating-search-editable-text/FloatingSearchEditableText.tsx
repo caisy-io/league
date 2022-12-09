@@ -38,7 +38,7 @@ export const FloatingSearchEditableText = forwardRef<HTMLInputElement, IFloating
       if (typeof window === "undefined") return;
       (spanRef.current as HTMLSpanElement).innerHTML = value;
       (inputRef as any).current.style.width = `${(spanRef.current as HTMLSpanElement).offsetWidth}px`;
-    }, [typeof window]);
+    }, [typeof window, value]);
 
     const handleChange = (e) => {
       if (!spanRef.current || !(inputRef as any).current) return;
