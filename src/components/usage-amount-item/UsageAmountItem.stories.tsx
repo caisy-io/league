@@ -37,8 +37,6 @@ const Template = () => {
     }
   });
 
-  console.log(messageString);
-
   return (
     <UsageAmountItem
       title={USAGE_ITEM_CONTENT.title}
