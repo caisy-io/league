@@ -69,6 +69,7 @@
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.19.0",
     "@babel/preset-react": "^7.18.6",
+    "@caisy/rich-text-react-renderer": "^0.5.5",
     "@rollup/plugin-json": "^4.1.0",
     "@types/react-beautiful-dnd": "^13.1.2",
     "babel-eslint": "^10.1.0",
