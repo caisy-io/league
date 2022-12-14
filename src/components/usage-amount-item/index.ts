@@ -1,3 +1,1 @@
-import { UsageAmountItem } from "./UsageAmountItem";
-
-export default UsageAmountItem;
+export { UsageAmountItem } from "./UsageAmountItem";
