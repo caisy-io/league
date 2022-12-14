@@ -16,7 +16,7 @@ interface IUsageAmountItem {
   description: React.ReactNode;
 }
 
-const UsageAmountItem: FC<IUsageAmountItem> = ({ title, usage, description, used, max }) => {
+export const UsageAmountItem: FC<IUsageAmountItem> = ({ title, usage, description, used, max }) => {
   const usagePercentage = useMemo(() => {
     return (used * 100) / max;
   }, [used, max]);
@@ -37,5 +37,3 @@ const UsageAmountItem: FC<IUsageAmountItem> = ({ title, usage, description, used
     </SUsageAmountItem>
   );
 };
-
-export default UsageAmountItem;

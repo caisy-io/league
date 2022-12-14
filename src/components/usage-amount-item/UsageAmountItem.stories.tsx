@@ -1,5 +1,5 @@
 import React from "react";
-import UsageAmountItem from "./UsageAmountItem";
+import { UsageAmountItem } from "./UsageAmountItem";
 
 const USAGE_ITEM_DATA = {
   used: 67,
