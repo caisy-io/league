@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CSSProgressiveCaption01 } from "../../../constants/styles";
+import { CSSProgressiveCaption01, CSSProgressiveCaption01Medium } from "../../../constants/styles";
 
 export const SUsageAmountItemDescription = styled.div`
   ${CSSProgressiveCaption01};
@@ -7,5 +7,7 @@ export const SUsageAmountItemDescription = styled.div`
 
   a {
     color: var(--icon-09);
+    text-decoration: none;
+    ${CSSProgressiveCaption01Medium};
   }
 `;
