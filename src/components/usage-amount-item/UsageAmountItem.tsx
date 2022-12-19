@@ -1,5 +1,4 @@
 import { FC, useMemo } from "react";
-import { RichTextRenderer } from "../../base-components";
 import { SUsageAmountItem } from "./styles/SUsageAmountItem";
 import { SUsageAmountItemDescription } from "./styles/SUsageAmountItemDescription";
 import { SUsageAmountItemTitle } from "./styles/SUsageAmountItemTitle";
@@ -31,9 +30,7 @@ export const UsageAmountItem: FC<IUsageAmountItem> = ({ title, usage, descriptio
         </SUsageAmountItemUsageGraphContainer>
         <SUsageAmountItemUsageBody>{usage}</SUsageAmountItemUsageBody>
       </SUsageAmountItemUsage>
-      <SUsageAmountItemDescription>
-        <RichTextRenderer node={description} />
-      </SUsageAmountItemDescription>
+      <SUsageAmountItemDescription>{description}</SUsageAmountItemDescription>
     </SUsageAmountItem>
   );
 };
