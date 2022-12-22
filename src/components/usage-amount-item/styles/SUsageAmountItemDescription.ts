@@ -9,5 +9,6 @@ export const SUsageAmountItemDescription = styled.div`
     color: var(--icon-09);
     text-decoration: none;
     ${CSSProgressiveCaption01Medium};
+    cursor: pointer;
   }
 `;

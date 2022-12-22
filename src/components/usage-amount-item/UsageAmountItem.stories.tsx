@@ -41,10 +41,13 @@ const Template = () => {
     <UsageAmountItem
       title={USAGE_ITEM_CONTENT.title}
       usage={messageString}
-      description={USAGE_ITEM_CONTENT.description}
       used={USAGE_ITEM_DATA.used}
       max={USAGE_ITEM_DATA.maxBlueprints}
-    />
+    >
+      <p>The amount of data your projects have sent or received. Lorem ipsum dolor set amet lorem ipsum dolor.</p>
+      <br></br>
+      <a>Learn more</a>
+    </UsageAmountItem>
   );
 };
 

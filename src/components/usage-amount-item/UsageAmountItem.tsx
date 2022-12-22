@@ -12,10 +12,10 @@ interface IUsageAmountItem {
   max: number;
   title: React.ReactNode;
   usage: React.ReactNode;
-  description: React.ReactNode;
+  children?: React.ReactNode;
 }
 
-export const UsageAmountItem: FC<IUsageAmountItem> = ({ title, usage, description, used, max }) => {
+export const UsageAmountItem: FC<IUsageAmountItem> = ({ title, usage, children, used, max }) => {
   const usagePercentage = useMemo(() => {
     return (used * 100) / max;
   }, [used, max]);
@@ -30,7 +30,7 @@ export const UsageAmountItem: FC<IUsageAmountItem> = ({ title, usage, descriptio
         </SUsageAmountItemUsageGraphContainer>
         <SUsageAmountItemUsageBody>{usage}</SUsageAmountItemUsageBody>
       </SUsageAmountItemUsage>
-      <SUsageAmountItemDescription>{description}</SUsageAmountItemDescription>
+      <SUsageAmountItemDescription>{children}</SUsageAmountItemDescription>
     </SUsageAmountItem>
   );
 };
