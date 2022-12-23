@@ -11,6 +11,7 @@ interface ITreeItem {
   onSelect: () => void;
   selected: () => boolean;
   isLeaf: boolean | undefined;
+  children?: React.ReactNode;
   id: string | number;
 }
 

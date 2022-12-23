@@ -1,14 +1,15 @@
-import React, { InputHTMLAttributes, ReactNode } from "react";
+import React, { FC, InputHTMLAttributes, ReactNode } from "react";
 import { SInput } from "./styles/SInput";
 import { SInputIcon } from "./styles/SInputIcon";
 import { SInputCloseButton } from "./styles/SInputCloseButton";
 import { IconClose } from "../../icons";
+import { IIconSize } from "../../utils/types";
 
 interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
   type?: "number" | "password" | "email" | "text";
-  icon?: ReactNode;
+  icon?: ReactNode | (() => ReactNode) | FC<IIconSize>;
   hasCloseButton?: boolean;
   onClose?: () => void;
   onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;

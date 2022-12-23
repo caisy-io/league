@@ -7,8 +7,8 @@ export interface ISearchBarOperandProps {
   closeable?: boolean;
   onClose?: (e: MouseEventHandler<HTMLDivElement>) => void;
   onClick?: (e: MouseEventHandler<HTMLDivElement>) => void;
-  styleOverwrite?: any; 
-  children?;
+  styleOverwrite?: any;
+  children?: React.ReactNode;
 }
 
 export const SearchBarOperand: React.FC<ISearchBarOperandProps> = ({

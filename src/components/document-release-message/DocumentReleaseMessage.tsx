@@ -16,6 +16,7 @@ interface IDocumentReleaseMessage {
   description: any;
   LinkComponent: any;
   link?: { title: string; url: string };
+  children?: React.ReactNode;
 }
 
 const DocumentReleaseMessageIcon: React.FC<{ type: IDocumentReleaseMessageType }> = ({ type }) => {

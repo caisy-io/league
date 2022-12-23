@@ -6,6 +6,7 @@ export type IReleaseAction = "PUBLISH" | "UNPUBLISH";
 
 interface IReleaseActionIndicator {
   action?: IReleaseAction;
+  children?: React.ReactNode;
 }
 
 export const ReleaseActionIndicator: React.FC<IReleaseActionIndicator> = ({ ...props }) => {

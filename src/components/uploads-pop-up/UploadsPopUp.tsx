@@ -13,6 +13,7 @@ interface IUploadsPopUp {
   badgeValue?: string | number;
   ClearText?: string | ReactNode;
   onClear?: () => void;
+  children?: React.ReactNode;
 }
 
 export const UploadsPopUp: FC<IUploadsPopUp> = ({ children, poupTitle, badgeValue, onClose, onClear, ClearText }) => (

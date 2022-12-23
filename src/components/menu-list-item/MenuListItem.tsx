@@ -8,7 +8,7 @@ export interface IMenuListItemProps {
   disabled?: boolean;
   activated?: boolean;
   onClick?: (e: Event) => void;
-  children?;
+  children?: React.ReactNode;
   isLast?: boolean;
 }
 

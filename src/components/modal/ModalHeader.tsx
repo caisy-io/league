@@ -6,6 +6,7 @@ import { SModalHeaderCloseIcon } from "./styles/SModalHeaderCloseIcon";
 interface IModalHeader {
   onClose?: () => any;
   styleOverwrite?: CSSProperties;
+  children?: React.ReactNode;
 }
 
 export const ModalHeader: React.FC<IModalHeader> = ({ styleOverwrite, onClose, children }) => {

@@ -1,20 +1,16 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { FC } from "react";
-import { 
-  IconCrossCircle,
-  IconCircle,
-  IconCheckmarkCircle
-} from './index';
+import { IconCrossCircle, IconCircle, IconCheckmarkCircle } from "./index";
 
 const IconWrapper: any = styled.div`
   color: var(--icon-01);
-`
+`;
 
 const icons = {
-  IconCrossCircle: ({size}) => <IconCrossCircle size={size}/>,
-  IconCircle: ({size}) => <IconCircle size={size}/>,
-  IconCheckmarkCircle: ({size, solid }) => <IconCheckmarkCircle size={size} solid={solid}/>,
+  IconCrossCircle: ({ size }) => <IconCrossCircle size={size} />,
+  IconCircle: ({ size }) => <IconCircle size={size} />,
+  IconCheckmarkCircle: ({ size, solid }) => <IconCheckmarkCircle size={size} solid={solid} />,
 };
 
 interface IFormIconsDemo {
@@ -23,11 +19,11 @@ interface IFormIconsDemo {
   solid?: boolean;
 }
 
-const FormIconsDemo: FC<IFormIconsDemo> =  ({ ...args }) => {
-  const Icon = icons[args.icon]
+const FormIconsDemo: FC<IFormIconsDemo> = ({ ...args }) => {
+  const Icon = icons[args?.icon || 0];
   return (
     <IconWrapper>
-      <Icon size={args.size} solid={args.solid}/>
+      <Icon size={args.size} solid={args.solid} />
     </IconWrapper>
   );
 };
@@ -40,27 +36,26 @@ export default {
       name: "size",
       description: "Size of the icon",
       options: [16, 20, 24, 32],
-      control: { type: 'select' }
+      control: { type: "select" },
     },
     icon: {
       name: "icon",
       description: "Icon name",
-      options: ['IconCrossCircle', 'IconCircle', 'IconCheckmarkCircle'],
-      control: { type: 'select' },
-      defaultValue: 'IconCrossCircle'
+      options: ["IconCrossCircle", "IconCircle", "IconCheckmarkCircle"],
+      control: { type: "select" },
+      defaultValue: "IconCrossCircle",
     },
     solid: {
       name: "solid",
       description: "Solid icon",
       options: [true, false],
       defaultValue: false,
-      control: { type: 'boolean'}
-    }
+      control: { type: "boolean" },
+    },
   },
 } as ComponentMeta<typeof FormIconsDemo>;
 
-const Template:  ComponentStory<typeof FormIconsDemo>= (args) => <FormIconsDemo  {...args} />;
+const Template: ComponentStory<typeof FormIconsDemo> = (args) => <FormIconsDemo {...args} />;
 
 export const FormIcons = Template.bind({});
-FormIcons.args = {
-};
+FormIcons.args = {};

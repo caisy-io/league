@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-const Heading: FC<{ node: any }> = ({ node, children }) => {
+const Heading: FC<{ node: any; children?: React.ReactNode }> = ({ node, children }) => {
   const level = node.attrs.level;
 
   switch (level) {

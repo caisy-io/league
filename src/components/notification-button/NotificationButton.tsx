@@ -4,6 +4,7 @@ import { SNotificationButtonImageWrapper } from "./styles/SNotificationButtonIma
 
 interface INotificationButtonBasic {
   onClick?: () => void;
+  children?: React.ReactNode;
 }
 
 interface INotificationButtonWithIcon extends INotificationButtonBasic {

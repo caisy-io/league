@@ -8,10 +8,10 @@ interface IMainMenuItem {
   onClick?: () => void;
   activated?: boolean;
   label?: string;
+  children?: React.ReactNode;
 }
 
 export const MainMenuItem: React.FC<IMainMenuItem> = forwardRef(({ ...props }, ref) => {
-  
   const handleClick = (e) => {
     e.preventDefault();
     props.onClick!();
@@ -20,7 +20,7 @@ export const MainMenuItem: React.FC<IMainMenuItem> = forwardRef(({ ...props }, r
   return (
     <>
       <SMainMenuItemWrapper ref={ref}>
-        <SMainMenuItem activated={props.activated} onClick={  props.onClick && handleClick}>
+        <SMainMenuItem activated={props.activated} onClick={props.onClick && handleClick}>
           <SMainMenuItemIcon>{props.children}</SMainMenuItemIcon>
         </SMainMenuItem>
         {props.label && <SMainMenuItemLabel>{props.label}</SMainMenuItemLabel>}

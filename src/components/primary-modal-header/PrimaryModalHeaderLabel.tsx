@@ -5,6 +5,7 @@ interface IPrimaryModalHeaderLabel {
   onClick?: (value: string | number | undefined) => void;
   value?: string | number;
   active: boolean;
+  children?: React.ReactNode;
 }
 
 export const PrimaryModalHeaderLabel: FC<IPrimaryModalHeaderLabel> = ({ value, onClick, active, children }) => {

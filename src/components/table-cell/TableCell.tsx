@@ -4,6 +4,7 @@ import { STableCell } from "./styles/STableCell";
 interface ITableCell {
   activated?: boolean;
   onClick?: (newActivated: boolean) => void;
+  children?: React.ReactNode;
 }
 
 export const TableCell: FC<ITableCell> = ({ children, activated, onClick }) => {

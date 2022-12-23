@@ -3,6 +3,7 @@ import { SBulkSelectionSnackbarAction } from "./styles/SBulkSelectionSnackbarAct
 
 interface IBulkSelectionSnackbarAction {
   onClick: () => void;
+  children?: React.ReactNode;
 }
 
 export const BulkSelectionSnackbarAction: React.FC<IBulkSelectionSnackbarAction> = ({ onClick, children }) => {

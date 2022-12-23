@@ -2,7 +2,7 @@ import React from 'react';
 import {SListItemContent } from './styles/SListItemContent';
 
 interface IListItemContent{
-  children?
+  children?: React.ReactNode
 }
 
 export const ListItemContent: React.FC<IListItemContent> = ({children}) => {

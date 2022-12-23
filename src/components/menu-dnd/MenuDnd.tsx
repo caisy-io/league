@@ -2,6 +2,7 @@ import React from "react";
 import MenuDndListItem from "./menu-dnd-list-item/MenuDndListItem";
 interface IMenuDnd {
   onDrop: (fromIndex: number, toIndex: number) => void;
+  children?: React.ReactNode;
 }
 
 const WrappedMenuDnd: React.FC<IMenuDnd> = ({ ...props }) => {
