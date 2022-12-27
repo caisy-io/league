@@ -1,5 +1,5 @@
 import React from "react";
-import { UsageAmountMonthlyItem } from "./UsageAmountMonthlyItem";
+import { UsageChartCard } from "./UsageChartCard";
 
 const USAGE_ITEM_DATA = {
   used: 67,
@@ -38,21 +38,23 @@ const Template = () => {
   });
 
   return (
-    <UsageAmountMonthlyItem
+    <UsageChartCard
       title={USAGE_ITEM_CONTENT.title}
       usage={messageString}
       used={USAGE_ITEM_DATA.used}
       max={USAGE_ITEM_DATA.maxBlueprints}
+      i18n={{ used: "Used", totalAvailable: "Total available" }}
+      identifier="members"
     >
       <p>The amount of data your projects have sent or received. Lorem ipsum dolor set amet lorem ipsum dolor.</p>
       <br></br>
       <a>Learn more</a>
-    </UsageAmountMonthlyItem>
+    </UsageChartCard>
   );
 };
 
 export default {
-  title: `Components/UsageAmountMonthlyItem`,
+  title: `Components/UsageChartCard`,
   component: Template,
 };
 

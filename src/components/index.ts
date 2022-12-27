@@ -125,3 +125,4 @@ export * from "./notification-button";
 export * from "./notification-block";
 export * from "./tree";
 export * from "./usage-amount-item";
+export * from "./usage-chart-card";
