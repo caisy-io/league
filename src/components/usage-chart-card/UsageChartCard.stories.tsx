@@ -20,6 +20,40 @@ const USAGE_ITEM_CONTENT = {
   },
 };
 
+const CHART_DATA = [
+  { date: "1 Nov", percentageUsed: 50 },
+  { date: "2 Nov", percentageUsed: 75 },
+  { date: "3 Nov", percentageUsed: 33 },
+  { date: "4 Nov", percentageUsed: 100 },
+  { date: "5 Nov", percentageUsed: 55 },
+  { date: "6 Nov", percentageUsed: 10 },
+  { date: "7 Nov", percentageUsed: 66 },
+  { date: "8 Nov", percentageUsed: 66 },
+  { date: "9 Nov", percentageUsed: 66 },
+  { date: "10 Nov", percentageUsed: 66 },
+  { date: "11 Nov", percentageUsed: 66 },
+  { date: "12 Nov", percentageUsed: 66 },
+  { date: "13 Nov", percentageUsed: 66 },
+  { date: "14 Nov", percentageUsed: 66 },
+  { date: "15 Nov", percentageUsed: 66 },
+  { date: "16 Nov", percentageUsed: 66 },
+  { date: "17 Nov", percentageUsed: 66 },
+  { date: "18 Nov", percentageUsed: 66 },
+  { date: "19 Nov", percentageUsed: 66 },
+  { date: "20 Nov", percentageUsed: 66 },
+  { date: "21 Nov", percentageUsed: 66 },
+  { date: "22 Nov", percentageUsed: 66 },
+  { date: "23 Nov", percentageUsed: 66 },
+  { date: "24 Nov", percentageUsed: 66 },
+  { date: "25 Nov", percentageUsed: 66 },
+  { date: "26 Nov", percentageUsed: 66 },
+  { date: "27 Nov", percentageUsed: 66 },
+  { date: "28 Nov", percentageUsed: 66 },
+  { date: "29 Nov", percentageUsed: 66 },
+  { date: "30 Nov", percentageUsed: 66 },
+  { date: "31 Nov", percentageUsed: 66 },
+];
+
 const Template = () => {
   const splitString = USAGE_ITEM_CONTENT.usage.split(/\${(\w+)}/g);
   let messageString = "";
@@ -28,7 +62,6 @@ const Template = () => {
     if (string.length === 0) return;
 
     if (string === "1") {
-      console.log("asdad");
       messageString += `${USAGE_ITEM_DATA.used}`;
     } else if (string === "2") {
       messageString += `${USAGE_ITEM_DATA.maxBlueprints}`;
@@ -45,6 +78,7 @@ const Template = () => {
       max={USAGE_ITEM_DATA.maxBlueprints}
       i18n={{ used: "Used", totalAvailable: "Total available" }}
       identifier="members"
+      chartData={CHART_DATA}
     >
       <p>The amount of data your projects have sent or received. Lorem ipsum dolor set amet lorem ipsum dolor.</p>
       <br></br>

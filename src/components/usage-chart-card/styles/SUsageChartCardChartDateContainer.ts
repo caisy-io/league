@@ -5,6 +5,6 @@ export const SUsageChartCardChartDateContainer = styled.div`
   height: 26px;
   display: flex;
   align-items: flex-end;
-  padding-left: 8px;
-  gap: 24px;
+  padding: 0 8px;
+  justify-content: space-between;
 `;

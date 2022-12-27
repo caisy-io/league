@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react";
 import { SUsageChartCard } from "./styles/SUsageChartCard";
 import { SUsageChartCardLeft } from "./styles/SUsageChartCardLeft";
-import { UsageChartCardChart } from "./UsageChartCardChart";
+import { IUsageChartCardChartData, UsageChartCardChart } from "./UsageChartCardChart";
 import { UsageChartCardContent } from "./UsageChartCardContent";
 import { UsageChartCardIndicator } from "./UsageChartCardIndicator";
 
@@ -18,9 +18,19 @@ interface IUsageChartCard {
   children?: React.ReactNode;
   i18n: IUsageChartCardI18n;
   identifier: string;
+  chartData: IUsageChartCardChartData[];
 }
 
-export const UsageChartCard: FC<IUsageChartCard> = ({ title, usage, children, used, max, i18n, identifier }) => {
+export const UsageChartCard: FC<IUsageChartCard> = ({
+  title,
+  usage,
+  children,
+  used,
+  max,
+  i18n,
+  identifier,
+  chartData,
+}) => {
   const usagePercentage = useMemo(() => {
     return (used * 100) / max;
   }, [used, max]);
@@ -34,7 +44,7 @@ export const UsageChartCard: FC<IUsageChartCard> = ({ title, usage, children, us
 
         <UsageChartCardIndicator identifier={identifier} used={used} totalAvailable={max} i18n={i18n} />
       </SUsageChartCardLeft>
-      <UsageChartCardChart />
+      <UsageChartCardChart data={chartData} totalAvailable={max} />
     </SUsageChartCard>
   );
 };

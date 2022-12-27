@@ -8,7 +8,7 @@ export const SUsageChartCardChartGraphContainer = styled.div`
   max-height: 316px;
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
   padding: 0 8px;
-  gap: 24px;
-  overflow: hidden;
+  overflow: visible;
 `;
