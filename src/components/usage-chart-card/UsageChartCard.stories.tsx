@@ -3,7 +3,7 @@ import { UsageChartCard } from "./UsageChartCard";
 
 const USAGE_ITEM_DATA = {
   used: 67,
-  maxBlueprints: 95,
+  maxBlueprints: 1,
 };
 
 const USAGE_ITEM_CONTENT = {

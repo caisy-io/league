@@ -6,7 +6,7 @@ export const SUsageChartCardChartContainer = styled.div`
   display: flex;
   height: calc(342px + 24px);
   flex-direction: column;
-  padding-left: 8px;
+  padding-right: 8px;
   gap: 12px;
   flex: 1;
 
