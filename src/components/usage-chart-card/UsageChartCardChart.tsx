@@ -10,7 +10,7 @@ import { SUsageChartCardChartY } from "./styles/SUsageChartCardChartY";
 import { SUsageChartCardYNumber } from "./styles/SUsageChartCardYNumber";
 import { UsageChartCardChartGraph } from "./UsageChartCardChartGraph";
 
-const BACKGROUND_LINES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const BACKGROUND_LINES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export interface IUsageChartCardChartData {
   date: React.ReactNode;
@@ -22,26 +22,30 @@ interface IUsageChartCardChart {
   data: IUsageChartCardChartData[];
 }
 
-const getCutNumber = (number: number, divider: number) => {
-  return Math.floor(Math.floor(number / divider) * divider);
-};
-
-const getBreakpointNumber = (total: number, lineNumber: number, divider: number) => {
-  return getCutNumber(Math.floor((total / 9) * lineNumber), divider);
+const getRoundedNumber = (number) => {
+  return Math.round(number * 10) / 10;
 };
 
 export const UsageChartCardChart: FC<IUsageChartCardChart> = ({ totalAvailable, data }) => {
   const [chartRef, setChartRef] = useState<HTMLDivElement>();
 
-  const REFERENCE_LINES = useMemo(() => {
-    const divider = totalAvailable / 10;
-    return BACKGROUND_LINES.map((line) => getBreakpointNumber(totalAvailable, line, divider));
+  const referenceLines = useMemo(() => {
+    if (totalAvailable <= 10) {
+      const lines = new Array(totalAvailable);
+      for (let i = 0; i < totalAvailable; i++) {
+        lines[i] = i + 1;
+      }
+
+      return lines;
+    }
+    return BACKGROUND_LINES.map((line) => getRoundedNumber((totalAvailable / 10) * line));
   }, [totalAvailable]);
 
   return (
     <SUsageChartCardChart>
       <SUsageChartCardChartContainer>
         <SUsageChartCardChartBackground chartWidth={(chartRef?.scrollWidth || 0) + 16}>
+          <SUsageChartCardChartBackgroundLine />
           {BACKGROUND_LINES.map((line) => (
             <SUsageChartCardChartBackgroundLine key={line} />
           ))}
@@ -58,7 +62,8 @@ export const UsageChartCardChart: FC<IUsageChartCardChart> = ({ totalAvailable, 
         </SUsageChartCardChartDateContainer>
       </SUsageChartCardChartContainer>
       <SUsageChartCardChartY>
-        {REFERENCE_LINES.map((line) => (
+        <SUsageChartCardYNumber>{0}</SUsageChartCardYNumber>
+        {referenceLines.map((line) => (
           <SUsageChartCardYNumber key={line}>{line}</SUsageChartCardYNumber>
         ))}
       </SUsageChartCardChartY>
