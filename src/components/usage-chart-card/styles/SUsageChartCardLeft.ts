@@ -7,4 +7,5 @@ export const SUsageChartCardLeft = styled.div`
   justify-content: space-between;
   height: 100%;
   box-sizing: border-box;
+  padding-bottom: 24px;
 `;
