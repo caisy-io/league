@@ -1357,6 +1357,11 @@
   resolved "https://registry.npmjs.org/@caisy/prettier/-/prettier-1.14.1.tgz"
   integrity sha512-j9m95Hn7gF2IoytASxvav1iySLLjwuJ5wvw/hEOcwagSWUwZnFxwz4QyvCw9ErTDDw76Hzs6bBPI6h91LUQYMw==
 
+"@caisy/rich-text-react-renderer@^0.5.5":
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/@caisy/rich-text-react-renderer/-/rich-text-react-renderer-0.5.5.tgz#84564773827a2e55674cdbfb8490d722b59e0d66"
+  integrity sha512-a5kSv9RQsZ5+T7ZiZzIxwK+R1DT+kwK97SaYmv66GKMRAllI25Rr+fIbUMlQOcS9tUzILCFezmZhe3bb2zQA4Q==
+
 "@caisy/tsconfig@^1.6.1":
   version "1.6.1"
   resolved "https://registry.npmjs.org/@caisy/tsconfig/-/tsconfig-1.6.1.tgz"
