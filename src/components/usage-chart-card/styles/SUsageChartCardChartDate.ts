@@ -3,7 +3,6 @@ import { CSSProgressiveCaption02Medium } from "../../../constants/styles";
 
 export const SUsageChartCardChartDate = styled.div`
   min-width: 40px;
-  flex: 1;
   margin: 0 9px;
   height: 14px;
   box-sizing: border-box;
