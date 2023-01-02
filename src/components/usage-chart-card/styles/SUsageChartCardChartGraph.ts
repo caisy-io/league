@@ -7,5 +7,5 @@ export const SUsageChartCardChartGraph = styled.div`
   z-index: 2;
   background-color: var(--ui-supportive-06);
   box-sizing: border-box;
-  height: ${({ percentage }) => `${percentage}%`};
+  height: ${({ percentage }) => (percentage ? `${percentage}%` : "0.01px")};
 `;
