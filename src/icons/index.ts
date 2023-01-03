@@ -275,3 +275,5 @@ export { IconAddProjectDocumentPlus } from "./IconAddProjectDocumentPlus";
 export { IconDuplicateProjectDocument } from "./IconDuplicateProjectDocument";
 export { IconCodeBlock } from "./IconCodeBlock";
 export { IconDocumentMissing } from "./IconDocumentMissing";
+export { IconAlarmClockTimeFast } from "./IconAlarmClockTimeFast";
+export { IconAnalyticsChartSquare } from "./IconAnalyticsChartSquare";
