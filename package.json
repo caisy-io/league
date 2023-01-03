@@ -70,7 +70,8 @@
     "dayjs": "1.10.5",
     "react-dnd": "14.0.2",
     "react-dnd-html5-backend": "14.0.2",
-    "**/@types/react": "^18"
+    "**/@types/react": "^18",
+    "emoji-mart": "3.0.1"
   },
   "dependencies": {
     "dayjs": "1.10.5",
