@@ -1,21 +1,10 @@
-// import { Picker } from 'emoji-mart';
-import React, { useState } from "react";
-import {
-  IconAnimalsDog,
-  IconClock,
-  IconFlag,
-  IconHeartLike,
-  IconLightBulb,
-  IconPlane,
-  IconSmileEmojiSelector,
-  IconSportBasketball,
-} from "../../icons";
-import { Tab } from "../tab/Tab";
-import { SCustomCategoryBar } from "./styles/SCustomCategoryBar";
-import { GlobalStyle } from "./styles/SEmojiMart";
-import { SEmojiPicker } from "./styles/SEmojiPicker";
-import data from "@emoji-mart/data";
-import Picker from "@emoji-mart/react";
+import { Picker } from 'emoji-mart';
+import React, { useState } from 'react';
+import { IconAnimalsDog, IconClock, IconFlag, IconHeartLike, IconLightBulb, IconPlane, IconSmileEmojiSelector, IconSportBasketball } from '../../icons';
+import { Tab } from '../tab/Tab';
+import { SCustomCategoryBar } from './styles/SCustomCategoryBar';
+import { GlobalStyle } from './styles/SEmojiMart';
+import { SEmojiPicker } from './styles/SEmojiPicker';
 
 const tabs = [
   {
@@ -61,16 +50,17 @@ export const EmojiPicker: React.FC<IEmojiPicker> = ({ onSelect }) => {
   const allCategories: Array<string> = [];
 
   for (let k in tabs) {
-    allCategories.push(tabs[k].name);
+    allCategories.push(tabs[k].name)
   }
 
   const handleSelect = (index) => {
     setSelected(index);
   };
 
-  const onPickerSelect = (emoji) => {
-    if (typeof onSelect == "function") {
-      onSelect(emoji.id);
+  const onPickerSelect = emoji => {
+    if (typeof onSelect == 'function') {
+      onSelect(emoji.colons)
+
     }
   };
 
@@ -90,15 +80,9 @@ export const EmojiPicker: React.FC<IEmojiPicker> = ({ onSelect }) => {
         ))}
       </SCustomCategoryBar>
       <GlobalStyle />
-      <Picker
-        data={data}
-        defaultSkin={3}
-        showSkinTones={false}
-        onEmojiSelect={onPickerSelect}
-        style={{ width: "308px" }}
-        key={currSelected}
-        include={["search", ...(currSelected == 0 ? allCategories : [tabs[currSelected].name])]}
-      />
+      <Picker defaultSkin={3} showSkinTones={false} set='apple' onSelect={onPickerSelect} style={{ width: '308px' }} key={currSelected} include={
+        ['search', ...(currSelected == 0 ? allCategories : [tabs[currSelected].name])]
+      } />
     </SEmojiPicker>
-  );
-};
+  )
+}
