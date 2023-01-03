@@ -70,13 +70,13 @@
     "dayjs": "1.10.5",
     "react-dnd": "14.0.2",
     "react-dnd-html5-backend": "14.0.2",
-    "**/@types/react": "^18"
+    "@types/react": "^18"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.1.1",
     "@emoji-mart/react": "^1.1.0",
     "dayjs": "1.10.5",
-    "**/@types/react": "^18",
+    "@types/react": "^18",
     "emoji-mart": "3.0.1",
     "fuzzysearch": "^1.0.3",
     "react-beautiful-dnd": "^13.1.1",
