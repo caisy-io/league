@@ -8,6 +8,7 @@ interface ILineTabProps {
   hasError?: boolean;
   title?: string | undefined;
   onClick: () => void;
+  children?: React.ReactNode;
 }
 
 export const LineTab: React.FC<ILineTabProps> = ({ hover, activated, title, onClick, children, hasError = false }) => {

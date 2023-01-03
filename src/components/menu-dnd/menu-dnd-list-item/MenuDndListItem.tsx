@@ -7,6 +7,7 @@ interface IMenuDndListItem {
   id: number;
   index: number;
   onDrop: (fromIndex: number, toIndex: number) => void;
+  children?: React.ReactNode;
 }
 
 interface IDraggableItem {

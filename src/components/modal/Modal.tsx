@@ -9,6 +9,7 @@ interface IModal {
   visible: boolean;
   onClose?: (payload: any) => any;
   styleOverwrite?: ThemedCssFunction<any>;
+  children?: React.ReactNode;
 }
 
 export const Modal: React.FC<IModal> = ({ styleOverwrite, ...props }) => {

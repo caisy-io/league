@@ -11,6 +11,7 @@ interface IDivider {
   height?: number;
   style?: any;
   vertical?: boolean;
+  children?: React.ReactNode;
 }
 
 export const Divider: React.FC<IDivider> = ({ ...props }) => {

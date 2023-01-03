@@ -9,6 +9,7 @@ interface ITableHeaderButton {
   sorted?: boolean;
   activated?: boolean;
   onClick?: () => void;
+  children?: React.ReactNode;
 }
 
 export const TableHeaderButton: FC<ITableHeaderButton> = ({ children, locked, sorted, activated, onClick }) => {

@@ -11,6 +11,7 @@ export interface ITooltip {
   color?: TTooltipColor;
   disableTriangle?: boolean;
   delay?: number;
+  children?: React.ReactNode;
 }
 
 export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, delay = 0 }) => {

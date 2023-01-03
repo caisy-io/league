@@ -12,6 +12,7 @@ interface IToggleListItem {
   onChange: (newValue: boolean) => void;
   description?: string | ReactNode;
   icon?: JSX.Element;
+  children?: React.ReactNode;
 }
 
 export const ToggleListItem: FC<IToggleListItem> = ({ children, size, onChange, active, description, icon }) => {

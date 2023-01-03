@@ -4,6 +4,7 @@ import { SStatusEmote } from "./styles/SStatusEmote";
 
 interface IStatus {
   emote: string;
+  children?: React.ReactNode;
 }
 
 export const Status: React.FC<IStatus> = ({ ...props }) => {

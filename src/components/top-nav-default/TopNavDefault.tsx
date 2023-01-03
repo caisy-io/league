@@ -4,7 +4,7 @@ import { STopNavDefaultContent } from "./styles/STopNavDefaultContent";
 
 interface ITopNavDefault {
   styleOverwrite?: CSSProperties;
-  children: any;
+  children?: React.ReactNode;
 }
 
 export const TopNavDefault: FC<ITopNavDefault> = ({ children, styleOverwrite }) => {

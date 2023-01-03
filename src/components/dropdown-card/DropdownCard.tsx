@@ -3,7 +3,7 @@ import {SDropdownCard } from './styles/SDropdownCard';
 
 interface IDropdownCard{
   styleOverwrite?: string;
-  children?
+  children?: React.ReactNode
 }
 
 export const DropdownCard: React.FC<IDropdownCard> = ({styleOverwrite,children}) => {

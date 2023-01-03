@@ -79,6 +79,7 @@ interface IPopover {
   zIndex?: number;
   styleOverwrite?: React.CSSProperties;
   display?: boolean;
+  children?: React.ReactNode | (() => React.ReactNode);
 }
 
 const getPlacements = (disableTriangle: boolean | undefined, reference: React.MutableRefObject<null>) => (rbr, tbr) => {
@@ -127,11 +128,7 @@ export const Popover: React.FC<IPopover> = ({
             container={container}
             style={styleOverwrite}
           >
-            {(display === undefined || display) && (
-              <>
-                {typeof children === "function" ? children() : children}
-              </>
-            )}
+            {(display === undefined || display) && <>{typeof children === "function" ? children() : children}</>}
           </SPopover>
         </Stackable>
       </ClickOutside>

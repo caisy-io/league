@@ -17,6 +17,7 @@ interface IBulkSelectionSnackbar {
   itemsSelectedText?: string | ReactNode;
   errorOccurredText?: string | ReactNode;
   errorsOccurredText?: string | ReactNode;
+  children?: React.ReactNode;
 }
 
 export const BulkSelectionSnackbar: FC<IBulkSelectionSnackbar> = ({

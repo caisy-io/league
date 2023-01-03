@@ -1,9 +1,10 @@
-import React from 'react';
-import { SIconRotator } from './styles/SIconRotator';
+import React from "react";
+import { SIconRotator } from "./styles/SIconRotator";
 
 export interface IIconRotator {
-  rotationDegrees?: number,
-  styleOverwrite?: string,
+  rotationDegrees?: number;
+  styleOverwrite?: string;
+  children?: React.ReactNode;
 }
 
 export const IconRotator: React.FC<IIconRotator> = ({ children, rotationDegrees, styleOverwrite }) => {
@@ -11,5 +12,5 @@ export const IconRotator: React.FC<IIconRotator> = ({ children, rotationDegrees,
     <SIconRotator rotationDegrees={rotationDegrees} styleOverwrite={styleOverwrite}>
       {children}
     </SIconRotator>
-  )
-}
+  );
+};

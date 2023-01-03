@@ -13,6 +13,7 @@ export interface ISidebarCardProps {
   title?: string | ReactNode;
   description?: string | ReactNode;
   icon: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const SidebarCard: React.FC<ISidebarCardProps> = ({ ...props }) => {

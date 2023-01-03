@@ -2,7 +2,7 @@ import React from 'react';
 import {SSearchDropdownSectionTable } from './styles/SSearchDropdownSectionTable';
 
 interface ISearchDropdownSectionTable{
-  children?
+  children?: React.ReactNode
 }
 
 export const SearchDropdownSectionTable: React.FC<ISearchDropdownSectionTable> = ({children}) => {

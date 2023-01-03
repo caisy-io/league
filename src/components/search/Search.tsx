@@ -13,7 +13,7 @@ import { IconCross } from "../../icons/IconCross";
 import { IconFilter } from "../../icons/IconFilter";
 import { IconSearch } from "../../icons/IconSearch";
 
-export const Search: React.FC = ({ children }) => {
+export const Search: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const [isInputFocus, setIsInputFocus] = useState<boolean>(false);
   const [inputOffset, setInputOffset] = useState<number>(0);
   const [filterInputOffset, setFilterInputOffset] = useState<number>(0);

@@ -16,6 +16,7 @@ interface IPrimaryModalHeaderLabel {
 
 interface IPrimaryModalHeader {
   breadcrumbs: IPrimaryModalHeaderLabel[];
+  children?: React.ReactNode;
 }
 
 export const PrimaryModalHeader: React.FC<IPrimaryModalHeader> = ({ breadcrumbs, children }) => {

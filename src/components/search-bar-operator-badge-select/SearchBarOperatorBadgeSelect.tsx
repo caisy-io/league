@@ -4,12 +4,13 @@ import { SSearchBarOperatorBadgeSelect } from "./styles/SSearchBarOperatorBadgeS
 export interface ISearchBarOperatorBadgeSelectProps {
   activated?: boolean;
   onClick?: MouseEventHandler<HTMLDivElement> | undefined;
+  children?: React.ReactNode;
 }
 
 export const SearchBarOperatorBadgeSelect: FC<ISearchBarOperatorBadgeSelectProps> = ({
   onClick,
   activated,
-  children
+  children,
 }) => {
   return (
     <SSearchBarOperatorBadgeSelect onClick={onClick} activated={activated}>

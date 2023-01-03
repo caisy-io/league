@@ -9,6 +9,7 @@ interface ITab {
   value: string | number;
   onClick?: (value: string | number) => void;
   styleOverwrite?: CSSProperties;
+  children?: React.ReactNode;
 }
 
 export const Tab: React.FC<ITab> = ({ size, activated, icon, onClick, value, styleOverwrite, ...props }) => {

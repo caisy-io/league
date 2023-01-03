@@ -8,6 +8,7 @@ interface IIconButton {
   activated?: boolean;
   onClick?: (e: MouseEvent<HTMLDivElement>) => void;
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 export const IconButton: FC<IIconButton> = forwardRef(

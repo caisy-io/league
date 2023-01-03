@@ -11,6 +11,7 @@ interface ILineTabs {
   reference?: any;
   style?: React.CSSProperties;
   tabsStyle?: React.CSSProperties;
+  children?: React.ReactNode;
 }
 
 export const LineTabs: React.FC<ILineTabs> = ({
@@ -66,6 +67,7 @@ interface ILineTabPanel {
   tabTitle: string | ReactNode;
   style?: React.CSSProperties;
   icon?: ReactNode;
+  children?: React.ReactNode;
 }
 
 export const LineTabPanel: React.FC<ILineTabPanel> = (props) => {

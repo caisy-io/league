@@ -26,6 +26,7 @@ interface IDocumentItem {
   selectable?: boolean;
   selected?: boolean;
   onSelect?: any;
+  children?: React.ReactNode;
 }
 
 export const DocumentItem: React.FC<IDocumentItem> = ({ ...props }) => {

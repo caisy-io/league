@@ -17,6 +17,7 @@ interface IDayjsProviderValue {
 
 interface IDayjsProvider {
   localeString?: string;
+  children?: React.ReactNode;
 }
 
 export const useDayjs = () => {
@@ -31,7 +32,7 @@ export const isTodayDate = (date?: string) => dayjs(date).isToday();
 
 export const dateFormat = (date?: string, formatDate?: string) => dayjs(date).format(formatDate);
 
-export const DayjsProvider: React.FC<IDayjsProvider> = ({ localeString="en", children }) => {
+export const DayjsProvider: React.FC<IDayjsProvider> = ({ localeString = "en", children }) => {
   dayjs.locale(localeString);
   const value = { localeString };
   return <DayjsProviderContext.Provider value={value}>{children}</DayjsProviderContext.Provider>;

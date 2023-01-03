@@ -24,7 +24,8 @@ export interface ISimpleInput {
   onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
   autoComplete?: string;
   autoFocus?: boolean;
-  id?:string;
+  id?: string;
+  children?: React.ReactNode;
 }
 
 export const SimpleInputWrapper: FC<ISimpleInput> = ({
@@ -49,11 +50,11 @@ export const SimpleInputWrapper: FC<ISimpleInput> = ({
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onFocus={(e) => {
-        setActive(true)
+        setActive(true);
         onFocus?.(e);
       }}
       onBlur={(e) => {
-        setActive(false)
+        setActive(false);
         onBlur?.(e);
       }}
       active={active}
@@ -82,9 +83,7 @@ export const SimpleInputWrapper: FC<ISimpleInput> = ({
           {translationBadge}
 
           <SSimpleInputRequiredIndicatorContainer>
-            {required && !label && (!errors || errors.length === 0) && (
-              <SSimpleInputRequiredIndicator />
-            )}
+            {required && !label && (!errors || errors.length === 0) && <SSimpleInputRequiredIndicator />}
             {children}
           </SSimpleInputRequiredIndicatorContainer>
         </SSimpleInputInsideContainer>

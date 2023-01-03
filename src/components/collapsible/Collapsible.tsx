@@ -3,6 +3,7 @@ import React from "react";
 import { CollapseWrapper } from "./CollapseWrapper";
 interface ICollapsible {
   expanded?: boolean;
+  children?: React.ReactNode;
 }
 
 export const Collapsible: React.FC<ICollapsible> = ({ children, ...props }) => {

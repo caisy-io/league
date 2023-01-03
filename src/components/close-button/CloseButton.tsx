@@ -5,6 +5,7 @@ import { SCloseButtonWrapper } from "./styles/SCloseButtonWrapper";
 
 export interface ICloseButtonProps {
   onClose?: (e: MouseEventHandler<HTMLDivElement>) => void;
+  children?: React.ReactNode;
 }
 
 export const CloseButton: React.FC<ICloseButtonProps> = ({ onClose, children }) => {
