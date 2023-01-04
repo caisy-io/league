@@ -13,6 +13,7 @@ interface IListItemLegacy {
   avatar?: string;
   childrenStyle?: React.CSSProperties;
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  children?: React.ReactNode;
 }
 
 export const ListItemLegacy: React.FC<IListItemLegacy> = ({

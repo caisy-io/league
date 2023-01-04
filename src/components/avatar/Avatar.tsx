@@ -3,7 +3,8 @@ import { Img } from "../../base-components/img/Img";
 import { SAvatar } from "./styles/SAvatar";
 export interface IAvatar {
   imageUrl?: string;
-  size?:  16 | 20 | 24 | 28 | 32 | 40;
+  size?: 16 | 20 | 24 | 28 | 32 | 40;
+  children?: React.ReactNode;
 }
 
 export const Avatar: React.FC<IAvatar> = ({ imageUrl, ...props }) => {

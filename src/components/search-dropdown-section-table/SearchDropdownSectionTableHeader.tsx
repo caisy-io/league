@@ -3,7 +3,7 @@ import { SSearchDropdownSectionTableHeader } from "./styles/SSearchDropdownSecti
 
 interface ISearchDropdownSectionTableHeader {
   onClick?: MouseEventHandler<HTMLDivElement> | undefined;
-  children?;
+  children?: React.ReactNode
 }
 
 export const SearchDropdownSectionTableHeader: React.FC<ISearchDropdownSectionTableHeader> = ({

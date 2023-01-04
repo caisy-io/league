@@ -7,6 +7,7 @@ interface IFlatActionButton {
   type: IFlatActionButtonType;
   onClick?: () => void;
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 export const FlatActionButton: React.FC<IFlatActionButton> = ({ type, onClick, children, disabled = false }) => {

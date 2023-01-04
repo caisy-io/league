@@ -6,10 +6,11 @@ import { SUploadProgressBarLabel } from "./styles/SUploadProgressBarLabel";
 import { SUploadProgressBarTitle } from "./styles/SUploadProgressBarTitle";
 
 export interface IUploadProgressBar {
-  progress: number;
-  uploadName: string;
+  progress?: number;
+  uploadName?: string;
   onCancel?: () => void;
   cancelText?: string | ReactNode;
+  children?: React.ReactNode;
 }
 
 export const UploadProgressBar: React.FC<IUploadProgressBar> = ({

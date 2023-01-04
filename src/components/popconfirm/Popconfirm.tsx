@@ -17,6 +17,7 @@ interface IPopconfirm {
   cancelText?: string | ReactNode;
   wrapperStyle?: React.CSSProperties;
   container?: React.MutableRefObject<null>;
+  children?: React.ReactNode;
 }
 
 export const Popconfirm: React.FC<IPopconfirm> = ({ ...props }) => {

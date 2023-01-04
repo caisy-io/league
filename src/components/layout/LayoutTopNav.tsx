@@ -4,6 +4,7 @@ import { SLayoutTopNav } from "./styles/SLayoutTopNav";
 interface ILayoutTopNav {
   height?: string;
   styleOverwrite?: any;
+  children?: React.ReactNode
 }
 
 export const LayoutTopNav: React.FC<ILayoutTopNav> = ({

@@ -1,7 +1,7 @@
 import React from "react";
 import { GSBase } from "../../constants/styles/global-style";
 
-export const Theme: React.FC = ({ ...props }) => {
+export const Theme: React.FC<{ children?: React.ReactNode }> = ({ ...props }) => {
   return (
     <>
       <GSBase />

@@ -54,6 +54,7 @@ interface ISearchValue {
 
 interface ISearch {
   value: ISearchValue;
+  children?: React.ReactNode;
 }
 
 const useSearchLevel = () => {

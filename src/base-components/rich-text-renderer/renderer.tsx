@@ -30,7 +30,7 @@ export type ElementType =
   | "tableCell"
   | "text";
 
-export const DEFAULT_BLOCK_MAP: Record<ElementType, FC<{ node: any }>> = {
+export const DEFAULT_BLOCK_MAP: Record<ElementType, FC<{ node: any; children: React.ReactNode }>> = {
   doc: Doc,
   hardBreak: HardBreak,
   paragraph: Paragraph,
@@ -47,7 +47,7 @@ export const DEFAULT_BLOCK_MAP: Record<ElementType, FC<{ node: any }>> = {
   text: Text,
 };
 
-export const documentRenderer = (blockMap: Record<ElementType, FC<{ node: any }>>) => {
+export const documentRenderer = (blockMap: Record<ElementType, FC<{ node: any; children: React.ReactNode }>>) => {
   const BLOCKS = { ...DEFAULT_BLOCK_MAP, ...blockMap };
 
   const renderNode = (currNode: any, level?: number) => {

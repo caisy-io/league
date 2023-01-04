@@ -50,6 +50,7 @@ export interface ITree {
   onExpand?: (itemId: ITreeItemId) => void;
   onCollapse?: (itemId: ITreeItemId) => void;
   renderItem: ITreeRenderItem;
+  children?: React.ReactNode;
 }
 
 export interface ITreeItemMutation {

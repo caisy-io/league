@@ -12,7 +12,7 @@ import { SNotificationSnackbarLabel } from "./styles/SNotificationSnackbarLabel"
 export interface INotificationSnackbarProps {
   exit: boolean;
   icon?: ReactNode;
-  action?: React.ReactNode;
+  action?: () => void | React.ReactNode;
   content: string;
   success?: boolean;
   error?: boolean;

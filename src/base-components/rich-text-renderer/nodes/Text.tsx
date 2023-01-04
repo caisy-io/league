@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 type Marks = "bold" | "italic" | "strike" | "link" | "code";
 
-const Mark: FC<{ mark: Marks; attrs: any }> = ({ mark, attrs, children }) => {
+const Mark: FC<{ mark: Marks; attrs: any; children?: React.ReactNode }> = ({ mark, attrs, children }) => {
   switch (mark) {
     case "bold":
       return <strong>{children}</strong>;

@@ -19,6 +19,7 @@ export interface IAvatarInput {
   changeText?: string | ReactNode;
   deleteText?: string | ReactNode;
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 export const AvatarInput: React.FC<IAvatarInput> = ({

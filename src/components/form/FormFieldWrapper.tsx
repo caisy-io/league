@@ -32,6 +32,7 @@ interface IFormFieldWrapper {
   rules?: IRule[];
   valuePropName?: string;
   onChange?: (e: any) => void;
+  children?: React.ReactNode;
 }
 
 export const FormFieldWrapper: React.FC<IFormFieldWrapper> = ({ ...props }) => {

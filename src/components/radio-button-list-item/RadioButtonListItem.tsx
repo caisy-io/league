@@ -8,6 +8,7 @@ interface IRadioButtonListItem {
   disabled?: boolean;
   onChange: (newValue: boolean) => void;
   left?: boolean;
+  children?: React.ReactNode;
 }
 
 export const RadioButtonListItem: FC<IRadioButtonListItem> = ({ activated, disabled, children, onChange, left }) => {

@@ -13,6 +13,7 @@ interface IDocumentStatusMessage {
   type: IDocumentStatusMessageType;
   message: string;
   description: any;
+  children?: React.ReactNode;
 }
 
 const DocumentStatusMessageIcon: React.FC<{ type: IDocumentStatusMessageType }> = ({ type }) => {

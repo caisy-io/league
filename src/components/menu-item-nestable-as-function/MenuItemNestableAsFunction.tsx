@@ -16,6 +16,7 @@ export interface IMenuItemNestableAsFunction {
   onClick?: (e: any) => void;
   as?: MenuItemTag;
   childWrapperAs?: MenuItemTag;
+  children?: React.ReactNode;
 }
 
 const childrenContainMenuItems = (c: any) => {

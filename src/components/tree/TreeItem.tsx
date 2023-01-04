@@ -5,12 +5,13 @@ import TreeContext from "./TreeContext";
 import TreeItemContext from "./TreeItemContext";
 import { ITreeData, ITreeItem } from "./types";
 
-const TreeItem: FC<{ item: ITreeItem; tree: ITreeData; renderItem: any; isDragEnabled: (item: any) => boolean }> = ({
-  children,
-  item,
-  renderItem,
-  isDragEnabled,
-}) => {
+const TreeItem: FC<{
+  item: ITreeItem;
+  tree: ITreeData;
+  renderItem: any;
+  isDragEnabled: (item: any) => boolean;
+  children?: React.ReactNode;
+}> = ({ children, item, renderItem, isDragEnabled }) => {
   const { id } = item;
   const { isExpanded, getIndex, toggleNode } = useContext(TreeContext)!;
 

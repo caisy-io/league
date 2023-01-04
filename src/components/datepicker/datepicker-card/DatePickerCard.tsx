@@ -3,6 +3,7 @@ import SDatePickerCard from "./styles/SDatePickerCard";
 
 interface IDatePickerCard {
   flexDirection?: "column" | "row" | "column-reverse" | "row-reverse";
+  children?: React.ReactNode;
 }
 
 const DatePickerCard: React.FC<IDatePickerCard> = ({ ...props }) => {

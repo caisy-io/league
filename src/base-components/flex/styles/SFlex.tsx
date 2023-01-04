@@ -16,6 +16,7 @@ export interface IFlex extends IFlexDefinition {
   gold?: IFlexDefinition;
   platinum?: IFlexDefinition;
   diamond?: IFlexDefinition;
+  children?: React.ReactNode;
 }
 
 const Bronze = css`

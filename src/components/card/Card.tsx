@@ -6,6 +6,7 @@ interface ICard {
   header?: React.ReactNode;
   style?: React.CSSProperties;
   onClick?: MouseEventHandler<HTMLDivElement> | undefined;
+  children?: React.ReactNode;
 }
 
 export const Card: React.FC<ICard> = ({ ...props }) => {

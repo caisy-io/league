@@ -25,6 +25,7 @@ interface IComponentListItemBasic {
   tags?: IComponentListItemTag[];
   onClick?: () => void;
   imageSrc?: string;
+  children?: React.ReactNode;
 }
 
 interface IComponentListItemWithoutMultiselect extends IComponentListItemBasic {
