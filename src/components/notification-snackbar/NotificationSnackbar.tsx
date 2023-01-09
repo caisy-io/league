@@ -42,6 +42,7 @@ export const NotificationSnackbar: React.FC<INotificationSnackbarProps> = ({
         </SIconError>
         <SNotificationSnackbarLabel>{content}</SNotificationSnackbarLabel>
       </SFlex>
+      {/* @ts-ignore */}
       <SNotificationSnackbarAction>{action}</SNotificationSnackbarAction>
     </SNotificationSnackbar>
   );
