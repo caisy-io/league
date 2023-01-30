@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { createRoot } from "react-dom/client";
 import ReactDOM from "react-dom";
 import { NotificationSnackbar } from "../notification-snackbar/NotificationSnackbar";
 import { SMessageWrapper } from "./styles/SMessageWrapper";
@@ -43,9 +44,16 @@ const Message: React.FC<IMessage> = (msgConfig: IMessage) => {
 
   return msgContainer
     ? ReactDOM.createPortal(
-      <NotificationSnackbar exit={exit} content={msgConfig.content} success={msgConfig.type == "success"} error={msgConfig.type == "error"} icon={msgConfig.icon} action={msgConfig.actionClick}></NotificationSnackbar>,
-      msgContainer,
-    )
+        <NotificationSnackbar
+          exit={exit}
+          content={msgConfig.content}
+          success={msgConfig.type == "success"}
+          error={msgConfig.type == "error"}
+          icon={msgConfig.icon}
+          action={msgConfig.actionClick}
+        ></NotificationSnackbar>,
+        msgContainer,
+      )
     : null;
 };
 
@@ -56,7 +64,7 @@ interface IMessageDispatcher {
 }
 
 // COMPONENT TO IMPORT IN OUR APP
-export function message(): React.FC<IMessageDispatcher> | void { }
+export function message(): React.FC<IMessageDispatcher> | void {}
 
 const renderMessage = (children, config, type) => {
   const duration = config?.duration ? config.duration : 3000;
@@ -71,7 +79,7 @@ const renderMessage = (children, config, type) => {
     duration,
     id: Date.now(),
     icon,
-    action
+    action,
   };
 
   const nextDiv = document.getElementById("root") || document.getElementById("__next");
@@ -80,7 +88,8 @@ const renderMessage = (children, config, type) => {
   if (!msgWrapper) {
     msgWrapper = document.createElement("div");
     msgWrapper.classList.add("caisy-message-wrapper");
-    ReactDOM.render(<MessageWrapper {...msgConfig} />, msgWrapper);
+    const root = createRoot(msgWrapper);
+    root.render(<MessageWrapper {...msgConfig} />);
   }
 
   const msgContainer = document.createElement("div");
@@ -97,7 +106,8 @@ const renderMessage = (children, config, type) => {
     msgContainer?.remove();
   }, msgConfig?.duration + 350);
 
-  ReactDOM.render(<Message {...msgConfig} />, msgContainer);
+  const root = createRoot(msgContainer);
+  root.render(<Message {...msgConfig} />);
 };
 
 // FUNCTIONS TO BE CALLED IN OUR APP
