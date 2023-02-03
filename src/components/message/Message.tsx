@@ -16,7 +16,7 @@ export enum EMessageType {
 // and we don't want to accidentally import "Message" instead of "message" on our app
 
 export interface IMessage {
-  type: string;
+  type?: string;
   content: string;
   id: number;
   duration: number;
@@ -59,7 +59,7 @@ interface IMessageDispatcher {
 // COMPONENT TO IMPORT IN OUR APP
 export function message(): React.FC<IMessageDispatcher> | void {}
 
-const renderMessage = (children, config, type) => {
+const renderMessage = (children: any, config?: any, type?: EMessageType) => {
   const duration = config?.duration ? config.duration : 3000;
 
   const icon = config?.icon;
