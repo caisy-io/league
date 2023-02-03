@@ -75,7 +75,7 @@ const renderMessage = (children, config, type) => {
     action,
   };
 
-  const nextDiv = config.rootElementId ? document.getElementById(config.rootElementId) : document.getElementById("root") || document.getElementById("__next");
+  const nextDiv = config?.rootElementId ? document.getElementById(config.rootElementId) : document.getElementById("root") || document.getElementById("__next");
 
   if (!nextDiv) {
     console.warn("no root div found for message");
