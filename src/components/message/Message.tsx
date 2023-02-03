@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
-import ReactDOM from "react-dom";
 import { NotificationSnackbar } from "../notification-snackbar/NotificationSnackbar";
-import { SMessageWrapper } from "./styles/SMessageWrapper";
+import { GSMessage } from "./styles/GSMessage";
+import { IMessageConfig } from "./types";
 
 export enum EMessageType {
   Success = "success",
   Error = "error",
   Info = "info",
 }
+
 
 // I created the Message and MessageWrapper components in this file,
 // because we don't use it anywhere else,
@@ -23,38 +24,30 @@ export interface IMessage {
   actionClick?: () => void;
 }
 
-const MessageWrapper: React.FC<IMessage> = () => {
-  return <SMessageWrapper></SMessageWrapper>;
-};
-
 const Message: React.FC<IMessage> = (msgConfig: IMessage) => {
   const [exit, setExit] = useState(false);
-  const msgContainer = document.getElementById(`caisy-message-container-${msgConfig.id}`);
 
   setTimeout(() => {
     setExit(true);
   }, msgConfig.duration);
 
-  const handleCloseMessage = () => {
-    setExit(true);
-    setTimeout(() => {
-      msgContainer?.remove();
-    }, 350);
-  };
+  // const handleCloseMessage = () => {
+  //   setExit(true);
+  //   setTimeout(() => {
+  //     msgContainer?.remove();
+  //   }, 350);
+  // };
 
-  return msgContainer
-    ? ReactDOM.createPortal(
-        <NotificationSnackbar
-          exit={exit}
-          content={msgConfig.content}
-          success={msgConfig.type == "success"}
-          error={msgConfig.type == "error"}
-          icon={msgConfig.icon}
-          action={msgConfig.actionClick}
-        ></NotificationSnackbar>,
-        msgContainer,
-      )
-    : null;
+  return (
+    <NotificationSnackbar
+      exit={exit}
+      content={msgConfig.content}
+      success={msgConfig.type == "success"}
+      error={msgConfig.type == "error"}
+      icon={msgConfig.icon}
+      action={msgConfig.actionClick}
+    ></NotificationSnackbar>
+  );
 };
 
 interface IMessageDispatcher {
@@ -82,48 +75,47 @@ const renderMessage = (children, config, type) => {
     action,
   };
 
-  const nextDiv = document.getElementById("root") || document.getElementById("__next");
+  const nextDiv = config.rootElementId ? document.getElementById(config.rootElementId) : document.getElementById("root") || document.getElementById("__next");
+
+  if (!nextDiv) {
+    console.warn("no root div found for message");
+    return;
+  }
 
   let msgWrapper = document.querySelector(".caisy-message-wrapper");
   if (!msgWrapper) {
     msgWrapper = document.createElement("div");
     msgWrapper.classList.add("caisy-message-wrapper");
-    const root = createRoot(msgWrapper);
-    root.render(<MessageWrapper {...msgConfig} />);
+    nextDiv.append(msgWrapper);
+
+    const msgWrapperStyles = document.createElement("div");
+    nextDiv.append(msgWrapperStyles);
+    const root = createRoot(msgWrapperStyles as any);
+    root.render(<GSMessage />);
   }
 
-  const msgContainer = document.createElement("div");
-  const msgContainerId = `caisy-message-container-${msgConfig.id}`;
-  msgContainer.id = msgContainerId;
-  nextDiv?.append(msgWrapper);
-  if (msgWrapper.firstChild) {
-    // I DO THIS BECAUSE TYPESCRIPT DOESN'T RECOGNIZE "prepend" AS A VALID HTMLELEMENT METHOD
-    (msgWrapper.firstChild as any).prepend(msgContainer);
+  if (msgWrapper) {
+    const msgContainer = document.createElement("div");
+    const msgContainerId = `caisy-message-container-${msgConfig.id}`;
+    msgContainer.id = msgContainerId;
+
+    msgWrapper.prepend(msgContainer);
+    const root = createRoot(msgContainer);
+    root.render(<Message {...msgConfig} />);
+    setTimeout(() => {
+      msgContainer?.remove();
+    }, msgConfig?.duration + 350);
   }
-
-  // the +350 is the animation duration, we wait for it to finish before removing the element from the DOM
-  setTimeout(() => {
-    msgContainer?.remove();
-  }, msgConfig?.duration + 350);
-
-  const root = createRoot(msgContainer);
-  root.render(<Message {...msgConfig} />);
 };
 
-// FUNCTIONS TO BE CALLED IN OUR APP
-interface IConfig {
-  duration?: number;
-  title?: string;
-}
-
-message.success = function MessageSuccess(children, config?) {
+message.success = function MessageSuccess(children: any, config?: IMessageConfig) {
   renderMessage(children, config, EMessageType.Success);
 };
 
-message.error = function MessageError(children, config?) {
+message.error = function MessageError(children: any, config?: IMessageConfig) {
   renderMessage(children, config, EMessageType.Error);
 };
 
-message.info = function MessageInfo(children, config?) {
+message.info = function MessageInfo(children: any, config?: IMessageConfig) {
   renderMessage(children, config, EMessageType.Info);
 };
