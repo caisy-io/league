@@ -59,6 +59,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
   disabled,
   leftIcon,
   rightIcon,
+  autoComplete,
   onKeyUp,
   id,
   type = "text",
@@ -161,6 +162,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
               onChange={(e) => {
                 onChange?.(e);
               }}
+              autoComplete={autoComplete}
               ref={inputRef}
               onFocus={handleFocus}
               onBlur={handleBlur}
