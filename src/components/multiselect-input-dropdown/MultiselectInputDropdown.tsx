@@ -112,40 +112,38 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
             </SDropdownArrow>
           </SMultiSelectInputWrapper>
         </SMultiselectInputDropdown>
-        {opened && (
-          <Popover disableTriangle placement="bottomRight" reference={ref}>
-            <SMultiselectInputDropdownSelect>
-              {popupHeader}
-              {dataSource &&
-                dataSource.map((option) =>
-                  renderDataItem ? (
-                    <div
-                      key={option.id}
+        <Popover display={opened} disableTriangle placement="bottomRight" reference={ref}>
+          <SMultiselectInputDropdownSelect>
+            {popupHeader}
+            {dataSource &&
+              dataSource.map((option) =>
+                renderDataItem ? (
+                  <div
+                    key={option.id}
+                    onClick={() => {
+                      onChange(option);
+                    }}
+                  >
+                    {renderDataItem(option)}
+                  </div>
+                ) : (
+                  <div key={option.id}>
+                    <TagListItem
                       onClick={() => {
                         onChange(option);
                       }}
-                    >
-                      {renderDataItem(option)}
-                    </div>
-                  ) : (
-                    <div key={option.id}>
-                      <TagListItem
-                        onClick={() => {
-                          onChange(option);
-                        }}
-                        outlineLabel={
-                          <OutLineLabel size="medium" colorLabel={<ColorLabel color={option.color} />}>
-                            {option.label}
-                          </OutLineLabel>
-                        }
-                      />
-                    </div>
-                  ),
-                )}
-              {popupFooter}
-            </SMultiselectInputDropdownSelect>
-          </Popover>
-        )}
+                      outlineLabel={
+                        <OutLineLabel size="medium" colorLabel={<ColorLabel color={option.color} />}>
+                          {option.label}
+                        </OutLineLabel>
+                      }
+                    />
+                  </div>
+                ),
+              )}
+            {popupFooter}
+          </SMultiselectInputDropdownSelect>
+        </Popover>
       </div>
     </ClickOutside>
   );

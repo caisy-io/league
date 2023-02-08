@@ -32,23 +32,23 @@ export const LineSelect: React.FC<ILineSelect> = ({ error, onSelectValue, childr
   return (
     <ClickOutside onClickOutside={() => setOpened(false)}>
       <div>
-        <SInputDropdown onClick={() => setOpened((prev) => !prev)} ref={ref} error={error} opened={opened} >
+        <SInputDropdown onClick={() => setOpened((prev) => !prev)} ref={ref} error={error} opened={opened}>
           {selectedItem}
           <SDropdownArrow opened={opened}>
             <IconChevronDown size={24}></IconChevronDown>
           </SDropdownArrow>
         </SInputDropdown>
-        {opened && (
-          <Popover disableTriangle placement="bottom" reference={ref}>
-            <SSelectDropdown style={{ width }}>
-              {React.Children.map(children, (child: any, index: number) => {
-                return <SInputDropdownOption key={index} onClick={() => onChange(index)}>
+        <Popover display={opened} disableTriangle placement="bottom" reference={ref}>
+          <SSelectDropdown style={{ width }}>
+            {React.Children.map(children, (child: any, index: number) => {
+              return (
+                <SInputDropdownOption key={index} onClick={() => onChange(index)}>
                   {child}
                 </SInputDropdownOption>
-              })}
-            </SSelectDropdown>
-          </Popover>
-        )}
+              );
+            })}
+          </SSelectDropdown>
+        </Popover>
       </div>
     </ClickOutside>
   );

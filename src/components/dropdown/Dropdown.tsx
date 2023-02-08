@@ -75,50 +75,48 @@ export const Dropdown = React.forwardRef(
 
     return (
       <div ref={reference}>
-        {active && (
-          <Popover onClickOutside={x} disableTriangle placement="bottom" reference={reference}>
-            <SDropdown
-              style={{ width: dropdownWidth }}
-              ref={ref}
-              active={active}
-              className={active ? "dropdown-visible" : "dropdown-invisible"}
-            >
-              {categories.map((category) => {
-                return (
-                  <Fragment key={category.key}>
-                    {category.label && (
-                      <SDropdownOptionHeader className={`${category.visible ? "title-visible" : "title-invisible"}`}>
-                        {category.label}
-                      </SDropdownOptionHeader>
-                    )}
-                    {category.items.map((categoryItem) => {
-                      return (
-                        <Fragment key={categoryItem.key}>
-                          {categoryItem.label && (
-                            <SDropdownOption
-                              className={`${
-                                categoryItem.visible ? "dropdown-option-visible" : "dropdown-option-invisible"
-                              }${
-                                flatCategories[currentOptionIndex] &&
-                                categoryItem.key === flatCategories[currentOptionIndex].key
-                                  ? " current-selection"
-                                  : ""
-                              }`}
-                              onClick={() => onSelect(categoryItem.key)}
-                              selected={selected?.(categoryItem.key)}
-                            >
-                              {renderItem ? renderItem(categoryItem) : categoryItem.label}
-                            </SDropdownOption>
-                          )}
-                        </Fragment>
-                      );
-                    })}
-                  </Fragment>
-                );
-              })}
-            </SDropdown>
-          </Popover>
-        )}
+        <Popover display={active} onClickOutside={x} disableTriangle placement="bottom" reference={reference}>
+          <SDropdown
+            style={{ width: dropdownWidth }}
+            ref={ref}
+            active={active}
+            className={active ? "dropdown-visible" : "dropdown-invisible"}
+          >
+            {categories.map((category) => {
+              return (
+                <Fragment key={category.key}>
+                  {category.label && (
+                    <SDropdownOptionHeader className={`${category.visible ? "title-visible" : "title-invisible"}`}>
+                      {category.label}
+                    </SDropdownOptionHeader>
+                  )}
+                  {category.items.map((categoryItem) => {
+                    return (
+                      <Fragment key={categoryItem.key}>
+                        {categoryItem.label && (
+                          <SDropdownOption
+                            className={`${
+                              categoryItem.visible ? "dropdown-option-visible" : "dropdown-option-invisible"
+                            }${
+                              flatCategories[currentOptionIndex] &&
+                              categoryItem.key === flatCategories[currentOptionIndex].key
+                                ? " current-selection"
+                                : ""
+                            }`}
+                            onClick={() => onSelect(categoryItem.key)}
+                            selected={selected?.(categoryItem.key)}
+                          >
+                            {renderItem ? renderItem(categoryItem) : categoryItem.label}
+                          </SDropdownOption>
+                        )}
+                      </Fragment>
+                    );
+                  })}
+                </Fragment>
+              );
+            })}
+          </SDropdown>
+        </Popover>
       </div>
     );
   },

@@ -64,8 +64,14 @@ export const TagListItem: React.FC<ITagListItem> = ({
         {rightIcon}
         {flatActionButton}
       </STagListItem>
-      <Popover onClickOutside={() => setOpened(false)} disableTriangle placement="rightBottom" reference={ref}>
-        <div style={{ display: opened && !!popover ? "block" : "none" }}>{popover}</div>
+      <Popover
+        display={opened}
+        onClickOutside={() => setOpened(false)}
+        disableTriangle
+        placement="rightBottom"
+        reference={ref}
+      >
+        <div>{popover}</div>
       </Popover>
     </>
   );
