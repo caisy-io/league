@@ -116,21 +116,22 @@ export const Popover: React.FC<IPopover> = ({
   styleOverwrite,
   display,
 }) => {
+  if (!display) return null;
+
   const getPlacementsMemo = useMemo(() => getPlacements(disableTriangle, reference), []);
+
   return (
     <>
       <ClickOutside onClickOutside={onClickOutside || (() => {})}>
-        <Stackable zIndex={zIndex}>
-          <SPopover
-            default={reference?.current ? getPlacement(placement) : 0}
-            getPlacements={getPlacementsMemo}
-            reference={reference}
-            container={container}
-            style={styleOverwrite}
-          >
-            {(display === undefined || display) && <>{typeof children === "function" ? children() : children}</>}
-          </SPopover>
-        </Stackable>
+        <SPopover
+          default={reference?.current ? getPlacement(placement) : 0}
+          getPlacements={getPlacementsMemo}
+          reference={reference}
+          container={container}
+          style={styleOverwrite}
+        >
+          {(display === undefined || display) && <>{typeof children === "function" ? children() : children}</>}
+        </SPopover>
       </ClickOutside>
     </>
   );
