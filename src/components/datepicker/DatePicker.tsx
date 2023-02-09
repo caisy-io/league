@@ -438,11 +438,15 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
         </DatePickerCard>
       )}
       {inline && DatePickerContainer}
-      {(withDefaultActive || active) && !inline && (
-        <Popover zIndex={popoverZIndex} reference={reference} placement="top" disableTriangle>
-          {DatePickerContainer}
-        </Popover>
-      )}
+      <Popover
+        display={(withDefaultActive || active) && !inline}
+        zIndex={popoverZIndex}
+        reference={reference}
+        placement="top"
+        disableTriangle
+      >
+        {DatePickerContainer}
+      </Popover>
     </SDatePicker>
   );
 };

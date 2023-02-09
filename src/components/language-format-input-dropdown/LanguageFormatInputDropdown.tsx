@@ -164,12 +164,7 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
           )}
         </SLanguageFormatInputDropdown>
 
-        <Popover
-          disableTriangle
-          placement="bottom"
-          reference={ref}
-          styleOverwrite={{ display: opened && !disabled ? "block" : "none" }}
-        >
+        <Popover display={opened} disableTriangle placement="bottom" reference={ref}>
           <SLanguageFormatSelectDropdown style={{ width }}>
             <SLanguageFormatSelectDropdownCont>
               {dropdownDataSource.map((option) => (

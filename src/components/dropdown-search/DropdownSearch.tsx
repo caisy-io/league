@@ -56,20 +56,18 @@ export const DropdownSearch = React.forwardRef(({ ...props }: IDropdownSearch, r
 
   return (
     <SDropdownSearch ref={reference}>
-      {props.active && (
-        <Popover disableTriangle reference={reference} placement="bottom">
-          <SDropdownSearchList ref={ref} dropdownPosition={props.dropdownPosition}>
-            <Input
-              // onClose={props.onClose}
-              hasCloseButton
-              icon={IconSearch}
-              value={inputValue}
-              onChange={(e) => onChange(e)}
-            />
-            <Dropdown dropDownPosition={0} categories={props.items} active onSelect={(e) => onSelect(e)} />
-          </SDropdownSearchList>
-        </Popover>
-      )}
+      <Popover display={props.active} disableTriangle reference={reference} placement="bottom">
+        <SDropdownSearchList ref={ref} dropdownPosition={props.dropdownPosition}>
+          <Input
+            // onClose={props.onClose}
+            hasCloseButton
+            icon={IconSearch}
+            value={inputValue}
+            onChange={(e) => onChange(e)}
+          />
+          <Dropdown dropDownPosition={0} categories={props.items} active onSelect={(e) => onSelect(e)} />
+        </SDropdownSearchList>
+      </Popover>
     </SDropdownSearch>
   );
 });

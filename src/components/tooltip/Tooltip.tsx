@@ -57,25 +57,24 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, del
       <STooltipWrapper onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={ref}>
         {children}
       </STooltipWrapper>
-      {show && (
-        <Popover
-          styleOverwrite={{ pointerEvents: "none" }}
-          disableTriangle
-          trianglecolor={getBackgroundColor()}
-          placement={placement || "top"}
-          reference={ref}
+      <Popover
+        display={show}
+        styleOverwrite={{ pointerEvents: "none" }}
+        disableTriangle
+        trianglecolor={getBackgroundColor()}
+        placement={placement || "top"}
+        reference={ref}
+      >
+        <STooltip
+          delay={delay}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          ref={tooltipRef}
+          color={color}
         >
-          <STooltip
-            delay={delay}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            ref={tooltipRef}
-            color={color}
-          >
-            {content}
-          </STooltip>
-        </Popover>
-      )}
+          {content}
+        </STooltip>
+      </Popover>
     </>
   );
 };

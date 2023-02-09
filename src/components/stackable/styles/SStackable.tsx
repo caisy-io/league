@@ -8,7 +8,7 @@ interface ISStackable {
 
 const Bronze = css<ISStackable>`
   position: absolute;
-  ${({ placement }) => placement?.name === "hidden" && "display: none"};
+  ${({ placement }) => placement?.name === "hidden" && "visibility: hidden"};
   &.vafter .poppable-triangle {
     border-bottom-color: var(--triangle-color, black);
   }
