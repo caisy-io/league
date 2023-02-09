@@ -52,5 +52,6 @@ export const UsageChartCard: FC<IUsageChartCard> = ({
 };
 
 export const averageNumber = (number: number) => {
-  return numbro(number).format({ average: true, totalLength: 1 });
+  if (number < 10000) return number;
+  return numbro(number).format({ average: true, totalLength: 2 });
 };
