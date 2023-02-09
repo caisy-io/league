@@ -4,7 +4,7 @@ import { SUsageChartCardIndicatorSection } from "./styles/SUsageChartCardIndicat
 import { SUsageChartCardIndicatorTitle } from "./styles/SUsageChartCardIndicatorTitle";
 import { SUsageChartCardIndicatorTitleSquare } from "./styles/SUsageChartCardIndicatorTitleSquare";
 import { SUsageChartCardIndicatorValue } from "./styles/SUsageChartCardIndicatorValue";
-import { IUsageChartCardI18n } from "./UsageChartCard";
+import { averageNumber, IUsageChartCardI18n } from "./UsageChartCard";
 
 interface IUsageChartCardIndicator {
   i18n: IUsageChartCardI18n;
@@ -21,13 +21,13 @@ export const UsageChartCardIndicator: FC<IUsageChartCardIndicator> = ({ i18n, us
           <SUsageChartCardIndicatorTitleSquare /> {i18n.used}
         </SUsageChartCardIndicatorTitle>
         <SUsageChartCardIndicatorValue>
-          {used} {identifier}
+          {averageNumber(used)} {identifier}
         </SUsageChartCardIndicatorValue>
       </SUsageChartCardIndicatorSection>
       <SUsageChartCardIndicatorSection>
         <SUsageChartCardIndicatorTitle>{i18n.totalAvailable}</SUsageChartCardIndicatorTitle>
         <SUsageChartCardIndicatorValue>
-          {totalAvailable} {identifier}
+          {averageNumber(totalAvailable)} {identifier}
         </SUsageChartCardIndicatorValue>
       </SUsageChartCardIndicatorSection>
     </SUsageChartCardIndicator>

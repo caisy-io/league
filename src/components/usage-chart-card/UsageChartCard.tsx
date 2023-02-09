@@ -4,6 +4,7 @@ import { SUsageChartCardLeft } from "./styles/SUsageChartCardLeft";
 import { IUsageChartCardChartData, UsageChartCardChart } from "./UsageChartCardChart";
 import { UsageChartCardContent } from "./UsageChartCardContent";
 import { UsageChartCardIndicator } from "./UsageChartCardIndicator";
+import numbro from "numbro";
 
 export interface IUsageChartCardI18n {
   used: React.ReactNode;
@@ -19,6 +20,7 @@ interface IUsageChartCard {
   i18n: IUsageChartCardI18n;
   identifier: string;
   chartData: IUsageChartCardChartData[];
+  locale?: string;
 }
 
 export const UsageChartCard: FC<IUsageChartCard> = ({
@@ -47,4 +49,8 @@ export const UsageChartCard: FC<IUsageChartCard> = ({
       <UsageChartCardChart data={chartData} totalAvailable={max} />
     </SUsageChartCard>
   );
+};
+
+export const averageNumber = (number: number) => {
+  return numbro(number).format({ average: true, totalLength: 1 });
 };

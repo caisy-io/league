@@ -6,6 +6,7 @@ import { SUsageAmountItemUsageBody } from "../usage-amount-item/styles/SUsageAmo
 import { SUsageAmountItemUsageGraphContainer } from "../usage-amount-item/styles/SUsageAmountItemUsageGraphContainer";
 import UsageAmountItemUsageGraph from "../usage-amount-item/UsageAmountItemUsageGraph";
 import { SUsageChartCardContent } from "./styles/SUsageChartCardContent";
+import { averageNumber } from "./UsageChartCard";
 
 interface IUsageChartCardContent {
   used: number;
@@ -29,7 +30,7 @@ export const UsageChartCardContent: FC<IUsageChartCardContent> = ({
       <SUsageAmountItemUsage>
         <SUsageAmountItemUsageGraphContainer>
           <UsageAmountItemUsageGraph percentage={usagePercentage} />
-          {used}
+          {averageNumber(used)}
         </SUsageAmountItemUsageGraphContainer>
         <SUsageAmountItemUsageBody>{usage}</SUsageAmountItemUsageBody>
       </SUsageAmountItemUsage>

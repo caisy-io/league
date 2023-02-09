@@ -1,9 +1,11 @@
 import React from "react";
-import { UsageChartCard } from "./UsageChartCard";
+import { averageNumber, UsageChartCard } from "./UsageChartCard";
+import numbro from "numbro";
+import languages from "numbro/dist/languages.min";
 
 const USAGE_ITEM_DATA = {
-  used: 67,
-  maxBlueprints: 100,
+  used: 20000,
+  maxBlueprints: 100000000,
 };
 
 const USAGE_ITEM_CONTENT = {
@@ -58,13 +60,20 @@ const Template = () => {
   const splitString = USAGE_ITEM_CONTENT.usage.split(/\${(\w+)}/g);
   let messageString = "";
 
+  const locale = "es";
+
+  numbro.registerLanguage({ ...languages["es-ES"], languageTag: "es" });
+  numbro.registerLanguage({ ...languages["de-DE"], languageTag: "de" });
+
+  numbro.setLanguage(locale);
+
   splitString.forEach((string) => {
     if (string.length === 0) return;
 
     if (string === "1") {
-      messageString += `${USAGE_ITEM_DATA.used}`;
+      messageString += `${averageNumber(USAGE_ITEM_DATA.used)}`;
     } else if (string === "2") {
-      messageString += `${USAGE_ITEM_DATA.maxBlueprints}`;
+      messageString += `${averageNumber(USAGE_ITEM_DATA.maxBlueprints)}`;
     } else {
       messageString += string;
     }
@@ -79,6 +88,7 @@ const Template = () => {
       i18n={{ used: "Used", totalAvailable: "Total available" }}
       identifier="members"
       chartData={CHART_DATA}
+      locale={locale}
     >
       <p>The amount of data your projects have sent or received. Lorem ipsum dolor set amet lorem ipsum dolor.</p>
       <br></br>
