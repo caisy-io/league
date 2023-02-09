@@ -124,6 +124,7 @@ export const Popover: React.FC<IPopover> = ({
     <>
       <ClickOutside onClickOutside={onClickOutside || (() => {})}>
         <SPopover
+          zIndex={zIndex}
           default={reference?.current ? getPlacement(placement) : 0}
           getPlacements={getPlacementsMemo}
           reference={reference}
