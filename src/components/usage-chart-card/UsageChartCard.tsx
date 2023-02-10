@@ -21,51 +21,6 @@ import { Bar } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const options: ChartOptions<"bar"> = {
-  plugins: {
-    legend: {
-      display: false,
-    },
-  },
-
-  scales: {
-    y: {
-      display: true,
-      position: "right",
-      ticks: {
-        callback: (value) => {
-          return averageNumber(value as number);
-        },
-        padding: 0,
-        color: "#829DB4",
-        font: {
-          family: "Inter",
-          size: 11,
-          weight: "500",
-        },
-      },
-      grid: {
-        borderWidth: 0,
-        color: "#F7F9FA",
-      },
-    },
-    x: {
-      ticks: {
-        color: "#567A98",
-        font: {
-          family: "Inter",
-          size: 11,
-          weight: "500",
-        },
-      },
-      grid: {
-        display: false,
-      },
-    },
-  },
-  responsive: true,
-  maintainAspectRatio: false,
-};
 
 export const UsageChartCard: FC<IUsageChartCard> = ({
   title,
@@ -80,6 +35,54 @@ export const UsageChartCard: FC<IUsageChartCard> = ({
   const usagePercentage = useMemo(() => {
     return (used * 100) / max;
   }, [used, max]);
+
+  const options: ChartOptions<"bar"> = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  
+    scales: {
+      y: {
+        display: true,
+        position: "right",
+        ticks: {
+          callback: (value) => {
+            return averageNumber(value as number);
+          },
+          padding: 0,
+          color: "#829DB4",
+          font: {
+            family: "Inter",
+            size: 11,
+            weight: "500",
+          },
+        },
+        grid: {
+          borderWidth: 0,
+          color: "#F7F9FA",
+        },
+        suggestedMax: max,
+      },
+      x: {
+        ticks: {
+          color: "#567A98",
+          font: {
+            family: "Inter",
+            size: 11,
+            weight: "500",
+          },
+        },
+        grid: {
+          display: false,
+        },
+      },
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+  };
+  
 
   const labels = useMemo(() => {
     return chartData.map((label) => label.date);

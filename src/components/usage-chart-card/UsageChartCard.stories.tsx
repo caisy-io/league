@@ -5,7 +5,7 @@ import languages from "numbro/dist/languages.min";
 
 const USAGE_ITEM_DATA = {
   used: 20000000,
-  maxBlueprints: 100000000,
+  maxBlueprints: 20000000,
 };
 
 const USAGE_ITEM_CONTENT = {
