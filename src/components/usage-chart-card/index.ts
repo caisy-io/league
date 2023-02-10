@@ -1,1 +1,2 @@
-export { UsageChartCard, averageNumber } from "./UsageChartCard";
+export { UsageChartCard } from "./UsageChartCard";
+export { averageNumber } from "./helper";

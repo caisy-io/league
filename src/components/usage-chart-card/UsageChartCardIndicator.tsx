@@ -1,10 +1,11 @@
 import { FC } from "react";
+import { averageNumber } from "./helper";
 import { SUsageChartCardIndicator } from "./styles/SUsageChartCardIndicator";
 import { SUsageChartCardIndicatorSection } from "./styles/SUsageChartCardIndicatorSection";
 import { SUsageChartCardIndicatorTitle } from "./styles/SUsageChartCardIndicatorTitle";
 import { SUsageChartCardIndicatorTitleSquare } from "./styles/SUsageChartCardIndicatorTitleSquare";
 import { SUsageChartCardIndicatorValue } from "./styles/SUsageChartCardIndicatorValue";
-import { averageNumber, IUsageChartCardI18n } from "./UsageChartCard";
+import { IUsageChartCardI18n } from "./types";
 
 interface IUsageChartCardIndicator {
   i18n: IUsageChartCardI18n;

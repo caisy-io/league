@@ -1,4 +1,5 @@
 import { FC, useMemo, useState } from "react";
+import { averageNumber } from "./helper";
 import { SUsageChartCardChart } from "./styles/SUsageChartCardChart";
 import { SUsageChartCardChartBackground } from "./styles/SUsageChartCardChartBackground";
 import { SUsageChartCardChartBackgroundLine } from "./styles/SUsageChartCardChartBackgroundLine";
@@ -8,20 +9,10 @@ import { SUsageChartCardChartDateContainer } from "./styles/SUsageChartCardChart
 import { SUsageChartCardChartGraphContainer } from "./styles/SUsageChartCardChartGraphContainer";
 import { SUsageChartCardChartY } from "./styles/SUsageChartCardChartY";
 import { SUsageChartCardYNumber } from "./styles/SUsageChartCardYNumber";
-import { averageNumber } from "./UsageChartCard";
+import { IUsageChartCardChart } from "./types";
 import { UsageChartCardChartGraph } from "./UsageChartCardChartGraph";
 
 const BACKGROUND_LINES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-export interface IUsageChartCardChartData {
-  date: React.ReactNode;
-  percentageUsed: number;
-}
-
-interface IUsageChartCardChart {
-  totalAvailable: number;
-  data: IUsageChartCardChartData[];
-}
 
 const getRoundedNumber = (number) => {
   return Math.round(number * 10) / 10;

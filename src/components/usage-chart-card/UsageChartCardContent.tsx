@@ -5,8 +5,8 @@ import { SUsageAmountItemUsage } from "../usage-amount-item/styles/SUsageAmountI
 import { SUsageAmountItemUsageBody } from "../usage-amount-item/styles/SUsageAmountItemUsageBody";
 import { SUsageAmountItemUsageGraphContainer } from "../usage-amount-item/styles/SUsageAmountItemUsageGraphContainer";
 import UsageAmountItemUsageGraph from "../usage-amount-item/UsageAmountItemUsageGraph";
+import { averageNumber } from "./helper";
 import { SUsageChartCardContent } from "./styles/SUsageChartCardContent";
-import { averageNumber } from "./UsageChartCard";
 
 interface IUsageChartCardContent {
   used: number;

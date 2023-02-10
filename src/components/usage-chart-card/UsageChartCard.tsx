@@ -1,27 +1,13 @@
 import { FC, useMemo } from "react";
 import { SUsageChartCard } from "./styles/SUsageChartCard";
 import { SUsageChartCardLeft } from "./styles/SUsageChartCardLeft";
-import { IUsageChartCardChartData, UsageChartCardChart } from "./UsageChartCardChart";
+import { UsageChartCardChart } from "./UsageChartCardChart";
 import { UsageChartCardContent } from "./UsageChartCardContent";
 import { UsageChartCardIndicator } from "./UsageChartCardIndicator";
 import numbro from "numbro";
+import { IUsageChartCard } from "./types";
 
-export interface IUsageChartCardI18n {
-  used: React.ReactNode;
-  totalAvailable: React.ReactNode;
-}
 
-interface IUsageChartCard {
-  used: number;
-  max: number;
-  title: React.ReactNode;
-  usage: React.ReactNode;
-  children?: React.ReactNode;
-  i18n: IUsageChartCardI18n;
-  identifier: string;
-  chartData: IUsageChartCardChartData[];
-  locale?: string;
-}
 
 export const UsageChartCard: FC<IUsageChartCard> = ({
   title,
