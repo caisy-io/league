@@ -4,7 +4,7 @@ export interface IUsageChartCardI18n {
 }
 export interface IUsageChartCardChartData {
   date: React.ReactNode;
-  percentageUsed: number;
+  used: number;
 }
 
 export interface IUsageChartCardChart {
