@@ -60,7 +60,6 @@ export const UsageChartCard: FC<IUsageChartCard> = ({
           },
         },
         grid: {
-          borderWidth: 0,
           color: "#F7F9FA",
         },
         suggestedMax: max,
