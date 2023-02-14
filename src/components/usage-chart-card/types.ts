@@ -14,6 +14,7 @@ export interface IUsageChartCardChart {
 
 export interface IUsageChartCard {
   used: number;
+  suggestedChartMax?: number;
   max: number;
   title: React.ReactNode;
   usage: React.ReactNode;

@@ -4,7 +4,6 @@ import { SUsageChartCardLeft } from "./styles/SUsageChartCardLeft";
 import { UsageChartCardContent } from "./UsageChartCardContent";
 import { UsageChartCardIndicator } from "./UsageChartCardIndicator";
 import { SUsageChartCardChart } from "./styles/SUsageChartCardChart";
-import numbro from "numbro";
 import { IUsageChartCard } from "./types";
 import {
   Chart as ChartJS,
@@ -22,7 +21,6 @@ import { averageNumber } from "./helper";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-
 export const UsageChartCard: FC<IUsageChartCard> = ({
   title,
   usage,
@@ -32,6 +30,7 @@ export const UsageChartCard: FC<IUsageChartCard> = ({
   i18n,
   identifier,
   chartData,
+  suggestedChartMax,
 }) => {
   const usagePercentage = useMemo(() => {
     return (used * 100) / max;
@@ -43,7 +42,7 @@ export const UsageChartCard: FC<IUsageChartCard> = ({
         display: false,
       },
     },
-  
+
     scales: {
       y: {
         display: true,
@@ -63,7 +62,7 @@ export const UsageChartCard: FC<IUsageChartCard> = ({
         grid: {
           color: "#F7F9FA",
         },
-        suggestedMax: max,
+        suggestedMax: typeof suggestedChartMax === "number" ? suggestedChartMax : max,
       },
       x: {
         ticks: {
@@ -82,7 +81,6 @@ export const UsageChartCard: FC<IUsageChartCard> = ({
     responsive: true,
     maintainAspectRatio: false,
   };
-  
 
   const labels = useMemo(() => {
     return chartData.map((label) => label.date);
@@ -114,4 +112,3 @@ export const UsageChartCard: FC<IUsageChartCard> = ({
     </SUsageChartCard>
   );
 };
-
