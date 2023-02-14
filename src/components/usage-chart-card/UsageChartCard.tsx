@@ -18,6 +18,7 @@ import {
   ChartData,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { averageNumber } from "./helper";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -114,7 +115,3 @@ export const UsageChartCard: FC<IUsageChartCard> = ({
   );
 };
 
-export const averageNumber = (number: number) => {
-  if (number < 10000) return number;
-  return numbro(number).format({ average: true, totalLength: 2 });
-};

@@ -1,5 +1,5 @@
 import React from "react";
-import { averageNumber, UsageChartCard } from "./UsageChartCard";
+import { averageNumber, UsageChartCard } from ".";
 import numbro from "numbro";
 import languages from "numbro/dist/languages.min";
 
@@ -60,7 +60,7 @@ const Template = () => {
   const splitString = USAGE_ITEM_CONTENT.usage.split(/\${(\w+)}/g);
   let messageString = "";
 
-  const locale = "es";
+  const locale = "en";
 
   numbro.registerLanguage({ ...languages["es-ES"], languageTag: "es" });
   numbro.registerLanguage({ ...languages["de-DE"], languageTag: "de" });
