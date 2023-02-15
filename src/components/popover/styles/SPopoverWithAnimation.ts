@@ -1,6 +1,22 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
+const TRANSFORM_ORIGINS = {
+  top: "bottom center",
+  bottom: "top center",
+  right: "left center",
+  left: "right center",
+  topRight: "bottom left",
+  topLeft: "bottom right",
+  bottomRight: "top left",
+  bottomLeft: "top right",
+  leftTop: "bottom right",
+  leftBottom: "top right",
+  rightTop: "bottom left",
+  rightBottom: "top left",
+  bottomAlignedRight: "top left",
+};
+
 const CSSIn = css`
   @keyframes sizeIn {
     from {
@@ -58,7 +74,7 @@ interface ISPopoverWithAnimation {
 const Bronze = css<ISPopoverWithAnimation>`
   ${CSSIn};
   ${CSSOut};
-  transform-origin: bottom center;
+  transform-origin: ${({ placement }) => TRANSFORM_ORIGINS[placement]};
   ${({ state }) => (state === "in" ? CSSAnimationIn : CSSAnimationOut)};
 `;
 
