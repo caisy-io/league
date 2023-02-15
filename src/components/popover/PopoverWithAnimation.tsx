@@ -27,7 +27,9 @@ export const PopoverWithAnimation: FC<IPopover> = ({ display, children, ...props
     <>
       {shouldRender ? (
         <Popover display={shouldRender} {...props}>
-          <SPopoverWithAnimation state={display ? "in" : "out"}>{children}</SPopoverWithAnimation>
+          <SPopoverWithAnimation state={display ? "in" : "out"}>
+            <>{typeof children === "function" ? children() : children}</>
+          </SPopoverWithAnimation>
         </Popover>
       ) : null}
     </>
