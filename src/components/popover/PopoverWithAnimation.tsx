@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { IPopover, Popover } from "./Popover";
+import { PopoverBase } from "./PopoverBase";
 import { SPopoverWithAnimation } from "./styles/SPopoverWithAnimation";
 
 const useDelayUnmount = (isMounted: boolean, delayTime: number) => {
@@ -21,16 +22,14 @@ const useDelayUnmount = (isMounted: boolean, delayTime: number) => {
 export const PopoverWithAnimation: FC<IPopover> = ({ display, children, ...props }) => {
   const shouldRender = useDelayUnmount(display, 150);
 
-  console.log(shouldRender, display);
-
   return (
     <>
       {shouldRender ? (
-        <Popover display={shouldRender} {...props}>
+        <PopoverBase display={shouldRender} {...props}>
           <SPopoverWithAnimation state={display ? "in" : "out"}>
             <>{typeof children === "function" ? children() : children}</>
           </SPopoverWithAnimation>
-        </Popover>
+        </PopoverBase>
       ) : null}
     </>
   );

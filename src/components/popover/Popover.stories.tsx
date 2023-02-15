@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { PopoverWithAnimation } from "./PopoverWithAnimation";
+import { Popover } from "./Popover";
 
 export default {
   title: `Components/Utilities/Popover`,
@@ -21,22 +21,24 @@ function PopoverDemo({ content, ...args }) {
         Trigger
       </div>
 
-      <PopoverWithAnimation display={visible} reference={ref as any} placement="top">
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: 100,
-            width: 200,
-            backgroundColor: "white",
-            borderRadius: 8,
-            boxShadow: "var(--box-shadow-strong-pop-elavation)",
-          }}
-        >
-          Popover
-        </div>
-      </PopoverWithAnimation>
+      <Popover disableAnimation={false} display={visible} reference={ref as any} placement="top">
+        {() => (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: 100,
+              width: 200,
+              backgroundColor: "white",
+              borderRadius: 8,
+              boxShadow: "var(--box-shadow-strong-pop-elavation)",
+            }}
+          >
+            Popover
+          </div>
+        )}
+      </Popover>
     </div>
   );
 }
