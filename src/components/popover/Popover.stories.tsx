@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Popover } from "./Popover";
+import { PopoverWithAnimation } from "./PopoverWithAnimation";
 
 export default {
   title: `Components/Utilities/Popover`,
@@ -21,7 +21,7 @@ function PopoverDemo({ content, ...args }) {
         Trigger
       </div>
 
-      <Popover disableAnimation={false} display={visible} reference={ref as any} placement="bottom">
+      <PopoverWithAnimation display={visible} reference={ref as any} placement="top">
         <div
           style={{
             display: "flex",
@@ -36,7 +36,7 @@ function PopoverDemo({ content, ...args }) {
         >
           Popover
         </div>
-      </Popover>
+      </PopoverWithAnimation>
     </div>
   );
 }

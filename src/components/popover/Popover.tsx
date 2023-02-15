@@ -67,7 +67,7 @@ const getPlacement = (placement: TPlacement | undefined): number => {
       return 1;
   }
 };
-interface IPopover {
+export interface IPopover {
   placement: TPlacement;
   reference: React.MutableRefObject<null>;
   triangleExtraCSS?: CSSProp;
@@ -81,22 +81,6 @@ interface IPopover {
   children?: React.ReactNode | (() => React.ReactNode);
   disableAnimation?: boolean;
 }
-
-const useDelayUnmount = (isMounted: boolean, delayTime: number) => {
-  const [shouldRender, setShouldRender] = useState(false);
-
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    if (isMounted && !shouldRender) {
-      setShouldRender(true);
-    } else if (!isMounted && shouldRender) {
-      timeoutId = setTimeout(() => setShouldRender(false), delayTime);
-    }
-    return () => clearTimeout(timeoutId);
-  }, [isMounted, delayTime, shouldRender]);
-
-  return shouldRender;
-};
 
 const getPlacements = (disableTriangle: boolean | undefined, reference: React.MutableRefObject<null>) => (rbr, tbr) => {
   const GAP = disableTriangle ? 8 : 18;
@@ -131,30 +115,24 @@ export const Popover: React.FC<IPopover> = ({
   zIndex,
   styleOverwrite,
   display,
-  disableAnimation,
 }) => {
-  if (disableAnimation && !display) return null;
+  if (!display) return null;
 
   const getPlacementsMemo = useMemo(() => getPlacements(disableTriangle, reference), []);
-
-  const shouldRender = !disableAnimation ? useDelayUnmount(display, 150) : display;
-
-  if (!display && !shouldRender) return null;
 
   return (
     <>
       <ClickOutside onClickOutside={onClickOutside || (() => {})}>
         <SPopover
-          animate={!disableAnimation}
           zIndex={zIndex}
           default={reference?.current ? getPlacement(placement) : 0}
           getPlacements={getPlacementsMemo}
           reference={reference}
           container={container}
           style={styleOverwrite}
-          state={display ? "in" : "out"}
+          // state={display ? "in" : "out"}
         >
-          {shouldRender && <>{typeof children === "function" ? children() : children}</>}
+          {display && <>{typeof children === "function" ? children() : children}</>}
         </SPopover>
       </ClickOutside>
     </>
