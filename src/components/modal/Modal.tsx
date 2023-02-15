@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import Stackable from "../stackable";
 import { SModal } from "./styles/SModal";
 import { SModalBackground } from "./styles/SModalBackground";
 import { ThemedCssFunction } from "styled-components";
+import { useDelayUnmount } from "../../utils";
 
 interface IModal {
   visible: boolean;
@@ -18,11 +19,17 @@ export const Modal: React.FC<IModal> = ({ styleOverwrite, ...props }) => {
     setDocBody(document.body);
   });
 
-  return docBody && props.visible
+  const shouldRender = useDelayUnmount(props.visible, 350);
+
+  return docBody && shouldRender
     ? createPortal(
         <Stackable>
-          <SModalBackground onClick={props?.onClose}>
-            <SModal styleOverwrite={styleOverwrite} onClick={(e) => e.stopPropagation()}>
+          <SModalBackground state={props.visible ? "in" : "out"} onClick={props?.onClose}>
+            <SModal
+              state={props.visible ? "in" : "out"}
+              styleOverwrite={styleOverwrite}
+              onClick={(e) => e.stopPropagation()}
+            >
               {props.children}
             </SModal>
           </SModalBackground>
