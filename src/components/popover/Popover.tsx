@@ -79,7 +79,7 @@ interface IPopover {
   styleOverwrite?: React.CSSProperties;
   display: boolean;
   children?: React.ReactNode | (() => React.ReactNode);
-  animate?: boolean;
+  disableAnimation?: boolean;
 }
 
 const useDelayUnmount = (isMounted: boolean, delayTime: number) => {
@@ -131,18 +131,18 @@ export const Popover: React.FC<IPopover> = ({
   zIndex,
   styleOverwrite,
   display,
-  animate,
+  disableAnimation,
 }) => {
-  if (!animate && !display) return null;
+  if (disableAnimation && !display) return null;
 
   const getPlacementsMemo = useMemo(() => getPlacements(disableTriangle, reference), []);
-  const shouldRender = animate ? useDelayUnmount(display, 150) : display;
+  const shouldRender = !disableAnimation ? useDelayUnmount(display, 150) : display;
 
   return (
     <>
       <ClickOutside onClickOutside={onClickOutside || (() => {})}>
         <SPopover
-          animate={animate}
+          animate={!disableAnimation}
           zIndex={zIndex}
           default={reference?.current ? getPlacement(placement) : 0}
           getPlacements={getPlacementsMemo}

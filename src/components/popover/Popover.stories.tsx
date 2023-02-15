@@ -21,10 +21,9 @@ function PopoverDemo({ content, ...args }) {
         Trigger
       </div>
 
-      <Popover animate display={visible} reference={ref as any} placement="bottom">
+      <Popover disableAnimation={false} display={visible} reference={ref as any} placement="bottom">
         <div
           style={{
-            // padding: 20,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
