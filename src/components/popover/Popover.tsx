@@ -136,7 +136,10 @@ export const Popover: React.FC<IPopover> = ({
   if (disableAnimation && !display) return null;
 
   const getPlacementsMemo = useMemo(() => getPlacements(disableTriangle, reference), []);
+
   const shouldRender = !disableAnimation ? useDelayUnmount(display, 150) : display;
+
+  if (!display && !shouldRender) return null;
 
   return (
     <>
