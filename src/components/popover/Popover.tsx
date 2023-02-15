@@ -1,7 +1,6 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { CSSProp } from "styled-components";
 import { SPopover } from "./styles/SPopover";
-import Stackable from "../stackable";
 import { vbefore, vcenter, vafter, hbefore, hcenter, hafter } from "../poppable/Poppable.placements";
 import { ClickOutside } from "../../utils";
 
@@ -78,9 +77,26 @@ interface IPopover {
   container?: React.MutableRefObject<null>;
   zIndex?: number;
   styleOverwrite?: React.CSSProperties;
-  display?: boolean;
+  display: boolean;
   children?: React.ReactNode | (() => React.ReactNode);
+  animate?: boolean;
 }
+
+const useDelayUnmount = (isMounted: boolean, delayTime: number) => {
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    if (isMounted && !shouldRender) {
+      setShouldRender(true);
+    } else if (!isMounted && shouldRender) {
+      timeoutId = setTimeout(() => setShouldRender(false), delayTime);
+    }
+    return () => clearTimeout(timeoutId);
+  }, [isMounted, delayTime, shouldRender]);
+
+  return shouldRender;
+};
 
 const getPlacements = (disableTriangle: boolean | undefined, reference: React.MutableRefObject<null>) => (rbr, tbr) => {
   const GAP = disableTriangle ? 8 : 18;
@@ -115,23 +131,27 @@ export const Popover: React.FC<IPopover> = ({
   zIndex,
   styleOverwrite,
   display,
+  animate,
 }) => {
-  if (!display) return null;
+  if (!animate && !display) return null;
 
   const getPlacementsMemo = useMemo(() => getPlacements(disableTriangle, reference), []);
+  const shouldRender = animate ? useDelayUnmount(display, 150) : display;
 
   return (
     <>
       <ClickOutside onClickOutside={onClickOutside || (() => {})}>
         <SPopover
+          animate={animate}
           zIndex={zIndex}
           default={reference?.current ? getPlacement(placement) : 0}
           getPlacements={getPlacementsMemo}
           reference={reference}
           container={container}
           style={styleOverwrite}
+          state={display ? "in" : "out"}
         >
-          {(display === undefined || display) && <>{typeof children === "function" ? children() : children}</>}
+          {shouldRender && <>{typeof children === "function" ? children() : children}</>}
         </SPopover>
       </ClickOutside>
     </>
