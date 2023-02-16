@@ -22,7 +22,7 @@ const Platinum = css<ISPopover>``;
 
 const Diamond = css<ISPopover>``;
 
-export const SPopover = styled(Poppable) <ISPopover>`
+export const SPopover = styled(Poppable)<ISPopover>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

@@ -11,28 +11,35 @@ function PopoverDemo({ content, ...args }) {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const getPlacements = (rbr) => {
-    return [
-      { top: 100, left: 0 },
-      { top: 100, left: 100 },
-      { top: 0, left: 100 },
-      { top: -100, left: 100 },
-      { top: -100, left: 0 },
-      { top: -100, left: -100 },
-      { top: 0, left: -100 },
-      { top: 100, left: -100 },
-    ].map(({ top, left }) => ({ top: top + rbr.top, left: left + rbr.left }));
-  };
   return (
-    <>
-      <div style={{ userSelect: "none" }} onClick={() => setVisible((prev) => !prev)} ref={ref}>
+    <div style={{ flex: 1, display: "flex", height: "calc(100vh - 40px)" }}>
+      <div
+        style={{ userSelect: "none", width: "fit-content", margin: "auto" }}
+        onClick={() => setVisible((prev) => !prev)}
+        ref={ref}
+      >
         Trigger
       </div>
 
-      <Popover display={visible} reference={ref as any} placement="bottom">
-        <div>Popover</div>
+      <Popover disableAnimation={false} display={visible} reference={ref as any} placement="bottomLeft">
+        {() => (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: 100,
+              width: 200,
+              backgroundColor: "white",
+              borderRadius: 8,
+              boxShadow: "var(--box-shadow-strong-pop-elavation)",
+            }}
+          >
+            Popover
+          </div>
+        )}
       </Popover>
-    </>
+    </div>
   );
 }
 

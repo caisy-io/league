@@ -1,2 +1,2 @@
-export { Popover} from "./Popover";
+export { Popover } from "./Popover";
 export type { TPlacement } from "./Popover";

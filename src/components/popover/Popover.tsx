@@ -1,9 +1,7 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { CSSProp } from "styled-components";
-import { SPopover } from "./styles/SPopover";
-import Stackable from "../stackable";
-import { vbefore, vcenter, vafter, hbefore, hcenter, hafter } from "../poppable/Poppable.placements";
-import { ClickOutside } from "../../utils";
+import { PopoverBase } from "./PopoverBase";
+import { PopoverWithAnimation } from "./PopoverWithAnimation";
 
 enum EPlacements {
   Top = "top",
@@ -68,7 +66,7 @@ const getPlacement = (placement: TPlacement | undefined): number => {
       return 1;
   }
 };
-interface IPopover {
+export interface IPopover {
   placement: TPlacement;
   reference: React.MutableRefObject<null>;
   triangleExtraCSS?: CSSProp;
@@ -78,62 +76,13 @@ interface IPopover {
   container?: React.MutableRefObject<null>;
   zIndex?: number;
   styleOverwrite?: React.CSSProperties;
-  display?: boolean;
+  display: boolean;
   children?: React.ReactNode | (() => React.ReactNode);
+  disableAnimation?: boolean;
 }
 
-const getPlacements = (disableTriangle: boolean | undefined, reference: React.MutableRefObject<null>) => (rbr, tbr) => {
-  const GAP = disableTriangle ? 8 : 18;
+export const Popover: React.FC<IPopover> = ({ ...props }) => {
+  if (props.disableAnimation) return <PopoverBase {...props} />;
 
-  const offsetWidth = (reference.current as any)?.offsetWidth || 0;
-  const offsetHeight = (reference.current as any)?.offsetHeight || 0;
-
-  return [
-    { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
-    { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
-    { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
-    { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, GAP) }, // Center right
-    { ...vbefore(rbr, tbr, -GAP), left: hbefore(rbr, tbr, -GAP).left + offsetWidth }, // Top left
-    { ...vbefore(rbr, tbr, -GAP), left: hafter(rbr, tbr, GAP).left - offsetWidth }, // Top right
-    { ...vafter(rbr, tbr, GAP), left: hbefore(rbr, tbr, -GAP).left + offsetWidth }, // Bottom left
-    { ...vafter(rbr, tbr, GAP), left: hafter(rbr, tbr, GAP).left - offsetWidth }, // Bottom right
-    { top: vcenter(rbr, tbr).top - offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Top
-    { top: vcenter(rbr, tbr).top + offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Bottom
-    { top: vcenter(rbr, tbr).top - offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Top
-    { top: vcenter(rbr, tbr).top + offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Bottom
-    { ...hafter(rbr, tbr, -80), ...vafter(rbr, tbr, 16) }, // Bottom aligned right
-  ];
-};
-
-export const Popover: React.FC<IPopover> = ({
-  reference,
-  container,
-  children,
-  disableTriangle,
-  placement,
-  onClickOutside,
-  zIndex,
-  styleOverwrite,
-  display,
-}) => {
-  if (!display) return null;
-
-  const getPlacementsMemo = useMemo(() => getPlacements(disableTriangle, reference), []);
-
-  return (
-    <>
-      <ClickOutside onClickOutside={onClickOutside || (() => {})}>
-        <SPopover
-          zIndex={zIndex}
-          default={reference?.current ? getPlacement(placement) : 0}
-          getPlacements={getPlacementsMemo}
-          reference={reference}
-          container={container}
-          style={styleOverwrite}
-        >
-          {(display === undefined || display) && <>{typeof children === "function" ? children() : children}</>}
-        </SPopover>
-      </ClickOutside>
-    </>
-  );
+  return <PopoverWithAnimation {...props} />;
 };
