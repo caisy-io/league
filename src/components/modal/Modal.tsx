@@ -5,6 +5,7 @@ import { SModal } from "./styles/SModal";
 import { SModalBackground } from "./styles/SModalBackground";
 import { ThemedCssFunction } from "styled-components";
 import { useDelayUnmount } from "../../utils";
+import { SModalContainer } from "./styles/SModalContainer";
 
 interface IModal {
   visible: boolean;
@@ -24,7 +25,8 @@ export const Modal: React.FC<IModal> = ({ styleOverwrite, ...props }) => {
   return docBody && shouldRender
     ? createPortal(
         <Stackable>
-          <SModalBackground state={props.visible ? "in" : "out"} onClick={props?.onClose}>
+          <SModalContainer>
+            <SModalBackground state={props.visible ? "in" : "out"} onClick={props?.onClose} />
             <SModal
               state={props.visible ? "in" : "out"}
               styleOverwrite={styleOverwrite}
@@ -32,7 +34,7 @@ export const Modal: React.FC<IModal> = ({ styleOverwrite, ...props }) => {
             >
               {props.children}
             </SModal>
-          </SModalBackground>
+          </SModalContainer>
         </Stackable>,
         docBody,
       )

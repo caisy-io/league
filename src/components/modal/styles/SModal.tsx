@@ -57,6 +57,7 @@ const Bronze = css`
   height: fit-content;
   border-radius: 12px;
   box-shadow: 0 10px 35px 0 rgba(89, 106, 122, 0.12);
+  z-index: 1100;
 
   ${CSSIn};
   ${CSSOut};
