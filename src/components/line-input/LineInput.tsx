@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useRef, useState } from "react";
+import React, { FC, forwardRef, ReactNode, useRef, useState } from "react";
 import { SLineInput } from "./styles/SLineInput";
 import { SLineInputLabel } from "./styles/SLineInputLabel";
 import { SLineInputRequiredIndicator } from "./styles/SLineInputRequiredIndicator";
@@ -17,37 +17,34 @@ interface ILineInput {
   autoFocus?: boolean;
 }
 
-export const LineInput: FC<ILineInput> = ({
-  state,
-  errorMessage,
-  placeholder,
-  label,
-  required,
-  value,
-  onChange,
-  autoFocus,
-}) => {
-  const [active, setActive] = useState(false);
-  const inputRef = useRef<HTMLInputElement>();
+export const LineInput = forwardRef<HTMLInputElement, ILineInput>(
+  ({ state, errorMessage, placeholder, label, required, value, onChange, autoFocus }, ref) => {
+    const [active, setActive] = useState(false);
+    const inputRef = useRef<HTMLInputElement>();
 
-  return (
-    <SLineInputWrapper onClick={() => inputRef.current?.focus()} state={state} active={active} required={required}>
-      <SLineInputLabel>
-        {required && <SLineInputRequiredIndicator />}
-        {state === "error" && errorMessage ? errorMessage : label}
-      </SLineInputLabel>
-      <SLineInput
-        value={value}
-        onChange={onChange}
-        ref={inputRef}
-        placeholder={placeholder}
-        onFocus={() => setActive(true)}
-        onBlur={() => setActive(false)}
-        autoFocus={autoFocus}
-      />
-      <SLineInputRequiredIndicatorWrapper>
-        <SLineInputRequiredIndicatorWidth>{value || placeholder}</SLineInputRequiredIndicatorWidth>
-      </SLineInputRequiredIndicatorWrapper>
-    </SLineInputWrapper>
-  );
-};
+    const handleClick = () => {
+      (ref as any)?.current ? (ref as any).current.focus() : inputRef?.current?.focus();
+    };
+
+    return (
+      <SLineInputWrapper onClick={handleClick} state={state} active={active} required={required}>
+        <SLineInputLabel>
+          {required && <SLineInputRequiredIndicator />}
+          {state === "error" && errorMessage ? errorMessage : label}
+        </SLineInputLabel>
+        <SLineInput
+          value={value}
+          onChange={onChange}
+          ref={ref ? ref : inputRef}
+          placeholder={placeholder}
+          onFocus={() => setActive(true)}
+          onBlur={() => setActive(false)}
+          autoFocus={autoFocus}
+        />
+        <SLineInputRequiredIndicatorWrapper>
+          <SLineInputRequiredIndicatorWidth>{value || placeholder}</SLineInputRequiredIndicatorWidth>
+        </SLineInputRequiredIndicatorWrapper>
+      </SLineInputWrapper>
+    );
+  },
+);
