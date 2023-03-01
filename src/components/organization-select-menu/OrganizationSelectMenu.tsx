@@ -25,6 +25,7 @@ interface IOrganizationSelectMenu {
   organizationTooltip?: ReactNode | string;
   groupTooltip?: ReactNode | string;
   projectTooltip?: ReactNode | string;
+  disableTooltips?: boolean;
 }
 
 export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
@@ -35,6 +36,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
   organizationTooltip,
   groupTooltip,
   projectTooltip,
+  disableTooltips,
 }) => {
   const EnviromentIcon = () => {
     return enviroment && typeof enviroment.name === "string" ? (
@@ -46,6 +48,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
     <SOrganizationSelectMenu>
       <SOrganizationSelectMenuItemOrganization>
         <Tooltip
+          disabled={disableTooltips}
           disableTriangle
           color="black"
           content={organizationTooltip || "switch organization"}
@@ -61,7 +64,14 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
           )}
         </Tooltip>
       </SOrganizationSelectMenuItemOrganization>
-      <Tooltip disableTriangle color="black" content={groupTooltip || "switch group"} placement="right" delay={300}>
+      <Tooltip
+        disabled={disableTooltips}
+        disableTriangle
+        color="black"
+        content={groupTooltip || "switch group"}
+        placement="right"
+        delay={300}
+      >
         {group?.name ? (
           <OrganizationSelectMenuItem menuItem={group} />
         ) : (
@@ -70,7 +80,14 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
           </OrganizationSelectMenuItemEmpty>
         )}
       </Tooltip>
-      <Tooltip disableTriangle color="black" content={projectTooltip || "switch project"} placement="right" delay={300}>
+      <Tooltip
+        disabled={disableTooltips}
+        disableTriangle
+        color="black"
+        content={projectTooltip || "switch project"}
+        placement="right"
+        delay={300}
+      >
         {project?.name ? (
           <OrganizationSelectMenuItem menuItem={project} />
         ) : (

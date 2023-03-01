@@ -12,9 +12,10 @@ export interface ITooltip {
   disableTriangle?: boolean;
   delay?: number;
   children?: React.ReactNode;
+  disabled?: boolean;
 }
 
-export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, delay = 0 }) => {
+export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, delay = 0, disabled }) => {
   const ref = useRef(null);
 
   const getBackgroundColor = () => {
@@ -58,7 +59,7 @@ export const Tooltip: FC<ITooltip> = ({ content, placement, color, children, del
         {children}
       </STooltipWrapper>
       <Popover
-        display={show}
+        display={show && !disabled}
         styleOverwrite={{ pointerEvents: "none" }}
         disableTriangle
         trianglecolor={getBackgroundColor()}
