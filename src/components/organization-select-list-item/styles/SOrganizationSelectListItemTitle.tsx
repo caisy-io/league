@@ -4,6 +4,7 @@ import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../consta
 
 const Bronze = css`
   ${CSSProgressiveBody02Semibold};
+  line-height: var(--line-heights-2);
   color: var(--text-01);
   overflow: hidden;
   text-overflow: ellipsis;
