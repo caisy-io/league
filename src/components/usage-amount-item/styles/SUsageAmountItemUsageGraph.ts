@@ -2,16 +2,16 @@ import styled from "styled-components";
 
 export const SUsageAmountItemUsageGraph = styled.div`
   position: relative;
-  height: 32px;
-  width: 32px;
+  height: ${({ size }) => (size ? size : "32px")};
+  width: ${({ size }) => (size ? size : "32px")};
   display: flex;
   align-items: center;
   justify-content: center;
 
   svg {
     position: absolute;
-    height: 32px;
-    width: 32px;
-    stroke: var(--ui-supportive-06);
+    height: ${({ size }) => (size ? size : "32px")};
+    width: ${({ size }) => (size ? size : "32px")};
+    stroke: ${({ barColor }) => (barColor ? barColor : "var(--ui-supportive-06)")};
   }
 `;
