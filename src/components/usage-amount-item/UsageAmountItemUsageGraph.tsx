@@ -3,33 +3,31 @@ import { SUsageAmountItemUsageGraph } from "./styles/SUsageAmountItemUsageGraph"
 
 interface IHomePageStatisticGraph {
   percentage: number;
-  size?: number;
-  barColor?: string;
-  barWidth?: string;
 }
 
-const UsageAmountItemUsageGraph: FC<IHomePageStatisticGraph> = ({ percentage, size, barColor, barWidth }) => {
+const UsageAmountItemUsageGraph: FC<IHomePageStatisticGraph> = ({ percentage }) => {
   return (
     <SUsageAmountItemUsageGraph>
-      <svg style={{}} viewBox={`0 0 ${size || "36"} ${size || "36"}`}>
+      <svg style={{}} viewBox="0 0 36 36">
         <path
           d="M18 2.0845
 a 15.9155 15.9155 0 0 1 0 31.831
 a 15.9155 15.9155 0 0 1 0 -31.831"
           fill="none"
-          stroke={`${barColor || "var(--ui-03)"}`}
-          strokeWidth={`${barWidth || "3"}`}
+          stroke="var(--ui-03)"
+          strokeWidth="3"
           strokeDasharray="100"
         />
       </svg>
-      <svg viewBox={`0 0 ${size || "36"} ${size || "36"}`}>
+      <svg viewBox="0 0 36 36">
         <path
           d="M18 2.0845
 a 15.9155 15.9155 0 0 1 0 31.831
 a 15.9155 15.9155 0 0 1 0 -31.831"
           fill="none"
-          strokeWidth={`${barWidth || "3"}`}
+          strokeWidth="3"
           strokeDasharray={`${percentage}, 100`}
+          // strokeDashoffset={100}
         />
       </svg>
     </SUsageAmountItemUsageGraph>
