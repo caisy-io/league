@@ -20,6 +20,7 @@ const CSSRed = css`
 
 export const SUsageAmountItemUsageGraph = styled.div`
   position: relative;
+  transform: rotateY(180deg);
   height: 32px;
   width: 32px;
   display: flex;
