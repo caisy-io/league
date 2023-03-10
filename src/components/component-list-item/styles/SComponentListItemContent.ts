@@ -4,7 +4,6 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 const Bronze = css`
   display: flex;
   flex-direction: column;
-  padding: 8px;
   gap: 4px;
   align-self: stretch;
 
