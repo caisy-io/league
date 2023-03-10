@@ -7,7 +7,7 @@ interface IHomePageStatisticGraph {
 
 const UsageAmountItemUsageGraph: FC<IHomePageStatisticGraph> = ({ percentage }) => {
   return (
-    <SUsageAmountItemUsageGraph>
+    <SUsageAmountItemUsageGraph color={percentage <= 65 ? "blue" : percentage < 90 ? "yellow" : "red"}>
       <svg style={{}} viewBox="0 0 36 36">
         <path
           d="M18 2.0845
