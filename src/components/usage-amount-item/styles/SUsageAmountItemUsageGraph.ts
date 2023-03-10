@@ -8,7 +8,7 @@ const CSSBlue = css`
 
 const CSSYellow = css`
   svg {
-    stroke: var(--ui-tag-03);
+    stroke: var(--tag-03);
   }
 `;
 
