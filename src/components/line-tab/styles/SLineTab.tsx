@@ -11,7 +11,7 @@ const CSSHover = css`
   }
 `;
 
-const CSSActivated = css`
+const CSSActivated = css<{activated?: boolean; hover?: boolean; hasError?: boolean}>`
   color: var(--text-01);
 
   div:last-of-type {
@@ -23,7 +23,7 @@ const CSSError = css`
   color: var(--text-06);
 `;
 
-const Bronze = css`
+const Bronze = css<{activated?: boolean; hover?: boolean; hasError?: boolean}>`
   ${CSSProgressiveBody03Semibold};
   position: relative;
   color: var(--text-04);
@@ -61,7 +61,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLineTab = styled.div`
+export const SLineTab = styled.div<{activated?: boolean; hover?: boolean; hasError?: boolean}>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
