@@ -18,15 +18,15 @@ export interface ISidebarCardProps {
 
 export const SidebarCard: React.FC<ISidebarCardProps> = ({ ...props }) => {
   return (
-    <SSidebarCard {...props}>
+    <SSidebarCard drag={props.drag} hover={props.hover}>
       <SFlex>
         {props.icon}
-        <SSidebarcardTextWrapper {...props}>
+        <SSidebarcardTextWrapper icon={props.icon}>
           <SSidebarCardTitle> {props.title}</SSidebarCardTitle>
           <SSidebarCardSubtitle> {props.description}</SSidebarCardSubtitle>
         </SSidebarcardTextWrapper>
       </SFlex>
-      <SSidebarcardIconWrapper {...props}>
+      <SSidebarcardIconWrapper drag={props.drag} hover={props.hover}>
         {props.children}
         <IconDragable />
       </SSidebarcardIconWrapper>
