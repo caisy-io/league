@@ -62,6 +62,7 @@ export const CSSColors = css`
     --disabled-interactional-01: #e1e1e1;
     --disabled-interactional-02: #ebeaea;
     --disabled-interactional-03: #f7f9fa;
+    --disabled-interactional-04: #e2e9ed;
     --disabled-text: #c7cad1;
     --hover-icon-01: #567a98;
     --hover-icon-01-1: #008cff;
