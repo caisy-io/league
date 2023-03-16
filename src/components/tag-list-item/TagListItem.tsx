@@ -52,7 +52,12 @@ export const TagListItem: React.FC<ITagListItem> = ({
         {popover && (
           <ClickOutside onClickOutside={() => setOpened(false)}>
             <div>
-              <div onClick={() => setOpened((prev) => !prev)}>
+              <div
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setOpened((prev) => !prev);
+                }}
+              >
                 <IconMoreMenuHorizontal size={20} />
               </div>
               <Popover display={opened} disableTriangle placement="right" reference={ref}>
