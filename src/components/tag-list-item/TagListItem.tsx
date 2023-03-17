@@ -1,7 +1,7 @@
 import React from "react";
 import { SFlex } from "../../base-components/flex/styles/SFlex";
 import { IconMoreMenuHorizontal } from "../../icons";
-import { useDimensions } from "../../utils";
+import { ClickOutside } from "../../utils";
 import { Popover } from "../popover";
 
 import { STagListItem } from "./styles/STagListItem";
@@ -35,8 +35,6 @@ export const TagListItem: React.FC<ITagListItem> = ({
 
   const ref = React.useRef(null);
 
-  const { width } = useDimensions(ref);
-
   return (
     <>
       <STagListItem ref={ref} disabled={disabled} activated={activated} onClick={onClick}>
@@ -52,27 +50,25 @@ export const TagListItem: React.FC<ITagListItem> = ({
           {outlineLabel && <STagListItemOutlineLabelWrapper>{outlineLabel}</STagListItemOutlineLabelWrapper>}
         </SFlex>
         {popover && (
-          <div
-            onClick={(event) => {
-              event.stopPropagation();
-              setOpened(true);
-            }}
-          >
-            <IconMoreMenuHorizontal size={20} />
-          </div>
+          <ClickOutside onClickOutside={() => setOpened(false)}>
+            <div>
+              <div
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setOpened((prev) => !prev);
+                }}
+              >
+                <IconMoreMenuHorizontal size={20} />
+              </div>
+              <Popover display={opened} disableTriangle placement="right" reference={ref}>
+                <div>{popover}</div>
+              </Popover>
+            </div>
+          </ClickOutside>
         )}
         {rightIcon}
         {flatActionButton}
       </STagListItem>
-      <Popover
-        display={opened}
-        onClickOutside={() => setOpened(false)}
-        disableTriangle
-        placement="rightBottom"
-        reference={ref}
-      >
-        <div>{popover}</div>
-      </Popover>
     </>
   );
 };
