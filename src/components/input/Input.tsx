@@ -1,4 +1,4 @@
-import React, { FC, InputHTMLAttributes, ReactNode } from "react";
+import React, { FC, forwardRef, InputHTMLAttributes, ReactNode } from "react";
 import { SInput } from "./styles/SInput";
 import { SInputIcon } from "./styles/SInputIcon";
 import { SInputCloseButton } from "./styles/SInputCloseButton";
@@ -16,22 +16,25 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   wrapperStyle?: React.CSSProperties;
 }
 
-export const Input: React.FC<IInput> = ({ hasCloseButton, onClose, icon, type = "text", wrapperStyle, ...props }) => {
-  const ref = React.useRef<HTMLInputElement>(null);
+export const Input = forwardRef<HTMLInputElement, IInput>(
+  ({ hasCloseButton, onClose, icon, type = "text", wrapperStyle, ...props }, ref) => {
+    const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const onIconClick = () => {
-    ref?.current?.focus();
-  };
+    const onIconClick = () => {
+      (ref as any)?.current?.focus();
+      inputRef?.current?.focus();
+    };
 
-  return (
-    <SInput style={wrapperStyle}>
-      {icon && <SInputIcon onClick={onIconClick}>{icon}</SInputIcon>}
-      <input ref={ref} {...props} type={type} onKeyUp={(e) => props.onKeyUp?.(e)} />
-      {hasCloseButton && (
-        <SInputCloseButton onClick={onClose}>
-          <IconClose />
-        </SInputCloseButton>
-      )}
-    </SInput>
-  );
-};
+    return (
+      <SInput style={wrapperStyle}>
+        {icon && <SInputIcon onClick={onIconClick}>{icon}</SInputIcon>}
+        <input ref={ref ? ref : inputRef} {...props} type={type} onKeyUp={(e) => props.onKeyUp?.(e)} />
+        {hasCloseButton && (
+          <SInputCloseButton onClick={onClose}>
+            <IconClose />
+          </SInputCloseButton>
+        )}
+      </SInput>
+    );
+  },
+);
