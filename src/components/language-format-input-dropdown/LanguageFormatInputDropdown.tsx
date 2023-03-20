@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from "react";
+import React, { MutableRefObject, ReactNode, useMemo, useRef } from "react";
 import { IconChevronDown } from "../../icons/IconChevronDown";
 import { Input } from "../../components/input";
 import { IconRotator } from "../../components/icon-rotator";
@@ -52,6 +52,7 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
 }) => {
   const [opened, setOpened] = React.useState(false);
   const selectedOptionKey = React.useRef(initialValueKey || "");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const ref = React.useRef(null);
   const [rotationDegrees, setRotationDegrees] = React.useState(0);
@@ -117,6 +118,7 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
         <SLanguageFormatInputDropdown
           onClick={(e) => {
             e.stopPropagation();
+            (inputRef.current as HTMLInputElement).focus();
             handleDropdown();
           }}
           ref={ref}
@@ -147,6 +149,7 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
                 }}
                 onChange={onChange}
                 placeholder={placeholder}
+                ref={inputRef}
               />
             </SLanguageFormatInputDropdownTextWrapper>
             {options[selectedOptionKey.current]?.solidLabelText && (
@@ -164,7 +167,7 @@ export const LanguageFormatInputDropdown: React.FC<ILanguageFormatInputDropdown>
           )}
         </SLanguageFormatInputDropdown>
 
-        <Popover display={opened} disableTriangle placement="bottom" reference={ref}>
+        <Popover display={opened} disableTriangle placement="bottom" reference={ref as MutableRefObject<null>}>
           <SLanguageFormatSelectDropdown style={{ width }}>
             <SLanguageFormatSelectDropdownCont>
               {dropdownDataSource.map((option) => (

@@ -8,6 +8,7 @@ const Bronze = css`
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 `;
 
 const Silver = css``;
