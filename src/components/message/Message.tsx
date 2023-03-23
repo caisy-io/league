@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot } from "react-dom";
 import { NotificationSnackbar } from "../notification-snackbar/NotificationSnackbar";
 import { GSMessage } from "./styles/GSMessage";
 import { IMessageConfig } from "./types";

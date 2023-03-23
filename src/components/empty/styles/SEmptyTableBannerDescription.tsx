@@ -21,7 +21,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SEmptyTableBannerDescription = styled.p`
+export const SEmptyTableBannerDescription = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
