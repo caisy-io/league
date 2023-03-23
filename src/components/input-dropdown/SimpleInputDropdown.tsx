@@ -149,7 +149,7 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({
         )}
         {translationBadge && <TranslationBadge countryCode="de" />}
       </SInputDropdown>
-      <Popover display={opened} disableTriangle placement={placement} reference={ref}>
+      <Popover display={!!opened} disableTriangle placement={placement} reference={ref}>
         <SSelectDropdown style={{ width, dropdownStyle }}>
           {withSearch && (
             <SearchInput
