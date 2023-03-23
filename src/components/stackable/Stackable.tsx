@@ -49,7 +49,7 @@ const Stackable = forwardRef(
     ref,
   ) => {
     const { depth, ancestors: _ancestors, zIndex: zIndexContext } = useContext(StackableContext);
-    const usedZIndex = zIndexContext ?? zIndex;
+    const usedZIndex = zIndex ?? zIndexContext;
     const [ancestors, setAncestors] = useState("");
     const cls = `stackable depth-${depth}${className ? className : ""}`;
 
