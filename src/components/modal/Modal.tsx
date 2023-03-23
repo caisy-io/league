@@ -1,6 +1,5 @@
 import React from "react";
 import { createPortal } from "react-dom";
-import Stackable from "../stackable";
 import { SModal } from "./styles/SModal";
 import { SModalBackground } from "./styles/SModalBackground";
 import { ThemedCssFunction } from "styled-components";
@@ -26,20 +25,20 @@ export const Modal: React.FC<IModal> = ({ styleOverwrite, ...props }) => {
 
   return docBody && shouldRender
     ? createPortal(
-        <Stackable zIndex={props.backgroundZIndex}>
-          <SModalContainer>
-            <SModalBackground state={props.visible ? "in" : "out"} onClick={props?.onClose} />
-            <Stackable zIndex={props.contentZIndex}>
-              <SModal
-                state={props.visible ? "in" : "out"}
-                styleOverwrite={styleOverwrite}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {props.children}
-              </SModal>
-            </Stackable>
-          </SModalContainer>
-        </Stackable>,
+        <SModalContainer>
+          <SModalBackground
+            style={{ zIndex: props.backgroundZIndex }}
+            state={props.visible ? "in" : "out"}
+            onClick={props?.onClose}
+          />
+          <SModal
+            state={props.visible ? "in" : "out"}
+            styleOverwrite={{ ...styleOverwrite, zIndex: props.contentZIndex }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {props.children}
+          </SModal>
+        </SModalContainer>,
         docBody,
       )
     : null;
