@@ -12,6 +12,8 @@ interface IModal {
   onClose?: (payload: any) => any;
   styleOverwrite?: ThemedCssFunction<any>;
   children?: React.ReactNode;
+  backgroundZIndex?: number;
+  contentZIndex?: number;
 }
 
 export const Modal: React.FC<IModal> = ({ styleOverwrite, ...props }) => {
@@ -24,16 +26,18 @@ export const Modal: React.FC<IModal> = ({ styleOverwrite, ...props }) => {
 
   return docBody && shouldRender
     ? createPortal(
-        <Stackable>
+        <Stackable zIndex={props.backgroundZIndex}>
           <SModalContainer>
             <SModalBackground state={props.visible ? "in" : "out"} onClick={props?.onClose} />
-            <SModal
-              state={props.visible ? "in" : "out"}
-              styleOverwrite={styleOverwrite}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {props.children}
-            </SModal>
+            <Stackable zIndex={props.contentZIndex}>
+              <SModal
+                state={props.visible ? "in" : "out"}
+                styleOverwrite={styleOverwrite}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {props.children}
+              </SModal>
+            </Stackable>
           </SModalContainer>
         </Stackable>,
         docBody,
