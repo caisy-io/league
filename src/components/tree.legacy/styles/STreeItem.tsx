@@ -17,7 +17,7 @@ const Bronze = css<ISTreeItem>`
 
   padding: 8px;
   min-height: 20px;
-  color: var(--neutral-700);
+  color: var(--text-03);
   background-color: transparent;
   border-radius: 6px;
   display: flex;

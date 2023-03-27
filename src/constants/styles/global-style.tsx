@@ -21,7 +21,7 @@ export const GSBase = createGlobalStyle`
   }
   body{ 
       background-color: var(--ui-background);
-      color: var(--neutral-700);
+      color: var(--text-01);
   }
   :root{
     font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

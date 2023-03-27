@@ -6,14 +6,14 @@ const Bronze = css`
   display: flex;
   flex-direction: column;
   width: 100%;
-  &:focus-within {
+  &:focus-within, & {
     input,
     textarea {
       &::-webkit-input-placeholder {
-        color: var(--ui-01);
+        color: var(--text-03);
       }
       &::-moz-placeholder {
-        color: var(--ui-01);
+        color: var(--text-03);
       }
     }
   }

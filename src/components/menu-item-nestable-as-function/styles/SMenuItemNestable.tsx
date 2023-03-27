@@ -14,7 +14,7 @@ const Bronze = css<IMenuItemNestableAsFunction>`
   border-radius: 6px;
 
   font-size: 14px;
-  color: var(--neutral-700);
+  color: var(--text-03);
   line-height: 1.71;
   text-align: left;
   margin-bottom: 1px;
