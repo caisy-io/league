@@ -1,4 +1,5 @@
 export * from "./avatar";
+export * from "./active-user-avatar";
 export * from "./badge";
 export * from "./body-layout";
 export * from "./bulk-selection-snackbar";
