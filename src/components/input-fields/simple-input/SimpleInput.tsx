@@ -36,6 +36,7 @@ interface ISimpleInput {
   onFocus?: (e: InputEvent) => void;
   onBlur?: (e: InputEvent) => void;
   disabled?: boolean;
+  readOnly?: boolean;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
@@ -57,6 +58,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
   errors,
   translationBadge,
   disabled,
+  readOnly,
   leftIcon,
   rightIcon,
   autoComplete,
@@ -116,6 +118,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
     }
   }, [inputRef?.current?.value, errors]);
 
+  const locked = state === "locked";
+
   return (
     <SSimpleInputWrapper
       onMouseEnter={() => setHover(true)}
@@ -132,7 +136,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
           {label && (
             <SSimpleInputRequiredIndicatorContainer withLabel={true}>
               {required && <SSimpleInputRequiredIndicator />}
-              <SLabel locked={state === "locked"} error={state === "error"} active={active} hover={hover}>
+              <SLabel locked={locked} error={state === "error"} active={active} hover={hover}>
                 {label}
               </SLabel>
             </SSimpleInputRequiredIndicatorContainer>
@@ -158,7 +162,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
             )}
             <InputComponent
               error={state === "error"}
-              locked={state === "locked"}
+              locked={locked}
               onChange={(e) => {
                 onChange?.(e);
               }}
@@ -169,6 +173,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
               value={value === null || value === undefined ? "" : value}
               placeholder={placeholder}
               disabled={disabled}
+              readOnly={readOnly}
               onKeyUp={onKeyUp}
               type={type}
             />
