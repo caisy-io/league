@@ -22,6 +22,7 @@ export const InputField: FC<IInputFieldProps> = ({
   onExpand,
   onCollapse,
   id,
+  usersListComponent,
 }) => {
   const [isOpen, setOpen] = useState(true);
   const toggleOpen = useCallback(() => {
@@ -50,6 +51,7 @@ export const InputField: FC<IInputFieldProps> = ({
           </SFieldTitle>
           {description && <SFieldDescription>{description}</SFieldDescription>}
         </div>
+        {usersListComponent}
         <SFieldDisplayButton data-display-button isOpen={isOpen}>
           <IconButton type="secondary" onClick={toggleOpen}>
             <IconChevronDown />
