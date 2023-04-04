@@ -10,7 +10,7 @@ import {
 const CSSLocked = css`
   color: var(--text-04);
 
-  &:disabled {
+  &:disabled, &:read-only {
     background: none;
     color: var(--text-04);
   }
