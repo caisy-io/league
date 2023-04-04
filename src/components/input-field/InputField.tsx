@@ -10,6 +10,7 @@ import { SFieldDisplayButton } from "./styles/SFieldDisplayButton";
 import { SFieldDescription } from "./styles/SFieldDescription";
 import { SFieldErrors } from "./styles/SFieldErrors";
 import { IInputFieldProps } from "./types";
+import { ClickOutside } from "../../utils";
 
 export const InputField: FC<IInputFieldProps> = ({
   title,
@@ -23,6 +24,8 @@ export const InputField: FC<IInputFieldProps> = ({
   onCollapse,
   id,
   usersListComponent,
+  onClick,
+  onClickOutside,
 }) => {
   const [isOpen, setOpen] = useState(true);
   const toggleOpen = useCallback(() => {
@@ -35,38 +38,40 @@ export const InputField: FC<IInputFieldProps> = ({
   }, [isOpen, setOpen]);
 
   return (
-    <SFieldItem id={id} error={!!errors}>
-      <SFieldHeader isOpen={isOpen}>
-        {icon}
-        <div style={{ flex: "1 1 auto" }}>
-          <SFieldTitle required={required}>
-            <h3>{title}</h3>
-            {tooltip && (
-              <div data-tooltip-icon>
-                <Tooltip content={tooltip} placement="right" color="black">
-                  <IconQuestionCircle size={16} />
-                </Tooltip>
-              </div>
-            )}
-          </SFieldTitle>
-          {description && <SFieldDescription>{description}</SFieldDescription>}
-        </div>
-        {usersListComponent}
-        <SFieldDisplayButton data-display-button isOpen={isOpen}>
-          <IconButton type="secondary" onClick={toggleOpen}>
-            <IconChevronDown />
-          </IconButton>
-        </SFieldDisplayButton>
-      </SFieldHeader>
-      <SFieldInputWrapper isOpen={isOpen}>{children}</SFieldInputWrapper>
+    <ClickOutside onClickOutside={onClickOutside}>
+      <SFieldItem onClick={onClick} id={id} error={!!errors}>
+        <SFieldHeader isOpen={isOpen}>
+          {icon}
+          <div style={{ flex: "1 1 auto" }}>
+            <SFieldTitle required={required}>
+              <h3>{title}</h3>
+              {tooltip && (
+                <div data-tooltip-icon>
+                  <Tooltip content={tooltip} placement="right" color="black">
+                    <IconQuestionCircle size={16} />
+                  </Tooltip>
+                </div>
+              )}
+            </SFieldTitle>
+            {description && <SFieldDescription>{description}</SFieldDescription>}
+          </div>
+          {usersListComponent}
+          <SFieldDisplayButton data-display-button isOpen={isOpen}>
+            <IconButton type="secondary" onClick={toggleOpen}>
+              <IconChevronDown />
+            </IconButton>
+          </SFieldDisplayButton>
+        </SFieldHeader>
+        <SFieldInputWrapper isOpen={isOpen}>{children}</SFieldInputWrapper>
 
-      {errors && (
-        <SFieldErrors>
-          {errors.map((error: ReactNode) => (
-            <div key={`error-${error}`}>{error}</div>
-          ))}
-        </SFieldErrors>
-      )}
-    </SFieldItem>
+        {errors && (
+          <SFieldErrors>
+            {errors.map((error: ReactNode) => (
+              <div key={`error-${error}`}>{error}</div>
+            ))}
+          </SFieldErrors>
+        )}
+      </SFieldItem>
+    </ClickOutside>
   );
 };

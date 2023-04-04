@@ -12,4 +12,6 @@ export interface IInputFieldProps {
   icon?: ReactNode;
   children?: React.ReactNode;
   usersListComponent?: React.ReactNode;
+  onClick?: () => void;
+  onClickOutside?: () => void;
 }
