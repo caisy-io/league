@@ -25,7 +25,7 @@ export const InputField: FC<IInputFieldProps> = ({
   id,
   usersListComponent,
   onClick,
-  onClickOutside,
+  onClickOutside = () => {},
 }) => {
   const [isOpen, setOpen] = useState(true);
   const toggleOpen = useCallback(() => {
