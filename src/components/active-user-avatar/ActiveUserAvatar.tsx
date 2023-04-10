@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { SActiveUserAvatar } from "./styles/SActiveUserAvatar";
 import { SActiveUserAvatarBadge } from "./styles/SActiveUserAvatarBadge";
 import { SActiveUserAvatarImageContainer } from "./styles/SActiveUserAvatarImageContainer";

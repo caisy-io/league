@@ -27,10 +27,11 @@ const CSSActivated = css`
 
 export const SActiveUserAvatar = styled.div`
   position: relative;
-  height: 36px;
-  width: 36px;
   border: 1px solid var(--ui-03);
   border-radius: 6px;
+  padding: 4px;
+  height: fit-content;
+  width: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
