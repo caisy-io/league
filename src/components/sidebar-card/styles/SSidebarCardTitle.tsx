@@ -7,6 +7,7 @@ const Bronze = css`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  margin-right: 0.25rem;
   margin-bottom: 0.25rem;
 `;
 
