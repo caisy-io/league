@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { StringSingleField } from "./StringSingleField";
 import { SimpleInput, TranslationBadge } from "../input-fields";
+import { ActiveUserAvatar } from "../active-user-avatar/ActiveUserAvatar";
+import { Preview } from "../preview";
 
 export default {
   title: "Components/Fields/StringSingleLine",
@@ -12,7 +14,46 @@ const Template = (args) => {
   const [value1, setValue1] = useState("test");
   const [value2, setValue2] = useState("test");
   return (
-    <StringSingleField {...args}>
+    <StringSingleField
+      {...args}
+      usersList={
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <ActiveUserAvatar color="red">
+            <Preview
+              image={
+                <img
+                  style={{ objectFit: "cover", height: 28, width: 28 }}
+                  src="https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="
+                />
+              }
+              size={28}
+            />
+          </ActiveUserAvatar>
+          <ActiveUserAvatar color="blue">
+            <Preview
+              image={
+                <img
+                  style={{ objectFit: "cover", height: 28, width: 28 }}
+                  src="https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="
+                />
+              }
+              size={28}
+            />
+          </ActiveUserAvatar>
+          <ActiveUserAvatar color="orange">
+            <Preview
+              image={
+                <img
+                  style={{ objectFit: "cover", height: 28, width: 28 }}
+                  src="https://media.istockphoto.com/photos/positive-mindset-positive-life-picture-id1272765753?b=1&k=20&m=1272765753&s=170667a&w=0&h=8Twyimx9TOKgr67OrabNA5sUeEgYT7ckM5HU6fnL5Ik="
+                />
+              }
+              size={28}
+            />
+          </ActiveUserAvatar>
+        </div>
+      }
+    >
       <SimpleInput
         translationBadge={<TranslationBadge countryCode="de" />}
         label="This is a label"
@@ -41,7 +82,7 @@ Required.args = {
   title: "Single Line String",
   required: true,
   tooltip: <p>Test react element tooltip</p>,
-  description: "This is a required string input"
+  description: "This is a required string input",
 };
 
 export const Error = Template.bind({});
@@ -49,5 +90,5 @@ Error.args = {
   title: "Single Line String",
   required: true,
   tooltip: <p>Test react element tooltip</p>,
-  errors: ['Invalid input value'],
+  errors: ["Invalid input value"],
 };

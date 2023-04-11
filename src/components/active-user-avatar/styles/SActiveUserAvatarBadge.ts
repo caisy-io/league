@@ -7,7 +7,7 @@ export const SActiveUserAvatarBadge = styled.div`
   background-color: ${({ color }) => color};
   box-sizing: border-box;
   position: absolute;
-  bottom: -3px;
+  bottom: -4px;
   margin: 0 auto;
   border-radius: 50%;
 `;
