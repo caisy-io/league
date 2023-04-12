@@ -7,7 +7,7 @@ import { UploadMenuItem } from "../upload-menu-item/UploadMenuItem";
 import { IconLink, IconBoolean, IconAttachmentSquare, IconCode } from "../../icons";
 
 const logoSquareAssetUrl =
-  "https://assets.caisy.io/asset/9aff2246-1dd1-44a7-ad8d-47feaaa1cce9/bbf6fabc3fd88c4c854aa6877fd9366f/CAISY_ICON.svg?w=800";
+  "https://assets.caisy.io/asset/9aff2246-1dd1-44a7-ad8d-47feaaa1cce9/bbf6fabc3fd88c4c854aa6877fd9366f/CAISY_ICON.svg";
 
 const OrganizationSelectMenuContainer = () => {
   const defaultGroup = {
@@ -51,7 +51,12 @@ const FooterNavigationContainer = () => {
 };
 
 const UploadContainer = () => {
-  return <UploadMenuItem state="loading" percentageLoaded={57} > 57% </UploadMenuItem>;
+  return (
+    <UploadMenuItem state="loading" percentageLoaded={57}>
+      {" "}
+      57%{" "}
+    </UploadMenuItem>
+  );
 };
 
 // Default MainMenu Demo

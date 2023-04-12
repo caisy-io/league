@@ -15,10 +15,12 @@ interface IMainMenu {
 }
 
 export const MainMenu: React.FC<IMainMenu> = ({ ...props }) => {
+  const isSVG = `${props?.logoSquareAssetUrl}`.toLowerCase().endsWith(".svg") ?? false;
+
   const Logo = () => {
     return props.logoSquareAssetUrl ? (
       <SMainMenuLogoContainer>
-        <Img resolution={800} src={props.logoSquareAssetUrl} />
+        <Img resolution={isSVG ? 0 : 800} src={props.logoSquareAssetUrl} />
       </SMainMenuLogoContainer>
     ) : null;
   };
