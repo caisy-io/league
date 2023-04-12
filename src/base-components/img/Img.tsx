@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState } from "react";
+import React, { CSSProperties, memo, useEffect, useRef, useState } from "react";
 import LazyLoad from "react-lazyload";
 import { SImg } from "./styles/SImg";
 
@@ -12,6 +12,7 @@ export interface IResponsiveImageResolution {
 
 export interface IImg {
   src: string /** link to file */;
+  style?: CSSProperties;
   children?: any;
   alt?: string;
   cover?: boolean;
@@ -27,7 +28,7 @@ export interface IImg {
   onError?: () => void /** trigger when image is loaded ==> default: null */;
 }
 
-const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad, onError, ...props }) => {
+const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad, style, onError, ...props }) => {
   const imgRef = useRef<any>();
   const [loaded, setLoaded] = useState(false);
 
@@ -60,8 +61,8 @@ const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad, onEr
 
   const _src = src.includes("?") ? src : src + `?w=${resolution}`;
   return (
-    <SImg loaded={loaded} resolution={resolution} {...props}>
-      <img src={_src} alt={alt} ref={imgRef as any} />
+    <SImg loaded={loaded} {...props}>
+      <img src={_src} alt={alt} ref={imgRef as any} style={style} />
       {children}
     </SImg>
   );
