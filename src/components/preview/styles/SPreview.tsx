@@ -112,7 +112,8 @@ const Bronze = css<ISPreview>`
   `}
   img {
     border-radius: 4px;
-    /* width: 100%; */
+    width: ${({ size }) => size ? size : 32}px;
+    height: ${({ size }) => size ? size : 32}px;
   }
   ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;
