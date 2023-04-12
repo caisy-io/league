@@ -21,10 +21,11 @@ export const OrganizationSelectMenuItem: React.FC<{
   typeOrganization?: boolean;
 }> = ({ ...props }) => {
   const isSVG = `${props.menuItem?.logoAssetUrl}`.toLowerCase().endsWith(".svg") ?? false;
+  const size = props.typeOrganization ? 20 : 26;
   return props.menuItem ? (
     props.menuItem.logoAssetUrl ? (
       <SOrganizationSelectMenuItem typeOrganization={props.typeOrganization}>
-        <Img resolution={isSVG ? 0 : 1440} src={props.menuItem.logoAssetUrl} />
+        <Img style={{ width: size, height: size }} resolution={isSVG ? 0 : 1440} src={props.menuItem.logoAssetUrl} />
       </SOrganizationSelectMenuItem>
     ) : typeof props.menuItem.name === "string" ? (
       <SOrganizationSelectMenuItem typeOrganization={props.typeOrganization}>
