@@ -18,16 +18,18 @@ const getPlaceholderLettersByName = (name: string) => {
 
 export const OrganizationSelectMenuItem: React.FC<{
   menuItem?: IOrganizationSelectMenuItem;
-  typeOrganization?: boolean
+  typeOrganization?: boolean;
 }> = ({ ...props }) => {
+  const isSVG = `${props.menuItem?.logoAssetUrl}`.toLowerCase().endsWith(".svg") ?? false;
   return props.menuItem ? (
     props.menuItem.logoAssetUrl ? (
       <SOrganizationSelectMenuItem typeOrganization={props.typeOrganization}>
-        <Img resolution={1440} src={props.menuItem.logoAssetUrl} />
+        <Img resolution={isSVG ? 0 : 1440} src={props.menuItem.logoAssetUrl} />
       </SOrganizationSelectMenuItem>
     ) : typeof props.menuItem.name === "string" ? (
       <SOrganizationSelectMenuItem typeOrganization={props.typeOrganization}>
-        {getPlaceholderLettersByName(props.menuItem.name)}</SOrganizationSelectMenuItem>
+        {getPlaceholderLettersByName(props.menuItem.name)}
+      </SOrganizationSelectMenuItem>
     ) : null
   ) : null;
 };
