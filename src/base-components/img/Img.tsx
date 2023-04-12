@@ -60,7 +60,7 @@ const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad, onEr
 
   const _src = src.includes("?") ? src : src + `?w=${resolution}`;
   return (
-    <SImg loaded={loaded} {...props}>
+    <SImg loaded={loaded} resolution={resolution} {...props}>
       <img src={_src} alt={alt} ref={imgRef as any} />
       {children}
     </SImg>
