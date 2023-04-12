@@ -94,12 +94,10 @@ const Bronze = css<ISPreview>`
   flex-shrink: 0;
   font-size: ${({ size }) => size && fontSize(size)}px;
   font-weight: 700;
-  height: ${({ size }) => size ? size : 32}px;
   justify-content: center;
   line-height: ${({ size }) => size ? size : 32}px;
   text-align: center;
   text-transform: uppercase;
-  width: ${({ size }) => size ? size : 32}px;
   
   ${({ isFlag, size }) => !isFlag && `
     svg {
@@ -112,6 +110,8 @@ const Bronze = css<ISPreview>`
   `}
   img {
     border-radius: 4px;
+  }
+  &, img {
     width: ${({ size }) => size ? size : 32}px;
     height: ${({ size }) => size ? size : 32}px;
   }
