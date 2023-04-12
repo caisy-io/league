@@ -14,16 +14,16 @@ const _contain = css`
 `;
 
 const Bronze = css`
-  height: 100%;
+  height: ${({ resolution }) => `${resolution}px`};
   opacity: 0;
   transition: opacity 0.8s ease;
   line-height: 0;
 
   img {
-    height: 100%;
+    height: ${({ resolution }) => `${resolution}px`};
     ${({ cover, contain }: ISImg) => (!contain && cover ? _cover : "")};
     ${({ contain }: ISImg) => (contain ? _contain : "")};
-    width: 100%;
+    width: ${({ resolution }) => `${resolution}px`};
   }
 `;
 
