@@ -26,16 +26,19 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
   // Every row is loaded except for our loading indicator row.
   const isItemLoaded = (index) => !props.hasNextPage || index < props.dataSource.length;
   // console.log(isItemLoaded());
-  const Item = useCallback(({ index, style, data }) => {
-    let content;
-    if (!isItemLoaded(index)) {
-      content = props.renderLoadingItem();
-    } else {
-      content = props.renderItem(data[index], index);
-    }
+  const Item = useCallback(
+    ({ index, style, data }) => {
+      let content;
+      if (!isItemLoaded(index)) {
+        content = props.renderLoadingItem();
+      } else {
+        content = props.renderItem(data[index], index);
+      }
 
-    return <div style={style}>{content}</div>;
-  }, []);
+      return <div style={style}>{content}</div>;
+    },
+    [props.renderItem, props.renderLoadingItem, isItemLoaded],
+  );
 
   React.useEffect(() => {
     if (Number.isInteger(scrollToIndex)) {
