@@ -44,7 +44,7 @@ export const CSSProgressiveBody01 = css`
 export const CSSProgressiveBody02Semibold = css`
   font-size: 16px;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 24px;
 `;
 
 export const CSSProgressiveBody02Medium = css`

@@ -5,7 +5,7 @@ import { SUsageAmountItemTitle } from "./styles/SUsageAmountItemTitle";
 import { SUsageAmountItemUsage } from "./styles/SUsageAmountItemUsage";
 import { SUsageAmountItemUsageBody } from "./styles/SUsageAmountItemUsageBody";
 import { SUsageAmountItemUsageGraphContainer } from "./styles/SUsageAmountItemUsageGraphContainer";
-import UsageAmountItemUsageGraph from "./UsageAmountItemUsageGraph";
+import { UsageAmountItemUsageGraphBig } from "./UsageAmountItemUsageGraphBig";
 
 interface IUsageAmountItem {
   used: number;
@@ -25,7 +25,8 @@ export const UsageAmountItem: FC<IUsageAmountItem> = ({ title, usage, children, 
       <SUsageAmountItemTitle>{title}</SUsageAmountItemTitle>
       <SUsageAmountItemUsage>
         <SUsageAmountItemUsageGraphContainer>
-          <UsageAmountItemUsageGraph percentage={usagePercentage} />
+          {/* <UsageAmountItemUsageGraph percentage={usagePercentage} /> */}
+          <UsageAmountItemUsageGraphBig percentage={usagePercentage} />
           {used}
         </SUsageAmountItemUsageGraphContainer>
         <SUsageAmountItemUsageBody>{usage}</SUsageAmountItemUsageBody>
