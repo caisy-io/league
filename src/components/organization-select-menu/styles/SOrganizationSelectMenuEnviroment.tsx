@@ -7,7 +7,6 @@ interface ISOrganziationSelectMenuEnviroment {
 
 const Bronze = css`
   height: 16px;
-  width: calc(100% + 10px);
   margin: 8px 0 0 0;
   background-color: var(--ui-03);
   display: flex;
@@ -16,6 +15,7 @@ const Bronze = css`
   color: var(--text-04);
   font-size: 8px;
   border-radius: 4px;
+  width: ${(props) => (props?.expanded ? "178px" : "36px")};
   position: relative;
   &::before {
     content: "";
@@ -27,7 +27,6 @@ const Bronze = css`
     left: 50%;
     transform: translateX(-50%);
   }
-  width: ${(props) => (props?.expanded ? "178px" : "36px")};
   transition: width 0.3s ease-in-out;
 `;
 

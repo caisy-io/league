@@ -122,7 +122,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
           )}
         </Tooltip>
       </SOrganizationSelectMenu>
-      <EnviromentIcon expanded={expanded} />
+      <EnviromentIcon />
     </>
   );
 };
