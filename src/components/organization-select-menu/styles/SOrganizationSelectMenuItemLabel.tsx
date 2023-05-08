@@ -9,6 +9,7 @@ const Bronze = css`
   line-height: 16px;
   color: #172c55;
   margin-left: 8px;
+  white-space: nowrap;
 `;
 
 const Silver = css``;
