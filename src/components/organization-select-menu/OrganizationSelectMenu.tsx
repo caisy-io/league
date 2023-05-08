@@ -6,6 +6,9 @@ import { OrganizationSelectMenuItemEmpty } from "./OrganizationSelectMenuItemEmp
 import { SOrganizationSelectMenu } from "./styles/SOrganizationSelectMenu";
 import { SOrganizationSelectMenuEnviroment } from "./styles/SOrganizationSelectMenuEnviroment";
 import { SOrganizationSelectMenuItemOrganization } from "./styles/SOrganizationSelectMenuItemOrganization";
+import { SOrganizationSelectMenuItemLabel } from "./styles/SOrganizationSelectMenuItemLabel";
+import { SOrganizationSelectMenuItemLabelHolder } from "./styles/SOrganizationSelectMenuItemLabelHolder";
+import { Divider } from "../divider";
 
 interface IOrganizationSelectMenuItem {
   logoAssetUrl?: string;
@@ -26,6 +29,7 @@ interface IOrganizationSelectMenu {
   groupTooltip?: ReactNode | string;
   projectTooltip?: ReactNode | string;
   disableTooltips?: boolean;
+  expanded?: boolean;
 }
 
 export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
@@ -37,66 +41,88 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
   groupTooltip,
   projectTooltip,
   disableTooltips,
+  expanded,
 }) => {
-  const EnviromentIcon = () => {
+  const EnviromentIcon: any = () => {
     return enviroment && typeof enviroment.name === "string" ? (
-      <SOrganizationSelectMenuEnviroment>{enviroment.name.slice(0, 2).toUpperCase()}</SOrganizationSelectMenuEnviroment>
+      <SOrganizationSelectMenuEnviroment expanded={expanded}>
+        {enviroment.name.slice(0, 2).toUpperCase()}
+      </SOrganizationSelectMenuEnviroment>
     ) : null;
   };
 
   return (
-    <SOrganizationSelectMenu>
-      <SOrganizationSelectMenuItemOrganization>
+    <>
+      <SOrganizationSelectMenu expanded={expanded}>
+        <SOrganizationSelectMenuItemOrganization>
+          <Tooltip
+            disabled={disableTooltips}
+            disableTriangle
+            color="black"
+            content={organizationTooltip || "switch organization"}
+            placement="right"
+            delay={300}
+          >
+            {organization?.name ? (
+              <>
+                <OrganizationSelectMenuItem menuItem={organization} typeOrganization />
+              </>
+            ) : (
+              <OrganizationSelectMenuItemEmpty typeOrganization>
+                <IconBriefcase size={12} />
+              </OrganizationSelectMenuItemEmpty>
+            )}
+          </Tooltip>
+        </SOrganizationSelectMenuItemOrganization>
         <Tooltip
           disabled={disableTooltips}
           disableTriangle
           color="black"
-          content={organizationTooltip || "switch organization"}
+          content={groupTooltip || "switch group"}
           placement="right"
           delay={300}
         >
-          {organization?.name ? (
-            <OrganizationSelectMenuItem menuItem={organization} typeOrganization />
+          {group?.name ? (
+            <SOrganizationSelectMenuItemLabelHolder expanded={expanded}>
+              <OrganizationSelectMenuItem menuItem={group} />
+              {expanded && <SOrganizationSelectMenuItemLabel> {group?.name}</SOrganizationSelectMenuItemLabel>}
+            </SOrganizationSelectMenuItemLabelHolder>
           ) : (
-            <OrganizationSelectMenuItemEmpty typeOrganization>
-              <IconBriefcase size={12} />
-            </OrganizationSelectMenuItemEmpty>
+            <SOrganizationSelectMenuItemLabelHolder expanded={expanded}>
+              <OrganizationSelectMenuItemEmpty>
+                <IconItemsGroup size={16} />
+              </OrganizationSelectMenuItemEmpty>
+              {expanded && <SOrganizationSelectMenuItemLabel>{"Group name"}</SOrganizationSelectMenuItemLabel>}
+            </SOrganizationSelectMenuItemLabelHolder>
           )}
         </Tooltip>
-      </SOrganizationSelectMenuItemOrganization>
-      <Tooltip
-        disabled={disableTooltips}
-        disableTriangle
-        color="black"
-        content={groupTooltip || "switch group"}
-        placement="right"
-        delay={300}
-      >
-        {group?.name ? (
-          <OrganizationSelectMenuItem menuItem={group} />
-        ) : (
-          <OrganizationSelectMenuItemEmpty>
-            <IconItemsGroup size={16} />
-          </OrganizationSelectMenuItemEmpty>
-        )}
-      </Tooltip>
-      <Tooltip
-        disabled={disableTooltips}
-        disableTriangle
-        color="black"
-        content={projectTooltip || "switch project"}
-        placement="right"
-        delay={300}
-      >
-        {project?.name ? (
-          <OrganizationSelectMenuItem menuItem={project} />
-        ) : (
-          <OrganizationSelectMenuItemEmpty>
-            <IconProjectsFolder size={16} />
-          </OrganizationSelectMenuItemEmpty>
-        )}
-      </Tooltip>
-      <EnviromentIcon />
-    </SOrganizationSelectMenu>
+        <div style={{ marginLeft: "auto" }}>
+          <Divider width={expanded ? 135 : 28} height={1} orientation={"right"} marginBottom={-1} marginTop={1} />
+        </div>
+        <Tooltip
+          disabled={disableTooltips}
+          disableTriangle
+          color="black"
+          content={projectTooltip || "switch project"}
+          placement="right"
+          delay={300}
+        >
+          {project?.name ? (
+            <SOrganizationSelectMenuItemLabelHolder expanded={expanded}>
+              <OrganizationSelectMenuItem menuItem={project} />
+              {expanded && <SOrganizationSelectMenuItemLabel> {project?.name}</SOrganizationSelectMenuItemLabel>}
+            </SOrganizationSelectMenuItemLabelHolder>
+          ) : (
+            <SOrganizationSelectMenuItemLabelHolder expanded={expanded}>
+              <OrganizationSelectMenuItemEmpty>
+                <IconProjectsFolder size={16} />
+              </OrganizationSelectMenuItemEmpty>
+              {expanded && <SOrganizationSelectMenuItemLabel>{"Project name"}</SOrganizationSelectMenuItemLabel>}
+            </SOrganizationSelectMenuItemLabelHolder>
+          )}
+        </Tooltip>
+      </SOrganizationSelectMenu>
+      <EnviromentIcon expanded={expanded} />
+    </>
   );
 };
