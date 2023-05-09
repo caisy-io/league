@@ -86,9 +86,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
             <SOrganizationSelectMenuItemLabelHolder expanded={expanded}>
               <OrganizationSelectMenuItem menuItem={group} />
               {expanded && (
-                <SOrganizationSelectMenuItemLabel expanded={expanded}>
-                  TOO BIG OF A NAME TO BE CONTAINED
-                </SOrganizationSelectMenuItemLabel>
+                <SOrganizationSelectMenuItemLabel expanded={expanded}>{group?.name}</SOrganizationSelectMenuItemLabel>
               )}
             </SOrganizationSelectMenuItemLabelHolder>
           ) : (
@@ -117,10 +115,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
             <SOrganizationSelectMenuItemLabelHolder expanded={expanded}>
               <OrganizationSelectMenuItem menuItem={project} />
               {expanded && (
-                <SOrganizationSelectMenuItemLabel expanded={expanded}>
-                  {" "}
-                  TOO BIG OF A NAME TO BE CONTAINED
-                </SOrganizationSelectMenuItemLabel>
+                <SOrganizationSelectMenuItemLabel expanded={expanded}>{project?.name}</SOrganizationSelectMenuItemLabel>
               )}
             </SOrganizationSelectMenuItemLabelHolder>
           ) : (
