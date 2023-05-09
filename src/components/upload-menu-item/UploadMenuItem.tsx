@@ -1,9 +1,6 @@
 import React from "react";
 import { css } from "styled-components";
-import {
-  IconCheckmarkSolid,
-  //  IconUpload
-} from "../../icons";
+import { IconCheckmarkSolid, IconUpload } from "../../icons";
 import { Badge } from "../badge/Badge";
 import { EBadgePosition } from "../badge/EBadgePosition";
 import { SBadgeIcon } from "../badge/styles/SBadgeIcon";
@@ -11,9 +8,7 @@ import LoadingBorderIcon from "./icons/LoadingBorderIcon";
 import { SLoadingBorderWrapper } from "./styles/SLoadingBorderWrapper";
 import { SLoadingIconWrapper } from "./styles/SLoadingIconWrapper";
 import { SUploadMenuItem } from "./styles/SUploadMenuItem";
-// import { SUploadMenuItemLabel } from "./styles/SUploadMenuItemLabel";
 import { SUploadMenuItemWrapper } from "./styles/SUploadMenuItemWrapper";
-import { NewUploadIcon } from "../../icons/IconNewUpload";
 
 type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "activated";
 
@@ -67,8 +62,8 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({
             type={"important"}
           ></Badge>
         )}
-        {(state == "default" || state == "activated") && <NewUploadIcon />}
-        {state == "default" || (state == "dragging" && !itemCount && <NewUploadIcon />)}
+        {(state == "default" || state == "activated") && <IconUpload />}
+        {state == "default" || (state == "dragging" && !itemCount && <IconUpload />)}
         {state == "success" && <IconCheckmarkSolid size={20} />}
         {state == "loading" && (
           <SLoadingIconWrapper>
@@ -85,7 +80,6 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({
           </SLoadingIconWrapper>
         )}
       </SUploadMenuItem>
-      {/* <SUploadMenuItemLabel state={state}>{children}</SUploadMenuItemLabel> */}
     </SUploadMenuItemWrapper>
   );
 };

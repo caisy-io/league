@@ -1,4 +1,4 @@
 {
   "extends": "@caisy/eslint-config-caisy",
-  "rules": { "linebreak-style": ["error", "windows"] }
+  "rules": { "linebreak-style": 0 }
 }
