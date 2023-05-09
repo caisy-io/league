@@ -1,6 +1,9 @@
 import React from "react";
 import { css } from "styled-components";
-import { IconCheckmarkSolid, IconUpload } from "../../icons";
+import {
+  IconCheckmarkSolid,
+  //  IconUpload
+} from "../../icons";
 import { Badge } from "../badge/Badge";
 import { EBadgePosition } from "../badge/EBadgePosition";
 import { SBadgeIcon } from "../badge/styles/SBadgeIcon";
@@ -8,8 +11,9 @@ import LoadingBorderIcon from "./icons/LoadingBorderIcon";
 import { SLoadingBorderWrapper } from "./styles/SLoadingBorderWrapper";
 import { SLoadingIconWrapper } from "./styles/SLoadingIconWrapper";
 import { SUploadMenuItem } from "./styles/SUploadMenuItem";
-import { SUploadMenuItemLabel } from "./styles/SUploadMenuItemLabel";
+// import { SUploadMenuItemLabel } from "./styles/SUploadMenuItemLabel";
 import { SUploadMenuItemWrapper } from "./styles/SUploadMenuItemWrapper";
+import { NewUploadIcon } from "../../icons/IconNewUpload";
 
 type TUploadMenuItemStatus = "default" | "dragging" | "loading" | "success" | "hover" | "activated";
 
@@ -18,10 +22,16 @@ interface IUploadMenuItem {
   state?: TUploadMenuItemStatus;
   percentageLoaded?: number;
   itemCount?: number;
-  children?
+  children?;
 }
 
-export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ state, percentageLoaded, itemCount, onClick, children }) => {
+export const UploadMenuItem: React.FC<IUploadMenuItem> = ({
+  state,
+  percentageLoaded,
+  itemCount,
+  onClick,
+  children,
+}) => {
   const loadingPercentage = percentageLoaded ? (percentageLoaded < 100 ? percentageLoaded : 100) : 0;
 
   const handleClick = (e) => {
@@ -30,15 +40,15 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ state, percentageLoa
   };
 
   const SDraggingBadge = css`
-  ${SBadgeIcon}{
-    background-color: var(--ui-supportive-06);
-  }
-`;
+    ${SBadgeIcon} {
+      background-color: var(--ui-supportive-06);
+    }
+  `;
   const SLoadingBadge = css`
-  ${SBadgeIcon}{
-    background-color: var(--icon-07);
-  }
-`;
+    ${SBadgeIcon} {
+      background-color: var(--icon-07);
+    }
+  `;
 
   return (
     <SUploadMenuItemWrapper
@@ -47,23 +57,35 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({ state, percentageLoa
       state={state}
       onClick={handleClick}
     >
-      <SUploadMenuItem state={state} >
-        {(state == "dragging" && itemCount) && <Badge size={"small"} value={`${itemCount}`} styleOverwrite={SDraggingBadge} position={EBadgePosition.Center} type={"important"}></Badge>}
-        {(state == "default" || state == "activated") && <IconUpload size={20} />}
-        {state == "default" || (state == "dragging" && !itemCount) && <IconUpload size={20} />}
+      <SUploadMenuItem state={state}>
+        {state == "dragging" && itemCount && (
+          <Badge
+            size={"small"}
+            value={`${itemCount}`}
+            styleOverwrite={SDraggingBadge}
+            position={EBadgePosition.Center}
+            type={"important"}
+          ></Badge>
+        )}
+        {(state == "default" || state == "activated") && <NewUploadIcon />}
+        {state == "default" || (state == "dragging" && !itemCount && <NewUploadIcon />)}
         {state == "success" && <IconCheckmarkSolid size={20} />}
         {state == "loading" && (
           <SLoadingIconWrapper>
             <SLoadingBorderWrapper percentageLoaded={loadingPercentage}>
               <LoadingBorderIcon />
             </SLoadingBorderWrapper>
-            <Badge size={"small"} value={`${itemCount}`} styleOverwrite={SLoadingBadge} position={EBadgePosition.Center} type={"important"}></Badge>
+            <Badge
+              size={"small"}
+              value={`${itemCount}`}
+              styleOverwrite={SLoadingBadge}
+              position={EBadgePosition.Center}
+              type={"important"}
+            ></Badge>
           </SLoadingIconWrapper>
         )}
       </SUploadMenuItem>
-      <SUploadMenuItemLabel state={state}>
-        {children}
-      </SUploadMenuItemLabel>
+      {/* <SUploadMenuItemLabel state={state}>{children}</SUploadMenuItemLabel> */}
     </SUploadMenuItemWrapper>
   );
 };
