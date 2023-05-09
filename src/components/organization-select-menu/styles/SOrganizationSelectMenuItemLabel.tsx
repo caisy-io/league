@@ -10,7 +10,7 @@ opacity: 1;
   }
 `;
 
-const Bronze = css`
+const Bronze = css<{ expanded?: boolean }>`
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
@@ -18,8 +18,8 @@ const Bronze = css`
   line-height: 16px;
   color: #172c55;
   margin-left: 8px;
-  white-space: nowrap;
-  animation: ${fadeIn} 0.5s ease-in-out;
+  animation: ${fadeIn} 0.8s ease-in-out;
+  ${(props) => (!props.expanded ? "width:0px" : "width: 135px")};
 `;
 
 const Silver = css``;

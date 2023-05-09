@@ -85,14 +85,20 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
           {group?.name ? (
             <SOrganizationSelectMenuItemLabelHolder expanded={expanded}>
               <OrganizationSelectMenuItem menuItem={group} />
-              {expanded && <SOrganizationSelectMenuItemLabel> {group?.name}</SOrganizationSelectMenuItemLabel>}
+              {expanded && (
+                <SOrganizationSelectMenuItemLabel expanded={expanded}>
+                  TOO BIG OF A NAME TO BE CONTAINED
+                </SOrganizationSelectMenuItemLabel>
+              )}
             </SOrganizationSelectMenuItemLabelHolder>
           ) : (
             <SOrganizationSelectMenuItemLabelHolder expanded={expanded}>
               <OrganizationSelectMenuItemEmpty>
                 <IconItemsGroup size={16} />
               </OrganizationSelectMenuItemEmpty>
-              {expanded && <SOrganizationSelectMenuItemLabel>{"Group name"}</SOrganizationSelectMenuItemLabel>}
+              {expanded && (
+                <SOrganizationSelectMenuItemLabel expanded={expanded}>{"Group name"}</SOrganizationSelectMenuItemLabel>
+              )}
             </SOrganizationSelectMenuItemLabelHolder>
           )}
         </Tooltip>
@@ -110,14 +116,23 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
           {project?.name ? (
             <SOrganizationSelectMenuItemLabelHolder expanded={expanded}>
               <OrganizationSelectMenuItem menuItem={project} />
-              {expanded && <SOrganizationSelectMenuItemLabel> {project?.name}</SOrganizationSelectMenuItemLabel>}
+              {expanded && (
+                <SOrganizationSelectMenuItemLabel expanded={expanded}>
+                  {" "}
+                  TOO BIG OF A NAME TO BE CONTAINED
+                </SOrganizationSelectMenuItemLabel>
+              )}
             </SOrganizationSelectMenuItemLabelHolder>
           ) : (
             <SOrganizationSelectMenuItemLabelHolder expanded={expanded}>
               <OrganizationSelectMenuItemEmpty>
                 <IconProjectsFolder size={16} />
               </OrganizationSelectMenuItemEmpty>
-              {expanded && <SOrganizationSelectMenuItemLabel>{"Project name"}</SOrganizationSelectMenuItemLabel>}
+              {expanded && (
+                <SOrganizationSelectMenuItemLabel expanded={expanded}>
+                  {"Project name"}
+                </SOrganizationSelectMenuItemLabel>
+              )}
             </SOrganizationSelectMenuItemLabelHolder>
           )}
         </Tooltip>
