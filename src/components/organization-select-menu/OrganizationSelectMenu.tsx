@@ -101,7 +101,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
           )}
         </Tooltip>
         <div style={{ marginLeft: "auto" }}>
-          <Divider width={expanded ? 135 : 28} height={1} orientation={"right"} marginBottom={-1} marginTop={1} />
+          <Divider width={expanded ? 90 : 28} height={1} orientation={"right"} marginBottom={-1} marginTop={1} />
         </div>
         <Tooltip
           disabled={disableTooltips}

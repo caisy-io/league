@@ -15,7 +15,7 @@ const Bronze = css`
   color: var(--text-04);
   font-size: 8px;
   border-radius: 4px;
-  width: ${(props) => (props?.expanded ? "178px" : "36px")};
+  width: ${(props) => (props?.expanded ? "135px" : "36px")};
   position: relative;
   &::before {
     content: "";

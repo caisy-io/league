@@ -16,9 +16,12 @@ const Bronze = css`
   padding: 5px;
   width: fit-content;
   position: relative;
-  box-shadow: 0px 8px 24px rgba(184, 184, 184, 0.24);
-  width: ${(props) => (props.expanded ? "168px" : "27px")};
+
+  width: ${(props) => (props.expanded ? "123px" : "27px")};
   transition: width 0.3s ease-in-out;
+  &:hover {
+    box-shadow: 0px 8px 16px rgba(184, 184, 184, 0.24);
+  }
 `;
 
 const Silver = css``;

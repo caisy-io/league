@@ -19,7 +19,11 @@ const Bronze = css<{ expanded?: boolean }>`
   color: #172c55;
   margin-left: 8px;
   animation: ${fadeIn} 0.8s ease-in-out;
-  ${(props) => (!props.expanded ? "width:0px" : "width: 135px")};
+  ${(props) => (!props.expanded ? "width:0px" : "width: 92px")};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
 `;
 
 const Silver = css``;
