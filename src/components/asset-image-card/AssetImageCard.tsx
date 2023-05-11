@@ -12,11 +12,10 @@ interface IAssetImageCard {
   size?: IAssetImageCardSizeType;
   labelText?: string;
   activated?: boolean;
-  onChange: (e: Event) => void,
+  onChange?: (e: Event) => void,
 }
 
 export const AssetImageCard: React.FC<IAssetImageCard> = ({ labelText, size, image, activated, onChange }) => {
-
   return (
     <SAssetImageCard size={size} activated={activated}>
       <SAssetImage>{image}</SAssetImage>

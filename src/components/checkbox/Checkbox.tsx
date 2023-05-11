@@ -6,7 +6,7 @@ import { SCustomCheckbox } from './styles/SCustomCheckbox';
 interface ICheckboxProps {
   loading?: boolean,
   checked?: boolean,
-  onChange: (e: Event) => void,
+  onChange?: (e: Event) => void,
 }
 
 export const Checkbox: React.FC<ICheckboxProps> = ({ loading, checked, onChange }) => {

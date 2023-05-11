@@ -1,11 +1,6 @@
 import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
-const CSSSmall = css`
-  height: 10.5rem;
-  width: 7.5rem;
-`;
-
 const CSSActivated = css`
   border: 1px solid #E8EFF3;
 `;
@@ -17,8 +12,9 @@ const Bronze = css`
   flex-direction: column;
   box-sizing: border-box;
   border: 1px solid #E8EFF3;
-  height: 14.25rem;
-  width: 15rem;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   justify-content: space-between;
   transition: 0.15s border ease-in;
   &: hover{
@@ -31,7 +27,6 @@ const Bronze = css`
     border: 1px solid #C3D1D9;
     box-shadow: none;
   }
-  ${(props) => props.size == "small" ? CSSSmall : ''};
   ${(props) => props.activated ? CSSActivated : ''};
 `;
 

@@ -68,7 +68,7 @@ const customViewports = {
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
-  viewport: { viewports: customViewports, defaultViewport: "xl" },
+  viewport: { viewports: customViewports, defaultViewport: "Gold" },
   backgrounds: {
     values: [
       { name: "Light", value: "#F8F8F8" },
