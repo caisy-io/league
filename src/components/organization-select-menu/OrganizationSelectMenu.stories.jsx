@@ -4,17 +4,17 @@ import sampleGroup from "./sampleGroup.png";
 
 const defaultGroup = {
   name: "Leicht",
-  logoAssetUrl: sampleGroup
+  logoAssetUrl: sampleGroup,
 };
 
 const defaultOrganization = {
   name: "Caisy",
   logoAssetUrl:
-    "https://assets.caisy.io/asset/9aff2246-1dd1-44a7-ad8d-47feaaa1cce9/bbf6fabc3fd88c4c854aa6877fd9366f/CAISY_ICON.svg?w=800"
+    "https://assets.caisy.io/asset/9aff2246-1dd1-44a7-ad8d-47feaaa1cce9/bbf6fabc3fd88c4c854aa6877fd9366f/CAISY_ICON.svg?w=800",
 };
 
 const defaultProject = {
-  name: "TProject"
+  name: "TProject",
 };
 
 const defaultEnviroment = {
@@ -27,7 +27,7 @@ export default {
   component: OrganizationSelectMenu,
 };
 
-function OrganizationSelectMenuDemo({ content, ...args }) {
+function OrganizationSelectMenuDemo({ ...args }) {
   return <OrganizationSelectMenu {...args} />;
 }
 
@@ -66,4 +66,13 @@ WithoutGroupOrEnv.args = {
   organization: undefined,
   project: undefined,
   groups: undefined,
+  expanded: true,
+};
+export const Expanded = Template.bind({});
+Expanded.args = {
+  organization: defaultOrganization,
+  enviroment: defaultEnviroment,
+  project: defaultProject,
+  group: defaultGroup,
+  expanded: true,
 };

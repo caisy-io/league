@@ -1,3 +1,4 @@
+import { ExpandArrows } from "./IconExpandArrows";
 export { IconDragable } from "./IconDragable";
 export { IconEyeHidden } from "./IconEyeHidden";
 export { IconEye } from "./IconEye";
@@ -277,3 +278,4 @@ export { IconCodeBlock } from "./IconCodeBlock";
 export { IconDocumentMissing } from "./IconDocumentMissing";
 export { IconAlarmClockTimeFast } from "./IconAlarmClockTimeFast";
 export { IconAnalyticsChartSquare } from "./IconAnalyticsChartSquare";
+export { ExpandArrows } from "./IconExpandArrows";

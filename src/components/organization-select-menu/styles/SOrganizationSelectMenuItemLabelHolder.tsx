@@ -1,12 +1,10 @@
 import styled, { css } from "styled-components";
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  position: absolute;
-  top: -7px;
-  left: 27px;
-  z-index: 1000;
-  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.2));
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 const Silver = css``;
@@ -17,7 +15,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SOrganizationSelectMenuItemOrganization = styled.div`
+export const SOrganizationSelectMenuItemLabelHolder = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
