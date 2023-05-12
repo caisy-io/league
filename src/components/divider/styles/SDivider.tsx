@@ -19,7 +19,6 @@ const Bronze = css<ISDivider>`
   text-align: center;
   border-top: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
-  transition: width 0.3s ease-in-out;
 
   ${(props) => props.dashed && "border-top: 1px dashed rgba(0, 0, 0, 0.06);"}
 

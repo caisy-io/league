@@ -27,7 +27,6 @@ const Bronze = css`
     left: 50%;
     transform: translateX(-50%);
   }
-  transition: width 0.3s ease-in-out;
 `;
 
 const Silver = css``;

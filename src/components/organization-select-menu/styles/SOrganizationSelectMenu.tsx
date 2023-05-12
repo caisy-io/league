@@ -18,7 +18,7 @@ const Bronze = css`
   position: relative;
 
   width: ${(props) => (props.expanded ? "123px" : "27px")};
-  transition: width 0.3s ease-in-out;
+
   &:hover {
     box-shadow: 0px 8px 16px rgba(184, 184, 184, 0.24);
   }

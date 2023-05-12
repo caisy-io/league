@@ -12,6 +12,7 @@ interface IMainMenu {
   footerNavigationContainer?: React.ReactElement;
   uploadContainer?: React.ReactElement;
   style?: React.CSSProperties;
+  expanded?: boolean;
 }
 
 export const MainMenu: React.FC<IMainMenu> = ({ ...props }) => {
@@ -30,7 +31,7 @@ export const MainMenu: React.FC<IMainMenu> = ({ ...props }) => {
   };
 
   return (
-    <SMainMenu style={props.style}>
+    <SMainMenu style={props.style} expanded={props?.expanded}>
       <Logo />
       <MainMenuInnerComponent innerComponent={props.organizationSelectMenuContainer} />
       <SMainMenuDivider />
