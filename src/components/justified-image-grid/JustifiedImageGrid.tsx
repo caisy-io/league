@@ -4,10 +4,25 @@ import { VariableSizeList, areEqual } from "react-window";
 import { AssetImageCard } from "../asset-image-card";
 import { generateRows } from "./generateRows";
 import { SJustifiedImageGridCell } from "./styles/SJustifiedImageGridCell";
-import { AVG_ROW_HEIGHT, IMAGE_LABEL_HEIGHT, PADDING_BETWEEN_IMAGES, TOTAL_WIDTH_OF_VIEW } from "./constants";
-import { IJustifiedImageGrid } from "./types";
+import {
+  AVG_IMAGE_WIDTH,
+  AVG_ROW_HEIGHT,
+  IMAGE_LABEL_HEIGHT,
+  MAX_IMAGES_PER_ROW,
+  MAX_WIDTH_OF_IMAGE,
+  MIN_IMAGES_PER_ROW,
+  MIN_WIDTH_OF_IMAGE,
+  PADDING_BETWEEN_IMAGES,
+  PADDING_BETWEEN_ROWS,
+  ROW_MAX_HEIGHT,
+  ROW_MIN_HEIGHT,
+  TOTAL_WIDTH_OF_VIEW,
+} from "./constants";
+import { IJustifiedImageGrid, IJustifiedImageGridConfigOverwrite } from "./types";
 import { SJustifiedImageGridRow } from "./styles/SJustifiedImageGridRow";
 import InfiniteLoader from "react-window-infinite-loader";
+import { AssetImageCardSkeleton } from "../asset-image-card-skeleton";
+import { IRow, IJustifiedImageGridConfig } from "./types";
 
 // CASE 1
 // grid width: 512
@@ -63,13 +78,75 @@ import InfiniteLoader from "react-window-infinite-loader";
 // min width image 398
 // max width image 942
 
-const Row: React.FC<{ data: any, index: number; style: React.CSSProperties }> = memo(({ data: rowConfigs, index, style }) => {
-  const currRow = rowConfigs[index];
-  if (currRow.__loading) {
+const getDefaultConfig = (overwriteConfig?: Partial<IJustifiedImageGridConfigOverwrite>): IJustifiedImageGridConfig => {
+  return {
+    imageLabelHeight: overwriteConfig?.imageLabelHeight || IMAGE_LABEL_HEIGHT,
+    maxImagesPerRow: overwriteConfig?.maxImagesPerRow || MAX_IMAGES_PER_ROW,
+    minImagesPerRow: overwriteConfig?.minImagesPerRow || MIN_IMAGES_PER_ROW,
+    maxWidthOfImage: overwriteConfig?.maxWidthOfImage || MAX_WIDTH_OF_IMAGE,
+    minWidthOfImage: overwriteConfig?.minWidthOfImage || MIN_WIDTH_OF_IMAGE,
+    paddingBetweenImages: overwriteConfig?.paddingBetweenImages || PADDING_BETWEEN_IMAGES,
+    paddingBetweenRows: overwriteConfig?.paddingBetweenRows || PADDING_BETWEEN_ROWS,
+    maxRowHeight: overwriteConfig?.maxRowHeight || ROW_MAX_HEIGHT,
+    minRowHeight: overwriteConfig?.minRowHeight || ROW_MIN_HEIGHT,
+    totalWidthOfView: overwriteConfig?.totalWidthOfView || TOTAL_WIDTH_OF_VIEW,
+    avgRowHeight: overwriteConfig?.avgRowHeight || AVG_ROW_HEIGHT,
+    avgImageWidth: overwriteConfig?.avgImageWidth || AVG_IMAGE_WIDTH,
+  };
+};
+
+const Row: React.FC<{
+  data: { rows: IRow[]; config: IJustifiedImageGridConfig };
+  index: number;
+  style: React.CSSProperties;
+}> = memo(({ data: { rows, config }, index, style }) => {
+  console.log(` config`, config);
+  const currRow = rows[index];
+  if (currRow.__loading == 1) {
+    const firstWidth = config.totalWidthOfView / 3.5;
+    const secondWidth = config.totalWidthOfView / 4 - 24;
+    const thirdWidth = config.totalWidthOfView - firstWidth - secondWidth - 24;
     return (
       <div style={style}>
-        <div style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <div>Loading...</div>
+        <div style={{ display: "flex", gap: "12px" }}>
+          <div style={{ width: firstWidth + "px", height: (config.avgRowHeight - 12) + "px", opacity: 0.8 }}>
+            <AssetImageCardSkeleton />
+          </div>
+          <div style={{ width: secondWidth + "px", height: (config.avgRowHeight - 12) + "px", opacity: 0.6 }}>
+            <AssetImageCardSkeleton />
+          </div>
+          <div style={{ width: thirdWidth + "px", height: (config.avgRowHeight - 12) + "px", opacity: 0.4 }}>
+            <AssetImageCardSkeleton />
+          </div>
+        </div>
+        <div style={{width: "100%", height: "12px"}}></div>
+      </div>
+    );
+  }
+  if (currRow.__loading == 2) {
+    const firstWidth = config.totalWidthOfView / 2.5;
+    const secondWidth = config.totalWidthOfView / 3.5 - 24;
+    return (
+      <div style={style}>
+        <div style={{ display: "flex", gap: "12px" }}>
+          <div
+            style={{
+              width: firstWidth + "px",
+              height: (config.avgRowHeight - 12) + "px",
+              opacity: 0.8,
+            }}
+          >
+            <AssetImageCardSkeleton />
+          </div>
+          <div
+            style={{
+              width: secondWidth + "px",
+              height: (config.avgRowHeight - 12) + "px",
+              opacity: 0.6,
+            }}
+          >
+            <AssetImageCardSkeleton />
+          </div>
         </div>
       </div>
     );
@@ -114,23 +191,34 @@ const Row: React.FC<{ data: any, index: number; style: React.CSSProperties }> = 
   );
 }, areEqual);
 
-export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({ images, groupSize,  totalCount, scrollToIndex, loadNextPage }) => {
+export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
+  images,
+  groupSize,
+  config: overwriteConfig,
+  totalCount,
+  scrollToIndex,
+  loadNextPage,
+}) => {
   const infiniteLoaderRef = React.useRef<InfiniteLoader>(null);
   const loadingRef = React.useRef<boolean>(false);
   const [loadingNextPage, setLoadingNextPage] = React.useState<boolean>(false);
-  const rowConfigs = generateRows(images, groupSize, totalCount);
+  const config = getDefaultConfig(overwriteConfig);
+  const rowConfigs = generateRows(images, groupSize, totalCount, config);
 
   if (loadingNextPage) {
     rowConfigs.push({
-      __loading: true,
+      __loading: 1,
+      images: [],
+      rowHeight: AVG_ROW_HEIGHT,
+    });
+    rowConfigs.push({
+      __loading: 2,
       images: [],
       rowHeight: AVG_ROW_HEIGHT,
     });
   }
 
   console.log("rowConfigs", rowConfigs);
-
-
 
   const isItemLoaded = (index: number) => {
     // console.log(` isItemLoaded index`, index);
@@ -169,7 +257,7 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({ images, groupSize,
             onItemsRendered={onItemsRendered}
             ref={ref}
             height={800} // For instance.
-            itemData={rowConfigs}
+            itemData={{ config, rows: rowConfigs }}
             itemCount={rowConfigs.length}
             itemSize={(index) => rowConfigs[index].rowHeight}
             width={TOTAL_WIDTH_OF_VIEW}

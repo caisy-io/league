@@ -3,16 +3,13 @@ import { SAssetImageCardSkeleton } from './styles/SAssetImageCardSkeleton';
 import { SAssetImageRadioContainer } from './styles/SAssetImageRadioContainer';
 import { SSkeleton } from '../skeleton';
 
-export const AssetImageCardSkeleton: FC<{width: number, height: number}> = ({width, height}) => {
-  console.log(` width`, width);
+export const AssetImageCardSkeleton: FC = () => {
   return (
     <SAssetImageCardSkeleton>
-      <SSkeleton width={`${width}px`} height={`${height - 40}px`} borderRadius={"0"} />
+      <SSkeleton width="100%" height={"calc(100% - 40px)"} borderRadius={"0"} />
       <SAssetImageRadioContainer>
-        <SSkeleton borderRadis={"40px"} 
-        left={"-14px"} shimmerWidth={`${width}px`} 
-        />
-        <SSkeleton width="80px" left={"-42px"} shimmerWidth={`${width}px`} />
+        <SSkeleton borderRadius="16px" />
+        <SSkeleton width="80px" borderRadius="4px" />
       </SAssetImageRadioContainer>
     </SAssetImageCardSkeleton>
   )

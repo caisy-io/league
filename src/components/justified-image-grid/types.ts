@@ -5,6 +5,7 @@ export type IJustifiedImageGrid = {
   rowHeight: number;
   totalCount?: number;
   loadNextPage: () => Promise<void> ;
+  config?: IJustifiedImageGridConfig;
 };
 
 export type Image = {
@@ -20,8 +21,38 @@ export type ResizedImage = Image & {
   newAspectRatio: number;
 };
 
-export type Row = {
+export type IRow = {
   images: ResizedImage[];
   rowHeight: number;
-  __loading?: true
+  __loading?: number
 };
+
+export type IJustifiedImageGridConfig = {
+  imageLabelHeight: number;
+  maxImagesPerRow: number;
+  maxWidthOfImage: number;
+  minImagesPerRow: number;
+  minWidthOfImage: number;
+  paddingBetweenImages: number;
+  paddingBetweenRows: number;
+  maxRowHeight: number;
+  minRowHeight: number;
+  totalWidthOfView: number;
+  avgRowHeight: number;
+  avgImageWidth: number;
+}
+
+export type IJustifiedImageGridConfigOverwrite = {
+  imageLabelHeight?: number;
+  maxImagesPerRow?: number;
+  maxWidthOfImage?: number;
+  minImagesPerRow?: number;
+  minWidthOfImage?: number;
+  paddingBetweenImages?: number;
+  paddingBetweenRows?: number;
+  maxRowHeight?: number;
+  minRowHeight?: number;
+  totalWidthOfView?: number;
+  avgRowHeight?: number;
+  avgImageWidth?: number;
+}

@@ -9,13 +9,13 @@ import {
   ROW_HEIGHT,
   TOTAL_WIDTH_OF_VIEW,
 } from "./constants";
-import { Row, ResizedImage, Image } from "./types";
+import { IRow, ResizedImage, Image, IJustifiedImageGridConfig } from "./types";
 
-export function generateRows(images: Image[], groupSize, totalCount): Row[] {
-  const rows: Row[] = [];
+export function generateRows(images: Image[], groupSize, totalCount, config: IJustifiedImageGridConfig): IRow[] {
+  const rows: IRow[] = [];
 
   let currentRow: ResizedImage[] = [];
-  let currentGroup: Row[] = [];
+  let currentGroup: IRow[] = [];
 
   let currentGroupIndex = 0;
   let currentGroupAspectRatioTotal = 0;

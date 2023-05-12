@@ -23,38 +23,39 @@ export default {
 };
 
 function AssetImageCardSkeletonDemo({ width, height }) {
-//  return <div style={{width: width+"px", height: height + "px"}}>
-//   <AssetImageCardSkeleton width={width} height={height}/>
-// </div>
+  //  return <div style={{width: width+"px", height: height + "px"}}>
+  //   <AssetImageCardSkeleton width={width} height={height}/>
+  // </div>
 
- return <div style={{display: "flex", gap: "12px", flexDirection: "column"}}>
-  <div style={{display: "flex", gap: "12px"}}>
-  <div style={{width: width+"px", height: height + "px"}}>
-   <AssetImageCardSkeleton width={width} height={height}/>
- </div>
- <div style={{width: width+"px", height: height + "px"}}>
-   <AssetImageCardSkeleton width={width} height={height}/>
- </div>
- <div style={{width: width+"px", height: height + "px"}}>
-   <AssetImageCardSkeleton width={width} height={height}/>
- </div>
-  </div>
-  <div style={{display: "flex", gap: "12px"}}>
-  <div style={{width: width+"px", height: height + "px"}}>
-   <AssetImageCardSkeleton width={width} height={height}/>
- </div>
- <div style={{width: width+"px", height: height + "px"}}>
-   <AssetImageCardSkeleton width={width} height={height}/>
- </div>
-  </div>
-</div>
+  return (
+    <div style={{ display: "flex", gap: "12px", flexDirection: "column" }}>
+      <div style={{ display: "flex", gap: "12px" }}>
+        <div style={{ width: width + "px", height: height + "px", opacity: 0.8 }}>
+          <AssetImageCardSkeleton />
+        </div>
+        <div style={{ width: width + "px", height: height + "px", opacity: 0.6 }}>
+          <AssetImageCardSkeleton />
+        </div>
+        <div style={{ width: width + "px", height: height + "px", opacity: 0.4 }}>
+          <AssetImageCardSkeleton />
+        </div>
+      </div>
+      <div style={{ display: "flex", gap: "12px" }}>
+        <div style={{ width: width + "px", height: height + "px", opacity: 0.8 }}>
+          <AssetImageCardSkeleton />
+        </div>
+        <div style={{ width: width + "px", height: height + "px", opacity: 0.6 }}>
+          <AssetImageCardSkeleton />
+        </div>
+      </div>
+    </div>
+  );
 }
 
-const Template = (args) => < AssetImageCardSkeletonDemo {...args} />;
+const Template = (args) => <AssetImageCardSkeletonDemo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   width: 300,
   height: 200,
 };
-
