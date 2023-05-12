@@ -1,6 +1,10 @@
 export type IJustifiedImageGrid = {
   images: Image[];
+  groupSize: number;
+  scrollToIndex?: number;
   rowHeight: number;
+  totalCount?: number;
+  loadNextPage: () => Promise<void> ;
 };
 
 export type Image = {
@@ -18,4 +22,6 @@ export type ResizedImage = Image & {
 
 export type Row = {
   images: ResizedImage[];
+  rowHeight: number;
+  __loading?: true
 };

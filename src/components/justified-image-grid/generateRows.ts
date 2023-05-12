@@ -5,19 +5,29 @@ import {
   MIN_IMAGES_PER_ROW,
   MIN_WIDTH_OF_IMAGE,
   PADDING_BETWEEN_IMAGES,
+  PADDING_BETWEEN_ROWS,
   ROW_HEIGHT,
   TOTAL_WIDTH_OF_VIEW,
 } from "./constants";
 import { Row, ResizedImage, Image } from "./types";
 
-export function generateRows(images: Image[]): Row[] {
+export function generateRows(images: Image[], groupSize, totalCount): Row[] {
   const rows: Row[] = [];
 
   let currentRow: ResizedImage[] = [];
+  let currentGroup: Row[] = [];
+
+  let currentGroupIndex = 0;
+  let currentGroupAspectRatioTotal = 0;
+  for (const image of images) {
+    // get the aspect ratio of the image
+    const originalAspectRatio = image.width / image.height;
+    currentGroupAspectRatioTotal = currentGroupAspectRatioTotal + originalAspectRatio;
+  }
 
   for (const image of images) {
     const originalAspectRatio = image.width / image.height;
-    const newHeight = ROW_HEIGHT - IMAGE_LABEL_HEIGHT;
+    const newHeight = ROW_HEIGHT - IMAGE_LABEL_HEIGHT - PADDING_BETWEEN_ROWS;
     let newWidth = newHeight * originalAspectRatio;
 
     if (newWidth < MIN_WIDTH_OF_IMAGE) newWidth = MIN_WIDTH_OF_IMAGE;
@@ -36,19 +46,19 @@ export function generateRows(images: Image[]): Row[] {
     const currentRowWidth = currentRow.reduce((acc, img) => acc + img.renderedWidth + PADDING_BETWEEN_IMAGES, 0);
 
     if (currentRow.length >= MIN_IMAGES_PER_ROW && currentRowWidth >= TOTAL_WIDTH_OF_VIEW) {
-      rows.push({ images: currentRow });
+      rows.push({ images: currentRow, rowHeight: ROW_HEIGHT });
       currentRow = [];
     }
 
     if (currentRow.length === MAX_IMAGES_PER_ROW) {
-      rows.push({ images: currentRow });
+      rows.push({ images: currentRow, rowHeight: ROW_HEIGHT });
       currentRow = [];
     }
   }
 
   // Add any remaining images to the last row
   if (currentRow.length > 0) {
-    rows.push({ images: currentRow });
+    rows.push({ images: currentRow, rowHeight: ROW_HEIGHT });
   }
 
   return rows;

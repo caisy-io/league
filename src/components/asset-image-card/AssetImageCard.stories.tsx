@@ -33,8 +33,7 @@ export default {
 
 function AssetImageCardDemo({ image, size, labelText, activated }) {
   const [isActivated, setIsActivated] = useState(false);
-  return <AssetImageCard activated={isActivated || activated} image={image} size={size} labelText={labelText} onChange={() => { setIsActivated(!isActivated) }}>
-  </AssetImageCard>
+  return <AssetImageCard activated={isActivated || activated} image={image} size={size} labelText={labelText} onChange={() => { setIsActivated(!isActivated) }}/>
 }
 
 const Template = (args) => < AssetImageCardDemo {...args} />;
