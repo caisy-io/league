@@ -22,6 +22,7 @@ jobs:
         uses: phips28/gh-action-bump-version@v9.0.0
         with:
           tag-prefix: "v"
+          target-branch: version-bump
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -30,4 +31,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}          
 
-        
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "version-bump"
+          destination_branch: "dev"
+          pr_title: "chore: Bump version to ${{ steps.bump-version.outputs.newVersion }}"
+          pr_body: "This PR bumps the package version to ${{ steps.bump-version.outputs.newVersion }}"
+          pr_label: "version-bump"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
