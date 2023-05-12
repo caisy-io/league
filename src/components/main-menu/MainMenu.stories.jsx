@@ -31,8 +31,8 @@ const MainNavigationContainer = () => {
 
   return (
     <div style={{ display: "flex", gap: 8, flexDirection: "column" }}>
-      {menuItems.map((item) => (
-        <MainMenuItem>{item.icon}</MainMenuItem>
+      {menuItems.map((item, index) => (
+        <MainMenuItem key={index}>{item.icon}</MainMenuItem>
       ))}
     </div>
   );
@@ -43,8 +43,8 @@ const FooterNavigationContainer = () => {
 
   return (
     <div style={{ display: "flex", gap: 8, flexDirection: "column" }}>
-      {menuItems.map((item) => (
-        <MainMenuItem>{item.icon}</MainMenuItem>
+      {menuItems.map((item, index) => (
+        <MainMenuItem key={index}>{item.icon}</MainMenuItem>
       ))}
     </div>
   );
@@ -66,7 +66,7 @@ export default {
   argTypes: {},
 };
 
-function MainMenuDemo({ content, ...args }) {
+function MainMenuDemo({ ...args }) {
   return <MainMenu {...args} />;
 }
 
@@ -77,6 +77,7 @@ export const WithoutOrgLogo = Template.bind({});
 export const WithoutMainNavigation = Template.bind({});
 export const WithoutFooterNavigation = Template.bind({});
 export const WithoutUploadContainer = Template.bind({});
+export const Expanded = Template.bind({});
 
 Default.args = {
   logoSquareAssetUrl,
@@ -112,4 +113,12 @@ WithoutUploadContainer.args = {
   organizationSelectMenuContainer: <OrganizationSelectMenuContainer />,
   mainNavigationContainer: <MainNavigationContainer />,
   footerNavigationContainer: <FooterNavigationContainer />,
+};
+
+Expanded.args = {
+  logoSquareAssetUrl,
+  organizationSelectMenuContainer: <OrganizationSelectMenuContainer />,
+  mainNavigationContainer: <MainNavigationContainer />,
+  footerNavigationContainer: <FooterNavigationContainer />,
+  expanded: true,
 };
