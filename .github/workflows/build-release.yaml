@@ -10,15 +10,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
       - uses: borales/actions-yarn@v3.0.0
         with:
           cmd: install # will run `yarn install` command
       - uses: borales/actions-yarn@v3.0.0
         name: Run yarn build
         with:
-          cmd: build 
-      - uses: mikeal/merge-release@master
-        name: release and publish npm
+          cmd: build
+      - name: Determine next version
+        id: next_version
+        uses: phips28/gh-action-bump-version@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        with:
+          tag-prefix: v
+          skip-tag: 'true'
+      - name: Update package version
+        run: |
+          echo "Next version: ${NEXT_VERSION}"
+          yarn version --new-version ${NEXT_VERSION} --no-git-tag-version
+        env:
+          NEXT_VERSION: ${{ steps.next_version.outputs.new_version }}
+      - uses: borales/actions-yarn@v3.0.0
+        name: Publish to NPM
+        with:
+          cmd: publish
+          args: --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
