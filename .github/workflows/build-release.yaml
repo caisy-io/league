@@ -36,9 +36,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag-prefix: v
-          skip-tag: 'true'
-          skip-commit: 'true'
-          # skip-push:  'false'
+          # skip-tag: 'false'
+          # skip-commit: 'false'
       - uses: borales/actions-yarn@v4
         name: Publish to NPM
         with:
@@ -59,7 +58,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git add package.json
-          git commit -m "chore: version bump to ${NEXT_VERSION}"
-          git push --set-upstream origin "version-bump" --force
           gh pr create --base dev --head "version-bump" --title "chore: version bump to ${NEXT_VERSION}" --body "This PR bumps the package version to ${NEXT_VERSION}."
