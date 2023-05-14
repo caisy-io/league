@@ -16,7 +16,7 @@ jobs:
       - uses: borales/actions-yarn@v3.0.0
         name: Run yarn build
         with:
-          cmd: build # will run `yarn build` command
+          cmd: build 
       - name: Semantic Release
         run: npx semantic-release
         env:
