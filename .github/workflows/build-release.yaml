@@ -30,7 +30,8 @@ jobs:
         name: Publish to NPM
         with:
           cmd: publish
-          args: --access public
+          args: --access public  --new-version ${NEXT_VERSION}
         env:
+          NEXT_VERSION: ${{ steps.next_version.outputs.newTag }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
