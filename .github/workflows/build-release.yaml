@@ -30,7 +30,7 @@ jobs:
         with:
           tag-prefix: v
           skip-tag: 'true'
-          # skip-commit:  'false'
+          skip-commit: 'true'
           # skip-push:  'false'
       - uses: borales/actions-yarn@v4
         name: Publish to NPM
