@@ -54,6 +54,8 @@ jobs:
         run: |
           git config --global user.email "github-action-bot@example.com"
           git config --global user.name "GitHub Action Bot"
+          git fetch origin version-bump
+          git pull origin version-bump
           git checkout -b "version-bump"
           git add package.json
           git commit -m "chore: version bump to ${NEXT_VERSION}"
