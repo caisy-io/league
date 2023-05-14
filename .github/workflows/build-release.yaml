@@ -17,8 +17,8 @@ jobs:
         name: Run yarn build
         with:
           cmd: build 
-      - name: Semantic Release
-        run: npx semantic-release
+      - uses: mikeal/merge-release@master
+        name: release and publish npm
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
