@@ -18,13 +18,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          get fetch --all || true
-          git pull || true
+          git branch -d version-bump || true
           git config --global user.email "github-action-bot@example.com"
           git config --global user.name "GitHub Action Bot"
-          git checkout version-bump || git checkout -b version-bump
-          git pull
-          git merge dev --allow-unrelated-histories
+          git checkout -b version-bump
       - uses: borales/actions-yarn@v4
         with:
           cmd: install # will run `yarn install` command
@@ -64,5 +61,5 @@ jobs:
         run: |
           git add package.json
           git commit -m "chore: version bump to ${NEXT_VERSION}"
-          git push --set-upstream origin "version-bump"
+          git push --set-upstream origin "version-bump" --force --allow-unrelated-histories
           gh pr create --base dev --head "version-bump" --title "chore: version bump to ${NEXT_VERSION}" --body "This PR bumps the package version to ${NEXT_VERSION}."
