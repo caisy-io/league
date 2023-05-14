@@ -10,11 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - name: Set Node.js 16.x
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
+      - name: Checkout branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "github-action-bot@example.com"
+          git config --global user.name "GitHub Action Bot"
+          git checkout version-bump
+          git pull
+          git merge dev
       - uses: borales/actions-yarn@v4
         with:
           cmd: install # will run `yarn install` command
@@ -52,11 +60,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.email "github-action-bot@example.com"
-          git config --global user.name "GitHub Action Bot"
-          git fetch origin version-bump
-          git pull origin version-bump
-          git checkout -b "version-bump"
           git add package.json
           git commit -m "chore: version bump to ${NEXT_VERSION}"
           git push --set-upstream origin "version-bump"
