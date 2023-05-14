@@ -20,7 +20,7 @@ jobs:
         run: |
           git config --global user.email "github-action-bot@example.com"
           git config --global user.name "GitHub Action Bot"
-          git checkout version-bump
+          git checkout version-bump || git checkout -b version-bump
           git pull
           git merge dev
       - uses: borales/actions-yarn@v4
