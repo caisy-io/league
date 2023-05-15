@@ -22,6 +22,7 @@ jobs:
           git config --global user.email "github-action-bot@example.com"
           git config --global user.name "GitHub Action Bot"
           git checkout -b version-bump
+          git pull origin version-bump || true
       - uses: borales/actions-yarn@v4
         with:
           cmd: install # will run `yarn install` command
