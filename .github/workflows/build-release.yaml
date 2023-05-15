@@ -36,6 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag-prefix: v
+          target-branch: 'version-bump'
           # skip-tag: 'false'
           # skip-commit: 'false'
       - uses: borales/actions-yarn@v4
