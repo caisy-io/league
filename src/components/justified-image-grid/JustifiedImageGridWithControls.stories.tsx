@@ -93,7 +93,7 @@ Default.args = {
 };
 
 export default {
-  title: `Components/JustifiedImageGrid`,
+  title: `Components/JustifiedImageGrid/Controls`,
   component: JustifiedImageGridDemo,
   argTypes: {
     totalCount: {
