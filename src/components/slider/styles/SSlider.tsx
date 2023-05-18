@@ -30,7 +30,7 @@ const Bronze = css<{ value: number }>`
     background: var(--ui-04);
     border-radius: 50%;
     position: absolute;
-    cursor: pointer;
+    cursor: col-resize;
     pointer-events: none;
     top: 50%;
     left: 0;
