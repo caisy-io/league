@@ -8,8 +8,10 @@ import { IconLink, IconBoolean, IconAttachmentSquare, IconCode } from "../../ico
 
 const logoSquareAssetUrl =
   "https://assets.caisy.io/asset/9aff2246-1dd1-44a7-ad8d-47feaaa1cce9/bbf6fabc3fd88c4c854aa6877fd9366f/CAISY_ICON.svg";
+const fullLogoAssetUrl =
+  "https://assets.caisy.io/asset/1bcdc513-e692-4fe8-abaa-21ca6335036c/e5cb239884df56d2897e9bb37d16625d/CAISY_FULL.svg";
 
-const OrganizationSelectMenuContainer = () => {
+const OrganizationSelectMenuContainer = ({ ...props }) => {
   const defaultGroup = {
     name: "Leicht",
     logoAssetUrl: sampleOrgLogo,
@@ -23,28 +25,40 @@ const OrganizationSelectMenuContainer = () => {
     name: "TEnviroment",
   };
 
-  return <OrganizationSelectMenu group={defaultGroup} project={defaultProject} enviroment={defaultEnviroment} />;
+  return (
+    <OrganizationSelectMenu group={defaultGroup} project={defaultProject} enviroment={defaultEnviroment} {...props} />
+  );
 };
 
-const MainNavigationContainer = () => {
-  const menuItems = [{ icon: <IconLink /> }, { icon: <IconBoolean /> }];
+const MainNavigationContainer = ({ ...props }) => {
+  const menuItems = [
+    { icon: <IconLink />, itemText: "label1" },
+    { icon: <IconBoolean />, itemText: "label2" },
+  ];
 
   return (
     <div style={{ display: "flex", gap: 8, flexDirection: "column" }}>
       {menuItems.map((item, index) => (
-        <MainMenuItem key={index}>{item.icon}</MainMenuItem>
+        <MainMenuItem key={index} itemText={item.itemText} {...props}>
+          {item.icon}
+        </MainMenuItem>
       ))}
     </div>
   );
 };
 
-const FooterNavigationContainer = () => {
-  const menuItems = [{ icon: <IconCode /> }, { icon: <IconAttachmentSquare /> }];
+const FooterNavigationContainer = ({ ...props }) => {
+  const menuItems = [
+    { icon: <IconCode />, itemText: "label3" },
+    { icon: <IconAttachmentSquare />, itemText: "label4" },
+  ];
 
   return (
     <div style={{ display: "flex", gap: 8, flexDirection: "column" }}>
       {menuItems.map((item, index) => (
-        <MainMenuItem key={index}>{item.icon}</MainMenuItem>
+        <MainMenuItem key={index} itemText={item.itemText} {...props}>
+          {item.icon}
+        </MainMenuItem>
       ))}
     </div>
   );
@@ -77,14 +91,16 @@ export const WithoutOrgLogo = Template.bind({});
 export const WithoutMainNavigation = Template.bind({});
 export const WithoutFooterNavigation = Template.bind({});
 export const WithoutUploadContainer = Template.bind({});
-export const Expanded = Template.bind({});
+export const FullExpandedItems = Template.bind({});
 
 Default.args = {
   logoSquareAssetUrl,
+  fullLogoAssetUrl,
   organizationSelectMenuContainer: <OrganizationSelectMenuContainer />,
   mainNavigationContainer: <MainNavigationContainer />,
   footerNavigationContainer: <FooterNavigationContainer />,
   uploadContainer: <UploadContainer />,
+  expanded: false,
 };
 
 WithoutOrgLogo.args = {
@@ -92,33 +108,41 @@ WithoutOrgLogo.args = {
   mainNavigationContainer: <MainNavigationContainer />,
   footerNavigationContainer: <FooterNavigationContainer />,
   uploadContainer: <UploadContainer />,
+  expanded: false,
 };
 
 WithoutMainNavigation.args = {
   logoSquareAssetUrl,
+  fullLogoAssetUrl,
   organizationSelectMenuContainer: <OrganizationSelectMenuContainer />,
   footerNavigationContainer: <FooterNavigationContainer />,
   uploadContainer: <UploadContainer />,
+  expanded: false,
 };
 
 WithoutFooterNavigation.args = {
   logoSquareAssetUrl,
+  fullLogoAssetUrl,
   organizationSelectMenuContainer: <OrganizationSelectMenuContainer />,
   mainNavigationContainer: <MainNavigationContainer />,
   uploadContainer: <UploadContainer />,
+  expanded: false,
 };
 
 WithoutUploadContainer.args = {
   logoSquareAssetUrl,
+  fullLogoAssetUrl,
   organizationSelectMenuContainer: <OrganizationSelectMenuContainer />,
   mainNavigationContainer: <MainNavigationContainer />,
   footerNavigationContainer: <FooterNavigationContainer />,
+  expanded: false,
 };
 
-Expanded.args = {
+FullExpandedItems.args = {
   logoSquareAssetUrl,
-  organizationSelectMenuContainer: <OrganizationSelectMenuContainer />,
-  mainNavigationContainer: <MainNavigationContainer />,
-  footerNavigationContainer: <FooterNavigationContainer />,
+  fullLogoAssetUrl,
+  organizationSelectMenuContainer: <OrganizationSelectMenuContainer expanded={true} />,
+  mainNavigationContainer: <MainNavigationContainer expanded={true} />,
+  footerNavigationContainer: <FooterNavigationContainer expanded={true} />,
   expanded: true,
 };
