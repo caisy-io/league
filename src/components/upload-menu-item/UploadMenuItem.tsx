@@ -17,7 +17,6 @@ interface IUploadMenuItem {
   state?: TUploadMenuItemStatus;
   percentageLoaded?: number;
   itemCount?: number;
-  children?;
 }
 
 export const UploadMenuItem: React.FC<IUploadMenuItem> = ({
@@ -25,7 +24,6 @@ export const UploadMenuItem: React.FC<IUploadMenuItem> = ({
   percentageLoaded,
   itemCount,
   onClick,
-  children,
 }) => {
   const loadingPercentage = percentageLoaded ? (percentageLoaded < 100 ? percentageLoaded : 100) : 0;
 
