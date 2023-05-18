@@ -1,9 +1,10 @@
-import React, { ReactNode } from 'react';
-import { Checkbox } from '../checkbox/Checkbox';
-import { SAssetImage } from './styles/SAssetImage';
-import { SAssetImageCard } from './styles/SAssetImageCard';
-import { SAssetImageLabel } from './styles/SAssetImageLabel';
-import { SAssetImageRadioContainer } from './styles/SAssetImageRadioContainer';
+import React, { ReactNode } from "react";
+import { Checkbox } from "../checkbox/Checkbox";
+import { SAssetImage } from "./styles/SAssetImage";
+import { SAssetImageCard } from "./styles/SAssetImageCard";
+import { SAssetImageLabel } from "./styles/SAssetImageLabel";
+import { SAssetImageRadioContainer } from "./styles/SAssetImageRadioContainer";
+import { SSkeleton } from "../skeleton/SSkeleton";
 
 export type IAssetImageCardSizeType = "simple" | "small";
 
@@ -12,17 +13,36 @@ interface IAssetImageCard {
   size?: IAssetImageCardSizeType;
   labelText?: string;
   activated?: boolean;
-  onChange?: (e: Event) => void,
+  skeleton?: boolean;
+  onChange?: (e: Event) => void;
 }
 
-export const AssetImageCard: React.FC<IAssetImageCard> = ({ labelText, size, image, activated, onChange }) => {
+export const AssetImageCard: React.FC<IAssetImageCard> = ({
+  skeleton,
+  labelText,
+  size,
+  image,
+  activated,
+  onChange,
+}) => {
   return (
-    <SAssetImageCard size={size} activated={activated}>
+    <SAssetImageCard size={size} activated={activated} skeleton={skeleton}>
       <SAssetImage>{image}</SAssetImage>
       <SAssetImageRadioContainer>
-        <Checkbox onChange={onChange} checked={activated}></Checkbox>
-        <SAssetImageLabel activated={activated}>{labelText}</SAssetImageLabel>
+        {skeleton ? (
+          <>
+            <SSkeleton borderRadius="16px" />
+            <SSkeleton width="80px" borderRadius="4px" />
+          </>
+        ) : (
+          <>
+            <Checkbox onChange={onChange} checked={activated}></Checkbox>
+            <SAssetImageLabel title={labelText} activated={activated}>
+              {labelText}
+            </SAssetImageLabel>
+          </>
+        )}
       </SAssetImageRadioContainer>
     </SAssetImageCard>
-  )
-}
+  );
+};

@@ -1,54 +1,105 @@
-import React from "react";
-import { JustifiedImageGrid } from './JustifiedImageGrid';
-import {getImages} from './testdata';
-
-export default {
-  title: `Components/JustifiedImageGrid`,
-  component: JustifiedImageGrid,
-  argTypes: {
-    number: {
-      description: "An example number argument type",
-      control: { type: "number" },
-      table: {
-        defaultValue: 1,
-      },
-    },
-  },
-};
+import React, { useEffect, useRef } from "react";
+import { JustifiedImageGrid } from "./JustifiedImageGrid";
+import { generateUuid, getImages } from "./testdata";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const JustifiedImageGridDemo: React.FC<{ number }> = ({ number }) => {
+const JustifiedImageGridDemo: React.FC<{
+  totalCount: number;
+  pageSize: number;
+  initalLoadingDelay: number;
+  loadingMultiplier: number;
+}> = ({ totalCount, pageSize, initalLoadingDelay, loadingMultiplier }) => {
   const images = getImages();
-  const pageSize = 20;
+  const multiplier = useRef(loadingMultiplier || 1);
 
-  const [imagesToDisplay, setImagesToDisplay] = React.useState(images.slice(0,pageSize));
+  const [imagesToDisplay, setImagesToDisplay] = React.useState(images.slice(0, Math.min(pageSize, totalCount)));
+
+  useEffect(() => {
+    setImagesToDisplay(images.slice(0, Math.min(pageSize, totalCount)));
+  }, [totalCount, pageSize]);
+
+  useEffect(() => {
+    multiplier.current = loadingMultiplier;
+    setImagesToDisplay(images.slice(0, Math.min(pageSize, totalCount)));
+  }, [loadingMultiplier]);
 
   const loadNextPage = async () => {
-    await sleep(200000)
+    await sleep(initalLoadingDelay * multiplier.current);
     // await sleep(2000)
-    return setImagesToDisplay((prev) => [...prev, ...images.sort(() => 0.5 - Math.random()).slice(0, pageSize)]);
-  }
+    if (imagesToDisplay.length < totalCount) {
+      return setImagesToDisplay((prev) => [
+        ...prev,
+        ...images
+          .sort(() => 0.5 - Math.random())
+          .slice(0, Math.min(pageSize, totalCount - prev.length))
+          .map((i) => ({ ...i, id: generateUuid() })),
+      ]);
+    }
+  };
 
   const shuffle = async () => {
     // await sleep(2000)
-    return setImagesToDisplay((prev) => [ ...images.sort(() => 0.5 - Math.random()).slice(0, prev.length)]);
-  }
+    return setImagesToDisplay((prev) => [
+      ...images
+        .sort(() => 0.5 - Math.random())
+        .slice(0, prev.length)
+        .map((i) => ({ ...i, id: generateUuid() })),
+    ]);
+  };
   const addOneOnStart = async () => {
     // await sleep(2000)
-    return setImagesToDisplay((prev) => [ ...images.sort(() => 0.5 - Math.random()).slice(0, 1), ...prev]);
-  }
+    return setImagesToDisplay((prev) => [
+      ...images
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 1)
+        .map((i) => ({ ...i, id: generateUuid() })),
+      ...prev,
+    ]);
+  };
   // console.log(` images`, JSON.stringify(images, ));
+  console.log(` imagesToDisplay`, imagesToDisplay);
   return (
     <>
-    <button onClick={() => addOneOnStart()}> addOneOnStart </button>
-    <button onClick={() => shuffle()}> shuffle </button>
-    <button onClick={() => loadNextPage()}> INC </button>
-    <JustifiedImageGrid images={imagesToDisplay} config={{groupSize: pageSize}} totalCount={200} rowHeight={300} loadNextPage={loadNextPage} />
+      <button onClick={() => addOneOnStart()}> addOneOnStart </button>
+      <button onClick={() => shuffle()}> shuffle </button>
+      <button onClick={() => loadNextPage()}> INC </button>
+      <div style={{ border: "1px black solid", margin: "32px" }}>
+        <JustifiedImageGrid
+          images={imagesToDisplay as any}
+          config={{ groupSize: pageSize }}
+          totalCount={totalCount}
+          scrollToIndex={undefined}
+          loadNextPage={loadNextPage}
+        />
+      </div>
     </>
-)};
+  );
+};
 
 export const Default: any = JustifiedImageGridDemo.bind({});
 Default.args = {
-  number: 1,
+  totalCount: 67,
+  pageSize: 20,
+  initalLoadingDelay: 2000,
+  loadingMultiplier: 1,
+};
+
+export default {
+  title: `Components/JustifiedImageGrid`,
+  component: JustifiedImageGridDemo,
+  argTypes: {
+    totalCount: {
+      description: "totalCount of images",
+    },
+    pageSize: {
+      description: "pageSize defines how may load at a time",
+    },
+    initalLoadingDelay: {
+      description: "how load to wait for the page load (fake request)",
+    },
+    loadingMultiplier: {
+      description: "multiplier for the loading delay to debug loading",
+    },
+  },
 };

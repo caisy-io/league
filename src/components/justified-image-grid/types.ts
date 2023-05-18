@@ -1,7 +1,6 @@
 export type IJustifiedImageGrid = {
   images: Image[];
   scrollToIndex?: number;
-  rowHeight: number;
   totalCount?: number;
   loadNextPage: () => Promise<void> ;
   config?: IJustifiedImageGridConfigOverwrite;
@@ -11,6 +10,12 @@ export type Image = {
   width: number;
   height: number;
   src: string;
+  id: string;
+  description?: string;
+  blurHash?: string;
+  title?: string;
+  originType?: string;
+  label?: string;
 };
 
 export type ResizedImage = Image & {
@@ -23,7 +28,7 @@ export type ResizedImage = Image & {
 export type IRow = {
   images: ResizedImage[];
   rowHeight: number;
-  __loading?: number
+  __loading?: boolean
   aspectRatioSum?: number
   totalWidth?: number
 };
@@ -42,6 +47,9 @@ export type IJustifiedImageGridConfig = {
   avgRowHeight: number;
   avgImageWidth: number;
   groupSize: number;
+  paddingAroundGrid: number;
+  scrollViewHeight: number;
+  imageTitleFallback?: string;
 }
 
 export type IJustifiedImageGridConfigOverwrite = {
@@ -58,4 +66,7 @@ export type IJustifiedImageGridConfigOverwrite = {
   avgRowHeight?: number;
   avgImageWidth?: number;
   groupSize?: number;
+  paddingAroundGrid?: number;
+  scrollViewHeight?: number;
+  imageTitleFallback?: string;
 }

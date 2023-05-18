@@ -17,17 +17,18 @@ const Bronze = css`
   overflow: hidden;
   justify-content: space-between;
   transition: 0.15s border ease-in;
-  &: hover{
+  &:hover{
     background-color: var(--ui-01);
     box-shadow: 0px 8px 24px rgba(184, 184, 184, 0.24);
     border: 1px solid #DDE8ED;
   }
-  &: active {
+  &:active {
     background-color: var(--ui-01);
     border: 1px solid #C3D1D9;
     box-shadow: none;
   }
   ${(props) => props.activated ? CSSActivated : ''};
+  ${(props) => props.skeleton ? css`pointer-events: none;` : ''};
 `;
 
 const Silver = css``;

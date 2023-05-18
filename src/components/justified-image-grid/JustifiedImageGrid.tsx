@@ -13,10 +13,12 @@ import {
   MAX_WIDTH_OF_IMAGE,
   MIN_IMAGES_PER_ROW,
   MIN_WIDTH_OF_IMAGE,
+  PADDING_AROUND_GRID,
   PADDING_BETWEEN_IMAGES,
   PADDING_BETWEEN_ROWS,
   ROW_MAX_HEIGHT,
   ROW_MIN_HEIGHT,
+  SCROLL_VIEW_HEIGHT,
   TOTAL_WIDTH_OF_VIEW,
 } from "./constants";
 import { IJustifiedImageGrid, IJustifiedImageGridConfigOverwrite } from "./types";
@@ -24,6 +26,7 @@ import { SJustifiedImageGridRow } from "./styles/SJustifiedImageGridRow";
 import InfiniteLoader from "react-window-infinite-loader";
 import { AssetImageCardSkeleton } from "../asset-image-card-skeleton";
 import { IRow, IJustifiedImageGridConfig } from "./types";
+import { LazyImage } from "./LazyImage";
 
 // CASE 1
 // grid width: 512
@@ -94,6 +97,8 @@ const getDefaultConfig = (overwriteConfig?: Partial<IJustifiedImageGridConfigOve
     avgRowHeight: overwriteConfig?.avgRowHeight || AVG_ROW_HEIGHT,
     avgImageWidth: overwriteConfig?.avgImageWidth || AVG_IMAGE_WIDTH,
     groupSize: overwriteConfig?.groupSize || GROUP_SIZE,
+    paddingAroundGrid: overwriteConfig?.paddingAroundGrid || PADDING_AROUND_GRID,
+    scrollViewHeight: overwriteConfig?.scrollViewHeight || SCROLL_VIEW_HEIGHT,
   };
 };
 
@@ -103,64 +108,15 @@ const Row: React.FC<{
   style: React.CSSProperties;
 }> = memo(({ data: { rows, config }, index, style }) => {
   const currRow = rows[index];
-  if (currRow.__loading == 1) {
-    const firstWidth = config.totalWidthOfView / 3.5;
-    const secondWidth = config.totalWidthOfView / 4 - 24;
-    const thirdWidth = config.totalWidthOfView - firstWidth - secondWidth - 24;
-    return (
-      <div style={style}>
-        <div style={{ display: "flex", gap: "12px" }}>
-          <div style={{ width: firstWidth + "px", height: (config.avgRowHeight - 12) + "px", opacity: 0.8 }}>
-            <AssetImageCardSkeleton />
-          </div>
-          <div style={{ width: secondWidth + "px", height: (config.avgRowHeight - 12) + "px", opacity: 0.6 }}>
-            <AssetImageCardSkeleton />
-          </div>
-          <div style={{ width: thirdWidth + "px", height: (config.avgRowHeight - 12) + "px", opacity: 0.4 }}>
-            <AssetImageCardSkeleton />
-          </div>
-        </div>
-        <div style={{width: "100%", height: "12px"}}></div>
-      </div>
-    );
-  }
-  if (currRow.__loading == 2) {
-    const firstWidth = config.totalWidthOfView / 2.5;
-    const secondWidth = config.totalWidthOfView / 3.5 - 24;
-    return (
-      <div style={style}>
-        <div style={{ display: "flex", gap: "12px" }}>
-          <div
-            style={{
-              width: firstWidth + "px",
-              height: (config.avgRowHeight - 12) + "px",
-              opacity: 0.8,
-            }}
-          >
-            <AssetImageCardSkeleton />
-          </div>
-          <div
-            style={{
-              width: secondWidth + "px",
-              height: (config.avgRowHeight - 12) + "px",
-              opacity: 0.6,
-            }}
-          >
-            <AssetImageCardSkeleton />
-          </div>
-        </div>
-      </div>
-    );
-  }
   const rowImages = currRow.images;
 
   return (
     <div style={style}>
-      <SJustifiedImageGridRow>
+      <SJustifiedImageGridRow style={index == 0 ? { paddingTop: "16px" } : {}}>
         {rowImages.map((image, i) => {
           return (
             <SJustifiedImageGridCell
-              key={i}
+              key={"ci_" + image.id}
               style={{
                 width: image.renderedWidth,
                 height: image.renderedHeight + IMAGE_LABEL_HEIGHT,
@@ -168,21 +124,18 @@ const Row: React.FC<{
               }}
             >
               <AssetImageCard
+                key={"ai_" + image.id}
+                skeleton={currRow.__loading}
                 image={
-                  <img
-                    key={i}
-                    src={image.src + "?height=600"}
-                    alt="image"
-                    loading="lazy"
-                    decoding="async"
-                    style={{
-                      objectFit: "cover",
-                      width: "100%",
-                      height: "100%",
-                    }}
+                  <LazyImage
+                    skeleton={currRow.__loading}
+                    key={"li_" + image.id}
+                    src={image.src}
+                    label={image.label}
+                    blurHash={image.blurHash}
                   />
                 }
-                labelText="Image Label" // Replace with your actual label text
+                labelText={image.title ?? config.imageTitleFallback ?? ""} // Replace with your actual label text
               />
             </SJustifiedImageGridCell>
           );
@@ -205,20 +158,9 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
   const config = getDefaultConfig(overwriteConfig);
   const rowConfigs = generateRows(images, totalCount, config);
 
-  if (loadingNextPage) {
-    rowConfigs.push({
-      __loading: 1,
-      images: [],
-      rowHeight: AVG_ROW_HEIGHT,
-    });
-    rowConfigs.push({
-      __loading: 2,
-      images: [],
-      rowHeight: AVG_ROW_HEIGHT,
-    });
+  if (loadingNextPage && rowConfigs.length > 0 && images.length !== totalCount) {
+    rowConfigs[rowConfigs.length - 1].__loading = true;
   }
-
-  console.log("rowConfigs", rowConfigs);
 
   const isItemLoaded = (index: number) => {
     // console.log(` isItemLoaded index`, index);
@@ -245,10 +187,10 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
   }, [scrollToIndex]);
 
   return (
-    <SJustifiedImageGrid style={{ width: TOTAL_WIDTH_OF_VIEW, height: 800 }}>
+    <SJustifiedImageGrid style={{ height: config.scrollViewHeight + config.paddingAroundGrid * 2 }}>
       <InfiniteLoader
         isItemLoaded={isItemLoaded}
-        itemCount={1999}
+        itemCount={totalCount}
         loadMoreItems={loadMoreItems}
         ref={infiniteLoaderRef}
       >
@@ -256,11 +198,11 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
           <VariableSizeList
             onItemsRendered={onItemsRendered}
             ref={ref}
-            height={800} // For instance.
+            height={config.scrollViewHeight} // For instance.
             itemData={{ config, rows: rowConfigs }}
             itemCount={rowConfigs.length}
             itemSize={(index) => rowConfigs[index].rowHeight}
-            width={TOTAL_WIDTH_OF_VIEW}
+            width={config.totalWidthOfView + config.paddingAroundGrid * 2}
           >
             {Row}
           </VariableSizeList>

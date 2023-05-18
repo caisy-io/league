@@ -1,445 +1,731 @@
 const images = [
   {
-    "node": {
-      "blurHash": "UkIOwufltSt6T#fln%oft8oenMR-M|j?xWR-",
-      "description": "",
-      "dominantColor": "#969d91",
-      "height": 5584,
-      "id": "b5eba3af-88cf-46b5-9421-3e8fbc0facec",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/b5eba3af-88cf-46b5-9421-3e8fbc0facec/6022165e-32f9-4214-942e-9bbf903b7b45agriculturetractor57.jpg",
-      "title": "agriculture tractor_57",
-      "width": 8368
-    }
+    node: {
+      blurHash: "UL03b3g7f.gSekf-g6fmdogSg7f.g7fmfRf5",
+      description: "",
+      dominantColor: "#004286",
+      height: 40,
+      id: "24baf36c-bd44-4f7b-b0f8-57bea928f356",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/24baf36c-bd44-4f7b-b0f8-57bea928f356/70698a3e-428c-4c24-a9ee-2da40a9cb275logoipsum297.svg",
+      title: "logoipsum-297",
+      width: 202,
+    },
   },
   {
-    "node": {
-      "blurHash": "U4Amk;zf0cINDYFCrf-,00On~WaH?uv%x;E9",
-      "description": "",
-      "dominantColor": "#515148",
-      "height": 3640,
-      "id": "8666e9dd-aafa-462b-bae0-a12fbb97b9c0",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/8666e9dd-aafa-462b-bae0-a12fbb97b9c0/3acf8adc-41f5-4550-bb3b-8702960f2823agriculturetractor58.jpg",
-      "title": "agriculture tractor_58",
-      "width": 5464
-    }
+    node: {
+      blurHash: "U9IOhG~q00_3_3~q_34n00IU?b9FM{j[IUof",
+      description: "",
+      dominantColor: "#666666",
+      height: 40,
+      id: "8cd8935c-b409-4a35-b46d-524a9a30c400",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/8cd8935c-b409-4a35-b46d-524a9a30c400/9862c6c9-ff5f-41c0-bfa3-023982603c94logoipsum288.svg",
+      title: "logoipsum-288",
+      width: 175,
+    },
   },
   {
-    "node": {
-      "blurHash": "UrFPQ*s:ayj]%%j[ayfkM}axayayV?a|j[jt",
-      "description": "",
-      "dominantColor": "#7f7c7f",
-      "height": 4000,
-      "id": "6c3a3f61-7f7c-49ea-bdca-993c114a0f79",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/6c3a3f61-7f7c-49ea-bdca-993c114a0f79/c4756621-83b3-4509-857c-4d0b55859fe7agriculturetractor52.jpg",
-      "title": "agriculture tractor_52",
-      "width": 6000
-    }
+    node: {
+      blurHash: "U04_;Jt800j]o#ayxwj]00aeI8WAWAj[ISay",
+      description: "",
+      dominantColor: "#202430",
+      height: 28,
+      id: "36b8e68b-821e-4fa2-92b2-95af8a75bd02",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/36b8e68b-821e-4fa2-92b2-95af8a75bd02/755aa092-0020-4cf3-a116-ba850a733b03logoipsum294.svg",
+      title: "logoipsum-294",
+      width: 40,
+    },
   },
   {
-    "node": {
-      "blurHash": "U;N0;rkCxus:?wj[fkofxuoKRjWVn#WBayWV",
-      "description": "",
-      "dominantColor": "#beb6a2",
-      "height": 8368,
-      "id": "6daa75d8-1f9c-423e-99f8-58456474d793",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/6daa75d8-1f9c-423e-99f8-58456474d793/a5f53366-8d36-4aaf-bb29-114702b1054eagriculturetractor51.jpg",
-      "title": "agriculture tractor_51",
-      "width": 5584
-    }
+    node: {
+      blurHash: "UB4-|:?1%PtU-r-r%4t9sjxct8ogR-R%WAjF",
+      description: "",
+      dominantColor: "#0f1225",
+      height: 38,
+      id: "ae277849-2785-4007-814e-f05230602511",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/ae277849-2785-4007-814e-f05230602511/9e034a09-cd05-466c-ab5f-9712ff948077logoipsum260.svg",
+      title: "logoipsum-260",
+      width: 153,
+    },
   },
   {
-    "node": {
-      "blurHash": "U7G7Yg~U0Nrr?Gt7RkaK0$NI$iV@ofS4RkWB",
-      "description": "",
-      "dominantColor": "#895d3b",
-      "height": 3000,
-      "id": "36698871-d6de-4ce7-aba4-3498427405a4",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/36698871-d6de-4ce7-aba4-3498427405a4/cc0becdc-f654-4cba-a0c9-cd93227e5701agriculturetractor60.jpg",
-      "title": "agriculture tractor_60",
-      "width": 4000
-    }
+    node: {
+      blurHash: "UD5OLSxzohWFtBtAohWBIQWFa*awRfRiW8j=",
+      description: "",
+      dominantColor: "#16163c",
+      height: 46,
+      id: "7c3ed589-e998-4a80-8948-cb66f3991f6a",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/7c3ed589-e998-4a80-8948-cb66f3991f6a/ef0d5df6-13e2-4f96-bddc-878fb07239c3logoipsum243.svg",
+      title: "logoipsum-243",
+      width: 160,
+    },
   },
   {
-    "node": {
-      "blurHash": "UOG926IooJxu?w%NayRj.At7ofjs%iNGoJxu",
-      "description": "",
-      "dominantColor": "#7c7979",
-      "height": 6000,
-      "id": "20eefd0b-19c0-485e-80aa-3189b3d7772e",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/20eefd0b-19c0-485e-80aa-3189b3d7772e/7b8169a1-8487-4d8d-957f-1670a75788c6agriculturetractor44.jpg",
-      "title": "agriculture tractor_44",
-      "width": 4000
-    }
+    node: {
+      blurHash: "U04_;Jt800j]o#ayxwj]00aeI8WAWAj[ISay",
+      description: "",
+      dominantColor: "#202430",
+      height: 28,
+      id: "3c51bad8-692c-4a54-852f-204db10a65f1",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/3c51bad8-692c-4a54-852f-204db10a65f1/e7200696-0a21-4247-bdd2-1210c380a53alogoipsum294.svg",
+      title: "logoipsum-294",
+      width: 40,
+    },
   },
   {
-    "node": {
-      "blurHash": "U.IO-3j[%Mof?wayWBj[RjWCM{Rki_WCkCWB",
-      "description": "",
-      "dominantColor": "#8a898e",
-      "height": 5668,
-      "id": "e9499969-8900-418c-9fe6-51f9670c97cc",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/e9499969-8900-418c-9fe6-51f9670c97cc/7b9302e8-93c5-44f7-a8dd-bd5d0776e22eagriculturetractor41.jpg",
-      "title": "agriculture tractor_41",
-      "width": 3779
-    }
+    node: {
+      blurHash: "UL03b3g7f.gSekf-g6fmdogSg7f.g7fmfRf5",
+      description: "",
+      dominantColor: "#004286",
+      height: 40,
+      id: "bc4aec97-ce66-484a-8dd1-8319f554bfd4",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/bc4aec97-ce66-484a-8dd1-8319f554bfd4/45e786a0-fe78-4070-a297-1a198ee2b570logoipsum297.svg",
+      title: "logoipsum-297",
+      width: 202,
+    },
   },
   {
-    "node": {
-      "blurHash": "UPGveJiy.StkyZk8x^j]JTMx%gj?D4W,ShV@",
-      "description": "",
-      "dominantColor": "#869188",
-      "height": 2920,
-      "id": "bd946427-fe79-4a0b-866c-e14f47f9cbc4",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/bd946427-fe79-4a0b-866c-e14f47f9cbc4/31e5ee59-1571-45c9-8fb2-4463dd18e2f0agriculturetractor38.jpg",
-      "title": "agriculture tractor_38",
-      "width": 5184
-    }
+    node: {
+      blurHash: "U9IOhG~q00_3_3~q_34n00IU?b9FM{j[IUof",
+      description: "",
+      dominantColor: "#666666",
+      height: 40,
+      id: "ae73b736-5d87-47f1-920c-c412d7a81600",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/ae73b736-5d87-47f1-920c-c412d7a81600/ee896971-3829-40c8-b2b4-a958f97fd97dlogoipsum288.svg",
+      title: "logoipsum-288",
+      width: 175,
+    },
   },
   {
-    "node": {
-      "blurHash": "UkIhQqX8aeR*?^xFRjaekDNHWBjZD*jYaeWC",
-      "description": "",
-      "dominantColor": "#958a78",
-      "height": 2779,
-      "id": "7f9c6747-59b3-4856-910e-88656a862340",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/7f9c6747-59b3-4856-910e-88656a862340/85ba2d3b-ca3e-4a96-894b-9ca65261faf8agriculturetractor43.jpg",
-      "title": "agriculture tractor_43",
-      "width": 4161
-    }
+    node: {
+      blurHash: "U02$T]%Nxv%h%hozoztR00t7ozayIAogj[Rj",
+      description: "",
+      dominantColor: "#0c0d0f",
+      height: 40,
+      id: "c9f3e175-f186-49d5-a079-b74e57595e8d",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/c9f3e175-f186-49d5-a079-b74e57595e8d/d1edced0-1211-4dec-bf1b-f1e7b1d598balogoipsum215.svg",
+      title: "logoipsum-215",
+      width: 132,
+    },
   },
   {
-    "node": {
-      "blurHash": "U%LW*IpIxGoy?wn+RkWWkqn$bbofWCRjbIjZ",
-      "description": "",
-      "dominantColor": "#ac9796",
-      "height": 4000,
-      "id": "ee7ad3cf-1b4a-4cfa-803c-4e2eb416d4e4",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/ee7ad3cf-1b4a-4cfa-803c-4e2eb416d4e4/1d7121b6-aad7-40ab-95be-b998acb1eba8agriculturetractor42.jpg",
-      "title": "agriculture tractor_42",
-      "width": 6000
-    }
+    node: {
+      blurHash: "U02$T]%Nxv%h%hozoztR00t7ozayIAogj[Rj",
+      description: "",
+      dominantColor: "#0c0d0f",
+      height: 40,
+      id: "91d41586-2174-4582-9648-794a86d180fc",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/91d41586-2174-4582-9648-794a86d180fc/26e08fba-a4f3-47c2-9936-ca2d453f2df7logoipsum215.svg",
+      title: "logoipsum-215",
+      width: 132,
+    },
   },
   {
-    "node": {
-      "blurHash": "UzKB]ynjkBtk.moLR+X9TKaeoMaKW:aefkax",
-      "description": "",
-      "dominantColor": "#a3b0ae",
-      "height": 2920,
-      "id": "c9fd4df1-0e33-4001-944e-bcaffcfd028f",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/c9fd4df1-0e33-4001-944e-bcaffcfd028f/363baa36-9f4d-4c0f-907c-04edbbbb5a36agriculturetractor39.jpg",
-      "title": "agriculture tractor_39",
-      "width": 5184
-    }
+    node: {
+      blurHash: "UB4-|:?1%PtU-r-r%4t9sjxct8ogR-R%WAjF",
+      description: "",
+      dominantColor: "#0f1225",
+      height: 38,
+      id: "8688dfc0-e267-4ad5-b40f-023c8f6bd726",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/8688dfc0-e267-4ad5-b40f-023c8f6bd726/f19e2fa0-1f41-42f5-a6ef-ce3b6ad1e727logoipsum260.svg",
+      title: "logoipsum-260",
+      width: 153,
+    },
   },
   {
-    "node": {
-      "blurHash": "UkC%]iS5k?t7Gdt6bwW?o4axfla|RkoeVsn~",
-      "description": "",
-      "dominantColor": "#5b7371",
-      "height": 5184,
-      "id": "e9879cd6-9d51-4d8e-b479-aa307ed91d32",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/e9879cd6-9d51-4d8e-b479-aa307ed91d32/54cc9e79-c9e0-49bf-8d9e-b53202682ed2agriculturetractor40.jpg",
-      "title": "agriculture tractor_40",
-      "width": 2920
-    }
+    node: {
+      blurHash: "UD5OLSxzohWFtBtAohWBIQWFa*awRfRiW8j=",
+      description: "",
+      dominantColor: "#16163c",
+      height: 46,
+      id: "fcc5d3c5-48c6-4786-847a-71e4ebf46186",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/fcc5d3c5-48c6-4786-847a-71e4ebf46186/2c74d12f-95e0-4cb2-b092-3edd2fc6b4f2logoipsum243.svg",
+      title: "logoipsum-243",
+      width: 160,
+    },
   },
   {
-    "node": {
-      "blurHash": "UwKUAut7WBj[.AkCayj[xvfRazj@Riayj[ay",
-      "description": "",
-      "dominantColor": "#ada391",
-      "height": 4000,
-      "id": "39899d3e-96cc-4d75-a9df-02675ed4c36f",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/39899d3e-96cc-4d75-a9df-02675ed4c36f/d45ce0bb-f832-44cf-878b-ed0a4d04c003agriculturetractor50.jpg",
-      "title": "agriculture tractor_50",
-      "width": 6000
-    }
+    node: {
+      blurHash: "UL03b3g7f.gSekf-g6fmdogSg7f.g7fmfRf5",
+      description: "",
+      dominantColor: "#004286",
+      height: 40,
+      id: "853fbab2-d470-4868-b2b8-e1d756938e10",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/853fbab2-d470-4868-b2b8-e1d756938e10/d1224048-01e6-43c3-8439-9fdf470f44edlogoipsum297.svg",
+      title: "logoipsum-297",
+      width: 202,
+    },
   },
   {
-    "node": {
-      "blurHash": "UqEMj?EMt6of?^NHoekBO@s.R*WCE2s:V@WB",
-      "description": "",
-      "dominantColor": "#5d6259",
-      "height": 5701,
-      "id": "dd4630c5-6a3a-455d-aff2-851f31248349",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/dd4630c5-6a3a-455d-aff2-851f31248349/363a92b0-3b8d-4d36-b7de-f2184c0ed2b8agriculturetractor59.jpg",
-      "title": "agriculture tractor_59",
-      "width": 3801
-    }
+    node: {
+      blurHash: "U9IOhG~q00_3_3~q_34n00IU?b9FM{j[IUof",
+      description: "",
+      dominantColor: "#666666",
+      height: 40,
+      id: "a2574a54-52c8-46d0-a3ae-2c3c0442b892",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/a2574a54-52c8-46d0-a3ae-2c3c0442b892/b5815071-08a0-4aeb-b8a2-3c1885669a8clogoipsum288.svg",
+      title: "logoipsum-288",
+      width: 175,
+    },
   },
   {
-    "node": {
-      "blurHash": "UxL;Qxt6Iqs:*0off6ofIUodRkoLVrs.WCWV",
-      "description": "",
-      "dominantColor": "#b7ae9e",
-      "height": 2909,
-      "id": "420d7a04-f9db-4e6d-a2c7-12a07cde6c06",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/420d7a04-f9db-4e6d-a2c7-12a07cde6c06/d746f4f8-2e6f-413e-a2b7-f043bdb3593dagriculturetractor48.jpg",
-      "title": "agriculture tractor_48",
-      "width": 4363
-    }
+    node: {
+      blurHash: "U04_;Jt800j]o#ayxwj]00aeI8WAWAj[ISay",
+      description: "",
+      dominantColor: "#202430",
+      height: 28,
+      id: "fc105dfb-5eb1-4ca7-ac8e-c1ae46b0910f",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/fc105dfb-5eb1-4ca7-ac8e-c1ae46b0910f/a890280a-4893-4696-b8b3-ca9ad21d0408logoipsum294.svg",
+      title: "logoipsum-294",
+      width: 40,
+    },
   },
   {
-    "node": {
-      "blurHash": "U-KT*?9aRjxa~qV@WBbHbI%2ayR*V@tRoejY",
-      "description": "",
-      "dominantColor": "#8d817f",
-      "height": 6000,
-      "id": "cf1c46a1-c360-450d-bd22-d899f7d1d7ef",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/cf1c46a1-c360-450d-bd22-d899f7d1d7ef/64aefe39-2379-4e32-bfb4-77b5d35dcf1aagriculturetractor45.jpg",
-      "title": "agriculture tractor_45",
-      "width": 4000
-    }
+    node: {
+      blurHash: "UD5OLSxzohWFtBtAohWBIQWFa*awRfRiW8j=",
+      description: "",
+      dominantColor: "#16163c",
+      height: 46,
+      id: "4301e13a-5003-44a5-9cb4-8d07ea9b7ee4",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/4301e13a-5003-44a5-9cb4-8d07ea9b7ee4/0deeee11-c8f2-4a9f-b75a-38b3adf6eac7logoipsum243.svg",
+      title: "logoipsum-243",
+      width: 160,
+    },
   },
   {
-    "node": {
-      "blurHash": "U3Looe^fwtbw.8axs8S5w]bc9#$y}lSiEmw@",
-      "description": "",
-      "dominantColor": "#ba8946",
-      "height": 3827,
-      "id": "f00f03b5-3335-407a-a23c-35c4ee31d89d",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/f00f03b5-3335-407a-a23c-35c4ee31d89d/7853604b-0100-48c4-8608-287a2e23818dagriculturetractor46.jpg",
-      "title": "agriculture tractor_46",
-      "width": 2870
-    }
+    node: {
+      blurHash: "",
+      description: "",
+      dominantColor: "",
+      height: 0,
+      id: "1dffef8a-4b2d-493a-9f04-9cc1697dbfa5",
+      originType: "application/pdf",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/1dffef8a-4b2d-493a-9f04-9cc1697dbfa5/db8ade49-8c71-4a95-92ca-a576e84380e3sample.pdf",
+      title: "sample",
+      width: 0,
+    },
   },
   {
-    "node": {
-      "blurHash": "U;JI92WWWBa}~qayayj[j^j?j[j[M_fQj[fQ",
-      "description": "",
-      "dominantColor": "#939c7e",
-      "height": 3237,
-      "id": "1c51b5f1-9e15-4549-a4c4-0c413d2fe55e",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/1c51b5f1-9e15-4549-a4c4-0c413d2fe55e/ed6e3553-c3f9-434d-b2b3-ae1b46825893agriculturetractor55.jpg",
-      "title": "agriculture tractor_55",
-      "width": 2160
-    }
+    node: {
+      blurHash: "",
+      description: "",
+      dominantColor: "",
+      height: 0,
+      id: "b051f086-7e7d-4af5-bca8-7bbe2c0410fd",
+      originType: "application/pdf",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/b051f086-7e7d-4af5-bca8-7bbe2c0410fd/61e3e4d1-622a-4f5f-a593-890de1617760sample.pdf",
+      title: "sample",
+      width: 0,
+    },
   },
   {
-    "node": {
-      "blurHash": "UJIOLWogW?nh2|S5%MV@%hxZIVogxuRjZ~WY",
-      "description": "",
-      "dominantColor": "#968f7f",
-      "height": 2160,
-      "id": "3f9fe79d-efb3-4c72-aba8-60977be485c2",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/3f9fe79d-efb3-4c72-aba8-60977be485c2/a506409d-8502-4ebc-9f90-fbc2548316cdagriculturetractor54.jpg",
-      "title": "agriculture tractor_54",
-      "width": 3236
-    }
+    node: {
+      blurHash: "U02$T]%Nxv%h%hozoztR00t7ozayIAogj[Rj",
+      description: "",
+      dominantColor: "#0c0d0f",
+      height: 40,
+      id: "f551d0e3-9d9a-4010-8749-3d6d7165a42b",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/f551d0e3-9d9a-4010-8749-3d6d7165a42b/3fa24fb3-5ad5-453f-b464-23411c5f0f57logoipsum215.svg",
+      title: "logoipsum-215",
+      width: 132,
+    },
   },
   {
-    "node": {
-      "blurHash": "UqC@dBaeW?fk.TWCflj[R.azoJoKadj[axf6",
-      "description": "",
-      "dominantColor": "#647676",
-      "height": 3648,
-      "id": "4226380e-9d67-448d-80ba-defeb869f5f9",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/4226380e-9d67-448d-80ba-defeb869f5f9/b9af2973-0c4b-4630-959e-75c22f4e5263agriculturetractor56.jpg",
-      "title": "agriculture tractor_56",
-      "width": 5472
-    }
+    node: {
+      blurHash: "UB4-|:?1%PtU-r-r%4t9sjxct8ogR-R%WAjF",
+      description: "",
+      dominantColor: "#0f1225",
+      height: 38,
+      id: "90c4fe4a-2e39-4a5f-8c92-7606a8e6cfcb",
+      originType: "image/svg+xml",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/90c4fe4a-2e39-4a5f-8c92-7606a8e6cfcb/bcd55b18-be18-4a0a-9e40-fe441d0c8cfflogoipsum260.svg",
+      title: "logoipsum-260",
+      width: 153,
+    },
   },
   {
-    "node": {
-      "blurHash": "UeGbu4R*xuj]~qR+WWa|s8oeRPWBRQWCt6ay",
-      "description": "",
-      "dominantColor": "#7c7d71",
-      "height": 3024,
-      "id": "703ee986-f93b-42b6-a52b-1657c4b8a191",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/703ee986-f93b-42b6-a52b-1657c4b8a191/c97e0072-b977-44a3-b3dd-0056b3de05b3agriculturetractor49.jpg",
-      "title": "agriculture tractor_49",
-      "width": 4032
-    }
+    node: {
+      blurHash: "",
+      description: "",
+      dominantColor: "",
+      height: 0,
+      id: "c75fbf0d-8373-43cb-9c53-43344b4b3cdc",
+      originType: "application/pdf",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/c75fbf0d-8373-43cb-9c53-43344b4b3cdc/5b77433c-9a7c-48be-bda4-31749b122981sample.pdf",
+      title: "sample",
+      width: 0,
+    },
   },
   {
-    "node": {
-      "blurHash": "U03IwyIEjUtLx=t5WCoeaaxrkZRUtgfjs:Rl",
-      "description": "",
-      "dominantColor": "#19210a",
-      "height": 2992,
-      "id": "e1941246-0ca3-48c8-b00d-53d716d8447f",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/e1941246-0ca3-48c8-b00d-53d716d8447f/ebf0e115-013b-412c-9404-9439b0468286agriculturetractor47.jpg",
-      "title": "agriculture tractor_47",
-      "width": 3992
-    }
+    node: {
+      blurHash: "UIP%CbkCyEMcx[f7axj[.Tjtt8RP%Mj[j[WB",
+      description: "",
+      dominantColor: "#dfdad9",
+      height: 830,
+      id: "8fce3cc7-d82e-4408-8d1a-527896495650",
+      originType: "image/png",
+      src: "https://assets.caisy.io/assets/93f7e056-b0fc-47ab-84ad-e5342ad4d3ec/8fce3cc7-d82e-4408-8d1a-527896495650/db7bd11b-4a82-46ab-9bae-d7036ed69fcdScreenshot20230518at07.59.13.png",
+      title: "Screenshot 2023-05-18 at 07.59.13 2023-05-18 at 07.59.13",
+      width: 830,
+    },
   },
   {
-    "node": {
-      "blurHash": "UYHn~TW=xta}~qt7Rkj[M{ofRjWBM{Rjt7f6",
-      "description": "",
-      "dominantColor": "#8a8172",
-      "height": 3000,
-      "id": "d8aad93e-4c1c-47bf-8bba-c1725df017ec",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/d8aad93e-4c1c-47bf-8bba-c1725df017ec/3613629c-b57e-474a-8782-230c73403251agriculturetractor53.jpg",
-      "title": "agriculture tractor_53",
-      "width": 2000
-    }
+    node: {
+      blurHash: "UkIOwufltSt6T#fln%oft8oenMR-M|j?xWR-",
+      description: "",
+      dominantColor: "#969d91",
+      height: 5584,
+      id: "b5eba3af-88cf-46b5-9421-3e8fbc0facec",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/b5eba3af-88cf-46b5-9421-3e8fbc0facec/6022165e-32f9-4214-942e-9bbf903b7b45agriculturetractor57.jpg",
+      title: "agriculture tractor_57",
+      width: 8368,
+    },
   },
   {
-    "node": {
-      "blurHash": "UhH2r%juV@fR?da#aeaz.9j@WCj@-=j?ocay",
-      "description": "",
-      "dominantColor": "#8b8d64",
-      "height": 5184,
-      "id": "c3c5d2c1-7dd1-43ad-9c1c-bed0d2be005f",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/c3c5d2c1-7dd1-43ad-9c1c-bed0d2be005f/e2580203-db3e-4664-8cd5-d6d978c282bcagriculturetractor15.jpg",
-      "title": "agriculture tractor_15",
-      "width": 3456
-    }
+    node: {
+      blurHash: "U4Amk;zf0cINDYFCrf-,00On~WaH?uv%x;E9",
+      description: "",
+      dominantColor: "#515148",
+      height: 3640,
+      id: "8666e9dd-aafa-462b-bae0-a12fbb97b9c0",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/8666e9dd-aafa-462b-bae0-a12fbb97b9c0/3acf8adc-41f5-4550-bb3b-8702960f2823agriculturetractor58.jpg",
+      title: "agriculture tractor_58",
+      width: 5464,
+    },
   },
   {
-    "node": {
-      "blurHash": "U7D+bqQ-x706RkI@R+s,02?YEU~8IVjc$~W;",
-      "description": "",
-      "dominantColor": "#665d4e",
-      "height": 3640,
-      "id": "a62c1b42-2357-4e20-b76a-0b346c509396",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/a62c1b42-2357-4e20-b76a-0b346c509396/ce17221a-0485-4809-9a82-6199357f8827agriculturetractor13.jpg",
-      "title": "agriculture tractor_13",
-      "width": 5464
-    }
+    node: {
+      blurHash: "UrFPQ*s:ayj]%%j[ayfkM}axayayV?a|j[jt",
+      description: "",
+      dominantColor: "#7f7c7f",
+      height: 4000,
+      id: "6c3a3f61-7f7c-49ea-bdca-993c114a0f79",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/6c3a3f61-7f7c-49ea-bdca-993c114a0f79/c4756621-83b3-4509-857c-4d0b55859fe7agriculturetractor52.jpg",
+      title: "agriculture tractor_52",
+      width: 6000,
+    },
   },
   {
-    "node": {
-      "blurHash": "U%Ez7kt7R*a|%%oyoKj[I^ayofj[MxWBbIaz",
-      "description": "",
-      "dominantColor": "#727f6e",
-      "height": 4000,
-      "id": "3710e6ed-2420-44bc-ac0f-6aa1d7a667ad",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/3710e6ed-2420-44bc-ac0f-6aa1d7a667ad/8f8c944d-86ac-4990-b991-2686c9e55fb0agriculturetractor11.jpg",
-      "title": "agriculture tractor_11",
-      "width": 6000
-    }
+    node: {
+      blurHash: "U;N0;rkCxus:?wj[fkofxuoKRjWVn#WBayWV",
+      description: "",
+      dominantColor: "#beb6a2",
+      height: 8368,
+      id: "6daa75d8-1f9c-423e-99f8-58456474d793",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/6daa75d8-1f9c-423e-99f8-58456474d793/a5f53366-8d36-4aaf-bb29-114702b1054eagriculturetractor51.jpg",
+      title: "agriculture tractor_51",
+      width: 5584,
+    },
   },
   {
-    "node": {
-      "blurHash": "U-Ih{cM{Rjj]_Nn%WXoetRt8WBjsWqoyf5WC",
-      "description": "",
-      "dominantColor": "#8f9894",
-      "height": 3840,
-      "id": "c74d1504-064c-48be-b10c-779e104abd7f",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/c74d1504-064c-48be-b10c-779e104abd7f/5bd4d375-23f6-48a6-acce-66e61d7be6a2agriculturetractor19.jpg",
-      "title": "agriculture tractor_19",
-      "width": 5758
-    }
+    node: {
+      blurHash: "U7G7Yg~U0Nrr?Gt7RkaK0$NI$iV@ofS4RkWB",
+      description: "",
+      dominantColor: "#895d3b",
+      height: 3000,
+      id: "36698871-d6de-4ce7-aba4-3498427405a4",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/36698871-d6de-4ce7-aba4-3498427405a4/cc0becdc-f654-4cba-a0c9-cd93227e5701agriculturetractor60.jpg",
+      title: "agriculture tractor_60",
+      width: 4000,
+    },
   },
   {
-    "node": {
-      "blurHash": "UJIEB:RjE3xZB@WBs,oe5]xWo0R-Ous.WBR+",
-      "description": "",
-      "dominantColor": "#9a864e",
-      "height": 2160,
-      "id": "b1de76e9-52f0-4d20-86b4-b6ee9019ed80",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/b1de76e9-52f0-4d20-86b4-b6ee9019ed80/7c20e885-6e06-42a7-b74d-8bf81642d951agriculturetractor16.jpg",
-      "title": "agriculture tractor_16",
-      "width": 4096
-    }
+    node: {
+      blurHash: "UOG926IooJxu?w%NayRj.At7ofjs%iNGoJxu",
+      description: "",
+      dominantColor: "#7c7979",
+      height: 6000,
+      id: "20eefd0b-19c0-485e-80aa-3189b3d7772e",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/20eefd0b-19c0-485e-80aa-3189b3d7772e/7b8169a1-8487-4d8d-957f-1670a75788c6agriculturetractor44.jpg",
+      title: "agriculture tractor_44",
+      width: 4000,
+    },
   },
   {
-    "node": {
-      "blurHash": "U-H-ruM|RjoL~WNGWBj[b_WBjZazEgoLoLay",
-      "description": "",
-      "dominantColor": "#736763",
-      "height": 3456,
-      "id": "2cfc25c9-6dad-4745-9880-a3a3e7f723c1",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/2cfc25c9-6dad-4745-9880-a3a3e7f723c1/1cd5e433-81d0-46a5-96b4-18e7b8b5727fagriculturetractor14.jpg",
-      "title": "agriculture tractor_14",
-      "width": 5184
-    }
+    node: {
+      blurHash: "U.IO-3j[%Mof?wayWBj[RjWCM{Rki_WCkCWB",
+      description: "",
+      dominantColor: "#8a898e",
+      height: 5668,
+      id: "e9499969-8900-418c-9fe6-51f9670c97cc",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/e9499969-8900-418c-9fe6-51f9670c97cc/7b9302e8-93c5-44f7-a8dd-bd5d0776e22eagriculturetractor41.jpg",
+      title: "agriculture tractor_41",
+      width: 3779,
+    },
   },
   {
-    "node": {
-      "blurHash": "U+JaflWU%2xu_4aKt7oz%NNZbHs:tRoyV[WB",
-      "description": "old truck forgotten long time on potatoes field",
-      "dominantColor": "#958161",
-      "height": 2004,
-      "id": "6636dbbd-147c-4ebc-85a9-40daeec914d4",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/6636dbbd-147c-4ebc-85a9-40daeec914d4/0f22caf1-fc81-4166-b7f4-c01da605a70fagriculturetractor17.jpg",
-      "title": "agriculture tractor_17",
-      "width": 3006
-    }
+    node: {
+      blurHash: "UPGveJiy.StkyZk8x^j]JTMx%gj?D4W,ShV@",
+      description: "",
+      dominantColor: "#869188",
+      height: 2920,
+      id: "bd946427-fe79-4a0b-866c-e14f47f9cbc4",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/bd946427-fe79-4a0b-866c-e14f47f9cbc4/31e5ee59-1571-45c9-8fb2-4463dd18e2f0agriculturetractor38.jpg",
+      title: "agriculture tractor_38",
+      width: 5184,
+    },
   },
   {
-    "node": {
-      "blurHash": "UjJ[t;t8xtazu6oJWBay-=WBRjoexCofofof",
-      "description": "",
-      "dominantColor": "#a6b3a3",
-      "height": 3449,
-      "id": "1708f30b-13f9-496d-b157-3a5d7a97666a",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/1708f30b-13f9-496d-b157-3a5d7a97666a/d9dcf169-efab-4bd7-9a7c-b135ac1d9937agriculturetractor12.jpg",
-      "title": "agriculture tractor_12",
-      "width": 5174
-    }
+    node: {
+      blurHash: "UkIhQqX8aeR*?^xFRjaekDNHWBjZD*jYaeWC",
+      description: "",
+      dominantColor: "#958a78",
+      height: 2779,
+      id: "7f9c6747-59b3-4856-910e-88656a862340",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/7f9c6747-59b3-4856-910e-88656a862340/85ba2d3b-ca3e-4a96-894b-9ca65261faf8agriculturetractor43.jpg",
+      title: "agriculture tractor_43",
+      width: 4161,
+    },
   },
   {
-    "node": {
-      "blurHash": "UWCZhQVYXRS{_NV?bIWCyDbbsCnio|tRoLae",
-      "description": "",
-      "dominantColor": "#5c5951",
-      "height": 1840,
-      "id": "56ffb68e-eab4-467e-a9bc-42548f84f308",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/56ffb68e-eab4-467e-a9bc-42548f84f308/ee09fa2a-3a7c-4d1e-a55b-ec685c9a29feagriculturetractor20.jpg",
-      "title": "agriculture tractor_20",
-      "width": 3264
-    }
+    node: {
+      blurHash: "U%LW*IpIxGoy?wn+RkWWkqn$bbofWCRjbIjZ",
+      description: "",
+      dominantColor: "#ac9796",
+      height: 4000,
+      id: "ee7ad3cf-1b4a-4cfa-803c-4e2eb416d4e4",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/ee7ad3cf-1b4a-4cfa-803c-4e2eb416d4e4/1d7121b6-aad7-40ab-95be-b998acb1eba8agriculturetractor42.jpg",
+      title: "agriculture tractor_42",
+      width: 6000,
+    },
   },
   {
-    "node": {
-      "blurHash": "UtIqJ$s:aKR*~VazWAayEMR*R*s:57WVW;j[",
-      "description": "",
-      "dominantColor": "#86746f",
-      "height": 6000,
-      "id": "1700617f-e7c5-4c1d-9327-a8022c19e12a",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/1700617f-e7c5-4c1d-9327-a8022c19e12a/1a2db7d3-c0cf-485b-a54c-87230e03e088agriculturetractor18.jpg",
-      "title": "agriculture tractor_18",
-      "width": 4000
-    }
+    node: {
+      blurHash: "UzKB]ynjkBtk.moLR+X9TKaeoMaKW:aefkax",
+      description: "",
+      dominantColor: "#a3b0ae",
+      height: 2920,
+      id: "c9fd4df1-0e33-4001-944e-bcaffcfd028f",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/c9fd4df1-0e33-4001-944e-bcaffcfd028f/363baa36-9f4d-4c0f-907c-04edbbbb5a36agriculturetractor39.jpg",
+      title: "agriculture tractor_39",
+      width: 5184,
+    },
   },
   {
-    "node": {
-      "blurHash": "UPKTVTxZ%MIoL4ofxuRj0=kCbIWB-pWBRjbI",
-      "description": "",
-      "dominantColor": "#a78d59",
-      "height": 2790,
-      "id": "b859020f-1197-4478-bed0-9e176c0ec10a",
-      "originType": "image/jpeg",
-      "src": "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/b859020f-1197-4478-bed0-9e176c0ec10a/1ae8f79f-3f31-43e9-8d82-e81fb4256513agriculturetractor10.jpg",
-      "title": "agriculture tractor_10",
-      "width": 4185
-    }
+    node: {
+      blurHash: "UkC%]iS5k?t7Gdt6bwW?o4axfla|RkoeVsn~",
+      description: "",
+      dominantColor: "#5b7371",
+      height: 5184,
+      id: "e9879cd6-9d51-4d8e-b479-aa307ed91d32",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/e9879cd6-9d51-4d8e-b479-aa307ed91d32/54cc9e79-c9e0-49bf-8d9e-b53202682ed2agriculturetractor40.jpg",
+      title: "agriculture tractor_40",
+      width: 2920,
+    },
+  },
+  {
+    node: {
+      blurHash: "UwKUAut7WBj[.AkCayj[xvfRazj@Riayj[ay",
+      description: "",
+      dominantColor: "#ada391",
+      height: 4000,
+      id: "39899d3e-96cc-4d75-a9df-02675ed4c36f",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/39899d3e-96cc-4d75-a9df-02675ed4c36f/d45ce0bb-f832-44cf-878b-ed0a4d04c003agriculturetractor50.jpg",
+      title: "agriculture tractor_50",
+      width: 6000,
+    },
+  },
+  {
+    node: {
+      blurHash: "UqEMj?EMt6of?^NHoekBO@s.R*WCE2s:V@WB",
+      description: "",
+      dominantColor: "#5d6259",
+      height: 5701,
+      id: "dd4630c5-6a3a-455d-aff2-851f31248349",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/dd4630c5-6a3a-455d-aff2-851f31248349/363a92b0-3b8d-4d36-b7de-f2184c0ed2b8agriculturetractor59.jpg",
+      title: "agriculture tractor_59",
+      width: 3801,
+    },
+  },
+  {
+    node: {
+      blurHash: "UxL;Qxt6Iqs:*0off6ofIUodRkoLVrs.WCWV",
+      description: "",
+      dominantColor: "#b7ae9e",
+      height: 2909,
+      id: "420d7a04-f9db-4e6d-a2c7-12a07cde6c06",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/420d7a04-f9db-4e6d-a2c7-12a07cde6c06/d746f4f8-2e6f-413e-a2b7-f043bdb3593dagriculturetractor48.jpg",
+      title: "agriculture tractor_48",
+      width: 4363,
+    },
+  },
+  {
+    node: {
+      blurHash: "U-KT*?9aRjxa~qV@WBbHbI%2ayR*V@tRoejY",
+      description: "",
+      dominantColor: "#8d817f",
+      height: 6000,
+      id: "cf1c46a1-c360-450d-bd22-d899f7d1d7ef",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/cf1c46a1-c360-450d-bd22-d899f7d1d7ef/64aefe39-2379-4e32-bfb4-77b5d35dcf1aagriculturetractor45.jpg",
+      title: "agriculture tractor_45",
+      width: 4000,
+    },
+  },
+  {
+    node: {
+      blurHash: "U3Looe^fwtbw.8axs8S5w]bc9#$y}lSiEmw@",
+      description: "",
+      dominantColor: "#ba8946",
+      height: 3827,
+      id: "f00f03b5-3335-407a-a23c-35c4ee31d89d",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/f00f03b5-3335-407a-a23c-35c4ee31d89d/7853604b-0100-48c4-8608-287a2e23818dagriculturetractor46.jpg",
+      title: "agriculture tractor_46",
+      width: 2870,
+    },
+  },
+  {
+    node: {
+      blurHash: "U;JI92WWWBa}~qayayj[j^j?j[j[M_fQj[fQ",
+      description: "",
+      dominantColor: "#939c7e",
+      height: 3237,
+      id: "1c51b5f1-9e15-4549-a4c4-0c413d2fe55e",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/1c51b5f1-9e15-4549-a4c4-0c413d2fe55e/ed6e3553-c3f9-434d-b2b3-ae1b46825893agriculturetractor55.jpg",
+      title: "agriculture tractor_55",
+      width: 2160,
+    },
+  },
+  {
+    node: {
+      blurHash: "UJIOLWogW?nh2|S5%MV@%hxZIVogxuRjZ~WY",
+      description: "",
+      dominantColor: "#968f7f",
+      height: 2160,
+      id: "3f9fe79d-efb3-4c72-aba8-60977be485c2",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/3f9fe79d-efb3-4c72-aba8-60977be485c2/a506409d-8502-4ebc-9f90-fbc2548316cdagriculturetractor54.jpg",
+      title: "agriculture tractor_54",
+      width: 3236,
+    },
+  },
+  {
+    node: {
+      blurHash: "UqC@dBaeW?fk.TWCflj[R.azoJoKadj[axf6",
+      description: "",
+      dominantColor: "#647676",
+      height: 3648,
+      id: "4226380e-9d67-448d-80ba-defeb869f5f9",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/4226380e-9d67-448d-80ba-defeb869f5f9/b9af2973-0c4b-4630-959e-75c22f4e5263agriculturetractor56.jpg",
+      title: "agriculture tractor_56",
+      width: 5472,
+    },
+  },
+  {
+    node: {
+      blurHash: "UeGbu4R*xuj]~qR+WWa|s8oeRPWBRQWCt6ay",
+      description: "",
+      dominantColor: "#7c7d71",
+      height: 3024,
+      id: "703ee986-f93b-42b6-a52b-1657c4b8a191",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/703ee986-f93b-42b6-a52b-1657c4b8a191/c97e0072-b977-44a3-b3dd-0056b3de05b3agriculturetractor49.jpg",
+      title: "agriculture tractor_49",
+      width: 4032,
+    },
+  },
+  {
+    node: {
+      blurHash: "U03IwyIEjUtLx=t5WCoeaaxrkZRUtgfjs:Rl",
+      description: "",
+      dominantColor: "#19210a",
+      height: 2992,
+      id: "e1941246-0ca3-48c8-b00d-53d716d8447f",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/e1941246-0ca3-48c8-b00d-53d716d8447f/ebf0e115-013b-412c-9404-9439b0468286agriculturetractor47.jpg",
+      title: "agriculture tractor_47",
+      width: 3992,
+    },
+  },
+  {
+    node: {
+      blurHash: "UYHn~TW=xta}~qt7Rkj[M{ofRjWBM{Rjt7f6",
+      description: "",
+      dominantColor: "#8a8172",
+      height: 3000,
+      id: "d8aad93e-4c1c-47bf-8bba-c1725df017ec",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/d8aad93e-4c1c-47bf-8bba-c1725df017ec/3613629c-b57e-474a-8782-230c73403251agriculturetractor53.jpg",
+      title: "agriculture tractor_53",
+      width: 2000,
+    },
+  },
+  {
+    node: {
+      blurHash: "UhH2r%juV@fR?da#aeaz.9j@WCj@-=j?ocay",
+      description: "",
+      dominantColor: "#8b8d64",
+      height: 5184,
+      id: "c3c5d2c1-7dd1-43ad-9c1c-bed0d2be005f",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/c3c5d2c1-7dd1-43ad-9c1c-bed0d2be005f/e2580203-db3e-4664-8cd5-d6d978c282bcagriculturetractor15.jpg",
+      title: "agriculture tractor_15",
+      width: 3456,
+    },
+  },
+  {
+    node: {
+      blurHash: "U7D+bqQ-x706RkI@R+s,02?YEU~8IVjc$~W;",
+      description: "",
+      dominantColor: "#665d4e",
+      height: 3640,
+      id: "a62c1b42-2357-4e20-b76a-0b346c509396",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/a62c1b42-2357-4e20-b76a-0b346c509396/ce17221a-0485-4809-9a82-6199357f8827agriculturetractor13.jpg",
+      title: "agriculture tractor_13",
+      width: 5464,
+    },
+  },
+  {
+    node: {
+      blurHash: "U%Ez7kt7R*a|%%oyoKj[I^ayofj[MxWBbIaz",
+      description: "",
+      dominantColor: "#727f6e",
+      height: 4000,
+      id: "3710e6ed-2420-44bc-ac0f-6aa1d7a667ad",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/3710e6ed-2420-44bc-ac0f-6aa1d7a667ad/8f8c944d-86ac-4990-b991-2686c9e55fb0agriculturetractor11.jpg",
+      title: "agriculture tractor_11",
+      width: 6000,
+    },
+  },
+  {
+    node: {
+      blurHash: "U-Ih{cM{Rjj]_Nn%WXoetRt8WBjsWqoyf5WC",
+      description: "",
+      dominantColor: "#8f9894",
+      height: 3840,
+      id: "c74d1504-064c-48be-b10c-779e104abd7f",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/c74d1504-064c-48be-b10c-779e104abd7f/5bd4d375-23f6-48a6-acce-66e61d7be6a2agriculturetractor19.jpg",
+      title: "agriculture tractor_19",
+      width: 5758,
+    },
+  },
+  {
+    node: {
+      blurHash: "UJIEB:RjE3xZB@WBs,oe5]xWo0R-Ous.WBR+",
+      description: "",
+      dominantColor: "#9a864e",
+      height: 2160,
+      id: "b1de76e9-52f0-4d20-86b4-b6ee9019ed80",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/b1de76e9-52f0-4d20-86b4-b6ee9019ed80/7c20e885-6e06-42a7-b74d-8bf81642d951agriculturetractor16.jpg",
+      title: "agriculture tractor_16",
+      width: 4096,
+    },
+  },
+  {
+    node: {
+      blurHash: "U-H-ruM|RjoL~WNGWBj[b_WBjZazEgoLoLay",
+      description: "",
+      dominantColor: "#736763",
+      height: 3456,
+      id: "2cfc25c9-6dad-4745-9880-a3a3e7f723c1",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/2cfc25c9-6dad-4745-9880-a3a3e7f723c1/1cd5e433-81d0-46a5-96b4-18e7b8b5727fagriculturetractor14.jpg",
+      title: "agriculture tractor_14",
+      width: 5184,
+    },
+  },
+  {
+    node: {
+      blurHash: "U+JaflWU%2xu_4aKt7oz%NNZbHs:tRoyV[WB",
+      description: "old truck forgotten long time on potatoes field",
+      dominantColor: "#958161",
+      height: 2004,
+      id: "6636dbbd-147c-4ebc-85a9-40daeec914d4",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/6636dbbd-147c-4ebc-85a9-40daeec914d4/0f22caf1-fc81-4166-b7f4-c01da605a70fagriculturetractor17.jpg",
+      title: "agriculture tractor_17",
+      width: 3006,
+    },
+  },
+  {
+    node: {
+      blurHash: "UjJ[t;t8xtazu6oJWBay-=WBRjoexCofofof",
+      description: "",
+      dominantColor: "#a6b3a3",
+      height: 3449,
+      id: "1708f30b-13f9-496d-b157-3a5d7a97666a",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/1708f30b-13f9-496d-b157-3a5d7a97666a/d9dcf169-efab-4bd7-9a7c-b135ac1d9937agriculturetractor12.jpg",
+      title: "agriculture tractor_12",
+      width: 5174,
+    },
+  },
+  {
+    node: {
+      blurHash: "UWCZhQVYXRS{_NV?bIWCyDbbsCnio|tRoLae",
+      description: "",
+      dominantColor: "#5c5951",
+      height: 1840,
+      id: "56ffb68e-eab4-467e-a9bc-42548f84f308",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/56ffb68e-eab4-467e-a9bc-42548f84f308/ee09fa2a-3a7c-4d1e-a55b-ec685c9a29feagriculturetractor20.jpg",
+      title: "agriculture tractor_20",
+      width: 3264,
+    },
+  },
+  {
+    node: {
+      blurHash: "UtIqJ$s:aKR*~VazWAayEMR*R*s:57WVW;j[",
+      description: "",
+      dominantColor: "#86746f",
+      height: 6000,
+      id: "1700617f-e7c5-4c1d-9327-a8022c19e12a",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/1700617f-e7c5-4c1d-9327-a8022c19e12a/1a2db7d3-c0cf-485b-a54c-87230e03e088agriculturetractor18.jpg",
+      title: "agriculture tractor_18",
+      width: 4000,
+    },
+  },
+  {
+    node: {
+      blurHash: "UPKTVTxZ%MIoL4ofxuRj0=kCbIWB-pWBRjbI",
+      description: "",
+      dominantColor: "#a78d59",
+      height: 2790,
+      id: "b859020f-1197-4478-bed0-9e176c0ec10a",
+      originType: "image/jpeg",
+      src: "https://assets.caisy.io/assets/458cb0c1-e704-4ddf-8c3f-ee5505830808/b859020f-1197-4478-bed0-9e176c0ec10a/1ae8f79f-3f31-43e9-8d82-e81fb4256513agriculturetractor10.jpg",
+      title: "agriculture tractor_10",
+      width: 4185,
+    },
   },
   {
     node: {
@@ -1210,14 +1496,37 @@ const images = [
   },
 ];
 
+const validImageEndings = ["png", "jpg", "jpeg", "gif", "svg", "webp", "avif", "svg"];
+
+/**
+ * Returns a UUIDv4 as string
+ *
+ * @returns {string}
+ */
+export const generateUuid = () => {
+  return String("xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx").replace(/[xy]/g, (character) => {
+    const random = (Math.random() * 16) | 0;
+    const value = character === "x" ? random : (random & 0x3) | 0x8;
+
+    return value.toString(16);
+  });
+};
+
 export const getImages = () => {
-  return images
-    .map((image) => {
-      return {
-        // ...image.node,
-        width: image.node?.width ? image.node.width : 0,
-        height: image.node?.height ? image.node.height : 0,
-        src: image.node?.src ? `${image.node.src}`.replace("assets.caisy.io", "assets.dev.caisy.io") : image.node?.src,
-      };
-    })
+  return images.map((image) => {
+    const isValidImage =
+      (image.node?.src && image?.node?.originType?.startsWith("image/")) ||
+      validImageEndings.some((ending) => image?.node?.src && `${image.node.src}`.endsWith("." + ending));
+
+    const fileEnding = image?.node?.src?.split("/").pop()?.split(".").pop();
+
+    return {
+      ...image.node,
+      width: image.node?.width ? image.node.width : 0,
+      height: image.node?.height ? image.node.height : 0,
+      src: isValidImage ? `${image.node.src}`.replace("assets.caisy.io", "assets.dev.caisy.io") : null,
+      ...(fileEnding && fileEnding.length < 5 && { label: fileEnding }),
+      id: generateUuid(),
+    };
+  });
 };
