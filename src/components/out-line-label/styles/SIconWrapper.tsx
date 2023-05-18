@@ -16,7 +16,7 @@ const Bronze = css<ISIconWrapper>`
     width: ${({ size }) => (size === "medium" ? 16 : 20)}px;
     height: ${({ size }) => (size === "medium" ? 16 : 20)}px;
     path {
-      stroke-width: 2.5;
+      strokeWidth: 2.5;
     }
   }
 `;

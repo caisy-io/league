@@ -104,7 +104,7 @@ const Bronze = css<ISPreview>`
       width: ${size && iconSize(size)}px;
       height: ${size && iconSize(size)}px;
       path {
-        stroke-width: ${size && iconStroke(size)}px;
+        strokeWidth: ${size && iconStroke(size)}px;
       } 
     }
   `}

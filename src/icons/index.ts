@@ -1,4 +1,3 @@
-import { ExpandArrows } from "./IconExpandArrows";
 export { IconDragable } from "./IconDragable";
 export { IconEyeHidden } from "./IconEyeHidden";
 export { IconEye } from "./IconEye";
