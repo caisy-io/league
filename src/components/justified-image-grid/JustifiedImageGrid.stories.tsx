@@ -25,14 +25,26 @@ const JustifiedImageGridDemo: React.FC<{ number }> = ({ number }) => {
   const [imagesToDisplay, setImagesToDisplay] = React.useState(images.slice(0,pageSize));
 
   const loadNextPage = async () => {
-    await sleep(2000)
+    await sleep(200000)
+    // await sleep(2000)
     return setImagesToDisplay((prev) => [...prev, ...images.sort(() => 0.5 - Math.random()).slice(0, pageSize)]);
+  }
+
+  const shuffle = async () => {
+    // await sleep(2000)
+    return setImagesToDisplay((prev) => [ ...images.sort(() => 0.5 - Math.random()).slice(0, prev.length)]);
+  }
+  const addOneOnStart = async () => {
+    // await sleep(2000)
+    return setImagesToDisplay((prev) => [ ...images.sort(() => 0.5 - Math.random()).slice(0, 1), ...prev]);
   }
   // console.log(` images`, JSON.stringify(images, ));
   return (
     <>
+    <button onClick={() => addOneOnStart()}> addOneOnStart </button>
+    <button onClick={() => shuffle()}> shuffle </button>
     <button onClick={() => loadNextPage()}> INC </button>
-    <JustifiedImageGrid images={imagesToDisplay} groupSize={pageSize} totalCount={200} rowHeight={300} loadNextPage={loadNextPage} />
+    <JustifiedImageGrid images={imagesToDisplay} config={{groupSize: pageSize}} totalCount={200} rowHeight={300} loadNextPage={loadNextPage} />
     </>
 )};
 

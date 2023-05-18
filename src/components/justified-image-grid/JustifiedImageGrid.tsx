@@ -7,6 +7,7 @@ import { SJustifiedImageGridCell } from "./styles/SJustifiedImageGridCell";
 import {
   AVG_IMAGE_WIDTH,
   AVG_ROW_HEIGHT,
+  GROUP_SIZE,
   IMAGE_LABEL_HEIGHT,
   MAX_IMAGES_PER_ROW,
   MAX_WIDTH_OF_IMAGE,
@@ -92,6 +93,7 @@ const getDefaultConfig = (overwriteConfig?: Partial<IJustifiedImageGridConfigOve
     totalWidthOfView: overwriteConfig?.totalWidthOfView || TOTAL_WIDTH_OF_VIEW,
     avgRowHeight: overwriteConfig?.avgRowHeight || AVG_ROW_HEIGHT,
     avgImageWidth: overwriteConfig?.avgImageWidth || AVG_IMAGE_WIDTH,
+    groupSize: overwriteConfig?.groupSize || GROUP_SIZE,
   };
 };
 
@@ -100,7 +102,6 @@ const Row: React.FC<{
   index: number;
   style: React.CSSProperties;
 }> = memo(({ data: { rows, config }, index, style }) => {
-  console.log(` config`, config);
   const currRow = rows[index];
   if (currRow.__loading == 1) {
     const firstWidth = config.totalWidthOfView / 3.5;
@@ -193,7 +194,6 @@ const Row: React.FC<{
 
 export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
   images,
-  groupSize,
   config: overwriteConfig,
   totalCount,
   scrollToIndex,
@@ -203,7 +203,7 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
   const loadingRef = React.useRef<boolean>(false);
   const [loadingNextPage, setLoadingNextPage] = React.useState<boolean>(false);
   const config = getDefaultConfig(overwriteConfig);
-  const rowConfigs = generateRows(images, groupSize, totalCount, config);
+  const rowConfigs = generateRows(images, totalCount, config);
 
   if (loadingNextPage) {
     rowConfigs.push({

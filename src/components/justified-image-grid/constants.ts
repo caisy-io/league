@@ -10,5 +10,6 @@ export const ROW_MAX_HEIGHT = 330;
 export const IMAGE_LABEL_HEIGHT = 40;
 export const MAX_IMAGES_PER_ROW = 5;
 export const MIN_IMAGES_PER_ROW = 3;
+export const GROUP_SIZE = 20;
 export const AVG_ROW_HEIGHT = (ROW_MIN_HEIGHT + ROW_MAX_HEIGHT) / 2;
 export const AVG_IMAGE_WIDTH = (MIN_WIDTH_OF_IMAGE + MAX_WIDTH_OF_IMAGE) / 2;
