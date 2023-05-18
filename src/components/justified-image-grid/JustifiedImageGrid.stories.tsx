@@ -61,14 +61,16 @@ const JustifiedImageGridDemo: React.FC<{
   // console.log(` images`, JSON.stringify(images, ));
   const onSliderValueChange = (value: number) => {
     console.log(` value`, value);
-  }
+  };
   console.log(` imagesToDisplay`, imagesToDisplay);
   return (
     <>
-      <button onClick={() => addOneOnStart()}> addOneOnStart </button>
-      <button onClick={() => shuffle()}> shuffle </button>
-      <button onClick={() => loadNextPage()}> INC </button>
-      <Slider  initialValue={5} min={1} max={10} onValueChange={onSliderValueChange} />
+      <div>
+        <button onClick={() => addOneOnStart()}> addOneOnStart </button>
+        <button onClick={() => shuffle()}> shuffle </button>
+        <button onClick={() => loadNextPage()}> INC </button>
+        <Slider initialValue={5} min={1} max={10} onValueChange={onSliderValueChange} />
+      </div>
       <div style={{ border: "1px black solid", margin: "32px" }}>
         <JustifiedImageGrid
           images={imagesToDisplay as any}
