@@ -3,7 +3,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const Bronze = css`
   height: 1px;
-  width: 20px;
+  width: ${(props) => (props.expanded ? "135px" : "20px")};
   background-color: var(--ui-03);
 `;
 

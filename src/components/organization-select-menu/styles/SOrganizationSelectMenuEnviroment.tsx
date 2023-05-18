@@ -7,7 +7,7 @@ interface ISOrganziationSelectMenuEnviroment {
 
 const Bronze = css`
   height: 16px;
-  margin: 8px 0 0 0;
+  margin: -12px 0 0 0;
   background-color: var(--ui-03);
   display: flex;
   align-items: center;
