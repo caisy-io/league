@@ -4,7 +4,6 @@ on:
     branches-ignore:
       - staging
       - prod
-      - dev
 
 jobs:
   build:
