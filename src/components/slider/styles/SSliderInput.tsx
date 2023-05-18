@@ -8,7 +8,7 @@ const Bronze = css`
   opacity: 0;
   height: 100%;
   width: 100%;
-  cursor: pointer;
+  cursor: col-resize;
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
@@ -20,14 +20,14 @@ const Bronze = css`
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    cursor: pointer;
+    cursor: col-resize;
   }
 
   ::-moz-range-thumb {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    cursor: pointer;
+    cursor: col-resize;
   }
 `;
 

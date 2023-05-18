@@ -2,15 +2,11 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  padding: 12px 10px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  border-right: 1px solid var(--ui-03);
-  background-color: var(--ui-01);
-  max-width: ${(props) => (props.expanded ? "140px" : "max-content")};
-  gap: 20px;
-  height: auto;
+  color: var(--text-04);
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 8px;
 `;
 
 const Silver = css``;
@@ -21,7 +17,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SMainMenu = styled.div<any>`
+export const SMainMenuItemText = styled.h6<any>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

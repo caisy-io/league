@@ -19,7 +19,7 @@ const Bronze = css`
     width: 12px;
     height: 12px;
     color: #FFFF;
-    stroke-width: 2.5;
+    strokeWidth: 2.5;
   }
   background-color: var(--hover-interactional-secondary-02);
   `;

@@ -19,7 +19,7 @@ const Bronze = css<ISidebarTitleProps>`
     max-height: 16px;
   }
   svg path {
-    stroke-width: 1.2px;
+    strokeWidth: 1.2px;
   }
   ${(props) => props.icon && props.toggle || props.toggle ? CSSWidth85 : ''};
 `;

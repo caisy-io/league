@@ -16,7 +16,6 @@ const Bronze = css`
   padding: 5px;
   width: fit-content;
   position: relative;
-
   width: ${(props) => (props.expanded ? "123px" : "27px")};
 
   &:hover {

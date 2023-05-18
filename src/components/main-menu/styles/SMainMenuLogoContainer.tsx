@@ -3,7 +3,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const Bronze = css`
   height: 40px;
-  width: 40px;
+  width: ${(props) => (props.expanded ? "93%" : "40px")};
 `;
 
 const Silver = css``;
