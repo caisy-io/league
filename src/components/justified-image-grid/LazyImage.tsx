@@ -4,6 +4,7 @@ import { SImageLabelPreview } from "./styles/SImageLabelPreview";
 import { SLazyImage } from "./styles/SLazyImage";
 import { blurhashToCssGradientString } from "./utils";
 import { SLazyImageLoadingWrapper } from "./styles/SLazyImageLoadingWrapper";
+import { IJustifiedImageGrid, IJustifiedImageGridConfig } from "./types";
 
 export const LazyImage: FC<{
   src: string;
@@ -11,7 +12,10 @@ export const LazyImage: FC<{
   blurHash?: string;
   originType?: string;
   label?: string;
-}> = ({ src, skeleton, originType, blurHash, label }) => {
+  title?: string;
+  description?: string;
+  config: IJustifiedImageGridConfig
+}> = ({ src, skeleton, originType, blurHash, label, title, description, config }) => {
   const [fetchState, setFetchState] = React.useState<number>(0);
   if (skeleton) {
     return <SSkeleton width="100%" height={"100%"} borderRadius={"0"} />;
@@ -29,7 +33,7 @@ export const LazyImage: FC<{
 
   let blurHashCss = "";
 
-  if (blurHash) {
+  if (!isSvg && blurHash) {
     blurHashCss = blurhashToCssGradientString(blurHash, 3, 3);
   }
 
@@ -50,8 +54,8 @@ export const LazyImage: FC<{
         isSvg={isSvg}
         onLoad={onLoad}
         onError={onError}
-        src={src + "?height=600"}
-        alt="image"
+        src={src + `?height=${config.resizeHeight}`}
+        alt={description || title}
         loading="lazy"
         decoding="async"
       />

@@ -3,7 +3,7 @@ export type IJustifiedImageGrid = {
   scrollToIndex?: number;
   totalCount?: number;
   loadNextPage: () => Promise<void> ;
-  config?: IJustifiedImageGridConfigOverwrite;
+  config: IJustifiedImageGridConfig;
 };
 
 export type Image = {
@@ -49,6 +49,8 @@ export type IJustifiedImageGridConfig = {
   groupSize: number;
   paddingAroundGrid: number;
   scrollViewHeight: number;
+  resizeHeight: number;
+  svgPadding: number;
   imageTitleFallback?: string;
 }
 
@@ -68,5 +70,7 @@ export type IJustifiedImageGridConfigOverwrite = {
   groupSize?: number;
   paddingAroundGrid?: number;
   scrollViewHeight?: number;
+  resizeHeight?: number;
+  svgPadding?: number;
   imageTitleFallback?: string;
 }

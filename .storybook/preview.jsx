@@ -90,6 +90,9 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <>
+      <style
+        dangerouslySetInnerHTML={{  __html: `.sb-show-main.sb-main-padded{padding:0 !important;}`}}
+      />
       <GSBase />
       <Story />
     </>

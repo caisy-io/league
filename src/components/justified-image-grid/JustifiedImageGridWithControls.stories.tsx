@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { JustifiedImageGrid } from "./JustifiedImageGrid";
 import { generateUuid, getImages } from "./testdata";
 import { Slider } from "../slider/Slider";
+import { useDimensions } from "../../utils";
+import { getDefaultConfig } from "./defaultConfig";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -13,6 +15,8 @@ const JustifiedImageGridDemo: React.FC<{
 }> = ({ totalCount, pageSize, initalLoadingDelay, loadingMultiplier }) => {
   const images = getImages();
   const multiplier = useRef(loadingMultiplier || 1);
+  const ref = useRef(null);
+  const { width, height } = useDimensions(ref);
 
   const [imagesToDisplay, setImagesToDisplay] = React.useState(images.slice(0, Math.min(pageSize, totalCount)));
 
@@ -62,19 +66,19 @@ const JustifiedImageGridDemo: React.FC<{
   const onSliderValueChange = (value: number) => {
     console.log(` value`, value);
   };
-  console.log(` imagesToDisplay`, imagesToDisplay);
+
   return (
     <>
-      <div>
-        <button onClick={() => addOneOnStart()}> addOneOnStart </button>
-        <button onClick={() => shuffle()}> shuffle </button>
-        <button onClick={() => loadNextPage()}> INC </button>
-        <Slider initialValue={5} min={1} max={10} onValueChange={onSliderValueChange} />
-      </div>
-      <div style={{ border: "1px black solid", margin: "32px" }}>
+      <div ref={ref} style={{ height: "calc(100vh - 64px)", display: "flex" }}>
+        <div style={{ width: "140px", display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <button onClick={() => addOneOnStart()}> addOneOnStart </button>
+          <button onClick={() => shuffle()}> shuffle </button>
+          <button onClick={() => loadNextPage()}> INC </button>
+          <Slider initialValue={5} min={1} max={10} onValueChange={onSliderValueChange} />
+        </div>
         <JustifiedImageGrid
           images={imagesToDisplay as any}
-          config={{ groupSize: pageSize }}
+          config={getDefaultConfig({ groupSize: pageSize, scrollViewHeight: height, paddingAroundGrid: 16, totalWidthOfView: width - 32 - 140, resizeHeight: 300  })}
           totalCount={totalCount}
           scrollToIndex={undefined}
           loadNextPage={loadNextPage}
@@ -84,8 +88,8 @@ const JustifiedImageGridDemo: React.FC<{
   );
 };
 
-export const Default: any = JustifiedImageGridDemo.bind({});
-Default.args = {
+export const Controls: any = JustifiedImageGridDemo.bind({});
+Controls.args = {
   totalCount: 67,
   pageSize: 20,
   initalLoadingDelay: 2000,

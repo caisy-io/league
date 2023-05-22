@@ -192,7 +192,6 @@ export function getGroupRows(images: Image[], config: IJustifiedImageGridConfig,
 export function generateRows(images: Image[], totalCount, config: IJustifiedImageGridConfig): IRow[] {
   const rows: IRow[] = [];
 
-  console.log(` config`, config);
   let currentGroupIndex = 0;
   let currentGroupImagesCount = 0;
 
@@ -215,7 +214,7 @@ export function generateRows(images: Image[], totalCount, config: IJustifiedImag
       if (usedImageCount !== config.groupSize) {
         const leftOverImageCount = config.groupSize - usedImageCount;
         currentGroupImagesCount = currentGroupImagesCount + leftOverImageCount;
-        console.log(` leftOverImageCount`, leftOverImageCount);
+        console.log(` leftOverImageCount`, leftOverImageCount, images.length, totalCount);
         console.log(images.slice(currGroupStartIndex + usedImageCount, currGroupEndIndex));
       }
 
