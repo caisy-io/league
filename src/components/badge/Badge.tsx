@@ -36,7 +36,7 @@ export const Badge: FC<IBadgeProps> = forwardRef(({ children, value, position, t
         type={type}
         size={size}
         width={width}
-        withPadding={value?.length > 1 && type !== "color" && /[A-Za-z]/.test(value)}
+        withPadding={value?.length > 1 && type !== "color" && /[A-Za-z0-9]/.test(value)}
         withBorder={withBorder}
       >
         <SBadgeIconContent type={type} size={size}>
