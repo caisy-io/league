@@ -74,20 +74,21 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
   const infiniteLoaderRef = React.useRef<InfiniteLoader>(null);
   const loadingRef = React.useRef<boolean>(false);
   const [loadingNextPage, setLoadingNextPage] = React.useState<boolean>(false);
-  console.log(`JustifiedImageGrid images.length`, images.length);
   const rowConfigs = generateRows(images, totalCount, config);
+
+
+  console.log(` rowConfigs`, rowConfigs);
 
   if (loadingNextPage && rowConfigs.length > 0 && images.length !== totalCount) {
     rowConfigs[rowConfigs.length - 1].__loading = true;
   }
 
   const isItemLoaded = (index: number) => {
-    // console.log(` isItemLoaded index`, index);
     return rowConfigs[index];
   };
-  const loadMoreItems = (startIndex: number, stopIndex: number) => {
+
+  const loadMoreItems = () => {
     if (!loadingRef.current) {
-      console.log(` loadMoreItems`, startIndex, stopIndex);
       loadingRef.current = true;
       loadNextPage().then(() => {
         loadingRef.current = false;

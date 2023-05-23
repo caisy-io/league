@@ -89,14 +89,10 @@ function buildRows(
 
       // this should only catch in the last row
       // lets skip the (last) row if it is not filled enough
-      const rowIsNotFilledEnough =
+      const skip =
         currentRow.length < config.minImagesPerRow || totalWidth < config.totalWidthOfView - config.avgImageWidth;
 
-        if(rowIsNotFilledEnough){
-          console.log(` currentRow.length < config.minImagesPerRow `, currentRow.length < config.minImagesPerRow );
-          console.log(` totalWidth < config.totalWidthOfView - config.avgImageWidth`, totalWidth < config.totalWidthOfView - config.avgImageWidth);
-        }
-      if (!rowIsNotFilledEnough) {
+      if (!skip) {
         rows.push(
           justifyRow(
             {
@@ -109,6 +105,7 @@ function buildRows(
           ),
         );
       } else if (isLastGroup) {
+        console.log(` isLastGroup`, isLastGroup);
         rows.push({
           images: currentRow,
           aspectRatioSum: currentAspectRatioSum,
@@ -127,7 +124,8 @@ function buildRows(
     const newImageWouldDecraseDiff = Math.abs(newDiff) < Math.abs(currDif);
     const rowIsNotFilled = currentAspectRatioSum + currImageAspectRatio < idealAspectRatioSum;
    
-    if ((rowIsNotFilled || newImageWouldDecraseDiff) && currentRow.length < config.maxImagesPerRow) {
+    // rowIsNotFilled && console.log(` rowIsNotFilled=${rowIsNotFilled} ${currentRow.length}`, rowIsNotFilled, newImageWouldDecraseDiff,  currentRow.length < config.maxImagesPerRow);
+    if ( currentRow.length < config.minImagesPerRow || ((rowIsNotFilled || newImageWouldDecraseDiff) && currentRow.length < config.maxImagesPerRow)) {
       addImageToRow();
     } else {
       finishRow();
@@ -218,12 +216,10 @@ export function generateRows(images: Image[], totalCount, config: IJustifiedImag
       if (usedImageCount !== config.groupSize) {
         const leftOverImageCount = config.groupSize - usedImageCount;
         currentGroupImagesCount = currentGroupImagesCount + leftOverImageCount;
-        if (leftOverImageCount > 7){
-          console.log(` usedImageCount`, usedImageCount);
-          console.log(` config.groupSize`, config.groupSize);
-          console.log(` leftOverImageCount`, leftOverImageCount, images.length, totalCount);
-        }
-        console.log(images.slice(currGroupStartIndex + usedImageCount, currGroupEndIndex));
+        // if (leftOverImageCount > 7){
+        //   console.log(`leftOverImageCount=${leftOverImageCount} usedImageCount=${usedImageCount} config.groupSize=${config.groupSize} images.length=${images.length} totalCount=${totalCount} `);
+        // }
+        // console.log(images.slice(currGroupStartIndex + usedImageCount, currGroupEndIndex));
       }
     }
   }

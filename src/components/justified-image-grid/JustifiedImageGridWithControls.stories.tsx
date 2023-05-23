@@ -35,7 +35,6 @@ const JustifiedImageGridDemo: React.FC<{
   }, [loadingMultiplier]);
 
   const loadNextPage = async () => {
-    console.log(` loadNextPage`, );
     await sleep(initalLoadingDelay * multiplier.current);
     // await sleep(2000)
     if (imagesToDisplay.length < totalCount) {
@@ -88,9 +87,9 @@ const JustifiedImageGridDemo: React.FC<{
           config={getDefaultConfig({ groupSize: pageSize, scrollViewHeight: height, paddingAroundGrid: 16, totalWidthOfView: width - 32 - 140, resizeHeight: 300  })}
           totalCount={totalCount}
           scrollToRowIndex={scrollToIndex}
-          loadNextPage={async() => console.log("a")}
+          loadNextPage={loadNextPage}
           onImageClick={({id, rowIndex}) => console.log(`id=${id} rowIndex=${rowIndex} `, )}
-          onImageSelection={({id, rowIndex}) => setSelectedImages(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id])}
+          onImageSelection={({id}) => setSelectedImages(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id])}
         />
       </div>
     </>
