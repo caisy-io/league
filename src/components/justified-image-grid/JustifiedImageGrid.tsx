@@ -1,31 +1,28 @@
-import React, { FC, memo, useEffect } from "react";
+import React, { FC, memo, useEffect, useRef } from "react";
 import { SJustifiedImageGrid } from "./styles/SJustifiedImageGrid";
-import { VariableSizeList, areEqual } from "react-window";
+import { areEqual } from "react-window";
 import { AssetImageCard } from "../asset-image-card";
 import { generateRows } from "./generateRows";
 import { SJustifiedImageGridCell } from "./styles/SJustifiedImageGridCell";
-import { IJustifiedImageGrid, IJustifiedImageGridConfigOverwrite, IJustifiedImageGridEvent } from "./types";
+import { IJustifiedImageGrid, IJustifiedImageGridEvent } from "./types";
 import { SJustifiedImageGridRow } from "./styles/SJustifiedImageGridRow";
-import InfiniteLoader from "react-window-infinite-loader";
+import { Virtuoso } from "react-virtuoso";
 import { IRow, IJustifiedImageGridConfig } from "./types";
 import { LazyImage } from "./LazyImage";
 
 const Row: React.FC<{
   data: {
-    rows: IRow[];
+    row: IRow;
     config: IJustifiedImageGridConfig;
-    onImageSelection?: (event: IJustifiedImageGridEvent) => void;
-    onImageClick?: (event: IJustifiedImageGridEvent) => void;
+    onImageSelection: (event: IJustifiedImageGridEvent) => void;
+    onImageClick: (event: IJustifiedImageGridEvent) => void;
   };
-  index: number;
-  style: React.CSSProperties;
-}> = memo(({ data: { rows, config, onImageSelection, onImageClick }, index, style }) => {
-  const currRow = rows[index];
-  const rowImages = currRow.images;
+}> = memo(({ data: { row, config, onImageSelection, onImageClick } }) => {
+  const rowImages = row.images;
 
   return (
-    <div style={style}>
-      <SJustifiedImageGridRow style={index == 0 ? { paddingTop: "16px" } : {}}>
+    <div>
+      <SJustifiedImageGridRow>
         {rowImages.map((image, i) => {
           return (
             <SJustifiedImageGridCell
@@ -38,14 +35,14 @@ const Row: React.FC<{
             >
               <AssetImageCard
                 key={"ai_" + image.id}
-                skeleton={currRow.__loading}
+                skeleton={row.__loading}
                 activated={image.selected}
-                onImageClick={() => onImageClick && onImageClick({id: image.id, rowIndex: index, columnIndex: i})}
-                onChange={() => onImageSelection && onImageSelection({id: image.id, rowIndex: index, columnIndex: i})}
+                onImageClick={() => onImageClick({ id: image.id, columnIndex: i } as any)}
+                onChange={() => onImageSelection({ id: image.id, columnIndex: i } as any)}
                 image={
                   <LazyImage
                     config={config}
-                    skeleton={currRow.__loading}
+                    skeleton={row.__loading}
                     key={"li_" + image.id}
                     src={image.src}
                     label={image.label}
@@ -71,21 +68,14 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
   onImageSelection,
   onImageClick,
 }) => {
-  const infiniteLoaderRef = React.useRef<InfiniteLoader>(null);
   const loadingRef = React.useRef<boolean>(false);
+  const virtuoso = useRef<any>(null);
   const [loadingNextPage, setLoadingNextPage] = React.useState<boolean>(false);
   const rowConfigs = generateRows(images, totalCount, config);
 
-  console.log(` rowConfigs
-  `, rowConfigs
-  );
   if (loadingNextPage && rowConfigs.length > 0 && images.length !== totalCount) {
     rowConfigs[rowConfigs.length - 1].__loading = true;
   }
-
-  const isItemLoaded = (index: number) => {
-    return rowConfigs[index];
-  };
 
   const loadMoreItems = () => {
     if (!loadingRef.current) {
@@ -99,21 +89,44 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
   };
 
   useEffect(() => {
-    if (Number.isInteger(scrollToRowIndex)) {
-      setTimeout(() => {
-        (infiniteLoaderRef as React.MutableRefObject<any>)?.current?._listRef.scrollToItem(scrollToRowIndex, "smart");
-      }, 0);
-    }
-  }, [scrollToRowIndex]);
-
-  useEffect(() => {
-    console.log(` config.avgRowHeight`, config.avgRowHeight);
-    (infiniteLoaderRef as React.MutableRefObject<any>)?.current?._listRef.forceUpdate();
-  }, [config.avgRowHeight]);
+    virtuoso.current &&
+      virtuoso.current.scrollToIndex({
+        index: scrollToRowIndex,
+        align: "center",
+        behavior: "auto",
+      });
+  }, [scrollToRowIndex, !!virtuoso.current]);
 
   return (
-    <SJustifiedImageGrid style={{ height: config.scrollViewHeight + config.paddingAroundGrid * 2 }}>
-      <InfiniteLoader
+    <SJustifiedImageGrid>
+      <Virtuoso
+        ref={virtuoso}
+        style={{ height: config.scrollViewHeight, width: config.totalWidthOfView + config.paddingAroundGrid * 2 }}
+        data={rowConfigs}
+        endReached={loadMoreItems}
+        overscan={200}
+        itemContent={(index, row) => {
+          return (
+            <div
+              style={{ paddingTop: index == 0 ? "16px" : undefined, paddingBottom: config.paddingBetweenRows + "px" }}
+            >
+              <Row
+                data={{
+                  config,
+                  row,
+                  onImageSelection: (e) => {
+                    onImageSelection && onImageSelection({ ...e, rowIndex: index });
+                  },
+                  onImageClick: (e) => {
+                    onImageClick && onImageClick({ ...e, rowIndex: index });
+                  },
+                }}
+              />
+            </div>
+          );
+        }}
+      />
+      {/* <InfiniteLoader
         isItemLoaded={isItemLoaded}
         itemCount={totalCount}
         loadMoreItems={loadMoreItems}
@@ -132,7 +145,7 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
             {Row}
           </VariableSizeList>
         )}
-      </InfiniteLoader>
+      </InfiniteLoader> */}
     </SJustifiedImageGrid>
   );
 };

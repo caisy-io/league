@@ -86,6 +86,7 @@
     "react-flatpickr": "^3.10.7",
     "react-lazyload": "^3.2.0",
     "react-table": "^7.7.0",
+    "react-virtuoso": "^4.3.8",
     "react-window": "^1.8.9",
     "react-window-infinite-loader": "^1.0.9",
     "styled-components": "^5.3.6"

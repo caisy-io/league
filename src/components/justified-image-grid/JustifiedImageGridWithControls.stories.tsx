@@ -124,7 +124,6 @@ const JustifiedImageGridDemo: React.FC<{
           </div>
         </div>
         <JustifiedImageGrid
-          key={appliedConfig.avgRowHeight}
           images={imagesToDisplay.map((i) => (selectedImages.includes(i.id) ? { ...i, selected: true } : i)) as any}
           config={appliedConfig}
           totalCount={totalCount}

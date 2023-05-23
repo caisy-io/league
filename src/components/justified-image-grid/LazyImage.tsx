@@ -4,7 +4,7 @@ import { SImageLabelPreview } from "./styles/SImageLabelPreview";
 import { SLazyImage } from "./styles/SLazyImage";
 import { blurhashToCssGradientString } from "./utils";
 import { SLazyImageLoadingWrapper } from "./styles/SLazyImageLoadingWrapper";
-import { IJustifiedImageGrid, IJustifiedImageGridConfig } from "./types";
+import { IJustifiedImageGridConfig } from "./types";
 
 export const LazyImage: FC<{
   src: string;
