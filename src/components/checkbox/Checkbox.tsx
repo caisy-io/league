@@ -10,10 +10,9 @@ interface ICheckboxProps {
 }
 
 export const Checkbox: React.FC<ICheckboxProps> = ({ loading, checked, onChange }) => {
-
   return (
     <SCheckbox >
-      <SCustomCheckbox onChange={onChange} checked={checked} loading={loading}>
+      <SCustomCheckbox onChange={onChange} checked={checked} isLoading={loading}>
         <input
           type="checkbox"
         />

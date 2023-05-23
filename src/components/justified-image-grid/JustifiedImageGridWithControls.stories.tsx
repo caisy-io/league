@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect,useState, useRef } from "react";
 import { JustifiedImageGrid } from "./JustifiedImageGrid";
 import { generateUuid, getImages } from "./testdata";
 import { Slider } from "../slider/Slider";
+import { Button } from "../button/Button";
+import { Input } from "../input/Input";
 import { useDimensions } from "../../utils";
 import { getDefaultConfig } from "./defaultConfig";
 
@@ -18,7 +20,10 @@ const JustifiedImageGridDemo: React.FC<{
   const ref = useRef(null);
   const { width, height } = useDimensions(ref);
 
-  const [imagesToDisplay, setImagesToDisplay] = React.useState(images.slice(0, Math.min(pageSize, totalCount)));
+  const [indexValue, setIndexValue] = useState("");
+  const [scrollToIndex, setScrollToIndex] = useState<number | undefined>(undefined);
+  const [imagesToDisplay, setImagesToDisplay] = useState(images.slice(0, Math.min(pageSize, totalCount)));
+  const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
   useEffect(() => {
     setImagesToDisplay(images.slice(0, Math.min(pageSize, totalCount)));
@@ -30,6 +35,7 @@ const JustifiedImageGridDemo: React.FC<{
   }, [loadingMultiplier]);
 
   const loadNextPage = async () => {
+    console.log(` loadNextPage`, );
     await sleep(initalLoadingDelay * multiplier.current);
     // await sleep(2000)
     if (imagesToDisplay.length < totalCount) {
@@ -70,18 +76,21 @@ const JustifiedImageGridDemo: React.FC<{
   return (
     <>
       <div ref={ref} style={{ height: "calc(100vh - 64px)", display: "flex" }}>
-        <div style={{ width: "140px", display: "flex", flexDirection: "column", gap: "1rem" }}>
-          <button onClick={() => addOneOnStart()}> addOneOnStart </button>
-          <button onClick={() => shuffle()}> shuffle </button>
-          <button onClick={() => loadNextPage()}> INC </button>
+        <div style={{ width: "140px", display: "flex", flexDirection: "column", gap: "1rem", padding: "12px" }}>
+          <Button type="primary" onClick={() => addOneOnStart()}> UNSHIFT ONE </Button>
+          <Button type="primary" onClick={() => shuffle()}> SHUFFLE ALL </Button>
+          <Input value={indexValue} type="number" onChange={(e) => setIndexValue(e.target.value)}></Input>
+          <Button type="primary" onClick={() => (indexValue != "") && setScrollToIndex(parseInt(indexValue))}> SCROLL TO </Button>
           <Slider initialValue={5} min={1} max={10} onValueChange={onSliderValueChange} />
         </div>
         <JustifiedImageGrid
-          images={imagesToDisplay as any}
+          images={imagesToDisplay.map(i => selectedImages.includes(i.id) ? {...i, selected: true} : i) as any}
           config={getDefaultConfig({ groupSize: pageSize, scrollViewHeight: height, paddingAroundGrid: 16, totalWidthOfView: width - 32 - 140, resizeHeight: 300  })}
           totalCount={totalCount}
-          scrollToIndex={undefined}
-          loadNextPage={loadNextPage}
+          scrollToRowIndex={scrollToIndex}
+          loadNextPage={async() => console.log("a")}
+          onImageClick={({id, rowIndex}) => console.log(`id=${id} rowIndex=${rowIndex} `, )}
+          onImageSelection={({id, rowIndex}) => setSelectedImages(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id])}
         />
       </div>
     </>

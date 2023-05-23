@@ -1,3 +1,57 @@
+// CASE 1
+// grid width: 512
+// heightof image:  100
+// min width image: 85
+// max width image: 202
+
+// CASE 2
+// grid width: 1000
+// height of image: 240
+// min width image: 170
+// max width image: 410
+
+// CASE 3
+// grid width: 1700
+// height of image: 440
+// min width image: 300
+// max width image: 710
+
+// CASE 4
+// grid width: 1700
+// height of image: 552
+// min width image: 398
+// max width image: 942
+
+// -- with padding below
+
+// CASE 1
+// grid width 512
+// height of image with subtitle 140
+// height of the subtitle 40
+// min width image 85
+// max width image 202
+
+// CASE 2
+// grid width 1000
+// height of image with subtitle 280
+// height of the subtitle 40
+// min width image 170
+// max width image 410
+
+// CASE 3
+// grid width 1700
+// height of image with subtitle 480
+// height of the subtitle 40
+// min width image 300
+// max width image 710
+
+// CASE 4
+// grid width 1700
+// height of image with subtitle 592
+// height of the subtitle 40
+// min width image 398
+// max width image 942
+
 
 // for (const image of images) {
 //     const originalAspectRatio = image.width / image.height;

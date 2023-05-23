@@ -4,17 +4,22 @@ import { VariableSizeList, areEqual } from "react-window";
 import { AssetImageCard } from "../asset-image-card";
 import { generateRows } from "./generateRows";
 import { SJustifiedImageGridCell } from "./styles/SJustifiedImageGridCell";
-import { IJustifiedImageGrid, IJustifiedImageGridConfigOverwrite } from "./types";
+import { IJustifiedImageGrid, IJustifiedImageGridConfigOverwrite, IJustifiedImageGridEvent } from "./types";
 import { SJustifiedImageGridRow } from "./styles/SJustifiedImageGridRow";
 import InfiniteLoader from "react-window-infinite-loader";
 import { IRow, IJustifiedImageGridConfig } from "./types";
 import { LazyImage } from "./LazyImage";
 
 const Row: React.FC<{
-  data: { rows: IRow[]; config: IJustifiedImageGridConfig };
+  data: {
+    rows: IRow[];
+    config: IJustifiedImageGridConfig;
+    onImageSelection?: (event: IJustifiedImageGridEvent) => void;
+    onImageClick?: (event: IJustifiedImageGridEvent) => void;
+  };
   index: number;
   style: React.CSSProperties;
-}> = memo(({ data: { rows, config }, index, style }) => {
+}> = memo(({ data: { rows, config, onImageSelection, onImageClick }, index, style }) => {
   const currRow = rows[index];
   const rowImages = currRow.images;
 
@@ -34,6 +39,9 @@ const Row: React.FC<{
               <AssetImageCard
                 key={"ai_" + image.id}
                 skeleton={currRow.__loading}
+                activated={image.selected}
+                onImageClick={() => onImageClick && onImageClick({id: image.id, rowIndex: index, columnIndex: i})}
+                onChange={() => onImageSelection && onImageSelection({id: image.id, rowIndex: index, columnIndex: i})}
                 image={
                   <LazyImage
                     config={config}
@@ -58,12 +66,15 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
   images,
   config,
   totalCount,
-  scrollToIndex,
+  scrollToRowIndex,
   loadNextPage,
+  onImageSelection,
+  onImageClick,
 }) => {
   const infiniteLoaderRef = React.useRef<InfiniteLoader>(null);
   const loadingRef = React.useRef<boolean>(false);
   const [loadingNextPage, setLoadingNextPage] = React.useState<boolean>(false);
+  console.log(`JustifiedImageGrid images.length`, images.length);
   const rowConfigs = generateRows(images, totalCount, config);
 
   if (loadingNextPage && rowConfigs.length > 0 && images.length !== totalCount) {
@@ -87,12 +98,12 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
   };
 
   React.useEffect(() => {
-    if (Number.isInteger(scrollToIndex)) {
+    if (Number.isInteger(scrollToRowIndex)) {
       setTimeout(() => {
-        (infiniteLoaderRef as React.MutableRefObject<any>)?.current?._listRef.scrollToItem(scrollToIndex, "smart");
+        (infiniteLoaderRef as React.MutableRefObject<any>)?.current?._listRef.scrollToItem(scrollToRowIndex, "smart");
       }, 0);
     }
-  }, [scrollToIndex]);
+  }, [scrollToRowIndex]);
 
   return (
     <SJustifiedImageGrid style={{ height: config.scrollViewHeight + config.paddingAroundGrid * 2 }}>
@@ -107,7 +118,7 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
             onItemsRendered={onItemsRendered}
             ref={ref}
             height={config.scrollViewHeight} // For instance.
-            itemData={{ config, rows: rowConfigs }}
+            itemData={{ config, rows: rowConfigs, onImageSelection, onImageClick }}
             itemCount={rowConfigs.length}
             itemSize={(index) => rowConfigs[index].rowHeight}
             width={config.totalWidthOfView + config.paddingAroundGrid * 2}

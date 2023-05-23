@@ -1,9 +1,17 @@
+export type IJustifiedImageGridEvent = {
+  rowIndex: number;
+  columnIndex: number;
+  id: string;
+}
+
 export type IJustifiedImageGrid = {
   images: Image[];
-  scrollToIndex?: number;
+  scrollToRowIndex?: number;
   totalCount?: number;
   loadNextPage: () => Promise<void> ;
   config: IJustifiedImageGridConfig;
+  onImageSelection?: (event: IJustifiedImageGridEvent) => void;
+  onImageClick?: (event: IJustifiedImageGridEvent) => void;
 };
 
 export type Image = {
@@ -16,6 +24,7 @@ export type Image = {
   title?: string;
   originType?: string;
   label?: string;
+  selected?: boolean;
 };
 
 export type ResizedImage = Image & {
@@ -36,8 +45,8 @@ export type IRow = {
 export type IJustifiedImageGridConfig = {
   imageLabelHeight: number;
   maxImagesPerRow: number;
-  maxWidthOfImage: number;
   minImagesPerRow: number;
+  maxWidthOfImage: number;
   minWidthOfImage: number;
   paddingBetweenImages: number;
   paddingBetweenRows: number;

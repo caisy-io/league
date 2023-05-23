@@ -49,7 +49,7 @@ export const LazyImage: FC<{
   };
 
   return (
-    <SLazyImageLoadingWrapper loading={fetchState === 0} blurHashCss={blurHashCss}>
+    <SLazyImageLoadingWrapper isLoading={fetchState === 0} blurHashCss={blurHashCss}>
       <SLazyImage
         isSvg={isSvg}
         onLoad={onLoad}

@@ -15,6 +15,7 @@ interface IAssetImageCard {
   activated?: boolean;
   skeleton?: boolean;
   onChange?: (e: Event) => void;
+  onImageClick?: (e: Event) => void;
 }
 
 export const AssetImageCard: React.FC<IAssetImageCard> = ({
@@ -24,10 +25,11 @@ export const AssetImageCard: React.FC<IAssetImageCard> = ({
   image,
   activated,
   onChange,
+  onImageClick,
 }) => {
   return (
     <SAssetImageCard size={size} activated={activated} skeleton={skeleton}>
-      <SAssetImage>{image}</SAssetImage>
+      <SAssetImage onClick={onImageClick}>{image}</SAssetImage>
       <SAssetImageRadioContainer>
         {skeleton ? (
           <>

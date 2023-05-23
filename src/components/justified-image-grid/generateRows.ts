@@ -92,6 +92,10 @@ function buildRows(
       const rowIsNotFilledEnough =
         currentRow.length < config.minImagesPerRow || totalWidth < config.totalWidthOfView - config.avgImageWidth;
 
+        if(rowIsNotFilledEnough){
+          console.log(` currentRow.length < config.minImagesPerRow `, currentRow.length < config.minImagesPerRow );
+          console.log(` totalWidth < config.totalWidthOfView - config.avgImageWidth`, totalWidth < config.totalWidthOfView - config.avgImageWidth);
+        }
       if (!rowIsNotFilledEnough) {
         rows.push(
           justifyRow(
@@ -131,7 +135,7 @@ function buildRows(
     }
 
     // Finish the last row
-    if (images.length - 1 === imageIndex) {
+    if (images.length != 0 && images.length - 1 === imageIndex) {
       finishRow();
     }
   }
@@ -214,10 +218,13 @@ export function generateRows(images: Image[], totalCount, config: IJustifiedImag
       if (usedImageCount !== config.groupSize) {
         const leftOverImageCount = config.groupSize - usedImageCount;
         currentGroupImagesCount = currentGroupImagesCount + leftOverImageCount;
-        console.log(` leftOverImageCount`, leftOverImageCount, images.length, totalCount);
+        if (leftOverImageCount > 7){
+          console.log(` usedImageCount`, usedImageCount);
+          console.log(` config.groupSize`, config.groupSize);
+          console.log(` leftOverImageCount`, leftOverImageCount, images.length, totalCount);
+        }
         console.log(images.slice(currGroupStartIndex + usedImageCount, currGroupEndIndex));
       }
-
     }
   }
 

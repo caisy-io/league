@@ -27,5 +27,5 @@ const finishedLoading = css`
 
 export const SLazyImageLoadingWrapper = styled.div<{ isSvg: boolean; blurHashCss?: string; loading?: boolean }>`
   ${Default};
-  ${(props) => (props.loading ? "" : finishedLoading)};
+  ${(props) => (props.isLoading ? "" : finishedLoading)};
 `;
