@@ -105,7 +105,7 @@ function buildRows(
           ),
         );
       } else if (isLastGroup) {
-        console.log(` isLastGroup`, isLastGroup);
+        // console.log(` isLastGroup`, isLastGroup, imageIndex, images.length);
         rows.push({
           images: currentRow,
           aspectRatioSum: currentAspectRatioSum,
@@ -194,7 +194,6 @@ export function getGroupRows(images: Image[], config: IJustifiedImageGridConfig,
 export function generateRows(images: Image[], totalCount, config: IJustifiedImageGridConfig): IRow[] {
   const rows: IRow[] = [];
 
-  let currentGroupIndex = 0;
   let currentGroupImagesCount = 0;
 
   for (let overallImageIndex = 0; overallImageIndex < images.length; overallImageIndex++) {
@@ -210,7 +209,6 @@ export function generateRows(images: Image[], totalCount, config: IJustifiedImag
         rows.push(row);
       });
 
-      currentGroupIndex++;
       currentGroupImagesCount = 0;
 
       if (usedImageCount !== config.groupSize) {
@@ -225,7 +223,8 @@ export function generateRows(images: Image[], totalCount, config: IJustifiedImag
   }
 
   // collect the last group if we are at total count and reach the last group that can be fetched
-  if (currentGroupImagesCount > 0 && images.length > totalCount - config.groupSize) {
+  // console.log(` currentGroupImagesCount`, currentGroupImagesCount, images.length, totalCount);
+  if (currentGroupImagesCount > 0 && images.length == totalCount) {
     getGroupRows(images.slice(images.length - currentGroupImagesCount, images.length), config, true).forEach((row) =>
       rows.push(row),
     );

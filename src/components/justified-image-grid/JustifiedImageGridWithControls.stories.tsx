@@ -1,11 +1,12 @@
-import React, { useEffect,useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import { JustifiedImageGrid } from "./JustifiedImageGrid";
 import { generateUuid, getImages } from "./testdata";
 import { Slider } from "../slider/Slider";
 import { Button } from "../button/Button";
 import { Input } from "../input/Input";
 import { useDimensions } from "../../utils";
-import { getDefaultConfig } from "./defaultConfig";
+import { dynamicConfig } from "./dynamicConfig";
+import debounce from "lodash/debounce";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -19,11 +20,20 @@ const JustifiedImageGridDemo: React.FC<{
   const multiplier = useRef(loadingMultiplier || 1);
   const ref = useRef(null);
   const { width, height } = useDimensions(ref);
+  const [windowWidth, setWindowWidth] = useState(width);
+  const debouncedWindowWith = useMemo(() => debounce(setWindowWidth, 300), [width]);
 
+
+  const [sliderValue, setSliderValue] = useState(5);
   const [indexValue, setIndexValue] = useState("");
   const [scrollToIndex, setScrollToIndex] = useState<number | undefined>(undefined);
   const [imagesToDisplay, setImagesToDisplay] = useState(images.slice(0, Math.min(pageSize, totalCount)));
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
+
+
+  useEffect(() => {
+    debouncedWindowWith(width)
+  }, [windowWidth]);
 
   useEffect(() => {
     setImagesToDisplay(images.slice(0, Math.min(pageSize, totalCount)));
@@ -67,29 +77,63 @@ const JustifiedImageGridDemo: React.FC<{
       ...prev,
     ]);
   };
-  // console.log(` images`, JSON.stringify(images, ));
+
   const onSliderValueChange = (value: number) => {
-    console.log(` value`, value);
+    setSliderValue(value);
   };
+
+  const appliedConfig = dynamicConfig({
+    overwriteConfig: {
+      groupSize: pageSize,
+      scrollViewHeight: height,
+      paddingAroundGrid: 16,
+    },
+    skaling: sliderValue / 10,
+    totalWidthOfView: width - 32 - 140,
+  });
 
   return (
     <>
       <div ref={ref} style={{ height: "calc(100vh - 64px)", display: "flex" }}>
         <div style={{ width: "140px", display: "flex", flexDirection: "column", gap: "1rem", padding: "12px" }}>
-          <Button type="primary" onClick={() => addOneOnStart()}> UNSHIFT ONE </Button>
-          <Button type="primary" onClick={() => shuffle()}> SHUFFLE ALL </Button>
+          <Button type="primary" onClick={() => addOneOnStart()}>
+            UNSHIFT ONE
+          </Button>
+          <Button type="primary" onClick={() => shuffle()}>
+            SHUFFLE ALL
+          </Button>
           <Input value={indexValue} type="number" onChange={(e) => setIndexValue(e.target.value)}></Input>
-          <Button type="primary" onClick={() => (indexValue != "") && setScrollToIndex(parseInt(indexValue))}> SCROLL TO </Button>
-          <Slider initialValue={5} min={1} max={10} onValueChange={onSliderValueChange} />
+          <Button type="primary" onClick={() => indexValue != "" && setScrollToIndex(parseInt(indexValue))}>
+            SCROLL TO
+          </Button>
+          <Slider initialValue={sliderValue} min={0} max={10} onValueChange={onSliderValueChange} />
+          <div> Skaling: {(sliderValue / 10).toFixed(2)} </div>
+          <div> Width: {width - 32 - 140}px </div>
+          <div style={{ width: "116px", overflow: "hidden" }}>
+            {JSON.stringify(
+              {
+                minWidthOfImage: appliedConfig.minWidthOfImage,
+                maxWidthOfImage: appliedConfig.maxWidthOfImage,
+                maxImagesPerRow: appliedConfig.maxImagesPerRow,
+                minImagesPerRow: appliedConfig.minImagesPerRow,
+                avgRowHeight: appliedConfig.avgRowHeight,
+              },
+              null,
+              2,
+            )}
+          </div>
         </div>
         <JustifiedImageGrid
-          images={imagesToDisplay.map(i => selectedImages.includes(i.id) ? {...i, selected: true} : i) as any}
-          config={getDefaultConfig({ groupSize: pageSize, scrollViewHeight: height, paddingAroundGrid: 16, totalWidthOfView: width - 32 - 140, resizeHeight: 300  })}
+          key={appliedConfig.avgRowHeight}
+          images={imagesToDisplay.map((i) => (selectedImages.includes(i.id) ? { ...i, selected: true } : i)) as any}
+          config={appliedConfig}
           totalCount={totalCount}
           scrollToRowIndex={scrollToIndex}
           loadNextPage={loadNextPage}
-          onImageClick={({id, rowIndex}) => console.log(`id=${id} rowIndex=${rowIndex} `, )}
-          onImageSelection={({id}) => setSelectedImages(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id])}
+          onImageClick={({ id, rowIndex }) => console.log(`id=${id} rowIndex=${rowIndex} `)}
+          onImageSelection={({ id }) =>
+            setSelectedImages((prev) => (prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]))
+          }
         />
       </div>
     </>
@@ -98,8 +142,8 @@ const JustifiedImageGridDemo: React.FC<{
 
 export const Controls: any = JustifiedImageGridDemo.bind({});
 Controls.args = {
-  totalCount: 67,
-  pageSize: 20,
+  totalCount: 197,
+  pageSize: 30,
   initalLoadingDelay: 2000,
   loadingMultiplier: 1,
 };

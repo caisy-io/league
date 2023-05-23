@@ -1,4 +1,4 @@
-import React, { FC, memo } from "react";
+import React, { FC, memo, useEffect } from "react";
 import { SJustifiedImageGrid } from "./styles/SJustifiedImageGrid";
 import { VariableSizeList, areEqual } from "react-window";
 import { AssetImageCard } from "../asset-image-card";
@@ -76,9 +76,9 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
   const [loadingNextPage, setLoadingNextPage] = React.useState<boolean>(false);
   const rowConfigs = generateRows(images, totalCount, config);
 
-
-  console.log(` rowConfigs`, rowConfigs);
-
+  console.log(` rowConfigs
+  `, rowConfigs
+  );
   if (loadingNextPage && rowConfigs.length > 0 && images.length !== totalCount) {
     rowConfigs[rowConfigs.length - 1].__loading = true;
   }
@@ -98,13 +98,18 @@ export const JustifiedImageGrid: FC<IJustifiedImageGrid> = ({
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (Number.isInteger(scrollToRowIndex)) {
       setTimeout(() => {
         (infiniteLoaderRef as React.MutableRefObject<any>)?.current?._listRef.scrollToItem(scrollToRowIndex, "smart");
       }, 0);
     }
   }, [scrollToRowIndex]);
+
+  useEffect(() => {
+    console.log(` config.avgRowHeight`, config.avgRowHeight);
+    (infiniteLoaderRef as React.MutableRefObject<any>)?.current?._listRef.forceUpdate();
+  }, [config.avgRowHeight]);
 
   return (
     <SJustifiedImageGrid style={{ height: config.scrollViewHeight + config.paddingAroundGrid * 2 }}>
