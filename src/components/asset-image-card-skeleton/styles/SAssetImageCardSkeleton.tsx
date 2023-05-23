@@ -3,11 +3,10 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const Bronze = css`
   width: 100%;
-  height: calc(100% - 40px);
-  > img,
-  div {
-    border-radius: 0.5rem 0.5rem 0 0;
-  }
+  height: 100%;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
 `;
 
 const Silver = css``;
@@ -18,7 +17,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SAssetImage = styled.div`
+export const SAssetImageCardSkeleton = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
