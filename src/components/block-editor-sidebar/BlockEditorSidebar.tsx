@@ -31,6 +31,7 @@ export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({
   onTabClick,
   selectedTab,
   currentStatusText,
+  savingText,
 }) => {
   return (
     <SBlockEditorSidebar>
@@ -38,7 +39,9 @@ export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({
         <SBlockEditorSidebarStatus>
           <SBlockEditorSidebarStatusIndicator>
             {currentStatusText || "CURRENT STATUS"}
-            <SBlockEditorSidebarStatusIndicatorSaving>Saving...</SBlockEditorSidebarStatusIndicatorSaving>
+            {savingText && (
+              <SBlockEditorSidebarStatusIndicatorSaving>{savingText}</SBlockEditorSidebarStatusIndicatorSaving>
+            )}
           </SBlockEditorSidebarStatusIndicator>
           <SBlockEditorSidebarStatusBadge statusId={statusId}>{status}</SBlockEditorSidebarStatusBadge>
         </SBlockEditorSidebarStatus>
