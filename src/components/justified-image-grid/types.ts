@@ -6,7 +6,6 @@ export type IJustifiedImageGridEvent = {
 
 export type IJustifiedImageGrid = {
   images: Image[];
-  scrollToRowIndex?: number;
   totalCount?: number;
   loadNextPage: () => Promise<void> ;
   config: IJustifiedImageGridConfig;

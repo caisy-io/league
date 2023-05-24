@@ -23,16 +23,29 @@ const JustifiedImageGridDemo: React.FC<{
   const [windowWidth, setWindowWidth] = useState(width);
   const debouncedWindowWith = useMemo(() => debounce(setWindowWidth, 300), [width]);
 
-
   const [sliderValue, setSliderValue] = useState(5);
   const [indexValue, setIndexValue] = useState("");
+  const virtuosoRef = useRef<any>(null);
+
   const [scrollToIndex, setScrollToIndex] = useState<number | undefined>(undefined);
   const [imagesToDisplay, setImagesToDisplay] = useState(images.slice(0, Math.min(pageSize, totalCount)));
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
+  useEffect(() => {
+    console.log(` virtuosoRef`, virtuosoRef);
+    virtuosoRef?.current?.getState((snapshot) => {
+      console.log(` snapshot`, snapshot);
+    })
+    virtuosoRef?.current &&
+      virtuosoRef.current.scrollToIndex({
+        index: scrollToIndex,
+        align: "center",
+        behavior: "auto",
+      });
+  }, [scrollToIndex, !!virtuosoRef?.current]);
 
   useEffect(() => {
-    debouncedWindowWith(width)
+    debouncedWindowWith(width);
   }, [windowWidth]);
 
   useEffect(() => {
@@ -124,10 +137,10 @@ const JustifiedImageGridDemo: React.FC<{
           </div>
         </div>
         <JustifiedImageGrid
+          ref={virtuosoRef}
           images={imagesToDisplay.map((i) => (selectedImages.includes(i.id) ? { ...i, selected: true } : i)) as any}
           config={appliedConfig}
           totalCount={totalCount}
-          scrollToRowIndex={scrollToIndex}
           loadNextPage={loadNextPage}
           onImageClick={({ id, rowIndex }) => console.log(`id=${id} rowIndex=${rowIndex} `)}
           onImageSelection={({ id }) =>
