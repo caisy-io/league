@@ -66,21 +66,24 @@ const customViewports = {
   },
 };
 
+/** @type { import('@storybook/react').Preview } */
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  viewport: { viewports: customViewports, defaultViewport: "Gold" },
-  backgrounds: {
-    values: [
-      { name: "Light", value: "#F8F8F8" },
-      { name: "Dark", value: "#333333" },
-      { name: "White", value: "#ffffff" },
-    ],
-  },
-  controls: {
-    expanded: true,
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
+  parameters: {
+    actions: { argTypesRegex: "^on[A-Z].*" },
+    viewport: { viewports: customViewports, defaultViewport: "Gold" },
+    backgrounds: {
+      values: [
+        { name: "Light", value: "#F8F8F8" },
+        { name: "Dark", value: "#333333" },
+        { name: "White", value: "#ffffff" },
+      ],
+    },
+    controls: {
+      expanded: true,
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
     },
   },
 };
@@ -90,9 +93,7 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <>
-      <style
-        dangerouslySetInnerHTML={{  __html: `.sb-show-main.sb-main-padded{padding:0 !important;}`}}
-      />
+      <style dangerouslySetInnerHTML={{ __html: `.sb-show-main.sb-main-padded{padding:0 !important;}` }} />
       <GSBase />
       <Story />
     </>
