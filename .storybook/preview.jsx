@@ -68,7 +68,7 @@ const customViewports = {
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
-  viewport: { viewports: customViewports, defaultViewport: "xl" },
+  viewport: { viewports: customViewports, defaultViewport: "Gold" },
   backgrounds: {
     values: [
       { name: "Light", value: "#F8F8F8" },
@@ -90,6 +90,9 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <>
+      <style
+        dangerouslySetInnerHTML={{  __html: `.sb-show-main.sb-main-padded{padding:0 !important;}`}}
+      />
       <GSBase />
       <Story />
     </>

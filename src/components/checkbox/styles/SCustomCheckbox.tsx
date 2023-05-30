@@ -48,7 +48,7 @@ const Bronze = css`
     ${(props) => (props.loading ? CSSLoading : "")}
   }
   ${(props) => (props.checked ? CSSChecked : "")}
-  ${(props) => (props.loading ? CSSLoading : "")}
+  ${(props) => (props.isLoading ? CSSLoading : "")}
 `;
 
 const Silver = css``;

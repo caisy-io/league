@@ -9,8 +9,7 @@ export interface ISlider {
   max?: number;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
-  getSliderValue?: (value) => void;
-  onValueChange?: () => void;
+  onValueChange?: (value:number) => void;
 }
 
 const checkValue = (value, min, max) => {
@@ -27,7 +26,6 @@ export const Slider: React.FC<ISlider & React.InputHTMLAttributes<HTMLInputEleme
   initialValue,
   min = 0,
   max = 10,
-  getSliderValue,
   leftIcon,
   rightIcon,
   onValueChange,
@@ -54,8 +52,7 @@ export const Slider: React.FC<ISlider & React.InputHTMLAttributes<HTMLInputEleme
           type="range"
           onChange={(e) => {
             setValue(+e.target.value);
-            getSliderValue?.(handleValue(+e.target.value));
-            onValueChange?.();
+            onValueChange?.(handleValue(+e.target.value));
           }}
           min={0}
           max={100}

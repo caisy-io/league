@@ -1,11 +1,12 @@
 import React, { ReactNode } from "react";
 import { LineTab } from "../line-tab";
-import { IconDocuments } from "../../icons";
 import { SBlockEditorSidebar } from "./styles/SBlockEditorSidebar";
 import { SBlockEditorSidebarListItem } from "./styles/SBlockEditorSidebarListItem";
 import { SBlockEditorSidebarStatus } from "./styles/SBlockEditorSidebarStatus";
 import { SBlockEditorSidebarStatusBadge } from "./styles/SBlockEditorSidebarStatusBadge";
 import { SBlockEditorSidebarTabs } from "./styles/SBlockEditorSidebarTabs";
+import { SBlockEditorSidebarStatusIndicator } from "./styles/SBlockEditorSidebarStatusIndicator";
+import { SBlockEditorSidebarStatusIndicatorSaving } from "./styles/SBlockEditorSidebarStatusIndicatorSaving";
 
 interface IBlockEditorSidebarTab {
   key: string;
@@ -20,6 +21,7 @@ interface IBlockEditorSidebar {
   onTabClick: (tab: IBlockEditorSidebarTab) => void;
   selectedTab: IBlockEditorSidebarTab;
   currentStatusText?: string | ReactNode;
+  savingText?: string | ReactNode;
 }
 
 export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({
@@ -29,13 +31,18 @@ export const BlockEditorSidebar: React.FC<IBlockEditorSidebar> = ({
   onTabClick,
   selectedTab,
   currentStatusText,
+  savingText,
 }) => {
   return (
     <SBlockEditorSidebar>
       <SBlockEditorSidebarListItem>
         <SBlockEditorSidebarStatus>
-          <IconDocuments size={16} />
-          {currentStatusText || "CURRENT STATUS"}
+          <SBlockEditorSidebarStatusIndicator>
+            {currentStatusText || "CURRENT STATUS"}
+            {savingText && (
+              <SBlockEditorSidebarStatusIndicatorSaving>{savingText}</SBlockEditorSidebarStatusIndicatorSaving>
+            )}
+          </SBlockEditorSidebarStatusIndicator>
           <SBlockEditorSidebarStatusBadge statusId={statusId}>{status}</SBlockEditorSidebarStatusBadge>
         </SBlockEditorSidebarStatus>
       </SBlockEditorSidebarListItem>
