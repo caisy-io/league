@@ -15,6 +15,7 @@ import { SMultiselectInputDropdownSelect } from "./styles/SMultiselectInputDropd
 import { SMultiselectInputDropdownTitle } from "./styles/SMultiselectInputDropdownTitle";
 import { SMultiSelectInputWrapper } from "./styles/SMultiSelectInputWrapper";
 import { SRequiredIndicator } from "./styles/SRequiredIndicator";
+import { SMultiselectInputDropdownSelectList } from "./styles/SMultiselectInputDropdownSelectList";
 
 export type TDataSourceItem = {
   id: number | string;
@@ -37,6 +38,7 @@ interface IMultiselectInputDropdown {
   label?: string | ReactNode;
   required?: boolean;
   error?: boolean;
+  dropdownMaxHeight?: number | string;
 }
 
 export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
@@ -54,6 +56,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   label,
   required,
   error,
+  dropdownMaxHeight,
 }) => {
   const ref = React.useRef(null);
 
@@ -115,32 +118,34 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
         <Popover display={opened} disableTriangle placement="bottomRight" reference={ref}>
           <SMultiselectInputDropdownSelect>
             {popupHeader}
-            {dataSource &&
-              dataSource.map((option) =>
-                renderDataItem ? (
-                  <div
-                    key={option.id}
-                    onClick={() => {
-                      onChange(option);
-                    }}
-                  >
-                    {renderDataItem(option)}
-                  </div>
-                ) : (
-                  <div key={option.id}>
-                    <TagListItem
+            <SMultiselectInputDropdownSelectList style={{ maxHeight: dropdownMaxHeight }}>
+              {dataSource &&
+                dataSource.map((option) =>
+                  renderDataItem ? (
+                    <div
+                      key={option.id}
                       onClick={() => {
                         onChange(option);
                       }}
-                      outlineLabel={
-                        <OutLineLabel size="medium" colorLabel={<ColorLabel color={option.color} />}>
-                          {option.label}
-                        </OutLineLabel>
-                      }
-                    />
-                  </div>
-                ),
-              )}
+                    >
+                      {renderDataItem(option)}
+                    </div>
+                  ) : (
+                    <div key={option.id}>
+                      <TagListItem
+                        onClick={() => {
+                          onChange(option);
+                        }}
+                        outlineLabel={
+                          <OutLineLabel size="medium" colorLabel={<ColorLabel color={option.color} />}>
+                            {option.label}
+                          </OutLineLabel>
+                        }
+                      />
+                    </div>
+                  ),
+                )}
+            </SMultiselectInputDropdownSelectList>
             {popupFooter}
           </SMultiselectInputDropdownSelect>
         </Popover>

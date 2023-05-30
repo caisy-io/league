@@ -218,6 +218,7 @@ const Template = () => {
         renderDataItem={renderDataItem}
         onClose={clearMultiSelect}
         onSelectValue={onSelectValue}
+        dropdownMaxHeight={150}
         popupHeader={
           <SearchInput
             placeholder="Search tags"
