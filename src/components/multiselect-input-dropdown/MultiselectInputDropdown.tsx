@@ -38,7 +38,7 @@ interface IMultiselectInputDropdown {
   label?: string | ReactNode;
   required?: boolean;
   error?: boolean;
-  dropdownMaxHeight?: number | string;
+  dropdownMaxHeight?: number;
 }
 
 export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
@@ -118,7 +118,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
         <Popover display={opened} disableTriangle placement="bottomRight" reference={ref}>
           <SMultiselectInputDropdownSelect>
             {popupHeader}
-            <SMultiselectInputDropdownSelectList style={{ maxHeight: dropdownMaxHeight }}>
+            <SMultiselectInputDropdownSelectList maxHeight={dropdownMaxHeight}>
               {dataSource &&
                 dataSource.map((option) =>
                   renderDataItem ? (
