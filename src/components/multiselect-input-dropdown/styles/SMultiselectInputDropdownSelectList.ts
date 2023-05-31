@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { CSSScrollbarStyles } from "../../../constants/styles";
 
 export const SMultiselectInputDropdownSelectList = styled.div`
   overflow: auto;
   ${CSSScrollbarStyles};
-  max-height: ${({ maxHeight }) => (maxHeight ? `${maxHeight}px` : "initial")};
+  ${({ maxHeight }) => (maxHeight ? css`max-height: ${maxHeight}px;` : "")};
 `;
