@@ -4,7 +4,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 const Bronze = css`
   position: absolute;
   top: -7px;
-  left: 27px;
+  right: -7px;
   z-index: 1000;
   filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.2));
 `;
