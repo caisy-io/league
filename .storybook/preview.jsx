@@ -70,20 +70,20 @@ const customViewports = {
 export const parameters = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
-    viewport: { viewports: customViewports, defaultViewport: "Gold" },
-    backgrounds: {
-      values: [
-        { name: "Light", value: "#F8F8F8" },
-        { name: "Dark", value: "#333333" },
-        { name: "White", value: "#ffffff" },
-      ],
-    },
-    controls: {
-      expanded: true,
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/,
-      },
+  },
+  viewport: { viewports: customViewports, defaultViewport: "Gold" },
+  backgrounds: {
+    values: [
+      { name: "Light", value: "#F8F8F8" },
+      { name: "Dark", value: "#333333" },
+      { name: "White", value: "#ffffff" },
+    ],
+  },
+  controls: {
+    expanded: true,
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
     },
   },
 };
