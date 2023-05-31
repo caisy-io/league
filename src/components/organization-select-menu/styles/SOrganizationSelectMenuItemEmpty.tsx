@@ -2,9 +2,7 @@ import styled, { css } from "styled-components";
 import { MIN_DIAMOND, MIN_GOLD, MIN_PLATINUM, MIN_SILVER } from "../../../constants/styles/mediaquerys";
 
 const CSSOrganizationListItemStyle = css`
-  position: absolute;
-  top: -5px;
-  right: -5px;
+  position: reative;
   width: 20px;
   height: 20px;
   z-index: 1000;
