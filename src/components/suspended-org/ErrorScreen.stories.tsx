@@ -1,11 +1,11 @@
 import React, { FC } from "react";
-import { ISuspendedOrg, SuspendedOrg } from "./SuspendedOrg";
+import { ErrorScreen, IErrorScreen } from "./SuspendedOrg";
 import { Button } from "../button/Button";
 import { Img } from "../../base-components/img/Img";
 
 export default {
-  title: `Components/SuspendedOrg`,
-  component: SuspendedOrg,
+  title: `Components/ErrorScreen`,
+  component: ErrorScreen,
   parameters: {
     design: {
       type: "figma",
@@ -14,13 +14,13 @@ export default {
   },
 };
 
-const SuspendedOrgDemo: FC<ISuspendedOrg> = ({ ...props }) => (
+const ErrorScreenDemo: FC<IErrorScreen> = ({ ...props }) => (
   <div style={{ padding: "10px" }}>
-    <SuspendedOrg {...props} />
+    <ErrorScreen {...props} />
   </div>
 );
 
-export const Suspended = SuspendedOrgDemo.bind({});
+export const Suspended = ErrorScreenDemo.bind({});
 Suspended.args = {
   headline: "Your access to the Metacarbon organisation has been suspended",
   callToAction: (
@@ -33,7 +33,7 @@ Suspended.args = {
   description: <p>Go back to your dashboard or contact support</p>,
 };
 
-export const NotFound = SuspendedOrgDemo.bind({});
+export const NotFound = ErrorScreenDemo.bind({});
 NotFound.args = {
   headline: "Page not found",
   callToAction: <Button type="primary">Back to home</Button>,
@@ -49,7 +49,7 @@ NotFound.args = {
   ),
 };
 
-export const InternalServerError = SuspendedOrgDemo.bind({});
+export const InternalServerError = ErrorScreenDemo.bind({});
 InternalServerError.args = {
   headline: "Internal server error",
   callToAction: <Button type="primary">Back to home</Button>,

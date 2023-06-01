@@ -20,7 +20,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSuspendedOrgCallToAction = styled.div`
+export const SErrorScreenCallToAction = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 

@@ -1,31 +1,31 @@
 import React, { FC, ReactNode } from "react";
-import { SSuspendedOrg } from "./styles/SSuspendedOrg";
-import { SSuspendedOrgHeadline } from "./styles/SSuspendedOrgHeadline";
-import { SSuspendedOrgPreview } from "./styles/SSuspendedOrgPreview";
-import { SSuspendedOrgDescription } from "./styles/SSuspendedOrgDescription";
-import { SSuspendedOrgCallToAction } from "./styles/SSuspendedOrgCallToAction";
-import { SSuspendedOrgPreviewBorder } from "./styles/SSuspendedOrgPreviewBorder";
+import { SErrorScreen } from "./styles/SErrorScreen";
+import { SErrorScreenHeadline } from "./styles/SErrorScreenHeadline";
+import { SErrorScreenPreview } from "./styles/SErrorScreenPreview";
+import { SErrorScreenDescription } from "./styles/SErrorScreenDescription";
+import { SErrorScreenCallToAction } from "./styles/SErrorScreenCallToAction";
+import { SErrorScreenPreviewBorder } from "./styles/SErrorScreenPreviewBorder";
 import { IconDottedBorder } from "../../icons/IconDottedBorder";
 
-export interface ISuspendedOrg {
+export interface IErrorScreen {
   preview: ReactNode;
   headline: string;
   description: ReactNode;
   callToAction: ReactNode;
 }
 
-export const SuspendedOrg: FC<ISuspendedOrg> = ({ callToAction, description, headline, preview }) => {
+export const ErrorScreen: FC<IErrorScreen> = ({ callToAction, description, headline, preview }) => {
   return (
-    <SSuspendedOrg>
+    <SErrorScreen>
       {preview && (
-        <SSuspendedOrgPreviewBorder>
+        <SErrorScreenPreviewBorder>
           <IconDottedBorder />
-          <SSuspendedOrgPreview>{preview}</SSuspendedOrgPreview>
-        </SSuspendedOrgPreviewBorder>
+          <SErrorScreenPreview>{preview}</SErrorScreenPreview>
+        </SErrorScreenPreviewBorder>
       )}
-      {headline && <SSuspendedOrgHeadline>{headline}</SSuspendedOrgHeadline>}
-      {description && <SSuspendedOrgDescription>{description}</SSuspendedOrgDescription>}
-      {callToAction && <SSuspendedOrgCallToAction>{callToAction}</SSuspendedOrgCallToAction>}
-    </SSuspendedOrg>
+      {headline && <SErrorScreenHeadline>{headline}</SErrorScreenHeadline>}
+      {description && <SErrorScreenDescription>{description}</SErrorScreenDescription>}
+      {callToAction && <SErrorScreenCallToAction>{callToAction}</SErrorScreenCallToAction>}
+    </SErrorScreen>
   );
 };

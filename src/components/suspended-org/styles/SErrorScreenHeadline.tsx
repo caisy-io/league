@@ -1,24 +1,12 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
-import { CSSProgressiveBody03Medium } from "../../../constants/styles";
+import { CSSProgressiveHeading01 } from "../../../constants/styles";
 
 const Bronze = css`
-  padding: 0 26px 16px 26px;
-
-  p,
-  a,
-  span {
-    text-align: center;
-    ${CSSProgressiveBody03Medium}
-  }
-
-  p {
-    color: var(--text-04);
-  }
-
-  a {
-    color: var(--text-09);
-  }
+  ${CSSProgressiveHeading01}
+  color: var(--text-01);
+  text-align: center;
+  padding: 24px 26px 8px 26px;
 `;
 
 const Silver = css``;
@@ -29,7 +17,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SSuspendedOrgDescription = styled.div`
+export const SErrorScreenHeadline = styled.h1`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
