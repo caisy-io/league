@@ -10,7 +10,7 @@ export interface ISelectedUserBadge {
   photo: string | null;
   name: string;
   email: string;
-  onCloseHandler?: React.MouseEventHandler<HTMLDivElement>;
+  onDeleteHandler?: React.MouseEventHandler<HTMLDivElement>;
   userFound?: boolean;
 }
 
@@ -18,7 +18,7 @@ export const SelectedUserBadge: React.FC<ISelectedUserBadge> = ({
   email,
   name,
   photo,
-  onCloseHandler,
+  onDeleteHandler,
   userFound = true,
 }) => {
   return (
@@ -38,7 +38,7 @@ export const SelectedUserBadge: React.FC<ISelectedUserBadge> = ({
           </>
         )
       )}
-      <SSelectedUserBadgeIcon onClick={onCloseHandler}>
+      <SSelectedUserBadgeIcon onClick={onDeleteHandler}>
         <IconClose size={20} />
       </SSelectedUserBadgeIcon>
     </SSelectedUserBadge>
