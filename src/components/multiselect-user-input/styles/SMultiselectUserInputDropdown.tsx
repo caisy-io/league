@@ -4,8 +4,16 @@ import { CSSScrollbarStyles } from "../../../constants/styles";
 
 const Bronze = css`
   max-height: 384px;
+  width: 340px;
   overflow-y: auto;
+ border-radius: 8px;
+  background-color: var(--ui-01);
+  box-shadow: var(--box-shadow-strong-pop-elavation);
   ${CSSScrollbarStyles}
+  &::-webkit-scrollbar {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
 `;
 
 const Silver = css``;

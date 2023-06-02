@@ -36,3 +36,13 @@ NoProfilePicture.args = {
   photo: null,
   onClickHandler: () => console.log("clicked"),
 };
+
+export const SendInvitation: any = UserDropdownOptionDemo.bind({});
+SendInvitation.args = {
+  id: "1",
+  notFoundText: "Invite as new member",
+  email: "john@example.com",
+  photo: null,
+  userFound: false,
+  onClickHandler: () => console.log("clicked"),
+};

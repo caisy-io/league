@@ -7,8 +7,8 @@ import { IconClose } from "../../icons";
 import { IconSendInvitation } from "../../icons/IconSendInvitation";
 
 export interface ISelectedUserBadge {
-  photo: string | null;
-  name: string;
+  photo?: string | null;
+  name?: string;
   email: string;
   onDeleteHandler?: React.MouseEventHandler<HTMLDivElement>;
   userFound?: boolean;
@@ -25,7 +25,7 @@ export const SelectedUserBadge: React.FC<ISelectedUserBadge> = ({
     <SSelectedUserBadge>
       {userFound ? (
         <>
-          {photo ? <Avatar size={20} imageUrl={photo} /> : <Avatar size={20}>{name[0].trim().toUpperCase()}</Avatar>}
+          {photo ? <Avatar size={20} imageUrl={photo} /> : <Avatar size={20}>{name?.[0]?.trim().toUpperCase()}</Avatar>}
           {name && <SSelectedUserBadgeName>{name}</SSelectedUserBadgeName>}
         </>
       ) : (
