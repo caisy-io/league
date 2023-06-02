@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC, MouseEventHandler } from "react";
 import { SUserDropdownOption } from "./styles/SUserDropdownOption";
 import { Avatar } from "../avatar";
 import { SUserDropdownOptionNameEmailWrapper } from "./styles/SUserDropdownOptionNameEmailWrapper";
@@ -11,10 +11,10 @@ export interface IUserDropdownOption {
     name: string;
     email: string;
   };
-  onClickHandler?: React.MouseEventHandler<HTMLDivElement>;
+  onClickHandler?: MouseEventHandler<HTMLDivElement>;
 }
 
-export const UserDropdownOption: React.FC<IUserDropdownOption> = ({ cardData, onClickHandler }) => {
+export const UserDropdownOption: FC<IUserDropdownOption> = ({ cardData, onClickHandler }) => {
   return (
     cardData && (
       <SUserDropdownOption onClick={onClickHandler}>
