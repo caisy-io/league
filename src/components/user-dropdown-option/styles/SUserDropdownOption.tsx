@@ -6,6 +6,13 @@ const Bronze = css`
   gap: 12px;
   align-items: center;
   padding: 13px 16px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--ui-03);
+  transition: background-color 0.3s ease-in-out;
+
+&:hover, &:focus, &:active {
+  background-color: var(--hover-ui-01);
+}
 `;
 
 const Silver = css``;
@@ -16,7 +23,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SMultiselectUserInputOption = styled.div`
+export const SUserDropdownOption = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
