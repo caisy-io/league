@@ -12,7 +12,7 @@ export default {
 };
 
 const UserDropdownOptionDemo: FC<IUserDropdownOption> = ({ ...props }) => (
-  <div style={{ padding: "10px", maxWidth: '330px' }}>
+  <div style={{ padding: "10px", maxWidth: "330px" }}>
     <SMultiselectUserInputDropdown>
       <UserDropdownOption {...props} />
     </SMultiselectUserInputDropdown>
@@ -21,22 +21,18 @@ const UserDropdownOptionDemo: FC<IUserDropdownOption> = ({ ...props }) => (
 
 export const WithProfilePicture: any = UserDropdownOptionDemo.bind({});
 WithProfilePicture.args = {
-  cardData: {
-    id: "1",
-    name: "John Doe",
-    email: "john@example.com",
-    photo: "https://source.unsplash.com/random/201x200/?profile",
-  },
+  id: "1",
+  name: "John Doe",
+  email: "john@example.com",
+  photo: "https://source.unsplash.com/random/201x200/?profile",
   onClickHandler: () => console.log("clicked"),
 };
 
 export const NoProfilePicture: any = UserDropdownOptionDemo.bind({});
 NoProfilePicture.args = {
-  cardData: {
-    id: "1",
-    name: "John Doe",
-    email: "john@example.com",
-    photo: null,
-  },
+  id: "1",
+  name: "John Doe",
+  email: "john@example.com",
+  photo: null,
   onClickHandler: () => console.log("clicked"),
 };

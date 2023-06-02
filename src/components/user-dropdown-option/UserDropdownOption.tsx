@@ -6,28 +6,25 @@ import { SUserDropdownOptionName } from "./styles/SUserDropdownOptionName";
 import { SUserDropdownOptionEmail } from "./styles/SUserDropdownOptionEmail";
 
 export interface IUserDropdownOption {
-  cardData: {
-    photo: string | null;
+  photo: string | null;
     name: string;
     email: string;
-  };
   onClickHandler?: MouseEventHandler<HTMLDivElement>;
 }
 
-export const UserDropdownOption: FC<IUserDropdownOption> = ({ cardData, onClickHandler }) => {
+export const UserDropdownOption: FC<IUserDropdownOption> = ({ email,name,photo, onClickHandler }) => {
   return (
-    cardData && (
       <SUserDropdownOption onClick={onClickHandler}>
-        {cardData.photo ? (
-          <Avatar size={32} imageUrl={cardData.photo} />
+        {photo ? (
+          <Avatar size={32} imageUrl={photo} />
         ) : (
-          <Avatar size={32}>{cardData.name[0].trim().toUpperCase()}</Avatar>
+          <Avatar size={32}>{name[0].trim().toUpperCase()}</Avatar>
         )}
         <SUserDropdownOptionNameEmailWrapper>
-          {cardData.name && <SUserDropdownOptionName>{cardData.name}</SUserDropdownOptionName>}
-          {cardData.email && <SUserDropdownOptionEmail>{cardData.email}</SUserDropdownOptionEmail>}
+          {name && <SUserDropdownOptionName>{name}</SUserDropdownOptionName>}
+          {email && <SUserDropdownOptionEmail>{email}</SUserDropdownOptionEmail>}
         </SUserDropdownOptionNameEmailWrapper>
       </SUserDropdownOption>
-    )
+    
   );
 };
