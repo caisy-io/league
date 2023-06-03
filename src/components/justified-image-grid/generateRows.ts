@@ -144,7 +144,7 @@ function buildRows(
   return rows;
 }
 
-function stretchImages(images: ResizedImage[], config: IJustifiedImageGridConfig): number[] {
+export function stretchImages(images: ResizedImage[], config: IJustifiedImageGridConfig): number[] {
   // Deconstruct configuration for easier usage
   const { totalWidthOfView, paddingBetweenImages } = config;
 

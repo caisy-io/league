@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from "react";
-import { SEmptyGradient } from "./styles/SEmptyGradient";
+import { SEmptyGradientGrid } from "./styles/SEmptyGradientGrid";
 import EmptyBannerImage from "./EmptyBannerImage";
 import { SEmptyTableBanner } from "./styles/SEmptyTableBanner";
 import { SEmptyTableBannerDescription } from "./styles/SEmptyTableBannerDescription";
@@ -20,7 +20,7 @@ export const EmptyGrid: FC<IEmptyGrid> = ({ title, description, children }) => {
         <SEmptyTableBannerTitle>{title}</SEmptyTableBannerTitle>
         <SEmptyTableBannerDescription>{description}</SEmptyTableBannerDescription>
       </SEmptyTableBanner>
-      <SEmptyGradient />
+      <SEmptyGradientGrid />
     </>
   );
 };
