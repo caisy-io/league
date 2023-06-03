@@ -7,5 +7,5 @@ export const SEmptyGradientGrid = styled.div`
   left: 0;
   right: 0;
 
-  background-image: linear-gradient(rgba(248, 250, 251, 0) 10.5%, rgb(247, 249, 250) 49.9%);
+  background-image: linear-gradient(rgba(255, 255, 255, 0) 10.5%, #ffffff 49.9%);
 `;
