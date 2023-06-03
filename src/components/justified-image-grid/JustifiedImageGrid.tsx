@@ -70,7 +70,7 @@ export const JustifiedImageGrid = forwardRef<any, IJustifiedImageGrid>(
     }
 
     const loadMoreItems = () => {
-      if (!loadingRef.current) {
+      if (totalCount && totalCount < images.length && !loadingRef.current) {
         loadingRef.current = true;
         loadNextPage().then(() => {
           loadingRef.current = false;

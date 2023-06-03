@@ -7,6 +7,7 @@ import { Input } from "../input/Input";
 import { useDimensions } from "../../utils";
 import { dynamicConfig } from "./dynamicConfig";
 import debounce from "lodash/debounce";
+import {testdataReal} from './testdata';
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -16,7 +17,7 @@ const JustifiedImageGridDemo: React.FC<{
   initalLoadingDelay: number;
   loadingMultiplier: number;
 }> = ({ totalCount, pageSize, initalLoadingDelay, loadingMultiplier }) => {
-  const images = getImages();
+  const images = testdataReal.slice(20, 100);
   const multiplier = useRef(loadingMultiplier || 1);
   const ref = useRef(null);
   const { width, height } = useDimensions(ref);
@@ -153,8 +154,8 @@ const JustifiedImageGridDemo: React.FC<{
   );
 };
 
-export const Controls: any = JustifiedImageGridDemo.bind({});
-Controls.args = {
+export const Real: any = JustifiedImageGridDemo.bind({});
+Real.args = {
   totalCount: 197,
   pageSize: 30,
   initalLoadingDelay: 2000,
@@ -162,7 +163,7 @@ Controls.args = {
 };
 
 export default {
-  title: `Components/JustifiedImageGrid/Controls`,
+  title: `Components/JustifiedImageGrid/Real`,
   component: JustifiedImageGridDemo,
   argTypes: {
     totalCount: {
