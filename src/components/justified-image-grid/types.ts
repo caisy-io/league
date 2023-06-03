@@ -2,15 +2,16 @@ export type IJustifiedImageGridEvent = {
   rowIndex: number;
   columnIndex: number;
   id: string;
-}
+};
 
 export type IJustifiedImageGrid = {
   images: Image[];
   totalCount?: number;
-  loadNextPage: () => Promise<void> ;
+  loadNextPage: () => Promise<void>;
   config: IJustifiedImageGridConfig;
   onImageSelection?: (event: IJustifiedImageGridEvent) => void;
   onImageClick?: (event: IJustifiedImageGridEvent) => void;
+  restoreStateFrom?: string;
 };
 
 export type Image = {
@@ -36,9 +37,9 @@ export type ResizedImage = Image & {
 export type IRow = {
   images: ResizedImage[];
   rowHeight: number;
-  __loading?: boolean
-  aspectRatioSum?: number
-  totalWidth?: number
+  __loading?: boolean;
+  aspectRatioSum?: number;
+  totalWidth?: number;
 };
 
 export type IJustifiedImageGridConfig = {
@@ -60,7 +61,7 @@ export type IJustifiedImageGridConfig = {
   resizeHeight: number;
   svgPadding: number;
   imageTitleFallback?: string;
-}
+};
 
 export type IJustifiedImageGridConfigOverwrite = {
   imageLabelHeight?: number;
@@ -81,4 +82,4 @@ export type IJustifiedImageGridConfigOverwrite = {
   resizeHeight?: number;
   svgPadding?: number;
   imageTitleFallback?: string;
-}
+};

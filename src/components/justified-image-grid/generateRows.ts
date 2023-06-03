@@ -61,7 +61,7 @@ function buildRows(
   idealImageWidth: number,
   isLastGroup: boolean,
 ): IRow[] {
-  let rows: IRow[] = [];
+  const rows: IRow[] = [];
   let currentRow: ResizedImage[] = [];
   let currentAspectRatioSum = 0;
 
@@ -149,25 +149,25 @@ function stretchImages(images: ResizedImage[], config: IJustifiedImageGridConfig
   const { totalWidthOfView, paddingBetweenImages } = config;
 
   // Get current image widths and calculate total width
-  const imageWidths = images.map(img => img.renderedWidth);
+  const imageWidths = images.map((img) => img.renderedWidth);
   const totalCurrentWidth = imageWidths.reduce((sum, width) => sum + width, 0);
 
   // Calculate the width available for images after considering the padding
   const availableWidth = totalWidthOfView - paddingBetweenImages * (images.length - 1);
 
   // Calculate new widths maintaining their proportions and round down to integer
-  let newWidths = imageWidths.map(width => Math.floor((width / totalCurrentWidth) * availableWidth));
+  const newWidths = imageWidths.map((width) => Math.floor((width / totalCurrentWidth) * availableWidth));
 
   // Calculate the remaining width after rounding down
   let remainingWidth = availableWidth - newWidths.reduce((sum, width) => sum + width, 0);
 
   // Sort images by their fractional part, largest first
-  const fractionalParts = imageWidths.map(width => (width / totalCurrentWidth) * availableWidth % 1);
+  const fractionalParts = imageWidths.map((width) => ((width / totalCurrentWidth) * availableWidth) % 1);
   const indices = Array.from(fractionalParts.keys()).sort((a, b) => fractionalParts[b] - fractionalParts[a]);
 
   // Distribute the remaining width among the images, starting with the largest ones
   while (remainingWidth > 0) {
-    for (let i of indices) {
+    for (const i of indices) {
       if (remainingWidth > 0) {
         newWidths[i]++;
         remainingWidth--;
@@ -182,7 +182,7 @@ export function justifyRow(row: IRow, config: IJustifiedImageGridConfig): IRow {
   const strechedWidths = stretchImages(row.images, config);
   row.images.forEach((_, index) => {
     row.images[index].renderedWidth = strechedWidths[index];
-  })
+  });
 
   row.totalWidth = config.totalWidthOfView;
   return row;
@@ -202,7 +202,7 @@ export function getGroupRows(images: Image[], config: IJustifiedImageGridConfig,
     aimingRowHeight,
   );
 
-  let rows = buildRows(
+  const rows = buildRows(
     images,
     aspectRatios,
     config,
