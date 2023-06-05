@@ -5,7 +5,6 @@ const Bronze = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 395px;
 `;
 
 const Silver = css``;
@@ -16,7 +15,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SErrorScreen= styled.div`
+export const SErrorScreen = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
