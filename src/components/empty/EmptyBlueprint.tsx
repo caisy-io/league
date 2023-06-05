@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import { IEmptyType } from "./Empty";
-import { SEmptyGradient } from "./styles/SEmptyGradient";
+import { SEmptyGradientBlueprint } from "./styles/SEmptyGradientBlueprint";
 import { SEmptySchemaItem } from "./styles/SEmptySchemaItem";
 import { SEmptyGridItemSquare } from "./styles/SEmptySchemaItemSquare";
 import { SEmptySchemaItemHeader } from "./styles/SEmptySchemaItemHeader";
@@ -44,19 +44,18 @@ const EmptyImageComponent = ({ title, description, children }) => {
 };
 
 interface IEmptyBlueprint {
-  type: IEmptyType;
   title: string | ReactNode;
   description: string | ReactNode;
 }
 
-export const EmptyBlueprint: FC<IEmptyBlueprint> = ({ type, title, description }) => {
+export const EmptyBlueprint: FC<IEmptyBlueprint> = ({ title, description }) => {
   return (
     <>
       <SchemaLayout />
       <EmptyImageComponent title={title} description={description}>
         <EmptySchemaImage />
       </EmptyImageComponent>
-      <SEmptyGradient type={type} />
+      <SEmptyGradientBlueprint />
     </>
   );
 };

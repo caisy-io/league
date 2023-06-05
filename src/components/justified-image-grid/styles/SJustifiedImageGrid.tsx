@@ -1,25 +1,13 @@
-import styled, { css } from 'styled-components';
-import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
+import styled, { css } from "styled-components";
 
 const Bronze = css`
-> * {
-  padding: 16px 0;
-}
+  > * {
+    padding: 16px 0;
+  }
+  position: relative;
+  height: calc(100% - 36px);
 `;
-
-const Silver = css``;
-
-const Gold = css``;
-
-const Platinum = css``;
-
-const Diamond = css``;
 
 export const SJustifiedImageGrid = styled.div`
   ${Bronze}
-  ${MIN_SILVER`${Silver}`};
-  ${MIN_GOLD`${Gold}`}; 
-  ${MIN_PLATINUM`${Platinum}`};
-  ${MIN_DIAMOND`${Diamond}`};
 `;
-

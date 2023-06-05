@@ -4,9 +4,9 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 const Bronze = css`
   position: absolute;
   z-index: 7;
-  top: 21.39%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-50%);
   text-align: center;
   width: 222px;
 `;
