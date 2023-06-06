@@ -107,8 +107,6 @@ export const SimpleInput: FC<ISimpleInput> = ({
     }
   }, [inputRef?.current?.value]);
 
-  const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
-
   const [showPlaceholderIndicator, setShowPlaceholderIndicator] = React.useState(false);
   React.useEffect(() => {
     if (required && !inputRef?.current?.value && !label && (!errors || errors.length === 0)) {
@@ -160,23 +158,43 @@ export const SimpleInput: FC<ISimpleInput> = ({
                 }}
               />
             )}
-            <InputComponent
-              error={state === "error"}
-              locked={locked}
-              onChange={(e) => {
-                onChange?.(e);
-              }}
-              autoComplete={autoComplete}
-              ref={inputRef}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              value={value === null || value === undefined ? "" : value}
-              placeholder={placeholder}
-              disabled={disabled}
-              readOnly={readOnly}
-              onKeyUp={onKeyUp}
-              type={type}
-            />
+            {multiline ? (
+              <SSimpleInputMultiline
+                error={state === "error"}
+                locked={locked}
+                onChange={(e) => {
+                  onChange?.(e);
+                }}
+                autoComplete={autoComplete}
+                ref={inputRef}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                placeholder={placeholder}
+                disabled={disabled}
+                readOnly={readOnly}
+                onKeyUp={onKeyUp}
+              >
+                {value === null || value === undefined ? "" : value}
+              </SSimpleInputMultiline>
+            ) : (
+              <SSimpleInput
+                error={state === "error"}
+                locked={locked}
+                onChange={(e) => {
+                  onChange?.(e);
+                }}
+                autoComplete={autoComplete}
+                ref={inputRef}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                value={value === null || value === undefined ? "" : value}
+                placeholder={placeholder}
+                disabled={disabled}
+                readOnly={readOnly}
+                onKeyUp={onKeyUp}
+                type={type}
+              />
+            )}
           </SSimpleInputRequiredIndicatorContainer>
         </SSimpleInputInsideContainer>
         <SSimpleInputRightWrapper>
