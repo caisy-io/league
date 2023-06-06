@@ -10,7 +10,8 @@ import {
 const CSSLocked = css`
   color: var(--text-04);
 
-  &:disabled, &:read-only {
+  &:disabled,
+  &:read-only {
     background: none;
     color: var(--text-04);
   }
@@ -75,6 +76,7 @@ export const SSimpleInput = styled.input`
 const CSSMultiline = css`
   overflow: hidden;
   resize: none;
+  min-height: 20px;
   ${CSSProgressiveBody03Medium};
   font-family: Inter;
 `;
