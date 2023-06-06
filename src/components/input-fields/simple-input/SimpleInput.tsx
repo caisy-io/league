@@ -69,16 +69,17 @@ export const SimpleInput: FC<ISimpleInput> = ({
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
+  const [inputRef, setInputRef] = useState<HTMLInputElement>();
 
-  const inputRef = useRef<HTMLInputElement>();
+  // const inputRef = useRef<HTMLInputElement>();
   const spanRef = useRef<HTMLSpanElement>();
   const requiredIndicatorRef = useRef<HTMLDivElement>();
   const { width: spanWidth } = useDimensions(spanRef);
   const { width: inputContainerWidth } = useDimensions(requiredIndicatorRef);
 
   const handleClick = useCallback(() => {
-    inputRef.current?.focus();
-  }, [inputRef.current?.focus]);
+    inputRef?.focus();
+  }, [inputRef?.focus]);
 
   const handleFocus = useCallback(
     (e) => {
@@ -97,26 +98,26 @@ export const SimpleInput: FC<ISimpleInput> = ({
   );
 
   const resizeInput = useCallback(() => {
-    (inputRef.current as HTMLInputElement).style.height = "20px";
-    (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
-  }, [inputRef?.current?.value]);
+    (inputRef as HTMLInputElement).style.height = "20px";
+    (inputRef as HTMLInputElement).style.height = `${inputRef?.scrollHeight}px`;
+  }, [inputRef]);
 
   useEffect(() => {
     if (multiline) {
       resizeInput();
     }
-  }, [inputRef?.current?.value]);
+  }, [inputRef, value]);
 
   const InputComponent = multiline ? SSimpleInputMultiline : SSimpleInput;
 
   const [showPlaceholderIndicator, setShowPlaceholderIndicator] = React.useState(false);
   React.useEffect(() => {
-    if (required && !inputRef?.current?.value && !label && (!errors || errors.length === 0)) {
+    if (required && !inputRef?.value && !label && (!errors || errors.length === 0)) {
       setShowPlaceholderIndicator(true);
     } else {
       setShowPlaceholderIndicator(false);
     }
-  }, [inputRef?.current?.value, errors]);
+  }, [inputRef?.value, errors]);
 
   const locked = state === "locked";
 
