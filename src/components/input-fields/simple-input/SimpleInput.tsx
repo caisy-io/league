@@ -98,6 +98,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
   );
 
   const resizeInput = useCallback(() => {
+    if (!inputRef) return;
     (inputRef as HTMLInputElement).style.height = "20px";
     (inputRef as HTMLInputElement).style.height = `${inputRef?.scrollHeight}px`;
   }, [inputRef]);
@@ -168,7 +169,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
                 onChange?.(e);
               }}
               autoComplete={autoComplete}
-              ref={inputRef}
+              ref={setInputRef}
               onFocus={handleFocus}
               onBlur={handleBlur}
               value={value === null || value === undefined ? "" : value}
