@@ -8,10 +8,10 @@ import { SErrorScreenPreviewBorder } from "./styles/SErrorScreenPreviewBorder";
 import { IconDottedBorder } from "../../icons/IconDottedBorder";
 
 export interface IErrorScreen {
-  preview: ReactNode;
-  headline: ReactNode;
-  description: ReactNode;
-  callToAction: ReactNode;
+  preview: ReactNode | string | null;
+  headline: ReactNode | string | null;
+  description: ReactNode | string | null;
+  callToAction: ReactNode | string | null;
 }
 
 export const ErrorScreen: FC<IErrorScreen> = ({ callToAction, description, headline, preview }) => {

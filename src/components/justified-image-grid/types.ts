@@ -12,7 +12,9 @@ export type IJustifiedImageGrid = {
   onImageSelection?: (event: IJustifiedImageGridEvent) => void;
   onImageClick?: (event: IJustifiedImageGridEvent) => void;
   restoreStateFrom?: string;
+  scrollToId?: string;
 };
+
 
 export type Image = {
   width: number;

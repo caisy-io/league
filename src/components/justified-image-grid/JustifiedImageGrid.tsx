@@ -1,4 +1,4 @@
-import React, { forwardRef, memo } from "react";
+import React, { forwardRef, memo, useEffect } from "react";
 import { SJustifiedImageGrid } from "./styles/SJustifiedImageGrid";
 import { areEqual } from "react-window";
 import { generateRows } from "./generateRows";
@@ -25,9 +25,11 @@ const Row: React.FC<{
     <div>
       <SJustifiedImageGridRow>
         {rowImages.map((image, i) => {
+          const key = "ci_" + image.id;
           return (
             <SJustifiedImageGridCell
-              key={"ci_" + image.id}
+              id={key}
+              key={key}
               style={{
                 width: image.renderedWidth,
                 height: image.renderedHeight + config.imageLabelHeight,
@@ -61,7 +63,10 @@ const Row: React.FC<{
 }, areEqual);
 
 export const JustifiedImageGrid = forwardRef<any, IJustifiedImageGrid>(
-  ({ images, config, totalCount, loadNextPage, onImageSelection, onImageClick, restoreStateFrom }, virtuosoRef) => {
+  (
+    { images, config, totalCount, loadNextPage, onImageSelection, onImageClick, restoreStateFrom, scrollToId },
+    virtuosoRef,
+  ) => {
     const loadingRef = React.useRef<boolean>(false);
     const [loadingNextPage, setLoadingNextPage] = React.useState<boolean>(false);
     const rowConfigs = generateRows(images, totalCount, config);
@@ -81,19 +86,30 @@ export const JustifiedImageGrid = forwardRef<any, IJustifiedImageGrid>(
       }
     };
 
-    // useEffect(() => {
-    //   virtuosoRef?.current &&
-    //     virtuosoRef.current.scrollToIndex({
-    //       index: scrollToRowIndex,
-    //       align: "center",
-    //       behavior: "auto",
-    //     });
-    // }, [scrollToRowIndex, !!virtuosoRef?.current]);
+    const hasImages = !!rowConfigs.length;
+    const restoreStateFromSnapshot = restoreStateFrom ? decodeStateSnapshotURLSafe(restoreStateFrom) : undefined;
+
+    const key = restoreStateFrom && hasImages ? `${restoreStateFrom}_${hasImages}` : undefined;
+
+    useEffect(() => {
+      const v = (virtuosoRef as any).current;
+      if (restoreStateFromSnapshot && v && scrollToId) {
+        const scrollToIndex = rowConfigs.findIndex((r) => r.images.find((i) => i.id === scrollToId));
+        if (scrollToIndex !== -1) {
+          v.scrollToIndex({
+            index: scrollToIndex,
+            align: "center",
+            behavior: "auto",
+          });
+        }
+      }
+    }, [scrollToId]);
+
     return (
       <SJustifiedImageGrid>
         <Virtuoso
-          key={restoreStateFrom ? restoreStateFrom : undefined}
-          restoreStateFrom={restoreStateFrom ? decodeStateSnapshotURLSafe(restoreStateFrom) : undefined}
+          key={key}
+          restoreStateFrom={restoreStateFromSnapshot}
           ref={virtuosoRef}
           style={{ height: "100%", width: config.totalWidthOfView + config.paddingAroundGrid * 2 }}
           data={rowConfigs}
