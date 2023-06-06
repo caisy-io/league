@@ -99,6 +99,8 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
   const resizeInput = useCallback(() => {
     if (!inputRef) return;
+    console.log("rerender");
+
     (inputRef as HTMLInputElement).style.height = "20px";
     (inputRef as HTMLInputElement).style.height = `${inputRef?.scrollHeight}px`;
   }, [inputRef]);
