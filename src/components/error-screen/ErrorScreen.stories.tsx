@@ -15,7 +15,7 @@ export default {
 };
 
 const ErrorScreenDemo: FC<IErrorScreen> = ({ ...props }) => (
-  <div style={{ padding: "10px" }}>
+  <div style={{ padding: "10px", maxWidth: "395px" }}>
     <ErrorScreen {...props} />
   </div>
 );

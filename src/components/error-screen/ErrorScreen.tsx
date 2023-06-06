@@ -9,7 +9,7 @@ import { IconDottedBorder } from "../../icons/IconDottedBorder";
 
 export interface IErrorScreen {
   preview: ReactNode;
-  headline: string;
+  headline: ReactNode;
   description: ReactNode;
   callToAction: ReactNode;
 }
