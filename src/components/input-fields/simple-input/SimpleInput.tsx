@@ -98,14 +98,16 @@ export const SimpleInput: FC<ISimpleInput> = ({
 
   const resizeInput = useCallback(() => {
     (inputRef.current as HTMLInputElement).style.height = "20px";
-    (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
-  }, [inputRef?.current?.value]);
+    (inputRef.current as HTMLInputElement).style.height = inputRef.current
+      ? `${inputRef.current?.scrollHeight}px`
+      : "20px";
+  }, [inputRef?.current?.value, value]);
 
   useEffect(() => {
     if (multiline) {
       resizeInput();
     }
-  }, [inputRef?.current?.value]);
+  }, [inputRef?.current?.value, value]);
 
   const [showPlaceholderIndicator, setShowPlaceholderIndicator] = React.useState(false);
   React.useEffect(() => {
