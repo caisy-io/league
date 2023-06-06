@@ -1,60 +1,26 @@
 import React, { FC, ReactNode } from "react";
-import { IEmptyType } from "./Empty";
-import { SEmptyGridItem } from "./styles/SEmptyGridItem";
-import { SEmptyGradient } from "./styles/SEmptyGradient";
-import { SEmptyGridItemHeader } from "./styles/SEmptyGridItemHeader";
-import { SEmptyGridItemTitle } from "./styles/SEmptyGridItemTitle";
-import { SEmptyGridItemSubtitle } from "./styles/SEmptyGridItemSubtitle";
-import { SEmptyGridItemContent } from "./styles/SEmptyGridItemContent";
-import EmptyGridImage from "./EmptyGridImage";
-import { SEmptyImageWrapper } from "./styles/SEmptyImageWrapper";
-import { SEmptyImageTitle } from "./styles/SEmptyImageTitle";
-import { SEmptyImageDescription } from "./styles/SEmptyImageDescription";
-import { SEmptyImageContainer } from "./styles/SEmptyImageContainer";
-
-const GridLayout = () => {
-  const gridItems = [1, 2, 3];
-  return (
-    <>
-      {gridItems.map((item) => (
-        <SEmptyGridItem key={item}>
-          <SEmptyGridItemHeader>
-            <SEmptyGridItemTitle />
-            <SEmptyGridItemSubtitle />
-          </SEmptyGridItemHeader>
-          <SEmptyGridItemContent />
-        </SEmptyGridItem>
-      ))}
-    </>
-  );
-};
-
-const EmptyImageComponent = ({ title, description, children }) => {
-  return (
-    <SEmptyImageWrapper>
-      <SEmptyImageContainer>
-        {children}
-        <SEmptyImageTitle>{title}</SEmptyImageTitle>
-        <SEmptyImageDescription>{description}</SEmptyImageDescription>
-      </SEmptyImageContainer>
-    </SEmptyImageWrapper>
-  );
-};
+import { SEmptyGradientGrid } from "./styles/SEmptyGradientGrid";
+import EmptyBannerImage from "./EmptyBannerImage";
+import { SEmptyTableBanner } from "./styles/SEmptyTableBanner";
+import { SEmptyTableBannerDescription } from "./styles/SEmptyTableBannerDescription";
+import { SEmptyTableBannerTitle } from "./styles/SEmptyTableBannerTitle";
 
 interface IEmptyGrid {
-  type: IEmptyType;
   title: string | ReactNode;
   description: string | ReactNode;
+  children?: string | ReactNode;
 }
 
-export const EmptyGrid: FC<IEmptyGrid> = ({ type, title, description }) => {
+export const EmptyGrid: FC<IEmptyGrid> = ({ title, description, children }) => {
   return (
     <>
-      <GridLayout />
-      <EmptyImageComponent title={title} description={description}>
-        <EmptyGridImage />
-      </EmptyImageComponent>
-      <SEmptyGradient type={type} />
+      {children}
+      <SEmptyTableBanner>
+        <EmptyBannerImage />
+        <SEmptyTableBannerTitle>{title}</SEmptyTableBannerTitle>
+        <SEmptyTableBannerDescription>{description}</SEmptyTableBannerDescription>
+      </SEmptyTableBanner>
+      <SEmptyGradientGrid />
     </>
   );
 };

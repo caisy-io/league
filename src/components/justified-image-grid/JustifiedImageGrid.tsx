@@ -1,7 +1,6 @@
-import React, { forwardRef, memo,  } from "react";
+import React, { forwardRef, memo } from "react";
 import { SJustifiedImageGrid } from "./styles/SJustifiedImageGrid";
 import { areEqual } from "react-window";
-import { AssetImageCard } from "../asset-image-card";
 import { generateRows } from "./generateRows";
 import { SJustifiedImageGridCell } from "./styles/SJustifiedImageGridCell";
 import { IJustifiedImageGrid, IJustifiedImageGridEvent } from "./types";
@@ -9,6 +8,8 @@ import { SJustifiedImageGridRow } from "./styles/SJustifiedImageGridRow";
 import { Virtuoso } from "react-virtuoso";
 import { IRow, IJustifiedImageGridConfig } from "./types";
 import { LazyImage } from "./LazyImage";
+import { decodeStateSnapshotURLSafe } from "./stateHelper";
+import { AssetImageCard } from "../asset-image-card";
 
 const Row: React.FC<{
   data: {
@@ -60,7 +61,7 @@ const Row: React.FC<{
 }, areEqual);
 
 export const JustifiedImageGrid = forwardRef<any, IJustifiedImageGrid>(
-  ({ images, config, totalCount, loadNextPage, onImageSelection, onImageClick }, virtuosoRef) => {
+  ({ images, config, totalCount, loadNextPage, onImageSelection, onImageClick, restoreStateFrom }, virtuosoRef) => {
     const loadingRef = React.useRef<boolean>(false);
     const [loadingNextPage, setLoadingNextPage] = React.useState<boolean>(false);
     const rowConfigs = generateRows(images, totalCount, config);
@@ -70,7 +71,7 @@ export const JustifiedImageGrid = forwardRef<any, IJustifiedImageGrid>(
     }
 
     const loadMoreItems = () => {
-      if (!loadingRef.current) {
+      if (totalCount && totalCount > images.length && !loadingRef.current) {
         loadingRef.current = true;
         loadNextPage().then(() => {
           loadingRef.current = false;
@@ -88,12 +89,13 @@ export const JustifiedImageGrid = forwardRef<any, IJustifiedImageGrid>(
     //       behavior: "auto",
     //     });
     // }, [scrollToRowIndex, !!virtuosoRef?.current]);
-
     return (
       <SJustifiedImageGrid>
         <Virtuoso
+          key={restoreStateFrom ? restoreStateFrom : undefined}
+          restoreStateFrom={restoreStateFrom ? decodeStateSnapshotURLSafe(restoreStateFrom) : undefined}
           ref={virtuosoRef}
-          style={{ height: config.scrollViewHeight, width: config.totalWidthOfView + config.paddingAroundGrid * 2 }}
+          style={{ height: "100%", width: config.totalWidthOfView + config.paddingAroundGrid * 2 }}
           data={rowConfigs}
           endReached={loadMoreItems}
           overscan={200}

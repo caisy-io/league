@@ -1,18 +1,11 @@
 import {
   IMAGE_LABEL_HEIGHT,
-  MAX_WIDTH_OF_IMAGE,
-  MIN_WIDTH_OF_IMAGE,
   PADDING_BETWEEN_IMAGES,
   PADDING_BETWEEN_ROWS,
   AVG_IMAGE_WIDTH,
   GROUP_SIZE,
   PADDING_AROUND_GRID,
-  SVG_PADDING,
-  RESIZE_IMAGE_HEIGHT,
   SCROLL_VIEW_HEIGHT,
-  AVG_ROW_HEIGHT,
-  ROW_MAX_HEIGHT,
-  ROW_MIN_HEIGHT,
 } from "./constants";
 import { IJustifiedImageGridConfigOverwrite, IJustifiedImageGridConfig } from "./types";
 

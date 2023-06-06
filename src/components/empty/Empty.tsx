@@ -16,8 +16,7 @@ interface IEmpty {
 export const Empty: FC<IEmpty> = ({ type, title, description, styleOverwrite }) => {
   return (
     <SEmpty type={type} styleOverwrite={styleOverwrite}>
-      {type === "blueprint" && <EmptyBlueprint type={type} description={description} title={title} />}
-      {type === "grid" && <EmptyGrid type={type} description={description} title={title} />}
+      {type === "blueprint" && <EmptyBlueprint description={description} title={title} />}
       {type === "tableSkeleton" && <EmptyTable description={description} title={title} />}
     </SEmpty>
   );

@@ -105,6 +105,7 @@ const JustifiedImageGridDemo: React.FC<{
     totalWidthOfView: width - 32 - 140,
   });
 
+  console.log(` appliedConfig`, appliedConfig);
   return (
     <>
       <div ref={ref} style={{ height: "calc(100vh - 64px)", display: "flex" }}>

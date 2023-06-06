@@ -14,19 +14,14 @@ const Bronze = css`
   }
 `;
 
-const Silver = css``;
+const CSSDisabled = css`
+pointer-events: none;
+opacity: 0.8;
+cursor: not-allowed;
+`;
 
-const Gold = css``;
-
-const Platinum = css``;
-
-const Diamond = css``;
-
-export const SSliderCont = styled.div`
+export const SSliderCont = styled.div<{disabled?: boolean }>`
   ${Bronze}
-  ${MIN_SILVER`${Silver}`};
-  ${MIN_GOLD`${Gold}`};
-  ${MIN_PLATINUM`${Platinum}`};
-  ${MIN_DIAMOND`${Diamond}`};
+  ${(props) => (props.disabled ? CSSDisabled : "")};
 `;
 
