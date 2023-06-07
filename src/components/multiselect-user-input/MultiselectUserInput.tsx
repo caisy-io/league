@@ -50,14 +50,7 @@ export const MultiselectUserInput: FC<IMultiselectUserInput> = ({
             </SMultiselectUserInputSelectedUsersWrapper>
           </SMultiselectUserInputLabel>
           <Popover display={showDropdown} placement="bottomRight" reference={inputRef} disableTriangle>
-            <SMultiselectUserInputDropdown
-              onClick={() => {
-                setValue("");
-                setShowDropdown(false);
-              }}
-            >
-              {children}
-            </SMultiselectUserInputDropdown>
+            <SMultiselectUserInputDropdown onClick={() => setValue("")}>{children}</SMultiselectUserInputDropdown>
           </Popover>
         </div>
       </ClickOutside>
