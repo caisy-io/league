@@ -24,7 +24,7 @@ export interface IImg {
     | number
     | IResponsiveImageResolution /** set the quality/resolution of the image in px/width ==> default: 50 */;
   lazyload?: boolean /** should the image be lazyloaded on scroll? ==> default: true */;
-  onLoad?: () => void /** trigger when image is loaded ==> default: null */;
+  onLoad?: ({ width, height }) => void /** trigger when image is loaded ==> default: null */;
   onError?: () => void /** trigger when image is loaded ==> default: null */;
 }
 
@@ -36,11 +36,11 @@ const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad, styl
     if (imgRef.current) {
       if (imgRef.current.complete) {
         setLoaded(true);
-        onLoad && onLoad();
+        onLoad && onLoad({ width: imgRef.current.width, height: imgRef.current.height });
       } else {
         imgRef.current.onload = () => {
           setLoaded(true);
-          onLoad && onLoad();
+          onLoad && onLoad({ width: imgRef.current.width, height: imgRef.current.height });
         };
         imgRef.current.onerror = () => {
           setLoaded(false);
@@ -62,7 +62,7 @@ const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad, styl
   const _src = src.includes("?") ? src : src + `?w=${resolution}`;
   return (
     <SImg loaded={loaded} {...props}>
-      <img {...props} src={_src} alt={alt} ref={imgRef as any} style={style} />
+      <img src={_src} alt={alt} ref={imgRef as any} style={style} />
       {children}
     </SImg>
   );
