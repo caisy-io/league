@@ -21,6 +21,8 @@ const Row: React.FC<{
 }> = memo(({ data: { row, config, onImageSelection, onImageClick } }) => {
   const rowImages = row.images;
 
+  console.log({ rowImages });
+
   return (
     <div>
       <SJustifiedImageGridRow>
@@ -104,6 +106,8 @@ export const JustifiedImageGrid = forwardRef<any, IJustifiedImageGrid>(
         }
       }
     }, [scrollToId]);
+
+    console.log({ rowConfigs });
 
     return (
       <SJustifiedImageGrid>
