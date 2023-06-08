@@ -1,23 +1,19 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { CSSProgressiveBody03 } from "../../../constants/styles";
 
-type TProps = {
-  inputPadding: number;
-};
+const Bronze = css`
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  background-color: transparent;
+  width: auto;
+  color: var(--text-01);
+  ${CSSProgressiveBody03}
 
-const Bronze = css<TProps>`
-  position: relative;
-
-  > div:first-child {
-    height: 64px;
-
-    input {
-      ${({ inputPadding }) =>
-        inputPadding &&
-        css`
-          padding-left: ${inputPadding}px;
-        `};
-    }
+  &::placeholder {
+    color: var(--text-03);
   }
 `;
 
@@ -29,7 +25,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SMultiselectUserInputWrapper = styled.div<TProps>`
+export const SMultiselectUserInputInput = styled.input`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

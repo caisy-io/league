@@ -3,10 +3,16 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../consta
 
 const Bronze = css`
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--ui-03);
+  transition: border-color 0.2s ease-in-out;
+
+  &:focus-within {
+    border-color: var(--active-ui-03-2);
+  }
 `;
 
 const Silver = css``;
@@ -17,7 +23,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SMultiselectUserInputSelectedUsersWrapper = styled.div`
+export const SMultiselectUserInputLabel = styled.label`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
