@@ -248,7 +248,7 @@ export function generateRows(images: Image[], totalCount, config: IJustifiedImag
 
   // collect the last group if we are at total count and reach the last group that can be fetched
   // console.log(` currentGroupImagesCount`, currentGroupImagesCount, images.length, totalCount);
-  if (currentGroupImagesCount > 0 && images.length == totalCount) {
+  if (currentGroupImagesCount > 0) {
     getGroupRows(images.slice(images.length - currentGroupImagesCount, images.length), config, true).forEach((row) =>
       rows.push(row),
     );
