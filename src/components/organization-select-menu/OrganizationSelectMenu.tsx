@@ -30,7 +30,7 @@ interface IOrganizationSelectMenu {
   projectTooltip?: ReactNode | string;
   disableTooltips?: boolean;
   expanded?: boolean;
-  ungroupedI18n?: any;
+  ungroupedI18n?: ReactNode | null;
 }
 
 export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
