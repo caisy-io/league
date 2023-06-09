@@ -17,9 +17,11 @@ const Bronze = css`
   width: fit-content;
   position: relative;
   width: ${(props) => (props.expanded ? "123px" : "27px")};
+  transition: box-shadow 0.3s ease-in-out;
 
   &:hover {
     box-shadow: 0px 8px 16px rgba(184, 184, 184, 0.24);
+    transition: box-shadow 0.3s ease-in-out;
   }
 `;
 
