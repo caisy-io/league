@@ -1,4 +1,4 @@
-import React, { CSSProperties, memo, useEffect, useRef, useState } from "react";
+import React, { CSSProperties, ReactEventHandler, SyntheticEvent, memo, useRef, useState } from "react";
 import LazyLoad from "react-lazyload";
 import { SImg } from "./styles/SImg";
 
@@ -24,45 +24,28 @@ export interface IImg {
     | number
     | IResponsiveImageResolution /** set the quality/resolution of the image in px/width ==> default: 50 */;
   lazyload?: boolean /** should the image be lazyloaded on scroll? ==> default: true */;
-  onLoad?: ({ width, height }) => void /** trigger when image is loaded ==> default: null */;
-  onError?: () => void /** trigger when image is loaded ==> default: null */;
+  onLoad?: (e: SyntheticEvent<HTMLImageElement, Event>) => void /** trigger when image is loaded ==> default: null */;
+  onError?: (e: SyntheticEvent<HTMLImageElement, Event>) => void /** trigger when image is loaded ==> default: null */;
 }
 
 const ImgInner: React.FC<IImg> = ({ src, alt, resolution, children, onLoad, style, onError, ...props }) => {
   const imgRef = useRef<any>();
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    if (imgRef.current) {
-      if (imgRef.current.complete) {
-        setLoaded(true);
-        onLoad && onLoad({ width: imgRef.current.width, height: imgRef.current.height });
-      } else {
-        imgRef.current.onload = () => {
-          setLoaded(true);
-          onLoad && onLoad({ width: imgRef.current.width, height: imgRef.current.height });
-        };
-        imgRef.current.onerror = () => {
-          setLoaded(false);
-          onError && onError();
-        };
-      }
-    }
+  const handleLoad: ReactEventHandler<HTMLImageElement> = (e) => {
+    setLoaded(true);
+    onLoad && onLoad(e);
+  };
 
-    return () => {
-      if (imgRef.current && imgRef.current.onload) {
-        imgRef.current.onload = null;
-      }
-      if (imgRef.current && imgRef.current.onerror) {
-        imgRef.current.onerror = null;
-      }
-    };
-  }, [src]);
+  const handleError: ReactEventHandler<HTMLImageElement> = (e) => {
+    setLoaded(false);
+    onError && onError(e);
+  };
 
   const _src = src.includes("?") ? src : src + `?w=${resolution}`;
   return (
     <SImg loaded={loaded} {...props}>
-      <img src={_src} alt={alt} ref={imgRef as any} style={style} />
+      <img onError={handleError} onLoad={handleLoad} src={_src} alt={alt} ref={imgRef as any} style={style} />
       {children}
     </SImg>
   );
