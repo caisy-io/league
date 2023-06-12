@@ -112,8 +112,8 @@ const MultiselectUserInputDemo: FC<IMultiselectUserInput> = ({ ...props }) => {
   const selectedUsers = selectedUsersData.map((item) => (
     <SelectedUserBadge
       key={`item-${item.id}`}
-      email={selectedUsersData.length >= 3 ? `${item.email.substring(0, 3)}...` : item.email}
-      name={selectedUsersData.length >= 3 ? `${item.name.substring(0, 3)}...` : item.name}
+      email={item.email}
+      name={item.name}
       photo={item.photo}
       onDeleteHandler={() => onDeleteHandler(item.id)}
     />

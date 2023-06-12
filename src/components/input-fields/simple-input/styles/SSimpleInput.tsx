@@ -1,16 +1,11 @@
 import styled, { css } from "styled-components";
-import {
-  MIN_SILVER,
-  MIN_GOLD,
-  MIN_PLATINUM,
-  MIN_DIAMOND,
-  CSSProgressiveBody03Medium,
-} from "../../../../constants/styles";
+import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND, CSSProgressiveBody03 } from "../../../../constants/styles";
 
 const CSSLocked = css`
   color: var(--text-04);
 
-  &:disabled, &:read-only {
+  &:disabled,
+  &:read-only {
     background: none;
     color: var(--text-04);
   }
@@ -26,6 +21,12 @@ const Bronze = css`
   line-height: 20px;
   color: var(--text-01);
   width: 100%;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
 
   ${(props) => props.locked && CSSLocked}
   &::placeholder {
@@ -75,8 +76,12 @@ export const SSimpleInput = styled.input`
 const CSSMultiline = css`
   overflow: hidden;
   resize: none;
-  ${CSSProgressiveBody03Medium};
   font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
 `;
 
 export const SSimpleInputMultiline = styled.textarea`

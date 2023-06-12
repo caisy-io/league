@@ -6,9 +6,12 @@ const Bronze = css`
   max-height: 384px;
   width: 340px;
   overflow-y: auto;
- border-radius: 8px;
+  border-radius: 8px;
   background-color: var(--ui-01);
   box-shadow: var(--box-shadow-strong-pop-elavation);
+  margin-left: -20px;
+  margin-top: 12px;
+
   ${CSSScrollbarStyles}
   &::-webkit-scrollbar {
     border-top-right-radius: 8px;

@@ -30,6 +30,7 @@ interface IOrganizationSelectMenu {
   projectTooltip?: ReactNode | string;
   disableTooltips?: boolean;
   expanded?: boolean;
+  ungroupedI18n?: ReactNode | null;
 }
 
 export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
@@ -42,6 +43,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
   projectTooltip,
   disableTooltips,
   expanded,
+  ungroupedI18n,
 }) => {
   const EnviromentIcon: any = () => {
     return enviroment && typeof enviroment.name === "string" ? (
@@ -56,7 +58,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
       <SOrganizationSelectMenu expanded={expanded}>
         <SOrganizationSelectMenuItemOrganization>
           <Tooltip
-            disabled={disableTooltips}
+            disabled={expanded ?? disableTooltips}
             disableTriangle
             color="black"
             content={organizationTooltip || "switch organization"}
@@ -75,7 +77,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
           </Tooltip>
         </SOrganizationSelectMenuItemOrganization>
         <Tooltip
-          disabled={disableTooltips}
+          disabled={expanded ?? disableTooltips}
           disableTriangle
           color="black"
           content={groupTooltip || "switch group"}
@@ -95,7 +97,9 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
                 <IconItemsGroup size={16} />
               </OrganizationSelectMenuItemEmpty>
               {expanded && (
-                <SOrganizationSelectMenuItemLabel expanded={expanded}>{"Group name"}</SOrganizationSelectMenuItemLabel>
+                <SOrganizationSelectMenuItemLabel expanded={expanded}>
+                  {project?.name ? ungroupedI18n : groupTooltip}
+                </SOrganizationSelectMenuItemLabel>
               )}
             </SOrganizationSelectMenuItemLabelHolder>
           )}
@@ -104,7 +108,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
           <Divider width={expanded ? 90 : 28} height={1} orientation={"right"} marginBottom={-1} marginTop={1} />
         </div>
         <Tooltip
-          disabled={disableTooltips}
+          disabled={expanded ?? disableTooltips}
           disableTriangle
           color="black"
           content={projectTooltip || "switch project"}
@@ -125,7 +129,7 @@ export const OrganizationSelectMenu: React.FC<IOrganizationSelectMenu> = ({
               </OrganizationSelectMenuItemEmpty>
               {expanded && (
                 <SOrganizationSelectMenuItemLabel expanded={expanded}>
-                  {"Project name"}
+                  {projectTooltip}
                 </SOrganizationSelectMenuItemLabel>
               )}
             </SOrganizationSelectMenuItemLabelHolder>

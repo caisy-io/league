@@ -1,14 +1,5 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
-
-const fadeIn = keyframes`
-  0%{
-    opacity: 0;
-  }
-  100%{
-opacity: 1;
-  }
-`;
 
 const Bronze = css<{ expanded?: boolean }>`
   font-family: "Inter";
@@ -18,7 +9,6 @@ const Bronze = css<{ expanded?: boolean }>`
   line-height: 16px;
   color: #172c55;
   margin-left: 8px;
-  animation: ${fadeIn} 0.8s ease-in-out;
   ${(props) => (!props.expanded ? "width:0px" : "width: 92px")};
   overflow: hidden;
   text-overflow: ellipsis;
