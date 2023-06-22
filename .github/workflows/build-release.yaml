@@ -31,11 +31,8 @@ jobs:
         name: Run yarn build
         with:
           cmd: build # will run `yarn build` command
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          echo "$GITHUB_CONTEXT"
+      - name: full permission to dist folder
+        run: chmod -R 777 dist
 
       - name: mikeal/merge-release without docker
         run: node scripts/merge-release-run.js

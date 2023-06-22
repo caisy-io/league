@@ -27,7 +27,6 @@ const get = bent('json', process.env.NPM_REGISTRY_URL || 'https://registry.npmjs
 
 let event = undefined
 try {
-  console.log(` process.env.GITHUB_CONTEXT`, process.env.GITHUB_CONTEXT);
   event = JSON.parse(process.env.GITHUB_CONTEXT)
 } catch {
   console.log('no event.json found')
