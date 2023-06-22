@@ -138,14 +138,11 @@ export const Table: FC<ITable> = forwardRef(
     const [initialized, setInitialized] = useState(false);
 
     useEffect(() => {
-      if (firstRowRef.current && !initialized) {
-        firstRowRef.current.style.transform = `translateY(-${0 * 0.5}px)`;
-        setInitialized(dataSource.length > 0 && !loading);
-        if (tableRowsRef.current) {
-          tableRowsRef.current.style.transform = `translateY(${
-            firstRowRef.current.offsetHeight > 0 ? firstRowRef.current.offsetHeight - 0 : 0
-          }px)`;
-        }
+      if (tableRowsRef.current && firstRowRef.current && !initialized) {
+        setInitialized(dataSource.length > 0 && !loading && !isNextPageLoading);
+        tableRowsRef.current.style.transform = `translateY(${
+          firstRowRef.current.offsetHeight > 0 ? firstRowRef.current.offsetHeight : 0
+        }px)`;
       }
     }, [tableRowsRef.current, renderAsFirstRow, dataSource, firstRowRef.current]);
 
