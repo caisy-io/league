@@ -140,7 +140,7 @@ export const Table: FC<ITable> = forwardRef(
     useEffect(() => {
       if (firstRowRef.current && !initialized) {
         firstRowRef.current.style.transform = `translateY(-${0 * 0.5}px)`;
-        setInitialized(dataSource.length > 0);
+        setInitialized(dataSource.length > 0 && !loading);
         if (tableRowsRef.current) {
           tableRowsRef.current.style.transform = `translateY(${
             firstRowRef.current.offsetHeight > 0 ? firstRowRef.current.offsetHeight - 0 : 0
