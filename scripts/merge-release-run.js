@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+
+// this is from https://github.com/mikeal/merge-release
+// but modified to work without docker since we already have node installed
+
 const fs = require('fs')
 const path = require('path')
 const bent = require('bent')
@@ -23,7 +27,8 @@ const get = bent('json', process.env.NPM_REGISTRY_URL || 'https://registry.npmjs
 
 let event = undefined
 try {
-  event = JSON.parse(fs.readFileSync('/github/workflow/event.json').toString())
+  console.log(` process.env.GITHUB_CONTEXT`, process.env.GITHUB_CONTEXT);
+  event = JSON.parse(process.env.GITHUB_CONTEXT)
 } catch {
   console.log('no event.json found')
 }

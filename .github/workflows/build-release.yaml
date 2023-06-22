@@ -10,16 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Test git
-        run: git status
-
-      - name: Configure git to trust the workspace despite the different owner
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
-
-      - name: install stuff for ci cd
-        run: sudo apt-get -y --no-install-recommends install git jq findutils curl ca-certificates
-
       - uses: borales/actions-yarn@v3.0.0
         with:
           cmd: install # will run `yarn install` command
@@ -41,9 +31,15 @@ jobs:
         name: Run yarn build
         with:
           cmd: build # will run `yarn build` command
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
 
       - name: mikeal/merge-release without docker
         run: node scripts/merge-release-run.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
