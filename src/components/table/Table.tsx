@@ -135,17 +135,6 @@ export const Table: FC<ITable> = forwardRef(
       setGlobalFilter(globalFilter);
     }, [globalFilter]);
 
-    useEffect(() => {
-      if (firstRowRef.current) {
-        firstRowRef.current.style.transform = `translateY(-${0 * 0.5}px)`;
-        if (tableRowsRef.current) {
-          tableRowsRef.current.style.transform = `translateY(${
-            firstRowRef.current.offsetHeight > 0 ? firstRowRef.current.offsetHeight - 0 : 0
-          }px)`;
-        }
-      }
-    }, [tableRowsRef.current, renderAsFirstRow, dataSource, firstRowRef.current]);
-
     const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
       if (row) {
