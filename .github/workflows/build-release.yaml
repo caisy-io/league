@@ -32,7 +32,7 @@ jobs:
         with:
           cmd: build # will run `yarn build` command
       - name: full permission to dist folder
-        run: chmod -R 777 dist
+        run: sudo chmod -R 777 dist
 
       - name: mikeal/merge-release without docker
         run: node scripts/merge-release-run.js
