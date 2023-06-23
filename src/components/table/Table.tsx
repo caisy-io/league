@@ -135,6 +135,17 @@ export const Table: FC<ITable> = forwardRef(
       setGlobalFilter(globalFilter);
     }, [globalFilter]);
 
+    const [initialized, setInitialized] = useState(false);
+
+    useEffect(() => {
+      if (tableRowsRef.current && firstRowRef.current && !initialized) {
+        setInitialized(dataSource.length > 0 && !loading && !isNextPageLoading);
+        tableRowsRef.current.style.transform = `translateY(${
+          firstRowRef.current.offsetHeight > 0 ? firstRowRef.current.offsetHeight : 0
+        }px)`;
+      }
+    }, [tableRowsRef.current, renderAsFirstRow, dataSource, firstRowRef.current]);
+
     const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
       if (row) {
