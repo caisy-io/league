@@ -17,6 +17,7 @@
     "dev": "storybook dev -p 6006",
     "storybook": "storybook dev -p 6006",
     "build": "rollup -c",
+    "bump": "yarn build && npm version patch && yarn publish --public --yes",
     "build:storybook:out": "storybook build -o out",
     "build:storybook": "storybook build --loglevel warn 2> ./sb-out.txt && sh ./run-sb-exit.sh"
   },
