@@ -39,6 +39,7 @@ interface IMultiselectInputDropdown {
   required?: boolean;
   error?: boolean;
   dropdownMaxHeight?: number;
+  dropdownStyle?: React.CSSProperties;
 }
 
 export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
@@ -57,6 +58,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   required,
   error,
   dropdownMaxHeight,
+  dropdownStyle,
 }) => {
   const ref = React.useRef(null);
 
@@ -116,7 +118,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
           </SMultiSelectInputWrapper>
         </SMultiselectInputDropdown>
         <Popover display={opened} disableTriangle placement="bottomRight" reference={ref}>
-          <SMultiselectInputDropdownSelect>
+          <SMultiselectInputDropdownSelect style={dropdownStyle}>
             {popupHeader}
             <SMultiselectInputDropdownSelectList maxHeight={dropdownMaxHeight}>
               {dataSource &&
