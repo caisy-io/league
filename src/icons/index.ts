@@ -1,13 +1,7 @@
-// import { IconGeopointField } from './IconGeopointField';
-// import { IconTagField } from "./IconTagField";
-// import { IconSelectField } from "./IconSelectField";
-// import { IconDateTimeField } from "./IconDateTimeField";
-// import { IconColorField } from "./IconColorField";
-// import { IconBooleanField } from "./IconBooleanField";
+export { IconTranslate } from "./IconTranslate";
 export { IconDragable } from "./IconDragable";
 export { IconEyeHidden } from "./IconEyeHidden";
 export { IconEye } from "./IconEye";
-export { IconTranslate } from "../../IconTranslate";
 export { IconAngleCollapse } from "./IconAngleCollapse";
 export { IconAngleExpand } from "./IconAngleExpand";
 export { IconAngleUp } from "./IconAngleUp";

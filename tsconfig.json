@@ -22,17 +22,6 @@
     "resolveJsonModule": true,
     "isolatedModules": false
   },
-  "include": ["src", "IconTranslate.tsx"],
-  "exclude": [
-    "node_modules",
-    "build",
-    "dist",
-    "example",
-    "rollup.config.js",
-    "src/pages/**/*",
-    "src/showcase-components/**/*",
-    "src/**/*.test.tsx",
-    "examples",
-    "src/**/*.stories.*"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "dist", "example", "rollup.config.js","src/pages/**/*", "src/showcase-components/**/*", "src/**/*.test.tsx", "examples", "src/**/*.stories.*"]
 }
