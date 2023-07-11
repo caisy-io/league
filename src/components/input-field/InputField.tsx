@@ -63,7 +63,6 @@ export const InputField: FC<IInputFieldProps> = ({
           </SFieldDisplayButton>
         </SFieldHeader>
         <SFieldInputWrapper isOpen={isOpen}>{children}</SFieldInputWrapper>
-
         {errors && (
           <SFieldErrors>
             {errors.map((error: ReactNode) => (
