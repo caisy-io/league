@@ -14,4 +14,6 @@ export interface IInputFieldProps {
   usersListComponent?: React.ReactNode;
   onClick?: () => void;
   onClickOutside?: () => void;
+  // fieldType?: string;
+  primary?: boolean;
 }
