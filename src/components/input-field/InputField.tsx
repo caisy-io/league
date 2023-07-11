@@ -11,6 +11,7 @@ import { SFieldDescription } from "./styles/SFieldDescription";
 import { SFieldErrors } from "./styles/SFieldErrors";
 import { IInputFieldProps } from "./types";
 import { ClickOutside } from "../../utils";
+import { IconPrimaryKeyStar } from "../../icons/IconPrimaryKeyStar";
 
 export const InputField: FC<IInputFieldProps> = ({
   title,
@@ -26,6 +27,7 @@ export const InputField: FC<IInputFieldProps> = ({
   usersListComponent,
   onClick,
   onClickOutside = () => {},
+  primary,
 }) => {
   const [isOpen, setOpen] = useState(true);
   const toggleOpen = useCallback(() => {
@@ -52,6 +54,7 @@ export const InputField: FC<IInputFieldProps> = ({
                   </Tooltip>
                 </div>
               )}
+              {primary && <IconPrimaryKeyStar />}
             </SFieldTitle>
             {description && <SFieldDescription>{description}</SFieldDescription>}
           </div>

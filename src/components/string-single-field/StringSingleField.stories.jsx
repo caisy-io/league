@@ -87,6 +87,7 @@ Default.args = {
   title: "Single Line String",
   tooltip: <p>Test react element tooltip</p>,
   icon: <IconStringField />,
+  primary: true,
 };
 
 export const Required = Template.bind({});

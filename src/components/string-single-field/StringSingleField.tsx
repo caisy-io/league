@@ -10,6 +10,7 @@ export const StringSingleField: FC<IInputFieldProps> = ({
   children,
   usersListComponent,
   icon,
+  primary,
 }) => {
   return (
     <InputField
@@ -20,6 +21,7 @@ export const StringSingleField: FC<IInputFieldProps> = ({
       errors={errors}
       usersListComponent={usersListComponent}
       icon={icon}
+      primary={primary}
     >
       {children}
     </InputField>

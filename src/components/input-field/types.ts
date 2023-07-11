@@ -15,4 +15,5 @@ export interface IInputFieldProps {
   onClick?: () => void;
   onClickOutside?: () => void;
   // fieldType?: string;
+  primary?: boolean;
 }
