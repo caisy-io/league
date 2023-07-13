@@ -1,7 +1,7 @@
+export { IconTranslate } from "./IconTranslate";
 export { IconDragable } from "./IconDragable";
 export { IconEyeHidden } from "./IconEyeHidden";
 export { IconEye } from "./IconEye";
-export { IconTranslate } from "./IconTranslate";
 export { IconAngleCollapse } from "./IconAngleCollapse";
 export { IconAngleExpand } from "./IconAngleExpand";
 export { IconAngleUp } from "./IconAngleUp";
@@ -278,3 +278,14 @@ export { IconDocumentMissing } from "./IconDocumentMissing";
 export { IconAlarmClockTimeFast } from "./IconAlarmClockTimeFast";
 export { IconAnalyticsChartSquare } from "./IconAnalyticsChartSquare";
 export { ExpandArrows } from "./IconExpandArrows";
+// New Fields Icons
+export { IconRichTextFieldSelector } from "./IconRichTextFieldSelector";
+export { IconStringField } from "./IconStringField";
+export { IconBooleanField } from "./IconBooleanField";
+export { IconNumberField } from "./IconNumberField";
+export { IconColorField } from "./IconColorField";
+export { IconDateTimeField } from "./IconDateTimeField";
+export { IconRichTextField } from "./IconRichTextField";
+export { IconSelectField } from "./IconSelectField";
+export { IconTagField } from "./IconTagField";
+export { IconGeopointField } from "./IconGeopointField";

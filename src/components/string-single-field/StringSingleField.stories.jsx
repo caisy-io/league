@@ -4,6 +4,17 @@ import { StringSingleField } from "./StringSingleField";
 import { SimpleInput, TranslationBadge } from "../input-fields";
 import { ActiveUserAvatar } from "../active-user-avatar/ActiveUserAvatar";
 import { Preview } from "../preview";
+import {
+  // IconBooleanField,
+  IconStringField,
+  // IconDateTimeField,
+  // IconColorField,
+  // IconNumberField,
+  // IconRichTextField,
+  // IconSelectField,
+  // IconTagField,
+  // IconGeopointField,
+} from "../../icons";
 
 export default {
   title: "Components/Fields/StringSingleLine",
@@ -75,6 +86,8 @@ export const Default = Template.bind({});
 Default.args = {
   title: "Single Line String",
   tooltip: <p>Test react element tooltip</p>,
+  icon: <IconStringField />,
+  primary: true,
 };
 
 export const Required = Template.bind({});
@@ -83,6 +96,7 @@ Required.args = {
   required: true,
   tooltip: <p>Test react element tooltip</p>,
   description: "This is a required string input",
+  icon: <IconStringField />,
 };
 
 export const Error = Template.bind({});
@@ -91,4 +105,5 @@ Error.args = {
   required: true,
   tooltip: <p>Test react element tooltip</p>,
   errors: ["Invalid input value"],
+  icon: <IconStringField />,
 };
