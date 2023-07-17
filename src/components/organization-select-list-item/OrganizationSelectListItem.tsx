@@ -53,8 +53,8 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
   switchText,
 }) => {
   return (
-    <SOrganizationSelectListItem onClick={onClick} active={active}>
-      <SFlexListItem>
+    <SOrganizationSelectListItem active={active}>
+      <SFlexListItem onClick={() => onClick()}>
         <Preview size={itemSize === "large" ? 48 : 36} {...previewProps} />
         <SOrganizationSelectListItemTextWrapper>
           <SOrganizationSelectListItemTitle>{title}</SOrganizationSelectListItemTitle>
