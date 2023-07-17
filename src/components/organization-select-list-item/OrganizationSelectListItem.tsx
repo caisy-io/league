@@ -37,6 +37,7 @@ const SFlexListItem = styled(SFlex)`
   gap: 0.75rem;
   height: 100%;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = ({
