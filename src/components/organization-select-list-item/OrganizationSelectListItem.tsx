@@ -15,6 +15,7 @@ import { SOrganizationSelectListItemLabel } from "./styles/SOrganizationSelectLi
 import { SOrganizationSelectListItemSettingsButton } from "./styles/SOrganizationSelectListItemSettingsButton";
 import { SOrganizationSelectListItemTextWrapper } from "./styles/SOrganizationSelectListItemTextWrapper";
 import { SOrganizationSelectListItemTitle } from "./styles/SOrganizationSelectListItemTitle";
+import { Tooltip } from "../tooltip";
 
 export type IListItemSize = "large" | "medium";
 
@@ -31,12 +32,14 @@ export interface IOrganizationSelectListItemProps {
   disabledSwitchButton?: boolean;
   active?: boolean;
   switchText?: string | ReactNode;
+  settingTooltip?: string | ReactNode;
 }
 
 const SFlexListItem = styled(SFlex)`
   gap: 0.75rem;
   height: 100%;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = ({
@@ -51,10 +54,11 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
   disabledSwitchButton,
   active,
   switchText,
+  settingTooltip,
 }) => {
   return (
-    <SOrganizationSelectListItem onClick={onClick} active={active}>
-      <SFlexListItem>
+    <SOrganizationSelectListItem active={active}>
+      <SFlexListItem onClick={() => onClick()}>
         <Preview size={itemSize === "large" ? 48 : 36} {...previewProps} />
         <SOrganizationSelectListItemTextWrapper>
           <SOrganizationSelectListItemTitle>{title}</SOrganizationSelectListItemTitle>
@@ -75,7 +79,9 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
                 onClickSettingButton?.();
               }}
             >
-              <IconCog size={16} />
+              <Tooltip content={settingTooltip ?? "Setting"} placement="top" color="black">
+                <IconCog size={16} />
+              </Tooltip>
             </SOrganizationSelectListItemSettingsButton>
           )}
         </SOrganizationSelectListItemBadgeAndSettings>
