@@ -25,7 +25,7 @@ const Bronze = css`
     background-color: #f3f7f9;
   }
 
-  cursor: pointer;
+  /* cursor: pointer; */
 `;
 
 const Silver = css``;
