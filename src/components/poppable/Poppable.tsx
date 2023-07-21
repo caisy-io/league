@@ -86,7 +86,7 @@ const Poppable = forwardRef(
       return getClassNames(tbr, rbr);
     }, [target, reference, container]);
 
-    const placementName = placement.name !== undefined ? { [`placement-${placement.name}`]: placement.name } + " " : "";
+    const placementName = placement.name !== undefined ? placement.name + " " : "";
 
     return (
       <Stackable
