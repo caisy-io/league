@@ -76,19 +76,19 @@ const getPlacements = (disableTriangle: boolean | undefined, reference: React.Mu
   const offsetHeight = (reference.current as any)?.offsetHeight || 0;
 
   return [
-    { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
-    { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
-    { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
-    { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, GAP) }, // Center right
-    { ...vbefore(rbr, tbr, -GAP), left: hbefore(rbr, tbr, -GAP).left + offsetWidth }, // Top left
-    { ...vbefore(rbr, tbr, -GAP), left: hafter(rbr, tbr, GAP).left - offsetWidth }, // Top right
-    { ...vafter(rbr, tbr, GAP), left: hbefore(rbr, tbr, -GAP).left + offsetWidth }, // Bottom left
-    { ...vafter(rbr, tbr, GAP), left: hafter(rbr, tbr, GAP).left - offsetWidth }, // Bottom right
-    { top: vcenter(rbr, tbr).top - offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Top
-    { top: vcenter(rbr, tbr).top + offsetHeight, ...hbefore(rbr, tbr, -GAP) }, // Left Bottom
-    { top: vcenter(rbr, tbr).top - offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Top
-    { top: vcenter(rbr, tbr).top + offsetHeight, ...hafter(rbr, tbr, GAP) }, // Right Bottom
-    { ...hafter(rbr, tbr, -80), ...vafter(rbr, tbr, 16) }, // Bottom aligned right
+    { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr), name: "topCenter" }, // Top center
+    { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr), name: "bottomCenter" }, // Bottom center
+    { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP), name: "centerLeft" }, // Center left
+    { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, GAP), name: "centerRight" }, // Center right
+    { ...vbefore(rbr, tbr, -GAP), left: hbefore(rbr, tbr, -GAP).left + offsetWidth, name: "topLeft" }, // Top left
+    { ...vbefore(rbr, tbr, -GAP), left: hafter(rbr, tbr, GAP).left - offsetWidth, name: "topRight" }, // Top right
+    { ...vafter(rbr, tbr, GAP), left: hbefore(rbr, tbr, -GAP).left + offsetWidth, name: "bottomLeft" }, // Bottom left
+    { ...vafter(rbr, tbr, GAP), left: hafter(rbr, tbr, GAP).left - offsetWidth, name: "bottomRight" }, // Bottom right
+    { top: vcenter(rbr, tbr).top - offsetHeight, ...hbefore(rbr, tbr, -GAP), name: "leftTop" }, // Left Top
+    { top: vcenter(rbr, tbr).top + offsetHeight, ...hbefore(rbr, tbr, -GAP), name: "leftBottom" }, // Left Bottom
+    { top: vcenter(rbr, tbr).top - offsetHeight, ...hafter(rbr, tbr, GAP), name: "rightTop" }, // Right Top
+    { top: vcenter(rbr, tbr).top + offsetHeight, ...hafter(rbr, tbr, GAP), name: "rightBottom" }, // Right Bottom
+    { ...hafter(rbr, tbr, -80), ...vafter(rbr, tbr, 16), name: "bottomAlignedRight" }, // Bottom aligned right
   ];
 };
 

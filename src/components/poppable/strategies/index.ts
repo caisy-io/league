@@ -32,7 +32,9 @@ export {default as trap} from './trap';
  */
 const deafultStrategy = (rects, props) => {
     if (HIDDEN_PLACEMENT !== hide(rects) && HIDDEN_PLACEMENT !== hide({...rects, cbr: rects.wbr})) {
-        return trap({...rects, cbr: rects.wbr, tbr: reposition(rects, props)});
+        const {rect, name} = reposition(rects, props);
+        const trappedRect = trap({...rects, cbr: rects.wbr, tbr: rect});
+        return {top: trappedRect.top, left: trappedRect.left, name};
     }
     return HIDDEN_PLACEMENT;
 };

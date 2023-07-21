@@ -76,8 +76,8 @@ export const filterPlacements = (placements, tbr, cbr) => (
 const repositionStrategy = ({tbr, cbr, rbr}, {placements, default: _default}) => {
     const _placements = placements(rbr, tbr);
     const desired = _placements[_default];
-    const {top, left} = sortPlacements(filterPlacements(_placements, tbr, cbr), desired, tbr, cbr)[0] || desired;
-    return new DOMRect(left, top, tbr.width, tbr.height);
+    const {top, left, name} = sortPlacements(filterPlacements(_placements, tbr, cbr), desired, tbr, cbr)[0] || desired;
+    return {rect: new DOMRect(left, top, tbr.width, tbr.height), name};
 };
 
 export default repositionStrategy;
