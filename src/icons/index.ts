@@ -293,3 +293,8 @@ export { IconBlueprintColorField } from "./IconBlueprintColorField";
 export { IconBlueprintStringField } from "./IconBlueprintStringField";
 export { IconBlueprintSelectField } from "./IconBlueprintSelectField";
 export { IconBlueprintTagField } from "./IconBlueprintTagField";
+export { SetFocalPoint } from "./setFocalPointIcon";
+export { SetFocalPointHeaderIcon } from "./setFocalPointHeaderIcon";
+export { SetFocalPointHeaderCloseIcon } from "./setFocalPointHeaderCloseIcon";
+export { FocalPointModalSaveButtonCheckmark } from "./FocalPointModalSaveButtonCheckmark";
+export { FocalPointMarker } from "./focalPointMarker";
