@@ -6,7 +6,7 @@ const CSSExpanded = css`
 
 export const SFieldInputWrapper = styled.div<{ isOpen: boolean; inlineStackedLevel?: number }>`
   margin-top: 12px;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
   display: none;
   flex-direction: column;
   align-items: center;
