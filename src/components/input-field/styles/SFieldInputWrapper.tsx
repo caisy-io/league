@@ -12,7 +12,7 @@ export const SFieldInputWrapper = styled.div<{ isOpen: boolean; inlineStackedLev
   align-items: center;
   ${({ isOpen }) => isOpen && CSSExpanded}
   border-top: 1px solid var(--ui-03);
-  /* padding: 0 1rem 1rem 1rem; */
+  padding: 0 12px 12px 12px;
   gap: 0.5rem;
   background: ${({ inlineStackedLevel }) => ((inlineStackedLevel ?? 0) % 2 === 0 ? "var(--ui-01)" : "var(--ui-02)")};
 `;
