@@ -62,6 +62,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   dropdownMaxHeight,
   dropdownStyle,
   dropdownWrapperRef,
+  dropdownPlacement = "top",
 }) => {
   const ref = React.useRef(null);
 
