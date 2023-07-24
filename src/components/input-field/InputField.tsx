@@ -28,6 +28,7 @@ export const InputField: FC<IInputFieldProps> = ({
   onClick,
   onClickOutside = () => {},
   primary,
+  inlineStackedLevel = 1,
 }) => {
   const [isOpen, setOpen] = useState(true);
   const toggleOpen = useCallback(() => {
@@ -65,7 +66,11 @@ export const InputField: FC<IInputFieldProps> = ({
             </IconButton>
           </SFieldDisplayButton>
         </SFieldHeader>
-        <SFieldInputWrapper isOpen={isOpen}>{children}</SFieldInputWrapper>
+
+        <SFieldInputWrapper inlineStackedLevel={inlineStackedLevel} isOpen={isOpen}>
+          {children}
+        </SFieldInputWrapper>
+        
         {errors && (
           <SFieldErrors>
             {errors.map((error: ReactNode) => (

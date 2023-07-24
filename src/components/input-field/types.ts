@@ -16,4 +16,5 @@ export interface IInputFieldProps {
   onClickOutside?: () => void;
   // fieldType?: string;
   primary?: boolean;
+  inlineStackedLevel: number;
 }

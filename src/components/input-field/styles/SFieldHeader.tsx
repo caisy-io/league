@@ -6,4 +6,5 @@ export const SFieldHeader = styled.div<{ required: boolean; isOpen: boolean }>`
   justify-content: space-between;
   padding: 1rem;
   gap: 12px;
+  outline: 1px solid red;
 `;
