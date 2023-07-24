@@ -68,7 +68,7 @@ export const InputField: FC<IInputFieldProps> = ({
         </SFieldHeader>
 
         <SFieldInputWrapper inlineStackedLevel={inlineStackedLevel} isOpen={isOpen}>
-          <div style={{ margin: "12px auto", width: "calc(100% - 24px)" }}> {children}</div>
+          {children}
         </SFieldInputWrapper>
 
         {errors && (
