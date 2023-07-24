@@ -4,7 +4,7 @@ import { ClickOutside } from "../../utils";
 import { OutLineLabel } from "../out-line-label";
 import ColorLabel from "../out-line-label/ColorLabel";
 
-import { Popover } from "../popover";
+import { Popover, TPlacement } from "../popover";
 import { TagListItem } from "../tag-list-item";
 
 import { SDropdownArrow } from "./styles/SDropdownArrow";
@@ -41,6 +41,7 @@ interface IMultiselectInputDropdown {
   dropdownMaxHeight?: number;
   dropdownStyle?: React.CSSProperties;
   dropdownWrapperRef?: React.RefObject<HTMLDivElement>;
+  dropdownPlacement?: TPlacement;
 }
 
 export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
@@ -61,6 +62,7 @@ export const MultiselectInputDropdown: React.FC<IMultiselectInputDropdown> = ({
   dropdownMaxHeight,
   dropdownStyle,
   dropdownWrapperRef,
+  dropdownPlacement = "top",
 }) => {
   const ref = React.useRef(null);
 
