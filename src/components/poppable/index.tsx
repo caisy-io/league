@@ -18,6 +18,5 @@ export { default as Context } from './Poppable.context';
 export { default as ManualPoppable } from './Poppable';
 export * as Placements from './Poppable.placements';
 export { Triangle } from './components/triangle/Triangle';
-
 import Poppable from './Poppable.stateful';
 export default Poppable;

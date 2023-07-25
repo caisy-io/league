@@ -2,12 +2,14 @@ import React, { useContext } from "react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import isToday from "dayjs/plugin/isToday";
+import localizedFormat from "dayjs/plugin/localizedFormat";
 
 import "dayjs/locale/es";
 import "dayjs/locale/de";
 
 dayjs.extend(relativeTime);
 dayjs.extend(isToday);
+dayjs.extend(localizedFormat);
 
 const DayjsProviderContext = React.createContext<IDayjsProviderValue>({ localeString: "en" });
 
