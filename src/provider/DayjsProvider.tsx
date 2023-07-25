@@ -6,6 +6,7 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 
 import "dayjs/locale/es";
 import "dayjs/locale/de";
+import "dayjs/locale/fr";
 
 dayjs.extend(relativeTime);
 dayjs.extend(isToday);
