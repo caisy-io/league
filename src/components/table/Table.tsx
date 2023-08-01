@@ -253,21 +253,17 @@ export const Table: FC<ITable> = forwardRef(
             <STableLoading height={height}>
               <Spinner />
             </STableLoading>
-          ) : dataSource?.length ? (
+          ) : (
             <>
-              {!!renderAsFirstRow ? (
-                <>
-                  <STableFirstRow ref={firstRowRef}>{renderAsFirstRow}</STableFirstRow>
-                  <div ref={tableRowsRef}>{TableWithRows}</div>
-                </>
+              {!!renderAsFirstRow && <STableFirstRow ref={firstRowRef}>{renderAsFirstRow}</STableFirstRow>}
+              {dataSource?.length ? (
+                <>{!!renderAsFirstRow ? <div ref={tableRowsRef}>{TableWithRows}</div> : <>{TableWithRows}</>}</>
+              ) : empty ? (
+                empty
               ) : (
-                <>{TableWithRows}</>
+                <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
               )}
             </>
-          ) : empty ? (
-            empty
-          ) : (
-            <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
           )}
         </STbody>
       </STable>
