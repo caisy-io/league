@@ -1,6 +1,9 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
+const CSSHidden = css`
+  visibility: hidden;
+`;
 
 const Bronze = css`
   position: absolute;
@@ -9,6 +12,7 @@ const Bronze = css`
   left: 0px;
   width: 100%;
   z-index: 5;
+  ${({ hidden }) => hidden && CSSHidden}
 `;
 
 const Silver = css``;

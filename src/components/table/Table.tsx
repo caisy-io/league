@@ -146,6 +146,14 @@ export const Table: FC<ITable> = forwardRef(
       }
     }, [tableRowsRef.current, renderAsFirstRow, dataSource, firstRowRef.current]);
 
+    useEffect(() => {
+      if (tableRowsRef.current && firstRowRef.current) {
+        tableRowsRef.current.style.transform = `translateY(${
+          firstRowRef.current.offsetHeight > 0 ? firstRowRef.current.offsetHeight : 0
+        }px)`;
+      }
+    }, [dataSource?.length]);
+
     const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
       if (row) {
@@ -253,21 +261,21 @@ export const Table: FC<ITable> = forwardRef(
             <STableLoading height={height}>
               <Spinner />
             </STableLoading>
-          ) : dataSource?.length ? (
+          ) : (
             <>
-              {!!renderAsFirstRow ? (
-                <>
-                  <STableFirstRow ref={firstRowRef}>{renderAsFirstRow}</STableFirstRow>
-                  <div ref={tableRowsRef}>{TableWithRows}</div>
-                </>
+              {!!renderAsFirstRow && (
+                <STableFirstRow hidden={dataSource?.length === 0} ref={firstRowRef}>
+                  {renderAsFirstRow}
+                </STableFirstRow>
+              )}
+              {dataSource?.length ? (
+                <>{!!renderAsFirstRow ? <div ref={tableRowsRef}>{TableWithRows}</div> : <>{TableWithRows}</>}</>
+              ) : empty ? (
+                empty
               ) : (
-                <>{TableWithRows}</>
+                <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
               )}
             </>
-          ) : empty ? (
-            empty
-          ) : (
-            <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
           )}
         </STbody>
       </STable>
