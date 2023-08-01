@@ -146,6 +146,14 @@ export const Table: FC<ITable> = forwardRef(
       }
     }, [tableRowsRef.current, renderAsFirstRow, dataSource, firstRowRef.current]);
 
+    useEffect(() => {
+      if (tableRowsRef.current && firstRowRef.current) {
+        tableRowsRef.current.style.transform = `translateY(${
+          firstRowRef.current.offsetHeight > 0 ? firstRowRef.current.offsetHeight : 0
+        }px)`;
+      }
+    }, [dataSource?.length]);
+
     const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
       if (row) {
@@ -255,7 +263,11 @@ export const Table: FC<ITable> = forwardRef(
             </STableLoading>
           ) : (
             <>
-              {!!renderAsFirstRow && <STableFirstRow ref={firstRowRef}>{renderAsFirstRow}</STableFirstRow>}
+              {!!renderAsFirstRow && (
+                <STableFirstRow hidden={dataSource?.length === 0} ref={firstRowRef}>
+                  {renderAsFirstRow}
+                </STableFirstRow>
+              )}
               {dataSource?.length ? (
                 <>{!!renderAsFirstRow ? <div ref={tableRowsRef}>{TableWithRows}</div> : <>{TableWithRows}</>}</>
               ) : empty ? (
