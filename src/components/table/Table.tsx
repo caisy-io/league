@@ -1,4 +1,15 @@
-import React, { CSSProperties, FC, forwardRef, memo, ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  CSSProperties,
+  FC,
+  forwardRef,
+  memo,
+  ReactNode,
+  UIEventHandler,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { STable } from "./styles/STable";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
@@ -14,6 +25,7 @@ import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
 import { Spinner } from "../spinner";
 import { STableFirstRow } from "./styles/STableFirstRow";
+import { TableVirtuoso, Virtuoso } from "react-virtuoso";
 
 export interface IColumn {
   header: ReactNode;
@@ -195,7 +207,10 @@ export const Table: FC<ITable> = forwardRef(
       }
     };
 
-    const onScroll = ({ scrollOffset }) => {
+    const onScroll = (e) => {
+      console.log({ e: e.target?.scrollTop });
+
+      const scrollOffset = e.target?.scrollTop;
       if (firstRowRef.current) {
         firstRowRef.current.style.transform = `translateY(-${scrollOffset * 0.5}px)`;
         if (tableRowsRef.current) {
@@ -204,7 +219,6 @@ export const Table: FC<ITable> = forwardRef(
           }px)`;
         }
       }
-      triggerLoadMoreItems();
     };
 
     const memoItemSize = useMemo(
@@ -214,18 +228,27 @@ export const Table: FC<ITable> = forwardRef(
 
     const TableWithRows = useMemo(() => {
       return (
-        <VariableSizeList
+        <TableVirtuoso
           onScroll={onScroll}
           outerRef={bodyRef}
           className="league-table"
           height={height}
-          itemSize={useConditionalItemSize ? (index) => memoItemSize(rows[index]) : () => itemSize}
-          itemData={rows}
-          itemCount={dataSource?.length || 0}
+          style={{ height, minHeight: height }}
+          endReached={loadMoreItems}
+          data={rows}
           ref={ref}
-        >
-          {(props) => <RenderRow {...props} />}
-        </VariableSizeList>
+          itemContent={(index, row) => {
+            return (
+              <RenderRow
+                data={rows}
+                index={index}
+                style={{
+                  height: useConditionalItemSize ? memoItemSize(row) : itemSize,
+                }}
+              />
+            );
+          }}
+        />
       );
     }, [rows, dataSource, height, itemSize]);
 
