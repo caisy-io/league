@@ -43,9 +43,11 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
 
   React.useEffect(() => {
     if (Number.isInteger(scrollToIndex)) {
-      setTimeout(() => {
-        (forRef as React.MutableRefObject<any>)?.current?._listRef.scrollToItem(scrollToIndex, "smart");
-      }, 0);
+      (forRef as any).current.scrollToIndex({
+        index: scrollToIndex,
+        align: "center",
+        behavior: "auto",
+      });
     }
   }, [scrollToIndex]);
 
