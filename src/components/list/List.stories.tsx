@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { List } from ".";
 import { ListItem } from "../list-item";
 import { RadioButtonListItem } from "../radio-button-list-item";
@@ -64,10 +64,13 @@ const Template = (args) => {
     );
   };
 
+  const ref = useRef();
+
   return (
     <div style={{ display: "flex", justifyContent: "space-evenly" }}>
       <div style={{ width: 374 }}>
         <List
+          ref={ref}
           height={323}
           dataSource={data}
           hasNextPage={hasNextPage}

@@ -1,7 +1,8 @@
 import React, { forwardRef, useCallback } from "react";
-import { FixedSizeList } from "react-window";
-import InfiniteLoader from "react-window-infinite-loader";
+// import { FixedSizeList } from "react-window";
+// import InfiniteLoader from "react-window-infinite-loader";
 import { SList } from "./styles/SList";
+import { Virtuoso } from "react-virtuoso";
 
 interface IList<T> {
   dataSource: T[];
@@ -50,23 +51,27 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
 
   return (
     <SList className="scroll-container">
-      <InfiniteLoader isItemLoaded={isItemLoaded} itemCount={itemCount} loadMoreItems={loadMoreItems} ref={forRef}>
-        {({ onItemsRendered, ref }) => (
-          <FixedSizeList
-            height={props.height}
-            itemCount={itemCount}
-            itemSize={props.itemSize}
-            onItemsRendered={(onItemsRenderedProps) => {
-              onItemsRendered(onItemsRenderedProps);
-            }}
-            ref={ref}
-            width={props.width}
-            itemData={props.dataSource}
-          >
-            {Item}
-          </FixedSizeList>
-        )}
-      </InfiniteLoader>
+      {/* <InfiniteLoader isItemLoaded={isItemLoaded} itemCount={itemCount} loadMoreItems={loadMoreItems} ref={forRef}>
+        {({ onItemsRendered, ref }) => ( */}
+      <Virtuoso
+        height={props.height}
+        // itemCount={itemCount}
+        // itemSize={props.itemSize}
+        // onItemsRendered={(onItemsRenderedProps) => {
+        //   onItemsRendered(onItemsRenderedProps);
+        // }}
+        style={{ height: props.height, width: props.width }}
+        endReached={loadMoreItems}
+        ref={forRef}
+        useWindowScroll
+        data={props.dataSource}
+        itemContent={(index, row) => {
+          const content = props.renderItem(row, index);
+          return <div>{content}</div>;
+        }}
+      />
+      {/* )} */}
+      {/* </InfiniteLoader> */}
     </SList>
   );
 });
