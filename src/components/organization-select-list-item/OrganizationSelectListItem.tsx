@@ -58,7 +58,7 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
 }) => {
   return (
     <SOrganizationSelectListItem active={active}>
-      <SFlexListItem onClick={() => onClick()}>
+      <SFlexListItem onMouseDown={() => onClick()}>
         <Preview size={itemSize === "large" ? 48 : 36} {...previewProps} />
         <SOrganizationSelectListItemTextWrapper>
           <SOrganizationSelectListItemTitle>{title}</SOrganizationSelectListItemTitle>
@@ -74,7 +74,7 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
           )}
           {onClickSettingButton && (
             <SOrganizationSelectListItemSettingsButton
-              onClick={(e) => {
+              onMouseDown={(e) => {
                 e.stopPropagation();
                 onClickSettingButton?.();
               }}
