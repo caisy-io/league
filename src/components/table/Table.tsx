@@ -166,6 +166,8 @@ export const Table: FC<ITable> = forwardRef(
       }
     }, [dataSource?.length]);
 
+    const rowWidth = (ref as any).current?.scrollWidth || "100%";
+
     const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
       if (row) {
@@ -175,7 +177,7 @@ export const Table: FC<ITable> = forwardRef(
             onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
             key={`row-${row.id}`}
             {...row.getRowProps({
-              style: { ...style, rowStyle },
+              style: { ...style, width: rowWidth, rowStyle },
             })}
           >
             {row.cells.map((cell, cellIndex) => {
@@ -208,8 +210,6 @@ export const Table: FC<ITable> = forwardRef(
     };
 
     const onScroll = (e) => {
-      console.log({ e: e.target?.scrollTop });
-
       const scrollOffset = e.target?.scrollTop;
       if (firstRowRef.current) {
         firstRowRef.current.style.transform = `translateY(-${scrollOffset * 0.5}px)`;
@@ -233,7 +233,7 @@ export const Table: FC<ITable> = forwardRef(
           className="league-table"
           height={height}
           style={{ height, minHeight: height }}
-          endReached={triggerLoadMoreItems}
+          endReached={debouncedLoadMoreItems}
           data={rows}
           ref={ref as any}
           itemContent={(index, row) => {
