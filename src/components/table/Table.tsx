@@ -230,13 +230,12 @@ export const Table: FC<ITable> = forwardRef(
       return (
         <TableVirtuoso
           onScroll={onScroll}
-          outerRef={bodyRef}
           className="league-table"
           height={height}
           style={{ height, minHeight: height }}
-          endReached={loadMoreItems}
+          endReached={triggerLoadMoreItems}
           data={rows}
-          ref={ref}
+          ref={ref as any}
           itemContent={(index, row) => {
             return (
               <RenderRow
