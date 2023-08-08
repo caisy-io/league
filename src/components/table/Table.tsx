@@ -1,15 +1,4 @@
-import React, {
-  CSSProperties,
-  FC,
-  forwardRef,
-  memo,
-  ReactNode,
-  UIEventHandler,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { CSSProperties, FC, forwardRef, ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { STable } from "./styles/STable";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
@@ -19,13 +8,12 @@ import { STbody } from "./styles/STbody";
 import { SThead } from "./styles/SThead";
 import { STableLoading } from "./styles/STableLoading";
 import { IconAngleDown, IconAngleUp } from "../../icons";
-import { areEqual, VariableSizeList } from "react-window";
 import { Empty } from "../empty";
 import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
 import { Spinner } from "../spinner";
 import { STableFirstRow } from "./styles/STableFirstRow";
-import { TableVirtuoso, Virtuoso } from "react-virtuoso";
+import { TableVirtuoso } from "react-virtuoso";
 
 export interface IColumn {
   header: ReactNode;
@@ -75,7 +63,6 @@ export const Table: FC<ITable> = forwardRef(
       itemSize,
       isNextPageLoading,
       loadNextPage = () => null,
-      hasNextPage,
       loading,
       emptyMessage,
       style,
@@ -91,8 +78,9 @@ export const Table: FC<ITable> = forwardRef(
   ) => {
     const containerRef = useRef<any>({});
     const headerRef = useRef<any>({});
-    const bodyRef = useRef<HTMLDivElement>();
     const firstRowRef = useRef<HTMLDivElement>(null);
+    const [scrollerRef, setScrollerRef] = useState<HTMLElement | null>(null);
+    const [rowWidth, setRowWidth] = useState<number>();
     const tableRowsRef = useRef<HTMLDivElement>(null);
 
     const [innerColumns, setColumns] = useState<any[]>([]);
@@ -166,9 +154,11 @@ export const Table: FC<ITable> = forwardRef(
       }
     }, [dataSource?.length]);
 
-    const rowWidth = (containerRef as any)?.current?.scrollWidth || "100%";
+    useEffect(() => {
+      setRowWidth((scrollerRef as any)?.firstChild?.offsetWidth || "100%");
+    }, [scrollerRef, dataSource?.length, (scrollerRef as any)?.firstChild?.offsetWidth]);
 
-    const RenderRow = memo(({ data, index, style }: any) => {
+    const RenderRow = ({ data, index, style }: any) => {
       const row = data[index];
       if (row) {
         prepareRow(row);
@@ -195,7 +185,7 @@ export const Table: FC<ITable> = forwardRef(
         );
       }
       return null;
-    }, areEqual);
+    };
 
     const debouncedLoadMoreItems = useMemo(() => debounce(loadMoreItems, 300), [loadMoreItems]);
 
@@ -216,30 +206,39 @@ export const Table: FC<ITable> = forwardRef(
       [dataSource, rows, useConditionalItemSize],
     );
 
-    const TableWithRows = useMemo(() => {
-      return (
-        <TableVirtuoso
-          onScroll={onScroll}
-          className="league-table"
-          height={height}
-          style={{ height, minHeight: height }}
-          endReached={debouncedLoadMoreItems}
-          data={rows}
-          ref={ref as any}
-          itemContent={(index, row) => {
-            return (
-              <RenderRow
-                data={rows}
-                index={index}
-                style={{
-                  height: useConditionalItemSize ? memoItemSize(row) : itemSize,
-                }}
-              />
-            );
-          }}
-        />
-      );
-    }, [rows, dataSource, height, itemSize]);
+    const TableWithRows = (
+      <TableVirtuoso
+        onScroll={onScroll}
+        className="league-table"
+        height={height}
+        style={{ height, minHeight: height }}
+        endReached={debouncedLoadMoreItems}
+        data={rows}
+        ref={ref as any}
+        scrollerRef={setScrollerRef as any}
+        totalListHeightChanged={(height) => {
+          if (
+            height > (scrollerRef as any)?.offsetHeight &&
+            (scrollerRef as any)?.firstChild?.offsetWidth === rowWidth
+          ) {
+            setRowWidth((scrollerRef as any)?.firstChild?.offsetWidth - 15);
+          } else {
+            setRowWidth((scrollerRef as any)?.firstChild?.offsetWidth);
+          }
+        }}
+        itemContent={(index, row) => {
+          return (
+            <RenderRow
+              data={rows}
+              index={index}
+              style={{
+                height: useConditionalItemSize ? memoItemSize(row) : itemSize,
+              }}
+            />
+          );
+        }}
+      />
+    );
 
     return (
       <STable ref={containerRef} style={style} {...getTableProps()}>
