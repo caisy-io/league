@@ -166,7 +166,7 @@ export const Table: FC<ITable> = forwardRef(
       }
     }, [dataSource?.length]);
 
-    const rowWidth = (ref as any).current?.scrollWidth || "100%";
+    const rowWidth = (containerRef as any)?.current?.scrollWidth || "100%";
 
     const RenderRow = memo(({ data, index, style }: any) => {
       const row = data[index];
@@ -198,16 +198,6 @@ export const Table: FC<ITable> = forwardRef(
     }, areEqual);
 
     const debouncedLoadMoreItems = useMemo(() => debounce(loadMoreItems, 300), [loadMoreItems]);
-
-    const triggerLoadMoreItems = () => {
-      const table = bodyRef?.current;
-
-      if (!!table && table.scrollTop / (table.scrollHeight - table.clientHeight) > 0.8) {
-        if (hasNextPage) {
-          debouncedLoadMoreItems();
-        }
-      }
-    };
 
     const onScroll = (e) => {
       const scrollOffset = e.target?.scrollTop;
