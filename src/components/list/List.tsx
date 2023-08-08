@@ -43,7 +43,6 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
         width={props.width}
         endReached={loadMoreItems}
         ref={forRef}
-        useWindowScroll
         data={props.dataSource}
         itemContent={(index, row) => {
           let content;
