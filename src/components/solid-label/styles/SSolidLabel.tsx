@@ -11,6 +11,7 @@ const CSSSolidLabelBase = css`
   padding: 4px 6px;
   border-radius: 4px;
   border: none;
+  transition: all 0.2s ease-in-out;
 
   > * {
     ${CSSProgressiveCaption01Semibold};
@@ -63,6 +64,16 @@ const CSSGreyOutline = css`
   color: var(--text-03);
 `;
 
+const CSSBlack = css`
+  ${CSSSolidLabelBase};
+  background: var(--ui-02);
+  color: var(--text-01);
+
+  :hover {
+    color: var(--text-01-1);
+  }
+`;
+
 const getTypeStyling = (type: ISolidLabelType) => {
   switch (type) {
     case "important":
@@ -77,6 +88,8 @@ const getTypeStyling = (type: ISolidLabelType) => {
       return CSSGrey;
     case "greyOutline":
       return CSSGreyOutline;
+    case "black":
+      return CSSBlack;
     default:
       return CSSDefault;
   }
