@@ -1,6 +1,6 @@
 {
   "name": "@caisy/league",
-  "version": "0.10.118",
+  "version": "0.10.119",
   "access": "public",
   "types": "dist/types.d.ts",
   "module": "dist/esm/index.js",
