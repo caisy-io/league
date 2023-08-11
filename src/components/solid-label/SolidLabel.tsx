@@ -1,7 +1,7 @@
 import React from "react";
 import { SSolidLabel } from "./styles/SSolidLabel";
 
-export type ISolidLabelType = "default" | "important" | "green" | "red" | "yellow" | "grey" | "greyOutline";
+export type ISolidLabelType = "default" | "important" | "green" | "red" | "yellow" | "grey" | "greyOutline" | 'black';
 
 export interface ISolidLabelProps {
   type?: ISolidLabelType;
