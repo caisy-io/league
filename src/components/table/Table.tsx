@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, forwardRef, memo, ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import React, { CSSProperties, FC, forwardRef, ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { STable } from "./styles/STable";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
@@ -8,12 +8,12 @@ import { STbody } from "./styles/STbody";
 import { SThead } from "./styles/SThead";
 import { STableLoading } from "./styles/STableLoading";
 import { IconAngleDown, IconAngleUp } from "../../icons";
-import { areEqual, VariableSizeList } from "react-window";
 import { Empty } from "../empty";
 import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
 import { Spinner } from "../spinner";
 import { STableFirstRow } from "./styles/STableFirstRow";
+import { TableVirtuoso } from "react-virtuoso";
 
 export interface IColumn {
   header: ReactNode;
@@ -63,7 +63,6 @@ export const Table: FC<ITable> = forwardRef(
       itemSize,
       isNextPageLoading,
       loadNextPage = () => null,
-      hasNextPage,
       loading,
       emptyMessage,
       style,
@@ -79,8 +78,9 @@ export const Table: FC<ITable> = forwardRef(
   ) => {
     const containerRef = useRef<any>({});
     const headerRef = useRef<any>({});
-    const bodyRef = useRef<HTMLDivElement>();
     const firstRowRef = useRef<HTMLDivElement>(null);
+    const [scrollerRef, setScrollerRef] = useState<HTMLElement | null>(null);
+    const [rowWidth, setRowWidth] = useState<number>();
     const tableRowsRef = useRef<HTMLDivElement>(null);
 
     const [innerColumns, setColumns] = useState<any[]>([]);
@@ -154,7 +154,11 @@ export const Table: FC<ITable> = forwardRef(
       }
     }, [dataSource?.length]);
 
-    const RenderRow = memo(({ data, index, style }: any) => {
+    useEffect(() => {
+      setRowWidth((scrollerRef as any)?.firstChild?.offsetWidth || "100%");
+    }, [scrollerRef, dataSource?.length, (scrollerRef as any)?.firstChild?.offsetWidth]);
+
+    const RenderRow = ({ data, index, style }: any) => {
       const row = data[index];
       if (row) {
         prepareRow(row);
@@ -163,7 +167,7 @@ export const Table: FC<ITable> = forwardRef(
             onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
             key={`row-${row.id}`}
             {...row.getRowProps({
-              style: { ...style, rowStyle },
+              style: { ...style, width: rowWidth, rowStyle },
             })}
           >
             {row.cells.map((cell, cellIndex) => {
@@ -181,21 +185,12 @@ export const Table: FC<ITable> = forwardRef(
         );
       }
       return null;
-    }, areEqual);
+    };
 
     const debouncedLoadMoreItems = useMemo(() => debounce(loadMoreItems, 300), [loadMoreItems]);
 
-    const triggerLoadMoreItems = () => {
-      const table = bodyRef?.current;
-
-      if (!!table && table.scrollTop / (table.scrollHeight - table.clientHeight) > 0.8) {
-        if (hasNextPage) {
-          debouncedLoadMoreItems();
-        }
-      }
-    };
-
-    const onScroll = ({ scrollOffset }) => {
+    const onScroll = (e) => {
+      const scrollOffset = e.target?.scrollTop;
       if (firstRowRef.current) {
         firstRowRef.current.style.transform = `translateY(-${scrollOffset * 0.5}px)`;
         if (tableRowsRef.current) {
@@ -204,7 +199,6 @@ export const Table: FC<ITable> = forwardRef(
           }px)`;
         }
       }
-      triggerLoadMoreItems();
     };
 
     const memoItemSize = useMemo(
@@ -212,22 +206,39 @@ export const Table: FC<ITable> = forwardRef(
       [dataSource, rows, useConditionalItemSize],
     );
 
-    const TableWithRows = useMemo(() => {
-      return (
-        <VariableSizeList
-          onScroll={onScroll}
-          outerRef={bodyRef}
-          className="league-table"
-          height={height}
-          itemSize={useConditionalItemSize ? (index) => memoItemSize(rows[index]) : () => itemSize}
-          itemData={rows}
-          itemCount={dataSource?.length || 0}
-          ref={ref}
-        >
-          {(props) => <RenderRow {...props} />}
-        </VariableSizeList>
-      );
-    }, [rows, dataSource, height, itemSize]);
+    const TableWithRows = (
+      <TableVirtuoso
+        onScroll={onScroll}
+        className="league-table"
+        height={height}
+        style={{ height, minHeight: height }}
+        endReached={debouncedLoadMoreItems}
+        data={rows}
+        ref={ref as any}
+        scrollerRef={setScrollerRef as any}
+        totalListHeightChanged={(height) => {
+          if (
+            height > (scrollerRef as any)?.offsetHeight &&
+            (scrollerRef as any)?.firstChild?.offsetWidth === rowWidth
+          ) {
+            setRowWidth((scrollerRef as any)?.firstChild?.offsetWidth - 15);
+          } else {
+            setRowWidth((scrollerRef as any)?.firstChild?.offsetWidth);
+          }
+        }}
+        itemContent={(index, row) => {
+          return (
+            <RenderRow
+              data={rows}
+              index={index}
+              style={{
+                height: useConditionalItemSize ? memoItemSize(row) : itemSize,
+              }}
+            />
+          );
+        }}
+      />
+    );
 
     return (
       <STable ref={containerRef} style={style} {...getTableProps()}>

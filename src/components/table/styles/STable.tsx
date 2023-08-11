@@ -7,6 +7,10 @@ const Bronze = css<ISTable>`
   width: 100%;
   height: 100%;
   overflow: hidden;
+
+  table {
+    width: 100%;
+  }
 `;
 
 const Silver = css<ISTable>``;
