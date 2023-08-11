@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Table } from "../table";
 import { Input } from "../input";
 import { IconEdit, IconTrashDelete } from "../../icons";
@@ -80,6 +80,7 @@ function TableDemo() {
 
   console.log(` dataSource.length`, dataSource.length);
   console.log(` hasNextPage `, hasNextPage);
+  const ref = useRef();
   return (
     <div style={{ height: "calc(100vh - 90px)", position: "relative" }}>
       <Input
@@ -95,6 +96,7 @@ function TableDemo() {
             Use this to render a custom component on the first row
           </div>
         }
+        ref={ref}
         loadNextPage={loadNextPage}
         isNextPageLoading={isNextPageLoading}
         hasNextPage={hasNextPage}

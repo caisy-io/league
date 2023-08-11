@@ -1,7 +1,6 @@
-import React, { forwardRef, useCallback } from "react";
-import { FixedSizeList } from "react-window";
-import InfiniteLoader from "react-window-infinite-loader";
+import React, { forwardRef, useEffect } from "react";
 import { SList } from "./styles/SList";
+import { Virtuoso } from "react-virtuoso";
 
 interface IList<T> {
   dataSource: T[];
@@ -18,7 +17,6 @@ interface IList<T> {
 
 export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, forRef) => {
   // If there are more items to be loaded then add an extra row to hold a loading indicator.
-  const itemCount = props.hasNextPage ? props.dataSource.length + 1 : props.dataSource.length;
   // Only load 1 page of items at a time.
   // Pass an empty callback to InfiniteLoader in case it asks us to load more than once.
   const loadMoreItems = props.isNextPageLoading ? () => {} : props.loadNextPage;
@@ -26,47 +24,37 @@ export const List = forwardRef<any, IList<any>>(({ scrollToIndex, ...props }, fo
   // Every row is loaded except for our loading indicator row.
   const isItemLoaded = (index) => !props.hasNextPage || index < props.dataSource.length;
   // console.log(isItemLoaded());
-  const Item = useCallback(
-    ({ index, style, data }) => {
-      let content;
-      if (!isItemLoaded(index)) {
-        content = props.renderLoadingItem();
-      } else {
-        content = props.renderItem(data[index], index);
-      }
 
-      return <div style={style}>{content}</div>;
-    },
-    [props.renderItem, props.renderLoadingItem, isItemLoaded],
-  );
-
-  React.useEffect(() => {
+  useEffect(() => {
     if (Number.isInteger(scrollToIndex)) {
-      setTimeout(() => {
-        (forRef as React.MutableRefObject<any>)?.current?._listRef.scrollToItem(scrollToIndex, "smart");
-      }, 0);
+      (forRef as any).current.scrollToIndex({
+        index: scrollToIndex,
+        align: "center",
+        behavior: "auto",
+      });
     }
   }, [scrollToIndex]);
 
   return (
     <SList className="scroll-container">
-      <InfiniteLoader isItemLoaded={isItemLoaded} itemCount={itemCount} loadMoreItems={loadMoreItems} ref={forRef}>
-        {({ onItemsRendered, ref }) => (
-          <FixedSizeList
-            height={props.height}
-            itemCount={itemCount}
-            itemSize={props.itemSize}
-            onItemsRendered={(onItemsRenderedProps) => {
-              onItemsRendered(onItemsRenderedProps);
-            }}
-            ref={ref}
-            width={props.width}
-            itemData={props.dataSource}
-          >
-            {Item}
-          </FixedSizeList>
-        )}
-      </InfiniteLoader>
+      <Virtuoso
+        height={props.height}
+        style={{ height: props.height, minHeight: props.height }}
+        width={props.width}
+        endReached={loadMoreItems}
+        ref={forRef}
+        data={props.dataSource}
+        itemContent={(index, row) => {
+          let content;
+          if (!isItemLoaded(index)) {
+            content = props.renderLoadingItem();
+          } else {
+            content = props.renderItem(row, index);
+          }
+
+          return <div>{content}</div>;
+        }}
+      />
     </SList>
   );
 });
