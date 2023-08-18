@@ -21,46 +21,46 @@ export interface IFlex extends IFlexDefinition {
 
 const Bronze = css`
   display: flex;
-  flex-direction: ${(props: IFlex) => props.bronze?.direction || props.direction || "row"};
-  align-items: ${(props: IFlex) => props.bronze?.alignItems || props.alignItems || "center"};
-  justify-content: ${(props: IFlex) => props.bronze?.justify || props.justify || "flex-start"};
-  align-content: ${(props: IFlex) => props.bronze?.alignContent || props.alignContent || "stretch"};
-  ${(props: IFlex) => (props.bronze?.gap || props.gap ? `gap: ${props.bronze?.gap || props.gap}` : "")};
+  flex-direction: ${(props: any) => props.bronze?.direction || props.direction || "row"};
+  align-items: ${(props: any) => props.bronze?.alignItems || props.alignItems || "center"};
+  justify-content: ${(props: any) => props.bronze?.justify || props.justify || "flex-start"};
+  align-content: ${(props: any) => props.bronze?.alignContent || props.alignContent || "stretch"};
+  ${(props: any) => (props.bronze?.gap || props.gap ? `gap: ${props.bronze?.gap || props.gap}` : "")};
 `;
 
 const Silver = css`
-  ${(props: IFlex) => (props.silver?.direction ? `flex-direction: ${props.silver?.direction}` : "")};
-  ${(props: IFlex) => (props.silver?.alignItems ? `align-items: ${props.silver?.alignItems}` : "")};
-  ${(props: IFlex) => (props.silver?.justify ? `justify-content: ${props.silver?.justify}` : "")};
-  ${(props: IFlex) => (props.silver?.alignContent ? `align-content: ${props.silver?.alignContent}` : "")};
-  ${(props: IFlex) => (props.silver?.gap ? `gap: ${props.silver?.gap}` : "")};
+  ${(props: any) => (props.silver?.direction ? `flex-direction: ${props.silver?.direction}` : "")};
+  ${(props: any) => (props.silver?.alignItems ? `align-items: ${props.silver?.alignItems}` : "")};
+  ${(props: any) => (props.silver?.justify ? `justify-content: ${props.silver?.justify}` : "")};
+  ${(props: any) => (props.silver?.alignContent ? `align-content: ${props.silver?.alignContent}` : "")};
+  ${(props: any) => (props.silver?.gap ? `gap: ${props.silver?.gap}` : "")};
 `;
 
 const Gold = css`
-  ${(props: IFlex) => (props.gold?.direction ? `flex-direction: ${props.gold?.direction}` : "")};
-  ${(props: IFlex) => (props.gold?.alignItems ? `align-items: ${props.gold?.alignItems}` : "")};
-  ${(props: IFlex) => (props.gold?.justify ? `justify-content: ${props.gold?.justify}` : "")};
-  ${(props: IFlex) => (props.gold?.alignContent ? `align-content: ${props.gold?.alignContent}` : "")};
-  ${(props: IFlex) => (props.gold?.gap ? `gap: ${props.gold?.gap}` : "")};
+  ${(props: any) => (props.gold?.direction ? `flex-direction: ${props.gold?.direction}` : "")};
+  ${(props: any) => (props.gold?.alignItems ? `align-items: ${props.gold?.alignItems}` : "")};
+  ${(props: any) => (props.gold?.justify ? `justify-content: ${props.gold?.justify}` : "")};
+  ${(props: any) => (props.gold?.alignContent ? `align-content: ${props.gold?.alignContent}` : "")};
+  ${(props: any) => (props.gold?.gap ? `gap: ${props.gold?.gap}` : "")};
 `;
 
 const Platinum = css`
-  ${(props: IFlex) => (props.platinum?.direction ? `flex-direction: ${props.platinum?.direction}` : "")};
-  ${(props: IFlex) => (props.platinum?.alignItems ? `align-items: ${props.platinum?.alignItems}` : "")};
-  ${(props: IFlex) => (props.platinum?.justify ? `justify-content: ${props.platinum?.justify}` : "")};
-  ${(props: IFlex) => (props.platinum?.alignContent ? `align-content: ${props.platinum?.alignContent}` : "")};
-  ${(props: IFlex) => (props.platinum?.gap ? `gap: ${props.platinum?.gap}` : "")};
+  ${(props: any) => (props.platinum?.direction ? `flex-direction: ${props.platinum?.direction}` : "")};
+  ${(props: any) => (props.platinum?.alignItems ? `align-items: ${props.platinum?.alignItems}` : "")};
+  ${(props: any) => (props.platinum?.justify ? `justify-content: ${props.platinum?.justify}` : "")};
+  ${(props: any) => (props.platinum?.alignContent ? `align-content: ${props.platinum?.alignContent}` : "")};
+  ${(props: any) => (props.platinum?.gap ? `gap: ${props.platinum?.gap}` : "")};
 `;
 
 const Diamond = css`
-  ${(props: IFlex) => (props.diamond?.direction ? `flex-direction: ${props.diamond?.direction}` : "")};
-  ${(props: IFlex) => (props.diamond?.alignItems ? `align-items: ${props.diamond?.alignItems}` : "")};
-  ${(props: IFlex) => (props.diamond?.justify ? `justify-content: ${props.diamond?.justify}` : "")};
-  ${(props: IFlex) => (props.diamond?.alignContent ? `align-content: ${props.diamond?.alignContent}` : "")};
-  ${(props: IFlex) => (props.diamond?.gap ? `gap: ${props.diamond?.gap}` : "")};
+  ${(props: any) => (props.diamond?.direction ? `flex-direction: ${props.diamond?.direction}` : "")};
+  ${(props: any) => (props.diamond?.alignItems ? `align-items: ${props.diamond?.alignItems}` : "")};
+  ${(props: any) => (props.diamond?.justify ? `justify-content: ${props.diamond?.justify}` : "")};
+  ${(props: any) => (props.diamond?.alignContent ? `align-content: ${props.diamond?.alignContent}` : "")};
+  ${(props: any) => (props.diamond?.gap ? `gap: ${props.diamond?.gap}` : "")};
 `;
 
-export const SFlex = styled.div`
+export const SFlex = styled.div<any>`
   ${Bronze};
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
