@@ -13,7 +13,7 @@ import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
 import { Spinner } from "../spinner";
 import { STableFirstRow } from "./styles/STableFirstRow";
-import { TableVirtuoso } from "react-virtuoso";
+import { Virtuoso } from "react-virtuoso";
 
 export interface IColumn {
   header: ReactNode;
@@ -207,7 +207,7 @@ export const Table: FC<ITable> = forwardRef(
     );
 
     const TableWithRows = (
-      <TableVirtuoso
+      <Virtuoso
         onScroll={onScroll}
         className="league-table"
         height={height}
