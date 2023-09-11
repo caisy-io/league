@@ -1,6 +1,15 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
+const CSSDisalbed = css`
+  background-color: var(--ui-03);
+  cursor: initial;
+
+  &:hover {
+    background-color: var(--ui-03);
+  }
+`;
+
 const Bronze = css`
   display: flex;
   align-items: center;
@@ -17,6 +26,7 @@ const Bronze = css`
     background-color: var(--hover-ui-01);
   }
 
+  ${({ disabled }) => disabled && CSSDisalbed}
 `;
 
 const Silver = css``;

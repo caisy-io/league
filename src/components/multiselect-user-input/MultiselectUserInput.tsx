@@ -15,6 +15,7 @@ export interface IMultiselectUserInput {
   children: ReactNode | null;
   onChangeHandler: ChangeEventHandler<HTMLInputElement>;
   selectedUsers: ReactNode | null;
+  disabled?: boolean;
 }
 
 export const MultiselectUserInput: FC<IMultiselectUserInput> = ({
@@ -24,6 +25,7 @@ export const MultiselectUserInput: FC<IMultiselectUserInput> = ({
   children,
   onChangeHandler,
   selectedUsers,
+  disabled,
 }) => {
   const inputRef = useRef(null);
 
@@ -32,13 +34,14 @@ export const MultiselectUserInput: FC<IMultiselectUserInput> = ({
 
   return (
     <SMultiselectUserInput>
-      <ClickOutside onClickOutside={() => setShowDropdown(false)}>
+      <ClickOutside onClickOutside={() => !disabled && setShowDropdown(false)}>
         <div>
-          <SMultiselectUserInputLabel onClick={() => setShowDropdown(true)}>
+          <SMultiselectUserInputLabel disabled={disabled} onClick={() => !disabled && setShowDropdown(true)}>
             {label && <SMultiselectUserInputLabelText isRequired={isRequired}>{label}</SMultiselectUserInputLabelText>}
             <SMultiselectUserInputSelectedUsersWrapper>
               {selectedUsers}
               <SMultiselectUserInputInput
+                disabled={disabled}
                 ref={inputRef}
                 value={value}
                 placeholder={placeholder}

@@ -1,6 +1,14 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
+const CSSDisabled = css`
+  background-color: var(--ui-supportive-10);
+
+  &:focus-within {
+    border-color: none;
+  }
+`;
+
 const Bronze = css`
   display: flex;
   flex-direction: column;
@@ -13,6 +21,8 @@ const Bronze = css`
   &:focus-within {
     border-color: var(--active-ui-03-2);
   }
+
+  ${({ disabled }) => disabled && CSSDisabled}
 `;
 
 const Silver = css``;

@@ -12,6 +12,7 @@ export interface ISelectedUserBadge {
   email: string;
   onDeleteHandler?: React.MouseEventHandler<HTMLDivElement>;
   userFound?: boolean;
+  disabled?: boolean;
 }
 
 export const SelectedUserBadge: React.FC<ISelectedUserBadge> = ({
@@ -20,9 +21,10 @@ export const SelectedUserBadge: React.FC<ISelectedUserBadge> = ({
   photo,
   onDeleteHandler,
   userFound = true,
+  disabled,
 }) => {
   return (
-    <SSelectedUserBadge>
+    <SSelectedUserBadge disabled={disabled}>
       {userFound ? (
         <>
           {photo ? <Avatar size={20} imageUrl={photo} /> : <Avatar size={20}>{name?.[0]?.trim().toUpperCase()}</Avatar>}
@@ -38,7 +40,7 @@ export const SelectedUserBadge: React.FC<ISelectedUserBadge> = ({
           </>
         )
       )}
-      <SSelectedUserBadgeIcon onClick={onDeleteHandler}>
+      <SSelectedUserBadgeIcon onClick={!disabled && onDeleteHandler}>
         <IconClose size={20} />
       </SSelectedUserBadgeIcon>
     </SSelectedUserBadge>
