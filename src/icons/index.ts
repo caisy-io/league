@@ -298,3 +298,4 @@ export { SetFocalPointHeaderIcon } from "./setFocalPointHeaderIcon";
 export { SetFocalPointHeaderCloseIcon } from "./setFocalPointHeaderCloseIcon";
 export { FocalPointModalSaveButtonCheckmark } from "./FocalPointModalSaveButtonCheckmark";
 export { FocalPointMarker } from "./focalPointMarker";
+export { IconSendInvitation } from "./IconSendInvitation";

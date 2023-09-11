@@ -130,5 +130,6 @@ export * from "./notification-block";
 export * from "./tree";
 export * from "./usage-amount-item";
 export * from "./usage-chart-card";
-export * from "./multiselect-user-input"
+export * from "./multiselect-user-input";
 export * from "./error-screen";
+export * from "./selected-user-badge";
