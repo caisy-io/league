@@ -28,7 +28,7 @@ interface ISelectSingle {
   dataSource: IDataSourceItem[];
   renderItem?: (data: any) => React.ReactNode;
   onSelectValue?: (e: string) => void;
-  value?: IDataSourceItem;
+  value?: string;
   defaultValue?: IDataSourceItem;
   placeholder?: string;
   label?: string | ReactNode;
@@ -64,6 +64,7 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({
   placement = "bottom",
   withSearch,
   searchPlaceholder,
+  value,
 }) => {
   const [selectedItem, setSelectedItem] = useState<IDataSourceItem | null | undefined>();
   const [initialized, setInitialized] = useState(false);
@@ -85,6 +86,12 @@ export const SimpleInputDropdown: React.FC<ISelectSingle> = ({
     setSelectedItem(defaultValue);
     setInitialized(true);
   }, [defaultValue]);
+
+  useEffect(() => {
+    if (value === selectedItem?.key) return;
+
+    setSelectedItem(dataSource.find((option) => option.key === value));
+  }, [value]);
 
   const [rotationDegrees, setRotationDegrees] = React.useState(0);
 
