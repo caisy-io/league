@@ -1,10 +1,10 @@
-import React, { ReactNode } from "react";
-import { Checkbox } from "../checkbox/Checkbox";
-import { SAssetImage } from "./styles/SAssetImage";
-import { SAssetImageCard } from "./styles/SAssetImageCard";
-import { SAssetImageLabel } from "./styles/SAssetImageLabel";
-import { SAssetImageRadioContainer } from "./styles/SAssetImageRadioContainer";
-import { SSkeleton } from "../skeleton/SSkeleton";
+import React, {ReactNode} from "react";
+import {Checkbox} from "../checkbox";
+import {SAssetImage} from "./styles/SAssetImage";
+import {SAssetImageCard} from "./styles/SAssetImageCard";
+import {SAssetImageLabel} from "./styles/SAssetImageLabel";
+import {SAssetImageRadioContainer} from "./styles/SAssetImageRadioContainer";
+import {SSkeleton} from "../skeleton";
 
 export type IAssetImageCardSizeType = "simple" | "small";
 
@@ -19,32 +19,35 @@ interface IAssetImageCard {
 }
 
 export const AssetImageCard: React.FC<IAssetImageCard> = ({
-  skeleton,
-  labelText,
-  size,
-  image,
-  activated,
-  onChange,
-  onImageClick,
-}) => {
+                                                            skeleton,
+                                                            labelText,
+                                                            size,
+                                                            image,
+                                                            activated,
+                                                            onChange,
+                                                            onImageClick,
+                                                          }) => {
   return (
     <SAssetImageCard size={size} activated={activated} skeleton={skeleton}>
       <SAssetImage onClick={onImageClick}>{image}</SAssetImage>
       <SAssetImageRadioContainer onClick={onImageClick}>
         {skeleton ? (
           <>
-            <SSkeleton borderRadius="16px" />
-            <SSkeleton width="80px" borderRadius="4px" />
+            <SSkeleton borderRadius="16px"/>
+            <SSkeleton width="80px" borderRadius="4px"/>
           </>
         ) : (
           <>
-            <Checkbox
-              onChange={(e) => {
-                e.stopPropagation();
-                onChange?.(e);
-              }}
-              checked={activated}
-            ></Checkbox>
+            <div onClick={(e) => {
+              e.stopPropagation();
+            }}>
+              <Checkbox
+                onChange={(e) => {
+                  onChange?.(e);
+                }}
+                checked={activated}
+              />
+            </div>
             <SAssetImageLabel title={labelText} activated={activated}>
               {labelText}
             </SAssetImageLabel>
