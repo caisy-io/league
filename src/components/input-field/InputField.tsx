@@ -45,7 +45,7 @@ export const InputField: FC<IInputFieldProps> = ({
   const [isOpen, setOpen] = useState(true);
   const [errorDropdownOpened, setErrorDropdownOpened] = useState(false);
   const ref = useRef(null);
-  console.log("outsideWrapper", outsideWrapper)
+  
   const toggleOpen = useCallback(() => {
     if (isOpen) {
       onCollapse?.();
@@ -59,7 +59,7 @@ export const InputField: FC<IInputFieldProps> = ({
     <ClickOutside onClickOutside={onClickOutside}>
       <div>
         <SFieldItem onClick={onClick} id={id} error={!!errors}>
-          <SFieldHeader isOpen={isOpen}>
+          <SFieldHeader isOpen={isOpen} onClick={toggleOpen}>
             {icon}
             <div style={{flex: "1 1 auto"}}>
               <SFieldTitle required={required}>
@@ -80,7 +80,8 @@ export const InputField: FC<IInputFieldProps> = ({
                 setErrorDropdownOpened(false);
               }}>
                 <div>
-                  <SFieldErrorsDropdown ref={ref} onClick={() => {
+                  <SFieldErrorsDropdown ref={ref} onClick={(e) => {
+                    e.stopPropagation();
                     setErrorDropdownOpened(prevState => !prevState)
                   }}>
                     <SFieldErrorsDropdownBadge>
@@ -123,7 +124,7 @@ export const InputField: FC<IInputFieldProps> = ({
                 <path d="M1 0V43C1 47.4183 4.58172 51 9 51H13" stroke="#008CFF"/>
               </svg>
             </SFieldInputOutsideWrapperSvg>
-           
+            
             {children}
           </SFieldInputOutsideWrapper>
         )}
