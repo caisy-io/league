@@ -1,4 +1,5 @@
 import styled, {css} from "styled-components";
+import {SFieldHeader} from "./SFieldHeader";
 
 const CSSError = css`
   &:before {
@@ -6,7 +7,7 @@ const CSSError = css`
   }
 `;
 
-export const SFieldItem = styled.div<{ error: boolean }>`
+const CSSInsideWrapper = css`
   background-color: var(--ui-01);
   border: 1px solid var(--ui-03);
   box-sizing: border-box;
@@ -31,6 +32,23 @@ export const SFieldItem = styled.div<{ error: boolean }>`
     }
     
     ${({error}) => error && CSSError};
+  }
+  
+  ${({error}) => error && CSSError};
+`
+
+export const SFieldItem = styled.div<{ error: boolean; outsideWrapper?: boolean; }>`
+  
+  ${({outsideWrapper}) => !outsideWrapper && CSSInsideWrapper};
+  
+  &:focus-within {
+    &, ${SFieldHeader} {
+      :before {
+        background-color: var(--active-ui-03-2);
+      }
+      
+      ${({error}) => error && CSSError};
+    }
   }
   
   ${({error}) => error && CSSError};
