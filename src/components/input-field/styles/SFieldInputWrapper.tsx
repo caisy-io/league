@@ -1,15 +1,16 @@
-import styled, { css } from "styled-components";
+import styled, {css} from "styled-components";
 
 const CSSExpanded = css`
   display: flex;
 `;
 
-export const SFieldInputWrapper = styled.div<{ isOpen: boolean }>`
+export const SFieldInputWrapper = styled.div<{ isOpen: boolean; wrapperBgColor?: string }>`
   display: none;
   flex-direction: column;
   align-items: center;
-  ${({ isOpen }) => isOpen && CSSExpanded}
+  ${({isOpen}) => isOpen && CSSExpanded}
   border-top: 1px solid var(--ui-03);
   padding: 1rem;
   gap: 0.5rem;
+  background-color: ${({wrapperBgColor}) => wrapperBgColor || "var(--ui-01)"};
 `;
