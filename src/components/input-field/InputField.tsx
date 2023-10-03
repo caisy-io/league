@@ -113,7 +113,7 @@ export const InputField: FC<IInputFieldProps> = ({
         </SFieldHeader>
         
         {outsideWrapper ? (
-          <SFieldInputOutsideWrapper wrapperBgColor={wrapperBgColor} isOpen={isOpen}>
+          <SFieldInputOutsideWrapper isOpen={isOpen}>
             {children}
           </SFieldInputOutsideWrapper>
         ) : (

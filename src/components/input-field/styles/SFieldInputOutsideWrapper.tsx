@@ -12,5 +12,4 @@ export const SFieldInputOutsideWrapper = styled.div<{ isOpen: boolean; wrapperBg
   margin-top: 12px;
   margin-left: 24px;
   ${({isOpen}) => isOpen && CSSExpanded};
-  background-color: ${({wrapperBgColor}) => wrapperBgColor || "var(--ui-01)"};
 `;
