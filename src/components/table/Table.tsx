@@ -242,7 +242,7 @@ export const Table: FC<ITable> = forwardRef(
 
     return (
       <STable ref={containerRef} style={style} {...getTableProps()}>
-        <SThead ref={headerRef}>
+        <SThead style={{ width: rowWidth }} ref={headerRef}>
           {headerGroups.map((headerGroup, headerIndex) => (
             <STr style={{ ...rowStyle }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column, columnIndex) => {
