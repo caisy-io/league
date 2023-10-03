@@ -12,7 +12,6 @@ const CSSInsideWrapper = css`
   border: 1px solid var(--ui-03);
   box-sizing: border-box;
   border-radius: 8px;
-  overflow: hidden;
   text-align: left;
   position: relative;
   
@@ -38,18 +37,20 @@ const CSSInsideWrapper = css`
 `
 
 export const SFieldItem = styled.div<{ error: boolean; outsideWrapper?: boolean; }>`
+  overflow: hidden;
   
   ${({outsideWrapper}) => !outsideWrapper && CSSInsideWrapper};
   
-  &:focus-within {
-    &, ${SFieldHeader} {
+  &, ${SFieldHeader} {
+    &:focus-within {
       :before {
         background-color: var(--active-ui-03-2);
       }
-      
-      ${({error}) => error && CSSError};
     }
+    
+    ${({error}) => error && CSSError};
   }
+  
   
   ${({error}) => error && CSSError};
 `;
