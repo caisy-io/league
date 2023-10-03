@@ -49,6 +49,4 @@ export const SFieldItem = styled.div<{ error: boolean; outsideWrapper?: boolean;
       ${({error}) => error && CSSError};
     }
   }
-  
-  ${({error}) => error && CSSError};
 `;

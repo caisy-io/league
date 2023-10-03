@@ -1,4 +1,4 @@
-import {FC, useCallback, useRef, useState} from "react";
+import {FC, useCallback, useState} from "react";
 import {Tooltip} from "../tooltip";
 import {IconQuestionCircle, IconChevronDown} from "../../icons";
 import {ErrorsDropdown} from "./ErrorsDropdown";
@@ -36,8 +36,6 @@ export const InputField: FC<IInputFieldProps> = ({
                                                    primary,
                                                  }) => {
   const [isOpen, setOpen] = useState(true);
-  const [errorDropdownOpened, setErrorDropdownOpened] = useState(false);
-  const ref = useRef(null);
   
   const toggleOpen = useCallback(() => {
     if (isOpen) {
