@@ -1,4 +1,5 @@
 import {ReactNode} from "react";
+import {ErrorsDropdown} from "./ErrorsDropdown";
 
 export interface IInputFieldProps {
   title: string;
@@ -20,4 +21,10 @@ export interface IInputFieldProps {
   primary?: boolean;
   outsideWrapper?: boolean;
   wrapperBgColor?: string;
+}
+
+export interface IErrorsDropdown {
+  errors?: ReactNode[];
+  errorsText?: ReactNode;
+  errorText?: ReactNode;
 }

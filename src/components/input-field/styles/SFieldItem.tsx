@@ -41,16 +41,14 @@ export const SFieldItem = styled.div<{ error: boolean; outsideWrapper?: boolean;
   
   ${({outsideWrapper}) => !outsideWrapper && CSSInsideWrapper};
   
-  &, ${SFieldHeader} {
-    &:focus-within {
+  &:focus-within {
+    ${SFieldHeader} {
       :before {
         background-color: var(--active-ui-03-2);
       }
+      ${({error}) => error && CSSError};
     }
-    
-    ${({error}) => error && CSSError};
   }
-  
   
   ${({error}) => error && CSSError};
 `;

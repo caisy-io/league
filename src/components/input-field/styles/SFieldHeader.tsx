@@ -14,6 +14,7 @@ const CSSOutsideWrapper = css`
   overflow: hidden;
   text-align: left;
   position: relative;
+  z-index: 1;
   
   &:before {
     content: "";
