@@ -1,21 +1,21 @@
-import React, { FC, ReactNode } from "react";
+import React, {FC, MutableRefObject, ReactNode} from "react";
 import styled from "styled-components";
-import { IconCog, IconSwitchArrows } from "../../icons";
-import { Badge, EBadgePosition } from "../badge";
-import { SFlex } from "../../base-components/flex/styles/SFlex";
-import { FlatActionButton } from "../flat-action-button";
-import { Preview } from "../preview";
-import { IPreview } from "../preview";
-import { SFlexBadgeWrapper } from "./styles/SFlexBadgeWrapper";
-import { SOrganizationSelectListItem } from "./styles/SOrganizationSelectListItem";
-import { SOrganizationSelectListItemBadgeAndButtons } from "./styles/SOrganizationSelectListItemBadgeAndButtons";
-import { SOrganizationSelectListItemBadgeAndButtonsDivider } from "./styles/SOrganizationSelectListItemBadgeAndButtonsDivider";
-import { SOrganizationSelectListItemBadgeAndSettings } from "./styles/SOrganizationSelectListItemBadgeAndSettings";
-import { SOrganizationSelectListItemLabel } from "./styles/SOrganizationSelectListItemLabel";
-import { SOrganizationSelectListItemSettingsButton } from "./styles/SOrganizationSelectListItemSettingsButton";
-import { SOrganizationSelectListItemTextWrapper } from "./styles/SOrganizationSelectListItemTextWrapper";
-import { SOrganizationSelectListItemTitle } from "./styles/SOrganizationSelectListItemTitle";
-import { Tooltip } from "../tooltip";
+import {IconCog, IconSwitchArrows} from "../../icons";
+import {Badge, EBadgePosition} from "../badge";
+import {SFlex} from "../../base-components/flex/styles/SFlex";
+import {FlatActionButton} from "../flat-action-button";
+import {Preview} from "../preview";
+import {IPreview} from "../preview";
+import {SFlexBadgeWrapper} from "./styles/SFlexBadgeWrapper";
+import {SOrganizationSelectListItem} from "./styles/SOrganizationSelectListItem";
+import {SOrganizationSelectListItemBadgeAndButtons} from "./styles/SOrganizationSelectListItemBadgeAndButtons";
+import {SOrganizationSelectListItemBadgeAndButtonsDivider} from "./styles/SOrganizationSelectListItemBadgeAndButtonsDivider";
+import {SOrganizationSelectListItemBadgeAndSettings} from "./styles/SOrganizationSelectListItemBadgeAndSettings";
+import {SOrganizationSelectListItemLabel} from "./styles/SOrganizationSelectListItemLabel";
+import {SOrganizationSelectListItemSettingsButton} from "./styles/SOrganizationSelectListItemSettingsButton";
+import {SOrganizationSelectListItemTextWrapper} from "./styles/SOrganizationSelectListItemTextWrapper";
+import {SOrganizationSelectListItemTitle} from "./styles/SOrganizationSelectListItemTitle";
+import {Tooltip} from "../tooltip";
 
 export type IListItemSize = "large" | "medium";
 
@@ -33,6 +33,7 @@ export interface IOrganizationSelectListItemProps {
   active?: boolean;
   switchText?: string | ReactNode;
   settingTooltip?: string | ReactNode;
+  settingsBtnRef?: MutableRefObject<HTMLDivElement>;
 }
 
 const SFlexListItem = styled(SFlex)`
@@ -43,19 +44,20 @@ const SFlexListItem = styled(SFlex)`
 `;
 
 export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = ({
-  title,
-  label,
-  itemSize,
-  previewProps,
-  badgeText,
-  onClick,
-  onClickSettingButton,
-  onClickSwitchButton,
-  disabledSwitchButton,
-  active,
-  switchText,
-  settingTooltip,
-}) => {
+                                                                                   title,
+                                                                                   label,
+                                                                                   itemSize,
+                                                                                   previewProps,
+                                                                                   badgeText,
+                                                                                   onClick,
+                                                                                   onClickSettingButton,
+                                                                                   onClickSwitchButton,
+                                                                                   disabledSwitchButton,
+                                                                                   active,
+                                                                                   switchText,
+                                                                                   settingTooltip,
+                                                                                   settingsBtnRef
+                                                                                 }) => {
   return (
     <SOrganizationSelectListItem active={active}>
       <SFlexListItem onMouseDown={() => onClick()}>
@@ -69,25 +71,26 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
         <SOrganizationSelectListItemBadgeAndSettings>
           {badgeText && (
             <SFlexBadgeWrapper>
-              <Badge value={badgeText} type="regular" size="medium" position={EBadgePosition.Center} />
+              <Badge value={badgeText} type="regular" size="medium" position={EBadgePosition.Center}/>
             </SFlexBadgeWrapper>
           )}
           {onClickSettingButton && (
             <SOrganizationSelectListItemSettingsButton
+              {...(settingsBtnRef && {ref: settingsBtnRef})}
               onMouseDown={(e) => {
                 e.stopPropagation();
                 onClickSettingButton?.();
               }}
             >
               <Tooltip content={settingTooltip ?? "Setting"} placement="top" color="black">
-                <IconCog size={16} />
+                <IconCog size={16}/>
               </Tooltip>
             </SOrganizationSelectListItemSettingsButton>
           )}
         </SOrganizationSelectListItemBadgeAndSettings>
         {onClickSwitchButton && (
           <>
-            <SOrganizationSelectListItemBadgeAndButtonsDivider />
+            <SOrganizationSelectListItemBadgeAndButtonsDivider/>
             <FlatActionButton
               type="default"
               disabled={disabledSwitchButton}
@@ -95,7 +98,7 @@ export const OrganizationSelectListItem: FC<IOrganizationSelectListItemProps> = 
                 onClickSwitchButton?.();
               }}
             >
-              <IconSwitchArrows size={16} />
+              <IconSwitchArrows size={16}/>
               {switchText || "Switch"}
             </FlatActionButton>
           </>
