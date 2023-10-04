@@ -1,35 +1,42 @@
-import { FC, ReactNode, useCallback, useState } from "react";
-import { Tooltip } from "../tooltip";
-import { IconQuestionCircle, IconChevronDown } from "../../icons";
-import { SFieldInputWrapper } from "./styles/SFieldInputWrapper";
-import { SFieldItem } from "./styles/SFieldItem";
-import { SFieldHeader } from "./styles/SFieldHeader";
-import { IconButton } from "../icon-button";
-import { SFieldTitle } from "./styles/SFieldTitle";
-import { SFieldDisplayButton } from "./styles/SFieldDisplayButton";
-import { SFieldDescription } from "./styles/SFieldDescription";
-import { SFieldErrors } from "./styles/SFieldErrors";
-import { IInputFieldProps } from "./types";
-import { ClickOutside } from "../../utils";
-import { IconPrimaryKeyStar } from "../../icons/IconPrimaryKeyStar";
+import {FC, useCallback, useState} from "react";
+import {Tooltip} from "../tooltip";
+import {IconQuestionCircle, IconChevronDown} from "../../icons";
+import {ErrorsDropdown} from "./ErrorsDropdown";
+import {SFieldInputOutsideWrapper} from "./styles/SFieldInputOutsideWrapper";
+import {SFieldInputWrapper} from "./styles/SFieldInputWrapper";
+import {SFieldItem} from "./styles/SFieldItem";
+import {SFieldHeader} from "./styles/SFieldHeader";
+import {IconButton} from "../icon-button";
+import {SFieldTitle} from "./styles/SFieldTitle";
+import {SFieldDisplayButton} from "./styles/SFieldDisplayButton";
+import {SFieldDescription} from "./styles/SFieldDescription";
+import {IInputFieldProps} from "./types";
+import {ClickOutside} from "../../utils";
+import {IconPrimaryKeyStar} from "../../icons/IconPrimaryKeyStar";
 
 export const InputField: FC<IInputFieldProps> = ({
-  title,
-  description,
-  icon,
-  required,
-  tooltip,
-  errors,
-  children,
-  onExpand,
-  onCollapse,
-  id,
-  usersListComponent,
-  onClick,
-  onClickOutside = () => {},
-  primary,
-}) => {
+                                                   title,
+                                                   description,
+                                                   icon,
+                                                   required,
+                                                   tooltip,
+                                                   errors,
+                                                   errorsText = "Errors",
+                                                   errorText = "Error",
+                                                   outsideWrapper,
+                                                   wrapperBgColor,
+                                                   children,
+                                                   onExpand,
+                                                   onCollapse,
+                                                   id,
+                                                   usersListComponent,
+                                                   onClick,
+                                                   onClickOutside = () => {
+                                                   },
+                                                   primary,
+                                                 }) => {
   const [isOpen, setOpen] = useState(true);
+  
   const toggleOpen = useCallback(() => {
     if (isOpen) {
       onCollapse?.();
@@ -38,40 +45,41 @@ export const InputField: FC<IInputFieldProps> = ({
     }
     setOpen(!isOpen);
   }, [isOpen, setOpen]);
-
+  
   return (
     <ClickOutside onClickOutside={onClickOutside}>
-      <SFieldItem onClick={onClick} id={id} error={!!errors}>
-        <SFieldHeader isOpen={isOpen}>
+      <SFieldItem onClick={onClick} id={id} error={!!errors} outsideWrapper={outsideWrapper}>
+        <SFieldHeader isOpen={isOpen} onClick={toggleOpen} error={!!errors} outsideWrapper={outsideWrapper}>
           {icon}
-          <div style={{ flex: "1 1 auto" }}>
+          <div style={{flex: "1 1 auto"}}>
             <SFieldTitle required={required}>
               <h3>{title}</h3>
               {tooltip && (
                 <div data-tooltip-icon>
                   <Tooltip content={tooltip} placement="right" color="black">
-                    <IconQuestionCircle size={16} />
+                    <IconQuestionCircle size={16}/>
                   </Tooltip>
                 </div>
               )}
-              {primary && <IconPrimaryKeyStar />}
+              {primary && <IconPrimaryKeyStar/>}
             </SFieldTitle>
             {description && <SFieldDescription>{description}</SFieldDescription>}
           </div>
+          <ErrorsDropdown errorsText={errorsText} errorText={errorText} errors={errors}/>
           {usersListComponent}
           <SFieldDisplayButton data-display-button isOpen={isOpen}>
-            <IconButton type="secondary" onClick={toggleOpen}>
-              <IconChevronDown />
+            <IconButton size='small' type="secondary" onClick={toggleOpen} activated={isOpen}>
+              <IconChevronDown size={20}/>
             </IconButton>
           </SFieldDisplayButton>
         </SFieldHeader>
-        <SFieldInputWrapper isOpen={isOpen}>{children}</SFieldInputWrapper>
-        {errors && (
-          <SFieldErrors>
-            {errors.map((error: ReactNode) => (
-              <div key={`error-${error}`}>{error}</div>
-            ))}
-          </SFieldErrors>
+        
+        {outsideWrapper ? (
+          <SFieldInputOutsideWrapper isOpen={isOpen}>
+            {children}
+          </SFieldInputOutsideWrapper>
+        ) : (
+          <SFieldInputWrapper wrapperBgColor={wrapperBgColor} isOpen={isOpen}>{children}</SFieldInputWrapper>
         )}
       </SFieldItem>
     </ClickOutside>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { CSSProgressiveBody03Medium } from "../../../constants/styles";
+import {CSSProgressiveCaption01} from "../../../constants/styles";
+
 export const SFieldDescription = styled.p<{ required: boolean; isOpen: boolean }>`
-  ${CSSProgressiveBody03Medium}
+  ${CSSProgressiveCaption01};
   color: var(--text-03);
-  padding-top: 0.25rem;
 `;
