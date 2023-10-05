@@ -162,6 +162,7 @@ export const Table: FC<ITable> = forwardRef(
       const row = data[index];
       if (row) {
         prepareRow(row);
+
         return (
           <STr
             onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
@@ -171,10 +172,27 @@ export const Table: FC<ITable> = forwardRef(
             })}
           >
             {row.cells.map((cell, cellIndex) => {
+              const header = document.getElementById(`header-${cellIndex}`);
+              const headerWidth = header?.offsetWidth || 0;
+
+              const headerStyle = {
+                width: headerWidth,
+                minWidth: headerWidth,
+              };
+
+              const isLastCell = cellIndex === row.cells.length - 1;
+
               return (
                 <STd
                   key={`cell-${row.id}-${cellIndex}`}
-                  style={{ textOverflow: "ellipsis", overflow: "hidden", display: "block", ...cell?.value?.style }}
+                  id={`cell-${cellIndex}`}
+                  style={{
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    display: "block",
+                    ...(!isLastCell ? headerStyle : {}),
+                    ...cell?.value?.style,
+                  }}
                   {...cell.getCellProps()}
                 >
                   {cell.render("Cell")}
@@ -246,11 +264,14 @@ export const Table: FC<ITable> = forwardRef(
           {headerGroups.map((headerGroup, headerIndex) => (
             <STr style={{ ...rowStyle }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column, columnIndex) => {
+                const id = `header-${columnIndex}`;
+
                 return (
                   <STh
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     onClick={() => onHeaderClick && onHeaderClick(column)}
                     key={columnIndex}
+                    id={id}
                     style={{ ...column.style }}
                   >
                     {column.render("Header")}

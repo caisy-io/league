@@ -8,6 +8,7 @@ const Bronze = css<ISTh>`
   display: flex;
   align-items: center;
   user-select: none;
+  box-sizing: border-box;
 `;
 
 const Silver = css<ISTh>``;
