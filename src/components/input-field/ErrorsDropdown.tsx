@@ -12,11 +12,11 @@ import {IErrorsDropdown} from "./types";
 
 
 export const ErrorsDropdown: FC<IErrorsDropdown> = ({
-                                                       errors,
-                                                       errorsText = "Errors",
-                                                       errorText = "Error",
+                                                      errors,
+                                                      errorsText = "Errors",
+                                                      errorText = "Error",
   
-                                                     }) => {
+                                                    }) => {
   const [errorDropdownOpened, setErrorDropdownOpened] = useState(false);
   const ref = useRef(null);
   
@@ -40,7 +40,9 @@ export const ErrorsDropdown: FC<IErrorsDropdown> = ({
         </SFieldErrorsDropdown>
         <Popover display={errorDropdownOpened} disableTriangle placement="bottomLeft" reference={ref}>
           {() => (
-            <SFieldErrorsDropdownPopover>
+            <SFieldErrorsDropdownPopover onClick={(e) => {
+              e.stopPropagation();
+            }}>
               <SFieldErrorsDropdownErrorsWrapper>
                 {errors.map((error: ReactNode) => (
                   <SFieldErrorsDropdownError key={`error-${error}`}>{error}</SFieldErrorsDropdownError>
