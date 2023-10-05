@@ -190,8 +190,8 @@ export const Table: FC<ITable> = forwardRef(
                     textOverflow: "ellipsis",
                     overflow: "hidden",
                     display: "block",
-                    ...cell?.value?.style,
                     ...(!isLastCell ? headerStyle : {}),
+                    ...cell?.value?.style,
                   }}
                   {...cell.getCellProps()}
                 >
