@@ -33,7 +33,7 @@ export interface IOrganizationSelectListItemProps {
   active?: boolean;
   switchText?: string | ReactNode;
   settingTooltip?: string | ReactNode;
-  settingsBtnRef?: MutableRefObject<HTMLDivElement>;
+  settingsBtnRef?: MutableRefObject<any>;
 }
 
 const SFlexListItem = styled(SFlex)`
