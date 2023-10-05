@@ -7,9 +7,10 @@ const Bronze = css<ISTr>`
   display: flex;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
 
   &:hover {
-    & [data-role=table-cell] {
+    & [data-role="table-cell"] {
       background-color: var(--hover-ui-01-1);
     }
   }
