@@ -265,9 +265,13 @@ export const Table: FC<ITable> = forwardRef(
         ref={containerRef}
         {...getTableProps()}
       >
-        <SThead style={{ width: containerWidth, overflow: "hidden" }} ref={headerRef}>
+        <SThead style={{ width: "auto", minWidth: tableWidth, overflow: "hidden" }} ref={headerRef}>
           {headerGroups.map((headerGroup, headerIndex) => (
-            <STr style={{ ...rowStyle, width: tableWidth }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
+            <STr
+              style={{ ...rowStyle, width: "auto", minWidth: tableWidth }}
+              key={headerIndex}
+              {...headerGroup.getHeaderGroupProps()}
+            >
               {headerGroup.headers.map((column, columnIndex) => {
                 const id = `header-${columnIndex}`;
 
