@@ -40,6 +40,7 @@ interface ITableBase {
   renderAsFirstRow?: JSX.Element;
   ref?: any;
   empty?: ReactNode;
+  tableWidth?: number | string;
 }
 
 interface ITableWithItemSize extends ITableBase {
@@ -73,6 +74,7 @@ export const Table: FC<ITable> = forwardRef(
       renderAsFirstRow,
       empty,
       useConditionalItemSize,
+      tableWidth,
     },
     ref,
   ) => {
@@ -259,58 +261,60 @@ export const Table: FC<ITable> = forwardRef(
     );
 
     return (
-      <STable ref={containerRef} style={style} {...getTableProps()}>
-        <SThead ref={headerRef}>
-          {headerGroups.map((headerGroup, headerIndex) => (
-            <STr style={{ ...rowStyle }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column, columnIndex) => {
-                const id = `header-${columnIndex}`;
+      <div style={{ overflow: "auto hidden", height: "100%", boxSizing: "border-box" }}>
+        <STable ref={containerRef} style={{ ...style, minWidth: tableWidth }} {...getTableProps()}>
+          <SThead ref={headerRef}>
+            {headerGroups.map((headerGroup, headerIndex) => (
+              <STr style={{ ...rowStyle }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column, columnIndex) => {
+                  const id = `header-${columnIndex}`;
 
-                return (
-                  <STh
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                    onClick={() => onHeaderClick && onHeaderClick(column)}
-                    key={columnIndex}
-                    id={id}
-                    style={{ ...column.style }}
-                  >
-                    {column.render("Header")}
-                    {column.defaultCanSort !== false && column.isSorted ? (
-                      column.isSortedDesc == "DESC" ? (
-                        <IconAngleDown />
-                      ) : (
-                        <IconAngleUp />
-                      )
-                    ) : null}
-                  </STh>
-                );
-              })}
-            </STr>
-          ))}
-        </SThead>
-        <STbody {...getTableBodyProps()}>
-          {loading ? (
-            <STableLoading height={height}>
-              <Spinner />
-            </STableLoading>
-          ) : (
-            <>
-              {!!renderAsFirstRow && (
-                <STableFirstRow hidden={dataSource?.length === 0} ref={firstRowRef}>
-                  {renderAsFirstRow}
-                </STableFirstRow>
-              )}
-              {dataSource?.length ? (
-                <>{!!renderAsFirstRow ? <div ref={tableRowsRef}>{TableWithRows}</div> : <>{TableWithRows}</>}</>
-              ) : empty ? (
-                empty
-              ) : (
-                <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
-              )}
-            </>
-          )}
-        </STbody>
-      </STable>
+                  return (
+                    <STh
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      onClick={() => onHeaderClick && onHeaderClick(column)}
+                      key={columnIndex}
+                      id={id}
+                      style={{ ...column.style }}
+                    >
+                      {column.render("Header")}
+                      {column.defaultCanSort !== false && column.isSorted ? (
+                        column.isSortedDesc == "DESC" ? (
+                          <IconAngleDown />
+                        ) : (
+                          <IconAngleUp />
+                        )
+                      ) : null}
+                    </STh>
+                  );
+                })}
+              </STr>
+            ))}
+          </SThead>
+          <STbody {...getTableBodyProps()}>
+            {loading ? (
+              <STableLoading height={height}>
+                <Spinner />
+              </STableLoading>
+            ) : (
+              <>
+                {!!renderAsFirstRow && (
+                  <STableFirstRow hidden={dataSource?.length === 0} ref={firstRowRef}>
+                    {renderAsFirstRow}
+                  </STableFirstRow>
+                )}
+                {dataSource?.length ? (
+                  <>{!!renderAsFirstRow ? <div ref={tableRowsRef}>{TableWithRows}</div> : <>{TableWithRows}</>}</>
+                ) : empty ? (
+                  empty
+                ) : (
+                  <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
+                )}
+              </>
+            )}
+          </STbody>
+        </STable>
+      </div>
     );
   },
 );
