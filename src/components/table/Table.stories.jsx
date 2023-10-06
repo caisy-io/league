@@ -20,7 +20,7 @@ function TableDemo() {
       lastName: `testLastName ${1 + idx}`,
       actions: { id: 1 + idx },
       id: 1 + idx,
-    }))
+    })),
   ]);
   const columns = [
     {
@@ -55,7 +55,6 @@ function TableDemo() {
   const [isNextPageLoading, setIsNextPageLoading] = React.useState(false);
   const [hasNextPage, setHasNextPage] = React.useState(true);
 
-
   const loadNextPage = () => {
     console.log("loadNextPage");
     setIsNextPageLoading(true);
@@ -82,7 +81,7 @@ function TableDemo() {
   console.log(` hasNextPage `, hasNextPage);
   const ref = useRef();
   return (
-    <div style={{ height: "calc(100vh - 90px)", position: "relative" }}>
+    <div style={{ height: "calc(100vh - 42px - 24px)", position: "relative" }}>
       <Input
         placeholder="Filter globally"
         wrapperStyle={{ border: "1px solid #f0f0f0", marginTop: 8, marginBottom: 16 }}
@@ -90,9 +89,21 @@ function TableDemo() {
         onChange={(e) => setGlobalFilter(e.target.value)}
       />
       <Table
+        // containerWidth={1200}
+        tableWidth={1400}
         useConditionalItemSize
         renderAsFirstRow={
-          <div style={{ height: 40, backgroundColor: "white", display: "flex", justifyContent: "center", alignItems: "center", color: "#fff", background: "darkgray" }}>
+          <div
+            style={{
+              height: 40,
+              backgroundColor: "white",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "#fff",
+              background: "darkgray",
+            }}
+          >
             Use this to render a custom component on the first row
           </div>
         }

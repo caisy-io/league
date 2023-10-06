@@ -40,6 +40,9 @@ interface ITableBase {
   renderAsFirstRow?: JSX.Element;
   ref?: any;
   empty?: ReactNode;
+  tableMinWidth?: number | string;
+  tableMaxHeight?: number | string;
+  containerWidth?: number | string;
   tableWidth?: number | string;
 }
 
@@ -54,6 +57,14 @@ interface ITableWithDynamicItemSize extends ITableBase {
 }
 
 type ITable = ITableWithItemSize | ITableWithDynamicItemSize;
+
+const Scroller = React.forwardRef(({ style, ...props }: any, ref) => {
+  return <div style={{ ...style, width: props.context.containerWidth }} ref={ref} {...props} />;
+});
+
+const ListItem = React.forwardRef(({ style, ...props }: any) => {
+  return <div style={{ ...style, width: props.context.tableWidth }} {...props} />;
+});
 
 export const Table: FC<ITable> = forwardRef(
   (
@@ -74,13 +85,13 @@ export const Table: FC<ITable> = forwardRef(
       renderAsFirstRow,
       empty,
       useConditionalItemSize,
+      containerWidth,
       tableWidth,
     },
     ref,
   ) => {
     const containerRef = useRef<any>({});
     const headerRef = useRef<any>({});
-    const firstRowRef = useRef<HTMLDivElement>(null);
     const [scrollerRef, setScrollerRef] = useState<HTMLElement | null>(null);
     const [rowWidth, setRowWidth] = useState<number>();
     const tableRowsRef = useRef<HTMLDivElement>(null);
@@ -137,25 +148,6 @@ export const Table: FC<ITable> = forwardRef(
       setGlobalFilter(globalFilter);
     }, [globalFilter]);
 
-    const [initialized, setInitialized] = useState(false);
-
-    useEffect(() => {
-      if (tableRowsRef.current && firstRowRef.current && !initialized) {
-        setInitialized(dataSource.length > 0 && !loading && !isNextPageLoading);
-        tableRowsRef.current.style.transform = `translateY(${
-          firstRowRef.current.offsetHeight > 0 ? firstRowRef.current.offsetHeight : 0
-        }px)`;
-      }
-    }, [tableRowsRef.current, renderAsFirstRow, dataSource, firstRowRef.current]);
-
-    useEffect(() => {
-      if (tableRowsRef.current && firstRowRef.current) {
-        tableRowsRef.current.style.transform = `translateY(${
-          firstRowRef.current.offsetHeight > 0 ? firstRowRef.current.offsetHeight : 0
-        }px)`;
-      }
-    }, [dataSource?.length]);
-
     useEffect(() => {
       setRowWidth((scrollerRef as any)?.firstChild?.offsetWidth || "100%");
     }, [scrollerRef, dataSource?.length, (scrollerRef as any)?.firstChild?.offsetWidth]);
@@ -170,7 +162,7 @@ export const Table: FC<ITable> = forwardRef(
             onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
             key={`row-${row.id}`}
             {...row.getRowProps({
-              style: { ...style, width: rowWidth, rowStyle },
+              style: { ...style, rowStyle },
             })}
           >
             {row.cells.map((cell, cellIndex) => {
@@ -210,15 +202,9 @@ export const Table: FC<ITable> = forwardRef(
     const debouncedLoadMoreItems = useMemo(() => debounce(loadMoreItems, 300), [loadMoreItems]);
 
     const onScroll = (e) => {
-      const scrollOffset = e.target?.scrollTop;
-      if (firstRowRef.current) {
-        firstRowRef.current.style.transform = `translateY(-${scrollOffset * 0.5}px)`;
-        if (tableRowsRef.current) {
-          tableRowsRef.current.style.transform = `translateY(${
-            firstRowRef.current.offsetHeight > scrollOffset ? firstRowRef.current.offsetHeight - scrollOffset : 0
-          }px)`;
-        }
-      }
+      const scrollLeft = e?.nativeEvent?.target?.scrollLeft;
+
+      headerRef.current.scrollLeft = scrollLeft;
     };
 
     const memoItemSize = useMemo(
@@ -228,10 +214,19 @@ export const Table: FC<ITable> = forwardRef(
 
     const TableWithRows = (
       <Virtuoso
+        components={{
+          Scroller: Scroller as any,
+          Item: ListItem as any,
+          Header: () => <div style={{ position: "sticky", minWidth: tableWidth }}>{renderAsFirstRow}</div>,
+        }}
+        context={{
+          containerWidth,
+          tableWidth,
+        }}
         onScroll={onScroll}
         className="league-table"
-        height={height}
-        style={{ height, minHeight: height }}
+        // height={height}
+        style={{ height: 400, minHeight: height }}
         endReached={debouncedLoadMoreItems}
         data={rows}
         ref={ref as any}
@@ -261,60 +256,59 @@ export const Table: FC<ITable> = forwardRef(
     );
 
     return (
-      <div style={{ overflow: "auto hidden", height: "100%", boxSizing: "border-box" }}>
-        <STable ref={containerRef} style={{ ...style, minWidth: tableWidth }} {...getTableProps()}>
-          <SThead ref={headerRef}>
-            {headerGroups.map((headerGroup, headerIndex) => (
-              <STr style={{ ...rowStyle }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column, columnIndex) => {
-                  const id = `header-${columnIndex}`;
+      <STable
+        style={{
+          ...style,
+        }}
+        ref={containerRef}
+        {...getTableProps()}
+      >
+        <SThead style={{ width: containerWidth, overflow: "hidden" }} ref={headerRef}>
+          {headerGroups.map((headerGroup, headerIndex) => (
+            <STr style={{ ...rowStyle, width: tableWidth }} key={headerIndex} {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column, columnIndex) => {
+                const id = `header-${columnIndex}`;
 
-                  return (
-                    <STh
-                      {...column.getHeaderProps(column.getSortByToggleProps())}
-                      onClick={() => onHeaderClick && onHeaderClick(column)}
-                      key={columnIndex}
-                      id={id}
-                      style={{ ...column.style }}
-                    >
-                      {column.render("Header")}
-                      {column.defaultCanSort !== false && column.isSorted ? (
-                        column.isSortedDesc == "DESC" ? (
-                          <IconAngleDown />
-                        ) : (
-                          <IconAngleUp />
-                        )
-                      ) : null}
-                    </STh>
-                  );
-                })}
-              </STr>
-            ))}
-          </SThead>
-          <STbody {...getTableBodyProps()}>
-            {loading ? (
-              <STableLoading height={height}>
-                <Spinner />
-              </STableLoading>
-            ) : (
-              <>
-                {!!renderAsFirstRow && (
-                  <STableFirstRow hidden={dataSource?.length === 0} ref={firstRowRef}>
-                    {renderAsFirstRow}
-                  </STableFirstRow>
-                )}
-                {dataSource?.length ? (
-                  <>{!!renderAsFirstRow ? <div ref={tableRowsRef}>{TableWithRows}</div> : <>{TableWithRows}</>}</>
-                ) : empty ? (
-                  empty
-                ) : (
-                  <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
-                )}
-              </>
-            )}
-          </STbody>
-        </STable>
-      </div>
+                return (
+                  <STh
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    onClick={() => onHeaderClick && onHeaderClick(column)}
+                    key={columnIndex}
+                    id={id}
+                    style={{ ...column.style }}
+                  >
+                    {column.render("Header")}
+                    {column.defaultCanSort !== false && column.isSorted ? (
+                      column.isSortedDesc == "DESC" ? (
+                        <IconAngleDown />
+                      ) : (
+                        <IconAngleUp />
+                      )
+                    ) : null}
+                  </STh>
+                );
+              })}
+            </STr>
+          ))}
+        </SThead>
+        <STbody {...getTableBodyProps()}>
+          {loading ? (
+            <STableLoading height={height}>
+              <Spinner />
+            </STableLoading>
+          ) : (
+            <>
+              {dataSource?.length ? (
+                <>{!!renderAsFirstRow ? <div ref={tableRowsRef}>{TableWithRows}</div> : <>{TableWithRows}</>}</>
+              ) : empty ? (
+                empty
+              ) : (
+                <Empty type="blueprint" title="" description={emptyMessage || "No data found."} />
+              )}
+            </>
+          )}
+        </STbody>
+      </STable>
     );
   },
 );
