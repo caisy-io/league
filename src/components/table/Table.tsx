@@ -59,11 +59,11 @@ interface ITableWithDynamicItemSize extends ITableBase {
 type ITable = ITableWithItemSize | ITableWithDynamicItemSize;
 
 const Scroller = React.forwardRef(({ style, ...props }: any, ref) => {
-  return <div style={{ ...style, width: props.context.containerWidth }} ref={ref} {...props} />;
+  return <div style={{ ...style, width: "auto", minWidth: props.context.containerWidth }} ref={ref} {...props} />;
 });
 
 const ListItem = React.forwardRef(({ style, ...props }: any) => {
-  return <div style={{ ...style, width: props.context.tableWidth }} {...props} />;
+  return <div style={{ ...style, width: "auto", minWidth: props.context.tableWidth }} {...props} />;
 });
 
 export const Table: FC<ITable> = forwardRef(
@@ -217,7 +217,9 @@ export const Table: FC<ITable> = forwardRef(
         components={{
           Scroller: Scroller as any,
           Item: ListItem as any,
-          Header: () => <div style={{ position: "sticky", minWidth: tableWidth }}>{renderAsFirstRow}</div>,
+          Header: () => (
+            <div style={{ position: "sticky", minWidth: tableWidth, width: "auto" }}>{renderAsFirstRow}</div>
+          ),
         }}
         context={{
           containerWidth,
@@ -225,8 +227,8 @@ export const Table: FC<ITable> = forwardRef(
         }}
         onScroll={onScroll}
         className="league-table"
-        // height={height}
-        style={{ height: 400, minHeight: height }}
+        height={height}
+        style={{ minHeight: height }}
         endReached={debouncedLoadMoreItems}
         data={rows}
         ref={ref as any}
