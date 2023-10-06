@@ -7,6 +7,15 @@ const Bronze = css<ISThead>`
   box-shadow: var(--box-shadow-sticked-table-header);
   position: relative;
   z-index: 1;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 `;
 
 const Silver = css<ISThead>``;

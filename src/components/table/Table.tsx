@@ -265,7 +265,7 @@ export const Table: FC<ITable> = forwardRef(
         ref={containerRef}
         {...getTableProps()}
       >
-        <SThead style={{ width: "auto", minWidth: tableWidth, overflow: "hidden" }} ref={headerRef}>
+        <SThead style={{ width: "auto", overflow: "auto" }} ref={headerRef}>
           {headerGroups.map((headerGroup, headerIndex) => (
             <STr
               style={{ ...rowStyle, width: "auto", minWidth: tableWidth }}
