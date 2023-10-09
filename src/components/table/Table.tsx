@@ -265,7 +265,7 @@ export const Table: FC<ITable> = forwardRef(
       >
         <SThead
           style={{
-            width: rowWidth,
+            width: containerRef?.current?.offsetWidth,
             overflow: "auto",
             position: "relative",
             height: innerHeaderRef?.current?.offsetHeight,
