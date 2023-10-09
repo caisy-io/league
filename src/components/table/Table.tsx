@@ -12,7 +12,6 @@ import { Empty } from "../empty";
 import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
 import { Spinner } from "../spinner";
-import { STableFirstRow } from "./styles/STableFirstRow";
 import { Virtuoso } from "react-virtuoso";
 
 export interface IColumn {
@@ -201,10 +200,11 @@ export const Table: FC<ITable> = forwardRef(
 
     const debouncedLoadMoreItems = useMemo(() => debounce(loadMoreItems, 300), [loadMoreItems]);
 
+    const innerHeaderRef = useRef<HTMLDivElement>(null);
+
     const onScroll = (e) => {
       const scrollLeft = e?.nativeEvent?.target?.scrollLeft;
-
-      headerRef.current.scrollLeft = scrollLeft;
+      (innerHeaderRef.current as HTMLDivElement).style.left = `-${scrollLeft}px`;
     };
 
     const memoItemSize = useMemo(
@@ -217,9 +217,7 @@ export const Table: FC<ITable> = forwardRef(
         components={{
           Scroller: Scroller as any,
           Item: ListItem as any,
-          Header: () => (
-            <div style={{ position: "sticky", minWidth: tableWidth, width: "auto" }}>{renderAsFirstRow}</div>
-          ),
+          Header: () => <div style={{ minWidth: tableWidth, width: "auto" }}>{renderAsFirstRow}</div>,
         }}
         context={{
           containerWidth,
@@ -265,10 +263,19 @@ export const Table: FC<ITable> = forwardRef(
         ref={containerRef}
         {...getTableProps()}
       >
-        <SThead style={{ width: "auto", overflow: "auto" }} ref={headerRef}>
+        <SThead
+          style={{
+            width: "auto",
+            overflow: "auto",
+            position: "relative",
+            height: innerHeaderRef?.current?.offsetHeight,
+          }}
+          ref={headerRef}
+        >
           {headerGroups.map((headerGroup, headerIndex) => (
             <STr
-              style={{ ...rowStyle, width: "auto", minWidth: tableWidth }}
+              ref={innerHeaderRef}
+              style={{ ...rowStyle, width: "auto", minWidth: tableWidth, position: "absolute", top: "0" }}
               key={headerIndex}
               {...headerGroup.getHeaderGroupProps()}
             >
