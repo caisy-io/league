@@ -41,7 +41,6 @@ interface ITableBase {
   empty?: ReactNode;
   tableMinWidth?: number | string;
   tableMaxHeight?: number | string;
-  containerWidth?: number | string;
   tableWidth?: number | string;
 }
 
@@ -84,7 +83,6 @@ export const Table: FC<ITable> = forwardRef(
       renderAsFirstRow,
       empty,
       useConditionalItemSize,
-      containerWidth,
       tableWidth,
     },
     ref,
@@ -93,6 +91,8 @@ export const Table: FC<ITable> = forwardRef(
     const headerRef = useRef<any>({});
     const [scrollerRef, setScrollerRef] = useState<HTMLElement | null>(null);
     const [rowWidth, setRowWidth] = useState<number>();
+    const [containerWidth, setContainerWidth] = useState<number>(0);
+
     const tableRowsRef = useRef<HTMLDivElement>(null);
 
     const [innerColumns, setColumns] = useState<any[]>([]);
@@ -212,6 +212,29 @@ export const Table: FC<ITable> = forwardRef(
       [dataSource, rows, useConditionalItemSize],
     );
 
+    useEffect(() => {
+      if (typeof window === "undefined") return;
+
+      const handleResize = (e) => {
+        const windowWidth = e.target.innerWidth;
+        const rect = containerRef?.current?.getBoundingClientRect?.();
+        const left = rect?.left;
+        const right = rect?.right;
+
+        const startToWindow = windowWidth - left;
+        const endToWindow = windowWidth - right;
+        const maxWidth = windowWidth;
+
+        const containerWidth = Math.max(startToWindow, endToWindow);
+
+        setContainerWidth(Math.min(containerWidth, maxWidth));
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => window.removeEventListener("resize", handleResize);
+    }, [typeof window]);
+
     const TableWithRows = (
       <Virtuoso
         components={{
@@ -259,15 +282,15 @@ export const Table: FC<ITable> = forwardRef(
       <STable
         style={{
           ...style,
+          maxWidth: containerWidth,
         }}
         ref={containerRef}
         {...getTableProps()}
       >
         <SThead
           style={{
-            width: containerRef?.current?.offsetWidth,
-            overflow: "auto",
-            position: "relative",
+            width: "auto",
+            maxWidth: containerWidth,
             height: innerHeaderRef?.current?.offsetHeight,
           }}
           ref={headerRef}
@@ -275,7 +298,7 @@ export const Table: FC<ITable> = forwardRef(
           {headerGroups.map((headerGroup, headerIndex) => (
             <STr
               ref={innerHeaderRef}
-              style={{ ...rowStyle, width: "auto", minWidth: tableWidth, position: "absolute", top: "0" }}
+              style={{ ...rowStyle, minWidth: tableWidth }}
               key={headerIndex}
               {...headerGroup.getHeaderGroupProps()}
             >
