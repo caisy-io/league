@@ -42,7 +42,7 @@ interface ITableBase {
   tableMinWidth?: number | string;
   tableMaxHeight?: number | string;
   tableWidth?: number | string;
-  containerMaxWidth?: number | string;
+  containerMaxWidth?: number;
 }
 
 interface ITableWithItemSize extends ITableBase {
@@ -236,6 +236,23 @@ export const Table: FC<ITable> = forwardRef(
 
       return () => window.removeEventListener("resize", handleResize);
     }, [typeof window, containerMaxWidth]);
+
+    useEffect(() => {
+      if (!containerMaxWidth) return;
+
+      const windowWidth = window?.innerWidth;
+      const rect = containerRef?.current?.getBoundingClientRect?.();
+      const left = rect?.left;
+      const right = rect?.right;
+
+      const startToWindow = windowWidth - left;
+      const endToWindow = windowWidth - right;
+      const maxWidth = windowWidth;
+
+      const containerWidth = Math.max(startToWindow, endToWindow, containerMaxWidth);
+
+      setContainerWidth(Math.min(containerWidth, maxWidth));
+    }, [containerMaxWidth]);
 
     const TableWithRows = (
       <Virtuoso
