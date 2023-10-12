@@ -42,6 +42,7 @@ interface ITableBase {
   tableMinWidth?: number | string;
   tableMaxHeight?: number | string;
   tableWidth?: number | string;
+  containerMaxWidth?: number | string;
 }
 
 interface ITableWithItemSize extends ITableBase {
@@ -84,6 +85,7 @@ export const Table: FC<ITable> = forwardRef(
       empty,
       useConditionalItemSize,
       tableWidth,
+      containerMaxWidth,
     },
     ref,
   ) => {
@@ -91,7 +93,7 @@ export const Table: FC<ITable> = forwardRef(
     const headerRef = useRef<any>({});
     const [scrollerRef, setScrollerRef] = useState<HTMLElement | null>(null);
     const [rowWidth, setRowWidth] = useState<number>();
-    const [containerWidth, setContainerWidth] = useState<number>(0);
+    const [containerWidth, setContainerWidth] = useState<number>(10);
 
     const tableRowsRef = useRef<HTMLDivElement>(null);
 
@@ -233,7 +235,7 @@ export const Table: FC<ITable> = forwardRef(
       window.addEventListener("resize", handleResize);
 
       return () => window.removeEventListener("resize", handleResize);
-    }, [typeof window]);
+    }, [typeof window, containerMaxWidth]);
 
     const TableWithRows = (
       <Virtuoso
@@ -243,7 +245,7 @@ export const Table: FC<ITable> = forwardRef(
           Header: () => <div style={{ minWidth: tableWidth, width: "auto" }}>{renderAsFirstRow}</div>,
         }}
         context={{
-          containerWidth,
+          containerWidth: containerWidth || 100,
           tableWidth,
         }}
         onScroll={onScroll}
