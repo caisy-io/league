@@ -30,7 +30,10 @@ export const AssetImageCard: React.FC<IAssetImageCard> = ({
   return (
     <SAssetImageCard size={size} activated={activated} skeleton={skeleton}>
       <SAssetImage onClick={onImageClick}>{image}</SAssetImage>
-      <SAssetImageRadioContainer onClick={onImageClick}>
+      <SAssetImageRadioContainer onClick={e => {
+        e.stopPropagation();
+        onChange?.(e)
+      }}>
         {skeleton ? (
           <>
             <SSkeleton borderRadius="16px"/>
@@ -38,16 +41,12 @@ export const AssetImageCard: React.FC<IAssetImageCard> = ({
           </>
         ) : (
           <>
-            <div onClick={(e) => {
-              e.stopPropagation();
-            }}>
-              <Checkbox
-                onChange={(e) => {
-                  onChange?.(e);
-                }}
-                checked={activated}
-              />
-            </div>
+            <Checkbox
+              onChange={(e) => {
+                onChange?.(e);
+              }}
+              checked={activated}
+            />
             <SAssetImageLabel title={labelText} activated={activated}>
               {labelText}
             </SAssetImageLabel>
