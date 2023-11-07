@@ -35,6 +35,7 @@ interface ITableBase {
   style?: CSSProperties;
   rowStyle?: CSSProperties;
   onRowClick?: (payload: any) => void;
+  onRowHover?: (payload: any) => void;
   tableOptions?: any;
   onHeaderClick?: (column: any) => Promise<void>;
   renderAsFirstRow?: JSX.Element;
@@ -68,6 +69,7 @@ export const Table: FC<ITable> = forwardRef(
       style,
       rowStyle,
       onRowClick,
+      onRowHover,
       onHeaderClick,
       columns,
       renderAsFirstRow,
@@ -165,8 +167,11 @@ export const Table: FC<ITable> = forwardRef(
 
         return (
           <STr
-            onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
             key={`row-${row.id}`}
+            onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
+            onMouseEnter={() => {
+              onRowHover?.(row);
+            }}
             {...row.getRowProps({
               style: { ...style, width: rowWidth, rowStyle },
             })}
