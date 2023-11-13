@@ -31,6 +31,8 @@ interface ITableBase {
   style?: CSSProperties;
   rowStyle?: CSSProperties;
   onRowClick?: (payload: any) => void;
+  onRowHover?: (payload: any) => void;
+  tableOptions?: any;
   onHeaderClick?: (column: any) => Promise<void>;
   renderAsFirstRow?: JSX.Element;
   ref?: any;
