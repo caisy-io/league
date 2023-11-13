@@ -8,8 +8,6 @@ const Bronze = css<ISTr>`
   align-items: center;
   width: auto;
   box-sizing: border-box;
-  position: absolute;
-  top: 0;
 
   &:hover {
     & [data-role="table-cell"] {

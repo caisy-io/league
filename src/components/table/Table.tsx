@@ -1,13 +1,11 @@
 import React, { CSSProperties, FC, forwardRef, ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { STable } from "./styles/STable";
-import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { STh } from "./styles/STh";
 import { STr } from "./styles/STr";
 import { STd } from "./styles/STd";
 import { STbody } from "./styles/STbody";
 import { SThead } from "./styles/SThead";
 import { STableLoading } from "./styles/STableLoading";
-import { IconAngleDown, IconAngleUp } from "../../icons";
 import { Empty } from "../empty";
 import debounce from "lodash/debounce";
 import { useDimensions } from "../../utils";
@@ -25,7 +23,6 @@ export interface IColumn {
 interface ITableBase {
   columns: IColumn[];
   dataSource: any;
-  globalFilter?: string;
   isNextPageLoading?: boolean;
   loadNextPage?: () => Promise<void>;
   hasNextPage?: boolean;
@@ -34,7 +31,6 @@ interface ITableBase {
   style?: CSSProperties;
   rowStyle?: CSSProperties;
   onRowClick?: (payload: any) => void;
-  tableOptions?: any;
   onHeaderClick?: (column: any) => Promise<void>;
   renderAsFirstRow?: JSX.Element;
   ref?: any;
@@ -69,8 +65,6 @@ export const Table: FC<ITable> = forwardRef(
   (
     {
       dataSource,
-      tableOptions,
-      globalFilter,
       itemSize,
       isNextPageLoading,
       loadNextPage = () => null,
@@ -79,7 +73,6 @@ export const Table: FC<ITable> = forwardRef(
       style,
       rowStyle,
       onRowClick,
-      onHeaderClick,
       columns,
       renderAsFirstRow,
       empty,
@@ -93,7 +86,7 @@ export const Table: FC<ITable> = forwardRef(
     const headerRef = useRef<any>({});
     const [scrollerRef, setScrollerRef] = useState<HTMLElement | null>(null);
     const [rowWidth, setRowWidth] = useState<number>();
-    const [containerWidth, setContainerWidth] = useState<number>(10);
+    const [containerWidth, setContainerWidth] = useState<number | string>("auto");
 
     const tableRowsRef = useRef<HTMLDivElement>(null);
 
@@ -135,38 +128,48 @@ export const Table: FC<ITable> = forwardRef(
       return null;
     }
 
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, setGlobalFilter } = useTable(
-      {
-        columns: innerColumns,
-        data: dataSource,
-        ...(tableOptions ? tableOptions : {}),
-      },
-      useGlobalFilter,
-      useSortBy,
-    );
-
-    useEffect(() => {
-      setGlobalFilter(globalFilter);
-    }, [globalFilter]);
-
     useEffect(() => {
       setRowWidth((scrollerRef as any)?.firstChild?.offsetWidth || "100%");
     }, [scrollerRef, dataSource?.length, (scrollerRef as any)?.firstChild?.offsetWidth]);
 
-    const RenderRow = ({ data, index, style }: any) => {
-      const row = data[index];
-      if (row) {
-        prepareRow(row);
+    const RenderRow = ({ index }: { index: number }) => {
+      const row = dataSource[index];
+      const keys = Object.keys(row);
 
-        return (
-          <STr
-            onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
-            key={`row-${row.id}`}
-            {...row.getRowProps({
-              style: { ...style, rowStyle },
-            })}
-          >
-            {row.cells.map((cell, cellIndex) => {
+      return (
+        <STr onClick={() => (!!onRowClick ? onRowClick(row) : () => {})} key={`row-${row.id}`}>
+          {keys.map((key, keyIndex) => {
+            const column = columns.find((column) => column.key === key);
+            const header = document.getElementById(`header-${keyIndex}`);
+            const headerWidth = header?.offsetWidth || 0;
+            const isLastCell = keyIndex === keys.length - 1;
+
+            const headerStyle = {
+              width: headerWidth,
+              minWidth: headerWidth,
+            };
+
+            console.log({ row, column });
+            return (
+              <STd
+                key={key}
+                style={{
+                  textOverflow: "ellipsis",
+                  overflow: "hidden",
+                  display: "block",
+                  ...(!isLastCell ? headerStyle : {}),
+                  ...row?.[key]?.style,
+                }}
+              >
+                {column?.renderItem?.(row[key], index) || row[key]}
+              </STd>
+            );
+          })}
+        </STr>
+      );
+
+      {
+        /* {row.cells.map((cell, cellIndex) => {
               const header = document.getElementById(`header-${cellIndex}`);
               const headerWidth = header?.offsetWidth || 0;
 
@@ -193,10 +196,9 @@ export const Table: FC<ITable> = forwardRef(
                   {cell.render("Cell")}
                 </STd>
               );
-            })}
-          </STr>
-        );
+            })} */
       }
+
       return null;
     };
 
@@ -206,12 +208,14 @@ export const Table: FC<ITable> = forwardRef(
 
     const onScroll = (e) => {
       const scrollLeft = e?.nativeEvent?.target?.scrollLeft;
+
       (innerHeaderRef.current as HTMLDivElement).style.left = `-${scrollLeft}px`;
+      console.log((innerHeaderRef.current as HTMLDivElement).style.left);
     };
 
     const memoItemSize = useMemo(
       () => (item) => (itemSize as (data: any) => number)(item),
-      [dataSource, rows, useConditionalItemSize],
+      [dataSource, useConditionalItemSize],
     );
 
     useEffect(() => {
@@ -261,16 +265,16 @@ export const Table: FC<ITable> = forwardRef(
           Item: ListItem as any,
           Header: () => <div style={{ minWidth: tableWidth, width: "auto" }}>{renderAsFirstRow}</div>,
         }}
+        totalCount={dataSource.length}
         context={{
-          containerWidth: containerWidth || 100,
-          tableWidth,
+          containerWidth: containerWidth || "auto",
+          tableWidth: tableWidth || "auto",
         }}
         onScroll={onScroll}
         className="league-table"
         height={height}
         style={{ minHeight: height }}
         endReached={debouncedLoadMoreItems}
-        data={rows}
         ref={ref as any}
         scrollerRef={setScrollerRef as any}
         totalListHeightChanged={(height) => {
@@ -283,16 +287,8 @@ export const Table: FC<ITable> = forwardRef(
             setRowWidth((scrollerRef as any)?.firstChild?.offsetWidth);
           }
         }}
-        itemContent={(index, row) => {
-          return (
-            <RenderRow
-              data={rows}
-              index={index}
-              style={{
-                height: useConditionalItemSize ? memoItemSize(row) : itemSize,
-              }}
-            />
-          );
+        itemContent={(index) => {
+          return <RenderRow index={index} />;
         }}
       />
     );
@@ -301,10 +297,9 @@ export const Table: FC<ITable> = forwardRef(
       <STable
         style={{
           ...style,
-          maxWidth: containerWidth,
+          // maxWidth: containerWidth,
         }}
         ref={containerRef}
-        {...getTableProps()}
       >
         <SThead
           style={{
@@ -314,7 +309,24 @@ export const Table: FC<ITable> = forwardRef(
           }}
           ref={headerRef}
         >
-          {headerGroups.map((headerGroup, headerIndex) => (
+          <STr ref={innerHeaderRef} style={{ ...rowStyle, minWidth: tableWidth, position: "absolute" }}>
+            {columns.map((column, columnIndex) => {
+              const id = `header-${columnIndex}`;
+
+              return (
+                <STh
+                  key={columnIndex}
+                  id={id}
+                  style={{
+                    ...column.style,
+                  }}
+                >
+                  {column.header}
+                </STh>
+              );
+            })}
+          </STr>
+          {/* {headerGroups.map((headerGroup, headerIndex) => (
             <STr
               ref={innerHeaderRef}
               style={{ ...rowStyle, minWidth: tableWidth }}
@@ -344,9 +356,9 @@ export const Table: FC<ITable> = forwardRef(
                 );
               })}
             </STr>
-          ))}
+          ))} */}
         </SThead>
-        <STbody {...getTableBodyProps()}>
+        <STbody>
           {loading ? (
             <STableLoading height={height}>
               <Spinner />
