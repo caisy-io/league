@@ -67,7 +67,6 @@ export const Table: FC<ITable> = forwardRef(
   (
     {
       dataSource,
-      itemSize,
       isNextPageLoading,
       loadNextPage = () => null,
       loading,
@@ -78,7 +77,6 @@ export const Table: FC<ITable> = forwardRef(
       columns,
       renderAsFirstRow,
       empty,
-      useConditionalItemSize,
       tableWidth,
       containerMaxWidth,
     },
@@ -92,33 +90,9 @@ export const Table: FC<ITable> = forwardRef(
 
     const tableRowsRef = useRef<HTMLDivElement>(null);
 
-    const [innerColumns, setColumns] = useState<any[]>([]);
-
     const { height: containerHeight } = useDimensions(containerRef);
     const { height: headerHeight } = useDimensions(headerRef);
     const height = containerHeight - headerHeight;
-
-    useEffect(() => {
-      columns &&
-        setColumns(
-          columns.map((column) => {
-            return !!column.renderItem
-              ? {
-                  Header: column.header,
-                  accessor: column.key,
-                  Cell: (cellProps) => (column.renderItem as any)(cellProps.cell.value, cellProps.cell.row.index),
-                  defaultCanSort: column.defaultCanSort,
-                  style: column.style,
-                }
-              : {
-                  Header: column.header,
-                  accessor: column.key,
-                  defaultCanSort: column.defaultCanSort,
-                  style: column.style,
-                };
-          }),
-        );
-    }, [columns]);
 
     // Only load 1 page of items at a time.
     // Pass an empty callback to InfiniteLoader in case it asks us to load more than once.
@@ -151,7 +125,8 @@ export const Table: FC<ITable> = forwardRef(
               minWidth: headerWidth,
             };
 
-            console.log({ row, column });
+            if (!column) return null;
+
             return (
               <STd
                 key={key}
@@ -169,39 +144,6 @@ export const Table: FC<ITable> = forwardRef(
           })}
         </STr>
       );
-
-      {
-        /* {row.cells.map((cell, cellIndex) => {
-              const header = document.getElementById(`header-${cellIndex}`);
-              const headerWidth = header?.offsetWidth || 0;
-
-              const headerStyle = {
-                width: headerWidth,
-                minWidth: headerWidth,
-              };
-
-              const isLastCell = cellIndex === row.cells.length - 1;
-
-              return (
-                <STd
-                  key={`cell-${row.id}-${cellIndex}`}
-                  id={`cell-${cellIndex}`}
-                  style={{
-                    textOverflow: "ellipsis",
-                    overflow: "hidden",
-                    display: "block",
-                    ...(!isLastCell ? headerStyle : {}),
-                    ...cell?.value?.style,
-                  }}
-                  {...cell.getCellProps()}
-                >
-                  {cell.render("Cell")}
-                </STd>
-              );
-            })} */
-      }
-
-      return null;
     };
 
     const debouncedLoadMoreItems = useMemo(() => debounce(loadMoreItems, 300), [loadMoreItems]);
@@ -214,11 +156,6 @@ export const Table: FC<ITable> = forwardRef(
       (innerHeaderRef.current as HTMLDivElement).style.left = `-${scrollLeft}px`;
       console.log((innerHeaderRef.current as HTMLDivElement).style.left);
     };
-
-    const memoItemSize = useMemo(
-      () => (item) => (itemSize as (data: any) => number)(item),
-      [dataSource, useConditionalItemSize],
-    );
 
     useEffect(() => {
       if (typeof window === "undefined") return;
@@ -299,19 +236,19 @@ export const Table: FC<ITable> = forwardRef(
       <STable
         style={{
           ...style,
-          // maxWidth: containerWidth,
+          maxWidth: containerWidth,
         }}
         ref={containerRef}
       >
         <SThead
           style={{
-            width: "auto",
+            width: tableWidth,
             maxWidth: containerWidth,
             height: innerHeaderRef?.current?.offsetHeight,
           }}
           ref={headerRef}
         >
-          <STr ref={innerHeaderRef} style={{ ...rowStyle, minWidth: tableWidth, position: "absolute" }}>
+          <STr ref={innerHeaderRef} style={{ ...rowStyle, minWidth: tableWidth, position: "absolute", width: "100%" }}>
             {columns.map((column, columnIndex) => {
               const id = `header-${columnIndex}`;
 
@@ -328,37 +265,6 @@ export const Table: FC<ITable> = forwardRef(
               );
             })}
           </STr>
-          {/* {headerGroups.map((headerGroup, headerIndex) => (
-            <STr
-              ref={innerHeaderRef}
-              style={{ ...rowStyle, minWidth: tableWidth }}
-              key={headerIndex}
-              {...headerGroup.getHeaderGroupProps()}
-            >
-              {headerGroup.headers.map((column, columnIndex) => {
-                const id = `header-${columnIndex}`;
-
-                return (
-                  <STh
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                    onClick={() => onHeaderClick && onHeaderClick(column)}
-                    key={columnIndex}
-                    id={id}
-                    style={{ ...column.style }}
-                  >
-                    {column.render("Header")}
-                    {column.defaultCanSort !== false && column.isSorted ? (
-                      column.isSortedDesc == "DESC" ? (
-                        <IconAngleDown />
-                      ) : (
-                        <IconAngleUp />
-                      )
-                    ) : null}
-                  </STh>
-                );
-              })}
-            </STr>
-          ))} */}
         </SThead>
         <STbody>
           {loading ? (

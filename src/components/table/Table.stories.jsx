@@ -11,6 +11,7 @@ function TableDemo() {
       name: "testName",
       lastName: "testLastNameas,mdnasmdnas,mdnas,mdn,masdn,masdajhsdasdgasd",
       id: 0,
+      test: { test: 1 },
       actions: {
         id: 0,
       },
@@ -18,13 +19,13 @@ function TableDemo() {
     ...new Array(PAGE_SIZE).fill(true).map((__, idx) => ({
       name: `testName ${1 + idx}`,
       lastName: `testLastName ${1 + idx}`,
-      actions: { id: 1 + idx },
       id: 1 + idx,
+      actions: { id: 1 + idx },
     })),
   ]);
   const columns = [
     {
-      header: "Name",
+      header: <div>Name</div>,
       key: "name", // key is the "key" in the data
     },
     {
@@ -36,7 +37,7 @@ function TableDemo() {
       key: "id",
     },
     {
-      header: "Actions",
+      header: <div>Actions</div>,
       key: "actions",
       renderItem: (data) => (
         <div style={{ display: "flex", gap: 8 }}>
@@ -90,7 +91,7 @@ function TableDemo() {
       />
       <Table
         // containerWidth={1200}
-        tableWidth={1400}
+        // tableWidth={1400}
         useConditionalItemSize
         renderAsFirstRow={
           <div
