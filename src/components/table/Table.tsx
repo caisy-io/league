@@ -110,22 +110,18 @@ export const Table: FC<ITable> = forwardRef(
 
     const RenderRow = ({ index }: { index: number }) => {
       const row = dataSource[index];
-      const keys = Object.keys(row);
 
       return (
         <STr onClick={() => (!!onRowClick ? onRowClick(row) : () => {})} key={`row-${row.id}`}>
-          {keys.map((key, keyIndex) => {
-            const column = columns.find((column) => column.key === key);
+          {columns.map(({ key, renderItem }, keyIndex) => {
             const header = document.getElementById(`header-${keyIndex}`);
             const headerWidth = header?.offsetWidth || 0;
-            const isLastCell = keyIndex === keys.length - 1;
+            const isLastCell = keyIndex === columns.length - 1;
 
             const headerStyle = {
               width: headerWidth,
               minWidth: headerWidth,
             };
-
-            if (!column) return null;
 
             return (
               <STd
@@ -138,7 +134,7 @@ export const Table: FC<ITable> = forwardRef(
                   ...row?.[key]?.style,
                 }}
               >
-                {column?.renderItem?.(row[key], index) || row[key]}
+                {renderItem?.(row[key], index) || row[key]}
               </STd>
             );
           })}
@@ -154,7 +150,6 @@ export const Table: FC<ITable> = forwardRef(
       const scrollLeft = e?.nativeEvent?.target?.scrollLeft;
 
       (innerHeaderRef.current as HTMLDivElement).style.left = `-${scrollLeft}px`;
-      console.log((innerHeaderRef.current as HTMLDivElement).style.left);
     };
 
     useEffect(() => {
