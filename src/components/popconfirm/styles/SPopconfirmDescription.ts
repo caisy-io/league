@@ -2,9 +2,10 @@ import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
 const Bronze = css`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  color: var(--text-03);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 14px;
 `;
 
 const Silver = css``;
@@ -15,7 +16,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SPopconfirmButtons = styled.div`
+export const SPopconfirmDescription = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
