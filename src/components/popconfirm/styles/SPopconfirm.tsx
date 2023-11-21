@@ -1,20 +1,16 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
 
-interface ISPopconfirm {}
-
-const CSSClosed = css`
-  display: none;
-`;
-
-const Bronze = css<ISPopconfirm>`
-  background-color: var(--ui-01);
+const Bronze = css`
+  display: flex;
+  border-radius: 8px;
+  width: 312px;
   padding: 16px;
-  border-radius: 6px;
-  width: max-content;
-  z-index: 120;
-  box-shadow: 0 10px 30px 0 rgba(89, 106, 122, 0.2);
-  ${({ opened }) => !opened && CSSClosed}
+  background-color: var(--ui-01);
+  gap: 8px;
+  box-sizing: border-box;
+  flex-direction: column;
+  box-shadow: var(--box-shadow-light-pop-elevation);
 `;
 
 const Silver = css``;

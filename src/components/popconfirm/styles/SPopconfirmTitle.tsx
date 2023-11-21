@@ -1,13 +1,10 @@
 import styled, { css } from "styled-components";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles/mediaquerys";
+import { CSSProgressiveBody03Semibold } from "../../../constants/styles";
 
 const Bronze = css`
-  font-size: 16px;
-  color: var(--black);
-  font-family: Inter;
-
-  display: flex;
-  align-items: center;
+  color: var(--text-01);
+  ${CSSProgressiveBody03Semibold};
 `;
 
 const Silver = css``;
