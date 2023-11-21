@@ -13,6 +13,8 @@ function PopconfirmDemo() {
       };
     
       const title = "Are you sure to delete this item?";
+      const description = 'You are going to delete this item';
+      const message = <><IconError /> Item was used in 14 documents</>;
     
       return (
         <div
@@ -25,16 +27,16 @@ function PopconfirmDemo() {
             justifyContent: "center",
           }}
         >
-          <Popconfirm icon={IconError} placement="right" onCancel={onCancel} onConfirm={onConfirm} title={title}>
+          <Popconfirm message={message} placement="right" onCancel={onCancel} onConfirm={onConfirm} title={title} description={description}>
             <Button>Right</Button>
           </Popconfirm>
-          <Popconfirm icon={IconError} placement="left" onCancel={onCancel} onConfirm={onConfirm} title={title}>
+          <Popconfirm message={message} placement="left" onCancel={onCancel} onConfirm={onConfirm} title={title} description={description}>
             <Button>Left</Button>
           </Popconfirm>
-          <Popconfirm icon={IconError} placement="top" onCancel={onCancel} onConfirm={onConfirm} title={title}>
+          <Popconfirm message={message} placement="top" onCancel={onCancel} onConfirm={onConfirm} title={title} description={description}>
             <Button>Top</Button>
           </Popconfirm>
-          <Popconfirm icon={IconError} placement="bottom" onCancel={onCancel} onConfirm={onConfirm} title={title}>
+          <Popconfirm message={message} placement="bottom" onCancel={onCancel} onConfirm={onConfirm} title={title} description={description}>
             <Button>Bottom</Button>
           </Popconfirm>
         </div>

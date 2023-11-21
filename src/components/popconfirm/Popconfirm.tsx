@@ -3,16 +3,18 @@ import { SPopconfirm } from "./styles/SPopconfirm";
 import { SPopconfirmWrapper } from "./styles/SPopconfirmWrapper";
 import { SPopconfirmTitle } from "./styles/SPopconfirmTitle";
 import { SPopconfirmButtons } from "./styles/SPopconfirmButtons";
-import { SPopconfirmIcon } from "./styles/SPopconfirmIcon";
 import { Button } from "../button/Button";
 import { Popover, TPlacement } from "../popover/Popover";
+import { SPopconfirmDescription } from "./styles/SPopconfirmDescription";
+import { SPopconfirmMessage } from "./styles/SPopconfirmMessage";
 interface IPopconfirm {
   title: string | JSX.Element;
+  description?: ReactNode;
   disabled?: boolean;
   onConfirm: (() => any) | ((e: any) => any);
   onCancel?: (() => any) | ((e: any) => any);
   placement?: TPlacement | undefined;
-  icon?: React.FC;
+  message?: ReactNode;
   okText?: string | ReactNode;
   cancelText?: string | ReactNode;
   wrapperStyle?: React.CSSProperties;
@@ -52,15 +54,14 @@ export const Popconfirm: React.FC<IPopconfirm> = ({ ...props }) => {
       >
         {() => (
           <SPopconfirm opened={!props.disabled} onClick={(e) => e.stopPropagation()}>
-            <SPopconfirmTitle>
-              {props.icon && <SPopconfirmIcon>{props.icon({ ...props })}</SPopconfirmIcon>}
-              {props.title}
-            </SPopconfirmTitle>
+            {props.description && <SPopconfirmDescription>{props.description}</SPopconfirmDescription>}
+            <SPopconfirmTitle>{props.title}</SPopconfirmTitle>
+            {props.message && <SPopconfirmMessage>{props.message}</SPopconfirmMessage>}
             <SPopconfirmButtons>
-              <Button type="tertiary" onClick={(e) => handleClickCancel(e)}>
-                {props.cancelText || "Cancel"}
+              <Button type="danger" onClick={(e) => handleClickOk(e)}>
+                {props.okText || "OK"}
               </Button>
-              <Button onClick={(e) => handleClickOk(e)}>{props.okText || "OK"}</Button>
+              <Button onClick={(e) => handleClickCancel(e)}>{props.cancelText || "Cancel"}</Button>
             </SPopconfirmButtons>
           </SPopconfirm>
         )}
