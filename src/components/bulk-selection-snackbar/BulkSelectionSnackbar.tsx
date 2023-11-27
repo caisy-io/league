@@ -1,13 +1,12 @@
 import React, { FC, ReactNode } from "react";
 import { IconClose } from "../../icons";
-import { SBulkSelectionSnackbarErrorsBadge } from "./styles/SBulkSelectionSnackbarErrorsBadge";
 import { SBulkSelectionSnackbar } from "./styles/SBulkSelectionSnackbar";
 import { SBulkSelectionSnackbarChildren } from "./styles/SBulkSelectionSnackbarChildren";
 import { SBulkSelectionSnackbarCloseButton } from "./styles/SBulkSelectionSnackbarCloseButton";
 import { SBulkSelectionSnackbarErrors } from "./styles/SBulkSelectionSnackbarErrors";
 import { SBulkSelectionSnackbarSelected } from "./styles/SBulkSelectionSnackbarSelected";
-import { SBulkSelectionSnackbarSelectedBadge } from "./styles/SBulkSelectionSnackbarSelectedBadge";
 import { SBulkSelectionSnackbarWrapper } from "./styles/SBulkSelectionSnackbarWrapper";
+import { Badge, EBadgePosition } from "../badge";
 
 interface IBulkSelectionSnackbar {
   selectedItems: number;
@@ -34,12 +33,12 @@ export const BulkSelectionSnackbar: FC<IBulkSelectionSnackbar> = ({
     <SBulkSelectionSnackbarWrapper>
       <SBulkSelectionSnackbar>
         <SBulkSelectionSnackbarSelected>
-          <SBulkSelectionSnackbarSelectedBadge>{selectedItems}</SBulkSelectionSnackbarSelectedBadge>
+          <Badge value={`${selectedItems}`} type="regular" size="small" position={EBadgePosition.Center} />
           {selectedItems !== 1 ? itemsSelectedText ?? "items selected" : itemSelectedText ?? "item selected"}
         </SBulkSelectionSnackbarSelected>
         {errors > 0 && (
           <SBulkSelectionSnackbarErrors>
-            <SBulkSelectionSnackbarErrorsBadge>{errors}</SBulkSelectionSnackbarErrorsBadge>
+            <Badge value={`${errors}`} type="white" size="micro" position={EBadgePosition.Center} />
             {errors !== 1 ? errorsOccurredText ?? "errors occurred" : errorOccurredText ?? "error occurred"}
           </SBulkSelectionSnackbarErrors>
         )}
