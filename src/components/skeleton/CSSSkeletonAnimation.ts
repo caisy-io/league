@@ -3,9 +3,14 @@ import { css } from "styled-components";
 export const CSSSkeletonAnimation = css`
   @keyframes skeleton-pulse {
     0% {
-      background-color: hsl(200, 20%, 70%);
+      background-color: hsl(202, 31%, 93%);
     }
-
+    25% {
+      background-color: hsl(202, 31%, 95%);
+    }
+    75% {
+      background-color: hsl(202, 31%, 90%);
+    }
     100% {
       background-color: hsl(202, 31%, 93%);
     }
