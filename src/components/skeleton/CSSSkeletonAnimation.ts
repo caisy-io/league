@@ -22,6 +22,6 @@ export const CSSSkeletonAnimation = css`
     width: 100%;
     height: 100%;
     opacity: 0.6;
-    animation: skeleton-pulse 1s linear infinite alternate;
+    animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 `;
