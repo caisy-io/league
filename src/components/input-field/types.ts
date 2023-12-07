@@ -20,7 +20,7 @@ export interface IInputFieldProps {
   primary?: boolean;
   outsideWrapper?: boolean;
   wrapperBgColor?: string;
-  onCommentsClick?: () => void;
+  onCommentsClick?: ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
   commentsCount?: number;
 }
 
