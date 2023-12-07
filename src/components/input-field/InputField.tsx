@@ -1,6 +1,6 @@
 import {FC, useCallback, useState} from "react";
 import {Tooltip} from "../tooltip";
-import {IconQuestionCircle, IconChevronDown} from "../../icons";
+import {IconQuestionCircle, IconChevronDown, IconChat} from "../../icons";
 import {ErrorsDropdown} from "./ErrorsDropdown";
 import {SFieldInputOutsideWrapper} from "./styles/SFieldInputOutsideWrapper";
 import {SFieldInputWrapper} from "./styles/SFieldInputWrapper";
@@ -13,6 +13,8 @@ import {SFieldDescription} from "./styles/SFieldDescription";
 import {IInputFieldProps} from "./types";
 import {ClickOutside} from "../../utils";
 import {IconPrimaryKeyStar} from "../../icons/IconPrimaryKeyStar";
+import { SFieldInputCommentsWrapper } from "./styles/SFieldInputCommentsWrapper";
+import { Badge, EBadgePosition } from "../badge";
 
 export const InputField: FC<IInputFieldProps> = ({
                                                    title,
@@ -34,6 +36,8 @@ export const InputField: FC<IInputFieldProps> = ({
                                                    onClickOutside = () => {
                                                    },
                                                    primary,
+                                                   onCommentsClick,
+                                                   commentsCount
                                                  }) => {
   const [isOpen, setOpen] = useState(true);
   
@@ -67,6 +71,21 @@ export const InputField: FC<IInputFieldProps> = ({
           </div>
           <ErrorsDropdown errorsText={errorsText} errorText={errorText} errors={errors}/>
           {usersListComponent}
+          <SFieldInputCommentsWrapper>
+       
+          {commentsCount ? (
+            <Badge position={EBadgePosition.TopRight} size='small' value={`${commentsCount}`} type='important'>
+              <IconButton size='small' type="secondary" onClick={onCommentsClick} activated={isOpen}>
+                <IconChat size={20}/>
+              </IconButton>
+            </Badge>
+          ) : (
+            <IconButton size='small' type="secondary" onClick={onCommentsClick} activated={isOpen}>
+              <IconChat size={20}/>
+            </IconButton>
+          )}
+     
+          </SFieldInputCommentsWrapper>
           <SFieldDisplayButton data-display-button isOpen={isOpen}>
             <IconButton size='small' type="secondary" onClick={toggleOpen} activated={isOpen}>
               <IconChevronDown size={20}/>
