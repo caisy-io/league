@@ -75,12 +75,12 @@ export const InputField: FC<IInputFieldProps> = ({
        
           {commentsCount ? (
             <Badge position={EBadgePosition.TopRight} size='small' value={`${commentsCount}`} type='important'>
-              <IconButton size='small' type="secondary" onClick={onCommentsClick} activated={isOpen}>
+              <IconButton size='small' type="secondary" onClick={onCommentsClick}>
                 <IconChat size={20}/>
               </IconButton>
             </Badge>
           ) : (
-            <IconButton size='small' type="secondary" onClick={onCommentsClick} activated={isOpen}>
+            <IconButton size='small' type="secondary" onClick={onCommentsClick}>
               <IconChat size={20}/>
             </IconButton>
           )}
