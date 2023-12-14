@@ -167,7 +167,7 @@ export const Table: FC<ITable> = forwardRef(
 
         const containerWidth = Math.max(startToWindow, endToWindow);
 
-        setContainerWidth(Math.min(containerWidth, maxWidth));
+        setContainerWidth(Math.min(containerWidth, maxWidth, containerMaxWidth || 999999));
       };
 
       window.addEventListener("resize", handleResize);
