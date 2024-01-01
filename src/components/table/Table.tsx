@@ -74,6 +74,7 @@ export const Table: FC<ITable> = forwardRef(
       style,
       rowStyle,
       onRowClick,
+      onRowHover,
       columns,
       renderAsFirstRow,
       empty,
@@ -96,7 +97,7 @@ export const Table: FC<ITable> = forwardRef(
 
     // Only load 1 page of items at a time.
     // Pass an empty callback to InfiniteLoader in case it asks us to load more than once.
-    const loadMoreItems = isNextPageLoading ? () => {} : loadNextPage;
+    const loadMoreItems = isNextPageLoading ? () => { } : loadNextPage;
 
     // Every row is loaded except for our loading indicator row.
     // const isItemLoaded = (index) => !props.hasNextPage || index < props.dataSource.length;
@@ -112,7 +113,13 @@ export const Table: FC<ITable> = forwardRef(
       const row = dataSource[index];
 
       return (
-        <STr onClick={() => (!!onRowClick ? onRowClick(row) : () => {})} key={`row-${row.id}`}>
+        <STr
+          onClick={() => (!!onRowClick ? onRowClick(row) : () => { })}
+          onMouseEnter={() => {
+            onRowHover?.(row);
+          }}
+          key={`row-${row.id}`}
+        >
           {columns.map(({ key, renderItem }, keyIndex) => {
             const header = document.getElementById(`header-${keyIndex}`);
             const headerWidth = header?.offsetWidth || 0;
