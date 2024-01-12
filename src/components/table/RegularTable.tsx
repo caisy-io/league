@@ -27,6 +27,7 @@ export const RegularTable: FC<ITable> = forwardRef(
       columns,
       renderAsFirstRow,
       empty,
+      onRowHover,
     },
     ref,
   ) => {
@@ -78,7 +79,11 @@ export const RegularTable: FC<ITable> = forwardRef(
       const row = dataSource[index];
 
       return (
-        <STr onClick={() => (!!onRowClick ? onRowClick(row) : () => {})} key={`row-${row.id}`}>
+        <STr
+          onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
+          onHover={() => onRowHover?.(row)}
+          key={`row-${row.id}`}
+        >
           {columns.map(({ key, renderItem }, keyIndex) => {
             const header = document.getElementById(`header-${keyIndex}`);
             const headerWidth = header?.offsetWidth || 0;
