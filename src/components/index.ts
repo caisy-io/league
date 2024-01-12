@@ -36,6 +36,7 @@ export * from "./list-item-legacy";
 export * from "./menu-dnd";
 export * from "./menu-item-nestable-as-function";
 export * from "./message";
+export * from "./micro-information-label";
 export * from "./modal";
 export * from "./movable";
 export * from "./popconfirm";
