@@ -81,7 +81,7 @@ export const RegularTable: FC<ITable> = forwardRef(
       return (
         <STr
           onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
-          onHover={() => onRowHover?.(row)}
+          onMouseEnter={() => onRowHover?.(row)}
           key={`row-${row.id}`}
         >
           {columns.map(({ key, renderItem }, keyIndex) => {
