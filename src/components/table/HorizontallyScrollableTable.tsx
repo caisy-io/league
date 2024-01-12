@@ -56,7 +56,7 @@ export const HorizontallyScrollableTable: FC<ITable> = forwardRef(
 
     // Only load 1 page of items at a time.
     // Pass an empty callback to InfiniteLoader in case it asks us to load more than once.
-    const loadMoreItems = isNextPageLoading || !hasNextPage ? () => {} : loadNextPage;
+    const loadMoreItems = isNextPageLoading || hasNextPage === false ? () => {} : loadNextPage;
 
     // Every row is loaded except for our loading indicator row.
     // const isItemLoaded = (index) => !props.hasNextPage || index < props.dataSource.length;
