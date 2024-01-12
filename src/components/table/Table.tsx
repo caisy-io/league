@@ -26,6 +26,7 @@ interface ITableBase {
   tableWidth?: number | string;
   containerMaxWidth?: number;
   isHorizontallyScrollable?: boolean;
+  hasNextPage?: boolean;
   onRowHover?: (payload: any) => void;
 }
 
