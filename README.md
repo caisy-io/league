@@ -1,5 +1,5 @@
 # league
 
 STORYBOOK Deployment:
-https://league.vercel.app/?path=/story/example-introduction--page
+https://league.vercel.app/?path=/docs/components-activeuseravatar--docs
  
