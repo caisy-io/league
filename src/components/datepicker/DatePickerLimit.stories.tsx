@@ -1,12 +1,12 @@
 import React from "react";
 import { TDates } from "./context/DatePickerContext";
 import { DatePicker } from "./DatePicker";
+import dayjs from "dayjs";
 
-// Create new Date instance
-var minDate = new Date()
-minDate.setDate(minDate.getDate() + 1)
-var maxDate = new Date()
-maxDate.setDate(minDate.getDate() + 10)
+const a = dayjs();
+const minDate = a.add(-14, "day").toDate();
+const maxDate = a.add(30, "day").toDate();
+
 
 const Template = ({
   active = false,
