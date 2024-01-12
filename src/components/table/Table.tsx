@@ -51,3 +51,4 @@ export const Table: FC<ITable> = forwardRef(({ isHorizontallyScrollable, ...prop
     </>
   );
 });
+
