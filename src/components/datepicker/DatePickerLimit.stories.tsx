@@ -25,10 +25,10 @@ const Template = ({
   <DatePicker
     initialDate={initialDate}
     withoutMonthsNavigation={withoutMonthsNavigation}
-    onDayCreate={(dayElem) => {
-      if (Math.random() > 0.2) return;
-      dayElem.classList.add("has-badge");
-    }}
+    // onDayCreate={(dayElem) => {
+    //   if (Math.random() > 0.2) return;
+    //   dayElem.classList.add("has-badge");
+    // }}
     locale={locale}
     withDefaultActive={active}
     withRange={range}

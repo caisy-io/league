@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {CSSProgressiveBody03Medium} from "../../../constants/styles/design-tokens/fonts/CSSTypographies";
 
-export const SDatePickerButton = styled.button`
+export const SDatePickerButton = styled.button<{isClickable: boolean}>`
   display: flex;
   align-items: center;
   ${CSSProgressiveBody03Medium};
@@ -10,7 +10,7 @@ export const SDatePickerButton = styled.button`
   border: none;
   background: none;
   outline: none;
-  cursor: pointer;
+  ${(isClickable: boolean) => isClickable ? `cursor: pointer;` : `cursor: auto;`};
   padding: 0;
   svg {
     width: 16px;

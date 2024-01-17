@@ -228,6 +228,25 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   const clickOutsideMenuYear = useClickOutside((e) => {
     !yearRefContainer.current?.contains(e.target) && setShowYearMenu(false);
   });
+  const yearsToShow = [...new Array(16)]
+    .map((_, index) => {
+      return dayjs()
+        .add(-5 + index, "year")
+        .year();
+    })
+    .filter((year) => {
+      if (minDate && year < dayjs(minDate).year()) return false;
+      if (maxDate && year > dayjs(maxDate).year()) return false;
+
+      return true;
+    });
+
+const monthsToShow = dayjs.months().filter((_, index) => {
+    if (minDate && dayjs(minDate).year() === +calendarYear && index < dayjs(minDate).month()) return false;
+    if (maxDate && dayjs(maxDate).year() === +calendarYear && index > dayjs(maxDate).month()) return false;
+
+    return true;
+});    
 
   const DatePickerContainer = !loadingRef && (
     <SDatePickerContainer withoutMonthsNavigation={withoutMonthsNavigation}>
@@ -240,9 +259,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
               onClick={() => {
                 const currentMonth = (flatRef.current as Flatpickr)?.flatpickr?.currentMonth;
                 (flatRef.current as Flatpickr)?.flatpickr?.jumpToDate(
-                  dayjs(new Date(+calendarYear, currentMonth))
-                    .subtract(1, "month")
-                    .valueOf(),
+                  dayjs(new Date(+calendarYear, currentMonth)).subtract(1, "month").valueOf(),
                   true,
                 );
               }}
@@ -253,18 +270,20 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
           <SDatePickerMonthAndYear>
             <SDatePickerMonthContainer ref={monthRefContainer}>
               <SDatePickerButton
+                as={monthsToShow.length > 1 ? "button" : "div"}
+                isClickable={monthsToShow.length > 1}
                 onClick={(e) => {
                   e.stopPropagation();
                   setShowMonthMenu(!showMonthMenu);
                 }}
               >
                 {calendarMonth}
-                <IconAngleDown />
+                {monthsToShow.length > 1 && <IconAngleDown />}
               </SDatePickerButton>
-              {showMonthMenu && (
-                <SDatePickerMenuContainer onMouseDownCapture={clickOutsideMenuMonth}>
+              {monthsToShow.length > 1 && showMonthMenu && (
+                <SDatePickerMenuContainer itemCount={monthsToShow.length} onMouseDownCapture={clickOutsideMenuMonth}>
                   <Scrollbar>
-                    {dayjs.months().map((month, index) => (
+                    {monthsToShow.map((month, index) => (
                       <SDatePickerMenuItem
                         key={month}
                         onClick={() => {
@@ -281,20 +300,19 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
             </SDatePickerMonthContainer>
             <SDatePickerYearContainer ref={yearRefContainer}>
               <SDatePickerButton
+                as={yearsToShow.length > 1 ? "button" : "div"}
+                isClickable={yearsToShow.length > 1}
                 onClick={() => {
                   setShowYearMenu(!showYearMenu);
                 }}
               >
                 {calendarYear}
-                <IconAngleDown />
+                {yearsToShow.length > 1 && <IconAngleDown />}
               </SDatePickerButton>
-              {showYearMenu && (
-                <SDatePickerMenuContainer onMouseDownCapture={clickOutsideMenuYear}>
+              {yearsToShow.length > 1 && showYearMenu && (
+                <SDatePickerMenuContainer itemCount={yearsToShow.length} onMouseDownCapture={clickOutsideMenuYear}>
                   <Scrollbar>
-                    {[...new Array(16)].map((_, index) => {
-                      const year = dayjs()
-                        .add(-5 + index, "year")
-                        .year();
+                    {yearsToShow.map((year) => {
                       return (
                         <SDatePickerMenuItem
                           key={year}
@@ -319,9 +337,7 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
               onClick={() => {
                 const currentMonth = (flatRef.current as Flatpickr)?.flatpickr?.currentMonth;
                 (flatRef.current as Flatpickr)?.flatpickr?.jumpToDate(
-                  dayjs(new Date(+calendarYear, currentMonth))
-                    .add(1, "month")
-                    .valueOf(),
+                  dayjs(new Date(+calendarYear, currentMonth)).add(1, "month").valueOf(),
                   true,
                 );
               }}
@@ -369,8 +385,14 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
           onDayCreate={(_, __, ___, data) => onDayCreate?.(data)}
           options={{
             inline: true,
-            minDate: minDate,
-            maxDate: maxDate,
+            // minDate: minDate,
+            // maxDate: maxDate,
+            disable: [
+              function (date) {
+                if (minDate && date < minDate) return true;
+                if (maxDate && date > maxDate) return true;
+              },
+            ],
             mode: `${withRange && isRange ? "range" : "single"}`,
             locale: {
               firstDayOfWeek: 1,

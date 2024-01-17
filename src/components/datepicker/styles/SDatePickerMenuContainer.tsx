@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {SScrollbar} from "../../scrollbar/styles/SScrollbar";
 
-const SDatePickerMenuContainer = styled.div`
+const SDatePickerMenuContainer = styled.div<{itemCount?: number }>`
   background-color: var(--ui-01);
   border-radius: 8px;
   overflow: hidden;
@@ -13,9 +13,7 @@ const SDatePickerMenuContainer = styled.div`
   top: calc(100% + 8px);
   right: 0;
   ${SScrollbar} {
-    height: 150px;
-    
-    
+    height: ${({itemCount}) =>( !itemCount || itemCount > 6) ? "150px" : `${itemCount * 24}px}`};
   }
 `;
 
