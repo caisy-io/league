@@ -1,0 +1,1 @@
+export { MicroInformationLabel } from "./MicroInformationLabel";
