@@ -74,11 +74,13 @@ export const InputField: FC<IInputFieldProps> = ({
           <SFieldInputCommentsWrapper>
        
           {commentsCount ? (
-            <Badge position={EBadgePosition.TopRight} size='small' value={`${commentsCount}`} type='important'>
-              <IconButton size='small' type="secondary" onClick={onCommentsClick}>
-                <IconChat size={20}/>
-              </IconButton>
-            </Badge>
+            <div onClick={onCommentsClick}>
+              <Badge position={EBadgePosition.TopRight} size='small' value={`${commentsCount}`} type='important'>
+                <IconButton size='small' type="secondary">
+                  <IconChat size={20}/>
+                </IconButton>
+              </Badge>
+            </div>
           ) : (
             <IconButton size='small' type="secondary" onClick={onCommentsClick}>
               <IconChat size={20}/>
