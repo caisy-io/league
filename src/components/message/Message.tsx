@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { createRoot }  from 'react-dom/client';
+import { createRoot } from "react-dom/client";
 import { NotificationSnackbar } from "../notification-snackbar/NotificationSnackbar";
 import { GSMessage } from "./styles/GSMessage";
 import { IMessageConfig } from "./types";
+import { toast } from "sonner";
 
 export enum EMessageType {
   Success = "success",
   Error = "error",
   Info = "info",
 }
-
 
 // I created the Message and MessageWrapper components in this file,
 // because we don't use it anywhere else,
@@ -75,37 +75,43 @@ const renderMessage = (children: any, config?: any, type?: EMessageType) => {
     action,
   };
 
-  const nextDiv = config?.rootElementId ? document.getElementById(config.rootElementId) : document.getElementById("root") || document.getElementById("__next");
+  return toast.custom(() => {
+    return <Message {...msgConfig} />;
+  });
 
-  if (!nextDiv) {
-    console.warn("no root div found for message");
-    return;
-  }
+  // const nextDiv = config?.rootElementId
+  //   ? document.getElementById(config.rootElementId)
+  //   : document.getElementById("root") || document.getElementById("__next");
 
-  let msgWrapper = document.querySelector(".caisy-message-wrapper");
-  if (!msgWrapper) {
-    msgWrapper = document.createElement("div");
-    msgWrapper.classList.add("caisy-message-wrapper");
-    nextDiv.append(msgWrapper);
+  // if (!nextDiv) {
+  //   console.warn("no root div found for message");
+  //   return;
+  // }
 
-    const msgWrapperStyles = document.createElement("div");
-    nextDiv.append(msgWrapperStyles);
-    const root = createRoot(msgWrapperStyles as any);
-    root.render(<GSMessage />);
-  }
+  // let msgWrapper = document.querySelector(".caisy-message-wrapper");
+  // if (!msgWrapper) {
+  //   msgWrapper = document.createElement("div");
+  //   msgWrapper.classList.add("caisy-message-wrapper");
+  //   nextDiv.append(msgWrapper);
 
-  if (msgWrapper) {
-    const msgContainer = document.createElement("div");
-    const msgContainerId = `caisy-message-container-${msgConfig.id}`;
-    msgContainer.id = msgContainerId;
+  //   const msgWrapperStyles = document.createElement("div");
+  //   nextDiv.append(msgWrapperStyles);
+  //   const root = createRoot(msgWrapperStyles as any);
+  //   root.render(<GSMessage />);
+  // }
 
-    msgWrapper.prepend(msgContainer);
-    const root = createRoot(msgContainer);
-    root.render(<Message {...msgConfig} />);
-    setTimeout(() => {
-      msgContainer?.remove();
-    }, msgConfig?.duration + 350);
-  }
+  // if (msgWrapper) {
+  //   const msgContainer = document.createElement("div");
+  //   const msgContainerId = `caisy-message-container-${msgConfig.id}`;
+  //   msgContainer.id = msgContainerId;
+
+  //   msgWrapper.prepend(msgContainer);
+  //   const root = createRoot(msgContainer);
+  //   root.render(<Message {...msgConfig} />);
+  //   setTimeout(() => {
+  //     msgContainer?.remove();
+  //   }, msgConfig?.duration + 350);
+  // }
 };
 
 message.success = function MessageSuccess(children: any, config?: IMessageConfig) {
