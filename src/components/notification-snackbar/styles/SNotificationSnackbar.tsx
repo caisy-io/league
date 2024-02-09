@@ -5,7 +5,7 @@ const CSSError = css`
   background-color: var(--ui-supportive-01);
 `;
 
-const Bronze = css<{styleOverwrite?: any; exit?:boolean; error?: any}>`
+const Bronze = css<{ styleOverwrite?: any; exit?: boolean; error?: any }>`
   background-color: rgba(0, 0, 0, 0.74);
   border-radius: 0.25rem;
   display: flex;
@@ -27,29 +27,6 @@ const Bronze = css<{styleOverwrite?: any; exit?:boolean; error?: any}>`
   }
 
   ${(props) => (props.error ? CSSError : "")};
-  animation: ${(props) => (props.exit ? "SlideRight 1000ms forwards" : "SlideTop 350ms forwards")};
-
-  @keyframes SlideTop {
-    0% {
-      transform: translateY(110%);
-    }
-
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes SlideRight {
-    0% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-
-    100% {
-      transform: translateX(30%);
-      opacity: 0;
-    }
-  }
 
   ${({ styleOverwrite }) => (styleOverwrite ? styleOverwrite : "")};
 `;
@@ -62,7 +39,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SNotificationSnackbar = styled.div<{styleOverwrite?: any; exit?:boolean; error?: any}>`
+export const SNotificationSnackbar = styled.div<{ styleOverwrite?: any; exit?: boolean; error?: any }>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

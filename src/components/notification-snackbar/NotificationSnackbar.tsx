@@ -10,7 +10,6 @@ import { SNotificationSnackbarAction } from "./styles/SNotificationSnackbarActio
 import { SNotificationSnackbarLabel } from "./styles/SNotificationSnackbarLabel";
 
 export interface INotificationSnackbarProps {
-  exit: boolean;
   icon?: ReactNode;
   action?: (() => void) | React.ReactNode;
   content: string;
@@ -20,7 +19,6 @@ export interface INotificationSnackbarProps {
 }
 
 export const NotificationSnackbar: React.FC<INotificationSnackbarProps> = ({
-  exit,
   icon,
   action,
   content,
@@ -29,7 +27,7 @@ export const NotificationSnackbar: React.FC<INotificationSnackbarProps> = ({
   styleOverwrite,
 }) => {
   return (
-    <SNotificationSnackbar exit={exit} error={error} styleOverwrite={styleOverwrite}>
+    <SNotificationSnackbar error={error} styleOverwrite={styleOverwrite}>
       <SFlex>
         <SIcon icon={icon} error={error} success={success}>
           {icon}

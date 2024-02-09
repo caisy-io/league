@@ -22,13 +22,14 @@ export interface IMessage {
   duration: number;
   icon?: React.ReactNode;
   actionClick?: () => void;
+  dismiss: () => void;
 }
 
 const Message: React.FC<IMessage> = (msgConfig: IMessage) => {
-  const [exit, setExit] = useState(false);
+  // const [exit, setExit] = useState(false);
 
   setTimeout(() => {
-    setExit(true);
+    msgConfig.dismiss();
   }, msgConfig.duration);
 
   // const handleCloseMessage = () => {
@@ -40,7 +41,6 @@ const Message: React.FC<IMessage> = (msgConfig: IMessage) => {
 
   return (
     <NotificationSnackbar
-      exit={exit}
       content={msgConfig.content}
       success={msgConfig.type == "success"}
       error={msgConfig.type == "error"}
@@ -75,8 +75,8 @@ const renderMessage = (children: any, config?: any, type?: EMessageType) => {
     action,
   };
 
-  return toast.custom(() => {
-    return <Message {...msgConfig} />;
+  return toast.custom((t) => {
+    return <Message {...msgConfig} dismiss={() => toast.dismiss(t)} />;
   });
 
   // const nextDiv = config?.rootElementId
