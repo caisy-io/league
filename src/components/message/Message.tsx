@@ -19,18 +19,12 @@ export interface IMessage {
   type?: string;
   content: string;
   id: number;
-  duration: number;
   icon?: React.ReactNode;
   actionClick?: () => void;
-  dismiss: () => void;
 }
 
 const Message: React.FC<IMessage> = (msgConfig: IMessage) => {
   // const [exit, setExit] = useState(false);
-
-  setTimeout(() => {
-    msgConfig.dismiss();
-  }, msgConfig.duration);
 
   // const handleCloseMessage = () => {
   //   setExit(true);
@@ -69,14 +63,17 @@ const renderMessage = (children: any, config?: any, type?: EMessageType) => {
   const msgConfig = {
     type,
     content: children,
-    duration,
     id: Date.now(),
     icon,
     action,
   };
 
   return toast.custom((t) => {
-    return <Message {...msgConfig} dismiss={() => toast.dismiss(t)} />;
+    setTimeout(() => {
+      toast.dismiss(t);
+    }, duration);
+
+    return <Message {...msgConfig} />;
   });
 
   // const nextDiv = config?.rootElementId
