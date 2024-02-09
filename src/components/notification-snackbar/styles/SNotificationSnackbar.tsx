@@ -12,7 +12,7 @@ const Bronze = css<{ styleOverwrite?: any; exit?: boolean; error?: any }>`
   justify-content: space-between;
   align-items: center;
   min-height: 2.5rem;
-  /* width: 28.375rem; */
+  width: 100%;
   padding: 0.75rem;
   box-sizing: border-box;
   margin-top: 1.25rem;
