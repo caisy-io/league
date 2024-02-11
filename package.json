@@ -1,6 +1,6 @@
 {
   "name": "@caisy/league",
-  "version": "0.10.146-canary2-horizontally-scrollable-tables-test",
+  "version": "0.10.146-canary3-horizontally-scrollable-tables-test",
   "access": "public",
   "types": "dist/types.d.ts",
   "module": "dist/esm/index.js",
