@@ -74,7 +74,8 @@
     "react-chartjs-2": "^5.0.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sonner": "^1.4.0"
   },
   "files": [
     "dist",
