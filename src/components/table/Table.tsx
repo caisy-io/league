@@ -26,6 +26,8 @@ interface ITableBase {
   tableWidth?: number | string;
   containerMaxWidth?: number;
   isHorizontallyScrollable?: boolean;
+  hasNextPage?: boolean;
+  onRowHover?: (payload: any) => void;
 }
 
 interface ITableWithItemSize extends ITableBase {
@@ -51,4 +53,3 @@ export const Table: FC<ITable> = forwardRef(({ isHorizontallyScrollable, ...prop
     </>
   );
 });
-

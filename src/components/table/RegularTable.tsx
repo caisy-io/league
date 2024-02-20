@@ -27,6 +27,8 @@ export const RegularTable: FC<ITable> = forwardRef(
       columns,
       renderAsFirstRow,
       empty,
+      onRowHover,
+      hasNextPage,
     },
     ref,
   ) => {
@@ -43,7 +45,7 @@ export const RegularTable: FC<ITable> = forwardRef(
 
     // Only load 1 page of items at a time.
     // Pass an empty callback to InfiniteLoader in case it asks us to load more than once.
-    const loadMoreItems = isNextPageLoading ? () => {} : loadNextPage;
+    const loadMoreItems = isNextPageLoading || hasNextPage === false ? () => {} : loadNextPage;
 
     // Every row is loaded except for our loading indicator row.
     // const isItemLoaded = (index) => !props.hasNextPage || index < props.dataSource.length;
@@ -78,7 +80,11 @@ export const RegularTable: FC<ITable> = forwardRef(
       const row = dataSource[index];
 
       return (
-        <STr onClick={() => (!!onRowClick ? onRowClick(row) : () => {})} key={`row-${row.id}`}>
+        <STr
+          onClick={() => (!!onRowClick ? onRowClick(row) : () => {})}
+          onMouseEnter={() => onRowHover?.(row)}
+          key={`row-${row.id}`}
+        >
           {columns.map(({ key, renderItem }, keyIndex) => {
             const header = document.getElementById(`header-${keyIndex}`);
             const headerWidth = header?.offsetWidth || 0;
