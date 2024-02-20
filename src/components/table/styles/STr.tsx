@@ -6,7 +6,7 @@ interface ISTr {}
 const Bronze = css<ISTr>`
   display: flex;
   align-items: center;
-  width: 100%;
+  width: auto;
   box-sizing: border-box;
 
   &:hover {
