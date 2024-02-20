@@ -1,7 +1,9 @@
+import { CSSProperties } from "react";
 import styled, { css } from 'styled-components';
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from '../../../constants/styles/mediaquerys';
 
 interface ISBadgeLabel {
+  styleOverwrite?: CSSProperties;
 }
 
 const Bronze = css<ISBadgeLabel>`
@@ -16,17 +18,19 @@ const Bronze = css<ISBadgeLabel>`
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
+
+  ${({ styleOverwrite }) => styleOverwrite || {}};
 `;
 
-const Silver = css``;
+const Silver = css<ISBadgeLabel>``;
 
-const Gold = css``;
+const Gold = css<ISBadgeLabel>``;
 
-const Platinum = css``;
+const Platinum = css<ISBadgeLabel>``;
 
-const Diamond = css``;
+const Diamond = css<ISBadgeLabel>``;
 
-export const SBadgeLabel = styled.div`
+export const SBadgeLabel = styled.div<ISBadgeLabel>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};

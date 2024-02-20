@@ -1,14 +1,13 @@
-import React, { FC } from 'react';
-import { SBadgeLabel } from './SBadgeLabel';
+import { FC, ReactNode, CSSProperties } from "react";
+import { SBadgeLabel } from "./SBadgeLabel";
 
 export interface IBadgeLabel {
-  value: string;
+  children?: ReactNode;
+  styleOverwrite?: CSSProperties;
 }
 
-const BadgeLabel: FC<IBadgeLabel> = ({ value }) => {
-  return (
-    <SBadgeLabel>{value}</SBadgeLabel>
-  );
+const BadgeLabel: FC<IBadgeLabel> = ({ children, styleOverwrite }) => {
+  return <SBadgeLabel styleOverwrite={styleOverwrite}>{children}</SBadgeLabel>;
 };
 
 export default BadgeLabel;
