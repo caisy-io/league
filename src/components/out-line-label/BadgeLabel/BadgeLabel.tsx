@@ -2,7 +2,7 @@ import { FC, ReactNode, CSSProperties } from "react";
 import { SBadgeLabel } from "./SBadgeLabel";
 
 export interface IBadgeLabel {
-  children?: ReactNode;
+  children: ReactNode;
   styleOverwrite?: CSSProperties;
 }
 
