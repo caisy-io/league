@@ -15,7 +15,12 @@ const Template = ({
   selectedDisplay = false,
   time = false,
   withoutMonthsNavigation = false,
-}) => (
+}) => {
+  
+  const yearsForward = 20;
+  const yearsBack = new Date().getFullYear() - 1970;
+
+  return (
   <DatePicker
     initialDate={initialDate}
     withoutMonthsNavigation={withoutMonthsNavigation}
@@ -33,8 +38,10 @@ const Template = ({
     withBottomButtons={bottomButtons}
     withQuickSelectionButtons={quickSelectionButtons}
     inline={inline}
+    yearsBack={yearsBack}
+    yearsForward={yearsForward}
   />
-);
+)};
 
 // Default Date Picker Demo
 export default {

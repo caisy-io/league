@@ -1,6 +1,6 @@
 {
   "name": "@caisy/league",
-  "version": "0.12.0-canary1-badge",
+  "version": "0.12.1",
   "access": "public",
   "types": "dist/types.d.ts",
   "module": "dist/esm/index.js",
@@ -22,6 +22,13 @@
     "build:storybook": "storybook build --loglevel warn 2> ./sb-out.txt && sh ./run-sb-exit.sh"
   },
   "sideEffects": false,
+  "resolve": {
+    "@storybook/addon-docs": "7.0.18",
+    "@storybook/addon-essentials": "7.0.18",
+    "@storybook/addon-links": "7.0.18",
+    "@storybook/react": "7.0.18",
+    "@storybook/react-webpack5": "7.0.18"
+  },
   "devDependencies": {
     "@babel/plugin-transform-react-jsx": "^7.19.0",
     "@babel/preset-env": "^7.22.4",
@@ -34,10 +41,10 @@
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
-    "@storybook/addon-docs": "^7.0.18",
-    "@storybook/addon-essentials": "^7.0.18",
-    "@storybook/addon-links": "^7.0.18",
-    "@storybook/react": "^7.0.18",
+    "@storybook/addon-docs": "7.0.18",
+    "@storybook/addon-essentials": "7.0.18",
+    "@storybook/addon-links": "7.0.18",
+    "@storybook/react": "7.0.18",
     "@storybook/react-webpack5": "7.0.18",
     "@types/react": "^18",
     "@types/react-beautiful-dnd": "^13.1.2",
@@ -61,7 +68,7 @@
     "rollup-plugin-ts-paths-resolve": "^1.7.1",
     "simple-git": "^1.113.0",
     "storybook": "7.0.18",
-    "storybook-addon-designs": "^7.0.0-beta.2",
+    "storybook-addon-designs": "7.0.0-beta.2",
     "style-dictionary": "^3.0.3",
     "typescript": "^4.4.4",
     "yargs": "^12.0.5"
@@ -102,5 +109,8 @@
     "react-window": "^1.8.9",
     "react-window-infinite-loader": "^1.0.9",
     "styled-components": "^5.3.6"
+  },
+  "volta": {
+    "node": "16.20.2"
   }
 }

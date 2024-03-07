@@ -59,6 +59,8 @@ interface IDatePicker {
   withoutMonthsNavigation?: boolean;
   inline?: boolean;
   disableChangingDate?: boolean;
+  yearsBack?: number;
+  yearsForward?: number;
 }
 
 export interface IDatePickerI18n {
@@ -94,6 +96,8 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
   inline,
   value,
   disableChangingDate,
+  yearsBack=5,
+  yearsForward=10,
 }) => {
   const {
     setShowMinutes,
@@ -291,9 +295,9 @@ const WrappedDatePicker: React.FC<IDatePicker> = ({
               {showYearMenu && (
                 <SDatePickerMenuContainer onMouseDownCapture={clickOutsideMenuYear}>
                   <Scrollbar>
-                    {[...new Array(16)].map((_, index) => {
+                    {[...new Array(1 + yearsBack + yearsForward)].map((_, index) => {
                       const year = dayjs()
-                        .add(-5 + index, "year")
+                        .add(- (yearsBack) + index, "year")
                         .year();
                       return (
                         <SDatePickerMenuItem
