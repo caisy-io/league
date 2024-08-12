@@ -6,7 +6,7 @@ const Bronze = css`
   flex: 1 1 auto;
   flex-direction: column;
   align-items: flex-start;
-  max-width: calc(100% - 20px - 8px - 8px - 49px);
+  max-width: calc(100% - 8px);
 `;
 
 const Silver = css``;

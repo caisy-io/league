@@ -32,7 +32,11 @@ const Bronze = css`
     font-size: 14px;
     line-height: 1.71;
     text-align: left;
-    color: var(--form-item-text-color);
+    color: var(--text-01);
+
+    &::placeholder {
+      color: var(--text-03);
+    }
 
     &:disabled {
       opacity: 0.5;

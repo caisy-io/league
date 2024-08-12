@@ -60,6 +60,11 @@ const dataSource = [
     solidLabelText: "en-US",
   },
   {
+    key: "long_input",
+    title: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et quod.",
+    solidLabelText: "en-US",
+  },
+  {
     key: "icon_title_label1",
     title: "Portugal",
     solidLabelText: "en-UK",
