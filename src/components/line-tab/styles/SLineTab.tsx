@@ -35,20 +35,7 @@ const Bronze = css<{ activated?: boolean; hover?: boolean; hasError?: boolean }>
   height: 48px;
   box-sizing: border-box;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
   transition: color 0.2s ease-in-out;
-
-  > span {
-    width: 16px;
-    height: 16px;
-    background-color: var(--ui-supportive-01);
-    border-radius: 24px;
-    text-align: center;
-    ${CSSProgressiveHighlightSmallBadges};
-    color: var(--text-02);
-  }
 
   div:last-of-type {
     background-color: transparent;

@@ -1,6 +1,7 @@
 import React from "react";
 import { SLineTab } from "./styles/SLineTab";
 import { SLineTabLine } from "./styles/SLineTabLine";
+import { SLineTabErrorsCountBadge } from "./styles/SLineTabErrorsCountBadge";
 
 interface ILineTabProps {
   hover?: boolean;
@@ -23,7 +24,7 @@ export const LineTab: React.FC<ILineTabProps> = ({
 }) => {
   return (
     <SLineTab hover={hover} activated={activated} onClick={onClick} hasError={hasError}>
-      {hasError && errorsCount > 0 && <span>{errorsCount}</span>}
+      {hasError && errorsCount > 0 && <SLineTabErrorsCountBadge>{errorsCount}</SLineTabErrorsCountBadge>}
       {title}
       {children}
       <SLineTabLine />
