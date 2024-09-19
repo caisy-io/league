@@ -6,7 +6,7 @@ const CSSHover = css`
   color: var(--hover-text-04);
   cursor: pointer;
 
-  & .errors-count-badge {
+  .errors-count-badge {
     background-color: var(--hover-text-04);
   }
 
