@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {CSSProgressiveHighlight} from "../../../constants/styles";
+import { CSSProgressiveHighlight } from "../../../constants/styles";
 
 export const SFieldErrorsDropdown = styled.div`
   display: flex;
@@ -8,7 +8,15 @@ export const SFieldErrorsDropdown = styled.div`
   padding: 8px 12px 8px 16px;
   cursor: pointer;
   user-select: none;
-  color: var(--hover-text-06, #CB2D3B);
   ${CSSProgressiveHighlight};
+  color: var(--ui-supportive-01);
+  transition: color 0.2s ease-in-out;
 
+  :hover {
+    color: var(--active-interactional-secondary-02);
+
+    .errors-count-badge {
+      background-color: var(--active-interactional-secondary-02);
+    }
+  }
 `;

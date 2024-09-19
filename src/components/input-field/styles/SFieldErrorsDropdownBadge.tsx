@@ -8,7 +8,8 @@ export const SFieldErrorsDropdownBadge = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background: var(--active-interactional-secondary-02);
+  transition: background-color 0.2s ease-in-out;
+  background-color: var(--ui-supportive-01);
   color: var(--text-02);
   ${CSSProgressiveHighlight};
   margin-right: 4px;

@@ -2,6 +2,18 @@ import styled, { css } from "styled-components";
 import { CSSProgressiveBody03Semibold } from "../../../constants/styles";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
+const CSSErrorHover = css`
+  color: var(--active-interactional-secondary-02);
+
+  .errors-count-badge {
+    background-color: var(--active-interactional-secondary-02);
+  }
+
+  div:last-of-type {
+    background-color: var(--active-interactional-secondary-02);
+  }
+`;
+
 const CSSHover = css`
   color: var(--hover-text-04);
   cursor: pointer;
@@ -13,6 +25,7 @@ const CSSHover = css`
   div:last-of-type {
     background-color: var(--hover-text-04);
   }
+  ${({ hasError }) => hasError && CSSErrorHover};
 `;
 
 const CSSActivated = css<{ activated?: boolean; hover?: boolean; hasError?: boolean }>`
@@ -71,10 +84,11 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLineTab = styled.div<{ activated?: boolean; hover?: boolean; hasError?: boolean }>`
+export const SLineTab = styled.div<{ activated?: boolean; hover?: boolean; hasError?: boolean; styleOverwrite: any }>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
   ${MIN_PLATINUM`${Platinum}`};
   ${MIN_DIAMOND`${Diamond}`};
+  ${({styleOverwrite}) => styleOverwrite ?? ''};
 `;

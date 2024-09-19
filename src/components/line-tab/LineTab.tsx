@@ -11,6 +11,7 @@ interface ILineTabProps {
   onClick: () => void;
   children?: React.ReactNode;
   errorsCount?: number;
+  styleOverwrite?: any;
 }
 
 export const LineTab: React.FC<ILineTabProps> = ({
@@ -21,9 +22,10 @@ export const LineTab: React.FC<ILineTabProps> = ({
   children,
   hasError = false,
   errorsCount = 0,
+  styleOverwrite,
 }) => {
   return (
-    <SLineTab hover={hover} activated={activated} onClick={onClick} hasError={hasError}>
+    <SLineTab styleOverwrite={styleOverwrite} hover={hover} activated={activated} onClick={onClick} hasError={hasError}>
       {hasError && errorsCount > 0 && (
         <SLineTabErrorsCountBadge className="errors-count-badge">
           {errorsCount}
