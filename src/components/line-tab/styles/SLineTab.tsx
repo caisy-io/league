@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody03Semibold } from "../../../constants/styles";
+import { CSSProgressiveBody03Semibold, CSSProgressiveHighlightSmallBadges } from "../../../constants/styles";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
 const CSSHover = css`
@@ -11,7 +11,7 @@ const CSSHover = css`
   }
 `;
 
-const CSSActivated = css<{activated?: boolean; hover?: boolean; hasError?: boolean}>`
+const CSSActivated = css<{ activated?: boolean; hover?: boolean; hasError?: boolean }>`
   color: var(--text-01);
 
   div:last-of-type {
@@ -23,7 +23,7 @@ const CSSError = css`
   color: var(--text-06);
 `;
 
-const Bronze = css<{activated?: boolean; hover?: boolean; hasError?: boolean}>`
+const Bronze = css<{ activated?: boolean; hover?: boolean; hasError?: boolean }>`
   ${CSSProgressiveBody03Semibold};
   position: relative;
   color: var(--text-04);
@@ -35,6 +35,20 @@ const Bronze = css<{activated?: boolean; hover?: boolean; hasError?: boolean}>`
   height: 48px;
   box-sizing: border-box;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease-in-out;
+
+  > span {
+    width: 16px;
+    height: 16px;
+    background-color: var(--ui-supportive-01);
+    border-radius: 24px;
+    text-align: center;
+    ${CSSProgressiveHighlightSmallBadges};
+    color: var(--text-02);
+  }
 
   div:last-of-type {
     background-color: transparent;
@@ -61,7 +75,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SLineTab = styled.div<{activated?: boolean; hover?: boolean; hasError?: boolean}>`
+export const SLineTab = styled.div<{ activated?: boolean; hover?: boolean; hasError?: boolean }>`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`};
