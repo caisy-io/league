@@ -7,6 +7,7 @@ const Bronze = css`
   position: absolute;
   bottom: 0;
   z-index: 1;
+  transition: background-color 0.2s ease-in-out;
 `;
 
 const Silver = css``;

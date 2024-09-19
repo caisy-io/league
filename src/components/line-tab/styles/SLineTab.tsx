@@ -1,10 +1,14 @@
 import styled, { css } from "styled-components";
-import { CSSProgressiveBody03Semibold, CSSProgressiveHighlightSmallBadges } from "../../../constants/styles";
+import { CSSProgressiveBody03Semibold } from "../../../constants/styles";
 import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "../../../constants/styles";
 
 const CSSHover = css`
   color: var(--hover-text-04);
   cursor: pointer;
+
+  .errors-count-badge {
+    background-color: var(--hover-text-04);
+  }
 
   div:last-of-type {
     background-color: var(--hover-text-04);
@@ -13,6 +17,10 @@ const CSSHover = css`
 
 const CSSActivated = css<{ activated?: boolean; hover?: boolean; hasError?: boolean }>`
   color: var(--text-01);
+
+  .errors-count-badge {
+    background-color: var(--text-01);
+  }
 
   div:last-of-type {
     background-color: ${({ hasError }) => (hasError ? "var(--ui-supportive-01)" : "var(--text-01)")};

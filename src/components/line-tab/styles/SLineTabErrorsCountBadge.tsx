@@ -11,6 +11,7 @@ const Bronze = css`
   ${CSSProgressiveHighlightSmallBadges};
   color: var(--text-02);
   margin-right: 6px;
+  transition: background-color 0.2s ease-in-out;
 `;
 
 const Silver = css``;
