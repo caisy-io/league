@@ -291,6 +291,7 @@ export {IconGeopointField} from "./IconGeopointField";
 export {IconBlueprintBooleanField} from "./IconBlueprintBooleanField";
 export {IconBlueprintColorField} from "./IconBlueprintColorField";
 export {IconBlueprintStringField} from "./IconBlueprintStringField";
+export {IconBlueprintExtensionField} from "./IconBlueprintExtensionField";
 export {IconBlueprintSelectField} from "./IconBlueprintSelectField";
 export {IconBlueprintTagField} from "./IconBlueprintTagField";
 export {SetFocalPoint} from "./setFocalPointIcon";
