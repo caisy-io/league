@@ -6,7 +6,7 @@ const CSSHover = css`
   color: var(--hover-text-04);
   cursor: pointer;
 
- & .errors-count-badge {
+  & .errors-count-badge {
     background-color: var(--hover-text-04);
   }
 
@@ -44,6 +44,11 @@ const Bronze = css<{ activated?: boolean; hover?: boolean; hasError?: boolean }>
   box-sizing: border-box;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
+
+  .errors-count-badge {
+    background-color: var(--ui-supportive-01);
+    color: var(--text-02);
+  }
 
   div:last-of-type {
     background-color: transparent;

@@ -5,11 +5,9 @@ import { CSSProgressiveHighlightSmallBadges } from "../../../constants/styles";
 const Bronze = css`
   width: 16px;
   height: 16px;
-  background-color: var(--ui-supportive-01);
   border-radius: 24px;
   text-align: center;
   ${CSSProgressiveHighlightSmallBadges};
-  color: var(--text-02);
   margin-right: 6px;
   transition: background-color 0.2s ease-in-out;
 `;
