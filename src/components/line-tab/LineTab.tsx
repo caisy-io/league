@@ -21,7 +21,6 @@ export const LineTab: React.FC<ILineTabProps> = ({
   hasError = false,
   errorsCount = 0,
 }) => {
-  console.log("errorsCount > 0", errorsCount > 0);
   return (
     <SLineTab hover={hover} activated={activated} onClick={onClick} hasError={hasError}>
       {hasError && errorsCount > 0 && <span>{errorsCount}</span>}
