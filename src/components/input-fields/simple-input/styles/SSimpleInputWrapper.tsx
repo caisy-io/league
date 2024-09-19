@@ -34,7 +34,7 @@ const Bronze = css`
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding: 10px 12px;
+  padding: 12px 12px;
   background-color: var(--ui-01);
   border: 1px solid var(--ui-03);
   border-radius: 8px;
