@@ -61,7 +61,7 @@ export const SimpleInputWrapper: FC<ISimpleInput> = ({
       state={state}
     >
       <SSimpleInputOutsideContainer>
-        <SSimpleInputIconWrapper>{leftIcon}</SSimpleInputIconWrapper>
+        {leftIcon && <SSimpleInputIconWrapper>{leftIcon}</SSimpleInputIconWrapper>}
         <SSimpleInputInsideContainer>
           {label && (
             <SSimpleInputRequiredIndicatorContainer withLabel={true}>

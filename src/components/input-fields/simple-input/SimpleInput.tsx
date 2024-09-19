@@ -130,7 +130,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
       id={id}
     >
       <SSimpleInputOutsideContainer>
-        <SSimpleInputIconWrapper>{leftIcon}</SSimpleInputIconWrapper>
+        { leftIcon && <SSimpleInputIconWrapper>{leftIcon}</SSimpleInputIconWrapper> }
         <SSimpleInputInsideContainer>
           <SSimpleInputTextWidth ref={spanRef}>{placeholder ? placeholder : ""}</SSimpleInputTextWidth>
           {label && (
