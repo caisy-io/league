@@ -14,7 +14,7 @@ export default {
   argTypes: {
     state: {
       description: "Changes the overall design of the search bar operand",
-      options: ["default", "hover", "activated"],
+      options: ["default", "hover", "activated", "hasError"],
       control: { type: "select" },
       table: {
         defaultValue: {
@@ -30,7 +30,7 @@ export default {
 };
 
 function LineTabDemo({ content, ...args }) {
-  return <LineTab {...args} title={content} activated={args.state === "activated"} hover={args.state === "hover"}/>
+  return <LineTab {...args} title={content} activated={args.state === "activated"} hover={args.state === "hover"} hasError={args.state === "hasError"} />
 }
 
 
@@ -38,6 +38,7 @@ export const Default = LineTabDemo.bind({});
 Default.args = {
   state: "default",
   content: "Default",
+  errorsCount: 0,
 };
 
 // With entity
