@@ -96,6 +96,7 @@
     "emoji-mart": "3.0.1"
   },
   "dependencies": {
+    "@caisy/league": "^0.12.4",
     "blurhash": "^2.0.5",
     "dayjs": "1.10.5",
     "emoji-mart": "3.0.1",
