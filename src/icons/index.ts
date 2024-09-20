@@ -303,3 +303,4 @@ export {IconSendInvitation} from "./IconSendInvitation";
 export {IconComponentLink} from "./IconComponentLink";
 export {IconAssetLink} from "./IconAssetLink";
 export {IconDocumentLink} from "./IconDocumentLink";
+export {IconInputForm} from "./IconInputForm";
