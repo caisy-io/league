@@ -304,3 +304,4 @@ export {IconComponentLink} from "./IconComponentLink";
 export {IconAssetLink} from "./IconAssetLink";
 export {IconDocumentLink} from "./IconDocumentLink";
 export {IconInputForm} from "./IconInputForm";
+export {IconBuilder} from "./IconBuilder";
