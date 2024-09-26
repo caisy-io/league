@@ -74,7 +74,7 @@ const Template = () => {
   };
 
   const onRemoveValue = (v) => {
-    setTags(tags.filter((t) => t.id !== v.id));
+    setTags(tags.filter((t: any) => t.id !== v.id));
   };
 
   const toggleDropdown = () => {

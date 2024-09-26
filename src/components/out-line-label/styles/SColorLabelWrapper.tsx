@@ -7,6 +7,9 @@ interface ISColorLabelWrapper {
 }
 
 const Bronze = css<ISColorLabelWrapper>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: ${({ size }) => size === 'medium' ? 4 : 8}px;
   div {
     background-color: ${({ isActivated }) => isActivated && 'var(--ui-01)'};
