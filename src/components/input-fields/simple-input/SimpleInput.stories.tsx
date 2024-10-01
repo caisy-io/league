@@ -25,6 +25,7 @@ function SimpleInputDemo({ ...args }) {
       state={args.state}
       type={args.type}
       multiline={args.multiline}
+      loading={args.loading}
     />
   );
 }
@@ -74,7 +75,8 @@ Default.args = {
   required: true,
   withLeftIcon: false,
   withRightIcon: false,
-  multiline: false
+  multiline: false,
+  loading: false,
 };
 
 export const WithTranslationBadge = Template.bind({});
