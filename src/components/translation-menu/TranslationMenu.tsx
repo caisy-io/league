@@ -53,7 +53,7 @@ export const TranslationMenu: FC<ITranslationMenu> = ({
             return <LanguageToggleListItem key={locale.id} onToggle={() => onToggle(locale.id)} locale={locale} />;
           })}
         </MenuDnd>
-        {autoTranslateButton && autoTranslateButton}
+        {autoTranslateButton}
       </Collapsible>
     </STranslationMenu>
   );
