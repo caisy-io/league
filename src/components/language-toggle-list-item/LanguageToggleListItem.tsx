@@ -28,7 +28,7 @@ export const LanguageToggleListItem: FC<ILanguageToggleListItem> = ({
   onDragEnd,
 }) => {
   return (
-    <SLanguageFlagToggleListItem draggable={true} onDrag={onDrag} onDragEnd={onDragEnd} onDragStart={onDragStart}>
+    <SLanguageFlagToggleListItem draggable={true} onDrag={onDrag} onDragEnd={onDragEnd} onDragStart={onDragStart} className="language-toggle-item">
       <SLanguageFlagToggleListItemDragIcon>
         <IconDragable size={16} />
       </SLanguageFlagToggleListItemDragIcon>
