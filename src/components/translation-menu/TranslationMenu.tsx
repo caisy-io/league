@@ -13,6 +13,7 @@ export interface ITranslationMenu {
   onToggleOpened: (newOpened: boolean) => void;
   onLocalesChange: (newLocales: ILanguageToggleListItemLocale[]) => void;
   translationsText?: string | ReactNode;
+  autoTranslateButton?: ReactNode;
 }
 
 export const TranslationMenu: FC<ITranslationMenu> = ({
@@ -21,6 +22,7 @@ export const TranslationMenu: FC<ITranslationMenu> = ({
   onToggleOpened,
   onLocalesChange,
   translationsText,
+  autoTranslateButton,
 }) => {
   const onDrop = (fromIndex: number, toIndex: number) => {
     const newLocales = locales.slice();
@@ -38,7 +40,7 @@ export const TranslationMenu: FC<ITranslationMenu> = ({
   };
 
   return (
-    <STranslationMenu>
+    <STranslationMenu hasAutoTranslateButton={!!autoTranslateButton}>
       <STranslationMenuHeader onClick={() => onToggleOpened(!opened)} opened={opened}>
         <STranslationMenuHeaderIconWrapper opened={opened}>
           <IconChevronRight size={20} />
@@ -51,6 +53,7 @@ export const TranslationMenu: FC<ITranslationMenu> = ({
             return <LanguageToggleListItem key={locale.id} onToggle={() => onToggle(locale.id)} locale={locale} />;
           })}
         </MenuDnd>
+        {autoTranslateButton}
       </Collapsible>
     </STranslationMenu>
   );

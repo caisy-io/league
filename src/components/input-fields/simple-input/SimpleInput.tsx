@@ -20,6 +20,7 @@ import { SSimpleInputRequiredIndicatorContainer } from "./styles/SSimpleInputReq
 import { SSimpleInputRightWrapper } from "./styles/SSimpleInputRightIcon";
 import { SSimpleInputTextWidth } from "./styles/SSimpleInputTextWidth";
 import { SSimpleInputWrapper } from "./styles/SSimpleInputWrapper";
+import SimpleInputSkeleton from "../simple-input-skeleton/SimpleInputSkeleton";
 
 type TSimpleInputState = "success" | "error" | "default" | "locked";
 
@@ -44,6 +45,7 @@ interface ISimpleInput {
   autoFocus?: boolean;
   type?: HTMLInputTypeAttribute;
   multiline?: boolean;
+  loading?: boolean;
 }
 
 export const SimpleInput: FC<ISimpleInput> = ({
@@ -66,6 +68,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
   id,
   type = "text",
   multiline,
+  loading,
 }) => {
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -97,12 +100,14 @@ export const SimpleInput: FC<ISimpleInput> = ({
   );
 
   const resizeInput = useCallback(() => {
-    (inputRef.current as HTMLInputElement).style.height = "20px";
-    (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
+    if (inputRef?.current) {
+      (inputRef.current as HTMLInputElement).style.height = "20px";
+      (inputRef.current as HTMLInputElement).style.height = `${inputRef.current?.scrollHeight}px`;
+    }
   }, [inputRef?.current?.value]);
 
   useEffect(() => {
-    if (multiline) {
+    if (multiline && inputRef?.current) {
       resizeInput();
     }
   }, [inputRef?.current?.value]);
@@ -130,7 +135,7 @@ export const SimpleInput: FC<ISimpleInput> = ({
       id={id}
     >
       <SSimpleInputOutsideContainer>
-        { leftIcon && <SSimpleInputIconWrapper>{leftIcon}</SSimpleInputIconWrapper> }
+        {leftIcon && <SSimpleInputIconWrapper>{leftIcon}</SSimpleInputIconWrapper>}
         <SSimpleInputInsideContainer>
           <SSimpleInputTextWidth ref={spanRef}>{placeholder ? placeholder : ""}</SSimpleInputTextWidth>
           {label && (
@@ -160,23 +165,27 @@ export const SimpleInput: FC<ISimpleInput> = ({
                 }}
               />
             )}
-            <InputComponent
-              error={state === "error"}
-              locked={locked}
-              onChange={(e) => {
-                onChange?.(e);
-              }}
-              autoComplete={autoComplete}
-              ref={inputRef}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              value={value === null || value === undefined ? "" : value}
-              placeholder={placeholder}
-              disabled={disabled}
-              readOnly={readOnly}
-              onKeyUp={onKeyUp}
-              type={type}
-            />
+            {loading ? (
+              <SimpleInputSkeleton multiline={multiline} />
+            ) : (
+              <InputComponent
+                error={state === "error"}
+                locked={locked}
+                onChange={(e) => {
+                  onChange?.(e);
+                }}
+                autoComplete={autoComplete}
+                ref={inputRef}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                value={value === null || value === undefined ? "" : value}
+                placeholder={placeholder}
+                disabled={disabled}
+                readOnly={readOnly}
+                onKeyUp={onKeyUp}
+                type={type}
+              />
+            )}
           </SSimpleInputRequiredIndicatorContainer>
         </SSimpleInputInsideContainer>
         <SSimpleInputRightWrapper>
