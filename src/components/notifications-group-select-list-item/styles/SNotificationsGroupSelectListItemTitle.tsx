@@ -20,7 +20,7 @@ const Platinum = css``;
 
 const Diamond = css``;
 
-export const SNotificationsGroupSelectListItemTitle = styled.p`
+export const SNotificationsGroupSelectListItemTitle = styled.div`
   ${Bronze}
   ${MIN_SILVER`${Silver}`};
   ${MIN_GOLD`${Gold}`}; 
