@@ -39,6 +39,10 @@ const Bronze = css<ISearchBarOperandProps>`
   &, &:hover{
     ${(props) => props.activated ? CSSActivated : ''};
   }
+
+  &:has(.no-padding) {
+    padding: 0;
+  }
 `;
 
 const Silver = css``;
